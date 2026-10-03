@@ -106,6 +106,16 @@ const PAGE_HELPERS = () => {
           if (this.opaqueBg(e) && o > 0.9) break;
         }
       }
+      // The grid can fall entirely on padding/gaps around content; a screen is
+      // only blank when no visible text or media intersects it at all.
+      if (hits === 0) {
+        for (const el of stop.querySelectorAll('*')) {
+          const r = el.getBoundingClientRect();
+          if (r.width < 8 || r.height < 8 || r.bottom < rect.top + 20 || r.top > rect.bottom - 20) continue;
+          if (r.right < rect.left || r.left > rect.right) continue;
+          if (this.isContent(el) && this.effOpacity(el, stop) > 0.15) { hits = 1; break; }
+        }
+      }
       return { hits, total };
     },
     stuck(rect, root) {
@@ -211,7 +221,7 @@ async function auditOne(browser, t) {
   const page = await browser.newPage();
   await page.setViewport(VIEW);
   await page.evaluateOnNewDocument(PAGE_HELPERS);
-  if (t.kind !== 'native') await page.evaluateOnNewDocument(() => { window.__auditStatic = true; });
+  if (t.kind === 'static') await page.evaluateOnNewDocument(() => { window.__auditStatic = true; });
   const consoleErrs = new Set();
   page.on('console', (m) => { if (m.type() === 'error') consoleErrs.add(m.text().slice(0, 240)); });
   page.on('pageerror', (e) => add('error', 'PAGE_ERROR', String(e.message || e).slice(0, 240)));

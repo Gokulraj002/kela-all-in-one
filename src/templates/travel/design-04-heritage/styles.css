@@ -21,6 +21,12 @@
   font-size: 1.0625rem;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Clip sideways bleed on the template root only. The viewer's scroll
+   container (.tpl-scope) carries this same class — clipping it would
+   turn off its scrolling entirely. */
+.tpl-design-04-heritage:not(.tpl-scope) {
   overflow: clip;
 }
 

@@ -132,6 +132,9 @@ h1 em, h2 em { font-style: italic; color: var(--accent); }
    stacking context, below the toolbar and panels. It creates no containing block, so
    position: fixed and ScrollTrigger's fixed pins still use viewport coordinates. */
 .tpl-scope { width: 100%; height: 100%; overflow-y: auto; background: #fff; isolation: isolate; }
+/* The scope also carries the design's root class, so a template rule like
+   .tpl-design-x { overflow: clip } would stop the viewer from scrolling. */
+.tpl-scope { overflow-y: auto !important; }
 
 /* panels / modals / menus (ported) */
 .panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(400px,94vw); background: var(--bg2); border-left: 1px solid var(--line-soft); z-index: 8; display: flex; flex-direction: column; box-shadow: -30px 0 60px -30px rgba(35,32,28,.25); }

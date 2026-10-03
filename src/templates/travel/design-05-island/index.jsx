@@ -57,9 +57,12 @@ function TideCard({ escape, index }) {
    Scroll velocity subtly swells the bob amplitude, smoothed per frame.
    Never a marquee — the cards drift once across and rest. Reduced-motion
    renders a calm static grid; mobile keeps the same drift, gentler. */
-function TideDrift({ scroller }) {
+function TideDrift() {
   const reduced = useReducedMotion();
-  const rootRef = useRef(null);
+  /* Own scope hook: the parent's root ref is attached only AFTER this child's
+     layout effect runs (React attaches host refs bottom-up), so the parent's
+     scroller() would still resolve to window here. */
+  const { rootRef, scroller } = useTplScope();
   const trackRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -121,7 +124,7 @@ function TideDrift({ scroller }) {
       gsap.ticker.remove(tick);
       mq.removeEventListener('change', onMq);
     };
-  }, [reduced, scroller]);
+  }, [reduced, scroller, rootRef]);
 
   if (reduced) {
     return (
@@ -265,7 +268,7 @@ export default function Design05Island() {
             <h2 className="sl-h2 sl-rv">{content.escapes.title}</h2>
             <p className="sl-lede sl-rv">{content.escapes.lede}</p>
           </div>
-          <TideDrift scroller={scroller} />
+          <TideDrift />
           <p className="sl-drift-hint sl-rv">{content.escapes.hint}</p>
         </section>
 

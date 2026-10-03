@@ -360,7 +360,7 @@
 .tpl-design-08-spiritual .sp-orbit-stage {
   position: relative;
   height: 100vh;
-  height: 100svh;
+  height: var(--tpl-vh, 100svh);
   overflow: clip;
 }
 

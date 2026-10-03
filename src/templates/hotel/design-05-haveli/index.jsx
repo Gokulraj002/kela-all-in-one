@@ -308,13 +308,16 @@ export default function Design05Haveli() {
         if (!strip || !win) return;
         const dist = () => Math.max(0, strip.scrollWidth - win.clientWidth);
         const caps = content.pan.panels.map((p) => p.cap);
+        /* pin just below the sticky nav so the arch crown is never covered */
+        const nav = rootRef.current.querySelector('.sh-nav');
+        const navH = () => (nav ? nav.offsetHeight : 0);
         gsap.to(strip, {
           x: () => -dist(),
           ease: 'none',
           scrollTrigger: {
             trigger: pin,
             scroller: sc,
-            start: 'top top',
+            start: () => `top ${navH()}px`,
             end: () => `+=${dist()}`,
             pin: true,
             scrub: 1,

@@ -337,8 +337,25 @@ export default function Design05Heritage() {
         pin.classList.add('is-pinned');
         const layers = gsap.utils.toArray('.ll-wipe-layer', pin);
         const chapters = content.compare.chapters.length;
+        const STEP = 1.25;
+        /* Initial state lives outside the scrubbed timeline: a zero-duration
+           set at time 0 is not rendered while the playhead sits at 0, which
+           left every chapter hidden (an empty maroon stage) until the scrub
+           moved. Chapter I is visible from the moment the stage arrives. */
+        gsap.set(layers[0], { autoAlpha: 1 });
+        gsap.set(layers.slice(1), { autoAlpha: 0 });
+        /* Only the chapter on screen is exposed to assistive tech; the
+           stacked, faded-out chapters are aria-hidden. */
+        let shown = -1;
+        const expose = (idx) => {
+          if (idx === shown) return;
+          shown = idx;
+          layers.forEach((l, k) => l.setAttribute('aria-hidden', String(k !== idx)));
+        };
+        expose(0);
         const wtl = gsap.timeline({
           defaults: { ease: 'none' },
+          onUpdate: () => expose(Math.min(layers.length - 1, Math.max(0, Math.floor(wtl.time() / STEP)))),
           scrollTrigger: {
             trigger: pin,
             scroller: sc,
@@ -350,31 +367,38 @@ export default function Design05Heritage() {
             invalidateOnRefresh: true,
           },
         });
-        wtl.set(layers, { autoAlpha: 0 }, 0);
         layers.forEach((layer, i) => {
-          const at = i * 1.25;
+          const at = i * STEP;
           const before = layer.querySelector('.ll-wipe-before');
           const beforeInner = layer.querySelector('.ll-wipe-before-inner');
           const handle = layer.querySelector('.ll-wipe-handle');
           const cap = layer.querySelector('.ll-wipe-cap');
-          wtl.set(layer, { autoAlpha: 1 }, at);
-          if (i > 0) wtl.to(layers[i - 1], { autoAlpha: 0, duration: 0.18 }, at);
+          if (i > 0) {
+            wtl.set(layer, { autoAlpha: 1 }, at);
+            wtl.to(layers[i - 1], { autoAlpha: 0, duration: 0.18 }, at);
+          }
           /* The wipe: archival sepia recedes right-to-left as the brass
              handle sweeps across, revealing restored color beneath. */
           wtl.fromTo(before, { xPercent: 0 }, { xPercent: -100, duration: 1 }, at);
           wtl.fromTo(beforeInner, { xPercent: 0 }, { xPercent: 100, duration: 1 }, at);
           wtl.fromTo(handle, { xPercent: 100 }, { xPercent: 0, duration: 1 }, at);
-          wtl.fromTo(
-            cap,
-            { opacity: 0, y: 24 },
-            { opacity: 1, y: 0, duration: 0.28 },
-            at + 0.72
-          );
+          /* Chapter I's caption is already set when the stage arrives (it
+             titles the frame before any scrolling); later chapters' captions
+             rise in as their wipe completes. */
+          if (i > 0) {
+            wtl.fromTo(
+              cap,
+              { opacity: 0, y: 24 },
+              { opacity: 1, y: 0, duration: 0.28 },
+              at + 0.72
+            );
+          }
         });
         /* Hold on the last restored chapter before the pin releases. */
         wtl.to({}, { duration: 0.35 });
         return () => {
           pin.classList.remove('is-pinned');
+          layers.forEach((l) => l.removeAttribute('aria-hidden'));
         };
       });
     }, rootRef);

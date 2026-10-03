@@ -144,8 +144,10 @@ function YatraStack() {
    ride a ring around a slowly turning mandala; scroll-scrub rotates the ring
    and the card nearest the top brightens while the others dim. */
 function OrbitStage() {
-  const { scroller } = useTplScope();
-  const stageRef = useRef(null);
+  /* rootRef goes on this component's own pinned div: scroller() resolves from
+     it, and a child's host ref is attached before its layout effect runs
+     (the template root's ref is not — it would still fall back to window). */
+  const { rootRef: stageRef, scroller } = useTplScope();
   const ctrRefs = useRef([]);
   const [focused, setFocused] = useState(0);
   const focusedRef = useRef(0);
@@ -229,7 +231,7 @@ function OrbitStage() {
       });
     }, stageRef);
     return () => ctx.revert();
-  }, [reduced, scroller, bases]);
+  }, [reduced, scroller, bases, stageRef]);
 
   const focus = journeys[focused];
   const { price, productName } = useCustom();

@@ -94,6 +94,21 @@ export default function Design09Opensource() {
     }
   }, []);
 
+  /* ScrollFrames builds its hero pin in a child useEffect — after the layout
+     effect below created the pins/triggers further down the page. Parent
+     effects run after child effects, so re-sort and refresh here (and once
+     more two frames later, when ScrollFrames re-creates its pin after its
+     stage height settles): every start/end then includes the hero's pin
+     spacing instead of waiting for the viewer's debounced refresh. */
+  useEffect(() => {
+    if (reduced) return undefined;
+    const run = () => { ScrollTrigger.sort(); ScrollTrigger.refresh(); };
+    run();
+    let r2 = 0;
+    const r1 = requestAnimationFrame(() => { r2 = requestAnimationFrame(run); });
+    return () => { cancelAnimationFrame(r1); cancelAnimationFrame(r2); };
+  }, [reduced]);
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const sc = scroller();

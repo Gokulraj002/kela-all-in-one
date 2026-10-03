@@ -154,7 +154,7 @@
 /* ---------- nav ---------- */
 .fj-nav {
   position: fixed;
-  inset: 0 0 auto 0;
+  inset: var(--tpl-top, 0px) 0 auto 0;
   z-index: 60;
   display: flex;
   align-items: center;
@@ -297,7 +297,7 @@
 .fj-viewport {
   position: relative;
   height: 100vh;
-  height: 100svh;
+  height: var(--tpl-vh, 100svh); /* visible scroll area inside the viewer */
   overflow: hidden;
   display: flex;
   justify-content: center;

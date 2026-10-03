@@ -473,16 +473,18 @@
   background: var(--color-background);
   border: 1.5px solid transparent;
   border-radius: 12px;
-  padding: 1rem 1.1rem;
+  padding: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   gap: 0.6rem;
   transition: translate 0.15s ease, border-color 0.15s ease;
 }
 .hb-zone:hover { translate: 0 -2px; border-color: var(--color-accent); }
-.hb-zone b { font-size: 0.92rem; font-weight: 700; }
-.hb-zone span { font-size: 0.78rem; font-weight: 700; color: var(--color-accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* chip padding lives on the labels so the whole chip reads as text, not an empty box */
+.hb-zone b, .hb-zone span { display: flex; align-items: center; padding-block: 1rem; }
+.hb-zone b { flex: 1; min-width: 0; padding-left: 1.1rem; font-size: 0.92rem; font-weight: 700; }
+.hb-zone span { padding-right: 1.1rem; font-size: 0.78rem; font-weight: 700; color: var(--color-accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .hb-coverage-note { margin-top: 1.6rem; font-size: 0.9rem; color: var(--color-secondary); }
 
 /* ---------- order CTA ---------- */

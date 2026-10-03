@@ -540,15 +540,18 @@
   color: var(--color-primary);
   margin: 0 0 1rem;
 }
-.s6-board ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+.s6-board ul { list-style: none; margin: 0; padding: 0; display: grid; }
+/* row spacing lives on the spans (not li padding / ul gap) so each chalkboard row is solid text area */
 .s6-board li {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   border-bottom: 1px dotted rgba(122, 92, 62, 0.5);
-  padding-bottom: 0.7rem;
   font-weight: 600;
 }
+.s6-board li span { padding-bottom: 0.7rem; }
+.s6-board li + li span { padding-top: 0.9rem; }
+.s6-board li span:first-child { flex: 1; min-width: 0; }
 .s6-board li span:last-child { color: var(--color-accent); font-weight: 700; white-space: nowrap; }
 .s6-board-foot { grid-column: 1 / -1; font-size: 0.92rem; color: var(--color-muted); font-style: italic; margin: 0; }
 

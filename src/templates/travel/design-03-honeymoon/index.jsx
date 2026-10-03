@@ -228,12 +228,50 @@ export default function Design03Honeymoon() {
         d.style.maskImage = m;
       });
 
+      /* Only the duet whose caption is up is exposed: the others sit under
+         (or behind) the iris with their captions faded out, so they leave
+         the accessibility tree and the tab order until their turn. */
+      let active = -1;
       const setActive = (idx) => {
+        if (idx === active) return;
+        active = idx;
         dots.forEach((dot, i) => dot.classList.toggle('is-active', i === idx));
+        duets.forEach((d, i) => {
+          const off = i !== idx;
+          d.inert = off;
+          if (off) d.setAttribute('aria-hidden', 'true');
+          else d.removeAttribute('aria-hidden');
+        });
       };
+      setActive(0);
+
+      const cap = (i) => `.hy-duet[data-duet="${i}"] .hy-cap-line`;
+      const imgs = (i) => `.hy-duet[data-duet="${i}"] .hy-duet-imgs img`;
+
+      /* Duet 1's caption breathes in as the stage arrives — before the pin
+         settles — so the first diptych is never seen without its words.
+         It runs on the figcaption, not the lines: the pinned timeline owns
+         the lines' exit, and two tweens on one property fight on rewind. */
+      gsap.fromTo(
+        '.hy-duet[data-duet="0"] .hy-duet-cap',
+        { y: 56, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.8,
+          ease: 'sine.out',
+          scrollTrigger: { trigger: stage, scroller: sc, start: 'top 70%', once: true },
+        }
+      );
 
       const tl = gsap.timeline({
         defaults: { ease: 'sine.inOut' },
+        /* Switch the exposed duet mid-crossfade, while both captions are
+           still faintly visible (driven by the smoothed timeline time). */
+        onUpdate: () => {
+          const t = tl.time();
+          setActive(t < 2 ? 0 : t < 4.8 ? 1 : 2);
+        },
         scrollTrigger: {
           trigger: stage,
           scroller: sc,
@@ -243,45 +281,48 @@ export default function Design03Honeymoon() {
           scrub: 1.5,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const p = self.progress;
-            setActive(p < 0.34 ? 0 : p < 0.72 ? 1 : 2);
-          },
         },
       });
 
-      const cap = (i) => `.hy-duet[data-duet="${i}"] .hy-cap-line`;
-      const imgs = (i) => `.hy-duet[data-duet="${i}"] .hy-duet-imgs img`;
+      /* Caption lines rise one after another, but share a single fade, so
+         a caption is never half-there and the outgoing / incoming captions
+         dissolve through each other instead of leaving an empty beat. */
+      const capIn = (i, at) => {
+        tl.fromTo(cap(i), { y: 56 }, { y: 0, duration: 1.4, stagger: 0.24, ease: 'sine.out' }, at);
+        tl.fromTo(cap(i), { opacity: 0 }, { opacity: 1, duration: 1.4, ease: 'sine.out' }, at);
+      };
+      const capOut = (i, at) => {
+        tl.fromTo(
+          cap(i),
+          { y: 0, opacity: 1 },
+          { y: -44, opacity: 0, duration: 0.9, ease: 'sine.in', immediateRender: false },
+          at
+        );
+      };
 
-      /* Duet 1 breathes in as the pin settles. */
-      tl.fromTo(
-        cap(0),
-        { y: 56, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.4, stagger: 0.24, ease: 'sine.out' },
-        0
-      );
-      /* Duet 2 irises open over duet 1. */
-      tl.to(duets[1], { '--iris': '150%', duration: 2 }, 1.2);
+      /* A short settle with duet 1 fully read, then duet 2 irises open. */
       tl.fromTo(imgs(1), { scale: 1.09 }, { scale: 1, duration: 2 }, 1.2);
-      tl.to(cap(0), { y: -44, opacity: 0, duration: 0.9, ease: 'sine.in' }, 1.2);
-      tl.fromTo(
-        cap(1),
-        { y: 56, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.4, stagger: 0.24, ease: 'sine.out' },
-        2.4
-      );
+      tl.to(duets[1], { '--iris': '150%', duration: 2 }, 1.2);
+      capOut(0, 1.2);
+      capIn(1, 1.9);
       /* Duet 3 irises open over duet 2. */
       tl.to(duets[2], { '--iris': '150%', duration: 2 }, 4);
       tl.fromTo(imgs(2), { scale: 1.09 }, { scale: 1, duration: 2 }, 4);
-      tl.to(cap(1), { y: -44, opacity: 0, duration: 0.9, ease: 'sine.in' }, 4);
-      tl.fromTo(
-        cap(2),
-        { y: 56, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.4, stagger: 0.24, ease: 'sine.out' },
-        5.2
-      );
+      capOut(1, 4);
+      capIn(2, 4.7);
       /* A held breath at the end. */
       tl.to({}, { duration: 0.8 });
+
+      /* Leaving pin mode (resize to mobile): hand the static stack back fully
+         exposed and unmasked. */
+      return () => {
+        duets.forEach((d) => {
+          d.inert = false;
+          d.removeAttribute('aria-hidden');
+          d.style.webkitMaskImage = '';
+          d.style.maskImage = '';
+        });
+      };
     }, rootRef);
     return () => ctx.revert();
   }, [pinActive, scroller, rootRef]);

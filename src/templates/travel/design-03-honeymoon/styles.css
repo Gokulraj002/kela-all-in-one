@@ -444,6 +444,13 @@
   display: block;
 }
 
+/* the caption link stays a block (for the line rise) but hugs its label,
+   so the underline is the word's width, not the caption's */
+.hy-duet-cap .hy-link {
+  display: table;
+  margin-inline: auto;
+}
+
 /* progress rail — pinned stage only */
 .hy-duet-progress {
   position: absolute;

@@ -114,7 +114,7 @@
 /* ---------- header: nav + sighting ticker ---------- */
 .dt-header {
   position: fixed;
-  inset: 0 0 auto 0;
+  inset: var(--tpl-top, 0px) 0 auto 0;
   z-index: 60;
 }
 
@@ -246,12 +246,13 @@
 }
 
 /* ---------- hero ---------- */
+/* Block (not flex): the ScrollFrames wrapper is pinned, and as a flex item
+   with only absolutely-positioned content it shrank to 0px wide — the pin
+   spacer froze that width and the whole first screen rendered empty. The
+   stage supplies its own (scope-resolved) height. */
 .dt-hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  align-items: flex-end;
+  display: block;
   overflow: hidden;
 }
 
