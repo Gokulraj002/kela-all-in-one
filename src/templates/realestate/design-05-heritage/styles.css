@@ -1,0 +1,1084 @@
+/* The Lime & Lintel Co. — design-05-heritage
+   Archival letterpress: aged stone / oxblood / limewash / brass.
+   All tokens live on the design scope — never :root. */
+
+.tpl-design-05-heritage {
+  --color-primary: #5a2320;
+  --color-primary-deep: #3e1715;
+  --color-secondary: #cbbfa8;
+  --color-accent: #a9884b;
+  --color-accent-soft: #c9ab6d;
+  --color-background: #f1ead9;
+  --color-surface: #e8dcc2;
+  --color-text: #2b1e17;
+  --color-muted: #857558;
+  --color-line: #d6c8a4;
+  --color-ink-soft: #4a3a2c;
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tpl-design-05-heritage *,
+.tpl-design-05-heritage *::before,
+.tpl-design-05-heritage *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-05-heritage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tpl-design-05-heritage a {
+  color: inherit;
+}
+
+/* Shared image frame with letterpress plate treatment */
+.tpl-design-05-heritage .ll-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+}
+.tpl-design-05-heritage .ll-frame .a-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Archival sepia treatment for "before" records */
+.tpl-design-05-heritage .is-sepia img {
+  filter: sepia(0.78) contrast(0.94) brightness(0.97) saturate(0.8);
+}
+
+/* ---------- type ---------- */
+.tpl-design-05-heritage .ll-eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 28px;
+}
+.tpl-design-05-heritage .ll-eyebrow-light {
+  color: var(--color-accent-soft);
+}
+
+.tpl-design-05-heritage .ll-h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(38px, 5.2vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0 0 32px;
+  max-width: 16em;
+}
+.tpl-design-05-heritage .ll-h2-light {
+  color: var(--color-background);
+}
+
+.tpl-design-05-heritage .ll-h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.25;
+  color: var(--color-primary);
+  margin: 0 0 10px;
+}
+
+.tpl-design-05-heritage .ll-lede {
+  font-size: clamp(17px, 1.8vw, 21px);
+  line-height: 1.75;
+  color: var(--color-ink-soft);
+  max-width: 44em;
+  margin: 0 0 64px;
+}
+.tpl-design-05-heritage .ll-lede-light {
+  color: var(--color-secondary);
+}
+
+.tpl-design-05-heritage .ll-body {
+  margin: 0 0 18px;
+  color: var(--color-ink-soft);
+}
+
+/* Letterpress double rule */
+.tpl-design-05-heritage .ll-rule {
+  display: block;
+  height: 5px;
+  border-top: 1px solid var(--color-accent);
+  border-bottom: 3px double var(--color-accent);
+  transform-origin: left center;
+  margin: 0 0 40px;
+  max-width: 220px;
+}
+.tpl-design-05-heritage .ll-rule-light {
+  border-top-color: var(--color-accent-soft);
+  border-bottom-color: var(--color-accent-soft);
+}
+
+/* Word-mask headline */
+.tpl-design-05-heritage .ll-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-05-heritage .ll-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Buttons */
+.tpl-design-05-heritage .ll-cta {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-background);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 18px 34px;
+  transition: background 0.35s ease, color 0.35s ease;
+  cursor: pointer;
+}
+.tpl-design-05-heritage .ll-cta:hover {
+  background: transparent;
+  color: var(--color-primary);
+}
+.tpl-design-05-heritage .ll-cta-small {
+  padding: 12px 24px;
+  font-size: 11px;
+}
+.tpl-design-05-heritage .ll-cta-solid {
+  width: 100%;
+}
+
+/* Seal */
+.tpl-design-05-heritage .ll-seal {
+  display: inline-grid;
+  place-items: center;
+  align-content: center;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  position: relative;
+  color: var(--color-accent);
+  margin-top: 48px;
+}
+.tpl-design-05-heritage .ll-seal::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+.tpl-design-05-heritage .ll-seal-mono {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+.tpl-design-05-heritage .ll-seal-est {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  margin-top: 6px;
+}
+
+/* ---------- layout ---------- */
+.tpl-design-05-heritage .ll-wrap {
+  width: min(1240px, 100% - clamp(40px, 8vw, 96px));
+  margin: 0 auto;
+}
+.tpl-design-05-heritage .ll-section {
+  padding: clamp(96px, 12vw, 180px) 0;
+}
+
+/* ---------- nav ---------- */
+.tpl-design-05-heritage .ll-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px clamp(20px, 4vw, 48px);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-05-heritage .ll-crest {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+.tpl-design-05-heritage .ll-crest-seal {
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--color-primary);
+  flex: none;
+  position: relative;
+}
+.tpl-design-05-heritage .ll-crest-seal::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+.tpl-design-05-heritage .ll-crest-mono {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+}
+.tpl-design-05-heritage .ll-crest-words {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.tpl-design-05-heritage .ll-crest-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--color-primary);
+}
+.tpl-design-05-heritage .ll-crest-sub {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-05-heritage .ll-links {
+  display: flex;
+  gap: clamp(14px, 2.4vw, 34px);
+}
+.tpl-design-05-heritage .ll-links a {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-ink-soft);
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-05-heritage .ll-links a:hover {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-accent);
+}
+
+/* ---------- hero ---------- */
+.tpl-design-05-heritage .ll-hero {
+  position: relative;
+  min-height: calc(var(--tpl-vh, 100svh) * 0.94);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--color-primary-deep);
+}
+.tpl-design-05-heritage .ll-hero-frame {
+  position: absolute;
+  inset: 0;
+}
+.tpl-design-05-heritage .ll-hero-drift {
+  position: absolute;
+  inset: -8% 0;
+}
+.tpl-design-05-heritage .ll-hero-img {
+  width: 100%;
+  height: 100%;
+}
+.tpl-design-05-heritage .ll-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(62, 23, 21, 0.88) 0%,
+    rgba(62, 23, 21, 0.45) 42%,
+    rgba(62, 23, 21, 0.12) 70%,
+    rgba(62, 23, 21, 0.05) 100%
+  );
+}
+.tpl-design-05-heritage .ll-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: min(1240px, 100% - clamp(40px, 8vw, 96px));
+  margin: 0 auto;
+  padding: 0 0 clamp(72px, 9vw, 130px);
+  color: var(--color-background);
+}
+.tpl-design-05-heritage .ll-hero-eyebrow {
+  margin-bottom: 24px;
+}
+.tpl-design-05-heritage .ll-hero-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(52px, 9vw, 124px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin: 0 0 28px;
+  max-width: 12em;
+}
+.tpl-design-05-heritage .ll-hero-sub {
+  font-size: clamp(17px, 1.9vw, 22px);
+  line-height: 1.7;
+  max-width: 38em;
+  color: var(--color-secondary);
+  margin: 0 0 40px;
+}
+.tpl-design-05-heritage .ll-hero-cta {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-primary-deep);
+  margin-bottom: 36px;
+}
+.tpl-design-05-heritage .ll-hero-cta:hover {
+  background: transparent;
+  color: var(--color-background);
+  border-color: var(--color-background);
+}
+.tpl-design-05-heritage .ll-hero-note {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+  margin: 0;
+  max-width: 60em;
+  line-height: 2;
+}
+
+/* ---------- restorations ---------- */
+.tpl-design-05-heritage .ll-restorations {
+  background: var(--color-background);
+}
+.tpl-design-05-heritage .ll-projects {
+  display: grid;
+  gap: clamp(72px, 8vw, 120px);
+}
+.tpl-design-05-heritage .ll-project {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: clamp(36px, 5vw, 80px);
+  align-items: center;
+}
+.tpl-design-05-heritage .ll-project:nth-child(even) .ll-project-img {
+  order: 2;
+}
+.tpl-design-05-heritage .ll-project-img {
+  aspect-ratio: 4 / 3;
+}
+.tpl-design-05-heritage .ll-project-seal {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-background);
+  background: var(--color-primary);
+  border: 1px solid var(--color-accent);
+  padding: 10px 16px;
+}
+.tpl-design-05-heritage .ll-project-dates {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 16px;
+}
+.tpl-design-05-heritage .ll-project-loc {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin: 0 0 18px;
+}
+.tpl-design-05-heritage .ll-project-price {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 28px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-line);
+}
+.tpl-design-05-heritage .ll-price-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-05-heritage .ll-price {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* ---------- before/after wipe ---------- */
+.tpl-design-05-heritage .ll-compare {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0;
+}
+.tpl-design-05-heritage .ll-wipe-pin {
+  margin-top: 24px;
+}
+.tpl-design-05-heritage .ll-wipe-stage {
+  position: relative;
+  height: 82vh;
+  min-height: 520px;
+  max-height: 860px;
+  overflow: hidden;
+  background: var(--color-primary-deep);
+  border-top: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+}
+.tpl-design-05-heritage .ll-wipe-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.tpl-design-05-heritage .ll-wipe-after,
+.tpl-design-05-heritage .ll-wipe-before {
+  position: absolute;
+  inset: 0;
+}
+.tpl-design-05-heritage .ll-wipe-after .a-img,
+.tpl-design-05-heritage .ll-wipe-before .a-img {
+  width: 100%;
+  height: 100%;
+}
+/* Transform-only wipe: the mask (overflow hidden) slides left while
+   .ll-wipe-before-inner counter-slides, so the sepia photo stays put and
+   nothing is repainted per frame. */
+.tpl-design-05-heritage .ll-wipe-before {
+  overflow: hidden;
+  z-index: 2;
+  will-change: transform;
+}
+.tpl-design-05-heritage .ll-wipe-before-inner {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.tpl-design-05-heritage .ll-wipe-before-inner .a-img {
+  width: 100%;
+  height: 100%;
+}
+.tpl-design-05-heritage .ll-wipe-before img {
+  filter: sepia(0.78) contrast(0.94) brightness(0.97) saturate(0.8);
+}
+/* Full-width track moved with xPercent (100 → 0); the line and grip sit on
+   its left edge. */
+.tpl-design-05-heritage .ll-wipe-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  pointer-events: none;
+  will-change: transform;
+}
+.tpl-design-05-heritage .ll-wipe-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  width: 2px;
+  background: var(--color-accent);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.45);
+}
+.tpl-design-05-heritage .ll-wipe-grip {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-background);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+.tpl-design-05-heritage .ll-wipe-chev {
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--color-primary-deep);
+  border-right: 2px solid var(--color-primary-deep);
+}
+.tpl-design-05-heritage .ll-wipe-chev-l {
+  transform: rotate(-135deg);
+  margin-left: 14px;
+}
+.tpl-design-05-heritage .ll-wipe-chev-r {
+  transform: rotate(45deg);
+  margin-right: 14px;
+}
+.tpl-design-05-heritage .ll-wipe-date {
+  position: absolute;
+  bottom: 28px;
+  z-index: 4;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background: rgba(62, 23, 21, 0.84);
+  border: 1px solid var(--color-accent);
+  padding: 10px 18px;
+}
+.tpl-design-05-heritage .ll-wipe-date strong {
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+}
+.tpl-design-05-heritage .ll-wipe-date-before {
+  left: 28px;
+}
+.tpl-design-05-heritage .ll-wipe-date-after {
+  right: 28px;
+}
+.tpl-design-05-heritage .ll-wipe-cap {
+  position: absolute;
+  left: 28px;
+  top: 32px;
+  z-index: 4;
+  max-width: min(480px, 70%);
+  color: var(--color-background);
+  background: rgba(62, 23, 21, 0.88);
+  border-left: 3px solid var(--color-accent);
+  padding: 24px 28px;
+}
+.tpl-design-05-heritage .ll-wipe-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+  margin: 0 0 10px;
+}
+.tpl-design-05-heritage .ll-wipe-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--color-background);
+}
+.tpl-design-05-heritage .ll-wipe-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-secondary);
+  margin: 0;
+}
+/* Pinned (desktop + motion): the pin fills the visible scroll area, keeps
+   the sticky nav's height clear at the top, and the stage takes the rest. */
+.tpl-design-05-heritage .ll-wipe-pin.is-pinned {
+  height: var(--tpl-vh, 100svh);
+  margin-top: 0;
+  padding-top: calc(var(--ll-nav-h, 76px) + 12px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+}
+.tpl-design-05-heritage .ll-wipe-pin.is-pinned .ll-wipe-stage {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+}
+.tpl-design-05-heritage .ll-wipe-pin.is-pinned .ll-wipe-hint {
+  padding: 14px 20px 16px;
+}
+.tpl-design-05-heritage .ll-wipe-hint {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 26px 20px 0;
+  margin: 0;
+}
+
+/* Static pairs: mobile (<768px) and reduced-motion */
+.tpl-design-05-heritage .ll-wipe-static {
+  display: none;
+  padding: clamp(48px, 7vw, 90px) 0 clamp(96px, 12vw, 180px);
+}
+.tpl-design-05-heritage .ll-pair {
+  margin: 0 0 clamp(64px, 7vw, 104px);
+}
+.tpl-design-05-heritage .ll-pair:last-child {
+  margin-bottom: 0;
+}
+.tpl-design-05-heritage .ll-pair-sides {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 3vw, 32px);
+}
+.tpl-design-05-heritage .ll-pair-side .ll-frame {
+  aspect-ratio: 4 / 3;
+}
+.tpl-design-05-heritage .ll-pair-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 16px 0 0;
+}
+.tpl-design-05-heritage .ll-pair-label strong {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--color-primary);
+}
+.tpl-design-05-heritage .ll-pair-cap {
+  margin-top: 28px;
+  max-width: 52em;
+  border-left: 3px solid var(--color-accent);
+  padding-left: 28px;
+}
+.tpl-design-05-heritage .ll-pair-cap p:last-child {
+  margin: 0;
+  color: var(--color-ink-soft);
+}
+
+/* ---------- craft ---------- */
+.tpl-design-05-heritage .ll-craft {
+  background: var(--color-background);
+}
+.tpl-design-05-heritage .ll-materials {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+  margin-bottom: clamp(80px, 9vw, 140px);
+}
+.tpl-design-05-heritage .ll-mat {
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  padding: clamp(28px, 3vw, 44px);
+  position: relative;
+}
+.tpl-design-05-heritage .ll-mat::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--color-line);
+  pointer-events: none;
+}
+.tpl-design-05-heritage .ll-mat-num {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  margin: 0 0 18px;
+}
+.tpl-design-05-heritage .ll-mat-origin {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 16px;
+}
+.tpl-design-05-heritage .ll-craftsmen-head {
+  margin-bottom: 56px;
+}
+.tpl-design-05-heritage .ll-craftsmen {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr 1fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+.tpl-design-05-heritage .ll-craft-img {
+  aspect-ratio: 3 / 4;
+}
+.tpl-design-05-heritage .ll-craftsman {
+  border-top: 3px double var(--color-accent);
+  padding-top: 24px;
+}
+.tpl-design-05-heritage .ll-craftsman-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 6px;
+}
+.tpl-design-05-heritage .ll-craftsman-role {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 4px;
+}
+.tpl-design-05-heritage .ll-craftsman-years {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--color-muted);
+  margin: 0 0 16px;
+}
+
+/* ---------- ritual (scroll frames) ---------- */
+.tpl-design-05-heritage .ll-ritual {
+  background: var(--color-primary-deep);
+  color: var(--color-background);
+}
+.tpl-design-05-heritage .ll-ritual .ll-h2 {
+  color: var(--color-background);
+}
+.tpl-design-05-heritage .ll-ritual .ll-lede {
+  color: var(--color-secondary);
+}
+.tpl-design-05-heritage .ll-film-frame {
+  position: relative;
+  margin-top: clamp(40px, 5vw, 72px);
+  border-top: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  background: var(--color-primary-deep);
+}
+/* ScrollFrames owns .sf-stage / .sf-canvas / .sf-overlay inline;
+   the design only sizes the reduced-motion static image. */
+.tpl-design-05-heritage .ll-film-note {
+  position: absolute;
+  /* clear of the sticky nav while the film is pinned */
+  top: calc(var(--ll-nav-h, 76px) + clamp(12px, 2.4vh, 24px));
+  right: clamp(20px, 4vw, 64px);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+  margin: 0;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.65);
+}
+.tpl-design-05-heritage .ll-film-caption {
+  position: absolute;
+  left: clamp(20px, 4vw, 64px);
+  bottom: clamp(20px, 4vh, 48px);
+  max-width: 36ch;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(17px, 1.7vw, 22px);
+  line-height: 1.45;
+  color: var(--color-secondary);
+  margin: 0;
+  text-shadow: 0 1px 26px rgba(0, 0, 0, 0.6);
+}
+.tpl-design-05-heritage .ll-scrub-hint {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(14px, 2.6vh, 26px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  opacity: 0.7;
+  margin: 0;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+}
+/* Reduced motion: static first frame carrying the same overlays. */
+.tpl-design-05-heritage .sf-static-img {
+  display: block;
+  width: 100%;
+  height: 92svh;
+  object-fit: cover;
+}
+
+/* ---------- journal ---------- */
+.tpl-design-05-heritage .ll-journal {
+  background: var(--color-background);
+}
+.tpl-design-05-heritage .ll-journal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: clamp(48px, 7vw, 110px);
+  align-items: start;
+}
+.tpl-design-05-heritage .ll-entries {
+  display: grid;
+  gap: 0;
+  border-top: 3px double var(--color-accent);
+}
+.tpl-design-05-heritage .ll-entry {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-05-heritage .ll-entry-date {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 12px;
+}
+
+/* ---------- enquire ---------- */
+.tpl-design-05-heritage .ll-enquire {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+.tpl-design-05-heritage .ll-enquire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(56px, 7vw, 110px);
+  align-items: start;
+}
+.tpl-design-05-heritage .ll-address {
+  font-style: normal;
+  font-size: 17px;
+  line-height: 2;
+  color: var(--color-secondary);
+  margin: 40px 0 0;
+}
+.tpl-design-05-heritage .ll-address a {
+  color: var(--color-background);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+}
+.tpl-design-05-heritage .ll-hours {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+  margin: 28px 0 0;
+  font-weight: 600;
+}
+.tpl-design-05-heritage .ll-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  background: var(--color-primary-deep);
+  border: 1px solid var(--color-accent);
+  padding: clamp(32px, 4vw, 56px);
+}
+.tpl-design-05-heritage .ll-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tpl-design-05-heritage .ll-field-wide {
+  grid-column: 1 / -1;
+}
+.tpl-design-05-heritage .ll-field span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+}
+.tpl-design-05-heritage .ll-field input,
+.tpl-design-05-heritage .ll-field textarea {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-background);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-accent);
+  padding: 10px 2px 14px;
+  outline: none;
+  resize: vertical;
+}
+.tpl-design-05-heritage .ll-field input::placeholder,
+.tpl-design-05-heritage .ll-field textarea::placeholder {
+  color: var(--color-muted);
+  opacity: 0.9;
+}
+.tpl-design-05-heritage .ll-field input:focus,
+.tpl-design-05-heritage .ll-field textarea:focus {
+  border-bottom-color: var(--color-background);
+}
+.tpl-design-05-heritage .ll-form .ll-cta {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-primary-deep);
+}
+.tpl-design-05-heritage .ll-form .ll-cta:hover {
+  background: transparent;
+  color: var(--color-background);
+  border-color: var(--color-background);
+}
+.tpl-design-05-heritage .ll-form-done {
+  background: var(--color-primary-deep);
+  border: 1px solid var(--color-accent);
+  padding: clamp(40px, 5vw, 72px);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+/* ---------- footer ---------- */
+.tpl-design-05-heritage .ll-footer {
+  background: var(--color-primary-deep);
+  color: var(--color-secondary);
+  padding: 64px 0;
+  border-top: 1px solid var(--color-accent);
+}
+.tpl-design-05-heritage .ll-footer-line {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.4vw, 28px);
+  color: var(--color-background);
+  margin: 0 0 14px;
+}
+.tpl-design-05-heritage .ll-colophon {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .tpl-design-05-heritage .ll-materials {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tpl-design-05-heritage .ll-craftsmen {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tpl-design-05-heritage .ll-craft-img {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 900px) {
+  .tpl-design-05-heritage .ll-links {
+    display: none;
+  }
+  .tpl-design-05-heritage .ll-project {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-05-heritage .ll-project:nth-child(even) .ll-project-img {
+    order: 0;
+  }
+  .tpl-design-05-heritage .ll-journal-grid,
+  .tpl-design-05-heritage .ll-enquire-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-05-heritage .sf-static-img {
+    height: 82svh;
+  }
+  .tpl-design-05-heritage .ll-film-caption {
+    max-width: 30ch;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Mobile: hide the pinned wipe stage, show static pairs instead. */
+  .tpl-design-05-heritage .ll-wipe-pin {
+    display: none;
+  }
+  .tpl-design-05-heritage .ll-wipe-static {
+    display: block;
+  }
+  .tpl-design-05-heritage .ll-wipe-cap {
+    left: 16px;
+    right: 16px;
+    top: 16px;
+    max-width: none;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Desktop with motion: the pin carries the chapters, static stays hidden. */
+  .tpl-design-05-heritage .ll-wipe-static {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .tpl-design-05-heritage .ll-film-caption {
+    font-size: 15px;
+    max-width: 26ch;
+  }
+  /* Keep the cue clear of the caption on narrow screens. */
+  .tpl-design-05-heritage .ll-scrub-hint {
+    left: clamp(20px, 6vw, 28px);
+    right: auto;
+    top: clamp(64px, 10vh, 96px);
+    bottom: auto;
+    transform: none;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+  }
+  .tpl-design-05-heritage .ll-materials {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-05-heritage .ll-craftsmen {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-05-heritage .ll-pair-sides {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-05-heritage .ll-form {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-05-heritage .ll-crest-sub {
+    display: none;
+  }
+  .tpl-design-05-heritage .ll-nav {
+    gap: 12px;
+  }
+}
+
+/* Reduced motion: everything static and fully visible. */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-05-heritage .ll-wipe-pin {
+    display: none;
+  }
+  .tpl-design-05-heritage .ll-wipe-static {
+    display: block;
+  }
+  .tpl-design-05-heritage *,
+  .tpl-design-05-heritage *::before,
+  .tpl-design-05-heritage *::after {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+  }
+}

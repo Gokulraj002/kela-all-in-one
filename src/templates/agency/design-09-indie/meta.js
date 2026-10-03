@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-09-indie',
+  num: '09',
+  name: 'June Park',
+  tag: 'Indie',
+  style: 'Intimate journal — first-person freelancer site with margin notes and hand-drawn accents',
+  animation: 'Slow sine reveals, M9 margin notes, wavy underline draws',
+  typography: 'Newsreader + Instrument Sans',
+  layout: 'Journal rhythm · reading measure · margin asides · curated 6-project index',
+  mood: 'Warm · honest · personal',
+  palette: 'Warm white / espresso / terracotta',
+  features: [
+    'M9 journal margin notes (desktop asides, inline on mobile)',
+    'Wavy hand-drawn underline animations on key lines',
+    'First-person voice throughout with honest do/don\u2019t lists',
+    'Availability pill with single pulse',
+    'Desk-loop hero video (10s seamless)',
+    'Warm-shift hover on project imagery',
+  ],
+  fonts: { display: 'Newsreader', body: 'Instrument Sans' },
+  colors: { primary: '#33261A', accent: '#C26A3D' },
+};

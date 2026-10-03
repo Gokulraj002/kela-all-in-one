@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-03-honeymoon',
+  num: '03',
+  name: 'Halcyon',
+  tag: 'Honeymoon',
+  style: 'Editorial romance, slow and soft',
+  animation: 'Iris dissolves, breath-rise captions, slow crossfades',
+  typography: 'Italiana + Montserrat',
+  layout: 'Airy single column, full-bleed diptychs',
+  mood: 'Tender, unhurried, luminous',
+  palette: 'Blush / pearl / dusk mauve',
+  features: ['Slow dissolve duets', 'Private moments', 'Vow renewal add-ons', 'Concierge planning'],
+  fonts: { display: 'Italiana', body: 'Montserrat' },
+  colors: { primary: '#6E5A6E', accent: '#C98A7A' },
+};

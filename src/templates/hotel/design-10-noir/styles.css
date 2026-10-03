@@ -1,0 +1,1063 @@
+/* Hotel Obscura — design-10-noir. Tokens live on the scope class ONLY. */
+.tpl-design-10-noir {
+  --color-primary: #0c0c0e;
+  --color-background: #0c0c0e;
+  --color-surface: #141416;
+  --color-film: #050506;
+  --color-text: #d8d3c8;
+  --color-muted: #7d786d;
+  --color-faint: #4a463d;
+  --color-accent: #d8d3c8;
+  --color-line: rgba(216, 211, 200, 0.16);
+  --color-leak: rgba(216, 211, 200, 0.28);
+  --color-sodium: rgba(214, 150, 84, 0.16);
+  --font-display: 'Archivo', sans-serif;
+  --font-accent: 'Cormorant Garamond', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  position: relative;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-accent);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tpl-design-10-noir *,
+.tpl-design-10-noir *::before,
+.tpl-design-10-noir *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-10-noir img,
+.tpl-design-10-noir video {
+  display: block;
+  max-width: 100%;
+}
+
+.tpl-design-10-noir a {
+  color: inherit;
+}
+
+.tpl-design-10-noir ::selection {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* ---------- static grain (opacity only, NEVER animated) ---------- */
+.tpl-design-10-noir .nr-grain {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* the scroll area: --tpl-vh in the viewer, the full window standalone */
+  height: var(--tpl-vh, 100%);
+  z-index: 220;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ---------- invert flash (fired exactly once, at the manifesto) ---------- */
+.tpl-design-10-noir .nr-invertflash {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--tpl-vh, 100%);
+  z-index: 300;
+  pointer-events: none;
+  opacity: 0;
+  /* hidden between flashes so the backdrop filter costs nothing while scrolling */
+  visibility: hidden;
+  backdrop-filter: invert(1);
+  -webkit-backdrop-filter: invert(1);
+}
+
+/* ---------- custom cursor (desktop, pointer:fine only) ---------- */
+.tpl-design-10-noir .nr-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 600;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.9;
+  transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease, background 0.25s ease;
+  mix-blend-mode: difference;
+}
+.tpl-design-10-noir .nr-cursor::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  margin: -1.5px 0 0 -1.5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.tpl-design-10-noir .nr-cursor.is-hover {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  background: rgba(216, 211, 200, 0.08);
+}
+@media (pointer: coarse) {
+  .tpl-design-10-noir .nr-cursor {
+    display: none;
+  }
+}
+.tpl-design-10-noir.nr-cursor-on,
+.tpl-design-10-noir.nr-cursor-on a,
+.tpl-design-10-noir.nr-cursor-on button,
+.tpl-design-10-noir.nr-cursor-on [role='button'] {
+  cursor: none;
+}
+.tpl-design-10-noir.nr-cursor-on input,
+.tpl-design-10-noir.nr-cursor-on select,
+.tpl-design-10-noir.nr-cursor-on textarea {
+  cursor: auto;
+}
+
+/* ---------- nav ---------- */
+.tpl-design-10-noir .nr-navshell {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 500;
+}
+.tpl-design-10-noir .nr-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem clamp(1.25rem, 4vw, 3rem);
+  pointer-events: none;
+}
+.tpl-design-10-noir .nr-nav > * {
+  pointer-events: auto;
+}
+.tpl-design-10-noir .nr-wordmark {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+}
+.tpl-design-10-noir .nr-wordmark em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-size: 1.05rem;
+  margin-right: 0.6rem;
+}
+.tpl-design-10-noir .nr-menu-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--color-line);
+  color: var(--color-text);
+  border-radius: 999px;
+  padding: 0.7rem 1.3rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.tpl-design-10-noir .nr-menu-btn:hover {
+  border-color: var(--color-accent);
+  background: rgba(216, 211, 200, 0.06);
+}
+
+/* ---------- overlay menu: circular clip-path expand from the button ---------- */
+.tpl-design-10-noir .nr-menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--tpl-vh, 100%);
+  z-index: 400;
+  background: var(--color-film);
+  visibility: hidden;
+  clip-path: circle(0 at calc(100% - 3.2rem) 2.6rem);
+}
+.tpl-design-10-noir .nr-menu-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 8vw, 6rem);
+  gap: 0.4rem;
+}
+.tpl-design-10-noir .nr-menu-link {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  text-decoration: none;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--color-line);
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 4.5vw, 2.6rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+.tpl-design-10-noir .nr-menu-link:hover {
+  color: var(--color-accent);
+  padding-left: 0.8rem;
+}
+.tpl-design-10-noir .nr-menu-link .nr-menu-num {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  letter-spacing: 0.2em;
+}
+.tpl-design-10-noir .nr-menu-cta {
+  margin-top: 2rem;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-primary);
+  background: var(--color-accent);
+  padding: 1.1rem 2.2rem;
+  border-radius: 999px;
+}
+.tpl-design-10-noir .nr-menu-tag {
+  margin-top: 2.5rem;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-muted);
+}
+
+/* ---------- hero: scroll-driven frame scrub (ScrollFrames) ---------- */
+.tpl-design-10-noir .nr-hero {
+  position: relative;
+  overflow: hidden;
+}
+/* .sf-stage / .sf-canvas / .sf-overlay critical layout is set inline by the
+   ScrollFrames component (see _shared/ScrollFrames.jsx); design-owned
+   positioning stays below. */
+.tpl-design-10-noir .sf-overlay {
+  position: absolute;
+  inset: 0;
+}
+.tpl-design-10-noir .nr-hero-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, var(--color-background) 4%, transparent 55%),
+    linear-gradient(to bottom, rgba(12, 12, 14, 0.55), transparent 40%);
+  pointer-events: none;
+}
+/* light-shaft gradient sweep (animated once on load) */
+.tpl-design-10-noir .nr-shaft {
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  width: 45%;
+  left: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(216, 211, 200, 0.1) 48%, rgba(214, 150, 84, 0.12) 52%, transparent 80%);
+  transform: translateX(-160%) skewX(-8deg);
+  pointer-events: none;
+}
+.tpl-design-10-noir .nr-hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 4vw, 3rem);
+}
+.tpl-design-10-noir .nr-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 1.4rem;
+}
+.tpl-design-10-noir .nr-eyebrow .nr-tc {
+  color: var(--color-accent);
+}
+.tpl-design-10-noir .nr-hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  font-size: clamp(3rem, 10vw, 7.5rem);
+  margin: 0 0 1.6rem;
+  color: var(--color-text);
+}
+/* server-safe word mask */
+.tpl-design-10-noir .nr-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-10-noir .nr-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+.tpl-design-10-noir .nr-hero-sub {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  line-height: 1.5;
+  color: var(--color-text);
+  max-width: 34rem;
+  margin: 0 0 0.9rem;
+}
+.tpl-design-10-noir .nr-hero-cryptic {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 2.2rem;
+}
+.tpl-design-10-noir .nr-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.tpl-design-10-noir .nr-btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.05rem 2.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  color: var(--color-text);
+  background: transparent;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-10-noir .nr-btn-solid {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-primary);
+}
+.tpl-design-10-noir .nr-btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-primary);
+}
+.tpl-design-10-noir .nr-hero-scroll {
+  position: absolute;
+  right: clamp(1.25rem, 4vw, 3rem);
+  bottom: 2rem;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  writing-mode: vertical-rl;
+}
+
+/* ---------- section shell ---------- */
+.tpl-design-10-noir .nr-sec {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  position: relative;
+}
+.tpl-design-10-noir .nr-wrap {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+.tpl-design-10-noir .nr-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  font-size: clamp(2.1rem, 5.5vw, 4.2rem);
+  margin: 0 0 1.4rem;
+  color: var(--color-text);
+}
+.tpl-design-10-noir .nr-h2 em,
+.tpl-design-10-noir .nr-lede em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.tpl-design-10-noir .nr-lede {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  max-width: 40rem;
+  margin: 0 0 1.2rem;
+}
+.tpl-design-10-noir .nr-body {
+  font-family: var(--font-accent);
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+  max-width: 38rem;
+  margin: 0 0 1.2rem;
+}
+.tpl-design-10-noir .nr-rule {
+  display: block;
+  height: 1px;
+  background: var(--color-line);
+  margin: 2.4rem 0;
+  transform-origin: left center;
+}
+
+/* ---------- story / manifesto ---------- */
+.tpl-design-10-noir .nr-story-grid {
+  display: grid;
+  gap: 3rem;
+}
+@media (min-width: 900px) {
+  .tpl-design-10-noir .nr-story-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: start;
+  }
+}
+.tpl-design-10-noir .nr-manifesto {
+  list-style: none;
+  margin: 0;
+  padding: 2rem 0 0;
+  border-top: 1px solid var(--color-line);
+}
+.tpl-design-10-noir .nr-manifesto li {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-10-noir .nr-manifesto .nr-mn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  color: var(--color-faint);
+}
+.tpl-design-10-noir .nr-manifesto p {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+  line-height: 1.4;
+  margin: 0;
+  color: var(--color-text);
+}
+
+/* ---------- filmstrip (signature) ---------- */
+.tpl-design-10-noir .nr-strip-head {
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+.tpl-design-10-noir .nr-strip-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+  margin-top: 1.6rem;
+}
+.tpl-design-10-noir .nr-strip-pin {
+  position: relative;
+  background: var(--color-film);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  overflow: hidden;
+}
+.tpl-design-10-noir .nr-strip-track {
+  will-change: transform;
+}
+/* Desktop pin (class set by the script while the pin is live): the stage is
+   exactly the visible scroll area, so the strip never leaves an empty tail. */
+.tpl-design-10-noir .nr-strip-pin.is-pinned {
+  height: var(--tpl-vh, 100svh);
+}
+.tpl-design-10-noir .nr-strip-pin.is-pinned .nr-frame {
+  min-height: var(--tpl-vh, 100svh);
+}
+.tpl-design-10-noir .nr-frame {
+  min-height: var(--tpl-vh, 100svh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vh, 4rem) 0;
+}
+.tpl-design-10-noir .nr-frame-strip {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: min(88rem, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(0.75rem, 3vw, 2rem);
+}
+.tpl-design-10-noir .nr-sprockets {
+  flex: 0 0 40px;
+  background-color: var(--color-film);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(216, 211, 200, 0.75) 0 11px,
+    transparent 11px 30px
+  );
+  background-size: 52% 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-10-noir .nr-frame-img {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  /* sized from the visible scroll area so image + caption fit one frame */
+  height: calc(var(--tpl-vh, 100vh) * 0.6);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-10-noir .nr-frame-img .a-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.tpl-design-10-noir .nr-frame-img .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* light-leak sweep: diagonal gradient wiping across on frame entry */
+.tpl-design-10-noir .nr-leak {
+  position: absolute;
+  inset: -25%;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    var(--color-leak) 49%,
+    var(--color-sodium) 53%,
+    transparent 62%
+  );
+  transform: translateX(-140%);
+}
+.tpl-design-10-noir .nr-frame-meta {
+  width: min(88rem, 100%);
+  margin: 0 auto;
+  padding: 1.6rem clamp(0.75rem, 3vw, 2rem) 0;
+  padding-left: calc(clamp(0.75rem, 3vw, 2rem) + 40px);
+  padding-right: calc(clamp(0.75rem, 3vw, 2rem) + 40px);
+  display: grid;
+  gap: 0.5rem;
+}
+.tpl-design-10-noir .nr-frame-shot {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+.tpl-design-10-noir .nr-frame-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--color-text);
+}
+.tpl-design-10-noir .nr-frame-desc {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+.tpl-design-10-noir .nr-frame-rate {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.6rem;
+  align-items: baseline;
+  margin-top: 0.6rem;
+}
+.tpl-design-10-noir .nr-frame-price {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+}
+.tpl-design-10-noir .nr-frame-size {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+.tpl-design-10-noir .nr-strip-note {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+  text-align: center;
+  padding: 2.5rem 1rem;
+  background: var(--color-film);
+  border-top: 1px solid var(--color-line);
+  margin: 0;
+}
+
+/* ---------- the night ---------- */
+.tpl-design-10-noir .nr-night-grid {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+@media (min-width: 900px) {
+  .tpl-design-10-noir .nr-night-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+.tpl-design-10-noir .nr-night-card {
+  border-top: 1px solid var(--color-line);
+  padding-top: 1.4rem;
+  text-decoration: none;
+  display: block;
+}
+.tpl-design-10-noir .nr-night-img {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-surface);
+  margin-bottom: 1.4rem;
+}
+.tpl-design-10-noir .nr-night-img .a-img {
+  position: absolute;
+  inset: 0;
+}
+.tpl-design-10-noir .nr-night-img .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 1.2s ease;
+  filter: brightness(0.85);
+}
+.tpl-design-10-noir .nr-night-card:hover .nr-night-img .a-img img {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+.tpl-design-10-noir .nr-night-textonly {
+  aspect-ratio: 4 / 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  padding: 1.6rem;
+  margin-bottom: 1.4rem;
+}
+.tpl-design-10-noir .nr-night-textonly .nr-big {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  line-height: 1;
+  color: var(--color-accent);
+}
+.tpl-design-10-noir .nr-night-textonly p {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+  line-height: 2;
+}
+.tpl-design-10-noir .nr-night-hours {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+  margin: 0 0 0.6rem;
+}
+.tpl-design-10-noir .nr-night-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.6rem;
+  color: var(--color-text);
+}
+.tpl-design-10-noir .nr-night-desc {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- screenings ---------- */
+.tpl-design-10-noir .nr-screen {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-10-noir .nr-events {
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 0;
+}
+.tpl-design-10-noir .nr-events li {
+  display: grid;
+  gap: 0.4rem 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--color-line);
+}
+@media (min-width: 768px) {
+  .tpl-design-10-noir .nr-events li {
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+  }
+}
+.tpl-design-10-noir .nr-event-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin: 0;
+  color: var(--color-text);
+}
+.tpl-design-10-noir .nr-event-when {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+.tpl-design-10-noir .nr-event-desc {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  margin: 0;
+  grid-column: 1 / -1;
+  max-width: 44rem;
+}
+
+/* ---------- practical (in mono) ---------- */
+.tpl-design-10-noir .nr-practical {
+  display: grid;
+  gap: 0;
+  margin-top: 3rem;
+  border-top: 1px solid var(--color-line);
+  font-family: var(--font-mono);
+}
+.tpl-design-10-noir .nr-practical-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.3rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .tpl-design-10-noir .nr-practical-row {
+    grid-template-columns: 16rem 1fr;
+    gap: 2rem;
+  }
+}
+.tpl-design-10-noir .nr-practical-row dt {
+  color: var(--color-faint);
+  margin: 0;
+}
+.tpl-design-10-noir .nr-practical-row dd {
+  color: var(--color-text);
+  margin: 0;
+}
+.tpl-design-10-noir .nr-practical-row a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--color-faint);
+}
+
+/* ---------- booking ---------- */
+.tpl-design-10-noir .nr-book {
+  background: var(--color-film);
+  border-top: 1px solid var(--color-line);
+}
+.tpl-design-10-noir .nr-book-grid {
+  display: grid;
+  /* minmax(0, …) so date inputs can never push the column past the screen */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 900px) {
+  .tpl-design-10-noir .nr-book-grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 5rem;
+  }
+}
+.tpl-design-10-noir .nr-book-form {
+  border: 1px solid var(--color-line);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--color-background);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.4rem;
+}
+.tpl-design-10-noir .nr-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.55rem;
+}
+.tpl-design-10-noir .nr-field label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-10-noir .nr-field input,
+.tpl-design-10-noir .nr-field select {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 0;
+  padding: 0.95rem 1rem;
+  width: 100%;
+  min-width: 0;
+  color-scheme: dark;
+}
+.tpl-design-10-noir .nr-field input:focus,
+.tpl-design-10-noir .nr-field select:focus {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.tpl-design-10-noir .nr-field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.4rem;
+}
+.tpl-design-10-noir .nr-book-math {
+  border-top: 1px solid var(--color-line);
+  padding-top: 1.4rem;
+  display: grid;
+  gap: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.tpl-design-10-noir .nr-book-math .nr-mrow {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-muted);
+}
+.tpl-design-10-noir .nr-book-math .nr-mrow.nr-total {
+  color: var(--color-text);
+  font-size: 1rem;
+  border-top: 1px solid var(--color-line);
+  padding-top: 0.9rem;
+  margin-top: 0.3rem;
+}
+.tpl-design-10-noir .nr-book-demo {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+  text-align: center;
+}
+.tpl-design-10-noir .nr-book-confirm {
+  border: 1px solid var(--color-accent);
+  padding: 2rem;
+  text-align: center;
+}
+.tpl-design-10-noir .nr-book-confirm p {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.3rem;
+  margin: 0 0 0.6rem;
+  color: var(--color-text);
+}
+.tpl-design-10-noir .nr-book-confirm .nr-mono {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ---------- persistent booking bar ---------- */
+.tpl-design-10-noir .nr-bookbar {
+  position: fixed;
+  z-index: 350;
+  left: 50%;
+  bottom: 1.1rem;
+  transform: translate(-50%, 140%);
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  background: rgba(5, 5, 6, 0.92);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.55rem 0.55rem 0.55rem 1.4rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  white-space: nowrap;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tpl-design-10-noir .nr-bookbar .nr-bb-rate {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-10-noir .nr-bookbar .nr-bb-rate strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+.tpl-design-10-noir .nr-bookbar .nr-btn {
+  padding: 0.8rem 1.6rem;
+}
+.tpl-design-10-noir .nr-bookbar.is-on {
+  transform: translate(-50%, 0);
+}
+
+/* ---------- footer ---------- */
+.tpl-design-10-noir .nr-footer {
+  border-top: 1px solid var(--color-line);
+  padding: clamp(3rem, 6vw, 5rem) 0 7rem;
+}
+.tpl-design-10-noir .nr-footer-word {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2.6rem, 9vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.6rem;
+  color: var(--color-text);
+}
+.tpl-design-10-noir .nr-footer-word em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 500;
+  text-transform: none;
+}
+.tpl-design-10-noir .nr-footer-line {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 0.7rem;
+}
+.tpl-design-10-noir .nr-footer-colophon {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-faint);
+  margin: 0;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 767px) {
+  .tpl-design-10-noir .nr-strip-pin {
+    overflow: visible;
+  }
+  .tpl-design-10-noir .nr-frame {
+    min-height: 0;
+    padding: 2.5rem 0;
+  }
+  .tpl-design-10-noir .nr-frame-img {
+    height: calc(var(--tpl-vh, 100vh) * 0.58);
+  }
+  .tpl-design-10-noir .nr-sprockets {
+    flex-basis: 26px;
+  }
+  .tpl-design-10-noir .nr-frame-meta {
+    padding-left: calc(clamp(0.75rem, 3vw, 2rem) + 26px);
+    padding-right: calc(clamp(0.75rem, 3vw, 2rem) + 26px);
+  }
+  .tpl-design-10-noir .nr-bookbar {
+    left: 0.75rem;
+    right: 0.75rem;
+    transform: translateY(140%);
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-left: 1.1rem;
+    border-radius: 1.2rem;
+  }
+  /* fit the phone width: the rate may wrap, the button keeps its line */
+  .tpl-design-10-noir .nr-bookbar .nr-bb-rate {
+    white-space: normal;
+    min-width: 0;
+    letter-spacing: 0.12em;
+    line-height: 1.5;
+  }
+  .tpl-design-10-noir .nr-bookbar .nr-btn {
+    flex: 0 0 auto;
+    padding: 0.75rem 1.1rem;
+    letter-spacing: 0.16em;
+  }
+  .tpl-design-10-noir .nr-bookbar.is-on {
+    transform: translateY(0);
+  }
+  .tpl-design-10-noir .nr-hero-scroll {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-10-noir *,
+  .tpl-design-10-noir *::before,
+  .tpl-design-10-noir *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .tpl-design-10-noir .nr-leak {
+    display: none;
+  }
+  .tpl-design-10-noir .nr-shaft {
+    display: none;
+  }
+  .tpl-design-10-noir .nr-cursor {
+    display: none;
+  }
+}

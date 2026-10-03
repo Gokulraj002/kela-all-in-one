@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-01-finedining',
+  num: '01',
+  name: 'Lumière',
+  tag: 'Fine Dining',
+  style: 'Hushed ceremonial tasting-menu',
+  animation: 'Cloche-lift veil reveals, Roman-numeral course count',
+  typography: 'Cormorant Garamond + Outfit',
+  layout: 'Museum spacing, one course per viewport, centered',
+  mood: 'Hushed, precise, ceremonial',
+  palette: 'Near-black / ivory / brass',
+  features: [
+    '7-course tasting sequence',
+    'Veil-lift course reveals',
+    'Wine pairing notes',
+    'Private dining',
+    "Chef's philosophy",
+  ],
+  fonts: { display: 'Cormorant Garamond', body: 'Outfit' },
+  colors: { primary: '#F2EAD9', accent: '#A88B4F' },
+};

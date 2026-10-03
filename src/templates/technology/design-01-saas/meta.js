@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-01-saas',
+  num: '01',
+  name: 'Northbeam',
+  tag: 'SaaS Platform',
+  style: 'Confident enterprise clarity',
+  animation: 'Hotspot tour, count-up metrics',
+  typography: 'Sora + Inter',
+  layout: '12-column grid, dashboard-led',
+  mood: 'Trustworthy, calm, assured',
+  palette: 'Paper / ink / indigo',
+  features: [
+    'Scroll-scrubbed dashboard hotspot tour',
+    'Animated metric count-ups',
+    'Pricing toggle',
+    'Logo strip',
+  ],
+  fonts: { display: 'Sora', body: 'Inter' },
+  colors: { primary: '#101828', accent: '#4F46E5' },
+};

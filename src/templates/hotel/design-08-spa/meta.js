@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-08-spa',
+  num: '08',
+  name: 'Aarogya Retreat',
+  tag: 'Wellness Retreat',
+  style: 'Serene minimalism — vast whitespace, one line of copy at a time',
+  animation: 'Breath-reactive gallery; slowest reveals in the category (1.5s); 2s hero fade',
+  typography: 'Cormorant Garamond + Jost',
+  layout: 'Centered, breath-spaced; deep-stone interlude for the daily rhythm',
+  mood: 'Serene and slow — dawn stillness, warm water, kept silence',
+  palette: 'Stone ink #3A4440 on pale travertine, aqua-sage #8FB5A8 accents',
+  features: [
+    'Breath gallery — program images inhale/exhale with scroll direction',
+    'Retreat program selector (3/5/7-day) with live rate math',
+    'Whisper-quiet booking bar with live night count',
+    'Treatment menu with honest pricing',
+    'A-day-here rhythm on deep stone',
+  ],
+  fonts: { display: 'Cormorant Garamond', body: 'Jost' },
+  colors: { primary: '#3A4440', accent: '#8FB5A8' },
+};

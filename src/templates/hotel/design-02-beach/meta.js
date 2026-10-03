@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-02-beach',
+  num: '02',
+  name: 'Neel Kinara',
+  tag: 'Beach Retreat',
+  style: 'Minimal beach retreat — restraint as luxury',
+  animation: 'Tide-wash dissolve gallery, single 1.8s hero fade',
+  typography: 'Fraunces + Inter',
+  layout: 'Vast whitespace, single-column rhythm, tall scroll-mapped gallery',
+  mood: 'Airy, calm, pale dawn',
+  palette: 'Sea-mist / sage / limewash',
+  features: [
+    'Tide-wash dissolving image flow (no pin)',
+    'Quiet booking bar with live night-count and rate math',
+    'Season-aware hero note',
+    'Opacity-only motion, durations ≥ 1.4s, sine.out',
+  ],
+  fonts: { display: 'Fraunces', body: 'Inter' },
+  colors: { primary: '#3E4A4A', accent: '#9DB8B0' },
+};

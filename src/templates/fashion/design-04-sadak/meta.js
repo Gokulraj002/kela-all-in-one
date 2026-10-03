@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-04-sadak',
+  num: '04',
+  name: 'SADAK',
+  tag: 'Streetwear',
+  style: 'Indo-western streetwear — brutalist-leaning poster density, drop mechanics, city flash energy',
+  animation: 'Kinetic type slams, marquee ticker, pinned runway walk with lane parallax, ink-block wipes',
+  typography: 'Anton + Space Grotesk',
+  layout: 'Poster-dense; hero type over looping fabric-snap video; drop cards; pinned runway; lookbook grid; counters; stores',
+  mood: 'Loud · Fast · Unapologetic — the loud one',
+  palette: 'Ink black #111110, bone #F2EFE6, vermilion #E8442E',
+  features: [
+    'Pinned runway walk — garment runners cross in 3 depth lanes with mid-crossing pause',
+    'Drop countdown + live-feel stock counters',
+    'Quick-add drop cards with size chips',
+    'Fusion codes (bandhgala/bomber, kurta/graphic, dhoti/parachute)',
+    'Past-drop archive + drop-list signup with city field',
+    'Mobile bottom tab bar (Drop / Lookbook / Cart)',
+  ],
+  fonts: { display: 'Anton', body: 'Space Grotesk' },
+  colors: { primary: '#F2EFE6', accent: '#E8442E' },
+};

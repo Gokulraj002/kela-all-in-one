@@ -1,0 +1,180 @@
+import { brandFor } from '../../_shared/brand.js';
+
+const kela = brandFor('fashion');
+
+export const content = {
+  brand: {
+    name: kela.name,
+    tagline: 'Handloom sarees, woven to last',
+    since: 'Est. 1978',
+  },
+  nav: ['Clusters', 'Craft', 'Collection', 'Weavers'],
+  hero: {
+    eyebrow: 'A heritage handloom house · Est. 1978',
+    title: 'Woven by hand, worn for generations.',
+    sub: 'Kanchipuram silks, Banarasi brocades and Chanderi weaves — bought at the loom, Silk Mark certified, delivered with the weaver’s name on the tag.',
+    cta: 'Explore the collection',
+    cta2: 'Enquire on WhatsApp',
+  },
+  clusters: [
+    {
+      name: 'Kanchipuram',
+      gi: 'GI Tag · Application No. 15',
+      motif: 'Temple borders, checks & rudraksha buttis',
+      zari: 'Tested 4-ply pure zari, 57% silver content',
+      looms: '2,400 pit looms across 14 villages',
+      priceBand: '₹28,000 – ₹1,20,000',
+      blurb: 'The heaviest silk we weave — three shuttles, one weaver, and a border that outlives the wedding it was bought for.',
+    },
+    {
+      name: 'Banaras',
+      gi: 'GI Tag · Banaras Brocades & Sarees',
+      motif: 'Jangla, tanchoi & kadhua buttis',
+      zari: 'Real zari on silk warp, kadhua hand-cut',
+      looms: '1,100 looms in Varanasi & Mubarakpur',
+      priceBand: '₹18,500 – ₹85,000',
+      blurb: 'Brocade woven thread by thread on the kadhua loom — the reverse of the saree is as clean as the face.',
+    },
+    {
+      name: 'Chanderi',
+      gi: 'GI Tag · Chanderi Fabric',
+      motif: 'Asharfi buttis, nal-feri borders',
+      zari: 'Fine tested zari on silk-cotton warp',
+      looms: '900 looms in Chanderi, Madhya Pradesh',
+      priceBand: '₹8,900 – ₹32,000',
+      blurb: 'Sheer as morning light — silk and cotton in a weave so fine the old masters called it woven air.',
+    },
+  ],
+  chapters: [
+    {
+      step: 'Chapter One · Loom',
+      title: 'The pit loom sings first',
+      body: `Every ${kela.name} saree begins on a wooden pit loom older than its weaver. The warp is strung thread by thread — five thousand ends for a single Kanchipuram — and tensioned until it hums under the hand.`,
+      stats: [
+        { v: '5,000', l: 'warp threads per saree' },
+        { v: '12', l: 'days on the loom' },
+        { v: '3', l: 'shuttles in hand' },
+      ],
+      img: 'hero',
+      caption: 'Muthu K. at the pit loom · Kanchipuram · 2024',
+    },
+    {
+      step: 'Chapter Two · Dye',
+      title: 'Colour from root and rind',
+      body: 'Indigo vats are fed like living things — jaggery, lime and patience. Turmeric gives our golds, madder root the deep reds. Seven dips for the midnight indigo; the yarn oxidises from green to blue in the weaver’s hands.',
+      stats: [
+        { v: '7', l: 'dips for deep indigo' },
+        { v: '3', l: 'natural dye vats' },
+        { v: '48 hrs', l: 'mordant to rinse' },
+      ],
+      img: 'look-3',
+      caption: 'Turmeric and madder vats · dye courtyard · 2024',
+    },
+    {
+      step: 'Chapter Three · Weave',
+      title: 'Five thousand picks of patience',
+      body: 'The shuttle flies, the beater slams the weft home, and the pattern rises one pick at a time. A Banarasi kadhua butti is woven by hand memory alone — no graph, no punch card, just forty years of practice.',
+      stats: [
+        { v: '5,400', l: 'weft picks per saree' },
+        { v: '4-ply', l: 'tested pure zari' },
+        { v: '0', l: 'machines involved' },
+      ],
+      img: 'detail',
+      caption: 'Zari buttis under the lens · Banaras · 2024',
+    },
+    {
+      step: 'Chapter Four · Drape',
+      title: 'Six metres, ready to live in',
+      body: 'Finished on the loom, washed in rice water, sun-dried and folded by hand. Every saree leaves with 6.3 metres including the blouse piece, a Silk Mark tag, and the name of the hands that wove it.',
+      stats: [
+        { v: '6.3 m', l: 'with blouse piece' },
+        { v: '100%', l: 'Silk Mark certified' },
+        { v: '1', l: 'weaver’s name per tag' },
+      ],
+      img: 'look-1',
+      caption: 'Kanchipuram silk in temple light · 2024',
+    },
+  ],
+  products: [
+    {
+      name: 'Kanchipuram Temple Silk',
+      price: 48500,
+      desc: 'Midnight indigo body, korvai temple border in tested zari. 6.3 m with blouse.',
+      fabric: 'Pure mulberry silk · 120 GSM',
+      badges: ['GI · Kanchipuram', 'Silk Mark', '4-ply zari'],
+    },
+    {
+      name: 'Banarasi Kadhua Brocade',
+      price: 36900,
+      desc: 'Deep maroon jangla brocade, hand-cut kadhua buttis. 6.3 m with blouse.',
+      fabric: 'Pure silk warp · 105 GSM',
+      badges: ['GI · Banaras', 'Silk Mark', 'Hand-cut'],
+    },
+    {
+      name: 'Chanderi Asharfi',
+      price: 12900,
+      desc: 'Sheer silk-cotton with gold asharfi buttis and nal-feri border. 6.3 m with blouse.',
+      fabric: 'Silk-cotton · 68 GSM',
+      badges: ['GI · Chanderi', 'Handloom Mark'],
+    },
+    {
+      name: 'Commission a Weave',
+      price: null,
+      desc: 'Your colours, your border, one weaver’s full attention for a fortnight. We send yarn swatches first.',
+      fabric: 'To your specification',
+      badges: ['Made to order', 'Weaver assigned'],
+    },
+  ],
+  weavers: [
+    {
+      name: 'Muthu Karuppan',
+      village: 'Kanchipuram, Tamil Nadu',
+      craft: 'Kanchipuram silk · pit loom',
+      years: '32 years at the loom',
+      quote: 'The loom teaches patience. The saree teaches the rest.',
+    },
+    {
+      name: 'Salma Ansari',
+      village: 'Mubarakpur, Uttar Pradesh',
+      craft: 'Banarasi kadhua brocade',
+      years: '21 years at the loom',
+      quote: 'My grandmother’s buttis, my mother’s hands, my own rhythm.',
+    },
+    {
+      name: 'Ramlal Koli',
+      village: 'Chanderi, Madhya Pradesh',
+      craft: 'Chanderi silk-cotton',
+      years: '27 years at the loom',
+      quote: 'Chanderi must feel like nothing — that is the whole skill.',
+    },
+    {
+      name: 'Devamma H.',
+      village: 'Molakalmuru, Karnataka',
+      craft: 'Natural dyeing · indigo vats',
+      years: '18 years at the vats',
+      quote: 'Indigo is alive. You do not dye with it, you negotiate.',
+    },
+  ],
+  visit: {
+    title: 'Come watch a saree being born',
+    body: 'Our Kanchipuram shed runs six days a week. Walk in, sit by a loom, drink the filter coffee — no appointment needed for the looms, appointments for the bridal room.',
+    address: '14 Weaver Street, Kanchipuram, Tamil Nadu 631501',
+    hours: 'Mon – Sat · 10 am – 7 pm',
+    note: 'Bridal consultations by appointment · video calls for NRI families',
+  },
+  contact: {
+    email: `hello@${kela.domain}`,
+    phone: '+91 44 2722 0000',
+    whatsapp: '919876543210',
+    instagram: `@${kela.instagram}`,
+  },
+  footer: {
+    line: `© 2026 ${kela.name} · Handloom sarees, woven to last`,
+    credits: [
+      'Dye masters — Devamma H., the vat keepers of Chanderi',
+      'Weavers — Muthu Karuppan, Salma Ansari, Ramlal Koli and 41 more',
+      'Clusters — Kanchipuram · Banaras · Chanderi',
+      'Shot on the looms, 2024 — no studio, no retouch',
+    ],
+  },
+};

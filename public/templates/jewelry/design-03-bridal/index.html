@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231A1714'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23D9B65E'%3EK%3C/text%3E%3C/svg%3E">
+  <title>Kela Jewels — Bridal Fine Jewelry</title>
+  <meta name="description" content="Kela Jewels — heirloom bridal jewelry. Engagement rings, wedding bands and fine pieces, hand-finished in our atelier.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1 · NAV -->
+  <header class="site-nav" id="siteNav">
+    <a class="brand" href="#hero" aria-label="Kela Jewels — home">
+      <span class="brand-glyph" aria-hidden="true">◇</span>
+      <span class="brand-name" data-content="brand.name">Kela Jewels</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <ul id="navList"></ul>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="#contact"><span data-content="navCta">Book an Appointment</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 2 · HERO -->
+  <section id="hero" aria-label="Kela Jewels bridal collection">
+    <div class="hero-media" data-depth="0.35">
+      <div class="img-shell hero-shell">
+        <img width="1920" height="1080" src="assets/images/hero.webp" alt="Rose gold diamond engagement ring resting on blush silk among rose petals" fetchpriority="high" decoding="async">
+      </div>
+      <div class="hero-veil" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero-inner">
+      <p class="eyebrow rv" data-content="hero.eyebrow">The Bridal Collection — 2026</p>
+      <h1 class="display hero-title rv magnetic" id="heroTitle" data-content="hero.title">Love, cast in light</h1>
+      <p class="lede rv" data-content="hero.subtitle">Heirloom engagement rings and wedding bands, hand-finished in our atelier.</p>
+      <div class="hero-ctas rv">
+        <a class="btn btn-solid" href="#collections"><span data-content="hero.ctaPrimary">Explore the Collection</span></a>
+        <a class="btn btn-line" href="#craftsmanship"><span data-content="hero.ctaSecondary">Our Craft</span></a>
+      </div>
+    </div>
+
+    <aside class="hero-piece rv" data-depth="0.6" aria-label="Featured piece with metal finish selector">
+      <figure class="img-shell sweep material-stage" id="materialStage">
+        <img width="1400" height="1750" id="materialImg" src="assets/images/product-1.webp" alt="Vow Solitaire — rose gold diamond engagement ring with pavé band" loading="lazy" decoding="async">
+        <img width="1400" height="1750" class="ghost" id="materialGhost" src="assets/images/product-1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      </figure>
+      <div class="material-meta">
+        <p class="piece-label"><span data-content="hero.featuredLabel">Featured — Vow Solitaire</span></p>
+        <p class="piece-material"><span class="mat-dot" aria-hidden="true"></span><span id="materialName" data-content="hero.materialLabel">Rose Gold</span></p>
+        <div class="material-btns" id="materialBtns" role="group" aria-label="Preview metal finish"></div>
+        <p class="demo-note" data-content="hero.materialNote">Demo treatment — simulated metal finishes.</p>
+      </div>
+    </aside>
+
+    <a class="scroll-cue" href="#collections" aria-label="Scroll to collections"><span aria-hidden="true"></span></a>
+  </section>
+
+  <!-- 3 · COLLECTIONS -->
+  <section id="collections" aria-label="Collections">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow rv" data-content="collectionsEyebrow">The Maison</p>
+        <h2 class="display rv" data-content="collectionsTitle">Three ways to say forever</h2>
+        <p class="sec-sub rv" data-content="collectionsSub">Begin with the silhouette that feels like yours.</p>
+      </div>
+      <div class="collage" id="collectionGrid"></div>
+    </div>
+  </section>
+
+  <!-- 4 · PRODUCTS -->
+  <section id="products" aria-label="Signature pieces">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow rv" data-content="productsEyebrow">Signature Pieces</p>
+        <h2 class="display rv" data-content="productsTitle">Worn once, kept always</h2>
+        <p class="sec-sub rv" data-content="productsSub">Select a piece to view it in detail.</p>
+      </div>
+      <div class="product-list" id="productList"></div>
+    </div>
+  </section>
+
+  <!-- 4b · TRY THE LOOK (concept demo) -->
+  <section id="try-look" aria-label="Try the look — concept demo">
+    <div class="wrap try-wrap">
+      <div class="sec-head center">
+        <p class="eyebrow rv" data-content="tryLook.eyebrow">Interactive Atelier</p>
+        <h2 class="display rv" data-content="tryLook.title">Try the look</h2>
+        <p class="sec-sub rv" data-content="tryLook.body">Place your own photograph in our styling frame and see how a bridal portrait sits beside an Kela Jewels piece.</p>
+      </div>
+      <div class="try-grid">
+        <div class="try-dropzone rv" id="dropzone" tabindex="0" role="button" aria-label="Upload a photo">
+          <input type="file" id="tryFile" accept="image/png,image/jpeg,image/webp" hidden>
+          <div class="dz-inner" id="dzEmpty">
+            <span class="dz-glyph" aria-hidden="true">◇</span>
+            <p class="dz-label" data-content="tryLook.dropLabel">Drop your image here</p>
+            <p class="dz-hint" data-content="tryLook.dropHint">or browse your files — PNG, JPG, JPEG, WEBP</p>
+          </div>
+          <div class="dz-preview" id="dzPreview" hidden>
+            <figure class="try-frame">
+              <img id="tryImg" alt="Your uploaded photograph in the Kela Jewels styling frame" loading="lazy" decoding="async">
+            </figure>
+            <div class="try-meta">
+              <p class="try-name" id="tryName"></p>
+              <p class="try-dims" id="tryDims"></p>
+            </div>
+            <div class="try-actions">
+              <button class="btn btn-line btn-sm" id="tryReplace" type="button">Replace</button>
+              <button class="btn btn-ghost btn-sm" id="tryRemove" type="button">Remove</button>
+            </div>
+          </div>
+        </div>
+        <aside class="try-side rv">
+          <p class="try-note-label">A note on this demo</p>
+          <p class="try-note" data-content="tryLook.note">Concept demo — illustrative preview, not AI try-on.</p>
+          <p class="try-side-copy" data-content="tryLook.sideCopy">Your photograph never leaves this page. It is shown only inside the frame, so you can imagine the mood of your bridal portrait beside our pieces.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · CRAFTSMANSHIP -->
+  <section id="craftsmanship" aria-label="Craftsmanship">
+    <div class="wrap craft-grid">
+      <div class="craft-media img-shell sweep reveal-crop" data-depth="0.3">
+        <img width="1920" height="1080" src="assets/images/craft.webp" alt="A jeweler's hands polishing a diamond ring at the workbench" loading="lazy" decoding="async">
+      </div>
+      <div class="craft-card rv">
+        <p class="eyebrow" data-content="craftsmanship.eyebrow">The Atelier</p>
+        <h2 class="display" data-content="craftsmanship.title">Two hundred and fourteen quiet steps</h2>
+        <p class="body-copy" data-content="craftsmanship.body">Every Kela Jewels piece passes through two hundred and fourteen quiet steps before it is allowed to leave the bench.</p>
+        <ol class="craft-steps" id="craftSteps"></ol>
+        <p class="craft-sign" data-content="craftsmanship.sign">— The Kela Jewels Atelier</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · STORY -->
+  <section id="story" aria-label="Our story">
+    <div class="wrap story-grid">
+      <div class="story-copy">
+        <p class="eyebrow rv" data-content="story.eyebrow">Maison Kela</p>
+        <h2 class="display rv" data-content="story.title">Since 1998, one promise</h2>
+        <div class="story-body rv" id="storyBody"></div>
+        <blockquote class="pull-quote rv">
+          <p data-content="story.quote">“Jewelry should outlive the occasion — it should outlive us all.”</p>
+          <cite data-content="story.quoteBy">— Founder, Kela Jewels</cite>
+        </blockquote>
+      </div>
+      <figure class="img-shell sweep story-media reveal-crop rv" data-depth="0.4">
+        <img width="1920" height="1080" src="assets/images/hero.webp" alt="Rose gold ring among blush rose petals in soft morning light" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </section>
+
+  <!-- 7 · CONTACT -->
+  <section id="contact" aria-label="Contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <p class="eyebrow rv" data-content="contactEyebrow">Begin</p>
+        <h2 class="display rv" data-content="contactTitle">Your appointment awaits</h2>
+        <p class="sec-sub rv" data-content="contactSub">Private viewings at our Bengaluru salon, or a conversation to begin.</p>
+        <dl class="contact-details rv" id="contactDetails"></dl>
+        <p class="rv"><a class="insta-link" id="instaLink" href="https://instagram.com/kelajewels" target="_blank" rel="noopener"><span aria-hidden="true">◇</span> <span data-content="contact.instagramLabel">@kelajewels</span></a></p>
+      </div>
+      <div class="contact-form-wrap rv">
+        <form id="contactForm" novalidate>
+          <p class="form-title" data-content="contactFormTitle">Request a private viewing</p>
+          <label class="field"><span data-content="formLabels.name">Full name</span><input type="text" name="name" id="fName" autocomplete="name" required></label>
+          <label class="field"><span data-content="formLabels.email">Email</span><input type="email" name="email" id="fEmail" autocomplete="email" required></label>
+          <label class="field"><span data-content="formLabels.date">Preferred date</span><input type="date" name="date" id="fDate"></label>
+          <label class="field"><span data-content="formLabels.message">A note for our consultant</span><textarea name="message" id="fMsg" rows="4"></textarea></label>
+          <button class="btn btn-solid btn-wide" type="submit"><span data-content="formLabels.submit">Request Appointment</span></button>
+          <p class="form-fine" data-content="formLabels.fine">A demonstration form — no details are sent anywhere.</p>
+        </form>
+        <div class="form-confirm" id="formConfirm" hidden>
+          <span class="confirm-glyph" aria-hidden="true">◇</span>
+          <p class="confirm-title" data-content="formLabels.confirmTitle">Thank you.</p>
+          <p class="confirm-body" id="confirmBody">Our bridal consultant will write to you within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · FOOTER -->
+  <footer>
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <span class="brand-glyph" aria-hidden="true">◇</span>
+        <span class="brand-name" data-content="brand.name">Kela Jewels</span>
+        <p class="foot-tag" data-content="brand.tagline">Maison de Joaillerie</p>
+      </div>
+      <nav class="foot-nav" aria-label="Footer"><ul id="footList"></ul></nav>
+      <p class="foot-line" data-content="footer.line">© 2026 Kela Jewels. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- QUICK VIEW -->
+  <div class="qv" id="quickView" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Piece details">
+    <div class="qv-backdrop" id="qvBackdrop"></div>
+    <div class="qv-panel" id="qvPanel">
+      <div class="qv-media-slot" id="qvMediaSlot"></div>
+      <div class="qv-info">
+        <p class="eyebrow" id="qvIndex">N°1</p>
+        <h3 class="display" id="qvName"></h3>
+        <p class="qv-desc" id="qvDesc"></p>
+        <dl class="qv-specs">
+          <div><dt>Metal</dt><dd id="qvMaterial"></dd></div>
+          <div><dt>Stone</dt><dd id="qvStone"></dd></div>
+          <div><dt>Price</dt><dd class="qv-price" id="qvPrice"></dd></div>
+        </dl>
+        <div class="qv-ctas">
+          <a class="btn btn-solid" href="#contact" id="qvCta">Enquire about this piece</a>
+          <button class="btn btn-line" id="qvClose" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+    <img class="qv-fly" id="qvFly" alt="" aria-hidden="true" loading="lazy" decoding="async">
+  </div>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

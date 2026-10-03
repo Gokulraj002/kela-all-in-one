@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-08-retreat',
+  num: '08',
+  name: 'Stillwater Reserve',
+  tag: 'Resort Homes',
+  style: 'Escape-led, horizon-heavy minimalism; slow breathable rhythm with vast whitespace',
+  animation: 'Parallax depth layers — pinned full-bleed scene drifts foreground/mid/background at 18/8/3 rates with tide-like sine.inOut easing; listing cards float up between layers',
+  typography: 'Cormorant Garamond + Instrument Sans',
+  layout: 'Full-bleed hero film, pinned three-layer parallax sequence, generous editorial grids',
+  mood: 'Slow, breathable, far away',
+  palette: 'Warm white / aqua / driftwood / deep sea',
+  features: [
+    'Pinned parallax depth-layer sequence (desktop)',
+    'Signature 10s "Edge of the water" hero film loop',
+    'Floating residence cards with tide-eased motion',
+    'Horizon-line barely-there navigation',
+    'Slow-life ritual chapters with tide table',
+    'Ownership models with transparent pricing',
+  ],
+  fonts: { display: 'Cormorant Garamond', body: 'Instrument Sans' },
+  colors: { primary: '#173038', accent: '#5E8B8C' },
+};

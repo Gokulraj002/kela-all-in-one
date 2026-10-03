@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-09-trust',
+  num: '09',
+  name: 'Sahaj Homes',
+  tag: 'Affordable Housing',
+  style: 'Trust-led and editorial — an honest ledger, not a brochure',
+  animation: 'Scroll-stacked pricing ledger with growing bars and count-up numbers',
+  typography: 'Source Serif 4 + Public Sans',
+  layout: 'Ledger-first narrative: homes, cost breakup, construction proof, voices',
+  mood: 'Warm, clear, dependable — no luxury gloss',
+  palette: 'Honest white #FBFAF7 · brick #B4552D · leaf #5A7A4E · ink #2A2620',
+  features: [
+    'Transparent pricing ledger scroll mechanic',
+    'Per-sqft honesty with count-up cost lines',
+    'Construction progress timeline',
+    '"The handover" signature film',
+    'Resident voices from the first project',
+  ],
+  fonts: { display: 'Source Serif 4', body: 'Public Sans' },
+  colors: { primary: '#2A2620', accent: '#B4552D' },
+};

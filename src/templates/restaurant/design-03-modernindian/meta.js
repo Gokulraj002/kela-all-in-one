@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-03-modernindian',
+  num: '03',
+  name: 'Agni',
+  tag: 'Modern Indian',
+  style: 'Bold elemental modern Indian',
+  animation: 'Scroll-ignited element bands, ember edge sweeps',
+  typography: 'Rozha One + Manrope',
+  layout: 'Architectural full-bleed bands by element',
+  mood: 'Refined, bold, elemental',
+  palette: 'Charcoal / ivory / ember',
+  features: [
+    'Element-grouped menu (Smoke/Earth/Fire/Ice)',
+    'Igniting dish bands',
+    'Tasting journeys',
+    'Indian-spirited bar',
+    'Fire philosophy',
+  ],
+  fonts: { display: 'Rozha One', body: 'Manrope' },
+  colors: { primary: '#F5EEDF', accent: '#D9622B' },
+};

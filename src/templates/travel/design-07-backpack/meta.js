@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-07-backpack',
+  num: '07',
+  name: 'Bunk & Trail',
+  tag: 'Backpacking',
+  style: 'Hostel-noticeboard, honest and bold',
+  animation: 'Ticket-deal shuffle, stamp hits, noticeboard shuffle',
+  typography: 'Archivo + Inter',
+  layout: 'Playful grid, fanned ticket stack',
+  mood: 'Youthful, honest, communal',
+  palette: 'Off-black / teal / marigold',
+  features: ['Ticket-stub deals', 'Upfront pricing', 'Crew finder', 'Hostel picks'],
+  fonts: { display: 'Archivo', body: 'Inter' },
+  colors: { primary: '#17181C', accent: '#E8A33D' },
+};

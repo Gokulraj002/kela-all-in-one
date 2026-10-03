@@ -1,0 +1,309 @@
+/* Fika & Ljus — design-03-scandi. Tokens scoped to .tpl-design-03-scandi ONLY.
+   Restraint as luxury: fades and breathing only. Nothing translates, nothing scales. */
+.tpl-design-03-scandi {
+  --color-background: #FBFAF6;
+  --color-surface: #F0ECE2;
+  --color-primary: #33383B;
+  --color-secondary: #B99A6B;
+  --color-accent: #5E7A8C;
+  --color-text: #2B2F33;
+  --color-muted: #9AA0A3;
+  --font-display: 'Libre Baskerville', serif;
+  --font-body: 'Instrument Sans', sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-03-scandi *,
+.tpl-design-03-scandi *::before,
+.tpl-design-03-scandi *::after { box-sizing: border-box; }
+.tpl-design-03-scandi a { color: inherit; }
+.tpl-design-03-scandi img { display: block; }
+.tpl-design-03-scandi button { font-family: var(--font-body); }
+
+.tpl-design-03-scandi .a-img { display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-03-scandi .a-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.tpl-design-03-scandi .fj-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+.tpl-design-03-scandi .fj-section { padding: clamp(90px, 14vh, 170px) 0; }
+
+.tpl-design-03-scandi .fj-eyebrow {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: lowercase;
+  color: var(--color-muted);
+  margin: 0 0 28px;
+  text-align: center;
+}
+.tpl-design-03-scandi .fj-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+  line-height: 1.4;
+  color: var(--color-primary);
+  margin: 0 0 36px;
+  text-align: center;
+  max-width: 22ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tpl-design-03-scandi .fj-body { margin: 0 0 1.6em; text-align: center; }
+.tpl-design-03-scandi .fj-note { color: var(--color-muted); font-size: 0.95rem; text-align: center; max-width: 52ch; margin: 36px auto 0; }
+
+/* ---------- nav ---------- */
+.tpl-design-03-scandi .fj-nav {
+  text-align: center;
+  padding: 44px 24px 20px;
+}
+.tpl-design-03-scandi .fj-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 26px;
+}
+.tpl-design-03-scandi .fj-links { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.tpl-design-03-scandi .fj-links a {
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: lowercase;
+  color: var(--color-text);
+  padding-bottom: 6px;
+  position: relative;
+}
+.tpl-design-03-scandi .fj-links a::after {
+  content: '';
+  position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--color-secondary);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.tpl-design-03-scandi .fj-links a:hover::after { transform: scaleX(1); }
+
+/* ---------- hero: pinned scroll-driven frame scrub ----------
+   ScrollFrames owns the stage geometry inline (100svh, canvas absolute
+   inset 0, overlay absolute inset 0) — the design only positions its
+   overlay children. The hero copy sits bottom-center over the pour. */
+.tpl-design-03-scandi .fj-hero { text-align: center; }
+.tpl-design-03-scandi .fj-tint {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  transition: background 2s ease;
+}
+.tpl-design-03-scandi .fj-hero-copy {
+  position: absolute;
+  left: 50%; bottom: clamp(56px, 11vh, 110px);
+  transform: translateX(-50%);
+  width: min(640px, calc(100% - 48px));
+  text-align: center;
+  /* Pale pour frames keep the dark ink legible; a soft light shadow lifts
+     the copy off busier frames without a scrim. */
+  text-shadow: 0 1px 14px rgba(255, 255, 255, 0.55), 0 0 2px rgba(255, 255, 255, 0.4);
+}
+/* Soft daylight veil behind the copy: the pour frames run mid-tone (dark
+   grounds, blue-grey kitchen), so the dark ink needs a quiet lift to read.
+   The copy's own transform makes it a stacking context, so z-index -1 stays
+   behind the text but above the canvas. */
+.tpl-design-03-scandi .fj-hero-copy::before {
+  content: '';
+  position: absolute;
+  inset: -56px -72px -40px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(251, 250, 246, 0.86) 0%, rgba(251, 250, 246, 0.72) 42%, rgba(251, 250, 246, 0) 72%);
+}
+/* Small hero labels sit on the frames: ink instead of the pale muted grey. */
+.tpl-design-03-scandi .fj-hero-copy .fj-eyebrow { color: var(--color-primary); }
+.tpl-design-03-scandi .fj-scrub-hint {
+  position: absolute;
+  left: 0; right: 0; top: clamp(20px, 4vh, 40px);
+  text-align: center;
+  font-size: 11px; letter-spacing: 0.3em; text-transform: lowercase;
+  color: var(--color-primary);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.85), 0 0 3px rgba(255, 255, 255, 0.7);
+}
+.tpl-design-03-scandi .fj-hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  line-height: 1.45;
+  color: var(--color-primary);
+  margin: 0 0 30px;
+}
+.tpl-design-03-scandi .fj-lede { max-width: 52ch; margin: 0 auto 44px; }
+.tpl-design-03-scandi .fj-cta {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  text-transform: lowercase;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 8px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-03-scandi .fj-cta:hover { color: var(--color-primary); border-color: var(--color-primary); }
+
+/* ---------- breathing divider ---------- */
+.tpl-design-03-scandi .fj-breath {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 8px 24px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.tpl-design-03-scandi .fj-breath-line { flex: 1; height: 1px; background: var(--color-secondary); opacity: 0.6; }
+.tpl-design-03-scandi .fj-breath-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--color-secondary);
+  will-change: transform;
+}
+
+/* ---------- ritual ---------- */
+.tpl-design-03-scandi .fj-ritual-img { max-width: 520px; margin: 56px auto; aspect-ratio: 16 / 10; }
+.tpl-design-03-scandi .fj-ritual-img .a-img { width: 100%; height: 100%; }
+.tpl-design-03-scandi .fj-times { list-style: none; margin: 48px 0 0; padding: 0; display: grid; gap: 24px; }
+.tpl-design-03-scandi .fj-times li { display: grid; grid-template-columns: 64px 1fr; gap: 20px; align-items: baseline; text-align: left; }
+.tpl-design-03-scandi .fj-time { font-family: var(--font-display); font-size: 1.05rem; color: var(--color-secondary); font-variant-numeric: tabular-nums; }
+
+/* ---------- moment carousel (scroll-snap) ---------- */
+.tpl-design-03-scandi .fj-car { margin-top: 12px; }
+.tpl-design-03-scandi .fj-car-tabs { display: flex; justify-content: center; gap: 36px; margin-bottom: 52px; flex-wrap: wrap; }
+.tpl-design-03-scandi .fj-car-tab {
+  background: none; border: none; cursor: pointer;
+  font-size: 13px; letter-spacing: 0.24em; text-transform: lowercase;
+  color: var(--color-muted);
+  padding-bottom: 8px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.tpl-design-03-scandi .fj-car-tab::after {
+  content: '';
+  position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--color-secondary);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.tpl-design-03-scandi .fj-car-tab.is-active { color: var(--color-primary); }
+.tpl-design-03-scandi .fj-car-tab.is-active::after { transform: scaleX(1); }
+.tpl-design-03-scandi .fj-car-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.tpl-design-03-scandi .fj-car-track::-webkit-scrollbar { display: none; }
+.tpl-design-03-scandi .fj-car-panel {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  padding: 4px 8px;
+}
+.tpl-design-03-scandi .fj-car-panel-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 5vw, 76px);
+  align-items: start;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.tpl-design-03-scandi .fj-car-img .a-img { aspect-ratio: 4 / 4.4; }
+.tpl-design-03-scandi .fj-car-panel-eyebrow { text-align: left; margin-bottom: 16px; }
+.tpl-design-03-scandi .fj-car-note { font-family: var(--font-display); font-style: italic; color: var(--color-secondary); margin: 0 0 30px; }
+.tpl-design-03-scandi .fj-car-meta {
+  max-width: 980px;
+  margin: 48px auto 0;
+  padding: 0 8px;
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+}
+.tpl-design-03-scandi .fj-car-dots { display: flex; gap: 12px; }
+.tpl-design-03-scandi .fj-car-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--color-muted);
+  opacity: 0.4;
+  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease;
+}
+.tpl-design-03-scandi .fj-car-dot.is-active { opacity: 1; background: var(--color-secondary); transform: scale(1.6); }
+/* Whisper-thin progress hairline. */
+.tpl-design-03-scandi .fj-car-progress { width: 100%; max-width: 420px; height: 1px; background: var(--color-surface); }
+.tpl-design-03-scandi .fj-car-progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+/* Reduced-motion: every moment stacked, fully visible. */
+.tpl-design-03-scandi .fj-moments-static { display: grid; gap: 96px; margin-top: 12px; }
+.tpl-design-03-scandi .fj-car-static-panel .fj-car-panel-inner { max-width: 980px; }
+.tpl-design-03-scandi .fj-dishes { list-style: none; margin: 0; padding: 0; display: grid; gap: 26px; text-align: left; }
+.tpl-design-03-scandi .fj-dish-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.tpl-design-03-scandi .fj-dishes h4 { font-family: var(--font-display); font-weight: 400; font-size: 1.15rem; color: var(--color-primary); margin: 0; }
+.tpl-design-03-scandi .fj-dish-price { font-variant-numeric: tabular-nums; color: var(--color-text); white-space: nowrap; }
+.tpl-design-03-scandi .fj-dishes p { margin: 4px 0 0; font-size: 0.92rem; color: var(--color-muted); }
+
+/* ---------- seasons panel ---------- */
+.tpl-design-03-scandi .fj-panel { background: var(--color-surface); }
+.tpl-design-03-scandi .fj-seasons { list-style: none; margin: 0; padding: 0; display: grid; gap: 36px; }
+.tpl-design-03-scandi .fj-seasons li { text-align: center; }
+.tpl-design-03-scandi .fj-season {
+  display: block;
+  font-size: 12px; letter-spacing: 0.3em; text-transform: lowercase;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+}
+.tpl-design-03-scandi .fj-seasons p { margin: 0 auto; max-width: 52ch; }
+.tpl-design-03-scandi .fj-seasonal { font-family: var(--font-display); font-style: italic; text-align: center; color: var(--color-secondary); margin-top: 48px; }
+
+/* ---------- room gallery ---------- */
+.tpl-design-03-scandi .fj-gallery { position: relative; aspect-ratio: 16 / 9; max-width: 860px; margin: 0 auto; }
+.tpl-design-03-scandi .fj-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2s ease; }
+.tpl-design-03-scandi .fj-slide.is-active { opacity: 1; }
+.tpl-design-03-scandi .fj-slide .a-img { width: 100%; height: 100%; }
+.tpl-design-03-scandi .fj-materials {
+  list-style: none; margin: 48px 0 0; padding: 0;
+  display: flex; justify-content: center; gap: 12px 32px; flex-wrap: wrap;
+  font-size: 12px; letter-spacing: 0.22em; text-transform: lowercase;
+  color: var(--color-muted);
+}
+
+/* ---------- visit ---------- */
+.tpl-design-03-scandi .fj-visit { text-align: center; }
+.tpl-design-03-scandi .fj-address { font-style: normal; line-height: 2.1; margin: 0 0 36px; }
+.tpl-design-03-scandi .fj-address a { color: var(--color-accent); }
+.tpl-design-03-scandi .fj-hours { list-style: none; margin: 0 auto 8px; padding: 0; max-width: 420px; display: grid; gap: 14px; }
+.tpl-design-03-scandi .fj-hours li { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--color-surface); padding-bottom: 14px; font-size: 0.95rem; }
+.tpl-design-03-scandi .fj-hours li span:last-child { font-variant-numeric: tabular-nums; color: var(--color-primary); }
+
+/* ---------- footer ---------- */
+.tpl-design-03-scandi .fj-footer { text-align: center; padding: 72px 24px 96px; }
+.tpl-design-03-scandi .fj-footer-line { font-size: 0.9rem; color: var(--color-text); margin: 0 0 10px; }
+.tpl-design-03-scandi .fj-whisper { font-family: var(--font-display); font-style: italic; color: var(--color-muted); margin: 0; }
+
+@media (max-width: 768px) {
+  .tpl-design-03-scandi { font-size: 16px; }
+  .tpl-design-03-scandi .fj-car-panel-inner { grid-template-columns: 1fr; gap: 36px; }
+  .tpl-design-03-scandi .fj-car-tabs { gap: 22px; margin-bottom: 40px; }
+  .tpl-design-03-scandi .fj-times li { grid-template-columns: 52px 1fr; }
+  .tpl-design-03-scandi .fj-links { gap: 26px; }
+}

@@ -1,0 +1,500 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Mitti — design-05-slow · Sustainable slow fashion, earthy editorial
+   Tokens live on .tpl-design-05-slow ONLY. Scoped, never global.
+   ═══════════════════════════════════════════════════════════════════ */
+.tpl-design-05-slow {
+  --color-background: #EDE4CC;
+  --color-surface: #DECFAC;
+  --color-primary: #3B422B;
+  --color-accent: #9C4F2A;
+  --color-text: #2E2A1F;
+  --color-muted: #7E7460;
+  --color-card: #F4EDD9;
+  --color-line: rgba(59, 66, 43, 0.22);
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Work Sans', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: clip;
+  /* containing block for the absolute nav: without it the nav anchored to
+     the page outside the viewer's scroll area and floated over every section */
+  position: relative;
+}
+
+.tpl-design-05-slow *,
+.tpl-design-05-slow *::before,
+.tpl-design-05-slow *::after { box-sizing: border-box; }
+
+.tpl-design-05-slow img { display: block; max-width: 100%; }
+
+/* ── Type rhythm ─────────────────────────────────────────── */
+.tpl-design-05-slow h1,
+.tpl-design-05-slow h2,
+.tpl-design-05-slow h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.mtt-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+
+.mtt-lede {
+  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+  max-width: 44rem;
+  color: var(--color-text);
+  margin: 1.5rem 0 0;
+}
+
+.mtt-sec-head {
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem) clamp(2.5rem, 5vw, 4rem);
+  max-width: 90rem;
+  margin: 0 auto;
+}
+.mtt-sec-head h2 { font-size: clamp(2.4rem, 5.4vw, 4.4rem); }
+
+/* ── Nav: ultra-quiet top bar ────────────────────────────── */
+.mtt-nav {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem clamp(1.25rem, 5vw, 5rem);
+}
+.mtt-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-background);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.mtt-nav-links { display: flex; gap: clamp(1rem, 2.4vw, 2.25rem); }
+.mtt-nav-links a {
+  color: var(--color-background);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  opacity: 0.9;
+}
+.mtt-nav-links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+.mtt-nav-cta {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  border: 1px solid rgba(237, 228, 204, 0.7);
+  border-radius: 999px;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+}
+.mtt-nav-cta:hover { background: var(--color-background); color: var(--color-primary); }
+
+/* ── Hero ────────────────────────────────────────────────── */
+.mtt-hero {
+  position: relative;
+  /* the visible stage in the viewer (toolbar above), the small viewport in exports */
+  min-height: var(--tpl-vh, 100svh);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.mtt-hero-media { position: absolute; inset: 0; }
+.mtt-hero-media .a-img,
+.mtt-hero-media img { width: 100%; height: 100%; object-fit: cover; }
+.mtt-hero-shade {
+  position: absolute; inset: 0;
+  /* deeper through the middle band so the cream headline reads over the
+     bright cotton field (it sat on a ~6% shade before) */
+  background: linear-gradient(180deg,
+    rgba(46, 42, 31, 0.32) 0%,
+    rgba(46, 42, 31, 0.1) 28%,
+    rgba(46, 42, 31, 0.46) 52%,
+    rgba(46, 42, 31, 0.74) 78%,
+    rgba(46, 42, 31, 0.86) 100%);
+}
+.mtt-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 5rem) clamp(3.5rem, 8vh, 5.5rem);
+}
+.mtt-hero .mtt-eyebrow { color: var(--color-background); opacity: 0.85; }
+/* scoped like the h1/h2/h3 rule above, so the cream colour actually wins
+   (the generic rule was turning the headline dark olive on a dark photo) */
+.tpl-design-05-slow .mtt-hero-title {
+  font-size: clamp(3.2rem, 9vw, 7.5rem);
+  color: var(--color-background);
+  max-width: 12ch;
+}
+.mtt-wmask { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.mtt-wword { display: inline-block; will-change: transform; }
+.mtt-hero-sub {
+  max-width: 36rem;
+  color: var(--color-background);
+  opacity: 0.92;
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  margin: 1.75rem 0 0;
+}
+.mtt-hero-ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.25rem; }
+.mtt-btn {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.95rem 1.9rem;
+}
+.mtt-btn-solid { background: var(--color-accent); color: var(--color-background); }
+.mtt-btn-solid:hover { filter: brightness(1.08); }
+.mtt-btn-ghost { border: 1px solid rgba(237, 228, 204, 0.75); color: var(--color-background); }
+.mtt-btn-ghost:hover { background: rgba(237, 228, 204, 0.16); }
+.mtt-hero-cap {
+  margin: 2.5rem 0 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-background);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* ── Dye journey: swatchAccordion ────────────────────────── */
+.mtt-journey { position: relative; }
+.mtt-acc-pin { position: relative; }
+.mtt-acc {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* pinned on desktop: the visible scroll area (viewer) / 100svh (export) */
+  min-height: var(--tpl-vh, 100svh);
+  padding: clamp(4rem, 7vh, 6rem) clamp(1.25rem, 5vw, 5rem);
+  max-width: 76rem;
+  margin: 0 auto;
+  gap: 0;
+}
+.mtt-band {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  transform-origin: top center;
+  border-radius: 0.35rem;
+  margin-bottom: 0.6rem;
+  background: var(--color-card);
+}
+.mtt-band-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.05rem 1.5rem;
+  color: #F5EEDC;
+  flex: 0 0 auto;
+}
+.mtt-band-head.is-light { color: var(--color-primary); }
+.mtt-band-num { font-family: var(--font-display); font-style: italic; font-size: 1rem; opacity: 0.85; }
+.mtt-band-name { font-family: var(--font-display); font-size: 1.45rem; font-weight: 500; }
+.mtt-band-days { margin-left: auto; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.9; }
+.mtt-band-detail {
+  transform-origin: top center;
+  overflow: hidden;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.mtt-band-inner { padding: 1.5rem 1.5rem 1.75rem; }
+.mtt-band-source { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent); margin: 0 0 0.35rem; font-weight: 600; }
+.mtt-band-shade { font-family: var(--font-display); font-style: italic; font-size: 1.6rem; color: var(--color-primary); margin: 0 0 0.9rem; }
+.mtt-band-notes { margin: 0; max-width: 46rem; font-size: 1rem; }
+.mtt-band-meta { display: flex; gap: 2.5rem; margin: 1.4rem 0 0; padding: 1rem 0 0; border-top: 1px solid var(--color-line); }
+.mtt-band-meta div { margin: 0; }
+.mtt-band-meta dt { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 0.2rem; }
+.mtt-band-meta dd { margin: 0; font-family: var(--font-display); font-size: 1.1rem; color: var(--color-primary); }
+
+/* Pinned desktop accordion (class set from JS at ≥768px with motion on).
+   The bands are stacked absolutely and placed by transform only: each one
+   keeps its natural (fully open) height, folds to a thread with scaleY, and
+   the bands below glide up by exactly the height the folded ones gave away —
+   so the stack stays tight and centred, and the open band always has room
+   for its whole story. Mobile / reduced motion keep the plain stacked flow. */
+.tpl-design-05-slow .mtt-acc.is-live {
+  display: block;
+  height: var(--tpl-vh, 100svh);
+  min-height: 0;
+  overflow: hidden;
+}
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band {
+  position: absolute;
+  top: 0;
+  left: clamp(1.25rem, 5vw, 5rem);
+  right: clamp(1.25rem, 5vw, 5rem);
+  margin: 0;
+  transform-origin: top center;
+  will-change: transform;
+}
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band-detail { flex: none; }
+/* Pinned deck: the open band is the whole story on screen, so it reads at
+   full editorial size; folded bands fade their type (--mtt-open, set per
+   scrub frame) so a thread-thin strip never shows squashed letters. */
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band-head { padding: 0 2rem; min-height: 4.6rem; align-items: stretch; }
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band-head > * { opacity: var(--mtt-open, 1); display: flex; align-items: center; }
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band-name { flex: 1 1 auto; font-size: clamp(1.5rem, 2.2vw, 2rem); }
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band-inner { padding: 0 2rem clamp(1.75rem, 3.6vh, 2.75rem); }
+/* spacing as padding, not margin: the copy reads as one continuous block */
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band-source { margin: 0; padding: clamp(1.5rem, 3.2vh, 2.5rem) 0 0.5rem; }
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band-shade { margin: 0; padding-bottom: 1rem; font-size: clamp(1.8rem, 2.8vw, 2.6rem); }
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band-notes { margin: 0; padding-bottom: 1.4rem; font-size: clamp(1.02rem, 1.25vw, 1.2rem); max-width: 52rem; line-height: 1.65; }
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band-meta { margin-top: 0; }
+.tpl-design-05-slow .mtt-acc.is-live .mtt-band-meta dd { font-size: 1.35rem; }
+
+/* Side rail: dye-bloom dot tracking the active stage. */
+.mtt-rail { position: absolute; right: clamp(0.75rem, 2.5vw, 2rem); top: 12%; bottom: 12%; width: 2px; }
+.mtt-rail-line { position: absolute; inset: 0; background: var(--color-line); border-radius: 2px; }
+.mtt-rail-dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 14px; height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-accent) 18%, transparent);
+  /* moved with a transform (y) on the scrub, never with `top` */
+  will-change: transform;
+}
+.mtt-rail-stage {
+  position: absolute;
+  right: clamp(2.2rem, 4.5vw, 3.6rem);
+  top: 9%;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+/* Watercolor-bleed divider */
+.mtt-bleed {
+  height: clamp(6rem, 12vw, 10rem);
+  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(156, 79, 42, 0.16), rgba(156, 79, 42, 0) 70%);
+  margin: 0 auto;
+  max-width: 70rem;
+}
+
+/* ── Collection ──────────────────────────────────────────── */
+.mtt-collection { max-width: 90rem; margin: 0 auto; padding-bottom: clamp(3rem, 6vw, 5rem); }
+.mtt-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  padding: 0 clamp(1.25rem, 5vw, 5rem);
+}
+.mtt-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.mtt-card-img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.mtt-card-img .a-img, .mtt-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.mtt-card-dye {
+  position: absolute; left: 1rem; bottom: 1rem;
+  background: rgba(46, 42, 31, 0.82);
+  color: var(--color-background);
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.45rem 0.9rem; border-radius: 999px;
+}
+.mtt-card-body { padding: 1.75rem 1.75rem 2rem; display: flex; flex-direction: column; gap: 0.9rem; flex: 1; }
+.mtt-card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.mtt-card-top h3 { font-size: 1.5rem; }
+.mtt-price { font-family: var(--font-display); font-size: 1.3rem; color: var(--color-accent); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.mtt-card-desc { margin: 0; font-size: 0.98rem; }
+.mtt-card-meta { margin: 0; font-size: 0.82rem; color: var(--color-muted); letter-spacing: 0.03em; }
+.mtt-cost {
+  margin: auto 0 0;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid var(--color-line);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+.mtt-cost div { margin: 0; }
+.mtt-cost dt { font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 0.25rem; }
+.mtt-cost dd { margin: 0; font-size: 0.92rem; font-weight: 600; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+
+/* ── Makers ──────────────────────────────────────────────── */
+.mtt-makers { background: var(--color-surface); padding-bottom: clamp(4rem, 8vw, 7rem); }
+.mtt-makers .mtt-sec-head { max-width: 90rem; }
+.mtt-maker-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 5rem);
+}
+.mtt-maker-img { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1.5rem; }
+.mtt-maker-img .a-img, .mtt-maker-img img { width: 100%; height: 100%; object-fit: cover; }
+.mtt-maker h3 { font-size: 1.7rem; margin-bottom: 0.25rem; }
+.mtt-maker-role { font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); margin: 0 0 1.1rem; }
+.mtt-maker-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.45;
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+  display: inline-block;
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.5s ease;
+  padding-bottom: 2px;
+}
+.mtt-maker:hover .mtt-maker-quote { background-size: 100% 1px; }
+.mtt-maker-wage { font-size: 0.85rem; color: var(--color-text); margin: 0; border-top: 1px solid var(--color-line); padding-top: 0.9rem; }
+
+/* ── Craft film: "The Vat" ───────────────────────────────── */
+.mtt-craft {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 5rem);
+}
+/* While the frames are pinned the copy column rides along (sticky, the
+   height of the 90% stage, centred) instead of scrolling away and leaving
+   half the screen empty. */
+@media (min-width: 1025px) {
+  .tpl-design-05-slow .mtt-craft-copy {
+    position: sticky; top: 0; align-self: start;
+    min-height: calc(var(--tpl-vh, 100svh) * 0.9);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+}
+.mtt-craft h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); margin-bottom: 1.25rem; }
+.mtt-field-cap { font-style: italic; font-size: 0.85rem; color: var(--color-muted); margin-top: 1.75rem; }
+/* ── Craft scrub: "The Vat" frame sequence (pinned +=120%) ────
+   Stage/canvas/overlay layout is inline in ScrollFrames via stageHeight —
+   the template only dresses the overlay hint + reduced-motion fallback. */
+.tpl-design-05-slow .sf-overlay { pointer-events: none; }
+.tpl-design-05-slow .sf-overlay::before {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 34%;
+  background: linear-gradient(to top, rgba(22, 26, 17, 0.78), rgba(22, 26, 17, 0));
+}
+.tpl-design-05-slow .mtt-craft-hint {
+  position: absolute; left: 1.25rem; bottom: 1.1rem; z-index: 1; margin: 0;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #F4EDD9;
+}
+/* Reduced-motion static frame: first frame visible, caption + hint legible. */
+.tpl-design-05-slow .sf-static { border-radius: 0.5rem; overflow: hidden; background: var(--color-primary); }
+
+/* ── Impact ──────────────────────────────────────────────── */
+.mtt-impact { background: var(--color-primary); color: var(--color-background); }
+.mtt-impact .mtt-sec-head h2, .mtt-impact .mtt-lede { color: var(--color-background); }
+.mtt-impact .mtt-eyebrow { color: var(--color-background); opacity: 0.75; }
+.mtt-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 5rem) clamp(3rem, 6vw, 5rem);
+}
+.mtt-stat { border-top: 1px solid rgba(237, 228, 204, 0.3); padding-top: 1.5rem; }
+.mtt-stat-num {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  /* dark moss band: the light tone of the brand colour (no filter hacks) */
+  color: var(--brand-on-dark, #e0a27c);
+  margin: 0;
+  line-height: 1;
+  display: inline;
+}
+.mtt-stat-suffix { display: inline; font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--brand-on-dark, #e0a27c); }
+.tpl-design-05-slow .mtt-impact .mtt-btn-solid { background: var(--brand-on-dark, #e0a27c); color: var(--color-text); }
+.mtt-stat-label { margin: 0.75rem 0 0; font-size: 0.9rem; opacity: 0.85; max-width: 14rem; }
+.mtt-impact-cta {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 5rem) clamp(5rem, 10vw, 8rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.mtt-impact-note { font-style: italic; opacity: 0.85; margin: 0; }
+.mtt-contact { font-size: 0.85rem; opacity: 0.75; margin: 0; }
+.mtt-contact a { color: var(--color-background); }
+
+/* ── Footer ──────────────────────────────────────────────── */
+.mtt-footer {
+  background: var(--color-primary);
+  color: var(--color-background);
+  border-top: 1px solid rgba(237, 228, 204, 0.25);
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 5rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.mtt-footer-brand { font-family: var(--font-display); font-size: 2rem; font-weight: 600; margin: 0; }
+.mtt-footer-line { margin: 0; opacity: 0.75; font-size: 0.9rem; }
+.mtt-footer-links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.mtt-footer-links a { color: var(--color-background); text-decoration: none; font-size: 0.85rem; opacity: 0.85; }
+.mtt-footer-links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+
+/* ── Reduced motion: static, fully visible ───────────────── */
+.mtt-reduced .mtt-band,
+.mtt-reduced .mtt-band-detail { transform: none !important; }
+.mtt-reduced .mtt-rail,
+.mtt-reduced .mtt-rail-stage { display: none; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .mtt-craft { grid-template-columns: 1fr; }
+  .mtt-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 767px) {
+  .mtt-nav-links { display: none; }
+  .mtt-grid { grid-template-columns: 1fr; }
+  .mtt-maker-row { grid-template-columns: 1fr; }
+  .mtt-cost { grid-template-columns: repeat(2, 1fr); row-gap: 1rem; }
+  .mtt-rail, .mtt-rail-stage { display: none; }
+  .mtt-acc { min-height: 0; padding-top: 1rem; }
+  .mtt-band { flex: none; margin-bottom: 1.25rem; }
+  .mtt-band-detail { overflow: visible; }
+  .mtt-hero { min-height: calc(var(--tpl-vh, 100svh) * 0.92); }
+}
+@media (min-width: 1440px) {
+  .mtt-hero-title { max-width: 14ch; }
+}

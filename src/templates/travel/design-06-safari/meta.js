@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-06-safari',
+  num: '06',
+  name: 'Dust & Thunder',
+  tag: 'Safari',
+  style: 'Cinematic naturalism, slab-type drama',
+  animation: 'Dawn-to-dusk scrub, 3-depth parallax, grass-line unfolds',
+  typography: 'Bitter + Inter',
+  layout: 'Full-bleed diorama chapters, pinned sky',
+  mood: 'Dramatic, patient, wild',
+  palette: 'Savanna gold / acacia / charcoal',
+  features: ['Dawn-to-dusk scrub', '3-depth parallax', 'Naturalist guides', 'Small-group jeeps'],
+  fonts: { display: 'Bitter', body: 'Inter' },
+  colors: { primary: '#191713', accent: '#C99A3C' },
+};

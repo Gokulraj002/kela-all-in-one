@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-05-island',
+  num: '05',
+  name: 'Salt & Light',
+  tag: 'Island',
+  style: 'Luminous minimalism, tropical restraint',
+  animation: 'Tide drift, breathing dividers, fades only',
+  typography: 'Cormorant Garamond + Outfit',
+  layout: 'Vast whitespace, drifting card field',
+  mood: 'Calm, luminous, weightless',
+  palette: 'Sea-glass / sand / white',
+  features: ['Tide-drift escapes', 'Barefoot luxury', 'Slow itineraries', 'Breathing dividers'],
+  fonts: { display: 'Cormorant Garamond', body: 'Outfit' },
+  colors: { primary: '#1E3A3A', accent: '#5E9A8C' },
+};

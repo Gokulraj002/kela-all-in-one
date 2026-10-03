@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-08-tailor',
+  num: '08',
+  name: 'DARZI',
+  tag: 'Bespoke Tailoring',
+  style: 'Sartorial precision — the fitting book as a website',
+  animation: 'Instrument-measured craft: tape-rail scrub, chalk draws, exact reveals',
+  typography: 'Spectral + IBM Plex Sans',
+  layout: 'Symmetrical, exact, data-forward; ruled lines like pattern paper',
+  mood: 'Precise · Sartorial · Assured',
+  palette: 'Chalk ecru #F1EEE6 · ink-charcoal #23211C · oxblood #7A2A26',
+  features: [
+    'tapeRail: measurement-tape rail unrolls on scrub, activating Measure → Cut → Stitch → Press → Fit stages with live cm readout',
+    'Cloth library with mill, weight and composition filters',
+    'Three-visit fitting stepper with chalk-drawn checklist',
+    '"Needle & Steam" 8s craft film loop',
+    'Appointment ledger booking with chalk-circle slot picker',
+  ],
+  fonts: { display: 'Spectral', body: 'IBM Plex Sans' },
+  colors: { primary: '#23211C', accent: '#7A2A26' },
+};

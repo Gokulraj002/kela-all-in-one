@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-02-urban',
+  num: '02',
+  name: 'Stack & Stone',
+  tag: 'Urban Apartments',
+  style: 'Sharp, efficient, data-forward urban apartment marketing',
+  animation: 'Elevator rail — stepped scrub tower marker, floor-by-floor card slides',
+  typography: 'Archivo + Inter',
+  layout: 'Dense data grid, sticky filter bar, pinned rail beside the listings',
+  mood: 'Sharp, fast, no-nonsense',
+  palette: 'Ink #141414 / bone #EDEAE2 / signal orange #E4572E',
+  features: [
+    'Elevator-rail scroll mechanic',
+    'Sticky filter bar (BHK / facing / price)',
+    'Floor-plan-forward listing cards',
+    'Unit-count ticker in nav',
+    'Neighbourhood data grid',
+  ],
+  fonts: { display: 'Archivo', body: 'Inter' },
+  colors: { primary: '#141414', accent: '#E4572E' },
+};

@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-02-bazaar',
+  num: '02',
+  name: 'The Grand Bazaar',
+  tag: 'Marketplace',
+  style: 'Vibrant bazaar, joyful density',
+  animation: 'Stall conveyor, sticker pops',
+  typography: 'Archivo + Work Sans',
+  layout: 'Dense tilted grid, ticker header',
+  mood: 'Festive, abundant, warm',
+  palette: 'Saffron / teal / chili on paper',
+  features: [
+    'Stall conveyor product flow',
+    'Demo cart',
+    'Category stickers',
+    'Seller stories',
+    'Festival ticker',
+  ],
+  fonts: { display: 'Archivo', body: 'Work Sans' },
+  colors: { primary: '#221A12', accent: '#E8862E' },
+};

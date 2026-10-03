@@ -1,0 +1,1259 @@
+/* ============================================================
+   THE GRID HOUSE — design-03-urban (Urban boutique hotel)
+   Sharp, fast, editorial. Ink / signal orange on warm paper.
+   All tokens scoped to the template class — no global writes. No border-radius except
+   the Book pill; everything else is a hard edge.
+   ============================================================ */
+
+.tpl-design-03-urban {
+  --color-primary: #14161a;
+  --color-secondary: #1e2126;
+  --color-accent: #e8622c;
+  --color-background: #f3f1ec;
+  --color-surface: #14161a;
+  --color-text: #14161a;
+  --color-muted: #6b6f76;
+  --color-paper: #f3f1ec;
+  --color-line: rgba(20, 22, 26, 0.16);
+  --color-line-light: rgba(243, 241, 236, 0.22);
+  --font-display: 'Archivo', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  font-family: var(--font-body);
+  background: var(--color-background);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* horizontal backstop (the spotlit card scales up 2%) */
+  overflow-x: clip;
+}
+
+.tpl-design-03-urban *,
+.tpl-design-03-urban *::before,
+.tpl-design-03-urban *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-03-urban img {
+  display: block;
+  max-width: 100%;
+}
+
+.tpl-design-03-urban a {
+  color: inherit;
+}
+
+/* Shared atoms ------------------------------------------------ */
+
+.tpl-design-03-urban .gh-wrap {
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.tpl-design-03-urban section {
+  scroll-margin-top: 4.5rem;
+}
+
+.tpl-design-03-urban .gh-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1rem;
+}
+
+.tpl-design-03-urban .gh-eyebrow--light {
+  color: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-eyebrow--accent {
+  color: var(--color-accent);
+}
+
+.tpl-design-03-urban .gh-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.tpl-design-03-urban .gh-h2--light {
+  color: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 1rem;
+}
+
+.tpl-design-03-urban .gh-lede {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--color-text);
+  max-width: 42rem;
+  margin: 0 0 2.5rem;
+}
+
+.tpl-design-03-urban .gh-lede--light {
+  color: var(--color-paper);
+  opacity: 0.85;
+}
+
+.tpl-design-03-urban .gh-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.tpl-design-03-urban .gh-body--light {
+  color: var(--color-paper);
+  opacity: 0.8;
+}
+
+.tpl-design-03-urban .gh-rule {
+  display: block;
+  height: 2px;
+  background: var(--color-primary);
+  transform-origin: left center;
+  margin: 1.75rem 0 2rem;
+}
+
+.tpl-design-03-urban .gh-rule--light {
+  background: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 1.75rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.tpl-design-03-urban .gh-btn--accent {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.tpl-design-03-urban .gh-btn--accent:hover {
+  background: var(--color-primary);
+  color: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-btn--ink {
+  background: var(--color-primary);
+  color: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-btn--ink:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* Word-mask headline */
+.tpl-design-03-urban .gh-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.tpl-design-03-urban .gh-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Images: fill their frames crisply */
+.tpl-design-03-urban .a-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-secondary);
+}
+
+.tpl-design-03-urban .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* NAV ---------------------------------------------------------- */
+
+.tpl-design-03-urban .gh-navshell {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 50;
+}
+
+.tpl-design-03-urban .gh-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1.25rem;
+  color: var(--color-paper);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tpl-design-03-urban .gh-nav.is-scrolled {
+  background: var(--color-primary);
+  box-shadow: 0 1px 0 var(--color-line-light);
+}
+
+.tpl-design-03-urban .gh-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tpl-design-03-urban .gh-wordmark-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.tpl-design-03-urban .gh-links {
+  display: none;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.tpl-design-03-urban .gh-links a {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.tpl-design-03-urban .gh-links a:hover {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.tpl-design-03-urban .gh-book-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.tpl-design-03-urban .gh-book-pill:hover {
+  background: var(--color-paper);
+  color: var(--color-primary);
+}
+
+/* HERO --------------------------------------------------------- */
+
+.tpl-design-03-urban .gh-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-primary);
+  color: var(--color-paper);
+}
+
+/* Hero: scroll-scrubbed frame sequence (replaces the autoplay mp4).
+   Stage geometry (position/height/overflow) is set inline by the
+   ScrollFrames component via its stageHeight prop — the design only
+   owns canvas and overlay placement. Never override .sf-canvas. */
+.tpl-design-03-urban .gh-hero .sf-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tpl-design-03-urban .gh-hero .sf-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+/* Reduced motion: static first frame, same overlay treatment. */
+.tpl-design-03-urban .gh-hero .sf-static {
+  position: relative;
+  min-height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+
+.tpl-design-03-urban .gh-hero .sf-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tpl-design-03-urban .gh-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(20, 22, 26, 0.92) 0%,
+    rgba(20, 22, 26, 0.55) 42%,
+    rgba(20, 22, 26, 0.25) 70%,
+    rgba(20, 22, 26, 0.45) 100%
+  );
+}
+
+.tpl-design-03-urban .gh-hero-copy {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 7rem 1.25rem 3.5rem;
+}
+
+.tpl-design-03-urban .gh-hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 7.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 1.5rem;
+  max-width: 14ch;
+}
+
+.tpl-design-03-urban .gh-hero-sub {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.55;
+  max-width: 34rem;
+  margin: 0 0 2rem;
+  opacity: 0.88;
+}
+
+.tpl-design-03-urban .gh-hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin: 3rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line-light);
+}
+
+.tpl-design-03-urban .gh-hero-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tpl-design-03-urban .gh-hero-stats dt {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  order: 2;
+}
+
+.tpl-design-03-urban .gh-hero-stats dd {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.75rem;
+  margin: 0;
+  order: 1;
+}
+
+/* BOOKING BAR -------------------------------------------------- */
+
+.tpl-design-03-urban .gh-booking {
+  background: var(--color-primary);
+  color: var(--color-paper);
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+  border-top: 3px solid var(--color-accent);
+}
+
+.tpl-design-03-urban .gh-booking-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.tpl-design-03-urban .gh-booking-copy .gh-h2 {
+  margin-bottom: 1rem;
+}
+
+.tpl-design-03-urban .gh-booking-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--color-line-light);
+  border: 1px solid var(--color-line-light);
+}
+
+.tpl-design-03-urban .gh-field {
+  background: var(--color-secondary);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.tpl-design-03-urban .gh-field label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  opacity: 0.6;
+}
+
+.tpl-design-03-urban .gh-field input,
+.tpl-design-03-urban .gh-field select {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  width: 100%;
+  color-scheme: dark;
+}
+
+.tpl-design-03-urban .gh-field input:focus,
+.tpl-design-03-urban .gh-field select:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+}
+
+.tpl-design-03-urban .gh-field option {
+  color: var(--color-text);
+}
+
+.tpl-design-03-urban .gh-booking-math {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--color-secondary);
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+}
+
+.tpl-design-03-urban .gh-booking-math strong {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+
+.tpl-design-03-urban .gh-booking-panel .gh-btn {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.tpl-design-03-urban .gh-held {
+  grid-column: 1 / -1;
+  font-size: 0.8125rem;
+  margin: 0;
+  padding: 0.875rem 1.25rem;
+  background: var(--color-secondary);
+  border-top: 2px solid var(--color-accent);
+  color: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-held strong {
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+}
+
+/* ROOMS — spotlight grid --------------------------------------- */
+
+.tpl-design-03-urban .gh-rooms {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+
+.tpl-design-03-urban .gh-sec-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tpl-design-03-urban .gh-spot-index {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.375rem;
+  margin: 0;
+}
+
+.tpl-design-03-urban .gh-spot-num {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--color-accent);
+}
+
+.tpl-design-03-urban .gh-spot-hint {
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-03-urban .gh-rooms-grid {
+  display: grid;
+  /* minmax(0, …): a card's unbreakable spec line must not widen the column
+     past the screen on phones */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.tpl-design-03-urban .gh-room {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease,
+    background-color 0.25s ease;
+}
+
+/* Signature §3.03: scrubbed spotlight — active room pops, the rest dim. */
+.tpl-design-03-urban .gh-room.is-spot {
+  transform: scale(1.02);
+  opacity: 1;
+  filter: saturate(1);
+  z-index: 2;
+  border-color: var(--color-accent);
+}
+
+.tpl-design-03-urban .gh-room.is-dim {
+  opacity: 0.55;
+  filter: saturate(0.6);
+}
+
+/* Hover always overrides to full — on cards, links, buttons. */
+.tpl-design-03-urban .gh-room:hover {
+  transform: scale(1.03);
+  opacity: 1;
+  filter: saturate(1);
+  z-index: 3;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.tpl-design-03-urban .gh-room:hover .gh-room-name,
+.tpl-design-03-urban .gh-room:hover .gh-room-desc,
+.tpl-design-03-urban .gh-room:hover .gh-room-price {
+  color: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-room:hover .gh-room-size {
+  color: var(--color-paper);
+  opacity: 0.7;
+}
+
+.tpl-design-03-urban .gh-room-visual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+/* Crop variants so one photograph reads differently per card. */
+.tpl-design-03-urban .gh-room-visual .crop-a img { object-position: 50% 40%; }
+.tpl-design-03-urban .gh-room-visual .crop-b img { object-position: 20% 60%; }
+.tpl-design-03-urban .gh-room-visual .crop-c img { object-position: 80% 30%; }
+.tpl-design-03-urban .gh-room-visual .crop-d img { object-position: 50% 70%; }
+.tpl-design-03-urban .gh-room-visual .crop-e img { object-position: 30% 20%; }
+
+.tpl-design-03-urban .gh-room-tag {
+  position: absolute;
+  top: 0.875rem;
+  left: 0.875rem;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.4375rem 0.75rem;
+}
+
+.tpl-design-03-urban .gh-room-num {
+  position: absolute;
+  right: 0.875rem;
+  bottom: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--color-paper);
+  opacity: 0.9;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+}
+
+.tpl-design-03-urban .gh-room-body {
+  padding: 1.5rem 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.tpl-design-03-urban .gh-room-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+}
+
+.tpl-design-03-urban .gh-room-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.tpl-design-03-urban .gh-room-size {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.tpl-design-03-urban .gh-room-desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.tpl-design-03-urban .gh-room-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-03-urban .gh-room:hover .gh-room-foot {
+  border-top-color: var(--color-line-light);
+}
+
+.tpl-design-03-urban .gh-room-price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.375rem;
+  margin: 0;
+}
+
+.tpl-design-03-urban .gh-room-price span {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.tpl-design-03-urban .gh-room-book {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.625rem 1.25rem;
+  border: 2px solid var(--color-primary);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.tpl-design-03-urban .gh-room-book:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* ROOFTOP ------------------------------------------------------ */
+
+.tpl-design-03-urban .gh-rooftop {
+  background: var(--color-primary);
+  color: var(--color-paper);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+
+.tpl-design-03-urban .gh-rooftop-grid {
+  display: grid;
+  gap: 3rem;
+}
+
+.tpl-design-03-urban .gh-hours {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 0.625rem 1rem;
+  margin: 0 0 2.5rem;
+}
+
+.tpl-design-03-urban .gh-drinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tpl-design-03-urban .gh-drink {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-line-light);
+  transition: padding-left 0.25s ease;
+}
+
+.tpl-design-03-urban .gh-drink:hover {
+  padding-left: 0.75rem;
+}
+
+.tpl-design-03-urban .gh-drink:first-child {
+  border-top: 1px solid var(--color-line-light);
+}
+
+.tpl-design-03-urban .gh-drink h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  margin: 0 0 0.25rem;
+}
+
+.tpl-design-03-urban .gh-drink p {
+  font-size: 0.8125rem;
+  margin: 0;
+  opacity: 0.65;
+}
+
+.tpl-design-03-urban .gh-drink-price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.125rem;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.tpl-design-03-urban .gh-rooftop-fig {
+  margin: 0;
+  position: relative;
+}
+
+.tpl-design-03-urban .gh-rooftop-fig .a-img {
+  aspect-ratio: 4 / 5;
+}
+
+.tpl-design-03-urban .gh-rooftop-fig figcaption,
+.tpl-design-03-urban .gh-work-fig figcaption {
+  font-size: 0.625rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: 0.875rem;
+}
+
+/* NEIGHBORHOOD ------------------------------------------------- */
+
+.tpl-design-03-urban .gh-hood {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+
+.tpl-design-03-urban .gh-tabs {
+  margin-top: 0.5rem;
+}
+
+.tpl-design-03-urban .gh-tabrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid var(--color-primary);
+  margin-bottom: 0;
+}
+
+.tpl-design-03-urban .gh-tab {
+  flex: 1 1 auto;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--color-text);
+  border: 0;
+  border-right: 1px solid var(--color-primary);
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tpl-design-03-urban .gh-tab:last-child {
+  border-right: 0;
+}
+
+.tpl-design-03-urban .gh-tab:hover {
+  background: var(--color-primary);
+  color: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-tab.is-active {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.tpl-design-03-urban .gh-tabpanel {
+  border: 1px solid var(--color-primary);
+  border-top: 0;
+}
+
+.tpl-design-03-urban .gh-spot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.375rem 1.5rem;
+  border-bottom: 1px solid var(--color-line);
+  transition: background-color 0.2s ease;
+}
+
+.tpl-design-03-urban .gh-spot:last-child {
+  border-bottom: 0;
+}
+
+.tpl-design-03-urban .gh-spot:hover {
+  background: var(--color-primary);
+  color: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-spot-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  margin: 0 0 0.25rem;
+}
+
+.tpl-design-03-urban .gh-spot-note {
+  font-size: 0.875rem;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.tpl-design-03-urban .gh-spot-walk {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.tpl-design-03-urban .gh-spot:hover .gh-spot-walk {
+  color: var(--color-accent);
+}
+
+/* WORK --------------------------------------------------------- */
+
+.tpl-design-03-urban .gh-work {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-03-urban .gh-work-grid {
+  display: grid;
+  gap: 3rem;
+  margin-top: 0.5rem;
+}
+
+.tpl-design-03-urban .gh-work-fig {
+  margin: 0;
+}
+
+.tpl-design-03-urban .gh-work-fig .a-img {
+  aspect-ratio: 4 / 3;
+}
+
+.tpl-design-03-urban .gh-spaces {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--color-primary);
+}
+
+.tpl-design-03-urban .gh-space {
+  padding: 1.75rem;
+  border-bottom: 1px solid var(--color-line);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.tpl-design-03-urban .gh-space:last-child {
+  border-bottom: 0;
+}
+
+.tpl-design-03-urban .gh-space:hover {
+  background: var(--color-primary);
+  color: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-space-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.tpl-design-03-urban .gh-space-head h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.tpl-design-03-urban .gh-space-spec {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.tpl-design-03-urban .gh-space:hover .gh-space-spec {
+  color: var(--color-paper);
+  opacity: 0.7;
+}
+
+.tpl-design-03-urban .gh-space p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+  opacity: 0.85;
+}
+
+.tpl-design-03-urban .gh-space-price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.125rem;
+  color: var(--color-accent);
+  margin: 0 !important;
+}
+
+/* VISIT / PRACTICAL -------------------------------------------- */
+
+.tpl-design-03-urban .gh-visit {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-03-urban .gh-visit-grid {
+  display: grid;
+  gap: 3.5rem;
+}
+
+.tpl-design-03-urban .gh-facts {
+  margin: 0;
+  display: grid;
+  gap: 0;
+}
+
+.tpl-design-03-urban .gh-fact {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-03-urban .gh-fact:first-child {
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-03-urban .gh-fact dt {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-03-urban .gh-fact dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.tpl-design-03-urban .gh-contact {
+  background: var(--color-primary);
+  color: var(--color-paper);
+  padding: 2.5rem;
+  align-self: start;
+}
+
+.tpl-design-03-urban .gh-contact .gh-h3 {
+  color: var(--color-paper);
+}
+
+.tpl-design-03-urban .gh-contact p {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+}
+
+.tpl-design-03-urban .gh-contact a {
+  color: var(--color-paper);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-accent);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tpl-design-03-urban .gh-contact a:hover {
+  color: var(--color-accent);
+}
+
+.tpl-design-03-urban .gh-contact .gh-insta {
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  opacity: 0.7;
+  margin-bottom: 1.75rem;
+}
+
+.tpl-design-03-urban .gh-contact .gh-btn {
+  margin-top: 0.75rem;
+}
+
+/* FOOTER ------------------------------------------------------- */
+
+.tpl-design-03-urban .gh-footer {
+  background: var(--color-primary);
+  color: var(--color-paper);
+  padding: clamp(4rem, 8vw, 6rem) 0 2.5rem;
+  border-top: 3px solid var(--color-accent);
+}
+
+.tpl-design-03-urban .gh-footer-word {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin: 0 0 2.5rem;
+}
+
+.tpl-design-03-urban .gh-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.tpl-design-03-urban .gh-footer-links a {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.tpl-design-03-urban .gh-footer-links a:hover {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.tpl-design-03-urban .gh-footer-line,
+.tpl-design-03-urban .gh-footer-colophon {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+  margin: 0 0 0.375rem;
+}
+
+/* Responsive --------------------------------------------------- */
+
+@media (max-width: 480px) {
+  /* Pinned stage is a fixed 100svh, so keep the overlay copy compact
+     on short phones to avoid crowding/clipping at 360px. */
+  .tpl-design-03-urban .gh-hero-copy {
+    padding: 5rem 1.25rem 2.5rem;
+  }
+  .tpl-design-03-urban .gh-hero-stats {
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .tpl-design-03-urban .gh-hero-stats dd {
+    font-size: 1.375rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .tpl-design-03-urban .gh-rooms-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .tpl-design-03-urban .gh-booking-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .tpl-design-03-urban .gh-links {
+    display: flex;
+  }
+
+  .tpl-design-03-urban .gh-nav {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .tpl-design-03-urban .gh-wrap,
+  .tpl-design-03-urban .gh-hero-copy {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .tpl-design-03-urban .gh-booking-grid {
+    grid-template-columns: 1fr 1.4fr;
+    align-items: start;
+  }
+
+  .tpl-design-03-urban .gh-rooftop-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+
+  .tpl-design-03-urban .gh-work-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: start;
+  }
+
+  .tpl-design-03-urban .gh-visit-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+@media (min-width: 1000px) {
+  .tpl-design-03-urban .gh-rooms-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+
+  .tpl-design-03-urban .gh-booking-panel {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .tpl-design-03-urban .gh-field {
+    border-right: 1px solid var(--color-line-light);
+  }
+}
+
+/* Reduced motion: everything static and fully visible. */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-03-urban .gh-room,
+  .tpl-design-03-urban .gh-btn,
+  .tpl-design-03-urban .gh-book-pill,
+  .tpl-design-03-urban .gh-tab,
+  .tpl-design-03-urban .gh-drink,
+  .tpl-design-03-urban .gh-spot,
+  .tpl-design-03-urban .gh-space {
+    transition: none;
+  }
+
+  .tpl-design-03-urban .gh-room.is-spot,
+  .tpl-design-03-urban .gh-room.is-dim,
+  .tpl-design-03-urban .gh-room:hover {
+    transform: none;
+    opacity: 1;
+    filter: none;
+  }
+}
+
+/* KELA ACCENT ON DARK BANDS -------------------------------------
+   The page is light, so --color-accent is the dark Kela tone. Accent TEXT
+   that sits on the ink bands (hero film, booking, rooftop, contact card,
+   nav, footer) switches to the light tone so it stays readable. */
+.tpl-design-03-urban .gh-hero .gh-eyebrow--accent,
+.tpl-design-03-urban .gh-rooftop .gh-eyebrow--accent,
+.tpl-design-03-urban .gh-booking-math strong,
+.tpl-design-03-urban .gh-held strong,
+.tpl-design-03-urban .gh-hours,
+.tpl-design-03-urban .gh-drink-price,
+.tpl-design-03-urban .gh-links a:hover,
+.tpl-design-03-urban .gh-contact a:hover,
+.tpl-design-03-urban .gh-footer-links a:hover {
+  color: var(--brand-on-dark, var(--color-accent));
+}
+
+.tpl-design-03-urban .gh-hours,
+.tpl-design-03-urban .gh-contact a {
+  border-color: var(--brand-on-dark, var(--color-accent));
+}

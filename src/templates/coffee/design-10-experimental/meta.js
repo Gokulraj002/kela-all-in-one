@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-10-experimental',
+  num: '10',
+  name: 'Laboratory No. 9',
+  tag: 'Experimental',
+  style: 'Avant-garde lab-noir with kinetic typography',
+  animation: 'Kinetic headlines, liquid-mask method transitions, custom cursor, circular clip-path nav, one invert flash',
+  typography: 'Fraunces + Instrument Sans',
+  layout: 'Immersive full-bleed, protocol-framed sections, overlay nav',
+  mood: 'Daring, sensory, cryptic',
+  palette: 'Black / cream / persimmon',
+  features: ['Brewing-method picker', 'Flavor-ring visualizer', 'Session booking stepper', 'Overlay nav', 'Custom cursor'],
+  fonts: { display: 'Fraunces', body: 'Instrument Sans' },
+  colors: { primary: '#F4EDE0', accent: '#F4562A' },
+};

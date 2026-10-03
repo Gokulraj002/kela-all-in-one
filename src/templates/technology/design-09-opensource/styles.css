@@ -1,0 +1,854 @@
+/* 09 · Commons — open-source project. Warm paper, purple, green, ink. */
+
+.tpl-design-09-opensource {
+  --color-paper: #f7f3ea;
+  --color-paper-deep: #efe7d3;
+  --color-ink: #1c1917;
+  --color-ink-soft: #44403c;
+  --color-muted: #78716c;
+  --color-purple: #7c3aed;
+  --color-purple-soft: #a78bfa;
+  --color-purple-tint: #ede4fb;
+  --color-green: #16a34a;
+  --color-green-soft: #86efac;
+  --color-green-tint: #dcf3e4;
+  --color-line: #e2d8c2;
+  --color-primary: #1c1917;
+  --color-accent: #7c3aed;
+  --color-background: #f7f3ea;
+  --color-surface: #fffdf7;
+  --color-text: #1c1917;
+  --color-muted: #78716c;
+  --font-display: 'Public Sans', system-ui, sans-serif;
+  --font-body: 'Public Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --radius: 18px;
+  --shadow: 0 18px 50px -18px rgba(28, 25, 23, 0.25);
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-09-opensource *,
+.tpl-design-09-opensource *::before,
+.tpl-design-09-opensource *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-09-opensource img,
+.tpl-design-09-opensource video {
+  display: block;
+  max-width: 100%;
+}
+
+.tpl-design-09-opensource a {
+  color: inherit;
+}
+
+.cf-wrap {
+  width: min(1180px, 100% - clamp(2.5rem, 6vw, 5rem));
+  margin-inline: auto;
+}
+
+.cf-section {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+}
+
+.cf-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin: 0 0 1rem;
+}
+
+.cf-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.6vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+}
+
+.cf-lede {
+  font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--color-ink-soft);
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* ---------- buttons ---------- */
+.cf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.98rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: translate 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+/* Scoped so the label color beats `.tpl-design-09-opensource a { color:
+   inherit }` — the ink buttons rendered ink text on an ink fill. The
+   modifier rules below (same specificity, later) still win. */
+.tpl-design-09-opensource .cf-btn {
+  color: var(--color-paper);
+}
+.cf-btn:hover {
+  translate: 0 -2px;
+  box-shadow: var(--shadow);
+}
+.cf-btn svg {
+  width: 1.05em;
+  height: 1.05em;
+  flex: none;
+}
+.cf-btn.is-ghost {
+  background: transparent;
+  color: var(--color-ink);
+}
+.cf-btn.is-paper {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border-color: var(--color-paper);
+}
+.cf-btn.is-green {
+  background: var(--color-green);
+  border-color: var(--color-green);
+  color: #fff;
+}
+.cf-btn .cf-count {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.85em;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 0.15em 0.6em;
+}
+.cf-btn.is-ghost .cf-count,
+.cf-btn.is-paper .cf-count {
+  background: rgba(28, 25, 23, 0.1);
+}
+
+/* ---------- nav ---------- */
+.cf-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(247, 243, 234, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-line);
+}
+.cf-nav-inner {
+  width: min(1180px, 100% - clamp(2.5rem, 6vw, 5rem));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.85rem 0;
+}
+.cf-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cf-mark {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 8px;
+  background:
+    conic-gradient(from 45deg, var(--color-purple) 0 25%, var(--color-green) 0 50%, var(--color-purple-soft) 0 75%, var(--color-green-soft) 0);
+  flex: none;
+}
+.cf-links {
+  display: flex;
+  gap: 1.4rem;
+  margin-left: auto;
+}
+.cf-links a {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  text-decoration: none;
+  color: var(--color-ink-soft);
+}
+.cf-links a:hover {
+  color: var(--color-purple);
+}
+.cf-nav .cf-btn {
+  padding: 0.55rem 1.05rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- hero ---------- */
+.cf-hero {
+  position: relative;
+  min-height: min(92vh, 900px);
+  display: flex;
+  align-items: center;
+  overflow: clip;
+  border-bottom: 1px solid var(--color-line);
+}
+/* ---------- hero: scroll-driven frames (stage/canvas/overlay layout is inline
+   in the ScrollFrames component — only overlay positioning + washes here) ---------- */
+.tpl-design-09-opensource .sf-wrap {
+  width: 100%;
+}
+.tpl-design-09-opensource .sf-overlay {
+  display: flex;
+  align-items: center;
+}
+/* warm paper legibility wash over the frames (kept from the video hero) */
+.tpl-design-09-opensource .sf-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(247, 243, 234, 0.96) 0%,
+    rgba(247, 243, 234, 0.82) 38%,
+    rgba(247, 243, 234, 0.25) 68%,
+    rgba(247, 243, 234, 0.05) 100%
+  );
+}
+.cf-hero-copy {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100% - clamp(2.5rem, 6vw, 5rem));
+  margin-inline: auto;
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  max-width: 40rem;
+}
+.cf-hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.2rem, 9vw, 6.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.4rem;
+}
+.cf-hero-sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+  max-width: 44ch;
+  margin: 0 0 2rem;
+}
+.cf-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 2.2rem;
+}
+.cf-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  /* sits on the photo frames: the darker ink keeps it legible */
+  color: var(--color-ink-soft);
+}
+.cf-hero-badges span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.cf-hero-badges i {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--color-green);
+  font-style: normal;
+}
+
+/* ---------- contribution wall (signature pinned section) ---------- */
+.cf-wall {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  position: relative;
+}
+.cf-pin {
+  /* one visible screen: --tpl-vh in the viewer, 100svh standalone */
+  min-height: var(--tpl-vh, 100svh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  width: 100%;
+}
+.cf-wall-inner {
+  width: min(1060px, 100% - clamp(2.5rem, 6vw, 5rem));
+  margin-inline: auto;
+}
+.cf-wall .cf-eyebrow {
+  color: var(--color-green-soft);
+}
+.cf-wall-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem 2rem;
+  align-items: end;
+  margin-bottom: 1.6rem;
+}
+.cf-wall-head .cf-h2 {
+  margin: 0;
+  color: var(--color-paper);
+}
+.cf-commit {
+  text-align: right;
+}
+.cf-commit-num {
+  font-family: var(--font-mono);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--color-green-soft);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.cf-commit-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  opacity: 0.7;
+  margin-top: 0.4rem;
+}
+.cf-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(247, 243, 234, 0.16);
+  overflow: hidden;
+  margin-bottom: 1.6rem;
+}
+.cf-progress-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-purple), var(--color-green));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.cf-mosaic {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: clamp(0.4rem, 1vw, 0.7rem);
+  perspective: 900px;
+}
+.cf-tile {
+  aspect-ratio: 1 / 1;
+  border-radius: 22%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(0.7rem, 1.6vw, 1rem);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.cf-tile.t-purple { background: var(--color-purple); color: #f7f3ea; }
+.cf-tile.t-purple2 { background: var(--color-purple-soft); color: #1c1917; }
+.cf-tile.t-green { background: var(--color-green); color: #f7f3ea; }
+.cf-tile.t-green2 { background: var(--color-green-soft); color: #1c1917; }
+.cf-tile.t-paper { background: var(--color-paper-deep); color: #1c1917; }
+.cf-tile.t-inktile { background: #2e2a26; color: #f7f3ea; }
+.cf-wall-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+.cf-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(247, 243, 234, 0.75);
+}
+.cf-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cf-swatch {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+.cf-swatch.purple { background: var(--color-purple); }
+.cf-swatch.green { background: var(--color-green); }
+.cf-swatch.paper { background: var(--color-paper-deep); }
+.cf-wall-hint {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 234, 0.55);
+}
+
+/* ---------- features ---------- */
+.cf-feat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+  margin-top: 2.8rem;
+}
+.cf-feat {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  /* hover on `translate`: GSAP owns `transform` for the reveal */
+  transition: translate 0.25s ease, box-shadow 0.25s ease;
+}
+.cf-feat:hover {
+  translate: 0 -6px;
+  box-shadow: var(--shadow);
+}
+.cf-feat-img {
+  aspect-ratio: 4 / 3;
+  overflow: clip;
+}
+.cf-feat-img .a-img,
+.cf-feat-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cf-feat-body {
+  padding: 1.6rem 1.6rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
+}
+.cf-feat-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-purple);
+}
+.cf-feat h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.cf-feat p {
+  line-height: 1.65;
+  color: var(--color-ink-soft);
+  margin: 0;
+  flex: 1;
+}
+.cf-feat-cap {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-green);
+  border-top: 1px dashed var(--color-line);
+  padding-top: 0.9rem;
+}
+
+/* ---------- showcase ---------- */
+.cf-showcase {
+  background: var(--color-paper-deep);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.cf-show-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+  margin-top: 2.8rem;
+}
+.cf-card {
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-height: 19rem;
+  color: var(--color-paper);
+  transition: translate 0.25s ease, rotate 0.25s ease;
+}
+.cf-card:hover {
+  translate: 0 -6px;
+  rotate: -0.5deg;
+}
+.cf-card.tone-purple { background: linear-gradient(135deg, #7c3aed, #5b21b6); }
+.cf-card.tone-green { background: linear-gradient(135deg, #16a34a, #0d5c2e); }
+.cf-card.tone-paper { background: linear-gradient(135deg, #efe7d3, #d9cba6); color: var(--color-ink); }
+.cf-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+.cf-card-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.cf-card-stars svg {
+  width: 0.95em;
+  height: 0.95em;
+}
+.cf-card h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.cf-card p {
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.92;
+  flex: 1;
+}
+.cf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.cf-tags span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.25em 0.8em;
+  opacity: 0.9;
+}
+.cf-show-more {
+  margin-top: 2.2rem;
+  text-align: center;
+}
+
+/* ---------- stats band ---------- */
+.cf-stats {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.cf-stats .cf-eyebrow {
+  color: var(--color-purple-soft);
+}
+.cf-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.4rem;
+}
+.cf-stat {
+  border-left: 2px solid var(--color-purple);
+  padding-left: 1.4rem;
+}
+.cf-stat:nth-child(2) { border-color: var(--color-green); }
+.cf-stat:nth-child(3) { border-color: var(--color-paper-deep); }
+.cf-stat-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.cf-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-top: 0.6rem;
+}
+
+/* ---------- docs teaser ---------- */
+.cf-docs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  margin-top: 2.6rem;
+}
+.cf-docs-img {
+  border-radius: var(--radius);
+  overflow: clip;
+  box-shadow: var(--shadow);
+  aspect-ratio: 4 / 3.4;
+}
+.cf-docs-img .a-img,
+.cf-docs-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cf-steps {
+  list-style: none;
+  margin: 1.8rem 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.cf-step {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 1rem;
+  align-items: baseline;
+}
+.cf-step-num {
+  font-family: var(--font-mono);
+  color: var(--color-green-soft);
+  font-size: 0.85rem;
+}
+.cf-step code {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #f7f3ea;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.cf-step-note {
+  grid-column: 2;
+  font-size: 0.85rem;
+  color: rgba(247, 243, 234, 0.6);
+}
+
+/* ---------- CTA ---------- */
+.cf-cta {
+  background: linear-gradient(120deg, var(--color-purple) 0%, #5b21b6 60%, #4c1d95 100%);
+  color: var(--color-paper);
+  text-align: center;
+  position: relative;
+  overflow: clip;
+}
+.cf-cta::before,
+.cf-cta::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(247, 243, 234, 0.08);
+}
+.cf-cta::before {
+  width: 34rem;
+  height: 34rem;
+  left: -10rem;
+  top: -12rem;
+}
+.cf-cta::after {
+  width: 26rem;
+  height: 26rem;
+  right: -8rem;
+  bottom: -10rem;
+}
+.cf-cta-inner {
+  position: relative;
+  z-index: 1;
+}
+.cf-cta .cf-eyebrow {
+  color: var(--color-green-soft);
+}
+.cf-cta .cf-h2 {
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  color: var(--color-paper);
+}
+.cf-cta p {
+  max-width: 52ch;
+  margin: 0 auto 2.2rem;
+  line-height: 1.65;
+  color: rgba(247, 243, 234, 0.85);
+}
+
+/* ---------- footer ---------- */
+.cf-footer {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: clamp(3.5rem, 6vw, 5rem) 0 2.2rem;
+}
+.cf-foot-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 2.2rem;
+  margin-bottom: 3rem;
+}
+.cf-foot-brand p {
+  color: rgba(247, 243, 234, 0.65);
+  line-height: 1.6;
+  margin: 1rem 0 1.4rem;
+  max-width: 34ch;
+}
+.cf-foot-mail {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-green-soft);
+  text-decoration: none;
+}
+.cf-foot-col h4 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 234, 0.5);
+  margin: 0 0 1rem;
+}
+.cf-foot-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.cf-foot-col a {
+  text-decoration: none;
+  color: rgba(247, 243, 234, 0.8);
+  font-size: 0.95rem;
+}
+.cf-foot-col a:hover {
+  color: var(--color-paper);
+}
+.cf-foot-base {
+  border-top: 1px solid rgba(247, 243, 234, 0.16);
+  padding-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: rgba(247, 243, 234, 0.55);
+}
+
+/* ---------- reveal default + reduced-motion ----------
+   (no permanent will-change on .cf-rv: GSAP promotes while tweening) */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-09-opensource .cf-rv {
+    animation: cf-fade 0.9s ease both;
+  }
+  .tpl-design-09-opensource .cf-btn:hover,
+  .tpl-design-09-opensource .cf-feat:hover,
+  .tpl-design-09-opensource .cf-card:hover {
+    translate: none;
+    rotate: none;
+  }
+}
+
+/* ---------- pinned wall (desktop + motion; .is-live set by JS) ----------
+   Exactly one visible screen under the sticky nav. 12 x 4 tiles reads like
+   a contribution graph and fits the screen; JS scales .cf-wall-inner down
+   on screens that are shorter still. */
+.cf-pin.is-live {
+  height: calc(var(--tpl-vh, 100svh) - var(--cf-nav-h, 64px));
+  min-height: 0;
+  padding: clamp(1rem, 3vh, 2rem) 0;
+  overflow: hidden;
+}
+.cf-pin.is-live .cf-wall-inner {
+  transform-origin: 50% 50%;
+}
+.cf-pin.is-live .cf-mosaic {
+  grid-template-columns: repeat(12, 1fr);
+}
+.cf-pin.is-live .cf-wall-head {
+  margin-bottom: 1.2rem;
+}
+.cf-pin.is-live .cf-progress {
+  margin-bottom: 1.2rem;
+}
+.cf-pin.is-live .cf-wall-foot {
+  margin-top: 1.2rem;
+}
+@keyframes cf-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1023px) {
+  .cf-mosaic {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .cf-feat-grid,
+  .cf-show-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cf-docs-grid {
+    grid-template-columns: 1fr;
+  }
+  .cf-docs-img {
+    aspect-ratio: 16 / 9;
+  }
+  .cf-foot-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .cf-links {
+    display: none;
+  }
+  .cf-nav .cf-btn {
+    margin-left: auto;
+  }
+  .cf-hero {
+    min-height: 0;
+  }
+  .tpl-design-09-opensource .sf-overlay::before {
+    background: linear-gradient(
+      180deg,
+      rgba(247, 243, 234, 0.94) 0%,
+      rgba(247, 243, 234, 0.78) 55%,
+      rgba(247, 243, 234, 0.55) 100%
+    );
+  }
+  .cf-mosaic {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .cf-wall-head {
+    grid-template-columns: 1fr;
+  }
+  .cf-commit {
+    text-align: left;
+  }
+  .cf-feat-grid,
+  .cf-show-grid {
+    grid-template-columns: 1fr;
+  }
+  .cf-stat-row {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+  .cf-foot-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+}

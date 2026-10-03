@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-03-maison',
+  num: '03',
+  name: 'Maison Éclat',
+  tag: 'Luxury',
+  style: 'Dark editorial boutique',
+  animation: 'Veil unveiling, slow crossfades',
+  typography: 'Cormorant Garamond + Manrope',
+  layout: 'Full-bleed spreads, letterboxed',
+  mood: 'Opulent, silent, precise',
+  palette: 'Near-black / champagne',
+  features: [
+    'Veil unveiling product flow',
+    'Private client cart',
+    'Editorial spreads',
+    'Atelier story',
+    'Concierge contact',
+  ],
+  fonts: { display: 'Cormorant Garamond', body: 'Manrope' },
+  colors: { primary: '#0E0D0B', accent: '#D9C39A' },
+};

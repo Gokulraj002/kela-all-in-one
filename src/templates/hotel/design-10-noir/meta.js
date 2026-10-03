@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-10-noir',
+  num: '10',
+  name: 'Hotel Obscura',
+  tag: 'Cinematic Hotel',
+  style: 'Experimental dark cinematic',
+  animation: 'Filmstrip advance with light-leak sweeps',
+  typography: 'Cormorant Garamond + Archivo',
+  layout: 'Full-bleed dark, vertical filmstrip',
+  mood: 'Noir, strange, after-midnight',
+  palette: 'Near-black / bone',
+  features: [
+    'Vertical filmstrip room gallery with light-leak sweeps',
+    'Hidden overlay menu with circular clip-path reveal',
+    'Custom lerped cursor ring (desktop)',
+    'Signature rain-on-glass hero loop',
+    'Practical section set in mono',
+    'Live booking widget with rate math',
+  ],
+  fonts: { display: 'Archivo', body: 'Cormorant Garamond' },
+  colors: { primary: '#0C0C0E', accent: '#D8D3C8' },
+};

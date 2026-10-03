@@ -1,0 +1,878 @@
+/* design-09-indie · June Park — intimate indie freelancer site.
+   Warm white / espresso / terracotta. Newsreader + Instrument Sans.
+   All tokens scoped to .tpl-design-09-indie — never :root. */
+
+.tpl-design-09-indie {
+  --color-background: #FBF7EF;
+  --color-surface: #F3ECDD;
+  --color-primary: #33261A;
+  --color-secondary: #6B5741;
+  --color-accent: #C26A3D;
+  --color-text: #33261A;
+  --color-muted: #97816A;
+  --color-line: #E7DBC6;
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body: 'Instrument Sans', -apple-system, 'Segoe UI', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-09-indie ::selection {
+  background: color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+
+.tpl-design-09-indie a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- shared image primitive ---------- */
+.tpl-design-09-indie .a-img {
+  display: block;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-09-indie .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tpl-design-09-indie .a-img-ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 3rem;
+  color: var(--color-muted);
+  background: var(--color-surface);
+}
+
+/* ---------- layout helpers ---------- */
+.tpl-design-09-indie .jp-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+}
+.tpl-design-09-indie .jp-section {
+  padding: clamp(72px, 11vh, 136px) 0;
+}
+.tpl-design-09-indie .jp-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 18px;
+}
+.tpl-design-09-indie .jp-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 16px;
+  max-width: 18ch;
+}
+.tpl-design-09-indie .jp-lede {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--color-secondary);
+  max-width: 58ch;
+  margin: 0;
+}
+.tpl-design-09-indie .jp-rule {
+  border: none;
+  border-top: 1px solid var(--color-line);
+  margin: 0;
+}
+
+/* ---------- nav ---------- */
+.tpl-design-09-indie .jp-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 247, 239, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-09-indie .jp-nav-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px clamp(20px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.tpl-design-09-indie .jp-wordmark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  margin-right: auto;
+}
+.tpl-design-09-indie .jp-nav-links {
+  display: flex;
+  gap: 26px;
+}
+.tpl-design-09-indie .jp-nav-links a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-secondary);
+  position: relative;
+  padding: 4px 0;
+}
+.tpl-design-09-indie .jp-nav-links a:hover {
+  color: var(--color-accent);
+}
+.tpl-design-09-indie .jp-nav-cta {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #FBF7EF !important;
+  background: var(--color-accent);
+  padding: 9px 20px;
+  border-radius: 999px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.tpl-design-09-indie .jp-nav-cta:hover {
+  background: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* ---------- hero ---------- */
+.tpl-design-09-indie .jp-hero {
+  padding: clamp(56px, 8vh, 104px) 0 clamp(48px, 7vh, 88px);
+}
+.tpl-design-09-indie .jp-hero-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: clamp(36px, 6vw, 88px);
+  align-items: center;
+}
+.tpl-design-09-indie .jp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  padding: 9px 18px;
+  border-radius: 999px;
+  margin-bottom: 28px;
+  transform-origin: center;
+}
+.tpl-design-09-indie .jp-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex: none;
+}
+.tpl-design-09-indie .jp-h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  font-size: clamp(2.6rem, 5.4vw, 4.3rem);
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  margin: 0 0 26px;
+}
+.tpl-design-09-indie .jp-h1 .jp-name {
+  font-style: italic;
+  color: var(--color-accent);
+  display: inline-block;
+}
+.tpl-design-09-indie .jp-statement {
+  font-family: var(--font-display);
+  font-size: clamp(1.12rem, 1.7vw, 1.35rem);
+  line-height: 1.6;
+  color: var(--color-secondary);
+  max-width: 44ch;
+  margin: 0 0 36px;
+}
+.tpl-design-09-indie .jp-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+.tpl-design-09-indie .jp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #FBF7EF;
+  background: var(--color-primary);
+  padding: 15px 30px;
+  border-radius: 999px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.tpl-design-09-indie .jp-btn:hover {
+  background: var(--color-accent);
+  transform: translateY(-2px);
+}
+.tpl-design-09-indie .jp-link-arrow {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-secondary);
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 3px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-09-indie .jp-link-arrow:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* portrait card */
+.tpl-design-09-indie .jp-portrait {
+  position: relative;
+}
+.tpl-design-09-indie .jp-portrait-frame {
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  box-shadow: 0 24px 60px -28px rgba(51, 38, 26, 0.35);
+  aspect-ratio: 4 / 4.6;
+  background: var(--color-surface);
+}
+.tpl-design-09-indie .jp-portrait-frame .a-img {
+  height: 100%;
+}
+.tpl-design-09-indie .jp-portrait-caption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-muted);
+  margin: 14px 6px 0;
+}
+
+/* hero desk frame-scrub band (scroll-driven sequence, replaces the loop video)
+   The container stays unclipped and unsized: ScrollFrames pins .sf-wrap and
+   its pin spacer must be free to push the next sections down (a fixed-ratio,
+   overflow-hidden box here clipped the spacer, so the work section scrolled
+   straight through the pinned band). The pinned wrap is one visible screen
+   tall and centres the band; the band's ratio and chrome live on the stage. */
+.tpl-design-09-indie .jp-deskband {
+  position: relative;
+}
+.tpl-design-09-indie .jp-deskband .sf-wrap {
+  height: var(--tpl-vh, 100svh);
+  display: grid;
+  align-content: center;
+}
+.tpl-design-09-indie .jp-deskband .sf-stage {
+  aspect-ratio: 21 / 9;
+  border-radius: 32px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+}
+.tpl-design-09-indie .jp-deskband .sf-static {
+  margin-top: clamp(48px, 7vh, 80px);
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+}
+.tpl-design-09-indie .jp-deskband-caption {
+  position: absolute;
+  left: 26px;
+  bottom: 22px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: #FBF7EF;
+  background: rgba(51, 38, 26, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+
+/* ---------- work ---------- */
+.tpl-design-09-indie .jp-work {
+  background: var(--color-background);
+}
+.tpl-design-09-indie .jp-work-head {
+  margin-bottom: clamp(44px, 6vh, 72px);
+}
+.tpl-design-09-indie .jp-project {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(36px, 5vh, 60px) 0;
+  border-top: 1px solid var(--color-line);
+}
+.tpl-design-09-indie .jp-project:last-of-type {
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-09-indie .jp-project.is-flip .jp-proj-img {
+  order: 2;
+}
+.tpl-design-09-indie .jp-proj-img {
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+.tpl-design-09-indie .jp-proj-img .a-img {
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tpl-design-09-indie .jp-proj-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-accent) 22%, transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.tpl-design-09-indie .jp-proj-img:hover .a-img {
+  transform: scale(1.035);
+}
+.tpl-design-09-indie .jp-proj-img:hover::after {
+  opacity: 1;
+}
+.tpl-design-09-indie .jp-proj-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-09-indie .jp-proj-meta .jp-proj-kind {
+  color: var(--color-accent);
+}
+.tpl-design-09-indie .jp-proj-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+.tpl-design-09-indie .jp-proj-note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--color-secondary);
+  margin: 0 0 18px;
+}
+.tpl-design-09-indie .jp-proj-learned {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 18px;
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--color-secondary);
+}
+.tpl-design-09-indie .jp-proj-learned strong {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 6px;
+}
+
+/* ---------- how I work ---------- */
+.tpl-design-09-indie .jp-how {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-09-indie .jp-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+  margin: clamp(40px, 5vh, 64px) 0;
+}
+.tpl-design-09-indie .jp-step {
+  background: var(--color-background);
+  border: 1px solid var(--color-line);
+  border-radius: 22px;
+  padding: clamp(26px, 3vw, 36px);
+}
+.tpl-design-09-indie .jp-step-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.6rem;
+  color: var(--color-accent);
+  line-height: 1;
+  display: block;
+  margin-bottom: 14px;
+}
+.tpl-design-09-indie .jp-step h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin: 0 0 10px;
+}
+.tpl-design-09-indie .jp-step p {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--color-secondary);
+  line-height: 1.65;
+}
+.tpl-design-09-indie .jp-do-dont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3vw, 40px);
+  margin-bottom: clamp(40px, 5vh, 60px);
+}
+.tpl-design-09-indie .jp-list-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-line);
+  border-radius: 22px;
+  padding: clamp(26px, 3vw, 36px);
+}
+.tpl-design-09-indie .jp-list-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.35rem;
+  margin: 0 0 18px;
+}
+.tpl-design-09-indie .jp-list-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 13px;
+}
+.tpl-design-09-indie .jp-list-card li {
+  position: relative;
+  padding-left: 30px;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+.tpl-design-09-indie .jp-list-card.is-do li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+.tpl-design-09-indie .jp-list-card.is-dont li::before {
+  content: '×';
+  position: absolute;
+  left: 2px;
+  color: var(--color-muted);
+  font-weight: 400;
+  font-size: 1.1em;
+}
+.tpl-design-09-indie .jp-availability {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: var(--color-primary);
+  color: #F3ECDD;
+  border-radius: 24px;
+  padding: clamp(28px, 4vw, 44px);
+}
+.tpl-design-09-indie .jp-availability-mark {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(243, 236, 221, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--brand-on-dark, var(--color-accent));
+  background: color-mix(in srgb, var(--brand-on-dark, var(--color-accent)) 16%, transparent);
+}
+.tpl-design-09-indie .jp-availability p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.55;
+}
+
+/* ---------- notes / journal (M9) ---------- */
+.tpl-design-09-indie .jp-notes-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto clamp(48px, 7vh, 80px);
+}
+.tpl-design-09-indie .jp-notes-head .jp-h2,
+.tpl-design-09-indie .jp-notes-head .jp-lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+.tpl-design-09-indie .jp-entry {
+  margin-bottom: clamp(72px, 10vh, 120px);
+}
+.tpl-design-09-indie .jp-entry:last-child {
+  margin-bottom: 0;
+}
+.tpl-design-09-indie .jp-entry-head {
+  max-width: 680px;
+  margin: 0 auto clamp(28px, 4vh, 44px);
+  text-align: center;
+}
+.tpl-design-09-indie .jp-entry-date {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 12px;
+}
+.tpl-design-09-indie .jp-entry-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  line-height: 1.18;
+  margin: 0;
+}
+.tpl-design-09-indie .jp-prose {
+  max-width: 660px;
+  margin: 0 auto;
+}
+.tpl-design-09-indie .jp-pwrap {
+  position: relative;
+  margin-bottom: 1.7em;
+}
+.tpl-design-09-indie .jp-prose p {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.08rem, 1.5vw, 1.22rem);
+  line-height: 1.75;
+  margin: 0;
+  color: var(--color-text);
+}
+.tpl-design-09-indie .jp-prose p + p {
+  margin-top: 0;
+}
+
+/* M9 margin notes — absolute asides on desktop */
+.tpl-design-09-indie .jp-margin {
+  position: absolute;
+  top: 0.2em;
+  width: 210px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--color-secondary);
+}
+.tpl-design-09-indie .jp-margin.is-right {
+  left: calc(100% + 56px);
+}
+.tpl-design-09-indie .jp-margin.is-left {
+  right: calc(100% + 56px);
+  text-align: right;
+}
+.tpl-design-09-indie .jp-margin::before {
+  content: '';
+  display: block;
+  width: 34px;
+  height: 2px;
+  background: var(--color-accent);
+  margin-bottom: 10px;
+}
+.tpl-design-09-indie .jp-margin.is-left::before {
+  margin-left: auto;
+}
+.tpl-design-09-indie .jp-margin-photo {
+  margin-top: 14px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  aspect-ratio: 4 / 3;
+  background: var(--color-surface);
+}
+.tpl-design-09-indie .jp-margin-photo .a-img {
+  height: 100%;
+}
+
+/* wavy hand-drawn underline */
+.tpl-design-09-indie .jp-key {
+  position: relative;
+  display: inline-block;
+  white-space: normal;
+}
+.tpl-design-09-indie .jp-squig {
+  position: absolute;
+  left: -2%;
+  bottom: -0.32em;
+  width: 104%;
+  height: 0.42em;
+  overflow: visible;
+  pointer-events: none;
+}
+.tpl-design-09-indie .jp-squig path {
+  stroke: var(--color-accent);
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* ---------- about ---------- */
+.tpl-design-09-indie .jp-about {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-09-indie .jp-about-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(36px, 6vw, 88px);
+  align-items: start;
+}
+.tpl-design-09-indie .jp-about-photo {
+  border-radius: 50% 50% 24px 24px / 38% 38% 24px 24px;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  aspect-ratio: 4 / 5;
+  background: var(--color-background);
+}
+.tpl-design-09-indie .jp-about-photo .a-img {
+  height: 100%;
+}
+.tpl-design-09-indie .jp-about-copy p {
+  font-family: var(--font-display);
+  font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+  line-height: 1.7;
+  margin: 0 0 1.5em;
+}
+.tpl-design-09-indie .jp-facts {
+  list-style: none;
+  margin: 36px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--color-line);
+}
+.tpl-design-09-indie .jp-facts li {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 18px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 0.95rem;
+}
+.tpl-design-09-indie .jp-facts .jp-fact-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding-top: 3px;
+}
+.tpl-design-09-indie .jp-facts .jp-fact-value {
+  color: var(--color-text);
+}
+
+/* ---------- contact ---------- */
+.tpl-design-09-indie .jp-contact {
+  text-align: center;
+}
+.tpl-design-09-indie .jp-contact .jp-h2 {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+}
+.tpl-design-09-indie .jp-contact .jp-lede {
+  margin: 0 auto 40px;
+}
+.tpl-design-09-indie .jp-email {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 4.4vw, 3rem);
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 6px;
+  margin-bottom: 48px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  overflow-wrap: anywhere;
+}
+.tpl-design-09-indie .jp-email:hover {
+  color: var(--color-accent);
+}
+.tpl-design-09-indie .jp-call-card {
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 24px;
+  padding: clamp(28px, 4vw, 40px);
+}
+.tpl-design-09-indie .jp-call-card p {
+  margin: 0 0 22px;
+  color: var(--color-secondary);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+.tpl-design-09-indie .jp-promise {
+  margin-top: 28px;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-muted);
+  font-size: 1.02rem;
+}
+
+/* ---------- footer ---------- */
+.tpl-design-09-indie .jp-footer {
+  border-top: 1px solid var(--color-line);
+  padding: 34px 0 40px;
+}
+.tpl-design-09-indie .jp-footer-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.tpl-design-09-indie .jp-footer-word {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-right: auto;
+}
+.tpl-design-09-indie .jp-footer-line {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  font-style: italic;
+  font-family: var(--font-display);
+}
+.tpl-design-09-indie .jp-footer-socials {
+  display: flex;
+  gap: 20px;
+}
+.tpl-design-09-indie .jp-footer-socials a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+.tpl-design-09-indie .jp-footer-socials a:hover {
+  color: var(--color-accent);
+}
+.tpl-design-09-indie .jp-copy {
+  margin-top: 18px;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1360px) {
+  /* M9: margin notes become inline asides */
+  .tpl-design-09-indie .jp-margin {
+    position: static;
+    width: auto;
+    margin-top: 14px;
+    padding: 14px 18px;
+    background: var(--color-surface);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 14px 14px 0;
+    text-align: left !important;
+  }
+  .tpl-design-09-indie .jp-margin::before {
+    display: none;
+  }
+  .tpl-design-09-indie .jp-margin-photo {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 900px) {
+  .tpl-design-09-indie .jp-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-09-indie .jp-portrait {
+    max-width: 440px;
+  }
+  .tpl-design-09-indie .jp-deskband .sf-stage {
+    aspect-ratio: 4 / 5;
+    border-radius: 22px;
+  }
+  .tpl-design-09-indie .jp-deskband .sf-static {
+    border-radius: 22px;
+  }
+  .tpl-design-09-indie .jp-project {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .tpl-design-09-indie .jp-project.is-flip .jp-proj-img {
+    order: 0;
+  }
+  .tpl-design-09-indie .jp-steps {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-09-indie .jp-do-dont {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-09-indie .jp-about-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-09-indie .jp-about-photo {
+    max-width: 380px;
+  }
+  .tpl-design-09-indie .jp-nav-links {
+    display: none;
+  }
+  .tpl-design-09-indie .jp-availability {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .tpl-design-09-indie .jp-facts li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .tpl-design-09-indie .jp-deskband-caption {
+    left: 14px;
+    bottom: 12px;
+    font-size: 0.85rem;
+  }
+  .tpl-design-09-indie .jp-h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-09-indie *,
+  .tpl-design-09-indie *::before,
+  .tpl-design-09-indie *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

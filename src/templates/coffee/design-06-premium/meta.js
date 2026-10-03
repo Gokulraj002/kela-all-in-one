@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-06-premium',
+  num: '06',
+  name: 'Maison Noir',
+  tag: 'Premium Coffee Brand',
+  style: 'Dark cinematic luxury',
+  animation: 'Slow cinematic reveals · lot count-up · certificate unfold',
+  typography: 'Cormorant Garamond + Manrope',
+  layout: 'Museum spacing · one product per viewport',
+  mood: 'Opulent · Silent · Precise',
+  palette: 'Near-black / champagne',
+  features: [
+    'Numbered lots with scroll count-up',
+    'Certificate clip-path unfold',
+    '0.6s cinematic hero hold',
+    'Gift-wrap ribbon flip · private circle signup',
+  ],
+  fonts: { display: 'Cormorant Garamond', body: 'Manrope' },
+  colors: { primary: '#D9C9A8', accent: '#C9A961' },
+};

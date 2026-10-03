@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-05-omakase',
+  num: '05',
+  name: 'Umi',
+  tag: 'Omakase',
+  style: 'Japanese restraint, counter serenity',
+  animation: 'Conveyor counter-serve, opacity-only reveals',
+  typography: 'Shippori Mincho + Zen Kaku Gothic New',
+  layout: 'Serene single column, pinned counter progression',
+  mood: 'Restrained, precise, reverent',
+  palette: 'Washi / ink / vermillion',
+  features: [
+    'Served course progression',
+    'Spotlit counter serve',
+    'Omakase etiquette',
+    '12-seat scarcity',
+    "Chef's counter story",
+  ],
+  fonts: { display: 'Shippori Mincho', body: 'Zen Kaku Gothic New' },
+  colors: { primary: '#1C1C1A', accent: '#B03A2E' },
+};

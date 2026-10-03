@@ -1,0 +1,490 @@
+/* The Collective Edit — design-07-boutique · styles.css
+   Tokens live ONLY on .tpl-design-07-boutique. No :root. No hardcoded hex. */
+
+.tpl-design-07-boutique {
+  --color-background: #FCFBF8;
+  --color-surface: #F1EEE7;
+  --color-primary: #1E1C19;
+  --color-accent: #BE2F5B;
+  --color-text: #1E1C19;
+  --color-muted: #8E8A80;
+  --font-display: 'Marcellus', serif;
+  --font-body: 'Outfit', sans-serif;
+  --hairline: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  --ink-soft: color-mix(in srgb, var(--color-primary) 72%, var(--color-background));
+  --accent-soft: color-mix(in srgb, var(--color-accent) 10%, var(--color-background));
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-07-boutique *,
+.tpl-design-07-boutique *::before,
+.tpl-design-07-boutique *::after { box-sizing: border-box; }
+
+.tpl-design-07-boutique img { max-width: 100%; }
+
+.tpl-design-07-boutique a { color: inherit; }
+
+.tpl-design-07-boutique button { font: inherit; color: inherit; }
+
+.tpl-design-07-boutique section[id] { scroll-margin-top: 88px; }
+
+.tpl-design-07-boutique :focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Shared image / video primitives ------------------------------------ */
+.tpl-design-07-boutique .a-img { display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-07-boutique .a-img img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+}
+.tpl-design-07-boutique .a-img-ph {
+  display: flex; align-items: center; justify-content: center;
+  aspect-ratio: 4 / 5; font-family: var(--font-display); font-size: 3rem;
+  color: var(--color-muted); background: var(--color-surface);
+}
+/* Type + section furniture ------------------------------------------- */
+.tpl-design-07-boutique .ce-eyebrow {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--color-muted); margin: 0 0 1.1rem;
+}
+.tpl-design-07-boutique .ce-sec-head {
+  max-width: 1440px; margin: 0 auto;
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.25rem, 5vw, 5rem) clamp(2.5rem, 4vw, 4rem);
+}
+.tpl-design-07-boutique .ce-sec-title {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem); line-height: 1.12; letter-spacing: 0.01em;
+  margin: 0 0 1.25rem; color: var(--color-primary); max-width: 16em;
+}
+.tpl-design-07-boutique .ce-sec-intro {
+  font-size: clamp(1rem, 1.4vw, 1.15rem); color: var(--ink-soft);
+  max-width: 44em; margin: 0;
+}
+.tpl-design-07-boutique .ce-note {
+  font-size: 0.85rem; color: var(--color-muted); max-width: 60em; margin: 0;
+}
+
+/* Buttons ------------------------------------------------------------- */
+.tpl-design-07-boutique .ce-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  font-weight: 500; font-size: 0.92rem; letter-spacing: 0.04em;
+  padding: 0.95rem 1.7rem; border: 1px solid transparent; border-radius: 2px;
+  cursor: pointer; text-decoration: none; background: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-07-boutique .ce-btn-primary { background: var(--color-accent); color: var(--color-background); border-color: var(--color-accent); }
+.tpl-design-07-boutique .ce-btn-primary:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--color-accent) 88%, var(--color-primary)); }
+.tpl-design-07-boutique .ce-btn-ghost { border-color: var(--hairline); color: var(--color-primary); }
+.tpl-design-07-boutique .ce-btn-ghost:hover { transform: translateY(-2px); border-color: var(--color-primary); }
+.tpl-design-07-boutique .ce-btn-large { padding: 1.15rem 2.4rem; font-size: 1rem; }
+
+/* Nav ------------------------------------------------------------------ */
+.tpl-design-07-boutique .ce-nav {
+  position: sticky; top: 0; z-index: 60;
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding: 1rem clamp(1.25rem, 5vw, 5rem);
+  /* near-opaque instead of backdrop-filter: no blur to recompute while the rails scrub */
+  background: color-mix(in srgb, var(--color-background) 95%, transparent);
+  border-bottom: 1px solid var(--hairline);
+}
+.tpl-design-07-boutique .ce-brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+.tpl-design-07-boutique .ce-brand-mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.1rem; height: 2.1rem; border: 1px solid var(--color-primary);
+  font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.05em;
+}
+.tpl-design-07-boutique .ce-brand-name { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 0.02em; white-space: nowrap; }
+.tpl-design-07-boutique .ce-nav-links { display: flex; gap: 2rem; }
+.tpl-design-07-boutique .ce-nav-links a {
+  text-decoration: none; font-size: 0.88rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-soft); position: relative; padding: 0.25rem 0;
+}
+.tpl-design-07-boutique .ce-nav-links a::after {
+  content: ''; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
+  background: var(--color-accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.tpl-design-07-boutique .ce-nav-links a:hover::after { transform: scaleX(1); }
+.tpl-design-07-boutique .ce-nav-cta { padding: 0.7rem 1.3rem; font-size: 0.85rem; }
+
+/* Hero ----------------------------------------------------------------- */
+.tpl-design-07-boutique .ce-hero {
+  display: grid; grid-template-columns: 1.02fr 0.98fr; gap: clamp(2rem, 5vw, 5rem);
+  align-items: center; max-width: 1440px; margin: 0 auto;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem) clamp(5rem, 9vw, 8rem);
+  min-height: 88vh;
+}
+.tpl-design-07-boutique .ce-hero-exhibition {
+  font-family: var(--font-display); font-size: clamp(1.25rem, 2vw, 1.6rem);
+  margin: 0 0 0.35rem; color: var(--color-primary);
+}
+.tpl-design-07-boutique .ce-hero-dates {
+  color: var(--color-accent); font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; font-size: 0.8rem; margin: 0 0 2rem;
+}
+.tpl-design-07-boutique .ce-hero-title { margin: 0 0 1.6rem; }
+.tpl-design-07-boutique .ce-hero-words {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(2.7rem, 5.6vw, 4.8rem); line-height: 1.08; letter-spacing: 0.005em;
+  color: var(--color-primary);
+}
+.tpl-design-07-boutique .ce-w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.tpl-design-07-boutique .ce-wi { display: inline-block; will-change: transform; }
+.tpl-design-07-boutique .ce-hero-sub { font-size: clamp(1rem, 1.5vw, 1.18rem); color: var(--ink-soft); max-width: 34em; margin: 0 0 2.4rem; }
+.tpl-design-07-boutique .ce-hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
+.tpl-design-07-boutique .ce-hero-media { position: relative; }
+.tpl-design-07-boutique .ce-hero-img { aspect-ratio: 4 / 4.6; }
+.tpl-design-07-boutique .ce-hero-img img { aspect-ratio: 4 / 4.6; }
+
+.tpl-design-07-boutique .ce-index-card {
+  position: absolute; left: -2.2rem; bottom: 2.2rem;
+  background: var(--color-background); border: 1px solid var(--hairline);
+  padding: 1.4rem 1.6rem; max-width: 290px; width: calc(100% - 3rem);
+  animation: ceGlow 2.5s ease-in-out infinite;
+}
+.tpl-design-07-boutique .ce-index-card.is-paused { animation-play-state: paused; }
+@keyframes ceGlow {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 0%, transparent); border-color: var(--hairline); }
+  50% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-accent) 14%, transparent); border-color: color-mix(in srgb, var(--color-accent) 55%, transparent); }
+}
+.tpl-design-07-boutique .ce-index-kicker {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--color-accent); margin: 0 0 0.5rem;
+}
+.tpl-design-07-boutique .ce-index-line { font-size: 0.92rem; margin: 0 0 0.9rem; color: var(--color-primary); }
+.tpl-design-07-boutique .ce-index-line strong { font-weight: 600; }
+.tpl-design-07-boutique .ce-index-card ul { list-style: none; margin: 0 0 1rem; padding: 0; }
+.tpl-design-07-boutique .ce-index-card li {
+  display: flex; justify-content: space-between; gap: 1rem; padding: 0.45rem 0;
+  border-top: 1px solid var(--hairline); font-size: 0.85rem;
+}
+.tpl-design-07-boutique .ce-index-card li span { font-family: var(--font-display); }
+.tpl-design-07-boutique .ce-index-card li em { font-style: normal; color: var(--color-muted); text-align: right; }
+.tpl-design-07-boutique .ce-index-link { font-size: 0.85rem; font-weight: 500; color: var(--color-accent); text-decoration: none; }
+
+/* Designers / mirrorColumns -------------------------------------------- */
+.tpl-design-07-boutique .ce-designers { background: var(--color-background); }
+
+.tpl-design-07-boutique .ce-mirror-stage {
+  position: relative; height: calc(var(--tpl-vh, 100vh) - 5.5rem); min-height: 420px; max-height: 1000px;
+  display: grid; grid-template-columns: 1fr 250px 1fr; gap: clamp(1rem, 3vw, 3rem);
+  /* one row exactly as tall as the stage: the rails overflow it (and drift),
+     the centre names column stays centred in the visible stage */
+  grid-template-rows: minmax(0, 1fr);
+  max-width: 1440px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 5rem);
+  overflow: hidden;
+}
+.tpl-design-07-boutique .ce-mirror-stage > .ce-rail { align-self: start; }
+.tpl-design-07-boutique .ce-rail { display: flex; flex-direction: column; gap: 2.2rem; will-change: transform; }
+.tpl-design-07-boutique .ce-tile { margin: 0; }
+.tpl-design-07-boutique .ce-tile-img { aspect-ratio: 4 / 5; }
+.tpl-design-07-boutique .ce-tile-img img { aspect-ratio: 4 / 5; }
+.tpl-design-07-boutique .ce-tile.is-active .ce-tile-img { outline: 2px solid var(--color-accent); outline-offset: 5px; }
+.tpl-design-07-boutique .ce-tile figcaption { padding: 0.7rem 0.1rem 0; }
+.tpl-design-07-boutique .ce-tile figcaption span { display: block; font-family: var(--font-display); font-size: 1rem; color: var(--color-primary); }
+.tpl-design-07-boutique .ce-tile figcaption em { font-style: normal; font-size: 0.8rem; color: var(--color-muted); letter-spacing: 0.04em; }
+
+.tpl-design-07-boutique .ce-names {
+  display: flex; flex-direction: column; justify-content: center; gap: 0.4rem;
+  border-left: 1px solid var(--hairline); border-right: 1px solid var(--hairline);
+  padding: 0 clamp(0.8rem, 1.6vw, 1.6rem); z-index: 2;
+  background: color-mix(in srgb, var(--color-background) 82%, transparent);
+}
+.tpl-design-07-boutique .ce-name {
+  display: flex; align-items: baseline; gap: 0.8rem; background: none; border: 0;
+  padding: 0.65rem 0.2rem; cursor: pointer; text-align: left; width: 100%;
+  transition: transform 0.35s ease;
+}
+.tpl-design-07-boutique .ce-name:hover { transform: translateY(-3px); }
+.tpl-design-07-boutique .ce-name-index { font-size: 0.7rem; letter-spacing: 0.18em; color: var(--color-muted); font-weight: 500; }
+.tpl-design-07-boutique .ce-name-text {
+  font-family: var(--font-display); font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  color: var(--color-muted); line-height: 1.3;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px; background-repeat: no-repeat; background-position: left 96%;
+  transition: background-size 0.35s ease, color 0.35s ease;
+}
+.tpl-design-07-boutique .ce-name:hover .ce-name-text { background-size: 100% 1px; }
+.tpl-design-07-boutique .ce-name.is-active .ce-name-text { color: var(--color-accent); }
+.tpl-design-07-boutique .ce-name.is-selected .ce-name-text { color: var(--color-primary); background-size: 100% 1px; }
+
+/* Explorer panel */
+.tpl-design-07-boutique .ce-explorer {
+  max-width: 1440px; margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 5rem) 0;
+  display: grid; grid-template-columns: 1fr auto; gap: clamp(2rem, 4vw, 4rem); align-items: start;
+}
+.tpl-design-07-boutique .ce-explorer-name {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem); margin: 0 0 0.3rem; color: var(--color-primary);
+}
+.tpl-design-07-boutique .ce-explorer-aesthetic {
+  color: var(--color-accent); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  font-size: 0.78rem; margin: 0 0 1.1rem;
+}
+.tpl-design-07-boutique .ce-explorer-sig { font-size: 1.02rem; margin: 0 0 1.2rem; color: var(--color-primary); }
+.tpl-design-07-boutique .ce-explorer-philo {
+  margin: 0 0 1.6rem; padding-left: 1.2rem; border-left: 2px solid var(--color-accent);
+  font-family: var(--font-display); font-size: clamp(1.05rem, 1.8vw, 1.3rem); line-height: 1.5;
+  color: var(--ink-soft); max-width: 34em;
+}
+.tpl-design-07-boutique .ce-explorer-price { display: flex; flex-direction: column; gap: 0.2rem; margin: 0; }
+.tpl-design-07-boutique .ce-explorer-price span { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-muted); }
+.tpl-design-07-boutique .ce-explorer-price strong { font-weight: 500; font-size: 1.25rem; color: var(--color-primary); }
+.tpl-design-07-boutique .ce-explorer-badge { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding-top: 0.4rem; }
+.tpl-design-07-boutique .ce-explorer-badge span { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-muted); text-align: center; line-height: 1.7; }
+.tpl-design-07-boutique .ce-check { width: 64px; height: 64px; animation: ceStamp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both; transform-origin: center; }
+.tpl-design-07-boutique .ce-check circle { fill: none; stroke: var(--color-accent); stroke-width: 2.5; }
+.tpl-design-07-boutique .ce-check path { fill: none; stroke: var(--color-accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes ceStamp { from { transform: scale(1.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.tpl-design-07-boutique .ce-designers .ce-note { max-width: 1440px; margin: 0 auto; padding: 2.2rem clamp(1.25rem, 5vw, 5rem) clamp(5rem, 9vw, 8rem); }
+
+/* weftWipe divider */
+.tpl-design-07-boutique .ce-weft { display: flex; flex-direction: column; gap: 3px; padding: 0 clamp(1.25rem, 5vw, 5rem); max-width: 1440px; margin: 0 auto; }
+.tpl-design-07-boutique .ce-weft i { display: block; height: 7px; transform: scaleX(0); transform-origin: left center; }
+.tpl-design-07-boutique .ce-weft i:nth-child(1) { background: color-mix(in srgb, var(--color-accent) 72%, var(--color-background)); }
+.tpl-design-07-boutique .ce-weft i:nth-child(2) { background: color-mix(in srgb, var(--color-accent) 44%, var(--color-background)); }
+.tpl-design-07-boutique .ce-weft i:nth-child(3) { background: color-mix(in srgb, var(--color-primary) 22%, var(--color-background)); }
+.tpl-design-07-boutique .ce-weft i:nth-child(4) { background: var(--color-surface); }
+
+/* The Edit -------------------------------------------------------------- */
+.tpl-design-07-boutique .ce-filters {
+  display: flex; flex-wrap: wrap; gap: 0.7rem;
+  max-width: 1440px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 5rem) clamp(2rem, 3.5vw, 3rem);
+}
+.tpl-design-07-boutique .ce-chip {
+  border: 1px solid var(--hairline); background: none; border-radius: 999px;
+  padding: 0.6rem 1.25rem; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.05em;
+  cursor: pointer; color: var(--ink-soft);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, translate 0.3s ease;
+}
+.tpl-design-07-boutique .ce-chip:hover { border-color: var(--color-primary); translate: 0 -2px; }
+.tpl-design-07-boutique .ce-chip.is-on { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-background); }
+
+.tpl-design-07-boutique .ce-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 2.75rem);
+  max-width: 1440px; margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 5rem) clamp(5rem, 9vw, 8rem);
+}
+.tpl-design-07-boutique .ce-grid.is-settled .ce-pcard { animation: ceCardIn 0.45s ease both; }
+@keyframes ceCardIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.tpl-design-07-boutique .ce-pcard {
+  background: var(--color-background); border: 1px solid var(--hairline);
+  /* GSAP owns transform (reveal) — the hover lift uses the separate translate property */
+  transition: translate 0.35s ease, border-color 0.35s ease;
+}
+.tpl-design-07-boutique .ce-pcard:hover { translate: 0 -3px; border-color: color-mix(in srgb, var(--color-primary) 38%, transparent); }
+.tpl-design-07-boutique .ce-pcard-media { position: relative; }
+.tpl-design-07-boutique .ce-pcard-img { aspect-ratio: 4 / 5; }
+.tpl-design-07-boutique .ce-pcard-img img { aspect-ratio: 4 / 5; }
+.tpl-design-07-boutique .ce-pick {
+  position: absolute; top: 0.9rem; left: 0.9rem;
+  background: var(--color-accent); color: var(--color-background);
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.42rem 0.8rem;
+}
+.tpl-design-07-boutique .ce-pcard-body { padding: 1.3rem 1.4rem 1.5rem; }
+.tpl-design-07-boutique .ce-pcard-designer {
+  font-family: var(--font-display); font-size: 0.95rem; color: var(--color-accent);
+  margin: 0 0 0.35rem; letter-spacing: 0.03em;
+}
+.tpl-design-07-boutique .ce-pcard-name { font-size: 1.05rem; font-weight: 500; margin: 0 0 0.35rem; color: var(--color-primary); }
+.tpl-design-07-boutique .ce-pcard-fabric { font-size: 0.85rem; color: var(--color-muted); margin: 0 0 0.8rem; }
+.tpl-design-07-boutique .ce-pcard-price { font-size: 1.05rem; font-weight: 500; margin: 0; color: var(--color-primary); }
+
+/* Atelier film: scroll-driven frames (stage layout is inline in ScrollFrames) */
+.tpl-design-07-boutique .ce-film { position: relative; padding: clamp(3rem, 6vw, 5rem) 0 0; }
+.tpl-design-07-boutique .ce-film-scrim {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top,
+    color-mix(in srgb, var(--color-primary) 72%, transparent) 0%,
+    color-mix(in srgb, var(--color-primary) 32%, transparent) 42%,
+    color-mix(in srgb, var(--color-primary) 10%, transparent) 100%);
+}
+.tpl-design-07-boutique .ce-film-copy {
+  position: absolute;
+  left: clamp(1.25rem, 5vw, 5rem); right: clamp(1.25rem, 5vw, 5rem);
+  bottom: clamp(1.5rem, 6vh, 4rem);
+  max-width: 44rem; color: var(--color-background);
+}
+.tpl-design-07-boutique .ce-film-copy .ce-eyebrow { color: color-mix(in srgb, var(--color-background) 88%, transparent); }
+.tpl-design-07-boutique .ce-film-copy .ce-sec-title { color: var(--color-background); text-shadow: 0 2px 18px color-mix(in srgb, var(--color-primary) 55%, transparent); }
+.tpl-design-07-boutique .ce-film-copy .ce-sec-intro { color: color-mix(in srgb, var(--color-background) 92%, transparent); }
+.tpl-design-07-boutique .ce-film-copy .ce-note { color: color-mix(in srgb, var(--color-background) 78%, transparent); margin-top: 1.6rem; }
+
+/* Object study sits below the pinned sequence, restoring the rhythm. */
+.tpl-design-07-boutique .ce-film-macro {
+  margin: clamp(3rem, 6vw, 5rem) auto; max-width: 480px; width: 100%;
+  padding: 0 clamp(1.25rem, 5vw, 5rem);
+}
+.tpl-design-07-boutique .ce-macro-img { aspect-ratio: 16 / 10; }
+.tpl-design-07-boutique .ce-macro-img img { aspect-ratio: 16 / 10; }
+.tpl-design-07-boutique .ce-film-macro figcaption { font-size: 0.8rem; color: var(--color-muted); letter-spacing: 0.06em; padding-top: 0.7rem; }
+
+/* Styling ---------------------------------------------------------------- */
+.tpl-design-07-boutique .ce-styling { background: var(--color-surface); }
+.tpl-design-07-boutique .ce-styling .ce-sec-head { padding-bottom: clamp(2rem, 3.5vw, 3rem); }
+.tpl-design-07-boutique .ce-slots {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  max-width: 1440px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 5rem);
+}
+.tpl-design-07-boutique .ce-slot {
+  background: var(--color-background); border: 1px solid var(--hairline);
+  padding: 2rem 1.8rem; transition: translate 0.35s ease, border-color 0.35s ease;
+}
+.tpl-design-07-boutique .ce-slot:hover { translate: 0 -3px; border-color: color-mix(in srgb, var(--color-accent) 45%, transparent); }
+.tpl-design-07-boutique .ce-slot.is-featured { border-color: color-mix(in srgb, var(--color-accent) 55%, transparent); }
+.tpl-design-07-boutique .ce-slot-name { font-family: var(--font-display); font-size: 1.3rem; margin: 0 0 0.25rem; color: var(--color-primary); }
+.tpl-design-07-boutique .ce-slot-detail { color: var(--color-accent); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 1rem; }
+.tpl-design-07-boutique .ce-slot-desc { font-size: 0.95rem; color: var(--ink-soft); margin: 0; }
+.tpl-design-07-boutique .ce-styling-cta {
+  max-width: 1440px; margin: 0 auto; text-align: center;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 5vw, 5rem) clamp(5rem, 9vw, 8rem);
+}
+.tpl-design-07-boutique .ce-styling-cta .ce-note { margin: 1.4rem auto 0; }
+.tpl-design-07-boutique .ce-styling-cta .ce-note a { color: var(--color-accent); }
+
+/* Visit ------------------------------------------------------------------ */
+.tpl-design-07-boutique .ce-visit-inner {
+  max-width: 1440px; margin: 0 auto;
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.25rem, 5vw, 5rem);
+  border-top: 1px solid var(--hairline);
+}
+.tpl-design-07-boutique .ce-visit-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  margin: 2.5rem 0 2rem; padding: 2.2rem 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+}
+.tpl-design-07-boutique .ce-visit-k { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-muted); margin: 0 0 0.6rem; }
+.tpl-design-07-boutique .ce-visit-v { font-size: 1.05rem; margin: 0; color: var(--color-primary); }
+.tpl-design-07-boutique .ce-visit-v a { color: var(--color-accent); text-decoration: none; }
+.tpl-design-07-boutique .ce-visit-v span { color: var(--ink-soft); }
+
+/* Footer ----------------------------------------------------------------- */
+.tpl-design-07-boutique .ce-footer {
+  border-top: 1px solid var(--hairline);
+  max-width: 1440px; margin: 0 auto;
+  padding: clamp(3rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 5rem) 2.5rem;
+}
+.tpl-design-07-boutique .ce-footer-top {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem;
+}
+.tpl-design-07-boutique .ce-footer .ce-brand-name { margin: 0 0 0.8rem; }
+.tpl-design-07-boutique .ce-footer-k { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-muted); margin: 0 0 0.8rem; }
+.tpl-design-07-boutique .ce-footer-line { font-size: 0.92rem; color: var(--ink-soft); margin: 0; max-width: 30em; }
+.tpl-design-07-boutique .ce-copyright { font-size: 0.8rem; color: var(--color-muted); margin: 0; padding-top: 1.6rem; border-top: 1px solid var(--hairline); }
+
+/* Appointment sheet ------------------------------------------------------- */
+.tpl-design-07-boutique .ce-sheet-wrap {
+  position: fixed; inset: var(--tpl-top, 0px) 0 0 0; z-index: 200;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.tpl-design-07-boutique .ce-sheet-scrim {
+  position: absolute; inset: 0; border: 0; cursor: pointer;
+  background: color-mix(in srgb, var(--color-primary) 48%, transparent);
+}
+.tpl-design-07-boutique .ce-sheet {
+  position: relative; width: 100%; max-height: calc(var(--tpl-vh, 100vh) * 0.9); overflow: auto;
+  background: var(--color-background); padding: 2.2rem 2rem 2.4rem;
+  border-radius: 18px 18px 0 0; border-top: 2px solid var(--color-accent);
+}
+.tpl-design-07-boutique .ce-sheet-head { position: relative; margin-bottom: 1.6rem; }
+.tpl-design-07-boutique .ce-sheet-title { font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; margin: 0; color: var(--color-primary); }
+.tpl-design-07-boutique .ce-sheet-close {
+  position: absolute; top: -0.4rem; right: 0; border: 0; background: none;
+  font-size: 2rem; line-height: 1; cursor: pointer; color: var(--color-muted); padding: 0.2rem 0.5rem;
+}
+.tpl-design-07-boutique .ce-field { display: block; margin-bottom: 1.2rem; }
+.tpl-design-07-boutique .ce-field span { display: block; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 0.5rem; }
+.tpl-design-07-boutique .ce-field input,
+.tpl-design-07-boutique .ce-field select {
+  width: 100%; font: inherit; color: var(--color-text);
+  background: var(--color-background); border: 1px solid var(--hairline);
+  padding: 0.85rem 1rem; border-radius: 2px;
+}
+.tpl-design-07-boutique .ce-sheet-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin: 1.8rem 0 1.2rem; }
+.tpl-design-07-boutique .ce-sheet-note { font-size: 0.85rem; color: var(--color-muted); margin: 0; }
+
+/* Responsive -------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .tpl-design-07-boutique .ce-sheet-wrap { align-items: center; }
+  .tpl-design-07-boutique .ce-sheet { width: min(540px, calc(100% - 3rem)); border-radius: 4px; border: 1px solid var(--hairline); border-top: 2px solid var(--color-accent); }
+}
+
+@media (max-width: 1023px) {
+  .tpl-design-07-boutique .ce-grid { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-07-boutique .ce-slots { grid-template-columns: 1fr; max-width: 640px; }
+  .tpl-design-07-boutique .ce-footer-top { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 900px) {
+  .tpl-design-07-boutique .ce-hero { grid-template-columns: 1fr; min-height: 0; }
+  .tpl-design-07-boutique .ce-hero-img { aspect-ratio: 16 / 10; }
+  .tpl-design-07-boutique .ce-hero-img img { aspect-ratio: 16 / 10; }
+  .tpl-design-07-boutique .ce-index-card { left: 1rem; bottom: 1rem; }
+  .tpl-design-07-boutique .ce-nav-links { display: none; }
+}
+
+/* Mobile: static rack — names list above, single rail column below. */
+@media (max-width: 767px) {
+  .tpl-design-07-boutique .ce-mirror-stage {
+    display: block; height: auto; min-height: 0; max-height: none; overflow: visible;
+  }
+  .tpl-design-07-boutique .ce-names {
+    flex-direction: row; overflow-x: auto; border: 0;
+    border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+    padding: 0.8rem 0; margin-bottom: 2rem; gap: 0.2rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tpl-design-07-boutique .ce-name { flex: 0 0 auto; padding: 0.6rem 0.9rem; }
+  .tpl-design-07-boutique .ce-name-index { display: none; }
+  .tpl-design-07-boutique .ce-rail-right { display: none; }
+  .tpl-design-07-boutique .ce-rail-left {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem;
+  }
+  .tpl-design-07-boutique .ce-visit-grid { grid-template-columns: 1fr; gap: 1.6rem; }
+  .tpl-design-07-boutique .ce-explorer { grid-template-columns: 1fr; }
+  .tpl-design-07-boutique .ce-explorer-badge { flex-direction: row; justify-content: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .tpl-design-07-boutique .ce-grid { grid-template-columns: 1fr; }
+  .tpl-design-07-boutique .ce-rail-left { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .tpl-design-07-boutique .ce-footer-top { grid-template-columns: 1fr; }
+  .tpl-design-07-boutique .ce-hero-ctas .ce-btn { flex: 1 1 auto; }
+  .tpl-design-07-boutique .ce-nav { gap: 0.75rem; }
+  .tpl-design-07-boutique .ce-nav-cta { padding: 0.6rem 0.85rem; font-size: 0.78rem; letter-spacing: 0.02em; text-align: center; }
+}
+
+/* Reduced motion: static rails, names all visible, no pulses/slides. */
+.tpl-design-07-boutique.is-reduced .ce-mirror-stage {
+  display: block; height: auto; min-height: 0; max-height: none; overflow: visible;
+}
+.tpl-design-07-boutique.is-reduced .ce-rail-right { display: none; }
+.tpl-design-07-boutique.is-reduced .ce-rail-left {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem;
+}
+.tpl-design-07-boutique.is-reduced .ce-names {
+  flex-direction: row; flex-wrap: wrap; border: 0; padding: 0; margin-bottom: 2rem; gap: 0.2rem 1.4rem;
+}
+.tpl-design-07-boutique.is-reduced .ce-index-card,
+.tpl-design-07-boutique.is-reduced .ce-check,
+.tpl-design-07-boutique.is-reduced .ce-grid.is-settled .ce-pcard { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-07-boutique .ce-index-card,
+  .tpl-design-07-boutique .ce-check,
+  .tpl-design-07-boutique .ce-grid.is-settled .ce-pcard { animation: none; }
+  .tpl-design-07-boutique .ce-btn, .tpl-design-07-boutique .ce-pcard,
+  .tpl-design-07-boutique .ce-slot, .tpl-design-07-boutique .ce-name,
+  .tpl-design-07-boutique .ce-chip { transition: none; }
+  .tpl-design-07-boutique .ce-pcard:hover, .tpl-design-07-boutique .ce-slot:hover,
+  .tpl-design-07-boutique .ce-chip:hover { translate: none; }
+}

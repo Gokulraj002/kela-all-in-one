@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-06-silk',
+  num: '06',
+  name: 'Resham Maison',
+  tag: 'Luxury Silk',
+  style: 'Dark cinematic luxury maison',
+  animation: 'Silk-pour hero loop, scroll-driven drape wave',
+  typography: 'Bodoni Moda + Manrope',
+  layout: 'Museum spacing — one silk piece per viewport, centered, symmetrical',
+  mood: 'Opulent, silent, precise',
+  palette: 'Near-black / champagne silk / pale champagne',
+  features: [
+    'drapeSim: scroll-driven SVG drape wave (pinned, desktop)',
+    'Silk Pour signature video hero',
+    'Zari-purity + loom-run numbering on every piece',
+    'Provenance cards with Silk Mark number',
+  ],
+  fonts: { display: 'Bodoni Moda', body: 'Manrope' },
+  colors: { primary: '#0D0B09', accent: '#D8C29A' },
+};

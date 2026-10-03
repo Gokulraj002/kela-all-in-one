@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-06-tech',
+  num: '06',
+  name: 'VOLT/STATE',
+  tag: 'Tech',
+  style: 'Dark precision gadget store',
+  animation: 'Blueprint scan, HUD callouts',
+  typography: 'Space Grotesk + IBM Plex Mono',
+  layout: 'Grid with scan-line stage',
+  mood: 'Engineered, exact, cool',
+  palette: 'Graphite / steel / cyan',
+  features: [
+    'Blueprint scan product flow',
+    'Spec comparison',
+    'Demo cart',
+    'Tech specs tables',
+    'Warranty strip',
+  ],
+  fonts: { display: 'Space Grotesk', body: 'IBM Plex Mono' },
+  colors: { primary: '#101216', accent: '#57D0E8' },
+};

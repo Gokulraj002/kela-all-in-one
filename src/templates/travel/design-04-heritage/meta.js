@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-04-heritage',
+  num: '04',
+  name: 'Old Roads',
+  tag: 'Heritage',
+  style: 'Archival monograph, era-layered',
+  animation: 'Strata peel wipes, timeline spine, sepia eases',
+  typography: 'Fraunces + Spectral',
+  layout: 'Centered print-like, layered strata sections',
+  mood: 'Storied, scholarly, warm',
+  palette: 'Terracotta / sandstone / indigo',
+  features: ['Era strata scroll', 'Scholar guides', 'Monograph journal', 'Small groups'],
+  fonts: { display: 'Fraunces', body: 'Spectral' },
+  colors: { primary: '#232A4A', accent: '#B4552D' },
+};

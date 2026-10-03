@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-02-trattoria',
+  num: '02',
+  name: 'Cucina Terra',
+  tag: 'Trattoria',
+  style: 'Rustic family-table editorial',
+  animation: 'Scroll-rotated lazy-susan dish ring, chalkboard draws',
+  typography: 'Fraunces + Karla',
+  layout: 'Abundant overlapping editorial, chalkboard menu inversion',
+  mood: 'Warm, hearty, generous',
+  palette: 'Cream / wood / terracotta',
+  features: [
+    'Orbiting dish ring',
+    'Chalkboard menu',
+    'Family-style Sunday table',
+    'Handmade pasta feature',
+    'Recipe origin notes',
+  ],
+  fonts: { display: 'Fraunces', body: 'Karla' },
+  colors: { primary: '#3A2A1E', accent: '#B4552D' },
+};

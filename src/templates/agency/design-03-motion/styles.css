@@ -1,0 +1,1056 @@
+/* ============================================================
+   FRAMEHOUSE · design-03-motion
+   Cinematic dark studio. All tokens scoped to .tpl-design-03-motion.
+   Type: Anton (display, uppercase condensed) + Manrope (body).
+   Palette 60/30/10: near-black / charcoal / amber.
+   ============================================================ */
+
+.tpl-design-03-motion {
+  --color-background: #0c0b09;
+  --color-surface: #161310;
+  --color-primary: #f2ede3;
+  --color-secondary: #8a8272;
+  --color-accent: #e8a33d;
+  --color-text: #f2ede3;
+  --color-muted: #6e675a;
+  --color-line: #262019;
+  --color-black: #000000;
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-body: 'Manrope', 'Helvetica Neue', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  /* x only: in the viewer this class also lands on the scroll container
+     (.tpl-scope), where overflow: clip on both axes stopped all scrolling. */
+  overflow-x: clip;
+}
+
+.tpl-design-03-motion *,
+.tpl-design-03-motion *::before,
+.tpl-design-03-motion *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-03-motion img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------- rhythm ---------- */
+.fh-wrap {
+  width: min(1240px, 92vw);
+  margin-inline: auto;
+}
+
+.fh-sec {
+  padding-block: clamp(4.5rem, 10vw, 9rem);
+  position: relative;
+}
+
+.fh-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 clamp(1rem, 2vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.fh-eyebrow::before {
+  content: '';
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-accent);
+  display: inline-block;
+}
+
+.fh-rule {
+  height: 1px;
+  background: var(--color-line);
+  border: 0;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0;
+  transform-origin: left center;
+}
+
+.fh-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0;
+  font-weight: 400;
+}
+
+.fh-body {
+  color: var(--color-secondary);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  max-width: 44rem;
+}
+
+/* word-mask headline (server-safe; GSAP animates .wi) */
+.fh-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.fh-wm .wi {
+  display: inline-block;
+}
+
+/* ---------- nav ---------- */
+/* Zero-height sticky layer at the top of the visible scroll area: the nav
+   overlays the hero exactly like a fixed bar, but stays inside the template's
+   scroll container (fixed would cover the viewer's toolbar). */
+.tpl-design-03-motion .fh-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 0;
+}
+
+.fh-nav {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1.25rem, 4vw, 3rem);
+  /* Near-black bar: over the hero it reads as the top letterbox; further
+     down it keeps headlines from running through the nav links. */
+  background: rgba(8, 7, 6, 0.97);
+  border-bottom: 1px solid rgba(242, 237, 227, 0.06);
+}
+
+.fh-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.fh-wordmark em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.fh-links {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.25rem);
+}
+
+.fh-links a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.fh-links a:hover {
+  color: var(--color-accent);
+}
+
+.fh-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-accent);
+  color: #0c0b09;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid var(--color-accent);
+  transition: background 0.25s ease, color 0.25s ease;
+  white-space: nowrap;
+}
+
+.fh-cta:hover {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.fh-cta--ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-line);
+}
+
+.fh-cta--ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ---------- hero ---------- */
+/* Block (not flex) on purpose: GSAP turns pinSpacing off when a pinned
+   element's parent is a flex container, which let the next sections scroll
+   underneath the pinned hero. The ScrollFrames stage sets the height. */
+.fh-hero {
+  position: relative;
+  display: block;
+  background: var(--color-black);
+  overflow: hidden;
+}
+
+/* ---------- hero: scroll-driven frame sequence (ScrollFrames) ---------- */
+/* Stage/canvas/overlay critical layout is inline in the component —
+   the design only adds overlay choreography here. */
+.tpl-design-03-motion .sf-overlay {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* reduced motion: static first frame, all content visible */
+.tpl-design-03-motion .sf-static {
+  background: #000;
+}
+
+/* letterbox bars around the hero stage — cinema grammar, matching the reel */
+.tpl-design-03-motion .fh-hero-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(2.25rem, 6.5svh, 4.5rem);
+  background: #000;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tpl-design-03-motion .fh-hero-bar--top { top: 0; }
+.tpl-design-03-motion .fh-hero-bar--bot { bottom: 0; }
+
+.fh-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.25) 45%, rgba(0, 0, 0, 0.55) 100%);
+  pointer-events: none;
+}
+
+.fh-hero-copy {
+  position: relative;
+  z-index: 3;
+  width: min(1240px, 92vw);
+  margin-inline: auto;
+  padding-bottom: clamp(3.5rem, 8vh, 6rem);
+  padding-top: 5.5rem;
+}
+
+.fh-hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  /* capped by the visible stage height too, so the three-line title, sub,
+     CTAs and meta always fit under the nav inside the pinned hero */
+  font-size: clamp(3.25rem, min(12vw, calc(var(--tpl-vh, 100svh) * 0.12)), 9rem);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 clamp(1.25rem, 3vw, 2rem);
+  max-width: 12ch;
+}
+
+.fh-hero-title .accent-word {
+  color: var(--color-accent);
+}
+
+.fh-hero-sub {
+  color: var(--color-secondary);
+  font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+  max-width: 38rem;
+  margin: 0 0 clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.fh-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.fh-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid rgba(242, 237, 227, 0.16);
+  max-width: 44rem;
+}
+
+.fh-hero-meta li {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+/* ---------- showreel (M3) ---------- */
+.fh-reel {
+  background: var(--color-black);
+  padding-block: clamp(4.5rem, 9vw, 8rem) 0;
+}
+
+.fh-reel-head {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.fh-reel-head .fh-eyebrow {
+  justify-content: center;
+}
+
+.fh-reel-head .fh-eyebrow::after {
+  content: '';
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-accent);
+  display: inline-block;
+}
+
+.fh-reel-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(4rem, 16vw, 12rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.fh-reel-note {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: clamp(1rem, 2vw, 1.5rem) 0 0;
+}
+
+.fh-reel-pin {
+  /* the visible scroll area (viewer sets --tpl-vh; exports use 100svh) */
+  height: var(--tpl-vh, 100svh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.fh-frame {
+  position: relative;
+  width: min(1200px, 94vw);
+  aspect-ratio: 16 / 9;
+  max-height: calc(var(--tpl-vh, 100svh) * 0.82);
+  background: #000;
+  overflow: hidden;
+  box-shadow: 0 0 120px rgba(232, 163, 61, 0.08);
+}
+
+.fh-still {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.fh-still .a-img {
+  width: 100%;
+  height: 100%;
+}
+
+.fh-still img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fh-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #000;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Bars are drawn at their widest (14%) and scaled down to 8% by GSAP
+   (scaleY), so the scrubbed letterbox never re-lays-out the frame. */
+.fh-bar--top { top: 0; height: 14%; transform: scaleY(0.5714); transform-origin: 50% 0; }
+.fh-bar--bot { bottom: 0; height: 14%; transform: scaleY(0.5714); transform-origin: 50% 100%; }
+
+.fh-tc {
+  position: absolute;
+  z-index: 4;
+  left: 3%;
+  bottom: calc(8% + 0.6rem);
+  font-weight: 700;
+  font-size: clamp(0.8rem, 1.6vw, 1.05rem);
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.fh-still-cap {
+  position: absolute;
+  z-index: 4;
+  right: 3%;
+  bottom: calc(8% + 0.6rem);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.fh-scrub-hint {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: calc(8% + 0.9rem);
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(242, 237, 227, 0.55);
+}
+
+/* stacked stills: mobile + reduced motion */
+.fh-reel-stack {
+  display: none;
+  width: min(1240px, 92vw);
+  margin-inline: auto;
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.fh-reel-stack figure {
+  margin: 0;
+  position: relative;
+}
+
+.fh-reel-stack .fh-stack-cap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.8rem 0 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.fh-reel-stack .fh-stack-cap strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+}
+
+/* ---------- films index ---------- */
+.fh-films-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.fh-films-head .fh-body {
+  margin: 0;
+  max-width: 26rem;
+}
+
+.fh-film-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.fh-film {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.fh-film-link {
+  display: grid;
+  grid-template-columns: minmax(200px, 340px) 1fr auto;
+  gap: clamp(1.25rem, 3vw, 2.75rem);
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.fh-film-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.fh-film-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+  filter: saturate(0.85);
+}
+
+.fh-film-link:hover .fh-film-thumb img {
+  transform: scale(1.05);
+  filter: saturate(1.1);
+}
+
+.fh-film-tc {
+  position: absolute;
+  left: 0.7rem;
+  bottom: 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  background: rgba(0, 0, 0, 0.72);
+  padding: 0.3rem 0.55rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fh-film-link:hover .fh-film-tc {
+  opacity: 1;
+}
+
+.fh-film-info {
+  min-width: 0;
+}
+
+.fh-film-index {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.fh-film-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 0.95;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.fh-film-link:hover .fh-film-title {
+  color: var(--color-accent);
+}
+
+.fh-film-logline {
+  color: var(--color-secondary);
+  margin: 0 0 1rem;
+  max-width: 34rem;
+}
+
+.fh-film-credits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.fh-film-credits li {
+  color: var(--color-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.fh-film-credits li strong {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.fh-film-arrow {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-muted);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.fh-film-link:hover .fh-film-arrow {
+  color: var(--color-accent);
+  transform: translateX(8px);
+}
+
+/* ---------- capabilities ---------- */
+.fh-caps {
+  background: var(--color-surface);
+}
+
+.fh-caps-grid {
+  list-style: none;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-line);
+  border: 1px solid var(--color-line);
+}
+
+.fh-cap {
+  background: var(--color-surface);
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+  transition: background 0.35s ease;
+}
+
+.fh-cap:hover {
+  background: #1c1712;
+}
+
+.fh-cap-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 1.1rem;
+}
+
+.fh-cap-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 0.8rem;
+}
+
+.fh-cap-text {
+  color: var(--color-secondary);
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+/* ---------- directors ---------- */
+.fh-dir-list {
+  list-style: none;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+  padding: 0;
+}
+
+.fh-dir {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 3rem;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem) 0;
+  border-top: 1px solid var(--color-line);
+  align-items: baseline;
+}
+
+.fh-dir:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.fh-dir-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.fh-dir-role {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-top: 0.6rem;
+}
+
+.fh-dir-note {
+  color: var(--color-secondary);
+  margin: 0;
+  max-width: 30rem;
+  justify-self: end;
+  text-align: right;
+}
+
+.fh-kit {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  border: 1px solid var(--color-line);
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  background: rgba(232, 163, 61, 0.04);
+}
+
+.fh-kit h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1rem;
+}
+
+.fh-kit p {
+  color: var(--color-secondary);
+  margin: 0;
+  max-width: 52rem;
+}
+
+/* ---------- process ---------- */
+.fh-process {
+  background: var(--color-surface);
+}
+
+.fh-steps {
+  list-style: none;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.fh-step {
+  border-top: 2px solid var(--color-accent);
+  padding-top: 1.4rem;
+}
+
+.fh-step-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--color-accent);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.9rem;
+}
+
+.fh-step-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 0.7rem;
+}
+
+.fh-step-text {
+  color: var(--color-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ---------- contact ---------- */
+.fh-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.fh-contact-lines {
+  list-style: none;
+  margin: clamp(1.75rem, 3vw, 2.5rem) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.fh-contact-lines a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 0.15rem;
+  transition: color 0.25s ease;
+}
+
+.fh-contact-lines a:hover {
+  color: var(--color-accent);
+}
+
+.fh-contact-lines .fh-contact-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.3rem;
+}
+
+.fh-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.fh-field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.fh-field label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.fh-field input,
+.fh-field select,
+.fh-field textarea {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.9rem 1.1rem;
+  width: 100%;
+  border-radius: 0;
+  appearance: none;
+}
+
+.fh-field textarea {
+  min-height: 7.5rem;
+  resize: vertical;
+}
+
+.fh-field input:focus,
+.fh-field select:focus,
+.fh-field textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.fh-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.fh-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.fh-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fh-chip span {
+  display: inline-block;
+  border: 1px solid var(--color-line);
+  color: var(--color-secondary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.fh-chip span:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.fh-chip input:checked + span {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #0c0b09;
+}
+
+.fh-chip input:focus-visible + span {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.fh-form-note {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.fh-sent {
+  border: 1px solid var(--color-accent);
+  padding: 1.25rem 1.5rem;
+  color: var(--color-primary);
+  background: rgba(232, 163, 61, 0.07);
+  font-size: 0.95rem;
+}
+
+/* ---------- footer ---------- */
+.fh-footer {
+  border-top: 1px solid var(--color-line);
+  padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(2rem, 4vw, 3rem);
+  background: var(--color-black);
+}
+
+.fh-footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.fh-footer-links {
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.fh-footer-links a {
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.fh-footer-links a:hover {
+  color: var(--color-accent);
+}
+
+.fh-footer-line {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+
+.fh-colophon {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ---------- fade-to-black dips (max 2, motion only) ---------- */
+/* Lives in the sticky .fh-topbar: covers exactly the visible scroll area. */
+.fh-dip {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: var(--tpl-vh, 100vh);
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---------- reduced motion: stacked stills, static everything ---------- */
+.tpl-design-03-motion.is-reduced .fh-reel-pin {
+  display: none;
+}
+
+.tpl-design-03-motion.is-reduced .fh-reel-stack {
+  display: grid;
+}
+
+/* ---------- responsive ---------- */
+@media (min-width: 1024px) {
+  .fh-reel-stack {
+    display: none;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .fh-reel-pin {
+    display: none;
+  }
+  .fh-reel-stack {
+    display: grid;
+  }
+  .fh-film-link {
+    grid-template-columns: 1fr;
+  }
+  .fh-film-arrow {
+    display: none;
+  }
+  .fh-film-thumb {
+    max-width: 560px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fh-links {
+    display: none;
+  }
+  /* the copy covers most of a phone-sized stage: keep the bright projector
+     frames from washing out the sub line */
+  .fh-hero-shade {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.62) 55%, rgba(0, 0, 0, 0.55) 100%);
+  }
+  .fh-caps-grid {
+    grid-template-columns: 1fr;
+  }
+  .fh-steps {
+    grid-template-columns: 1fr;
+  }
+  .fh-dir {
+    grid-template-columns: 1fr;
+  }
+  .fh-dir-note {
+    justify-self: start;
+    text-align: left;
+  }
+  .fh-contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .fh-field-row {
+    grid-template-columns: 1fr;
+  }
+  .fh-nav .fh-cta {
+    padding: 0.7rem 1.1rem;
+    font-size: 0.7rem;
+  }
+}
+

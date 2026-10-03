@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-06-coliving',
+  num: '06',
+  name: 'Kindred House',
+  tag: 'Co-living',
+  style: 'Youthful community warmth — sticker badges, polaroid piles, editorial playfulness',
+  animation: 'Polaroid scatter: cards scatter outward with springy back.out rotation on scroll, settle into a readable grid under a brief pin, then re-scatter into the next set',
+  typography: 'DM Serif Display + Plus Jakarta Sans',
+  layout: 'Playful stacked sections: video hero, pinned scatter board, ritual ticker, member stories, transparent pricing',
+  mood: 'Warm, social, alive — messy in a good way',
+  palette: 'Cream #FAF5EA, terracotta #C96F3F, leaf #5A7A4E, ink #26221B',
+  features: [
+    'Polaroid scatter board with pin-and-reassemble motion',
+    'Sticker-style badges and price tags',
+    'House rituals calendar',
+    'Member story cards',
+    'Transparent ₹/month pricing with zero hidden charges',
+    'Signature 10s courtyard-life hero loop',
+  ],
+  fonts: { display: 'DM Serif Display', body: 'Plus Jakarta Sans' },
+  colors: { primary: '#26221B', accent: '#C96F3F' },
+};

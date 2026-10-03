@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kela Jewels — Quiet Fine Jewellery</title>
+  <meta name="description" content="Kela Jewels — quiet pieces in brushed gold, pearl and stone. Designed slowly, made to be kept.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F7F7F2'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%233B4038'%3EK%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="brand" href="#hero" data-brand>Kela Jewels</a>
+      <nav class="nav-links" data-build="nav" aria-label="Primary"></nav>
+      <a class="nav-cta" href="#contact"><span data-ui="enquire">Enquire</span> <span class="arrow" aria-hidden="true">→</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile"></nav>
+  </header>
+
+  <main>
+
+    <!-- 1 · HERO -->
+    <section id="hero" aria-label="Introduction">
+      <div class="wrap hero-inner">
+        <p class="eyebrow reveal" data-content="hero.eyebrow">Maison de joaillerie · Est. 2016</p>
+        <h1 class="hero-title reveal" data-content="hero.title" data-delay="80">Quiet pieces, made to be kept.</h1>
+        <div class="rule reveal" data-delay="160" aria-hidden="true"></div>
+        <p class="lede reveal" data-content="hero.subtitle" data-delay="220">Small editions in brushed gold, pearl and stone. Designed slowly in our Bengaluru atelier — made to be worn every day, and kept for decades.</p>
+        <div class="hero-ctas reveal" data-delay="300">
+          <a class="btn-text" href="#products"><span data-content="hero.ctaPrimary">Explore the pieces</span> <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn-text btn-ghost" href="#craftsmanship"><span data-content="hero.ctaSecondary">Our craft</span></a>
+        </div>
+      </div>
+      <div class="wrap-wide hero-media reveal" data-delay="200">
+        <div class="img-shell ratio-16x9">
+          <img width="1920" height="1080" data-img src="assets/images/hero.webp" alt="A single delicate gold necklace resting on pale sage linen in soft daylight" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · COLLECTIONS -->
+    <section id="collections" aria-label="Collections">
+      <div class="wrap">
+        <div class="sec-head sec-head-center">
+          <p class="eyebrow reveal" data-build="secLabel" data-sec="0"></p>
+          <h2 class="sec-title reveal" data-delay="80">Three quiet families</h2>
+        </div>
+        <div class="collections-grid" data-build="collections"></div>
+      </div>
+    </section>
+
+    <!-- 3 · PRODUCTS -->
+    <section id="products" aria-label="Pieces">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow reveal" data-build="secLabel" data-sec="1"></p>
+            <h2 class="sec-title reveal" data-delay="80">The pieces</h2>
+          </div>
+          <p class="sec-note reveal" data-delay="160">Numbered editions.<br>Worn daily, kept for decades.</p>
+        </div>
+        <div class="pieces" data-build="products"></div>
+      </div>
+    </section>
+
+    <!-- 4 · CRAFTSMANSHIP -->
+    <section id="craftsmanship" aria-label="Craftsmanship">
+      <div class="wrap-narrow">
+        <p class="eyebrow reveal" data-content="craftsmanship.eyebrow">Savoir-faire</p>
+        <h2 class="sec-title reveal" data-content="craftsmanship.title" data-delay="80">Made slowly, by hand.</h2>
+        <div class="prose reveal" data-content-paras="craftsmanship.body" data-delay="160"></div>
+      </div>
+      <div class="wrap-wide craft-media reveal">
+        <div class="img-shell ratio-16x9">
+          <img width="1920" height="1280" data-img src="assets/images/craft.webp" alt="A goldsmith's hands polishing a ring at the Kela Jewels workbench" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · STORY -->
+    <section id="story" aria-label="Maison story">
+      <div class="wrap story-grid">
+        <div class="story-side">
+          <p class="eyebrow reveal" data-content="story.eyebrow">The maison</p>
+          <h2 class="sec-title reveal" data-content="story.title" data-delay="80">We make very little, very carefully.</h2>
+          <div class="img-shell ratio-4x5 story-img reveal" data-delay="200">
+            <img width="1920" height="1080" data-img src="assets/images/hero.webp" alt="Soft daylight across the Kela Jewels atelier" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="story-body">
+          <div class="prose prose-dropcap reveal" data-content-paras="story.body" data-delay="140"></div>
+          <p class="signature reveal" data-delay="220">— <span data-brand>Maison Kela</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · CONTACT -->
+    <section id="contact" aria-label="Contact">
+      <div class="wrap-narrow contact-inner">
+        <p class="eyebrow reveal">Write to us</p>
+        <h2 class="sec-title reveal" data-delay="80">Begin with a conversation.</h2>
+        <dl class="contact-rows reveal" data-delay="160">
+          <div class="contact-row">
+            <dt>Email</dt>
+            <dd><a data-contact-email href="mailto:hello@kelajewels.in">hello@kelajewels.in</a></dd>
+          </div>
+          <div class="contact-row">
+            <dt>Telephone</dt>
+            <dd><a data-contact-phone href="tel:+918047192200">+91 80 4719 2200</a></dd>
+          </div>
+          <div class="contact-row">
+            <dt>Atelier</dt>
+            <dd data-content="contact.address">14 Residency Road, Bengaluru 560025</dd>
+          </div>
+          <div class="contact-row">
+            <dt>Instagram</dt>
+            <dd><a data-contact-instagram href="https://instagram.com/kelajewels" target="_blank" rel="noopener">@kelajewels <span class="arrow" aria-hidden="true">→</span></a></dd>
+          </div>
+        </dl>
+
+        <form id="contact-form" class="contact-form reveal" data-delay="220" novalidate>
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+          </div>
+          <div class="field field-full">
+            <label for="cf-msg">Message</label>
+            <textarea id="cf-msg" name="message" rows="4" placeholder="Tell us what you are looking for…"></textarea>
+          </div>
+          <button class="btn-line" type="submit">Send enquiry <span class="arrow" aria-hidden="true">→</span></button>
+        </form>
+        <div id="form-success" class="form-success" hidden>
+          <p class="form-success-title">Thank you.</p>
+          <p>Your note is with the atelier. We will write back within two working days.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <p class="brand brand-sm" data-brand>Kela Jewels</p>
+        <p class="footer-tag" data-content="brand.tagline">Quiet pieces, made to be kept.</p>
+      </div>
+      <nav class="footer-nav" data-build="nav" aria-label="Footer"></nav>
+      <p class="footer-mail"><a data-contact-email href="mailto:hello@kelajewels.in">hello@kelajewels.in</a></p>
+    </div>
+    <div class="wrap footer-base">
+      <p data-content="footer.line">© 2026 Kela Jewels. All rights reserved.</p>
+      <p class="footer-made">Crafted in Bengaluru</p>
+    </div>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

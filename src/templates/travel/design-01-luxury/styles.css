@@ -1,0 +1,990 @@
+/* ————————————————————————————————————————————————
+   MERIDIAN & GREY · design-01-luxury
+   Ultra-exclusive luxury tour operator. Cinematic, quiet, precise.
+   Ink navy / champagne / ivory. Cormorant Garamond + Jost.
+   Tokens live on .tpl-design-01-luxury ONLY — never :root.
+   ———————————————————————————————————————————————— */
+
+.tpl-design-01-luxury {
+  --color-primary: #101820;
+  --color-secondary: #1a2431;
+  --color-accent: #c9a961;
+  --color-accent-deep: #a37f3c;
+  --color-background: #101820;
+  --color-surface: #182230;
+  --color-ivory: #f6f1e7;
+  --color-text: #f6f1e7;
+  --color-muted: rgba(246, 241, 231, 0.62);
+  --color-faint: rgba(246, 241, 231, 0.38);
+  --color-line: rgba(201, 169, 97, 0.32);
+  --color-line-soft: rgba(246, 241, 231, 0.14);
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Jost', 'Helvetica Neue', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  /* Horizontal clip only: in the ATELIER viewer this rule also lands on the
+     .tpl-scope scroll container (it carries the same class) — clipping the
+     y-axis there would stop the page from scrolling at all. */
+  overflow-x: clip;
+}
+
+.tpl-design-01-luxury *,
+.tpl-design-01-luxury *::before,
+.tpl-design-01-luxury *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-01-luxury img,
+.tpl-design-01-luxury video {
+  display: block;
+  max-width: 100%;
+}
+
+.tpl-design-01-luxury a {
+  color: inherit;
+}
+
+.tpl-design-01-luxury .a-img {
+  display: block;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-01-luxury .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tpl-design-01-luxury .a-loopvideo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-01-luxury .a-loopvideo-poster,
+.tpl-design-01-luxury .a-loopvideo-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tpl-design-01-luxury .a-loopvideo-video {
+  position: absolute;
+  inset: 0;
+}
+
+/* ---------- shared editorial atoms ---------- */
+
+.tpl-design-01-luxury .mg-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: clamp(24px, 5vw, 72px);
+  padding-right: clamp(24px, 5vw, 72px);
+}
+
+.tpl-design-01-luxury .mg-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 clamp(18px, 2.5vh, 30px);
+}
+
+.tpl-design-01-luxury .mg-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 4.6vw, 3.9rem);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  margin: 0 0 clamp(20px, 3vh, 34px);
+  max-width: 16ch;
+}
+
+.tpl-design-01-luxury .mg-lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.9vw, 1.45rem);
+  color: var(--color-muted);
+  max-width: 52ch;
+  margin: 0;
+}
+
+.tpl-design-01-luxury .mg-body {
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  color: var(--color-muted);
+  max-width: 62ch;
+  margin: 0 0 1.4em;
+}
+
+.tpl-design-01-luxury .mg-rule {
+  display: block;
+  height: 1px;
+  background: var(--color-line);
+  transform-origin: left center;
+  margin: clamp(26px, 4vh, 44px) 0;
+  max-width: 560px;
+}
+.tpl-design-01-luxury .mg-rule-dark {
+  background: rgba(16, 24, 32, 0.28);
+}
+
+/* word-mask headline */
+.tpl-design-01-luxury .mg-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-01-luxury .mg-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* buttons */
+.tpl-design-01-luxury .mg-cta {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.05em 2.4em;
+  border: 1px solid var(--color-accent);
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+.tpl-design-01-luxury .mg-cta-solid {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+.tpl-design-01-luxury .mg-cta-solid:hover {
+  background: transparent;
+  color: var(--color-accent);
+}
+.tpl-design-01-luxury .mg-cta-ghost {
+  background: transparent;
+  color: var(--color-accent);
+}
+.tpl-design-01-luxury .mg-cta-ghost:hover {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* ---------- nav ---------- */
+
+/* Zero-height sticky dock: the nav overlays the hero exactly like a fixed
+   bar, but sticks to the top of whatever actually scrolls (the viewer's
+   .tpl-scope or the window) instead of the browser window — so it never
+   covers the viewer toolbar and never needs ScrollTrigger to keep up. */
+.tpl-design-01-luxury .mg-navdock {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 50;
+}
+
+.tpl-design-01-luxury .mg-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(18px, 2.6vh, 30px) clamp(24px, 5vw, 72px);
+  transition: background 0.5s ease, backdrop-filter 0.5s ease, border-color 0.5s ease;
+  border-bottom: 1px solid transparent;
+}
+.tpl-design-01-luxury .mg-nav.is-scrolled {
+  background: rgba(16, 24, 32, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--color-line-soft);
+}
+
+.tpl-design-01-luxury .mg-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--color-ivory);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  white-space: nowrap;
+}
+.tpl-design-01-luxury .mg-wordmark-est {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+}
+
+.tpl-design-01-luxury .mg-links {
+  display: flex;
+  gap: clamp(18px, 3vw, 44px);
+}
+.tpl-design-01-luxury .mg-links a {
+  font-size: 0.74rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-muted);
+  transition: color 0.3s ease;
+}
+.tpl-design-01-luxury .mg-links a:hover {
+  color: var(--color-accent);
+}
+
+.tpl-design-01-luxury .mg-nav .mg-cta {
+  padding: 0.85em 1.9em;
+}
+
+/* ---------- hero ---------- */
+
+/* Plain block: ScrollTrigger drops pin spacing when a pin's parent is
+   display:flex, which let the next section slide over the pinned hero. The
+   frame stage sizes itself to the visible scroll area. */
+.tpl-design-01-luxury .mg-hero {
+  position: relative;
+}
+
+/* ---------- hero: scroll-driven frame sequence ----------
+   ScrollFrames pins its own stage for +=170% of scroll; critical layout
+   (.sf-stage, .sf-canvas, .sf-static) is inline in the shared component —
+   the design only owns the overlay choreography. The shade, copy and scroll
+   cue ride inside .sf-overlay, bottom-aligned exactly as before. */
+.tpl-design-01-luxury .sf-wrap {
+  width: 100%;
+}
+.tpl-design-01-luxury .sf-overlay {
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.tpl-design-01-luxury .mg-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(16, 24, 32, 0.94) 0%, rgba(16, 24, 32, 0.42) 42%, rgba(16, 24, 32, 0.18) 70%, rgba(16, 24, 32, 0.34) 100%);
+}
+
+.tpl-design-01-luxury .mg-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 72px) clamp(90px, 13vh, 150px);
+}
+
+.tpl-design-01-luxury .mg-hero-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 26px;
+}
+
+.tpl-design-01-luxury .mg-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3.2rem, 8.4vw, 7.2rem);
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  margin: 0 0 28px;
+  max-width: 12ch;
+}
+
+.tpl-design-01-luxury .mg-hero-sub {
+  font-size: clamp(1.02rem, 1.5vw, 1.22rem);
+  color: var(--color-muted);
+  max-width: 54ch;
+  margin: 0 0 38px;
+}
+
+.tpl-design-01-luxury .mg-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 34px;
+}
+
+.tpl-design-01-luxury .mg-hero-note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.tpl-design-01-luxury .mg-hero-scroll {
+  position: absolute;
+  z-index: 2;
+  right: clamp(24px, 5vw, 72px);
+  bottom: clamp(36px, 5vh, 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.66rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+  margin: 0;
+}
+.tpl-design-01-luxury .mg-scroll-line {
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(var(--color-accent), transparent);
+  display: block;
+}
+
+/* ---------- the grand itinerary (signature mechanic) ---------- */
+
+.tpl-design-01-luxury .mg-itin {
+  padding: clamp(100px, 14vh, 170px) 0 0;
+  position: relative;
+}
+
+.tpl-design-01-luxury .mg-itin-pin {
+  position: relative;
+}
+
+.tpl-design-01-luxury .mg-itin-stage {
+  position: relative;
+  height: 100vh;
+  height: var(--tpl-vh, 100svh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(26, 36, 49, 0.9) 0%, var(--color-background) 62%);
+}
+
+/* The route map: exactly the SVG viewBox's 5:7 aspect, so the waypoint
+   slots (percentages of this box) sit precisely on the drawn line. */
+.tpl-design-01-luxury .mg-itin-map {
+  position: relative;
+  height: 92%;
+  aspect-ratio: 5 / 7;
+  max-width: 94%;
+}
+.tpl-design-01-luxury .mg-route-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.tpl-design-01-luxury .mg-route-track {
+  stroke: rgba(246, 241, 231, 0.14);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 7;
+  stroke-linecap: round;
+}
+.tpl-design-01-luxury .mg-route-draw {
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+/* The glow is a soft, wide under-stroke drawn in lockstep with the line —
+   a drop-shadow filter would have to be re-rasterised on every scrub frame. */
+.tpl-design-01-luxury .mg-route-glow {
+  stroke: var(--color-accent);
+  stroke-width: 9;
+  stroke-linecap: round;
+  stroke-opacity: 0.16;
+}
+
+/* waypoint slot: positioned over the path at runtime (desktop only) */
+.tpl-design-01-luxury .mg-wp-slot {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+
+.tpl-design-01-luxury .mg-wp-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 1px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+.tpl-design-01-luxury .mg-wp-num {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+}
+
+.tpl-design-01-luxury .mg-wp-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Centred on its waypoint via the independent `translate` property, so the
+   runtime keep-in-view nudge (GSAP x/y on `transform`) composes with it. */
+.tpl-design-01-luxury .mg-card-pos {
+  position: absolute;
+  top: 0;
+  translate: 0 -50%;
+  z-index: 4;
+}
+.tpl-design-01-luxury .mg-wp-slot[data-side='right'] .mg-card-pos {
+  left: 44px;
+}
+.tpl-design-01-luxury .mg-wp-slot[data-side='left'] .mg-card-pos {
+  right: 44px;
+}
+
+.tpl-design-01-luxury .mg-card {
+  width: clamp(250px, 24vw, 320px);
+  background: var(--color-ivory);
+  color: var(--color-primary);
+  will-change: transform, opacity;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
+}
+.tpl-design-01-luxury .mg-card-img .a-img {
+  aspect-ratio: 4 / 3;
+}
+.tpl-design-01-luxury .mg-card-body {
+  padding: clamp(20px, 2.4vw, 30px);
+}
+.tpl-design-01-luxury .mg-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 14px;
+}
+.tpl-design-01-luxury .mg-card .mg-card-num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-accent);
+}
+.tpl-design-01-luxury .mg-card-tag {
+  font-size: 0.64rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(16, 24, 32, 0.55);
+}
+.tpl-design-01-luxury .mg-card-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.7rem;
+  line-height: 1.12;
+  margin: 0 0 6px;
+}
+.tpl-design-01-luxury .mg-card-dur {
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(16, 24, 32, 0.55);
+  margin: 0 0 14px;
+}
+.tpl-design-01-luxury .mg-card-blurb {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: rgba(16, 24, 32, 0.78);
+  margin: 0 0 20px;
+}
+.tpl-design-01-luxury .mg-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(16, 24, 32, 0.14);
+  padding-top: 16px;
+}
+.tpl-design-01-luxury .mg-card-price {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+.tpl-design-01-luxury .mg-card-enquire {
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 3px;
+}
+.tpl-design-01-luxury .mg-card-enquire:hover {
+  color: var(--color-accent);
+}
+
+/* leg indicator */
+.tpl-design-01-luxury .mg-leg {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(26px, 4vh, 44px);
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 5;
+}
+.tpl-design-01-luxury .mg-leg-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 12px;
+  white-space: nowrap;
+}
+.tpl-design-01-luxury .mg-leg-bar {
+  display: block;
+  width: min(320px, 52vw);
+  height: 1px;
+  background: var(--color-line-soft);
+  margin: 0 auto;
+}
+.tpl-design-01-luxury .mg-leg-fill {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.tpl-design-01-luxury .mg-itin-foot {
+  padding-top: clamp(60px, 9vh, 110px);
+  padding-bottom: clamp(100px, 14vh, 170px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.tpl-design-01-luxury .mg-itin-foot .mg-body {
+  margin-bottom: 26px;
+}
+
+/* ---------- craft / philosophy ---------- */
+
+.tpl-design-01-luxury .mg-craft {
+  padding: clamp(100px, 14vh, 170px) 0;
+  background: var(--color-background);
+}
+.tpl-design-01-luxury .mg-craft-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(48px, 6vw, 110px);
+  align-items: start;
+}
+
+.tpl-design-01-luxury .mg-pillars {
+  list-style: none;
+  margin: clamp(30px, 5vh, 54px) 0 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(26px, 3.5vh, 40px);
+}
+.tpl-design-01-luxury .mg-pillar {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 20px;
+  border-top: 1px solid var(--color-line-soft);
+  padding-top: 24px;
+}
+.tpl-design-01-luxury .mg-pillar-num {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+.tpl-design-01-luxury .mg-pillar-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin: 0 0 8px;
+}
+.tpl-design-01-luxury .mg-pillar-text {
+  font-size: 0.98rem;
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 46ch;
+}
+
+.tpl-design-01-luxury .mg-craft-visual {
+  position: sticky;
+  top: clamp(90px, 12vh, 130px);
+}
+.tpl-design-01-luxury .mg-frame {
+  position: relative;
+}
+.tpl-design-01-luxury .mg-frame .a-img {
+  aspect-ratio: 4 / 5;
+}
+.tpl-design-01-luxury .mg-craft-visual figcaption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-faint);
+  margin-top: 16px;
+}
+
+.tpl-design-01-luxury .mg-stats {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: clamp(30px, 5vh, 50px) 0 0;
+  padding: clamp(22px, 3vh, 32px) 0 0;
+  border-top: 1px solid var(--color-line-soft);
+}
+.tpl-design-01-luxury .mg-stats strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+.tpl-design-01-luxury .mg-stats span {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+/* ---------- guest words (ivory chapter) ---------- */
+
+.tpl-design-01-luxury .mg-story {
+  background: var(--color-ivory);
+  color: var(--color-primary);
+  padding: clamp(100px, 14vh, 170px) 0;
+}
+.tpl-design-01-luxury .mg-story .mg-h2 {
+  color: var(--color-primary);
+}
+.tpl-design-01-luxury .mg-story .mg-eyebrow {
+  color: var(--color-accent-deep);
+}
+.tpl-design-01-luxury .mg-story .mg-lede {
+  color: rgba(16, 24, 32, 0.66);
+}
+
+.tpl-design-01-luxury .mg-quotes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 3.5vw, 56px);
+  margin-top: clamp(44px, 7vh, 80px);
+}
+.tpl-design-01-luxury .mg-quote {
+  margin: 0;
+  border-top: 1px solid rgba(16, 24, 32, 0.2);
+  padding-top: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+}
+.tpl-design-01-luxury .mg-quote-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+  line-height: 1.42;
+  color: var(--color-primary);
+  margin: 0;
+}
+.tpl-design-01-luxury .mg-quote-cite {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tpl-design-01-luxury .mg-quote-name {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+.tpl-design-01-luxury .mg-quote-route {
+  font-size: 0.8rem;
+  color: rgba(16, 24, 32, 0.55);
+}
+
+/* ---------- enquire / contact ---------- */
+
+.tpl-design-01-luxury .mg-contact {
+  padding: clamp(100px, 14vh, 170px) 0;
+  background:
+    radial-gradient(110% 80% at 50% 100%, rgba(26, 36, 49, 0.85) 0%, var(--color-background) 60%);
+}
+.tpl-design-01-luxury .mg-contact-grid {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: clamp(48px, 6vw, 110px);
+  align-items: start;
+}
+.tpl-design-01-luxury .mg-address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: clamp(26px, 4vh, 40px) 0;
+}
+.tpl-design-01-luxury .mg-address a {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  text-decoration: none;
+  color: var(--color-ivory);
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 6px;
+  width: fit-content;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-01-luxury .mg-address a:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.tpl-design-01-luxury .mg-fine {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-faint);
+  margin: 0;
+}
+
+.tpl-design-01-luxury .mg-form {
+  border: 1px solid var(--color-line-soft);
+  padding: clamp(30px, 4vw, 54px);
+  display: grid;
+  gap: 26px;
+  background: rgba(24, 34, 48, 0.5);
+}
+.tpl-design-01-luxury .mg-field {
+  display: grid;
+  gap: 10px;
+}
+.tpl-design-01-luxury .mg-field span {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.tpl-design-01-luxury .mg-field input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-line-soft);
+  color: var(--color-ivory);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.05rem;
+  padding: 8px 2px 12px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  border-radius: 0;
+}
+.tpl-design-01-luxury .mg-field input::placeholder {
+  color: var(--color-faint);
+}
+.tpl-design-01-luxury .mg-field input:focus {
+  border-bottom-color: var(--color-accent);
+}
+.tpl-design-01-luxury .mg-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+.tpl-design-01-luxury .mg-form-send {
+  justify-self: start;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+/* ---------- footer ---------- */
+
+.tpl-design-01-luxury .mg-footer {
+  padding: clamp(70px, 10vh, 120px) 0 clamp(40px, 6vh, 70px);
+  border-top: 1px solid var(--color-line-soft);
+}
+.tpl-design-01-luxury .mg-footer-grid {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(40px, 6vh, 70px);
+}
+.tpl-design-01-luxury .mg-footer-word {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  margin: 0;
+}
+.tpl-design-01-luxury .mg-footer-links {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.tpl-design-01-luxury .mg-footer-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-muted);
+}
+.tpl-design-01-luxury .mg-footer-links a:hover {
+  color: var(--color-accent);
+}
+.tpl-design-01-luxury .mg-footer .mg-rule {
+  max-width: none;
+  margin-bottom: 26px;
+}
+.tpl-design-01-luxury .mg-footer-line {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-muted);
+  margin: 0 0 8px;
+}
+.tpl-design-01-luxury .mg-colophon {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+  margin: 0;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1100px) {
+  .tpl-design-01-luxury .mg-card {
+    width: 262px;
+  }
+  .tpl-design-01-luxury .mg-wp-slot[data-side='right'] .mg-card-pos {
+    left: 34px;
+  }
+  .tpl-design-01-luxury .mg-wp-slot[data-side='left'] .mg-card-pos {
+    right: 34px;
+  }
+}
+
+@media (max-width: 900px) {
+  .tpl-design-01-luxury .mg-craft-grid,
+  .tpl-design-01-luxury .mg-contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-01-luxury .mg-craft-visual {
+    position: static;
+    max-width: 560px;
+  }
+  .tpl-design-01-luxury .mg-quotes {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+  }
+}
+
+/* Mobile + reduced-motion: the itinerary becomes an elegant stacked list.
+   No pin, no route line, no docking — every card fully visible. */
+@media (max-width: 767px) {
+  .tpl-design-01-luxury .mg-links {
+    display: none;
+  }
+  .tpl-design-01-luxury .mg-hero-scroll {
+    display: none;
+  }
+  .tpl-design-01-luxury .mg-itin-stage {
+    height: auto;
+    display: block;
+    padding: clamp(20px, 4vh, 40px) clamp(24px, 5vw, 40px) clamp(10px, 2vh, 20px);
+    background: var(--color-background);
+  }
+  .tpl-design-01-luxury .mg-route-svg,
+  .tpl-design-01-luxury .mg-leg {
+    display: none;
+  }
+  .tpl-design-01-luxury .mg-itin-map {
+    position: static;
+    height: auto;
+    aspect-ratio: auto;
+    max-width: none;
+  }
+  .tpl-design-01-luxury .mg-wp-slot {
+    position: static;
+    width: auto;
+    height: auto;
+  }
+  .tpl-design-01-luxury .mg-wp-dot,
+  .tpl-design-01-luxury .mg-wp-ring {
+    display: none;
+  }
+  .tpl-design-01-luxury .mg-card-pos {
+    position: static;
+    transform: none;
+    translate: none;
+  }
+  .tpl-design-01-luxury .mg-card {
+    position: static;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto clamp(34px, 5vh, 54px);
+    opacity: 1;
+  }
+  .tpl-design-01-luxury .mg-field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tpl-design-01-luxury.is-reduced .mg-itin-stage {
+  height: auto;
+  display: block;
+  padding: clamp(20px, 4vh, 40px) clamp(24px, 5vw, 40px) clamp(10px, 2vh, 20px);
+  background: var(--color-background);
+}
+.tpl-design-01-luxury.is-reduced .mg-route-svg,
+.tpl-design-01-luxury.is-reduced .mg-leg {
+  display: none;
+}
+.tpl-design-01-luxury.is-reduced .mg-itin-map {
+  position: static;
+  height: auto;
+  aspect-ratio: auto;
+  max-width: none;
+}
+.tpl-design-01-luxury.is-reduced .mg-wp-slot {
+  position: static;
+  width: auto;
+  height: auto;
+}
+.tpl-design-01-luxury.is-reduced .mg-wp-dot,
+.tpl-design-01-luxury.is-reduced .mg-wp-ring {
+  display: none;
+}
+.tpl-design-01-luxury.is-reduced .mg-card-pos {
+  position: static;
+  transform: none;
+  translate: none;
+}
+.tpl-design-01-luxury.is-reduced .mg-card {
+  position: static;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto clamp(34px, 5vh, 54px);
+  opacity: 1;
+}

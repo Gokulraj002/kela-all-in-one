@@ -1,0 +1,1050 @@
+/* DARZI & CO. — Bespoke Tailoring · design-08-tailor
+   Tokens live on .tpl-design-08-tailor ONLY. Every color/font below comes
+   from these vars — never :root, never hardcoded hex. */
+
+.tpl-design-08-tailor {
+  --color-primary: #23211c;
+  --color-secondary: #3a372e;
+  --color-accent: #7a2a26;
+  --color-background: #f1eee6;
+  --color-surface: #e3ddce;
+  --color-text: #23211c;
+  --color-muted: #857d6c;
+  --color-line: #c9c2b0;
+  --color-ink-soft: rgba(35, 33, 28, 0.72);
+  --font-display: 'Spectral', Georgia, serif;
+  --font-body: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-08-tailor *,
+.tpl-design-08-tailor *::before,
+.tpl-design-08-tailor *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-08-tailor h1,
+.tpl-design-08-tailor h2,
+.tpl-design-08-tailor h3,
+.tpl-design-08-tailor p,
+.tpl-design-08-tailor figure,
+.tpl-design-08-tailor blockquote,
+.tpl-design-08-tailor ul,
+.tpl-design-08-tailor ol {
+  margin: 0;
+  padding: 0;
+}
+
+.tpl-design-08-tailor ul,
+.tpl-design-08-tailor ol {
+  list-style: none;
+}
+
+.tpl-design-08-tailor a {
+  color: inherit;
+}
+
+.tpl-design-08-tailor button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.tpl-design-08-tailor button:focus-visible,
+.tpl-design-08-tailor a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Shared primitives (Img / LoopVideo) */
+.tpl-design-08-tailor .a-img {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-08-tailor .a-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tpl-design-08-tailor .a-loopvideo {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.tpl-design-08-tailor .a-loopvideo-poster,
+.tpl-design-08-tailor .a-loopvideo-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tpl-design-08-tailor .a-loopvideo-video {
+  position: absolute;
+  inset: 0;
+}
+
+/* Type utilities */
+.tpl-design-08-tailor .dz-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+.tpl-design-08-tailor .dz-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+  max-width: 16ch;
+}
+.tpl-design-08-tailor .dz-lede {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--color-ink-soft);
+  max-width: 56ch;
+  margin-bottom: 2.5rem;
+}
+.tpl-design-08-tailor .dz-caption {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  padding-top: 0.75rem;
+}
+.tpl-design-08-tailor .dz-eyebrow-light,
+.tpl-design-08-tailor .dz-h2-light,
+.tpl-design-08-tailor .dz-lede-light,
+.tpl-design-08-tailor .dz-caption-light {
+  color: var(--color-background);
+}
+.tpl-design-08-tailor .dz-eyebrow-light {
+  color: var(--color-surface);
+}
+.tpl-design-08-tailor .dz-lede-light {
+  color: rgba(241, 238, 230, 0.82);
+}
+
+/* Word-mask headline */
+.tpl-design-08-tailor .dz-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-08-tailor .dz-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Chalk divider */
+.tpl-design-08-tailor .dz-chalkline {
+  padding: 0 0 2.5rem;
+}
+.tpl-design-08-tailor .dz-chalkline-line {
+  display: block;
+  height: 2px;
+  transform-origin: left center;
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-accent) 0 10px,
+    transparent 10px 18px
+  );
+  opacity: 0.85;
+}
+
+/* ——— Nav ——— */
+.tpl-design-08-tailor .dz-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem clamp(1.25rem, 5vw, 4rem);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-08-tailor .dz-wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.tpl-design-08-tailor .dz-wordmark-est {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-08-tailor .dz-nav-links {
+  display: none;
+  gap: 2rem;
+}
+.tpl-design-08-tailor .dz-nav-links a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-ink-soft);
+  position: relative;
+}
+.tpl-design-08-tailor .dz-nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.tpl-design-08-tailor .dz-nav-links a:hover::after {
+  transform: scaleX(1);
+}
+.tpl-design-08-tailor .dz-nav-cta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-background);
+  background: var(--color-accent);
+  padding: 0.7rem 1.4rem;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.tpl-design-08-tailor .dz-nav-cta:hover {
+  background: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* ——— Hero ——— */
+.tpl-design-08-tailor .dz-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 5vw, 4rem) clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-08-tailor .dz-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.75rem, 7.5vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.5rem;
+}
+.tpl-design-08-tailor .dz-hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: var(--color-ink-soft);
+  max-width: 44ch;
+  margin-bottom: 2.25rem;
+}
+.tpl-design-08-tailor .dz-cta {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-background);
+  background: var(--color-accent);
+  padding: 1rem 2.2rem;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.tpl-design-08-tailor .dz-cta:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
+}
+.tpl-design-08-tailor .dz-cta-note {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin-top: 0.9rem;
+}
+.tpl-design-08-tailor .dz-hero-figure {
+  min-width: 0;
+}
+.tpl-design-08-tailor .dz-hero-visual {
+  aspect-ratio: 4 / 5;
+  max-height: 78vh;
+  width: 100%;
+  border: 1px solid var(--color-line);
+  overflow: hidden;
+  will-change: clip-path;
+}
+.tpl-design-08-tailor .dz-hero-tape {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+.tpl-design-08-tailor .dz-tape-line {
+  display: block;
+  flex: 1;
+  height: 14px;
+  transform-origin: left center;
+  background-color: var(--color-surface);
+  background-image:
+    repeating-linear-gradient(to right, var(--color-primary) 0 1px, transparent 1px 12px),
+    repeating-linear-gradient(to right, var(--color-primary) 0 2px, transparent 2px 60px);
+  background-size: 100% 7px, 100% 14px;
+  background-repeat: repeat-x;
+  background-position: top left, top left;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-08-tailor .dz-tape-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* ——— tapeRail: The Process ——— */
+.tpl-design-08-tailor .dz-tape {
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem) 0;
+}
+.tpl-design-08-tailor .dz-tape-head {
+  margin-bottom: 2.5rem;
+}
+.tpl-design-08-tailor .dz-tape-pin {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+.tpl-design-08-tailor .dz-tape-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 100%;
+}
+.tpl-design-08-tailor .dz-tape-readout {
+  font-family: var(--font-body);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  margin: 0 auto;
+}
+.tpl-design-08-tailor .dz-tape-readout-unit {
+  font-weight: 400;
+  color: var(--color-muted);
+  margin-left: 0.25rem;
+}
+.tpl-design-08-tailor .dz-tape-strip {
+  width: 34px;
+  flex: 1;
+  min-height: 480px;
+  transform-origin: top center;
+  background-color: var(--color-surface);
+  background-image:
+    repeating-linear-gradient(to bottom, var(--color-primary) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(to bottom, var(--color-primary) 0 2px, transparent 2px 50px);
+  background-size: 60% 100%, 100% 100%;
+  background-repeat: repeat-y;
+  background-position: right top, left top;
+  border-left: 1px solid var(--color-line);
+  border-right: 1px solid var(--color-line);
+}
+.tpl-design-08-tailor .dz-tape-cards {
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+.tpl-design-08-tailor .dz-stage {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  transition: border-color 0.35s ease;
+}
+.tpl-design-08-tailor .dz-stage.is-active {
+  border-color: var(--color-accent);
+}
+.tpl-design-08-tailor .dz-stage-frame {
+  position: absolute;
+  inset: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  pointer-events: none;
+}
+.tpl-design-08-tailor .dz-stage-frame rect {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0.9;
+}
+.tpl-design-08-tailor .dz-stage-num {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.6rem;
+}
+.tpl-design-08-tailor .dz-stage-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+.tpl-design-08-tailor .dz-stage-body {
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  max-width: 52ch;
+  margin-bottom: 0.9rem;
+}
+.tpl-design-08-tailor .dz-stage-cm {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+}
+
+/* ——— Wardrobe ——— */
+.tpl-design-08-tailor .dz-wardrobe {
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+  border-top: 1px solid var(--color-line);
+}
+.tpl-design-08-tailor .dz-wardrobe-grid {
+  display: grid;
+  gap: 2rem;
+}
+.tpl-design-08-tailor .dz-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  /* GSAP owns transform (reveal) — the hover lift uses the separate translate property */
+  transition: translate 0.35s ease, box-shadow 0.35s ease;
+}
+.tpl-design-08-tailor .dz-card:hover {
+  translate: 0 -4px;
+  box-shadow: 0 18px 40px -22px rgba(35, 33, 28, 0.45);
+}
+.tpl-design-08-tailor .dz-card-visual {
+  aspect-ratio: 4 / 5;
+  overflow: hidden; /* the box keeps its ratio: a lazy photo can never grow it */
+}
+.tpl-design-08-tailor .dz-card-visual .a-img,
+.tpl-design-08-tailor .dz-hero-visual .a-img {
+  height: 100%;
+}
+.tpl-design-08-tailor .dz-card-body {
+  padding: 1.5rem 1.5rem 1.75rem;
+}
+.tpl-design-08-tailor .dz-card-fabric {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+.tpl-design-08-tailor .dz-card-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+.tpl-design-08-tailor .dz-card-desc {
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  margin-bottom: 1.1rem;
+}
+.tpl-design-08-tailor .dz-card-price {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.tpl-design-08-tailor .dz-price-from {
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin-right: 0.4rem;
+}
+
+/* ——— Cloth Library ——— */
+.tpl-design-08-tailor .dz-cloth {
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-08-tailor .dz-cloth-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+.tpl-design-08-tailor .dz-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.2rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-background);
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+.tpl-design-08-tailor .dz-pill:hover {
+  border-color: var(--color-primary);
+}
+.tpl-design-08-tailor .dz-pill.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-background);
+}
+.tpl-design-08-tailor .dz-cloth-layout {
+  display: grid;
+  gap: 2.5rem;
+}
+.tpl-design-08-tailor .dz-cloth-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+.tpl-design-08-tailor .dz-cloth-card {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  background: var(--color-background);
+  border: 1px solid var(--color-line);
+  padding: 1rem 1.25rem;
+}
+.tpl-design-08-tailor .dz-cloth-swatch {
+  width: 72px;
+  height: 96px;
+  border: 1px solid var(--color-line);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: bottom center;
+}
+.tpl-design-08-tailor .dz-cloth-card:hover .dz-cloth-swatch {
+  transform: rotate(-7deg) translateY(-5px);
+}
+.tpl-design-08-tailor .dz-cloth-card:nth-child(2n):hover .dz-cloth-swatch {
+  transform: rotate(6deg) translateY(-5px);
+}
+.tpl-design-08-tailor .dz-cloth-card:nth-child(3n):hover .dz-cloth-swatch {
+  transform: rotate(-3deg) translateY(-7px) translateX(3px);
+}
+.tpl-design-08-tailor .dz-cloth-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+.tpl-design-08-tailor .dz-cloth-mill {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+.tpl-design-08-tailor .dz-cloth-spec {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  margin-bottom: 0.4rem;
+}
+.tpl-design-08-tailor .dz-cloth-price {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.tpl-design-08-tailor .dz-cloth-figure .a-img {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--color-line);
+}
+
+/* ——— Fittings ——— */
+.tpl-design-08-tailor .dz-fittings {
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+}
+.tpl-design-08-tailor .dz-fit-layout {
+  display: grid;
+  gap: 2rem;
+}
+.tpl-design-08-tailor .dz-fit-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 1rem;
+  width: 100%;
+  text-align: left;
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid var(--color-line);
+  transition: background 0.25s ease;
+}
+.tpl-design-08-tailor .dz-fit-step:hover {
+  background: var(--color-surface);
+}
+.tpl-design-08-tailor .dz-fit-step.is-active {
+  background: var(--color-surface);
+  box-shadow: inset 3px 0 0 var(--color-accent);
+}
+.tpl-design-08-tailor .dz-fit-step-num {
+  grid-row: 1 / 3;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--color-muted);
+  line-height: 1;
+}
+.tpl-design-08-tailor .dz-fit-step.is-active .dz-fit-step-num {
+  color: var(--color-accent);
+}
+.tpl-design-08-tailor .dz-fit-step-name {
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+.tpl-design-08-tailor .dz-fit-step-when {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+}
+.tpl-design-08-tailor .dz-fit-panel {
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding: clamp(1.75rem, 4vw, 3rem);
+}
+.tpl-design-08-tailor .dz-fit-panel-when {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-surface);
+  margin-bottom: 0.75rem;
+}
+.tpl-design-08-tailor .dz-fit-panel-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 1rem;
+}
+.tpl-design-08-tailor .dz-fit-panel-body {
+  color: rgba(241, 238, 230, 0.82);
+  margin-bottom: 1.75rem;
+  max-width: 52ch;
+}
+.tpl-design-08-tailor .dz-fit-checklist {
+  display: grid;
+  gap: 0.85rem;
+}
+.tpl-design-08-tailor .dz-fit-check {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-align: left;
+  width: 100%;
+}
+.tpl-design-08-tailor .dz-fit-check-box {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--color-surface);
+  position: relative;
+  transition: background 0.25s ease;
+}
+.tpl-design-08-tailor .dz-fit-check.is-done .dz-fit-check-box {
+  /* dark panel: the light tone of the brand colour stays readable */
+  background: var(--brand-on-dark, var(--color-accent));
+  border-color: var(--brand-on-dark, var(--color-accent));
+}
+.tpl-design-08-tailor .dz-fit-check-label {
+  position: relative;
+  font-size: 0.95rem;
+}
+.tpl-design-08-tailor .dz-fit-check-label::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 55%;
+  height: 1px;
+  background: var(--brand-on-dark, var(--color-accent));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s ease;
+}
+.tpl-design-08-tailor .dz-fit-check.is-done .dz-fit-check-label::after {
+  transform: scaleX(1);
+}
+.tpl-design-08-tailor .dz-fit-check.is-done .dz-fit-check-label {
+  color: rgba(241, 238, 230, 0.6);
+}
+.tpl-design-08-tailor .dz-hint {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: rgba(241, 238, 230, 0.55);
+}
+
+/* ——— Craft film: "Needle & Steam" as a scroll-driven frame sequence ——— */
+.tpl-design-08-tailor .dz-film {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-primary);
+}
+/* ScrollFrames layout (stage height, canvas, overlay) is applied inline by
+   the component via the stageHeight prop — no .sf-* CSS rules needed. */
+.tpl-design-08-tailor .dz-film .sf-wrap {
+  position: relative;
+}
+.tpl-design-08-tailor .dz-film-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(35, 33, 28, 0.88) 0%, rgba(35, 33, 28, 0.25) 45%, rgba(35, 33, 28, 0.15) 100%);
+  pointer-events: none;
+}
+.tpl-design-08-tailor .dz-film-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+  max-width: 44rem;
+}
+
+/* ——— Appointments ——— */
+.tpl-design-08-tailor .dz-book {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem) clamp(4rem, 8vw, 7rem);
+}
+.tpl-design-08-tailor .dz-book-layout {
+  display: grid;
+  gap: 2.5rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.tpl-design-08-tailor .dz-mode {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 1.25rem 1.25rem;
+  border: 1px solid var(--color-line);
+  margin-bottom: 0.85rem;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.tpl-design-08-tailor .dz-mode:hover {
+  border-color: var(--color-primary);
+}
+.tpl-design-08-tailor .dz-mode.is-active {
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+  box-shadow: inset 3px 0 0 var(--color-accent);
+}
+.tpl-design-08-tailor .dz-mode-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+.tpl-design-08-tailor .dz-mode-desc {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+.tpl-design-08-tailor .dz-book-contact {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+.tpl-design-08-tailor .dz-book-contact a {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.tpl-design-08-tailor .dz-book-slots {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+.tpl-design-08-tailor .dz-book-slots-label {
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
+  margin-bottom: 1.25rem;
+}
+.tpl-design-08-tailor .dz-slots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+.tpl-design-08-tailor .dz-slot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-background);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: border-color 0.25s ease;
+}
+.tpl-design-08-tailor .dz-slot:hover {
+  border-color: var(--color-primary);
+}
+.tpl-design-08-tailor .dz-slot.is-selected {
+  border-color: var(--color-accent);
+}
+.tpl-design-08-tailor .dz-slot-ring {
+  flex: none;
+  width: 22px;
+  height: 22px;
+}
+.tpl-design-08-tailor .dz-slot-ring circle {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+.tpl-design-08-tailor .dz-slot.is-selected .dz-slot-ring circle {
+  stroke-dashoffset: 0;
+}
+.tpl-design-08-tailor .dz-slot-chosen {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.tpl-design-08-tailor .dz-quotes {
+  display: grid;
+  gap: 1.5rem;
+  border-top: 1px solid var(--color-line);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+.tpl-design-08-tailor .dz-quote-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  line-height: 1.35;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.tpl-design-08-tailor .dz-quote-by {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.tpl-design-08-tailor .dz-quote-by span {
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+/* ——— Footer ——— */
+.tpl-design-08-tailor .dz-footer {
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.25rem, 5vw, 4rem) 2rem;
+}
+.tpl-design-08-tailor .dz-footer-grid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.tpl-design-08-tailor .dz-wordmark-light {
+  color: var(--color-background);
+  margin-bottom: 1rem;
+}
+.tpl-design-08-tailor .dz-footer-ledger {
+  font-size: 0.9rem;
+  color: rgba(241, 238, 230, 0.72);
+  max-width: 34ch;
+}
+.tpl-design-08-tailor .dz-footer-head {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-surface);
+  margin-bottom: 0.9rem;
+}
+.tpl-design-08-tailor .dz-footer-col p {
+  font-size: 0.9rem;
+  color: rgba(241, 238, 230, 0.72);
+  margin-bottom: 0.35rem;
+}
+.tpl-design-08-tailor .dz-footer-col a {
+  color: var(--color-background);
+}
+.tpl-design-08-tailor .dz-footer-care {
+  font-size: 0.85rem;
+  font-style: italic;
+  font-family: var(--font-display);
+  color: rgba(241, 238, 230, 0.6);
+  border-top: 1px solid rgba(241, 238, 230, 0.18);
+  padding-top: 1.5rem;
+  margin-bottom: 1rem;
+  max-width: 60ch;
+}
+.tpl-design-08-tailor .dz-footer-line {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: rgba(241, 238, 230, 0.45);
+}
+
+/* ——— ≥768px ——— */
+@media (min-width: 768px) {
+  .tpl-design-08-tailor .dz-nav-links {
+    display: flex;
+  }
+  .tpl-design-08-tailor .dz-hero {
+    grid-template-columns: 1fr 1.05fr;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+  .tpl-design-08-tailor .dz-hero-visual {
+    aspect-ratio: 4 / 5;
+  }
+
+  /* tapeRail pinned composition */
+  .tpl-design-08-tailor .dz-tape-pin {
+    grid-template-columns: 92px 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    height: calc(var(--tpl-vh, 100vh) - 4.5rem);
+    max-height: 1080px;
+    padding: 0 0 2rem;
+  }
+  .tpl-design-08-tailor .dz-tape-strip {
+    width: 56px;
+    min-height: 0;
+  }
+  .tpl-design-08-tailor .dz-tape-readout {
+    font-size: 1rem;
+    writing-mode: horizontal-tb;
+  }
+  .tpl-design-08-tailor .dz-tape-cards {
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0.85rem;
+    align-content: stretch;
+    padding-bottom: 0;
+    min-height: 0;
+  }
+  .tpl-design-08-tailor .dz-stage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .tpl-design-08-tailor .dz-stage-body {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .tpl-design-08-tailor .dz-wardrobe-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .tpl-design-08-tailor .dz-cloth-layout {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: start;
+  }
+  .tpl-design-08-tailor .dz-cloth-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tpl-design-08-tailor .dz-fit-layout {
+    grid-template-columns: 1fr 1.25fr;
+    align-items: start;
+  }
+  .tpl-design-08-tailor .dz-book-layout {
+    grid-template-columns: 1fr 1.25fr;
+    align-items: start;
+  }
+  .tpl-design-08-tailor .dz-slots {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .tpl-design-08-tailor .dz-quotes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .tpl-design-08-tailor .dz-footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  }
+}
+
+/* ——— ≥1440px ——— */
+@media (min-width: 1440px) {
+  .tpl-design-08-tailor .dz-hero,
+  .tpl-design-08-tailor .dz-tape,
+  .tpl-design-08-tailor .dz-wardrobe,
+  .tpl-design-08-tailor .dz-cloth,
+  .tpl-design-08-tailor .dz-fittings,
+  .tpl-design-08-tailor .dz-book {
+    padding-left: max(4rem, calc(50% - 44rem));
+    padding-right: max(4rem, calc(50% - 44rem));
+  }
+  .tpl-design-08-tailor .dz-film-copy {
+    padding-left: max(4rem, calc(50% - 44rem));
+    padding-right: max(4rem, calc(50% - 44rem));
+  }
+}
+
+/* Mobile + reduced-motion: tape fully unrolled, stages visible and active */
+@media (max-width: 767px) {
+  .tpl-design-08-tailor .dz-stage-frame rect {
+    stroke-dashoffset: 0;
+  }
+  .tpl-design-08-tailor .dz-nav {
+    padding: 0.8rem 1.25rem;
+  }
+  .tpl-design-08-tailor .dz-hero-visual {
+    aspect-ratio: 4 / 3;
+    max-height: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-08-tailor .dz-stage-frame rect {
+    stroke-dashoffset: 0;
+  }
+  .tpl-design-08-tailor .dz-card:hover {
+    translate: none;
+  }
+  .tpl-design-08-tailor .dz-cloth-card:hover .dz-cloth-swatch,
+  .tpl-design-08-tailor .dz-nav-cta:hover,
+  .tpl-design-08-tailor .dz-cta:hover {
+    transform: none;
+  }
+}

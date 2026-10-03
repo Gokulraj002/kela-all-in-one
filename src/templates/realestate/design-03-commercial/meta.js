@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-03-commercial',
+  num: '03',
+  name: 'Northgate Works',
+  tag: 'Commercial',
+  style: 'Institutional B2B · spec-sheet precision',
+  animation: 'Blueprint draw-on floor plan',
+  typography: 'IBM Plex Serif + IBM Plex Sans + IBM Plex Mono',
+  layout: 'Pinned plan · data tables · stat strips',
+  mood: 'Confident, precise, institutional',
+  palette: 'Navy #1B2A4A · graphite #2B2F36 · paper #F5F3EE · brass #A9884B',
+  features: [
+    'Blueprint draw-on floor plan',
+    'Room-by-room spec cards',
+    'Spec-sheet data tables',
+    'Connectivity ledger',
+    'Walkthrough booking',
+  ],
+  fonts: { display: 'IBM Plex Serif', body: 'IBM Plex Sans' },
+  colors: { primary: '#1B2A4A', accent: '#A9884B' },
+};

@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-03-bridal',
+  num: '03',
+  name: 'Noor Bridal',
+  tag: 'Bridal Couture',
+  style: 'Opulent ceremonial couture',
+  animation: 'Pinned color-chapter tint crossfade',
+  typography: 'Cinzel + Jost',
+  layout: 'Ceremonial procession — chapters by ceremony, one couture piece per viewport',
+  mood: 'Regal · Ceremonial · Unhurried',
+  palette: 'Kumkum maroon #311316 · Ivory-gold #F3E3C2 · Zari #C6A15B',
+  features: ['Color-chapter pinned scroll', 'Trousseau builder with WhatsApp shortlist', 'Appointment scheduler'],
+  fonts: { display: 'Cinzel', body: 'Jost' },
+  colors: { primary: '#311316', accent: '#C6A15B' },
+};

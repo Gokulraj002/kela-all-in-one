@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-09-rail',
+  num: '09',
+  name: 'The Slow Line',
+  tag: 'Rail & Cruise',
+  style: 'Pullman-era romance, timetable precision',
+  animation: 'Window-pass journey, timetable reveals, brass accents',
+  typography: 'DM Serif Display + Inter',
+  layout: 'Pinned window viewport, horizontal passing landscape',
+  mood: 'Nostalgic, unhurried, elegant',
+  palette: 'Pullman green / brass / cream',
+  features: ['Window journey', 'Timetable itineraries', 'Observation deck', 'Berth classes'],
+  fonts: { display: 'DM Serif Display', body: 'Inter' },
+  colors: { primary: '#22392C', accent: '#B08A3C' },
+};

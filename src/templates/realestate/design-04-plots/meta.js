@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-04-plots',
+  num: '04',
+  name: 'Aaranya Acres',
+  tag: 'Plotted Development',
+  style: 'Land-story led editorial — survey-map motifs, parchment and earth tones',
+  animation: 'Pinned masterplan zoom: estate → sector → plot, plot fill-pulse highlights with updating detail card and minimap',
+  typography: 'Fraunces + Instrument Sans',
+  layout: 'Full-bleed aerial hero, mid-page interlude film, pinned SVG masterplan, three plot collections, legacy reasons, enquire footer',
+  mood: 'Rooted, generous, legacy',
+  palette: 'Parchment #EFE6D4 / forest #2E4A34 / earth #8A6D4B / ink #211C13',
+  features: ['Pinned masterplan map zoom', 'Interlude aerial film', 'Sequential plot highlights with detail card', 'Zoom minimap'],
+  fonts: { display: 'Fraunces', body: 'Instrument Sans' },
+  colors: { primary: '#2E4A34', accent: '#8A6D4B' },
+};

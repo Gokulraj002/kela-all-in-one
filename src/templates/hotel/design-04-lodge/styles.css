@@ -1,0 +1,807 @@
+/* Devdar Retreat — design-04-lodge. Tokens live ONLY on the scope class. */
+.tpl-design-04-lodge {
+  --color-primary: #2E2118;
+  --color-accent: #C97B3F;
+  --color-background: #F7F0E3;
+  --color-surface: #EFE2CC;
+  --color-card: #FFFDF7;
+  --color-text: #2E2118;
+  --color-muted: #765F4E; /* darkened from #8B7260 so small print reads ≥4.5:1 */
+  --color-deep: #231810;
+  --color-cream: #F7F0E3;
+  --color-line: rgba(46, 33, 24, 0.16);
+  --color-line-cream: rgba(247, 240, 227, 0.22);
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Manrope', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tpl-design-04-lodge *,
+.tpl-design-04-lodge *::before,
+.tpl-design-04-lodge *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-04-lodge img {
+  display: block;
+  max-width: 100%;
+}
+
+.tpl-design-04-lodge a {
+  color: inherit;
+}
+
+/* ---------- shared type & layout ---------- */
+.tpl-design-04-lodge .ld-wrap {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+.tpl-design-04-lodge .ld-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.1rem;
+}
+
+.tpl-design-04-lodge .ld-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.6vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.5rem;
+  max-width: 18ch;
+}
+
+.tpl-design-04-lodge .ld-h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+.tpl-design-04-lodge .ld-body {
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  line-height: 1.75;
+  color: var(--color-text);
+  margin: 0 0 1.25rem;
+  max-width: 62ch;
+}
+
+.tpl-design-04-lodge .ld-rule {
+  display: block;
+  height: 2px;
+  width: clamp(4rem, 12vw, 7rem);
+  background: var(--color-accent);
+  transform-origin: left center;
+  margin: 0 0 2.5rem;
+}
+
+/* word-mask headline (server-safe) */
+.tpl-design-04-lodge .ld-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-04-lodge .ld-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+.tpl-design-04-lodge .ld-cta {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--color-cream);
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  padding: 0.85rem 1.9rem;
+  text-decoration: none;
+  /* hover lift uses the separate `translate` property: GSAP owns `transform`
+     on the hero / directions CTAs, and a transform transition would drag
+     every frame of their entrance tween */
+  transition: translate 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+.tpl-design-04-lodge .ld-cta:hover {
+  translate: 0 -2px;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ---------- nav: warm woodsy bar ---------- */
+.tpl-design-04-lodge .ld-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
+  background: rgba(35, 24, 16, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(201, 123, 63, 0.28);
+}
+.tpl-design-04-lodge .ld-wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+  color: var(--color-cream);
+  text-decoration: none;
+}
+.tpl-design-04-lodge .ld-links {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 2.2rem);
+}
+.tpl-design-04-lodge .ld-links a {
+  color: var(--color-cream);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+.tpl-design-04-lodge .ld-links a:hover {
+  opacity: 1;
+  color: var(--color-accent);
+}
+.tpl-design-04-lodge .ld-nav .ld-cta {
+  padding: 0.65rem 1.5rem;
+  font-size: 0.88rem;
+}
+
+/* ---------- hero: scroll-driven frame sequence (ScrollFrames, pinned) ---------- */
+.tpl-design-04-lodge .ld-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-deep);
+}
+/* ScrollFrames contract — the design owns the stage height. */
+/* ScrollFrames: layout is inline in the component (stageHeight 100svh). */
+.tpl-design-04-lodge .ld-hero .sf-overlay {
+  display: flex;
+  align-items: flex-end;
+}
+/* Reduced-motion: static first frame instead of the scrub. */
+.tpl-design-04-lodge .ld-hero .sf-static {
+  position: relative;
+  min-height: max(92vh, 560px);
+  overflow: hidden;
+}
+.tpl-design-04-lodge .ld-hero .sf-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tpl-design-04-lodge .ld-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(35, 24, 16, 0.88) 0%, rgba(35, 24, 16, 0.35) 45%, rgba(35, 24, 16, 0.15) 100%);
+}
+.tpl-design-04-lodge .ld-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: clamp(5rem, 10vw, 8rem) clamp(1.25rem, 4vw, 3rem) clamp(3.5rem, 7vw, 5.5rem);
+}
+.tpl-design-04-lodge .ld-hero .ld-eyebrow {
+  color: var(--color-accent);
+}
+.tpl-design-04-lodge .ld-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.8rem, 8vw, 5.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: var(--color-cream);
+  margin: 0 0 1.4rem;
+  max-width: 12ch;
+}
+.tpl-design-04-lodge .ld-hero-sub {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.7;
+  color: var(--color-cream);
+  opacity: 0.92;
+  max-width: 44ch;
+  margin: 0 0 2rem;
+}
+.tpl-design-04-lodge .ld-hero-cta {
+  margin-bottom: 2.2rem;
+}
+.tpl-design-04-lodge .ld-hero-note {
+  font-size: 0.92rem;
+  color: var(--color-cream);
+  opacity: 0.75;
+  border-top: 1px solid var(--color-line-cream);
+  padding-top: 1.2rem;
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* ---------- booking ---------- */
+.tpl-design-04-lodge .ld-booking {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+.tpl-design-04-lodge .ld-booking-card {
+  background: var(--color-deep);
+  color: var(--color-cream);
+  border-radius: 1.5rem;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  margin-top: 1rem;
+  box-shadow: 0 30px 60px -30px rgba(35, 24, 16, 0.55);
+}
+.tpl-design-04-lodge .ld-booking-form {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  align-items: end;
+}
+.tpl-design-04-lodge .ld-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.tpl-design-04-lodge .ld-field span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.tpl-design-04-lodge .ld-field input,
+.tpl-design-04-lodge .ld-field select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-cream);
+  background: rgba(247, 240, 227, 0.08);
+  border: 1px solid var(--color-line-cream);
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  color-scheme: dark;
+}
+.tpl-design-04-lodge .ld-field input:focus,
+.tpl-design-04-lodge .ld-field select:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.tpl-design-04-lodge .ld-booking-form .ld-cta {
+  justify-self: stretch;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+.tpl-design-04-lodge .ld-booking-summary {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line-cream);
+}
+.tpl-design-04-lodge .ld-booking-line {
+  margin: 0 0 0.4rem;
+  font-size: 1.02rem;
+}
+.tpl-design-04-lodge .ld-booking-line span {
+  opacity: 0.75;
+}
+.tpl-design-04-lodge .ld-booking-rates {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.tpl-design-04-lodge .ld-booking-rates span {
+  font-weight: 500;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+.tpl-design-04-lodge .ld-booking-total {
+  margin: 0.6rem 0 0;
+  font-size: 1.25rem;
+}
+.tpl-design-04-lodge .ld-booking-total strong {
+  color: var(--color-accent);
+}
+.tpl-design-04-lodge .ld-booking-ok {
+  margin: 0.9rem 0 0;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.75rem;
+  background: rgba(201, 123, 63, 0.16);
+  border: 1px solid rgba(201, 123, 63, 0.45);
+  font-size: 0.95rem;
+}
+.tpl-design-04-lodge .ld-booking-hint {
+  margin-top: 1.5rem;
+  font-size: 0.92rem;
+  color: var(--color-muted);
+}
+
+/* ---------- fireside (deep) ---------- */
+.tpl-design-04-lodge .ld-fireside {
+  background: var(--color-deep);
+  color: var(--color-cream);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+.tpl-design-04-lodge .ld-fireside .ld-h2 {
+  color: var(--color-cream);
+}
+.tpl-design-04-lodge .ld-fireside .ld-body {
+  color: var(--color-cream);
+  opacity: 0.88;
+}
+.tpl-design-04-lodge .ld-fireside .ld-rule {
+  background: var(--color-accent);
+}
+.tpl-design-04-lodge .ld-season {
+  max-width: 56rem;
+}
+.tpl-design-04-lodge .ld-season-tabs {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.tpl-design-04-lodge .ld-season-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  font-family: var(--font-body);
+  background: transparent;
+  border: 1px solid var(--color-line-cream);
+  border-radius: 1rem;
+  padding: 0.9rem 1.6rem;
+  cursor: pointer;
+  color: var(--color-cream);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.tpl-design-04-lodge .ld-season-tab:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+}
+.tpl-design-04-lodge .ld-season-tab.is-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-deep);
+}
+.tpl-design-04-lodge .ld-season-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.tpl-design-04-lodge .ld-season-months {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.tpl-design-04-lodge .ld-season-panel .ld-h3 {
+  color: var(--color-cream);
+}
+.tpl-design-04-lodge .ld-season-notes {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.tpl-design-04-lodge .ld-season-notes li {
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--color-line-cream);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  color: var(--color-cream);
+}
+
+/* ---------- rooms: hearth fan ---------- */
+.tpl-design-04-lodge .ld-rooms {
+  padding: clamp(5rem, 10vw, 9rem) 0 clamp(4rem, 8vw, 7rem);
+  overflow: hidden;
+}
+.tpl-design-04-lodge .ld-rooms-lede {
+  color: var(--color-muted);
+  font-style: italic;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.tpl-design-04-lodge .ld-rooms-stage {
+  position: relative;
+  max-width: 88rem;
+  margin: 3.5rem auto 0;
+  min-height: 700px;
+}
+.tpl-design-04-lodge .ld-room-card {
+  width: min(340px, 86vw);
+}
+/* fanned final state = the CSS default (reduced-motion & no-JS safe) */
+.tpl-design-04-lodge .ld-room-card:nth-child(1) { top: 44px; transform: translateX(-400px); }
+.tpl-design-04-lodge .ld-room-card:nth-child(2) { top: 0; transform: translateX(0); }
+.tpl-design-04-lodge .ld-room-card:nth-child(3) { top: 44px; transform: translateX(400px); }
+@media (min-width: 900px) {
+  .tpl-design-04-lodge .ld-room-card {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: calc(min(340px, 86vw) / -2);
+  }
+}
+@media (min-width: 900px) and (max-width: 1199px) {
+  .tpl-design-04-lodge .ld-room-card:nth-child(1) { transform: translateX(-310px); }
+  .tpl-design-04-lodge .ld-room-card:nth-child(3) { transform: translateX(310px); }
+  .tpl-design-04-lodge .ld-rooms-stage { min-height: 680px; }
+}
+/* hover lift lives on the inner: the outer carries the fan's inline
+   gsap transform, which would override any CSS transform hover here */
+.tpl-design-04-lodge .ld-room-inner {
+  height: 100%;
+  background: var(--color-card);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 24px 50px -24px rgba(46, 33, 24, 0.45);
+  border: 1px solid var(--color-line);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tpl-design-04-lodge .ld-room-card:hover .ld-room-inner {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 60px -24px rgba(46, 33, 24, 0.55);
+}
+.tpl-design-04-lodge .ld-room-visual {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.tpl-design-04-lodge .ld-room-visual .a-img,
+.tpl-design-04-lodge .ld-room-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tpl-design-04-lodge .ld-room-body {
+  padding: 1.6rem 1.6rem 1.8rem;
+}
+.tpl-design-04-lodge .ld-room-meta {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.6rem;
+}
+.tpl-design-04-lodge .ld-room-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+.tpl-design-04-lodge .ld-room-desc {
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin: 0 0 1.1rem;
+}
+.tpl-design-04-lodge .ld-room-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 1.1rem;
+}
+.tpl-design-04-lodge .ld-room-price span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+.tpl-design-04-lodge .ld-room-cta {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+.tpl-design-04-lodge .ld-room-cta:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ---------- mountain days ---------- */
+.tpl-design-04-lodge .ld-days {
+  background: var(--color-surface);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+.tpl-design-04-lodge .ld-days-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: 1rem;
+}
+.tpl-design-04-lodge .ld-day-card {
+  background: var(--color-card);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  /* `translate`, not `transform`: the stagger reveal tweens transform */
+  transition: translate 0.3s ease, box-shadow 0.3s ease;
+}
+.tpl-design-04-lodge .ld-day-card:hover {
+  translate: 0 -4px;
+  box-shadow: 0 28px 55px -26px rgba(46, 33, 24, 0.5);
+}
+.tpl-design-04-lodge .ld-day-visual {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.tpl-design-04-lodge .ld-day-visual .a-img,
+.tpl-design-04-lodge .ld-day-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tpl-design-04-lodge .ld-day-card .ld-h3 {
+  padding: 1.5rem 1.6rem 0;
+}
+.tpl-design-04-lodge .ld-day-card .ld-body {
+  padding: 0 1.6rem 1.8rem;
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+/* ---------- kitchen (deep) ---------- */
+.tpl-design-04-lodge .ld-kitchen {
+  background: var(--color-deep);
+  color: var(--color-cream);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+.tpl-design-04-lodge .ld-kitchen-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+}
+.tpl-design-04-lodge .ld-kitchen .ld-h2,
+.tpl-design-04-lodge .ld-kitchen .ld-h3 {
+  color: var(--color-cream);
+}
+.tpl-design-04-lodge .ld-kitchen .ld-body {
+  color: var(--color-cream);
+  opacity: 0.88;
+}
+.tpl-design-04-lodge .ld-kitchen-notes {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+.tpl-design-04-lodge .ld-kitchen-notes li {
+  position: relative;
+  padding-left: 1.8rem;
+  font-weight: 600;
+  color: var(--color-cream);
+}
+.tpl-design-04-lodge .ld-kitchen-notes li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.9rem;
+  height: 2px;
+  background: var(--color-accent);
+}
+.tpl-design-04-lodge .ld-kitchen-img {
+  margin: 0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.6);
+}
+.tpl-design-04-lodge .ld-kitchen-img .a-img,
+.tpl-design-04-lodge .ld-kitchen-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- visit ---------- */
+.tpl-design-04-lodge .ld-visit {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+.tpl-design-04-lodge .ld-steps {
+  list-style: none;
+  margin: 2.75rem 0 3rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.tpl-design-04-lodge .ld-steps li {
+  border-top: 2px solid var(--color-accent);
+  padding-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tpl-design-04-lodge .ld-steps strong {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+.tpl-design-04-lodge .ld-steps span {
+  color: var(--color-muted);
+  font-size: 0.98rem;
+}
+.tpl-design-04-lodge .ld-visit-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.tpl-design-04-lodge .ld-address {
+  font-style: normal;
+  line-height: 2;
+  font-size: 1.02rem;
+}
+.tpl-design-04-lodge .ld-address a {
+  color: var(--color-accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+.tpl-design-04-lodge .ld-address a:hover {
+  text-decoration: underline;
+}
+.tpl-design-04-lodge .ld-checkin {
+  color: var(--color-muted);
+  font-size: 0.92rem;
+}
+
+/* ---------- footer ---------- */
+.tpl-design-04-lodge .ld-footer {
+  background: var(--color-deep);
+  color: var(--color-cream);
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.25rem, 4vw, 3rem) clamp(2.5rem, 5vw, 3.5rem);
+  text-align: center;
+}
+.tpl-design-04-lodge .ld-footer-mark {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+}
+.tpl-design-04-lodge .ld-footer-line {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0 0 0.75rem;
+}
+.tpl-design-04-lodge .ld-colophon {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin: 0;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 899px) {
+  .tpl-design-04-lodge .ld-rooms-stage {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    min-height: 0;
+    margin-top: 2.5rem;
+  }
+  .tpl-design-04-lodge .ld-room-card {
+    position: static;
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+  .tpl-design-04-lodge .ld-room-card:nth-child(1),
+  .tpl-design-04-lodge .ld-room-card:nth-child(2),
+  .tpl-design-04-lodge .ld-room-card:nth-child(3) {
+    top: auto;
+    transform: none;
+  }
+}
+@media (max-width: 1023px) {
+  .tpl-design-04-lodge .ld-booking-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tpl-design-04-lodge .ld-booking-form .ld-cta {
+    grid-column: 1 / -1;
+  }
+  .tpl-design-04-lodge .ld-days-grid {
+    grid-template-columns: 1fr;
+    max-width: 34rem;
+  }
+  .tpl-design-04-lodge .ld-kitchen-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-04-lodge .ld-kitchen-img {
+    aspect-ratio: 16 / 10;
+    max-width: 40rem;
+  }
+  .tpl-design-04-lodge .ld-steps {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .tpl-design-04-lodge .ld-links {
+    display: none;
+  }
+  .tpl-design-04-lodge .ld-booking-form {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-04-lodge .ld-hero-title {
+    font-size: clamp(2.4rem, 12vw, 3.2rem);
+  }
+  .tpl-design-04-lodge .ld-season-tabs {
+    flex-direction: column;
+  }
+  .tpl-design-04-lodge .ld-season-tab {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+}
+
+/* ---------- reduced motion: static final states ----------
+   Room cards rest in their fanned final state, which is the CSS default
+   (nth-child transforms above); JS skips the fan when reduced. */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-04-lodge *,
+  .tpl-design-04-lodge *::before,
+  .tpl-design-04-lodge *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Kela accent on the deep bands ----------
+   The page is light, so --color-accent is the dark Kela tone; on the deep
+   bark surfaces (hero film, booking card, fireside, kitchen, nav, footer)
+   accent text and fills switch to the light tone so they stay readable. */
+.tpl-design-04-lodge .ld-hero .ld-eyebrow,
+.tpl-design-04-lodge .ld-fireside .ld-eyebrow,
+.tpl-design-04-lodge .ld-kitchen .ld-eyebrow,
+.tpl-design-04-lodge .ld-field span,
+.tpl-design-04-lodge .ld-booking-total strong,
+.tpl-design-04-lodge .ld-links a:hover {
+  color: var(--brand-on-dark, var(--color-accent));
+}
+.tpl-design-04-lodge .ld-fireside .ld-rule,
+.tpl-design-04-lodge .ld-kitchen .ld-rule,
+.tpl-design-04-lodge .ld-kitchen-notes li::before {
+  background: var(--brand-on-dark, var(--color-accent));
+}
+.tpl-design-04-lodge .ld-season-tab:hover {
+  border-color: var(--brand-on-dark, var(--color-accent));
+}
+.tpl-design-04-lodge .ld-season-tab.is-active {
+  background: var(--brand-on-dark, var(--color-accent));
+  border-color: var(--brand-on-dark, var(--color-accent));
+  color: var(--color-deep);
+}
+.tpl-design-04-lodge .ld-field input:focus,
+.tpl-design-04-lodge .ld-field select:focus {
+  outline-color: var(--brand-on-dark, var(--color-accent));
+}

@@ -1,0 +1,681 @@
+/* ============ Northgate Works · design-03-commercial ============
+   Tokens live ONLY on .tpl-design-03-commercial. Never :root. */
+
+.tpl-design-03-commercial {
+  --color-primary: #1B2A4A;
+  --color-primary-deep: #131E36;
+  --color-secondary: #2B2F36;
+  --color-accent: #A9884B;
+  --color-accent-soft: #C6A76B;
+  --color-background: #F5F3EE;
+  --color-surface: #FFFFFF;
+  --color-ink: #1E2230;
+  --color-text: #2B2F36;
+  --color-muted: #6E7480;
+  --color-line: #DDD8CC;
+  --font-display: 'IBM Plex Serif', Georgia, serif;
+  --font-body: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
+  --pad-section: clamp(96px, 12vw, 180px);
+  --wrap: min(1280px, 100% - clamp(40px, 8vw, 112px));
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  /* x only: this class is also on the viewer's scroll container, and
+     overflow: clip on both axes stopped the page from scrolling at all. */
+  overflow-x: clip;
+  position: relative;
+}
+
+.tpl-design-03-commercial *,
+.tpl-design-03-commercial *::before,
+.tpl-design-03-commercial *::after { box-sizing: border-box; }
+
+.tpl-design-03-commercial img { display: block; max-width: 100%; }
+
+.tpl-design-03-commercial .nw-wrap {
+  width: var(--wrap);
+  margin-inline: auto;
+}
+
+/* ---------- type ---------- */
+.tpl-design-03-commercial .nw-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 22px;
+}
+.tpl-design-03-commercial .nw-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(40px, 5.2vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0 0 28px;
+  max-width: 14ch;
+}
+.tpl-design-03-commercial .nw-body { margin: 0 0 18px; max-width: 62ch; }
+.tpl-design-03-commercial .nw-lede { font-size: 19px; color: var(--color-secondary); max-width: 58ch; }
+
+.tpl-design-03-commercial .nw-rule {
+  display: block;
+  height: 2px;
+  width: 72px;
+  background: var(--color-accent);
+  transform-origin: left center;
+  margin: 0 0 40px;
+}
+
+/* word-mask headline */
+.tpl-design-03-commercial .nw-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-03-commercial .nw-wm .wi { display: inline-block; will-change: transform; }
+
+/* ---------- buttons ---------- */
+.tpl-design-03-commercial .nw-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 16px 28px;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-03-commercial .nw-cta:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.tpl-design-03-commercial .nw-cta-ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.tpl-design-03-commercial .nw-cta-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+.tpl-design-03-commercial .nw-textlink {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 3px;
+}
+.tpl-design-03-commercial .nw-textlink:hover { color: var(--color-accent); }
+
+/* ---------- nav ---------- */
+.tpl-design-03-commercial .nw-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px clamp(20px, 4vw, 56px);
+  /* near-opaque, no backdrop blur: a blur under a sticky bar re-renders the
+     whole scrolling page beneath it every frame */
+  background: rgba(27, 42, 74, 0.985);
+  border-bottom: 1px solid rgba(169, 136, 75, 0.35);
+}
+.tpl-design-03-commercial .nw-wordmark {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tpl-design-03-commercial .nw-links { display: flex; gap: 30px; }
+.tpl-design-03-commercial .nw-links a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 238, 0.75);
+  text-decoration: none;
+}
+.tpl-design-03-commercial .nw-links a:hover { color: var(--color-accent-soft); }
+.tpl-design-03-commercial .nw-cta-nav {
+  padding: 12px 20px;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.tpl-design-03-commercial .nw-cta-nav:hover { background: var(--color-accent-soft); border-color: var(--color-accent-soft); }
+
+/* ---------- hero ---------- */
+.tpl-design-03-commercial .nw-hero {
+  position: relative;
+  background: var(--color-primary-deep);
+  color: #fff;
+  overflow: clip;
+}
+
+/* scroll-frames hero: pinned stage the height of the visible scroll area, copy overlaid above frames */
+.tpl-design-03-commercial .sf-stage { position: relative; height: var(--tpl-vh, 100svh); overflow: hidden; }
+.tpl-design-03-commercial .sf-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tpl-design-03-commercial .sf-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.tpl-design-03-commercial .sf-static { position: relative; height: var(--tpl-vh, 100svh); overflow: hidden; }
+.tpl-design-03-commercial .sf-static-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-03-commercial .nw-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(19, 30, 54, 0.55) 0%, rgba(19, 30, 54, 0.15) 40%, rgba(19, 30, 54, 0.82) 100%),
+    linear-gradient(100deg, rgba(19, 30, 54, 0.65) 0%, rgba(19, 30, 54, 0.1) 60%);
+}
+/* The copy is bottom-anchored over the film; its top padding only keeps it
+   clear of the sticky nav, and the headline scales with the visible height
+   so title, CTAs and stat strip always fit inside the pinned stage. */
+.tpl-design-03-commercial .nw-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: var(--wrap);
+  margin: 0 auto;
+  padding: calc(var(--nw-nav-h, 77px) + 24px) 0 36px;
+}
+.tpl-design-03-commercial .nw-hero-eyebrow { color: var(--color-accent-soft); }
+.tpl-design-03-commercial .nw-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(40px, min(7.4vw, calc(var(--tpl-vh, 100svh) * 0.1)), 104px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin: 0 0 28px;
+  max-width: 12ch;
+}
+.tpl-design-03-commercial .nw-hero-sub {
+  font-size: clamp(17px, 1.8vw, 21px);
+  line-height: 1.6;
+  max-width: 52ch;
+  color: rgba(245, 243, 238, 0.88);
+  margin: 0 0 40px;
+}
+.tpl-design-03-commercial .nw-hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
+.tpl-design-03-commercial .nw-hero-strip {
+  position: relative;
+  z-index: 2;
+  width: var(--wrap);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 24px 0 30px;
+  border-top: 1px solid rgba(245, 243, 238, 0.25);
+}
+.tpl-design-03-commercial .nw-stat-value {
+  font-family: var(--font-mono);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin: 0 0 6px;
+}
+.tpl-design-03-commercial .nw-stat-value span {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: var(--color-accent-soft);
+}
+.tpl-design-03-commercial .nw-stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 238, 0.65);
+  margin: 0;
+}
+
+/* ---------- plates / blueprint ---------- */
+.tpl-design-03-commercial .nw-plates { padding: var(--pad-section) 0 0; background: var(--color-background); }
+.tpl-design-03-commercial .nw-plates-head { margin-bottom: clamp(48px, 6vw, 96px); }
+.tpl-design-03-commercial .nw-plates-lede { max-width: 64ch; }
+
+.tpl-design-03-commercial .nw-plan-pin {
+  background: var(--color-primary-deep);
+  color: var(--color-background);
+  min-height: var(--tpl-vh, 100svh);
+  display: flex;
+  align-items: center;
+  padding: clamp(48px, 7vh, 96px) 0;
+}
+.tpl-design-03-commercial .nw-plan-stage {
+  width: min(1180px, 100% - clamp(40px, 8vw, 112px));
+  margin: 0 auto;
+}
+/* Pinned (desktop + motion): the stage is exactly the visible scroll area
+   with the sticky nav's height kept clear at the top. The plan column is
+   sized by the height that is left (plan aspect 800:520), and the spec
+   summary sits in a side column instead of under the plan, so the drawing
+   stays large and nothing is cut off while pinned. */
+.tpl-design-03-commercial .nw-plan-pin.is-pinned {
+  height: var(--tpl-vh, 100svh);
+  min-height: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: calc(var(--nw-nav-h, 77px) + 16px) 0 20px;
+}
+.tpl-design-03-commercial .nw-plan-pin.is-pinned .nw-plan-stage {
+  width: min(1280px, 100% - clamp(40px, 6vw, 96px));
+  display: grid;
+  grid-template-columns:
+    min(100% - clamp(220px, 20vw, 280px) - clamp(28px, 3vw, 48px), calc((var(--tpl-vh, 100svh) - var(--nw-nav-h, 77px) - 120px) * 1.538))
+    clamp(220px, 20vw, 280px);
+  column-gap: clamp(28px, 3vw, 48px);
+  justify-content: center;
+  align-items: start;
+}
+.tpl-design-03-commercial .nw-plan-pin.is-pinned .nw-plan-topbar { grid-column: 1; grid-row: 1; margin-bottom: 12px; }
+.tpl-design-03-commercial .nw-plan-pin.is-pinned .nw-plan-wrap { grid-column: 1; grid-row: 2; }
+.tpl-design-03-commercial .nw-plan-pin.is-pinned .nw-plan-progress { grid-column: 1; grid-row: 3; margin-top: 14px; }
+.tpl-design-03-commercial .nw-plan-pin.is-pinned .nw-plan-summary {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: center;
+  grid-template-columns: 1fr;
+  gap: 26px;
+  margin: 0;
+  padding: 4px 0 4px 28px;
+  border-top: 0;
+  border-left: 1px solid rgba(245, 243, 238, 0.18);
+}
+.tpl-design-03-commercial .nw-plan-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 238, 0.6);
+  margin-bottom: 24px;
+}
+.tpl-design-03-commercial .nw-plan-count { color: var(--color-accent-soft); font-weight: 600; }
+
+.tpl-design-03-commercial .nw-plan-wrap {
+  position: relative;
+  border: 1px solid rgba(169, 136, 75, 0.4);
+  background: #101A30;
+}
+.tpl-design-03-commercial .nw-plan-svg { display: block; width: 100%; height: auto; }
+.tpl-design-03-commercial .nw-gridline { stroke: rgba(245, 243, 238, 0.07); }
+.tpl-design-03-commercial .nw-wall {
+  fill: var(--color-accent);
+  stroke: var(--color-accent-soft);
+  stroke-width: 2.5;
+}
+.tpl-design-03-commercial .nw-roomlabel {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  fill: var(--color-background);
+  opacity: 0;
+}
+.tpl-design-03-commercial .nw-scalebar rect { fill: var(--color-accent); }
+.tpl-design-03-commercial .nw-scalebar text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: rgba(245, 243, 238, 0.6);
+  letter-spacing: 0.1em;
+}
+
+/* spec cards: hidden until their room completes (or .is-static) */
+.tpl-design-03-commercial .nw-plan-cards { position: absolute; inset: 0; pointer-events: none; }
+.tpl-design-03-commercial .nw-speccard {
+  position: absolute;
+  width: 208px;
+  max-width: 34%;
+  background: rgba(245, 243, 238, 0.97);
+  color: var(--color-text);
+  border-top: 3px solid var(--color-accent);
+  padding: 16px 18px 14px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(14px);
+}
+.tpl-design-03-commercial .nw-speccard-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  margin: 0 0 6px;
+}
+.tpl-design-03-commercial .nw-speccard-name {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+.tpl-design-03-commercial .nw-speccard-data { margin: 0; }
+.tpl-design-03-commercial .nw-speccard-data > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 5px 0;
+  border-top: 1px solid var(--color-line);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.tpl-design-03-commercial .nw-speccard-data dt { color: var(--color-muted); letter-spacing: 0.08em; text-transform: uppercase; font-size: 10px; align-self: center; }
+.tpl-design-03-commercial .nw-speccard-data dd { margin: 0; font-weight: 600; color: var(--color-primary); text-align: right; }
+
+/* static fallback: full plan, every card visible */
+.tpl-design-03-commercial .nw-plates.is-static .nw-roomlabel { opacity: 1; }
+.tpl-design-03-commercial .nw-plates.is-static .nw-speccard { opacity: 1; transform: none; }
+.tpl-design-03-commercial .nw-plates.is-static .nw-plan-summary { opacity: 1; transform: none; }
+
+.tpl-design-03-commercial .nw-plan-progress {
+  height: 2px;
+  background: rgba(245, 243, 238, 0.18);
+  margin-top: 28px;
+  overflow: hidden;
+}
+.tpl-design-03-commercial .nw-plan-progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.tpl-design-03-commercial .nw-plan-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(245, 243, 238, 0.18);
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* ---------- spaces ---------- */
+.tpl-design-03-commercial .nw-spaces { padding: var(--pad-section) 0; }
+.tpl-design-03-commercial .nw-space-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 3.5vw, 56px);
+  margin-top: clamp(48px, 6vw, 88px);
+}
+.tpl-design-03-commercial .nw-space-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  padding: 0 0 36px;
+  display: flex;
+  flex-direction: column;
+}
+.tpl-design-03-commercial .nw-space-visual { aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-primary-deep); }
+.tpl-design-03-commercial .nw-frame .a-img,
+.tpl-design-03-commercial .nw-frame .a-img img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-03-commercial .nw-space-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  margin: 28px 32px 8px;
+}
+.tpl-design-03-commercial .nw-space-name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 32px 6px;
+  line-height: 1.25;
+}
+.tpl-design-03-commercial .nw-space-area {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 32px 16px;
+}
+.tpl-design-03-commercial .nw-space-rate { margin: 0 32px 16px; }
+.tpl-design-03-commercial .nw-space-price {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.tpl-design-03-commercial .nw-space-per {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-muted);
+}
+.tpl-design-03-commercial .nw-space-desc { margin: 0 32px 24px; font-size: 15.5px; color: var(--color-secondary); flex: 1; }
+.tpl-design-03-commercial .nw-space-card .nw-textlink { margin: 0 32px; align-self: flex-start; }
+
+/* ---------- specs ---------- */
+.tpl-design-03-commercial .nw-specs { padding: var(--pad-section) 0; background: var(--color-surface); border-block: 1px solid var(--color-line); }
+.tpl-design-03-commercial .nw-specs-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(48px, 7vw, 120px);
+  align-items: start;
+}
+.tpl-design-03-commercial .nw-spec-visual { aspect-ratio: 4 / 3; margin: 40px 0; background: var(--color-primary-deep); }
+.tpl-design-03-commercial .nw-spec-table { margin: 8px 0 0; border-top: 2px solid var(--color-primary); }
+.tpl-design-03-commercial .nw-spec-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 24px;
+  padding: 20px 4px;
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-03-commercial .nw-spec-row dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  align-self: center;
+}
+.tpl-design-03-commercial .nw-spec-row dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: right;
+}
+
+/* ---------- location ---------- */
+.tpl-design-03-commercial .nw-location { padding: var(--pad-section) 0; }
+.tpl-design-03-commercial .nw-conn-list {
+  list-style: none;
+  margin: clamp(48px, 6vw, 88px) 0 0;
+  padding: 0;
+  border-top: 2px solid var(--color-primary);
+}
+.tpl-design-03-commercial .nw-conn-row {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  padding: 26px 4px;
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-03-commercial .nw-conn-idx {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  min-width: 36px;
+}
+.tpl-design-03-commercial .nw-conn-place {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 500;
+  color: var(--color-primary);
+}
+.tpl-design-03-commercial .nw-conn-dots { flex: 1; border-bottom: 1px dotted var(--color-muted); opacity: 0.6; transform: translateY(-6px); }
+.tpl-design-03-commercial .nw-conn-time {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+/* ---------- contact ---------- */
+.tpl-design-03-commercial .nw-contact {
+  padding: var(--pad-section) 0;
+  background: var(--color-primary);
+  color: #fff;
+}
+.tpl-design-03-commercial .nw-contact .nw-h2 { color: #fff; }
+.tpl-design-03-commercial .nw-contact .nw-lede { color: rgba(245, 243, 238, 0.85); }
+.tpl-design-03-commercial .nw-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: clamp(40px, 5vw, 72px) 0 48px;
+}
+.tpl-design-03-commercial .nw-contact-card {
+  display: block;
+  text-decoration: none;
+  border: 1px solid rgba(169, 136, 75, 0.55);
+  padding: 32px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-03-commercial .nw-contact-card:hover { background: rgba(169, 136, 75, 0.12); border-color: var(--color-accent-soft); }
+.tpl-design-03-commercial .nw-contact-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+  margin-bottom: 12px;
+}
+.tpl-design-03-commercial .nw-contact-value {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.6vw, 30px);
+  font-weight: 500;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+.tpl-design-03-commercial .nw-address {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: rgba(245, 243, 238, 0.7);
+}
+
+/* ---------- footer ---------- */
+.tpl-design-03-commercial .nw-footer {
+  background: var(--color-primary-deep);
+  color: rgba(245, 243, 238, 0.7);
+  padding: 64px 0 40px;
+}
+.tpl-design-03-commercial .nw-footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.tpl-design-03-commercial .nw-footer-brand {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+.tpl-design-03-commercial .nw-footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.tpl-design-03-commercial .nw-footer-links a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 238, 0.6);
+  text-decoration: none;
+}
+.tpl-design-03-commercial .nw-footer-links a:hover { color: var(--color-accent-soft); }
+.tpl-design-03-commercial .nw-footer-line { font-size: 14px; margin: 0 0 8px; }
+.tpl-design-03-commercial .nw-colophon {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(245, 243, 238, 0.45);
+  margin: 0;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1023px) {
+  .tpl-design-03-commercial .nw-links { display: none; }
+  .tpl-design-03-commercial .nw-space-grid { grid-template-columns: 1fr; max-width: 640px; }
+  .tpl-design-03-commercial .nw-specs-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 767px) {
+  .tpl-design-03-commercial { font-size: 16px; }
+  .tpl-design-03-commercial .nw-hero-strip { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .tpl-design-03-commercial .nw-hero-ctas .nw-cta { width: 100%; justify-content: center; }
+
+  /* blueprint: no pin — plan complete, cards become a readable list */
+  .tpl-design-03-commercial .nw-plan-pin { min-height: 0; padding: 56px 0; display: block; }
+  .tpl-design-03-commercial .nw-plan-cards {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+    pointer-events: auto;
+  }
+  .tpl-design-03-commercial .nw-speccard {
+    position: static;
+    width: auto;
+    max-width: none;
+  }
+  .tpl-design-03-commercial .nw-plan-summary { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .tpl-design-03-commercial .nw-plan-progress { display: none; }
+
+  .tpl-design-03-commercial .nw-contact-grid { grid-template-columns: 1fr; }
+  .tpl-design-03-commercial .nw-conn-row { gap: 16px; }
+  .tpl-design-03-commercial .nw-conn-dots { display: none; }
+  .tpl-design-03-commercial .nw-spec-row { grid-template-columns: 1fr; gap: 6px; }
+  .tpl-design-03-commercial .nw-spec-row dd { text-align: left; }
+}
+
+@media (min-width: 1440px) {
+  .tpl-design-03-commercial .nw-plan-stage { width: min(1320px, 100% - 160px); }
+}

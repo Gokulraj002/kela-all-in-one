@@ -1,0 +1,681 @@
+/* Resham Maison — design-06-silk. Tokens scoped to the template class ONLY. */
+
+.tpl-design-06-silk {
+  --color-background: #0D0B09;
+  --color-surface: #161210;
+  --color-primary: #EBDCBE;
+  --color-accent: #D8C29A;
+  --color-text: #F0E6D2;
+  --color-muted: #847768;
+  --font-display: 'Bodoni Moda', 'Didot', serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+
+  position: relative;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.75;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tpl-design-06-silk *,
+.tpl-design-06-silk *::before,
+.tpl-design-06-silk *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-06-silk img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Screen-reader-only label */
+.tpl-design-06-silk .rm-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Film-cut veil: dips to black between chapters */
+.tpl-design-06-silk .rm-veil {
+  /* viewport-sized (not page-sized) so the dip-to-black is a cheap layer */
+  position: fixed;
+  inset: var(--tpl-top, 0px) 0 0 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 60;
+}
+
+/* ---------- typography ---------- */
+.tpl-design-06-silk .rm-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 2.25rem;
+}
+
+.tpl-design-06-silk .rm-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: var(--color-primary);
+  margin: 0 0 2rem;
+  text-wrap: balance;
+}
+
+.tpl-design-06-silk .rm-lede {
+  font-size: 1.0625rem;
+  color: var(--color-muted);
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+.tpl-design-06-silk .rm-manifesto {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.375rem, 3vw, 2.125rem);
+  line-height: 1.5;
+  color: var(--color-primary);
+  max-width: 46rem;
+  margin: 0 auto 2.5rem;
+  text-wrap: balance;
+}
+
+/* Word-mask headline */
+.tpl-design-06-silk .rm-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-06-silk .rm-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------- buttons ---------- */
+.tpl-design-06-silk .rm-btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-primary);
+  border: 1px solid rgba(216, 194, 154, 0.45);
+  padding: 1.125rem 2.75rem;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
+}
+.tpl-design-06-silk .rm-btn:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-background);
+}
+.tpl-design-06-silk .rm-btn-quiet {
+  border-color: rgba(216, 194, 154, 0.28);
+}
+
+/* ---------- nav ---------- */
+.tpl-design-06-silk .rm-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.375rem clamp(1.5rem, 5vw, 4rem);
+  /* near-opaque instead of backdrop-filter: a blur would be recomputed on
+     every frame while the silk-pour canvas scrubs underneath */
+  background: rgba(13, 11, 9, 0.92);
+  border-bottom: 1px solid rgba(216, 194, 154, 0.1);
+}
+.tpl-design-06-silk .rm-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.tpl-design-06-silk .rm-nav-links {
+  display: flex;
+  gap: clamp(1.25rem, 3vw, 2.75rem);
+}
+.tpl-design-06-silk .rm-nav-links a {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+.tpl-design-06-silk .rm-nav-links a:hover {
+  color: var(--color-primary);
+}
+.tpl-design-06-silk .rm-nav-enquire {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(216, 194, 154, 0.4);
+  padding-bottom: 0.25rem;
+  transition: border-color 0.4s ease, color 0.4s ease;
+}
+.tpl-design-06-silk .rm-nav-enquire:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ---------- hero: Silk Pour scroll-frame sequence (ScrollFrames) ---------- */
+.tpl-design-06-silk .rm-hero {
+  position: relative;
+  min-height: 100svh;
+  background: #060504;
+  overflow: hidden;
+}
+/* ScrollFrames handles all stage/canvas layout inline (see _shared/ScrollFrames.jsx);
+   the template only centers overlay content and styles the reduced-motion static frame. */
+.tpl-design-06-silk .sf-overlay {
+  display: grid;
+  place-items: center;
+}
+/* Reduced-motion: static first frame, all copy visible */
+.tpl-design-06-silk .sf-static { position: relative; min-height: 100svh; overflow: hidden; }
+.tpl-design-06-silk .sf-static-img {
+  width: 100%;
+  height: 100svh;
+  object-fit: cover;
+  display: block;
+}
+.tpl-design-06-silk .rm-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 5, 4, 0.88) 0%, rgba(6, 5, 4, 0.25) 48%, rgba(6, 5, 4, 0.45) 100%);
+}
+.tpl-design-06-silk .rm-hero-copy {
+  position: relative;
+  text-align: center;
+  padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 6vw, 4rem);
+  max-width: 62rem;
+}
+.tpl-design-06-silk .rm-hero-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(3rem, 9vw, 7.5rem);
+  line-height: 1.04;
+  letter-spacing: 0.005em;
+  color: var(--color-primary);
+  margin: 0 0 2.5rem;
+  text-wrap: balance;
+}
+.tpl-design-06-silk .rm-hero-sub {
+  font-size: 1.0625rem;
+  color: var(--color-text);
+  max-width: 32rem;
+  margin: 0 auto 3.5rem;
+  opacity: 0.85;
+}
+.tpl-design-06-silk .rm-hero-cta {
+  margin: 0 0 4.5rem;
+}
+.tpl-design-06-silk .rm-hero-zari {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-06-silk .rm-zari-count {
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- sections ---------- */
+.tpl-design-06-silk .rm-section {
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 6rem);
+  text-align: center;
+}
+
+/* ---------- philosophy ---------- */
+.tpl-design-06-silk .rm-phil .rm-title {
+  margin-bottom: 3.5rem;
+}
+.tpl-design-06-silk .rm-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(2.5rem, 7vw, 6rem);
+  margin-top: clamp(4rem, 8vw, 6.5rem);
+  flex-wrap: wrap;
+}
+.tpl-design-06-silk .rm-stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 5vw, 4rem);
+  font-weight: 300;
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+  line-height: 1;
+}
+.tpl-design-06-silk .rm-stat-unit {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-left: 0.6rem;
+}
+.tpl-design-06-silk .rm-stat-label {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 12rem;
+}
+
+/* ---------- collection header ---------- */
+.tpl-design-06-silk .rm-collection {
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* ---------- drapeSim ---------- */
+.tpl-design-06-silk .rm-drape {
+  background: #060504;
+}
+.tpl-design-06-silk .rm-drape-pin {
+  overflow: hidden;
+}
+.tpl-design-06-silk .rm-drape-stage {
+  position: relative;
+  min-height: var(--tpl-vh, 100svh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.75rem;
+  padding: 4rem 1.5rem;
+  overflow: hidden;
+}
+.tpl-design-06-silk .rm-drape-svg {
+  width: min(1100px, 94%);
+  /* a tall bolt of silk: the wave fills the stage instead of a thin ribbon */
+  height: clamp(220px, calc(var(--tpl-vh, 100vh) * 0.46), 460px);
+  display: block;
+}
+.tpl-design-06-silk .rm-drape-wave {
+  stroke: var(--color-accent);
+  stroke-width: 2;
+}
+.tpl-design-06-silk .rm-drape-flecks circle {
+  fill: var(--color-accent);
+}
+.tpl-design-06-silk .rm-drape-sheen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -35%;
+  width: 170%;
+  background: linear-gradient(100deg, transparent 42%, rgba(216, 194, 154, 0.1) 50%, transparent 58%);
+  pointer-events: none;
+}
+.tpl-design-06-silk .rm-drape-caption {
+  position: relative;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+.tpl-design-06-silk .rm-drape-progress {
+  position: relative;
+  width: 7.5rem;
+  height: 1px;
+  background: rgba(216, 194, 154, 0.18);
+}
+.tpl-design-06-silk .rm-drape-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* ---------- museum pieces ---------- */
+.tpl-design-06-silk .rm-pieces {
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 6rem) clamp(6rem, 12vw, 10rem);
+}
+.tpl-design-06-silk .rm-piece {
+  text-align: center;
+  max-width: 46rem;
+  margin: 0 auto clamp(7rem, 14vw, 12rem);
+}
+.tpl-design-06-silk .rm-piece:last-child {
+  margin-bottom: 0;
+}
+.tpl-design-06-silk .rm-piece-frame {
+  width: min(88vw, 520px);
+  aspect-ratio: 4 / 5;
+  margin: 0 auto clamp(3rem, 6vw, 4.5rem);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-06-silk .rm-piece-frame .a-img,
+.tpl-design-06-silk .rm-piece-frame .a-img img {
+  width: 100%;
+  height: 100%;
+}
+.tpl-design-06-silk .rm-piece-frame .a-img img {
+  object-fit: cover;
+  transform: scale(1.06);
+  transition: transform 1.2s ease;
+}
+.tpl-design-06-silk .rm-piece-frame:hover .a-img img {
+  transform: scale(1.1);
+}
+.tpl-design-06-silk .rm-piece-run {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.5rem;
+}
+.tpl-design-06-silk .rm-piece-name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.08;
+  color: var(--color-primary);
+  margin: 0 0 1.25rem;
+}
+.tpl-design-06-silk .rm-piece-note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--color-text);
+  margin: 0 0 2.75rem;
+}
+.tpl-design-06-silk .rm-piece-data {
+  display: grid;
+  gap: 0;
+  max-width: 26rem;
+  margin: 0 auto 2.75rem;
+  text-align: left;
+}
+.tpl-design-06-silk .rm-piece-data > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(216, 194, 154, 0.14);
+}
+.tpl-design-06-silk .rm-piece-data > div:last-child {
+  border-bottom: 1px solid rgba(216, 194, 154, 0.14);
+}
+.tpl-design-06-silk .rm-piece-data dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-06-silk .rm-piece-data dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  text-align: right;
+}
+.tpl-design-06-silk .rm-piece-price {
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  font-weight: 300;
+  color: var(--color-primary);
+  margin: 0 0 2.5rem;
+}
+.tpl-design-06-silk .rm-piece p:last-child {
+  margin: 0;
+}
+
+/* ---------- provenance ---------- */
+.tpl-design-06-silk .rm-prov .rm-title {
+  margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
+}
+.tpl-design-06-silk .rm-prov-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  max-width: 62rem;
+  margin: 0 auto clamp(4rem, 8vw, 6.5rem);
+  text-align: left;
+}
+.tpl-design-06-silk .rm-prov-card {
+  background: var(--color-surface);
+  border: 1px solid rgba(216, 194, 154, 0.12);
+  padding: clamp(2rem, 4vw, 3.25rem);
+}
+.tpl-design-06-silk .rm-prov-card h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+  letter-spacing: 0.02em;
+}
+.tpl-design-06-silk .rm-prov-card p {
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+.tpl-design-06-silk .rm-detail-band {
+  max-width: 72rem;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-06-silk .rm-detail-band .a-img,
+.tpl-design-06-silk .rm-detail-band .a-img img {
+  width: 100%;
+}
+.tpl-design-06-silk .rm-detail-band .a-img img {
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  transform: scale(1.06);
+}
+.tpl-design-06-silk .rm-detail-band figcaption {
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 1.5rem 1rem 0;
+}
+
+/* ---------- ritual ---------- */
+.tpl-design-06-silk .rm-ritual .rm-lede {
+  margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
+}
+.tpl-design-06-silk .rm-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  max-width: 68rem;
+  margin: 0 auto;
+  text-align: left;
+}
+.tpl-design-06-silk .rm-step-num {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.2em;
+  margin: 0 0 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(216, 194, 154, 0.18);
+}
+.tpl-design-06-silk .rm-step h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.625rem;
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+}
+.tpl-design-06-silk .rm-step p {
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- salon ---------- */
+.tpl-design-06-silk .rm-salon .rm-lede {
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+.tpl-design-06-silk .rm-salon-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+.tpl-design-06-silk .rm-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(216, 194, 154, 0.3);
+  padding: 1rem 0.25rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  text-align: center;
+  outline: none;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+.tpl-design-06-silk .rm-field::placeholder {
+  color: var(--color-muted);
+}
+.tpl-design-06-silk .rm-field:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 1px 0 0 var(--color-accent);
+}
+.tpl-design-06-silk .rm-salon-done {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+/* ---------- footer ---------- */
+.tpl-design-06-silk .rm-footer {
+  text-align: center;
+  padding: clamp(4.5rem, 9vw, 7rem) 1.5rem clamp(3rem, 6vw, 4.5rem);
+  border-top: 1px solid rgba(216, 194, 154, 0.12);
+}
+.tpl-design-06-silk .rm-footer-brand {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  margin: 0 0 1.25rem;
+}
+.tpl-design-06-silk .rm-footer-line {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.0625rem;
+  color: var(--color-muted);
+  margin: 0 0 2rem;
+}
+.tpl-design-06-silk .rm-footer-contact {
+  margin: 0 0 1.5rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+}
+.tpl-design-06-silk .rm-footer-contact a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(216, 194, 154, 0.35);
+  padding-bottom: 0.2rem;
+}
+.tpl-design-06-silk .rm-footer-contact a:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.tpl-design-06-silk .rm-footer-meta,
+.tpl-design-06-silk .rm-footer-legal {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 0.75rem;
+  opacity: 0.75;
+}
+.tpl-design-06-silk .rm-footer-legal {
+  margin-bottom: 0;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .tpl-design-06-silk .rm-steps {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 30rem;
+    text-align: center;
+  }
+  .tpl-design-06-silk .rm-step-num {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .tpl-design-06-silk .rm-nav-links {
+    display: none;
+  }
+  .tpl-design-06-silk .rm-prov-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tpl-design-06-silk .rm-drape-stage {
+    min-height: calc(var(--tpl-vh, 100svh) * 0.82);
+    gap: 2rem;
+  }
+  .tpl-design-06-silk .rm-piece-frame {
+    width: min(92vw, 420px);
+  }
+  .tpl-design-06-silk .rm-stats {
+    flex-direction: column;
+    gap: 2.75rem;
+  }
+  .tpl-design-06-silk .rm-stat-label {
+    margin: 0 auto;
+  }
+  .tpl-design-06-silk .rm-hero-copy {
+    padding-top: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-06-silk .rm-piece-frame:hover .a-img img {
+    transform: none;
+  }
+  .tpl-design-06-silk .rm-btn {
+    transition: none;
+  }
+}

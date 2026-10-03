@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-10-chefstable',
+  num: '10',
+  name: 'Encore',
+  tag: "Chef's Table",
+  style: 'Theatrical playbill dining',
+  animation: 'Act curtain reveals, spotlight opens, one invert flash',
+  typography: 'Abril Fatface + Space Mono',
+  layout: 'Playbill acts, cast list, box-office booking',
+  mood: 'Theatrical, daring, unrepeatable',
+  palette: 'Black / bone / crimson',
+  features: [
+    'Three-act curtain menu',
+    'Spotlight dish reveals',
+    'Playbill course names',
+    'Cast list team',
+    'Box-office tickets',
+  ],
+  fonts: { display: 'Abril Fatface', body: 'Space Mono' },
+  colors: { primary: '#EFE6D4', accent: '#B3352B' },
+};

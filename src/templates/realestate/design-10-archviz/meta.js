@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-10-archviz',
+  num: '10',
+  name: 'Studio Monolith',
+  tag: 'Experimental',
+  style: 'Brutalist archviz immersion',
+  animation: 'Orbital turntable carousel',
+  typography: 'Archivo + Space Grotesk',
+  layout: 'Full-screen overlay nav, pinned orbit stage, manifesto grid',
+  mood: 'Daring, graphic, sculptural',
+  palette: 'Concrete #8E8C86 on black #0C0C0C, bone #EDEAE2, persimmon #F4562A',
+  features: ['Orbital project turntable', 'Full-screen overlay nav', 'Concrete light-study film hero', 'Kinetic masked headlines', 'Scroll-driven process line'],
+  fonts: { display: 'Archivo', body: 'Space Grotesk' },
+  colors: { primary: '#0C0C0C', accent: '#F4562A' },
+};

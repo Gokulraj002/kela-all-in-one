@@ -1,0 +1,446 @@
+/* Vana Collective — design-06-eco. Tokens live on the scope class ONLY. */
+
+.tpl-design-06-eco {
+  --color-primary: #1e3226;
+  --color-accent: #7ba05b;
+  --color-background: #f4f2e9;
+  --color-surface: #e9e6d6;
+  --color-card: #fbfaf3;
+  --color-text: #1e3226;
+  --color-muted: #5f6e61;
+  --color-ink-deep: #121e16;
+  --color-cream: #f7f5ec;
+  --color-mist: rgba(244, 242, 233, 0.86);
+  --color-hairline: rgba(30, 50, 38, 0.16);
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Instrument Sans', sans-serif;
+  --radius: 1.25rem;
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  /* Horizontal backstop only. The viewer's scroll container carries this same
+     class, so clipping the y-axis here would stop the whole page scrolling. */
+  overflow-x: clip;
+}
+
+.tpl-design-06-eco img { display: block; max-width: 100%; }
+.tpl-design-06-eco a { color: inherit; }
+
+/* ---------- word-mask headline ---------- */
+.tpl-design-06-eco .vn-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-06-eco .vn-wm .wi { display: inline-block; will-change: transform; }
+
+/* ---------- type ---------- */
+.tpl-design-06-eco .vn-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin: 0 0 1.1rem;
+}
+.tpl-design-06-eco .vn-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.4rem;
+  text-wrap: balance;
+}
+.tpl-design-06-eco .vn-h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  margin: 0 0 0.6rem;
+}
+.tpl-design-06-eco .vn-body { color: var(--color-muted); font-size: 1.05rem; max-width: 62ch; }
+.tpl-design-06-eco .vn-body + .vn-body { margin-top: 1.1rem; }
+.tpl-design-06-eco .vn-rule {
+  display: block;
+  height: 1px;
+  background: var(--color-hairline);
+  margin: 2rem 0;
+  transform-origin: left center;
+}
+
+.tpl-design-06-eco .vn-wrap {
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+.tpl-design-06-eco section { position: relative; }
+
+/* ---------- nav ---------- */
+/* Zero-height sticky shell: sticks to the top of whatever scrolls (the viewer
+   scroll area or the window) and lets the nav overlay the hero. */
+.tpl-design-06-eco .vn-navshell {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 60;
+}
+.tpl-design-06-eco .vn-nav {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem clamp(1.25rem, 4vw, 3rem);
+  color: var(--color-cream);
+  transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+.tpl-design-06-eco .vn-nav.is-scrolled {
+  background: var(--color-mist);
+  color: var(--color-text);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--color-hairline);
+}
+.tpl-design-06-eco .vn-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+.tpl-design-06-eco .vn-links { display: flex; gap: 1.75rem; }
+.tpl-design-06-eco .vn-nav-actions { display: flex; align-items: center; gap: 0.6rem; }
+.tpl-design-06-eco .vn-links a {
+  text-decoration: none;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+.tpl-design-06-eco .vn-links a:hover { opacity: 1; }
+.tpl-design-06-eco .vn-cta {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.tpl-design-06-eco .vn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(30, 50, 38, 0.22); }
+.tpl-design-06-eco .vn-menu-btn {
+  display: none;
+  background: none;
+  border: 1px solid currentColor;
+  color: inherit;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.tpl-design-06-eco .vn-mobile-menu { display: none; }
+
+/* ---------- hero (scroll-driven frames) ---------- */
+/* ScrollFrames: stage/canvas layout is inline in the component. */
+.tpl-design-06-eco .sf-static { position: relative; height: var(--tpl-vh, 100svh); overflow: hidden; }
+/* ScrollFrames: canvas layout is inline in the component. */
+.tpl-design-06-eco .sf-static-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-06-eco .sf-overlay {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: clamp(4rem, 8vw, 6.5rem);
+  color: var(--color-cream);
+}
+.tpl-design-06-eco .vn-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 30, 22, 0.55) 0%, rgba(18, 30, 22, 0.18) 42%, rgba(18, 30, 22, 0.62) 100%);
+}
+.tpl-design-06-eco .vn-mist { position: absolute; inset: -12% -30%; pointer-events: none; }
+.tpl-design-06-eco .vn-mist-a,
+.tpl-design-06-eco .vn-mist-b {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 46% 30% at 30% 55%, rgba(244, 242, 233, 0.28), transparent 70%),
+    radial-gradient(ellipse 38% 26% at 72% 40%, rgba(244, 242, 233, 0.22), transparent 70%);
+  filter: blur(28px);
+  will-change: transform;
+}
+.tpl-design-06-eco .vn-hero-copy { position: relative; z-index: 2; max-width: 76rem; margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 3rem); width: 100%; }
+.tpl-design-06-eco .vn-hero-copy .vn-eyebrow { color: #cfe3b8; }
+.tpl-design-06-eco .vn-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.5rem;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+.tpl-design-06-eco .vn-hero-sub { font-size: clamp(1.05rem, 1.8vw, 1.3rem); max-width: 44ch; color: rgba(247, 245, 236, 0.88); margin: 0 0 2.2rem; }
+.tpl-design-06-eco .vn-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.tpl-design-06-eco .vn-cta-ghost {
+  display: inline-block;
+  color: var(--color-cream);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 245, 236, 0.5);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.tpl-design-06-eco .vn-cta-ghost:hover { border-color: var(--color-cream); background: rgba(247, 245, 236, 0.1); }
+.tpl-design-06-eco .vn-scroll-hint {
+  position: absolute;
+  right: clamp(1.25rem, 4vw, 3rem);
+  bottom: clamp(4rem, 8vw, 6.5rem);
+  z-index: 2;
+  writing-mode: vertical-rl;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 236, 0.7);
+}
+
+/* ---------- booking ---------- */
+.tpl-design-06-eco .vn-booking { padding: 0; margin-top: -3.5rem; z-index: 5; }
+.tpl-design-06-eco .vn-booking-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  box-shadow: 0 30px 60px rgba(18, 30, 22, 0.16);
+  padding: clamp(1.6rem, 3.5vw, 2.6rem);
+}
+.tpl-design-06-eco .vn-booking-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.6rem; }
+.tpl-design-06-eco .vn-booking-head h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin: 0; }
+.tpl-design-06-eco .vn-booking-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.tpl-design-06-eco .vn-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.tpl-design-06-eco .vn-field label { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted); font-weight: 600; }
+.tpl-design-06-eco .vn-field input,
+.tpl-design-06-eco .vn-field select {
+  font: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-background);
+  border: 1px solid var(--color-hairline);
+  border-radius: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  width: 100%;
+}
+.tpl-design-06-eco .vn-booking-foot { display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.6rem; }
+.tpl-design-06-eco .vn-rate-line { font-size: 1.05rem; }
+.tpl-design-06-eco .vn-rate-line strong { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+.tpl-design-06-eco .vn-rate-line span { color: var(--color-muted); font-size: 0.9rem; display: block; }
+.tpl-design-06-eco .vn-booking-note { font-size: 0.85rem; color: var(--color-muted); margin: 1rem 0 0; }
+.tpl-design-06-eco .vn-booking-confirm {
+  margin-top: 1.2rem;
+  background: #eef3e6;
+  border: 1px solid rgba(123, 160, 91, 0.45);
+  color: var(--color-primary);
+  border-radius: 0.75rem;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- sections ---------- */
+.tpl-design-06-eco .vn-section { padding: clamp(5rem, 10vw, 9rem) 0; }
+.tpl-design-06-eco .vn-section-head { max-width: 56rem; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+
+/* ---------- promise / stats ---------- */
+.tpl-design-06-eco .vn-promise-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.tpl-design-06-eco .vn-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-hairline); border: 1px solid var(--color-hairline); border-radius: var(--radius); overflow: hidden; }
+.tpl-design-06-eco .vn-stat { background: var(--color-card); padding: 1.8rem 1.6rem; }
+.tpl-design-06-eco .vn-stat-num { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.2rem, 3.6vw, 3rem); line-height: 1; color: var(--color-primary); margin-bottom: 0.6rem; }
+.tpl-design-06-eco .vn-stat-num em { font-style: normal; color: var(--color-accent); }
+.tpl-design-06-eco .vn-stat-label { font-size: 0.9rem; color: var(--color-muted); margin: 0; }
+
+/* ---------- rooms / canopy descent ---------- */
+.tpl-design-06-eco .vn-rooms { background: linear-gradient(180deg, var(--color-background) 0%, #eef0e2 55%, var(--color-background) 100%); overflow: clip; }
+.tpl-design-06-eco .vn-stage { position: relative; margin-top: 1rem; }
+.tpl-design-06-eco .vn-layer { position: absolute; inset: 0; will-change: transform; }
+.tpl-design-06-eco .vn-layer-mid { position: relative; z-index: 2; }
+.tpl-design-06-eco .vn-layer-bg { z-index: 1; pointer-events: none; }
+.tpl-design-06-eco .vn-layer-fg { z-index: 3; pointer-events: none; }
+.tpl-design-06-eco .vn-bg-blob { position: absolute; border-radius: 50%; filter: blur(60px); }
+.tpl-design-06-eco .vn-bg-blob.b1 { width: 44vw; height: 44vw; left: -12vw; top: 6%; background: radial-gradient(circle, rgba(123, 160, 91, 0.28), transparent 70%); }
+.tpl-design-06-eco .vn-bg-blob.b2 { width: 38vw; height: 38vw; right: -10vw; top: 38%; background: radial-gradient(circle, rgba(244, 242, 233, 0.9), transparent 70%); }
+.tpl-design-06-eco .vn-bg-blob.b3 { width: 40vw; height: 40vw; left: -8vw; bottom: 2%; background: radial-gradient(circle, rgba(123, 160, 91, 0.2), transparent 70%); }
+.tpl-design-06-eco .vn-fg-leaf { position: absolute; color: #16241b; opacity: 0.5; }
+.tpl-design-06-eco .vn-fg-leaf.l1 { top: -4%; left: -3%; width: clamp(10rem, 22vw, 20rem); transform: rotate(-14deg); }
+.tpl-design-06-eco .vn-fg-leaf.l2 { top: 34%; right: -4%; width: clamp(12rem, 26vw, 24rem); transform: rotate(24deg); opacity: 0.42; }
+.tpl-design-06-eco .vn-fg-leaf.l3 { bottom: -3%; left: 8%; width: clamp(9rem, 18vw, 16rem); transform: rotate(10deg); opacity: 0.38; }
+
+.tpl-design-06-eco .vn-cards { display: flex; flex-direction: column; gap: clamp(4rem, 8vw, 7rem); }
+.tpl-design-06-eco .vn-card-inner {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  background: var(--color-card);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 24px 50px rgba(18, 30, 22, 0.1);
+}
+.tpl-design-06-eco .vn-card:nth-child(even) .vn-card-visual { order: 2; }
+.tpl-design-06-eco .vn-card-visual .a-img { height: 100%; min-height: 22rem; }
+.tpl-design-06-eco .vn-card-visual img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
+.tpl-design-06-eco .vn-card-body { padding: clamp(1.8rem, 3.5vw, 3rem); }
+.tpl-design-06-eco .vn-height-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-accent);
+  border: 1px solid rgba(123, 160, 91, 0.5);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  margin-bottom: 1.1rem;
+}
+.tpl-design-06-eco .vn-card-meta { display: flex; gap: 1.4rem; color: var(--color-muted); font-size: 0.92rem; margin: 0 0 1.2rem; }
+.tpl-design-06-eco .vn-card-desc { color: var(--color-muted); margin: 0 0 1.6rem; max-width: 46ch; }
+.tpl-design-06-eco .vn-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.tpl-design-06-eco .vn-card-price { font-size: 0.9rem; color: var(--color-muted); }
+.tpl-design-06-eco .vn-card-price strong { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; color: var(--color-text); }
+.tpl-design-06-eco .vn-card-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.15rem;
+}
+.tpl-design-06-eco .vn-card-link:hover { color: var(--color-accent); }
+
+/* ---------- experiences ---------- */
+.tpl-design-06-eco .vn-exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.tpl-design-06-eco .vn-exp-visual { position: sticky; top: 6rem; border-radius: var(--radius); overflow: hidden; box-shadow: 0 24px 50px rgba(18, 30, 22, 0.14); }
+.tpl-design-06-eco .vn-exp-visual .a-img { height: 100%; }
+.tpl-design-06-eco .vn-exp-visual img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+.tpl-design-06-eco .vn-exp-list { list-style: none; margin: 2.5rem 0 0; padding: 0; }
+.tpl-design-06-eco .vn-exp-item { padding: 1.6rem 0; border-top: 1px solid var(--color-hairline); }
+.tpl-design-06-eco .vn-exp-item:last-child { border-bottom: 1px solid var(--color-hairline); }
+.tpl-design-06-eco .vn-exp-when { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent); font-weight: 700; margin: 0 0 0.4rem; }
+.tpl-design-06-eco .vn-exp-item h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.45rem; margin: 0 0 0.4rem; }
+.tpl-design-06-eco .vn-exp-item p { color: var(--color-muted); margin: 0; max-width: 52ch; }
+
+/* ---------- dining (dark) ---------- */
+.tpl-design-06-eco .vn-dining { background: var(--color-ink-deep); color: var(--color-cream); }
+.tpl-design-06-eco .vn-dining .vn-eyebrow { color: #a9c98a; }
+.tpl-design-06-eco .vn-dining .vn-h2 { color: var(--color-cream); }
+.tpl-design-06-eco .vn-dining .vn-body { color: rgba(247, 245, 236, 0.72); }
+.tpl-design-06-eco .vn-dining-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.tpl-design-06-eco .vn-dining-visual { border-radius: var(--radius); overflow: hidden; }
+.tpl-design-06-eco .vn-dining-visual img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.tpl-design-06-eco .vn-menu-list { list-style: none; margin: 2.2rem 0 0; padding: 0; }
+.tpl-design-06-eco .vn-menu-item { padding: 1.3rem 0; border-top: 1px solid rgba(247, 245, 236, 0.16); }
+.tpl-design-06-eco .vn-menu-item:last-child { border-bottom: 1px solid rgba(247, 245, 236, 0.16); }
+.tpl-design-06-eco .vn-menu-head { display: flex; align-items: baseline; gap: 0.8rem; }
+.tpl-design-06-eco .vn-menu-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; }
+.tpl-design-06-eco .vn-menu-dots { flex: 1; border-bottom: 1px dotted rgba(247, 245, 236, 0.35); transform: translateY(-4px); }
+.tpl-design-06-eco .vn-menu-price { font-weight: 600; color: #cfe3b8; white-space: nowrap; }
+.tpl-design-06-eco .vn-menu-detail { color: rgba(247, 245, 236, 0.6); font-size: 0.92rem; margin: 0.3rem 0 0; }
+.tpl-design-06-eco .vn-dining-note { margin-top: 1.6rem; font-size: 0.92rem; color: rgba(247, 245, 236, 0.6); font-style: italic; }
+
+/* ---------- impact ---------- */
+.tpl-design-06-eco .vn-impact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.tpl-design-06-eco .vn-report { background: var(--color-card); border: 1px solid var(--color-hairline); border-radius: var(--radius); overflow: hidden; }
+.tpl-design-06-eco .vn-report-head { padding: 1.4rem 1.8rem; background: var(--color-primary); color: var(--color-cream); display: flex; justify-content: space-between; align-items: baseline; }
+.tpl-design-06-eco .vn-report-head strong { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; }
+.tpl-design-06-eco .vn-report-head span { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; }
+.tpl-design-06-eco .vn-report-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; padding: 1.05rem 1.8rem; border-top: 1px solid var(--color-hairline); font-size: 0.98rem; }
+.tpl-design-06-eco .vn-report-row dt { color: var(--color-muted); }
+.tpl-design-06-eco .vn-report-row dd { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--color-text); white-space: nowrap; }
+.tpl-design-06-eco .vn-impact-note {
+  margin-top: 1.8rem;
+  border-left: 3px solid var(--color-accent);
+  padding: 0.2rem 0 0.2rem 1.4rem;
+  font-size: 1.02rem;
+  color: var(--color-muted);
+  font-style: italic;
+  max-width: 46ch;
+}
+
+/* ---------- footer ---------- */
+.tpl-design-06-eco .vn-footer { background: var(--color-ink-deep); color: var(--color-cream); padding: clamp(4rem, 8vw, 6.5rem) 0 2.5rem; }
+.tpl-design-06-eco .vn-footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); margin-bottom: 3.5rem; }
+.tpl-design-06-eco .vn-footer-brand { font-family: var(--font-display); font-size: 2rem; font-weight: 600; margin: 0 0 0.8rem; }
+.tpl-design-06-eco .vn-footer-tag { color: rgba(247, 245, 236, 0.6); margin: 0; max-width: 34ch; }
+.tpl-design-06-eco .vn-footer h4 { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: #a9c98a; margin: 0 0 1rem; }
+.tpl-design-06-eco .vn-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.tpl-design-06-eco .vn-footer a { color: rgba(247, 245, 236, 0.85); text-decoration: none; font-size: 0.95rem; }
+.tpl-design-06-eco .vn-footer a:hover { color: var(--color-cream); }
+.tpl-design-06-eco .vn-footer address { font-style: normal; color: rgba(247, 245, 236, 0.7); font-size: 0.95rem; line-height: 1.8; }
+.tpl-design-06-eco .vn-footer-base { border-top: 1px solid rgba(247, 245, 236, 0.16); padding-top: 1.6rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 0.85rem; color: rgba(247, 245, 236, 0.55); }
+.tpl-design-06-eco .vn-footer-base p { margin: 0; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .tpl-design-06-eco .vn-promise-grid,
+  .tpl-design-06-eco .vn-exp-grid,
+  .tpl-design-06-eco .vn-dining-grid,
+  .tpl-design-06-eco .vn-impact-grid { grid-template-columns: 1fr; }
+  .tpl-design-06-eco .vn-exp-visual { position: static; }
+  .tpl-design-06-eco .vn-exp-visual img { aspect-ratio: 16 / 10; }
+  .tpl-design-06-eco .vn-card-inner { grid-template-columns: 1fr; }
+  .tpl-design-06-eco .vn-card:nth-child(even) .vn-card-visual { order: 0; }
+  .tpl-design-06-eco .vn-card-visual .a-img { min-height: 0; }
+  .tpl-design-06-eco .vn-card-visual img { aspect-ratio: 16 / 10; }
+  .tpl-design-06-eco .vn-booking-grid { grid-template-columns: 1fr 1fr; }
+  .tpl-design-06-eco .vn-footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .tpl-design-06-eco .vn-links { display: none; }
+  .tpl-design-06-eco .vn-menu-btn { display: inline-block; }
+  .tpl-design-06-eco .vn-mobile-menu.is-open {
+    display: block;
+    position: absolute;
+    top: 4.4rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 1;
+    background: var(--color-mist);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-hairline);
+    border-radius: 1rem;
+    padding: 0.6rem;
+  }
+  .tpl-design-06-eco .vn-mobile-menu a {
+    display: block;
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 0.6rem;
+    color: var(--color-text);
+  }
+  .tpl-design-06-eco .vn-mobile-menu a:hover { background: rgba(30, 50, 38, 0.06); }
+}
+@media (max-width: 560px) {
+  /* compact single-row nav: wordmark, Menu and the CTA side by side */
+  .tpl-design-06-eco .vn-nav { padding-block: 0.75rem; }
+  .tpl-design-06-eco .vn-wordmark { font-size: 1.15rem; white-space: nowrap; }
+  .tpl-design-06-eco .vn-nav .vn-cta { padding: 0.5rem 1rem; font-size: 0.85rem; white-space: nowrap; }
+  .tpl-design-06-eco .vn-menu-btn { padding: 0.4rem 0.85rem; font-size: 0.85rem; }
+  .tpl-design-06-eco .vn-booking-grid { grid-template-columns: 1fr; }
+  .tpl-design-06-eco .vn-stats { grid-template-columns: 1fr 1fr; }
+  .tpl-design-06-eco .vn-footer-grid { grid-template-columns: 1fr; }
+  .tpl-design-06-eco .vn-scroll-hint { display: none; }
+  .tpl-design-06-eco .vn-hero-actions .vn-cta,
+  .tpl-design-06-eco .vn-hero-actions .vn-cta-ghost { width: 100%; text-align: center; }
+}

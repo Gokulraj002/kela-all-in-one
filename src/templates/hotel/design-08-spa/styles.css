@@ -1,0 +1,1016 @@
+/* design-08-spa — Aarogya Retreat. Serene, slow, whisper-quiet. */
+
+.tpl-design-08-spa {
+  --color-primary: #3a4440;
+  --color-accent: #8fb5a8;
+  --color-background: #f4f2eb;
+  --color-surface: #fbfaf6;
+  --color-deep: #2e3531;
+  --color-deep-soft: #414a45;
+  --color-text: #3a4440;
+  --color-muted: #7d867f;
+  --color-pale: #efece3;
+  --color-line: rgba(58, 68, 64, 0.16);
+  --color-line-soft: rgba(58, 68, 64, 0.09);
+  --color-nav-bg: rgba(244, 242, 235, 0.82);
+  --color-hero-veil: rgba(244, 242, 235, 0.28);
+  --color-glass: rgba(251, 250, 246, 0.55);
+  --color-bar-bg: rgba(251, 250, 246, 0.9);
+  --color-bar-shadow: rgba(46, 53, 49, 0.12);
+  --color-deep-line: rgba(251, 250, 246, 0.12);
+  --color-deep-muted: rgba(239, 236, 227, 0.62);
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Jost', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-08-spa *,
+.tpl-design-08-spa *::before,
+.tpl-design-08-spa *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-08-spa img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tpl-design-08-spa a {
+  color: inherit;
+}
+
+/* ---------- shared type ---------- */
+
+.tpl-design-08-spa .as-wrap {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding-left: clamp(1.5rem, 5vw, 4rem);
+  padding-right: clamp(1.5rem, 5vw, 4rem);
+}
+
+.tpl-design-08-spa .as-narrow {
+  max-width: 52rem;
+}
+
+.tpl-design-08-spa section {
+  padding-top: clamp(6rem, 12vw, 11rem);
+  padding-bottom: clamp(6rem, 12vw, 11rem);
+}
+
+.tpl-design-08-spa .as-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-accent);
+  margin: 0 0 2rem;
+}
+
+.tpl-design-08-spa .as-h2 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  margin: 0 0 2.5rem;
+}
+
+.tpl-design-08-spa .as-h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.25;
+  margin: 0 0 1rem;
+}
+
+.tpl-design-08-spa .as-h4 {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-muted);
+  margin: 0 0 1.5rem;
+}
+
+.tpl-design-08-spa .as-body {
+  font-size: 1.06rem;
+  margin: 0 0 1.75rem;
+  max-width: 44rem;
+}
+
+.tpl-design-08-spa .as-lede {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  line-height: 1.5;
+  color: var(--color-deep-soft);
+  max-width: 40rem;
+  margin: 0 0 4rem;
+}
+
+/* ---------- nav ---------- */
+
+.tpl-design-08-spa .as-nav {
+  position: fixed;
+  inset: var(--tpl-top, 0px) 0 auto 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.4rem 1rem 1.2rem;
+  background: var(--color-nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-line-soft);
+}
+
+.tpl-design-08-spa .as-wordmark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.45rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.tpl-design-08-spa .as-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 2rem;
+}
+
+.tpl-design-08-spa .as-links a {
+  font-size: 0.74rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--color-muted);
+  transition: color 0.6s ease;
+}
+
+.tpl-design-08-spa .as-links a:hover {
+  color: var(--color-text);
+}
+
+.tpl-design-08-spa .as-nav-cta {
+  font-size: 0.74rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 400;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 0.2rem;
+}
+
+/* ---------- hero: scroll-driven frame sequence ---------- */
+
+.tpl-design-08-spa .as-hero {
+  position: relative;
+  min-height: var(--tpl-vh, 100svh);
+  padding: 0;
+  overflow: hidden;
+}
+
+.tpl-design-08-spa .sf-wrap {
+  width: 100%;
+}
+
+/* ScrollFrames: stage/canvas layout is inline in the component (stageHeight 100svh). */
+
+/* reduced-motion static frame */
+.tpl-design-08-spa .sf-static {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+
+.tpl-design-08-spa .sf-static-img {
+  position: absolute;
+  inset: 0;
+}
+
+.tpl-design-08-spa .sf-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* veil over the frames, under the copy */
+.tpl-design-08-spa .sf-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-hero-veil);
+  pointer-events: none;
+}
+
+.tpl-design-08-spa .as-hero-copy {
+  position: relative;
+  z-index: 1;
+  padding: 8rem 1.5rem 4rem;
+  max-width: 60rem;
+}
+
+.tpl-design-08-spa .as-hero-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-deep-soft);
+  margin: 0 0 2.2rem;
+}
+
+.tpl-design-08-spa .as-hero-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 1.08;
+  margin: 0 0 3.5rem;
+  color: var(--color-deep);
+}
+
+.tpl-design-08-spa .as-hero-cta {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 400;
+  color: var(--color-deep);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 1rem 2.6rem 1rem 2.9rem;
+  background: var(--color-glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.8s ease, border-color 0.8s ease;
+}
+
+.tpl-design-08-spa .as-hero-cta:hover {
+  background: var(--color-surface);
+  border-color: var(--color-accent);
+}
+
+/* ---------- the pause ---------- */
+
+.tpl-design-08-spa .as-pause {
+  text-align: center;
+}
+
+.tpl-design-08-spa .as-pause .as-body {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.tpl-design-08-spa .as-pause-img {
+  max-width: 34rem;
+  margin: 0 auto 4rem;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.tpl-design-08-spa .as-principles {
+  list-style: none;
+  margin: 5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  text-align: left;
+}
+
+.tpl-design-08-spa .as-principles h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin: 0 0 0.8rem;
+}
+
+.tpl-design-08-spa .as-principles p {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- programs / breath gallery ---------- */
+
+.tpl-design-08-spa .as-breath {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  margin: 2rem 0 6rem;
+}
+
+.tpl-design-08-spa .as-breath-frame {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--color-pale);
+  margin-bottom: 2rem;
+}
+
+.tpl-design-08-spa .as-breath-img {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.tpl-design-08-spa .as-breath-img .a-img {
+  width: 100%;
+  height: 100%;
+}
+
+.tpl-design-08-spa .as-program-days {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-accent);
+  margin: 0 0 0.8rem;
+}
+
+.tpl-design-08-spa .as-program-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.9rem;
+  margin: 0 0 0.4rem;
+}
+
+.tpl-design-08-spa .as-program-tag {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.15rem;
+  color: var(--color-deep-soft);
+  margin: 0 0 1rem;
+}
+
+.tpl-design-08-spa .as-program-price {
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin: 0 0 1.6rem;
+}
+
+.tpl-design-08-spa .as-program-price span {
+  color: var(--color-muted);
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.tpl-design-08-spa .as-program-choose {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-weight: 400;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-muted);
+  padding: 0 0 0.3rem;
+  cursor: pointer;
+  transition: color 0.6s ease, border-color 0.6s ease;
+}
+
+.tpl-design-08-spa .as-program-choose:hover {
+  color: var(--color-text);
+  border-color: var(--color-accent);
+}
+
+.tpl-design-08-spa .as-program-choose.is-active {
+  color: var(--color-text);
+  border-color: var(--color-accent);
+}
+
+/* program detail */
+
+.tpl-design-08-spa .as-detail {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-soft);
+  border-radius: 3px;
+  padding: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.tpl-design-08-spa .as-detail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.tpl-design-08-spa .as-detail-rate {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2.2rem;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.tpl-design-08-spa .as-detail-rate span {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  letter-spacing: 0.06em;
+  margin-top: 0.4rem;
+}
+
+.tpl-design-08-spa .as-detail-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.tpl-design-08-spa .as-includes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tpl-design-08-spa .as-includes li {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--color-line-soft);
+  font-size: 1rem;
+}
+
+.tpl-design-08-spa .as-includes li:last-child {
+  border-bottom: none;
+}
+
+.tpl-design-08-spa .as-rhythm {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tpl-design-08-spa .as-rhythm li {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 1.5rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--color-line-soft);
+  font-size: 1rem;
+}
+
+.tpl-design-08-spa .as-rhythm li:last-child {
+  border-bottom: none;
+}
+
+.tpl-design-08-spa .as-rhythm li span:first-child {
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-accent);
+  padding-top: 0.3rem;
+}
+
+/* ---------- therapies ---------- */
+
+.tpl-design-08-spa .as-therapies {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line-soft);
+  border-bottom: 1px solid var(--color-line-soft);
+}
+
+.tpl-design-08-spa .as-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tpl-design-08-spa .as-menu-item {
+  padding: 2.2rem 0;
+  border-bottom: 1px solid var(--color-line-soft);
+}
+
+.tpl-design-08-spa .as-menu-item:last-child {
+  border-bottom: none;
+}
+
+.tpl-design-08-spa .as-menu-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+
+.tpl-design-08-spa .as-menu-head h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.7rem;
+  margin: 0;
+}
+
+.tpl-design-08-spa .as-menu-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--color-line);
+  transform: translateY(-0.4rem);
+}
+
+.tpl-design-08-spa .as-menu-price {
+  font-weight: 400;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.tpl-design-08-spa .as-menu-meta {
+  font-size: 0.74rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-accent);
+  margin: 0.5rem 0 0.6rem;
+}
+
+.tpl-design-08-spa .as-menu-desc {
+  font-size: 1rem;
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 38rem;
+}
+
+/* ---------- the space ---------- */
+
+.tpl-design-08-spa .as-space-imgs {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  margin: 2rem 0 5rem;
+}
+
+.tpl-design-08-spa .as-space-img {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--color-pale);
+}
+
+.tpl-design-08-spa .as-space-img-wide {
+  aspect-ratio: 16 / 10;
+}
+
+.tpl-design-08-spa .as-space-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem 5rem;
+}
+
+.tpl-design-08-spa .as-space-grid p {
+  margin-bottom: 0;
+}
+
+/* ---------- a day here (deep stone) ---------- */
+
+.tpl-design-08-spa .as-day {
+  background: var(--color-deep);
+  color: var(--color-pale);
+}
+
+/* Deep stone band on a light page: use the light brand tone. */
+.tpl-design-08-spa .as-day .as-eyebrow {
+  color: var(--brand-on-dark, var(--color-accent));
+}
+
+.tpl-design-08-spa .as-day .as-h2 {
+  color: var(--color-surface);
+}
+
+.tpl-design-08-spa .as-schedule {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tpl-design-08-spa .as-schedule li {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 2rem;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--color-deep-line);
+}
+
+.tpl-design-08-spa .as-schedule li:last-child {
+  border-bottom: none;
+}
+
+.tpl-design-08-spa .as-sched-time {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: var(--brand-on-dark, var(--color-accent));
+}
+
+.tpl-design-08-spa .as-sched-body strong {
+  display: block;
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+}
+
+.tpl-design-08-spa .as-sched-body span {
+  color: var(--color-deep-muted);
+  font-size: 0.98rem;
+}
+
+/* ---------- booking ---------- */
+
+.tpl-design-08-spa .as-book-widget {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-soft);
+  border-radius: 3px;
+  padding: clamp(2.5rem, 5vw, 4rem);
+  margin-top: 1rem;
+}
+
+.tpl-design-08-spa .as-bw-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.tpl-design-08-spa .as-bw-row label,
+.tpl-design-08-spa .as-bb-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tpl-design-08-spa .as-bw-row label span,
+.tpl-design-08-spa .as-bb-field span {
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.tpl-design-08-spa .as-bw-row input,
+.tpl-design-08-spa .as-bw-row select,
+.tpl-design-08-spa .as-bb-field input,
+.tpl-design-08-spa .as-bb-field select {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.6rem 0;
+  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.tpl-design-08-spa .as-bw-row input:focus,
+.tpl-design-08-spa .as-bw-row select:focus,
+.tpl-design-08-spa .as-bb-field input:focus,
+.tpl-design-08-spa .as-bb-field select:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+}
+
+.tpl-design-08-spa .as-bw-summary {
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.tpl-design-08-spa .as-bw-summary > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--color-line-soft);
+}
+
+.tpl-design-08-spa .as-bw-summary dt {
+  font-size: 0.98rem;
+  color: var(--color-deep-soft);
+}
+
+.tpl-design-08-spa .as-bw-summary dd {
+  margin: 0;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.tpl-design-08-spa .as-bw-total dt,
+.tpl-design-08-spa .as-bw-total dd {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-deep);
+}
+
+.tpl-design-08-spa .as-bw-note {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin: 0 0 2.5rem;
+  max-width: 38rem;
+}
+
+.tpl-design-08-spa .as-bw-cta {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-deep);
+  background: none;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 1.1rem 3rem 1.1rem 3.3rem;
+  cursor: pointer;
+  transition: border-color 0.8s ease, background 0.8s ease;
+}
+
+.tpl-design-08-spa .as-bw-cta:hover {
+  border-color: var(--color-accent);
+  background: var(--color-background);
+}
+
+.tpl-design-08-spa .as-bw-done {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.3rem;
+  color: var(--color-deep-soft);
+  margin: 0;
+}
+
+/* ---------- practical ---------- */
+
+.tpl-design-08-spa .as-practical-grid {
+  list-style: none;
+  margin: 0 0 5rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3.5rem;
+}
+
+.tpl-design-08-spa .as-practical-grid p {
+  font-size: 0.98rem;
+  color: var(--color-deep-soft);
+  margin-bottom: 0;
+}
+
+.tpl-design-08-spa .as-address {
+  font-style: normal;
+  font-size: 1.05rem;
+  line-height: 2.1;
+  border-top: 1px solid var(--color-line-soft);
+  padding-top: 3rem;
+}
+
+.tpl-design-08-spa .as-address a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-line);
+  transition: border-color 0.6s ease;
+}
+
+.tpl-design-08-spa .as-address a:hover {
+  border-color: var(--color-accent);
+}
+
+/* ---------- footer ---------- */
+
+.tpl-design-08-spa .as-footer {
+  text-align: center;
+  padding: clamp(5rem, 10vw, 8rem) 1.5rem 10rem;
+  border-top: 1px solid var(--color-line-soft);
+}
+
+.tpl-design-08-spa .as-footer-brand {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.tpl-design-08-spa .as-footer-tag {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.2rem;
+  color: var(--color-muted);
+  margin: 0 0 3.5rem;
+}
+
+.tpl-design-08-spa .as-footer-line {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-muted);
+  margin: 0 0 0.6rem;
+}
+
+.tpl-design-08-spa .as-footer-colophon {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- sticky booking bar ---------- */
+
+.tpl-design-08-spa .as-bookbar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1.2rem;
+  z-index: 40;
+  display: flex;
+  align-items: flex-end;
+  gap: 1.8rem;
+  background: var(--color-bar-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-line-soft);
+  border-radius: 999px;
+  padding: 0.9rem 1rem 0.9rem 2rem;
+  box-shadow: 0 18px 50px var(--color-bar-shadow);
+  /* size to the content, not to the space right of left:50% */
+  width: max-content;
+  max-width: calc(100% - 2rem);
+}
+
+.tpl-design-08-spa .as-bb-field input,
+.tpl-design-08-spa .as-bb-field select {
+  font-size: 0.88rem;
+  min-width: 0;
+}
+
+.tpl-design-08-spa .as-bb-field input {
+  width: 8.2rem;
+}
+
+.tpl-design-08-spa .as-bb-field select {
+  width: 3rem;
+}
+
+.tpl-design-08-spa .as-bb-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin: 0;
+  padding-bottom: 0.1rem;
+  min-width: 6.5rem;
+}
+
+.tpl-design-08-spa .as-bb-summary strong {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.tpl-design-08-spa .as-bb-summary span {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-deep);
+}
+
+.tpl-design-08-spa .as-bb-cta {
+  font-size: 0.74rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 400;
+  color: var(--color-surface);
+  background: var(--color-primary);
+  border-radius: 999px;
+  padding: 0.95rem 1.9rem 0.95rem 2.1rem;
+  transition: background 0.8s ease;
+}
+
+.tpl-design-08-spa .as-bb-cta:hover {
+  background: var(--color-deep-soft);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1024px) {
+  .tpl-design-08-spa .as-bw-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tpl-design-08-spa .as-practical-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tpl-design-08-spa .as-links {
+    display: none;
+  }
+  .tpl-design-08-spa .as-nav {
+    gap: 0.6rem;
+    padding: 1rem 1rem 0.9rem;
+  }
+  .tpl-design-08-spa .as-breath {
+    grid-template-columns: 1fr;
+    max-width: 26rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tpl-design-08-spa .as-detail-head {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .tpl-design-08-spa .as-detail-cols {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .tpl-design-08-spa .as-space-imgs {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-08-spa .as-space-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .tpl-design-08-spa .as-principles {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .tpl-design-08-spa .as-practical-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .tpl-design-08-spa .as-bw-row {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-08-spa .as-schedule li {
+    grid-template-columns: 4.5rem 1fr;
+    gap: 1.2rem;
+  }
+  /* Phone: a slim full-width pill (summary + Begin). The date fields live in
+     the booking section the CTA scrolls to. left:50% + translate made the
+     bar shrink to half the screen and stack into a tall column. */
+  .tpl-design-08-spa .as-bookbar {
+    left: 0.75rem;
+    right: 0.75rem;
+    transform: none;
+    width: auto;
+    max-width: none;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.55rem 0.55rem 0.55rem 1.4rem;
+    bottom: 0.8rem;
+  }
+  .tpl-design-08-spa .as-bb-field {
+    display: none;
+  }
+  .tpl-design-08-spa .as-bb-cta {
+    flex: 0 0 auto;
+    text-align: center;
+  }
+  .tpl-design-08-spa .as-footer {
+    padding-bottom: 6.5rem;
+  }
+}
+
+/* ---------- reduced motion: fully static ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-08-spa .as-hero .sf-canvas,
+  .tpl-design-08-spa .as-hero .sf-static-img,
+  .tpl-design-08-spa .as-hero-eyebrow,
+  .tpl-design-08-spa .as-hero-title,
+  .tpl-design-08-spa .as-hero-cta,
+  .tpl-design-08-spa .as-nav {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

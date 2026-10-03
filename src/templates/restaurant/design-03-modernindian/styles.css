@@ -1,0 +1,341 @@
+/* Agni · Modern Indian — scoped tokens (customizer rewrites these live) */
+.tpl-design-03-modernindian {
+  --color-background: #191410;
+  --color-surface: #241C16;
+  --color-primary: #F5EEDF;
+  --color-secondary: #8C6E4E;
+  --color-accent: #D9622B;
+  --color-text: #EDE4D2;
+  --color-muted: #8A7A64;
+  --color-muted-warm: #6B5C48;
+  --on-accent: var(--color-background);
+  --font-display: 'Rozha One', serif;
+  --font-body: 'Manrope', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-03-modernindian *,
+.tpl-design-03-modernindian *::before,
+.tpl-design-03-modernindian *::after { box-sizing: border-box; }
+
+/* The template root anchors the absolutely placed nav to the top of the page.
+   Without it the nav resolves against the viewer's stage, stays put while the
+   page scrolls beneath it and collides with every section. (:not(.tpl-scope)
+   keeps the scroll container that shares this class out of it.) */
+.tpl-design-03-modernindian:not(.tpl-scope) { position: relative; }
+
+/* Text on accent fills: near-black on a light accent, cream on a dark one.
+   The platform's brand accent (and the customizer) can swap a deep accent for
+   a light one, so the text colour follows the accent's lightness. */
+@supports (color: oklch(from red l c h)) {
+  .tpl-design-03-modernindian {
+    --on-accent: oklch(from var(--color-accent) clamp(0.18, (0.66 - l) * 100, 0.95) 0.02 75);
+  }
+}
+
+.tpl-design-03-modernindian img { display: block; max-width: 100%; }
+.tpl-design-03-modernindian a { color: inherit; text-decoration: none; }
+
+/* ---------- shared image primitives ---------- */
+.tpl-design-03-modernindian .a-img { position: relative; display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-03-modernindian .a-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s ease; }
+.tpl-design-03-modernindian .a-img.is-loaded img { opacity: 1; }
+.tpl-design-03-modernindian .a-img-ph {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; aspect-ratio: 4/3; color: var(--color-muted);
+  font-family: var(--font-display); font-size: 3rem;
+}
+
+/* ---------- type ---------- */
+.tpl-design-03-modernindian .ag-eyebrow {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: .72rem; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--color-accent); margin: 0 0 1.25rem;
+}
+.tpl-design-03-modernindian .ag-h2 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.08;
+  color: var(--color-primary); margin: 0 0 1.5rem;
+}
+.tpl-design-03-modernindian .ag-h3 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15;
+  color: var(--color-primary); margin: 0 0 .75rem;
+}
+.tpl-design-03-modernindian .ag-body {
+  font-size: 1.02rem; line-height: 1.75; color: var(--color-text);
+  max-width: 62ch; margin: 0 0 1.25rem;
+}
+.tpl-design-03-modernindian .ag-caption {
+  font-size: .8rem; letter-spacing: .06em; color: var(--color-muted); margin: 0;
+}
+.tpl-design-03-modernindian .ag-section { padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 5rem); }
+.tpl-design-03-modernindian .ag-wrap { max-width: 1200px; margin: 0 auto; }
+
+/* ---------- buttons ---------- */
+.tpl-design-03-modernindian .ag-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-body); font-weight: 700; font-size: .82rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  padding: 1rem 2.1rem; border: 1px solid transparent;
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
+  cursor: pointer;
+}
+.tpl-design-03-modernindian .ag-btn--ember { background: var(--color-accent); color: var(--on-accent); }
+.tpl-design-03-modernindian .ag-btn--ember:hover { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-03-modernindian .ag-btn--ghost { border-color: var(--color-secondary); color: var(--color-primary); }
+.tpl-design-03-modernindian .ag-btn--ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.tpl-design-03-modernindian .ag-btn--lg { padding: 1.25rem 3rem; font-size: .9rem; }
+
+/* ---------- nav ---------- */
+.tpl-design-03-modernindian .ag-nav {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding: 1.4rem clamp(1.5rem, 5vw, 4rem);
+}
+.tpl-design-03-modernindian .ag-wordmark {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-family: var(--font-display); font-size: 1.7rem; line-height: 1;
+  color: var(--color-primary); letter-spacing: .04em;
+}
+.tpl-design-03-modernindian .ag-wordmark-dot {
+  width: .55rem; height: .55rem; border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 14px 3px color-mix(in srgb, var(--color-accent) 65%, transparent);
+}
+.tpl-design-03-modernindian .ag-nav-links { display: flex; gap: 2.2rem; }
+.tpl-design-03-modernindian .ag-nav-links a {
+  font-size: .78rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--color-text); position: relative; padding-bottom: .3rem;
+}
+.tpl-design-03-modernindian .ag-nav-links a::after {
+  content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
+  background: var(--color-accent); transform: scaleX(0); transform-origin: left;
+  transition: transform .35s ease;
+}
+.tpl-design-03-modernindian .ag-nav-links a:hover::after { transform: scaleX(1); }
+
+/* ---------- hero — scroll-driven frame sequence ---------- */
+.tpl-design-03-modernindian .ag-hero { position: relative; overflow: clip; }
+
+/* Overlay: copy sits low over the frames; CTAs stay clickable.
+   (Component owns .sf-stage/.sf-canvas/.sf-overlay layout inline.) */
+.tpl-design-03-modernindian .sf-overlay { pointer-events: none; }
+.tpl-design-03-modernindian .ag-hero-ctas a { pointer-events: auto; }
+.tpl-design-03-modernindian .ag-hero-shade {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top,
+    color-mix(in srgb, var(--color-background) 92%, transparent) 0%,
+    color-mix(in srgb, var(--color-background) 45%, transparent) 55%,
+    color-mix(in srgb, var(--color-background) 25%, transparent) 100%);
+}
+/* ember edge sweep — a glowing ember frame drawn across the hero on load */
+.tpl-design-03-modernindian .ag-hero-edge {
+  position: absolute; inset: clamp(.9rem, 2.5vw, 1.8rem); z-index: 2;
+  pointer-events: none;
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 0 26px 2px color-mix(in srgb, var(--color-accent) 55%, transparent),
+    inset 0 0 26px 2px color-mix(in srgb, var(--color-accent) 28%, transparent);
+}
+.tpl-design-03-modernindian .ag-hero-inner {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 5rem) clamp(5rem, 12vh, 8rem);
+}
+.tpl-design-03-modernindian .ag-hero-title {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(3rem, 9vw, 7.5rem); line-height: 1.02;
+  color: var(--color-primary); margin: 0 0 1.75rem;
+  text-wrap: balance;
+}
+.tpl-design-03-modernindian .ag-hero-title .wmask { display: inline-block; overflow: hidden; vertical-align: top; }
+.tpl-design-03-modernindian .ag-hero-title .w { display: inline-block; will-change: transform; }
+.tpl-design-03-modernindian .ag-hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.2rem); line-height: 1.7;
+  color: var(--color-text); max-width: 52ch; margin: 0 0 2.5rem;
+}
+.tpl-design-03-modernindian .ag-hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+/* ---------- philosophy ---------- */
+.tpl-design-03-modernindian .ag-phil-grid {
+  display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2.5rem, 6vw, 6rem);
+  max-width: 1200px; margin: 0 auto; align-items: center;
+}
+.tpl-design-03-modernindian .a-img.ag-phil-img { aspect-ratio: 4/5; }
+.tpl-design-03-modernindian .ag-phil .ag-caption { margin-top: .9rem; }
+
+/* ---------- M3 elemental bands ---------- */
+.tpl-design-03-modernindian .band { position: relative; overflow: hidden; }
+.tpl-design-03-modernindian .band--dark { background: var(--color-background); }
+.tpl-design-03-modernindian .band--light { background: var(--color-primary); }
+.tpl-design-03-modernindian .band--light .ag-h2,
+.tpl-design-03-modernindian .band--light .dish-name,
+.tpl-design-03-modernindian .band--light .dish-price { color: var(--color-background); }
+.tpl-design-03-modernindian .band--light .ag-body,
+.tpl-design-03-modernindian .band--light .dish-desc { color: var(--color-muted-warm); }
+.tpl-design-03-modernindian .band--light .dish-leader { border-color: color-mix(in srgb, var(--color-background) 30%, transparent); }
+/* ember-glow edge: scrubbed clip-path wipe across the band's top */
+.tpl-design-03-modernindian .ember-edge {
+  position: absolute; top: 0; left: 0; right: 0; height: 4px; z-index: 2;
+  background: var(--color-accent);
+  box-shadow: 0 0 22px 4px color-mix(in srgb, var(--color-accent) 60%, transparent);
+}
+.tpl-design-03-modernindian .band-inner { max-width: 1200px; margin: 0 auto; }
+.tpl-design-03-modernindian .band-head {
+  display: flex; align-items: flex-start; gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 45%, transparent);
+  padding-bottom: clamp(1.75rem, 3vw, 2.75rem);
+}
+.tpl-design-03-modernindian .band-glyph {
+  flex: 0 0 auto; width: clamp(3.4rem, 6vw, 5rem); height: clamp(3.4rem, 6vw, 5rem);
+  color: var(--color-accent); will-change: transform;
+}
+.tpl-design-03-modernindian .band-glyph svg { width: 100%; height: 100%; }
+.tpl-design-03-modernindian .band-name { margin-bottom: .5rem; }
+.tpl-design-03-modernindian .band-note { margin: 0; }
+.tpl-design-03-modernindian .band-dishes { display: grid; gap: clamp(2rem, 4vw, 3.5rem); grid-template-columns: repeat(3, 1fr); }
+
+/* dish rows — ember underline draw on hover */
+.tpl-design-03-modernindian .dish { position: relative; padding-bottom: 1.6rem; }
+.tpl-design-03-modernindian .dish::after {
+  content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
+  background: var(--color-accent); transform: scaleX(0); transform-origin: left;
+  transition: transform .4s ease;
+  box-shadow: 0 0 12px 1px color-mix(in srgb, var(--color-accent) 50%, transparent);
+}
+.tpl-design-03-modernindian .dish:hover::after { transform: scaleX(1); }
+.tpl-design-03-modernindian .dish-media .a-img { aspect-ratio: 16/10; margin-bottom: 1.25rem; }
+.tpl-design-03-modernindian .dish-row {
+  display: flex; align-items: baseline; gap: 1rem; margin-bottom: .5rem;
+}
+.tpl-design-03-modernindian .dish-name {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: 1.35rem; line-height: 1.25; color: var(--color-primary); margin: 0;
+  white-space: nowrap;
+}
+.tpl-design-03-modernindian .dish-leader {
+  flex: 1 1 auto; border-bottom: 1px dotted color-mix(in srgb, var(--color-secondary) 70%, transparent);
+  transform: translateY(-.35rem); min-width: 1.5rem;
+}
+.tpl-design-03-modernindian .dish-price {
+  font-family: var(--font-body); font-weight: 700; font-size: 1.02rem;
+  color: var(--color-primary); white-space: nowrap;
+}
+.tpl-design-03-modernindian .dish-desc { font-size: .95rem; line-height: 1.65; color: var(--color-muted); margin: 0; }
+.tpl-design-03-modernindian .band--light .dish-desc { color: var(--color-muted-warm); }
+
+/* ---------- journeys ---------- */
+.tpl-design-03-modernindian .ag-journeys { background: var(--color-surface); }
+.tpl-design-03-modernindian .ag-journey-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+.tpl-design-03-modernindian .ag-journey {
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  padding: clamp(2rem, 4vw, 3.25rem); position: relative;
+  background: var(--color-background);
+  transition: border-color .35s ease;
+}
+.tpl-design-03-modernindian .ag-journey:hover { border-color: var(--color-accent); }
+.tpl-design-03-modernindian .ag-journey::before {
+  content: ''; position: absolute; top: -1px; left: -1px; width: 3.5rem; height: 3px;
+  background: var(--color-accent);
+  box-shadow: 0 0 14px 2px color-mix(in srgb, var(--color-accent) 55%, transparent);
+}
+.tpl-design-03-modernindian .ag-journey-courses {
+  font-size: .75rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--color-accent); margin: 0 0 1rem;
+}
+.tpl-design-03-modernindian .ag-journey-prices {
+  display: flex; gap: 2.5rem; margin: 1.75rem 0 1.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 35%, transparent);
+}
+.tpl-design-03-modernindian .ag-journey-amount {
+  display: block; font-family: var(--font-display); font-size: 1.9rem; color: var(--color-primary);
+}
+.tpl-design-03-modernindian .ag-journey-label {
+  font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--color-muted);
+}
+
+/* ---------- bar ---------- */
+.tpl-design-03-modernindian .ag-bar-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+.tpl-design-03-modernindian .ag-bar-intro .ag-btn { margin-top: 1.5rem; }
+.tpl-design-03-modernindian .ag-bar-list { list-style: none; margin: 0; padding: 0; }
+.tpl-design-03-modernindian .ag-bar-item {
+  padding: 1.6rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 35%, transparent);
+}
+.tpl-design-03-modernindian .ag-bar-item:first-child { padding-top: 0; }
+.tpl-design-03-modernindian .ag-bar-item .dish-name { font-size: 1.2rem; }
+
+/* ---------- reserve ---------- */
+.tpl-design-03-modernindian .ag-reserve { background: var(--color-surface); text-align: left; }
+.tpl-design-03-modernindian .ag-loc-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+.tpl-design-03-modernindian .ag-loc {
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+}
+.tpl-design-03-modernindian .ag-loc .ag-body { margin-bottom: .4rem; }
+.tpl-design-03-modernindian .ag-loc .ag-caption { margin-top: 1rem; }
+.tpl-design-03-modernindian .ag-reserve-cta { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.tpl-design-03-modernindian .ag-reserve-cta .ag-caption { margin-top: 1.25rem; }
+
+/* ---------- footer ---------- */
+.tpl-design-03-modernindian .ag-footer {
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 35%, transparent);
+  padding: 3.5rem clamp(1.5rem, 5vw, 5rem);
+}
+.tpl-design-03-modernindian .ag-footer-inner {
+  display: flex; flex-direction: column; gap: .9rem; align-items: flex-start;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .tpl-design-03-modernindian .ag-nav-links { display: none; }
+  .tpl-design-03-modernindian .ag-phil-grid,
+  .tpl-design-03-modernindian .ag-bar-grid { grid-template-columns: 1fr; }
+  .tpl-design-03-modernindian .band-dishes { grid-template-columns: 1fr; }
+  .tpl-design-03-modernindian .ag-journey-grid,
+  .tpl-design-03-modernindian .ag-loc-grid { grid-template-columns: 1fr; }
+  .tpl-design-03-modernindian .ag-phil-media { max-width: 26rem; }
+}
+@media (max-width: 480px) {
+  .tpl-design-03-modernindian .ag-nav { padding: 1.1rem 1.25rem; }
+  .tpl-design-03-modernindian .ag-nav .ag-btn { padding: .8rem 1.4rem; }
+  .tpl-design-03-modernindian .ag-hero-ctas .ag-btn { flex: 1 1 100%; }
+  .tpl-design-03-modernindian .dish-name { white-space: normal; }
+  .tpl-design-03-modernindian .band-head { flex-direction: column; gap: 1rem; }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-03-modernindian *,
+  .tpl-design-03-modernindian *::before,
+  .tpl-design-03-modernindian *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
+
+/* Light bands sit on ivory: accent text and glyphs take the brand's dark tone
+   so they stay readable (the page accent is the light tone, chosen for the
+   charcoal ground). */
+.tpl-design-03-modernindian .band--light .ag-eyebrow,
+.tpl-design-03-modernindian .band--light .band-glyph {
+  color: var(--brand-on-light, var(--color-accent));
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231A1714'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23D9B65E'%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Kela Jewels — Fine jewelry for every day, and for forever.">
+  <title>Kela Jewels</title>
+
+  <!-- Fonts: display + body only, with system fallbacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Content layer: every text slot on this page renders from here -->
+  <script src="content.js"></script>
+</head>
+<body>
+
+  <!-- ================= 1 · Site nav ================= -->
+  <header class="site-nav" id="siteNav">
+    <div class="wrap nav-inner">
+      <a class="brand-mark" href="#hero" data-brand aria-label="Brand">Kela Jewels</a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary"></nav>
+      <a class="btn btn-ghost btn-small nav-cta" href="#contact" data-content="nav.cta">Book a Viewing</a>
+    </div>
+  </header>
+
+  <!-- Sticky mini-nav: slides down once the hero scrolls away -->
+  <div class="mini-nav" id="miniNav" aria-hidden="true">
+    <div class="wrap mini-inner">
+      <a class="brand-mark mini-brand" href="#hero" data-brand aria-label="Brand">K.</a>
+      <nav class="mini-links" id="miniLinks" aria-label="Quick"></nav>
+      <a class="btn btn-solid btn-small" href="#contact" data-content="nav.cta">Book a Viewing</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ================= 2 · Hero ================= -->
+    <section id="hero" aria-label="Intro">
+      <div class="hero-media imgwrap">
+        <img width="1920" height="1080" src="assets/images/hero.webp" alt="Diamond pendant necklace on pale silk"
+             fetchpriority="high" decoding="async" data-depth="6"
+             onerror="this.onerror=null;this.src=window.__IMG_FALLBACK__">
+      </div>
+      <div class="wrap hero-copy-wrap">
+        <div class="hero-copy" data-depth="10">
+          <p class="eyebrow reveal-mask"><span data-content="hero.eyebrow">The Everyday Fine Jewelry Maison</span></p>
+          <h1 class="hero-title" data-content="hero.title" data-magnetic>Made to be worn. Built to be kept.</h1>
+          <p class="lede reveal-fade" data-content="hero.subtitle">Solid gold, natural diamonds, honest prices. Designed in our atelier, delivered to your door.</p>
+          <div class="hero-ctas reveal-fade">
+            <a class="btn btn-solid" href="#products" data-content="hero.ctaPrimary">Shop the Collection</a>
+            <a class="btn btn-ghost" href="#craftsmanship" data-content="hero.ctaSecondary">Our Craft</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3 · Collections ================= -->
+    <section id="collections" aria-label="Collections">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow reveal-mask"><span data-content="collections.eyebrow">Shop by Collection</span></p>
+          <h2 class="section-title reveal-mask"><span data-content="collections.title">Three forms, endlessly wearable</span></h2>
+        </header>
+        <div class="collection-grid" id="collectionGrid"></div>
+      </div>
+    </section>
+
+    <!-- ================= 4 · Products ================= -->
+    <section id="products" aria-label="Shop">
+      <div class="wrap">
+
+        <!-- (a) The Signature Piece -->
+        <div class="featured" id="featuredBlock">
+          <div class="featured-media imgwrap" data-reveal-img>
+            <img width="1400" height="1750" id="featuredImg" src="assets/images/product-1.webp" alt="Signature piece"
+                 loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src=window.__IMG_FALLBACK__">
+            <div class="metal-grade grade-yellow is-active" id="metalGrade" aria-hidden="true"></div>
+          </div>
+          <div class="featured-body">
+            <p class="eyebrow" data-content="featured.eyebrow"></p>
+            <h3 class="featured-name" data-featured="name"></h3>
+            <p class="featured-desc" data-featured="description"></p>
+            <div class="metal-switch" role="tablist" aria-label="Choose a metal" id="metalTabs"></div>
+            <p class="metal-note" id="metalNote"></p>
+            <div class="featured-row">
+              <p class="price" data-featured="price"></p>
+              <a class="btn btn-solid" href="#contact" data-content="featured.enquire"></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- (b) Filter pills -->
+        <div class="filter-row">
+          <div class="filters" id="filterPills" role="group" aria-label="Filter products"></div>
+        </div>
+
+        <!-- (c) Product grid -->
+        <div class="product-grid" id="productGrid"></div>
+
+      </div>
+    </section>
+
+    <!-- ================= 5 · Craftsmanship ================= -->
+    <section id="craftsmanship" aria-label="Craftsmanship">
+      <div class="wrap craft-grid">
+        <div class="craft-media imgwrap" data-reveal-img data-depth="4">
+          <img width="1920" height="1280" src="assets/images/craft.webp" alt="Goldsmith workbench with tools and a half-finished ring"
+               loading="lazy" decoding="async"
+               onerror="this.onerror=null;this.src=window.__IMG_FALLBACK__">
+        </div>
+        <div class="craft-body">
+          <p class="eyebrow reveal-mask"><span data-content="craftsmanship.eyebrow">The Atelier</span></p>
+          <h2 class="section-title reveal-mask"><span data-content="craftsmanship.title">One hundred and twelve steps. Zero shortcuts.</span></h2>
+          <p class="body-copy reveal-fade" data-content="craftsmanship.body">Every Kela Jewels piece begins as a hand-carved wax, cast in small batches, then finished by a single goldsmith who signs the inside of the band. We don't chase seasons — we perfect forms.</p>
+          <a class="text-link" href="#contact"><span data-content="featured.visitAtelier"></span>&nbsp;<span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6 · Story ================= -->
+    <section id="story" aria-label="Our story">
+      <div class="wrap story-grid">
+        <div class="story-body">
+          <p class="eyebrow reveal-mask"><span data-content="story.eyebrow">The Maison</span></p>
+          <h2 class="section-title reveal-mask"><span data-content="story.title">Fine jewelry without the theater.</span></h2>
+          <p class="body-copy reveal-fade" data-content="story.body">We started Kela Jewels with a simple frustration: fine jewelry that demanded a special occasion. So we made pieces in solid gold and natural diamonds at prices that made sense — designed for Monday mornings as much as wedding days. A decade on, more than forty thousand clients wear our work every single day.</p>
+          <p class="brand-line reveal-fade" data-content="brand.tagline">Fine jewelry for every day — and for forever.</p>
+        </div>
+        <div class="story-media imgwrap" data-reveal-img data-depth="4">
+          <img width="1920" height="1080" src="assets/images/hero.webp" alt="Diamond pendant necklace on silk"
+               loading="lazy" decoding="async"
+               onerror="this.onerror=null;this.src=window.__IMG_FALLBACK__">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7 · Contact ================= -->
+    <section id="contact" aria-label="Contact">
+      <div class="wrap contact-grid">
+        <div class="contact-info">
+          <p class="eyebrow reveal-mask"><span data-content="contact.eyebrow"></span></p>
+          <h2 class="section-title reveal-mask"><span data-content="contact.title"></span></h2>
+          <dl class="contact-list">
+            <div><dt>Email</dt><dd><a data-content="contact.email" data-href="contact.email" href="#">hello@kelajewels.in</a></dd></div>
+            <div><dt>Phone</dt><dd><a data-content="contact.phone" data-href="contact.phone" href="#">+91 80 4719 2200</a></dd></div>
+            <div><dt>Atelier</dt><dd data-content="contact.address">14 Residency Road, Bengaluru 560025</dd></div>
+            <div><dt>Follow</dt><dd><a class="text-link" data-href="contact.instagram" href="#" target="_blank" rel="noopener">Instagram <span aria-hidden="true">&nearr;</span></a></dd></div>
+          </dl>
+        </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <label><span data-content="form.name"></span><input type="text" name="name" autocomplete="name" required></label>
+          <label><span data-content="form.email"></span><input type="email" name="email" autocomplete="email" required></label>
+          <label><span data-content="form.message"></span><textarea name="message" rows="4" required></textarea></label>
+          <button class="btn btn-solid" type="submit" data-content="form.submit"></button>
+          <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= 8 · Footer ================= -->
+  <footer>
+    <div class="wrap footer-inner">
+      <a class="brand-mark" href="#hero" data-brand></a>
+      <p class="tagline" data-content="brand.tagline">Fine jewelry for every day — and for forever.</p>
+      <nav class="footer-nav" id="footerNav" aria-label="Footer"></nav>
+      <p class="copyright" data-content="footer.line">© 2026 Kela Jewels All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Quick view panel -->
+  <div class="qv-backdrop" id="qvBackdrop" hidden></div>
+  <aside class="quickview" id="quickview" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+    <button class="qv-close" id="qvClose" aria-label="Close quick view">&times;</button>
+    <div class="qv-media imgwrap" id="qvMediaSlot"></div>
+    <div class="qv-body" id="qvBody">
+      <p class="eyebrow" id="qvCategory"></p>
+      <h3 class="qv-name" id="qvName"></h3>
+      <p class="qv-desc" id="qvDesc"></p>
+      <dl class="qv-specs">
+        <div><dt data-content="qv.material"></dt><dd id="qvMaterial"></dd></div>
+        <div><dt data-content="qv.stone"></dt><dd id="qvStone"></dd></div>
+      </dl>
+      <div class="qv-row">
+        <p class="price" id="qvPrice"></p>
+        <a class="btn btn-solid" href="#contact" id="qvEnquire" data-content="qv.enquire"></a>
+      </div>
+    </div>
+  </aside>
+
+  <script src="main.js"></script>
+</body>
+</html>

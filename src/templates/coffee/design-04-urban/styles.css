@@ -1,0 +1,363 @@
+/* ============ design-04-urban · Rush Hour Coffee ============ */
+.tpl-design-04-urban {
+  --color-background: #f2ebdc;
+  --color-surface: #e4d8c0;
+  --color-primary: #141311;
+  --color-secondary: #3e3b34;
+  --color-accent: #de4e1d;
+  --color-text: #141311;
+  --color-muted: #7e7668;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-04-urban .a-img { display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-04-urban .a-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.tpl-design-04-urban .rh-wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+.tpl-design-04-urban .rh-section { position: relative; padding: clamp(4rem, 9vw, 7.5rem) 0; overflow: hidden; }
+
+/* Eyebrow / headings */
+.tpl-design-04-urban .rh-eyebrow {
+  font-family: var(--font-body); font-weight: 700; font-size: 0.75rem;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-accent);
+  margin: 0 0 1rem;
+}
+.tpl-design-04-urban .rh-h2 {
+  font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(2.2rem, 6vw, 4.5rem); line-height: 0.95; letter-spacing: -0.01em;
+  margin: 0 0 1rem; color: var(--color-primary);
+}
+.tpl-design-04-urban .rh-sub { font-size: 1.05rem; line-height: 1.6; color: var(--color-secondary); max-width: 44ch; margin: 0 0 2.5rem; }
+
+/* Buttons */
+.tpl-design-04-urban .rh-btn {
+  display: inline-block; font-family: var(--font-body); font-weight: 700;
+  font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 1rem 1.9rem; text-decoration: none; border: 2px solid var(--color-primary);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.tpl-design-04-urban .rh-btn-solid { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-04-urban .rh-btn-solid:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+.tpl-design-04-urban .rh-btn-ghost { background: transparent; color: var(--color-primary); }
+.tpl-design-04-urban .rh-btn-ghost:hover { background: var(--color-primary); color: var(--color-background); }
+
+/* ---- Nav ---- */
+.tpl-design-04-urban .rh-nav {
+  position: sticky; top: 0; z-index: 40;
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
+  background: var(--color-background);
+  border-bottom: 3px solid var(--color-primary);
+}
+.tpl-design-04-urban .rh-wordmark {
+  font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+  font-size: 1.25rem; letter-spacing: 0.02em; color: var(--color-primary); text-decoration: none;
+}
+.tpl-design-04-urban .rh-links { display: flex; gap: 1.6rem; margin-left: auto; }
+.tpl-design-04-urban .rh-links a {
+  font-weight: 700; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-primary); text-decoration: none; padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
+}
+.tpl-design-04-urban .rh-links a:hover { color: var(--color-accent); border-color: var(--color-accent); }
+.tpl-design-04-urban .rh-pill {
+  font-weight: 700; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--color-accent); color: #fff; text-decoration: none;
+  padding: 0.75rem 1.5rem; border-radius: 999px; display: inline-block; will-change: transform;
+}
+.tpl-design-04-urban .rh-pill:hover { background: var(--color-primary); }
+
+/* ---- Hero: signature scroll-scrub (pinned frame sequence) ----
+   ScrollFrames owns .sf-stage / .sf-canvas / .sf-overlay layout inline;
+   this stylesheet only positions the overlay children and the veil. */
+.tpl-design-04-urban .rh-hero { position: relative; padding: 0; }
+/* Dark stage behind the canvas so the first paint never flashes cream. */
+.tpl-design-04-urban .rh-hero .sf-stage { background: #100e0c; }
+.tpl-design-04-urban .rh-hero-veil {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(100deg, rgba(12, 10, 8, 0.9) 0%, rgba(12, 10, 8, 0.62) 36%, rgba(12, 10, 8, 0.12) 62%, rgba(12, 10, 8, 0) 78%),
+    linear-gradient(0deg, rgba(12, 10, 8, 0.55) 0%, rgba(12, 10, 8, 0) 34%);
+}
+.tpl-design-04-urban .rh-hero-copy {
+  position: absolute; z-index: 2;
+  left: clamp(1.25rem, 6vw, 5rem); right: clamp(1.25rem, 6vw, 5rem);
+  bottom: clamp(3.25rem, 11vh, 6.5rem); max-width: 44rem;
+}
+.tpl-design-04-urban .rh-hero-eyebrow {
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--brand-on-dark, #F08A5D); margin: 0 0 1.2rem;
+}
+.tpl-design-04-urban .rh-hero-title { margin: 0 0 1.4rem; }
+.tpl-design-04-urban .rh-wm {
+  display: inline;
+  /* same face/size as the words so the real spaces between them match */
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(2.6rem, 8.5vw, 7rem); line-height: 0.92;
+}
+.tpl-design-04-urban .rh-wm .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.tpl-design-04-urban .rh-wm .wi {
+  display: inline-block; will-change: transform;
+  font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(2.6rem, 8.5vw, 7rem); line-height: 0.92; letter-spacing: -0.015em; color: var(--color-background);
+}
+.tpl-design-04-urban .rh-wm .wi.is-accent { color: var(--brand-on-dark, #F08A5D); text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.85); }
+.tpl-design-04-urban .rh-hero-sub { font-size: 1.05rem; line-height: 1.55; color: rgba(242, 235, 220, 0.88); max-width: 38ch; margin: 0 0 2rem; }
+.tpl-design-04-urban .rh-hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+/* Buttons over the scrub: accent solid, cream ghost. */
+.tpl-design-04-urban .rh-hero .rh-btn-solid { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+.tpl-design-04-urban .rh-hero .rh-btn-solid:hover { background: var(--color-background); border-color: var(--color-background); color: var(--color-primary); }
+.tpl-design-04-urban .rh-hero .rh-btn-ghost { background: transparent; border-color: var(--color-background); color: var(--color-background); }
+.tpl-design-04-urban .rh-hero .rh-btn-ghost:hover { background: var(--color-background); border-color: var(--color-background); color: var(--color-primary); }
+.tpl-design-04-urban .rh-badge {
+  position: absolute; z-index: 2; top: clamp(1rem, 4vh, 2.25rem); right: clamp(1.25rem, 4vw, 3rem);
+  background: var(--color-accent); color: #fff;
+  font-weight: 700; font-size: 0.75rem; letter-spacing: 0.16em;
+  padding: 0.8rem 1.1rem; transform: rotate(-2deg);
+  border: 2px solid var(--color-primary); box-shadow: 4px 4px 0 var(--color-primary);
+}
+.tpl-design-04-urban .rh-scrub-hint {
+  position: absolute; z-index: 2; right: clamp(1.25rem, 4vw, 3rem); bottom: clamp(1.1rem, 3.5vh, 2rem);
+  margin: 0; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: rgba(242, 235, 220, 0.7);
+}
+
+/* ---- Ticker ---- */
+.tpl-design-04-urban .rh-ticker { background: var(--color-accent); overflow: hidden; border-top: 3px solid var(--color-primary); border-bottom: 3px solid var(--color-primary); }
+.tpl-design-04-urban .rh-ticker-track { display: flex; width: max-content; will-change: transform; }
+.tpl-design-04-urban .rh-ticker-track.is-static { width: 100%; }
+.tpl-design-04-urban .rh-ticker-half { display: flex; align-items: center; padding: 0.85rem 0; }
+.tpl-design-04-urban .rh-ticker-item {
+  display: inline-flex; align-items: center; gap: 1.4rem; padding: 0 1.4rem;
+  color: #fff; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.18em; white-space: nowrap;
+}
+.tpl-design-04-urban .rh-ticker-dot { width: 0.55rem; height: 0.55rem; background: var(--color-primary); display: inline-block; transform: rotate(45deg); }
+
+/* ---- Color-block wipe (JS-driven) ---- */
+.tpl-design-04-urban .rh-wipe {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: var(--color-accent); transform: scaleX(0);
+}
+
+/* ---- Menu flow: scroll-velocity-accelerated marquee ---- */
+.tpl-design-04-urban .rh-flow { background: var(--color-primary); color: var(--color-background); padding-left: 0; padding-right: 0; }
+.tpl-design-04-urban .rh-flow .rh-h2 { color: var(--color-background); }
+.tpl-design-04-urban .rh-flow .rh-eyebrow { color: var(--brand-on-dark, #F08A5D); }
+.tpl-design-04-urban .rh-flow .rh-sub { color: var(--color-background); opacity: 0.72; }
+.tpl-design-04-urban .rh-flow-view { overflow: hidden; border-top: 3px solid var(--brand-on-dark, #F08A5D); border-bottom: 3px solid var(--brand-on-dark, #F08A5D); }
+.tpl-design-04-urban .rh-flow-track { display: flex; width: max-content; will-change: transform; }
+.tpl-design-04-urban .rh-flow-track.is-static { width: 100%; flex-wrap: wrap; }
+.tpl-design-04-urban .rh-flow-half { display: flex; padding: 1.75rem 0; }
+.tpl-design-04-urban .rh-flow-track.is-static .rh-flow-half { display: contents; }
+.tpl-design-04-urban .rh-flow-card {
+  flex: 0 0 300px; margin: 0 0.625rem; background: var(--color-background); color: var(--color-text);
+  border: 2px solid var(--color-accent); padding: 1.5rem; text-align: left;
+}
+.tpl-design-04-urban .rh-flow-track.is-static .rh-flow-card { flex: 1 1 260px; }
+.tpl-design-04-urban .rh-flow-cat {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--color-accent); margin: 0 0 0.6rem;
+}
+.tpl-design-04-urban .rh-flow-card h3 {
+  font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+  font-size: 1.2rem; margin: 0 0 0.5rem;
+}
+.tpl-design-04-urban .rh-flow-desc { font-size: 0.9rem; color: var(--color-secondary); line-height: 1.55; margin: 0 0 1rem; }
+.tpl-design-04-urban .rh-flow-price { font-family: var(--font-display); font-weight: 900; font-size: 1.25rem; color: var(--color-primary); }
+.tpl-design-04-urban .rh-flow-hint {
+  text-align: center; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--color-background); opacity: 0.55; margin: 2.5rem 0 0; padding: 0 1.25rem;
+}
+
+/* ---- Order ---- */
+.tpl-design-04-urban .rh-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 0 0 2rem; }
+.tpl-design-04-urban .rh-step { background: var(--color-surface); border: 2px solid var(--color-primary); padding: 2rem; }
+.tpl-design-04-urban .rh-step-n { font-family: var(--font-display); font-weight: 900; font-size: 2.4rem; color: var(--color-accent); display: block; margin-bottom: 0.6rem; }
+.tpl-design-04-urban .rh-step h3 { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 1.25rem; margin: 0 0 0.6rem; }
+.tpl-design-04-urban .rh-step p { color: var(--color-secondary); line-height: 1.6; margin: 0 0 1rem; font-size: 0.95rem; }
+.tpl-design-04-urban .rh-slots { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tpl-design-04-urban .rh-slot {
+  font-family: var(--font-body); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.08em;
+  background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary);
+  padding: 0.55rem 0.8rem; cursor: pointer; transition: background 0.2s, color 0.2s;
+}
+.tpl-design-04-urban .rh-slot:hover { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-04-urban .rh-slot.is-active { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+.tpl-design-04-urban .rh-order-note { font-size: 0.95rem; color: var(--color-secondary); margin: 0 0 2rem; }
+.tpl-design-04-urban .rh-order-note strong { color: var(--color-accent); }
+
+/* ---- Locations (ink block) ---- */
+.tpl-design-04-urban .rh-locations { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-04-urban .rh-locations .rh-h2 { color: var(--color-background); }
+.tpl-design-04-urban .rh-locations .rh-eyebrow { color: var(--brand-on-dark, #F08A5D); }
+.tpl-design-04-urban .rh-loc-tabs { display: flex; gap: 0; margin: 0 0 2rem; border: 2px solid var(--color-background); width: fit-content; max-width: 100%; flex-wrap: wrap; }
+.tpl-design-04-urban .rh-loc-tab {
+  background: transparent; color: var(--color-background); border: 0; cursor: pointer;
+  font-family: var(--font-body); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1rem 1.6rem; display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem;
+  border-right: 2px solid var(--color-background); transition: background 0.2s, color 0.2s;
+}
+.tpl-design-04-urban .rh-loc-tab:last-child { border-right: 0; }
+.tpl-design-04-urban .rh-loc-tab span { font-size: 0.7rem; letter-spacing: 0.2em; color: var(--color-muted); font-weight: 500; }
+.tpl-design-04-urban .rh-loc-tab:hover { background: rgba(242, 235, 220, 0.12); }
+.tpl-design-04-urban .rh-loc-tab.is-active { background: var(--color-accent); color: #fff; }
+.tpl-design-04-urban .rh-loc-tab.is-active span { color: #fff; }
+.tpl-design-04-urban .rh-loc-panel {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+  background: var(--color-background); color: var(--color-text);
+  border: 3px solid var(--color-background); padding: 2.5rem;
+}
+.tpl-design-04-urban .rh-loc-info h3 { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 1.6rem; margin: 0 0 0.5rem; }
+.tpl-design-04-urban .rh-loc-info p { color: var(--color-secondary); margin: 0 0 0.8rem; }
+.tpl-design-04-urban .rh-loc-info a { color: var(--color-accent); font-weight: 700; text-decoration: none; }
+.tpl-design-04-urban .rh-hours { margin: 0; }
+.tpl-design-04-urban .rh-hour-row {
+  display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0;
+  border-bottom: 2px solid var(--color-surface); font-size: 0.95rem;
+}
+.tpl-design-04-urban .rh-hour-row dt { font-weight: 700; }
+.tpl-design-04-urban .rh-hour-row dd { margin: 0; color: var(--color-secondary); }
+
+/* ---- Menu ---- */
+.tpl-design-04-urban .rh-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin: 0 0 2.5rem; }
+.tpl-design-04-urban .rh-shot { overflow: hidden; border: 3px solid var(--color-primary); aspect-ratio: 1 / 1; }
+.tpl-design-04-urban .rh-shot .a-img { height: 100%; }
+.tpl-design-04-urban .rh-cats { display: flex; gap: 0.75rem; margin: 0 0 1.5rem; }
+.tpl-design-04-urban .rh-cat {
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase;
+  background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary);
+  padding: 0.7rem 1.4rem; cursor: pointer; transition: background 0.2s, color 0.2s;
+}
+.tpl-design-04-urban .rh-cat:hover { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-04-urban .rh-cat.is-active { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-04-urban .rh-rows { border-top: 3px solid var(--color-primary); margin-bottom: 2.5rem; }
+.tpl-design-04-urban .rh-row {
+  display: grid; grid-template-columns: 1fr auto auto; gap: 1.5rem; align-items: center;
+  padding: 1.25rem 1.25rem; border-bottom: 2px solid var(--color-primary);
+  transition: background 0.2s, color 0.2s;
+}
+.tpl-design-04-urban .rh-row:hover { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-04-urban .rh-row:hover p { color: var(--color-background); }
+.tpl-design-04-urban .rh-row-main h3 { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 1.15rem; margin: 0 0 0.25rem; }
+.tpl-design-04-urban .rh-row-main p { margin: 0; font-size: 0.9rem; color: var(--color-secondary); transition: color 0.2s; }
+.tpl-design-04-urban .rh-row-price { font-family: var(--font-display); font-weight: 900; font-size: 1.2rem; }
+.tpl-design-04-urban .rh-add {
+  position: relative; overflow: hidden; cursor: pointer;
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  border: 2px solid currentColor; background: transparent; color: inherit; padding: 0.65rem 1.2rem;
+}
+.tpl-design-04-urban .rh-add span { position: relative; z-index: 1; }
+.tpl-design-04-urban .rh-add::before {
+  content: ''; position: absolute; inset: 0; background: var(--color-accent);
+  transform: scaleX(0); transform-origin: left center; transition: transform 0.25s ease;
+}
+.tpl-design-04-urban .rh-add:hover::before { transform: scaleX(1); }
+.tpl-design-04-urban .rh-add:hover { color: #fff; border-color: var(--color-accent); }
+.tpl-design-04-urban .rh-add.is-added { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+.tpl-design-04-urban .rh-add.is-added::before { display: none; }
+
+/* ---- Rhythm ---- */
+.tpl-design-04-urban .rh-rhythm { background: var(--color-surface); border-top: 3px solid var(--color-primary); border-bottom: 3px solid var(--color-primary); }
+.tpl-design-04-urban .rh-rhythm-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+.tpl-design-04-urban .rh-rhythm-card { background: var(--color-background); border: 2px solid var(--color-primary); padding: 1.75rem; }
+.tpl-design-04-urban .rh-rhythm-time { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.2em; color: var(--color-accent); }
+.tpl-design-04-urban .rh-rhythm-card h3 { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; margin: 0.6rem 0 0.4rem; font-size: 1.15rem; }
+.tpl-design-04-urban .rh-rhythm-card p { margin: 0; color: var(--color-secondary); font-size: 0.92rem; line-height: 1.6; }
+
+/* ---- City ---- */
+.tpl-design-04-urban .rh-city-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.tpl-design-04-urban .rh-city-media { overflow: hidden; border: 3px solid var(--color-primary); aspect-ratio: 4 / 5; }
+.tpl-design-04-urban .rh-city-media .a-img { height: 100%; }
+.tpl-design-04-urban .rh-city-notes { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+.tpl-design-04-urban .rh-city-notes li {
+  font-weight: 700; font-size: 0.95rem; padding: 0.7rem 0 0.7rem 1.8rem; position: relative;
+  border-bottom: 2px solid var(--color-surface);
+}
+.tpl-design-04-urban .rh-city-notes li::before {
+  content: ''; position: absolute; left: 0.2rem; top: 1.15rem; width: 0.6rem; height: 0.6rem;
+  background: var(--color-accent); transform: rotate(45deg);
+}
+.tpl-design-04-urban .rh-loyalty {
+  display: inline-block; background: var(--color-primary); color: var(--color-background);
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.8rem 1.2rem; margin: 0 0 2rem; transform: rotate(-1deg);
+}
+
+/* ---- Footer (ink block) ---- */
+.tpl-design-04-urban .rh-footer { background: var(--color-primary); color: var(--color-background); padding: clamp(3.5rem, 7vw, 5.5rem) 0 6rem; }
+.tpl-design-04-urban .rh-foot-word {
+  font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(2.6rem, 8vw, 6rem); line-height: 0.95; margin: 0 0 2.5rem; color: var(--color-background);
+}
+.tpl-design-04-urban .rh-foot-locs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2.5rem; }
+.tpl-design-04-urban .rh-foot-locs h4 { font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-on-dark, #F08A5D); margin: 0 0 0.6rem; }
+.tpl-design-04-urban .rh-foot-locs p { margin: 0 0 0.3rem; font-size: 0.9rem; color: var(--color-background); opacity: 0.85; }
+.tpl-design-04-urban .rh-foot-hours { opacity: 0.6; }
+.tpl-design-04-urban .rh-foot-contact { margin: 0 0 2rem; }
+.tpl-design-04-urban .rh-foot-contact a { color: var(--color-background); font-weight: 700; }
+.tpl-design-04-urban .rh-foot-line { font-family: var(--font-display); font-style: italic; margin: 0 0 0.4rem; }
+.tpl-design-04-urban .rh-foot-note { margin: 0; font-size: 0.85rem; opacity: 0.6; }
+
+/* ---- Mobile bottom tab bar ---- */
+.tpl-design-04-urban .rh-tabbar {
+  display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+  background: var(--color-primary); border-top: 3px solid var(--brand-on-dark, #F08A5D);
+  padding: 0.35rem 0 calc(0.35rem + env(safe-area-inset-bottom));
+}
+.tpl-design-04-urban .rh-tabbar a {
+  flex: 1; text-align: center; color: var(--color-background); text-decoration: none;
+  font-weight: 700; font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.8rem 0; display: block;
+}
+.tpl-design-04-urban .rh-tabbar a.is-primary { color: var(--brand-on-dark, #F08A5D); }
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .tpl-design-04-urban .rh-rhythm-grid { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-04-urban .rh-steps { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .tpl-design-04-urban .rh-city-grid { grid-template-columns: 1fr; }
+  .tpl-design-04-urban .rh-loc-panel { grid-template-columns: 1fr; }
+  .tpl-design-04-urban .rh-foot-locs { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .tpl-design-04-urban .rh-links { display: none; }
+  .tpl-design-04-urban .rh-tabbar { display: flex; }
+  .tpl-design-04-urban .rh-footer { padding-bottom: 8rem; }
+  .tpl-design-04-urban .rh-shots { grid-template-columns: 1fr 1fr; }
+  .tpl-design-04-urban .rh-shot:last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .tpl-design-04-urban .rh-row { grid-template-columns: 1fr auto; }
+  .tpl-design-04-urban .rh-add { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 480px) {
+  .tpl-design-04-urban .rh-rhythm-grid { grid-template-columns: 1fr; }
+  .tpl-design-04-urban .rh-loc-tabs { width: 100%; }
+  .tpl-design-04-urban .rh-loc-tab { flex: 1; }
+}
+
+/* ---- Scrub hero: small screens (360px) — keep the overlay compact ---- */
+@media (max-width: 560px) {
+  /* clear the fixed bottom tab bar (≈3.3rem) — also at scroll 0, when the
+     stage still sits one nav-height lower — so the CTAs stay tappable */
+  .tpl-design-04-urban .rh-hero-copy { bottom: calc(7.4rem + env(safe-area-inset-bottom)); }
+  .tpl-design-04-urban .rh-wm,
+  .tpl-design-04-urban .rh-wm .wi { font-size: clamp(2.1rem, 12.5vw, 2.8rem); }
+  .tpl-design-04-urban .rh-hero-eyebrow { font-size: 0.68rem; margin-bottom: 0.9rem; }
+  .tpl-design-04-urban .rh-hero-sub { font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .tpl-design-04-urban .rh-hero .rh-btn { padding: 0.85rem 1.4rem; font-size: 0.72rem; }
+  .tpl-design-04-urban .rh-badge { font-size: 0.62rem; padding: 0.6rem 0.85rem; }
+  .tpl-design-04-urban .rh-scrub-hint { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-04-urban .rh-ticker-track { transform: none; }
+  .tpl-design-04-urban .rh-wipe { display: none; }
+}

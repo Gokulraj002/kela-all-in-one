@@ -1,0 +1,380 @@
+/* ============ design-05-vintage · The Copper Kettle ============ */
+.tpl-design-05-vintage {
+  --color-background: #f4ecdc;
+  --color-surface: #e9dbc0;
+  --color-primary: #571c20;
+  --color-secondary: #7a5326;
+  --color-accent: #b08a3c;
+  --color-text: #33231c;
+  --color-muted: #97816b;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Manrope', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-05-vintage .a-img { display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-05-vintage .a-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.tpl-design-05-vintage .ck-wrap { max-width: 1140px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+.tpl-design-05-vintage .ck-narrow { max-width: 760px; }
+.tpl-design-05-vintage .ck-section { padding: clamp(4rem, 9vw, 7rem) 0; }
+
+.tpl-design-05-vintage .ck-eyebrow {
+  font-family: var(--font-body); font-weight: 700; font-size: 0.72rem;
+  letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-secondary);
+  text-align: center; margin: 0 0 1rem;
+}
+.tpl-design-05-vintage .ck-h2 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.08; text-align: center;
+  color: var(--color-primary); margin: 0 0 1rem;
+}
+.tpl-design-05-vintage .ck-lede {
+  text-align: center; color: var(--color-muted); font-size: 1.02rem; line-height: 1.7;
+  max-width: 52ch; margin: 0 auto 3rem;
+}
+.tpl-design-05-vintage .ck-body { line-height: 1.85; font-size: 1.02rem; margin: 0 0 1.5rem; }
+
+/* Word-mask headline */
+.tpl-design-05-vintage .ck-wm .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.tpl-design-05-vintage .ck-wm .wi { display: inline-block; will-change: transform; }
+
+/* Sepia grade (static CSS — never animated) + vignette overlay (opacity only) */
+.tpl-design-05-vintage .ck-print .a-img img,
+.tpl-design-05-vintage .ck-photo .a-img img,
+.tpl-design-05-vintage .ck-hero-media .a-img img {
+  filter: sepia(0.32) saturate(0.94) contrast(1.02) brightness(0.99);
+}
+.tpl-design-05-vintage .ck-vig {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 52%, rgba(74, 42, 18, 0.42) 100%);
+}
+.tpl-design-05-vintage .ck-print-frame { position: relative; display: block; }
+
+/* ---- Crest nav ---- */
+.tpl-design-05-vintage .ck-nav {
+  display: flex; flex-direction: column; align-items: center; gap: 0.9rem;
+  padding: 1.6rem 1.25rem 1.2rem; border-bottom: 1px solid var(--color-accent);
+  background: var(--color-background); position: sticky; top: 0; z-index: 40;
+}
+.tpl-design-05-vintage .ck-crest { display: flex; flex-direction: column; align-items: center; text-decoration: none; gap: 0.25rem; }
+.tpl-design-05-vintage .ck-crest-mark {
+  width: 3rem; height: 3rem; border: 2px solid var(--color-accent); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--color-primary);
+  box-shadow: inset 0 0 0 3px var(--color-background), inset 0 0 0 4px var(--color-accent);
+}
+.tpl-design-05-vintage .ck-crest-name {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: 0.06em; color: var(--color-primary);
+}
+.tpl-design-05-vintage .ck-crest-sub { font-size: 0.62rem; letter-spacing: 0.4em; color: var(--color-muted); font-weight: 700; }
+.tpl-design-05-vintage .ck-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+.tpl-design-05-vintage .ck-links a {
+  font-family: var(--font-display); font-size: 1rem; color: var(--color-primary); text-decoration: none;
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+}
+.tpl-design-05-vintage .ck-links a:hover { border-color: var(--color-accent); color: var(--color-secondary); }
+.tpl-design-05-vintage .ck-ticket-link {
+  font-family: var(--font-body); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--color-background); background: var(--color-primary); text-decoration: none;
+  padding: 0.8rem 1.7rem; border: 1px dashed var(--color-accent); outline: 1px solid var(--color-primary); outline-offset: 3px;
+}
+.tpl-design-05-vintage .ck-ticket-link:hover { background: var(--color-secondary); }
+
+/* ---- Hero ---- */
+.tpl-design-05-vintage .ck-hero { padding: clamp(3rem, 7vw, 5.5rem) 0 0; text-align: center; }
+.tpl-design-05-vintage .ck-since {
+  font-family: var(--font-display); font-style: italic; font-size: 1.05rem;
+  letter-spacing: 0.28em; color: var(--color-secondary); margin: 0 0 1.4rem;
+}
+.tpl-design-05-vintage .ck-hero-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2.4rem, 6.5vw, 4.6rem); line-height: 1.08; color: var(--color-primary);
+  max-width: 16ch; margin: 0 auto 1.4rem;
+}
+.tpl-design-05-vintage .ck-hero-sub { max-width: 52ch; margin: 0 auto 2rem; line-height: 1.8; color: var(--color-text); }
+.tpl-design-05-vintage .ck-hero-cta {
+  display: inline-block; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--color-primary); text-decoration: none; border: 2px solid var(--color-primary);
+  padding: 1rem 2.2rem; margin-bottom: clamp(3rem, 7vw, 4.5rem);
+}
+.tpl-design-05-vintage .ck-hero-cta:hover { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-05-vintage .ck-hero-media { position: relative; max-width: 1400px; margin: 0 auto; }
+.tpl-design-05-vintage .ck-hero-media .a-img { aspect-ratio: 21 / 10; }
+
+/* ---- Framed prints ---- */
+.tpl-design-05-vintage .ck-print { margin: 0; }
+.tpl-design-05-vintage .ck-print-frame {
+  border: 1px solid var(--color-accent); outline: 1px solid var(--color-accent); outline-offset: 5px;
+  background: var(--color-surface);
+}
+.tpl-design-05-vintage .ck-print-frame .a-img { aspect-ratio: 4 / 3; }
+
+/* ---- Timeline ---- */
+.tpl-design-05-vintage .ck-tl-grid {
+  display: grid; grid-template-columns: 1fr 360px; gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start; margin-top: 1rem; position: relative;
+}
+.tpl-design-05-vintage .ck-tl-left { position: relative; padding-left: 2.5rem; }
+.tpl-design-05-vintage .ck-tl-spine {
+  position: absolute; left: 0.55rem; top: 0.5rem; bottom: 0.5rem; width: 2px; background: var(--color-surface);
+}
+.tpl-design-05-vintage .ck-tl-fill {
+  position: absolute; inset: 0; background: var(--color-accent);
+  transform: scaleY(0); transform-origin: top center;
+}
+.tpl-design-05-vintage .ck-decade { position: relative; padding: 0 0 3.5rem; opacity: 0.45; transition: opacity 0.5s; }
+.tpl-design-05-vintage .ck-decade:last-child { padding-bottom: 0.5rem; }
+.tpl-design-05-vintage .ck-decade.is-active { opacity: 1; }
+.tpl-design-05-vintage .ck-decade-dot {
+  position: absolute; left: -2.5rem; top: 0.35rem; width: 1.1rem; height: 1.1rem; border-radius: 50%;
+  background: var(--color-background); border: 2px solid var(--color-accent); margin-left: -0.45rem;
+  transition: background 0.5s;
+}
+.tpl-design-05-vintage .ck-decade.is-active .ck-decade-dot { background: var(--color-accent); }
+.tpl-design-05-vintage .ck-decade-era {
+  font-family: var(--font-display); font-style: italic; color: var(--color-secondary);
+  letter-spacing: 0.12em; margin: 0 0 0.5rem; font-size: 0.95rem;
+}
+.tpl-design-05-vintage .ck-decade h3 {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; color: var(--color-primary); margin: 0 0 0.6rem;
+}
+.tpl-design-05-vintage .ck-decade-body { line-height: 1.8; margin: 0; max-width: 46ch; }
+.tpl-design-05-vintage .ck-decade-img { display: none; margin-top: 1.25rem; max-width: 420px; }
+.tpl-design-05-vintage .ck-tl-photo { position: sticky; top: 11rem; }
+.tpl-design-05-vintage .ck-photo-stack { position: relative; aspect-ratio: 4 / 5; }
+.tpl-design-05-vintage .ck-photo {
+  position: absolute; inset: 0; border: 1px solid var(--color-accent);
+  outline: 1px solid var(--color-accent); outline-offset: 5px; background: var(--color-surface);
+}
+.tpl-design-05-vintage .ck-photo .a-img { height: 100%; }
+.tpl-design-05-vintage .ck-photo-cap {
+  font-family: var(--font-display); font-style: italic; text-align: center;
+  color: var(--color-muted); font-size: 0.92rem; margin: 1rem 0 0; min-height: 2.6em;
+}
+
+/* ---- Classic menu ---- */
+.tpl-design-05-vintage .ck-classics { border-top: 1px solid var(--color-accent); margin-bottom: 3rem; }
+.tpl-design-05-vintage .ck-classic { padding: 1.8rem 0.25rem; border-bottom: 1px solid var(--color-accent); }
+.tpl-design-05-vintage .ck-classic-head { display: flex; align-items: baseline; gap: 0.9rem; }
+.tpl-design-05-vintage .ck-classic-head h3 {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; color: var(--color-primary); margin: 0;
+}
+.tpl-design-05-vintage .ck-dots { flex: 1; border-bottom: 1px dotted var(--color-muted); transform: translateY(-4px); }
+.tpl-design-05-vintage .ck-price { font-weight: 700; font-size: 1.05rem; color: var(--color-primary); white-space: nowrap; }
+.tpl-design-05-vintage .ck-classic-desc { margin: 0.5rem 0 0; color: var(--color-text); line-height: 1.7; font-size: 0.96rem; }
+.tpl-design-05-vintage .ck-since-note {
+  margin: 0.45rem 0 0; font-family: var(--font-display); font-style: italic;
+  color: var(--color-secondary); font-size: 0.9rem; opacity: 0; transition: opacity 0.4s;
+}
+.tpl-design-05-vintage .ck-classic:hover .ck-since-note,
+.tpl-design-05-vintage .ck-classic:focus-within .ck-since-note { opacity: 1; }
+.tpl-design-05-vintage .ck-menu-prints { display: grid; grid-template-columns: 1fr 1fr; gap: 2.25rem; }
+
+/* ---- House signatures: sticky stacking deck ---- */
+.tpl-design-05-vintage .ck-signatures { overflow: clip; }
+.tpl-design-05-vintage .ck-stack { position: relative; max-width: 1080px; margin: 1rem auto 0; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+.tpl-design-05-vintage .ck-stack-card { position: sticky; top: 15rem; margin: 0 0 9vh; }
+.tpl-design-05-vintage .ck-stack-card:last-child { margin-bottom: 2vh; }
+.tpl-design-05-vintage .ck-stack-inner {
+  background: #fbf6e9; border: 1px solid var(--color-accent);
+  outline: 1px solid var(--color-accent); outline-offset: 5px;
+  display: grid; grid-template-columns: 1.05fr 0.95fr; min-height: 64vh;
+  box-shadow: 8px 8px 0 rgba(87, 28, 32, 0.12); overflow: hidden;
+}
+.tpl-design-05-vintage .ck-stack-card:nth-child(even) .ck-stack-media { order: 2; }
+.tpl-design-05-vintage .ck-stack-media { position: relative; min-height: 22rem; background: var(--color-surface); }
+.tpl-design-05-vintage .ck-stack-media .a-img { position: absolute; inset: 0; height: 100%; }
+.tpl-design-05-vintage .ck-stack-copy {
+  padding: clamp(2rem, 4vw, 3.5rem); display: flex; flex-direction: column; justify-content: center;
+}
+.tpl-design-05-vintage .ck-stack-no {
+  font-family: var(--font-display); font-style: italic; color: var(--color-accent);
+  font-size: 1rem; letter-spacing: 0.2em; margin: 0 0 0.75rem;
+}
+.tpl-design-05-vintage .ck-stack-copy h3 {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem, 3vw, 2.4rem);
+  color: var(--color-primary); margin: 0 0 0.9rem; line-height: 1.15;
+}
+.tpl-design-05-vintage .ck-stack-desc { line-height: 1.8; margin: 0 0 1.4rem; }
+.tpl-design-05-vintage .ck-stack-copy .ck-price { font-size: 1.3rem; }
+.tpl-design-05-vintage .ck-signatures.is-reduced .ck-stack-card { position: relative; top: auto; }
+
+/* ---- The Ritual: signature film moment ---- */
+.tpl-design-05-vintage .ck-ritual { background: var(--color-surface); border-top: 1px solid var(--color-accent); border-bottom: 1px solid var(--color-accent); }
+.tpl-design-05-vintage .ck-ritual-film {
+  position: relative; max-width: 1100px; margin: 0 auto;
+  border: 1px solid var(--color-accent); outline: 1px solid var(--color-accent); outline-offset: 6px;
+  background: var(--color-primary);
+}
+/* ---- The Ritual: scroll-scrubbed frame sequence (replaces the mp4) ----
+   Layout (stage height, canvas, overlay) is applied inline by ScrollFrames
+   via its stageHeight prop: clamp(220px, 42.86vw, 72svh) keeps the 21/9
+   film-frame proportions on desktop and a comfortable height on phones.
+   Reduced motion renders .sf-static with the first frame as a print. */
+.tpl-design-05-vintage .ck-ritual-film { overflow: visible; }
+/* While pinned, the film fills the visible stage below the sticky crest nav
+   (no half-empty band, nothing hidden under the nav). The wrap carries a
+   transparent nav-height lead-in that overlaps the copy above, so the pin
+   ('top top') engages exactly when the film meets the nav. */
+.tpl-design-05-vintage .ck-ritual-film .sf-wrap {
+  padding-top: var(--ck-nav-h, 0px);
+  margin-top: calc(-1 * var(--ck-nav-h, 0px));
+}
+.tpl-design-05-vintage .ck-ritual-film .sf-stage {
+  height: calc(var(--tpl-vh, 100svh) - var(--ck-nav-h, 0px)) !important;
+  min-height: 220px;
+}
+.tpl-design-05-vintage .ck-ritual-film .sf-static-img {
+  filter: sepia(0.32) saturate(0.94) contrast(1.02) brightness(0.99);
+}
+.tpl-design-05-vintage .ck-ritual-note {
+  text-align: center; font-family: var(--font-display); font-style: italic;
+  color: var(--color-secondary); margin: 1.75rem 0 0;
+}
+
+/* ---- Craft ---- */
+.tpl-design-05-vintage .ck-craft { background: var(--color-surface); border-top: 1px solid var(--color-accent); border-bottom: 1px solid var(--color-accent); }
+.tpl-design-05-vintage .ck-craft-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.tpl-design-05-vintage .ck-craft .ck-eyebrow, .tpl-design-05-vintage .ck-craft .ck-h2 { text-align: left; }
+.tpl-design-05-vintage .ck-craft-list { list-style: none; margin: 0; padding: 0; }
+.tpl-design-05-vintage .ck-craft-list li {
+  padding: 0.8rem 0 0.8rem 2rem; position: relative; border-bottom: 1px solid var(--color-accent); font-size: 0.96rem;
+}
+.tpl-design-05-vintage .ck-craft-list li::before {
+  content: ''; position: absolute; left: 0.3rem; top: 1.25rem; width: 0.55rem; height: 0.55rem;
+  border: 1px solid var(--color-accent); transform: rotate(45deg); background: var(--color-accent);
+}
+
+/* ---- Guestbook ---- */
+.tpl-design-05-vintage .ck-guest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+.tpl-design-05-vintage .ck-guest-card {
+  margin: 0; background: var(--color-surface); border: 1px solid var(--color-accent);
+  padding: 2.25rem 2rem; box-shadow: 3px 3px 0 rgba(122, 83, 38, 0.18);
+}
+.tpl-design-05-vintage .ck-guest-card:nth-child(1) { transform: rotate(-0.6deg); }
+.tpl-design-05-vintage .ck-guest-card:nth-child(2) { transform: rotate(0.5deg); }
+.tpl-design-05-vintage .ck-guest-card:nth-child(3) { transform: rotate(-0.4deg); }
+.tpl-design-05-vintage .ck-guest-quote {
+  font-family: var(--font-display); font-style: italic; font-size: 1.08rem; line-height: 1.65;
+  color: var(--color-text); margin: 0 0 1.25rem;
+}
+.tpl-design-05-vintage .ck-guest-card footer { display: flex; flex-direction: column; gap: 0.15rem; }
+.tpl-design-05-vintage .ck-guest-card cite { font-style: normal; font-weight: 700; color: var(--color-primary); font-size: 0.92rem; }
+.tpl-design-05-vintage .ck-guest-card footer span { color: var(--color-muted); font-size: 0.85rem; }
+
+/* ---- Ticket reservation ---- */
+.tpl-design-05-vintage .ck-ticket {
+  display: grid; grid-template-columns: 1fr 150px;
+  background: #fbf6e9; border: 2px solid var(--color-primary);
+  box-shadow: 6px 6px 0 rgba(87, 28, 32, 0.15); margin-bottom: 2rem;
+}
+.tpl-design-05-vintage .ck-ticket-main { padding: 2.5rem; }
+.tpl-design-05-vintage .ck-ticket-head {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--color-primary);
+  margin: 0 0 1.5rem; letter-spacing: 0.04em;
+}
+.tpl-design-05-vintage .ck-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.tpl-design-05-vintage .ck-field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.1rem; }
+.tpl-design-05-vintage .ck-field span { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-secondary); }
+.tpl-design-05-vintage .ck-field input, .tpl-design-05-vintage .ck-field select {
+  font-family: var(--font-body); font-size: 1rem; color: var(--color-text);
+  background: transparent; border: 0; border-bottom: 1px solid var(--color-accent);
+  padding: 0.6rem 0.1rem; border-radius: 0;
+}
+.tpl-design-05-vintage .ck-field input:focus, .tpl-design-05-vintage .ck-field select:focus {
+  outline: none; border-bottom-color: var(--color-primary); border-bottom-width: 2px;
+}
+.tpl-design-05-vintage .ck-ticket-btn {
+  position: relative; display: inline-block; margin-top: 0.75rem; cursor: pointer;
+  background: var(--color-primary); border: 0; padding: 0;
+}
+.tpl-design-05-vintage .ck-ticket-btn svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tpl-design-05-vintage .ck-ticket-btn .ck-dash {
+  fill: none; stroke: var(--color-accent); stroke-width: 2;
+  stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 0.6s ease;
+}
+.tpl-design-05-vintage .ck-ticket-btn:hover .ck-dash, .tpl-design-05-vintage .ck-ticket-btn:focus-visible .ck-dash { stroke-dashoffset: 0; }
+.tpl-design-05-vintage .ck-ticket-btn span {
+  position: relative; display: block; padding: 1rem 2.4rem; color: var(--color-background);
+  font-weight: 700; font-size: 0.8rem; letter-spacing: 0.24em; text-transform: uppercase;
+}
+.tpl-design-05-vintage .ck-ticket-fine { margin: 1.25rem 0 0; font-size: 0.9rem; color: var(--color-muted); }
+.tpl-design-05-vintage .ck-ticket-fine a { color: var(--color-secondary); font-weight: 700; }
+.tpl-design-05-vintage .ck-ticket-stub {
+  border-left: 2px dashed var(--color-accent); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1rem; padding: 2rem 1rem;
+  background: var(--color-surface);
+}
+.tpl-design-05-vintage .ck-stub-seal {
+  width: 3.2rem; height: 3.2rem; border-radius: 50%; background: var(--color-accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.5rem;
+  box-shadow: inset 0 0 0 2px #fbf6e9, inset 0 0 0 4px var(--color-accent);
+}
+.tpl-design-05-vintage .ck-stub-text { writing-mode: vertical-rl; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.4em; color: var(--color-primary); }
+.tpl-design-05-vintage .ck-stub-no { font-family: var(--font-display); font-style: italic; color: var(--color-secondary); font-size: 0.9rem; }
+.tpl-design-05-vintage .ck-done-no { font-family: var(--font-display); font-weight: 700; font-size: 2.2rem; color: var(--color-primary); margin: 0 0 1.25rem; letter-spacing: 0.06em; }
+.tpl-design-05-vintage .ck-ticket-done dl { margin: 0 0 1.25rem; }
+.tpl-design-05-vintage .ck-ticket-done dl > div { display: flex; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px dotted var(--color-muted); }
+.tpl-design-05-vintage .ck-ticket-done dt { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-secondary); width: 4.5rem; }
+.tpl-design-05-vintage .ck-ticket-done dd { margin: 0; font-weight: 600; }
+.tpl-design-05-vintage .ck-done-note { font-family: var(--font-display); font-style: italic; color: var(--color-secondary); margin: 0 0 1.25rem; }
+.tpl-design-05-vintage .ck-link { background: none; border: 0; cursor: pointer; color: var(--color-primary); font-weight: 700; text-decoration: underline; font-size: 0.9rem; padding: 0; }
+.tpl-design-05-vintage .ck-hours { text-align: center; color: var(--color-muted); font-size: 0.92rem; }
+
+/* ---- Footer ---- */
+.tpl-design-05-vintage .ck-footer { border-top: 1px solid var(--color-accent); padding: clamp(3rem, 6vw, 4.5rem) 0; text-align: center; }
+.tpl-design-05-vintage .ck-foot-crest { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; color: var(--color-primary); margin: 0 0 0.75rem; letter-spacing: 0.05em; }
+.tpl-design-05-vintage .ck-foot-line { font-family: var(--font-display); font-style: italic; color: var(--color-secondary); margin: 0 0 0.35rem; }
+.tpl-design-05-vintage .ck-foot-note { color: var(--color-muted); font-size: 0.9rem; margin: 0 0 1.25rem; }
+.tpl-design-05-vintage .ck-foot-contact { margin: 0 0 1.5rem; }
+.tpl-design-05-vintage .ck-foot-contact a { color: var(--color-primary); font-weight: 700; }
+.tpl-design-05-vintage .ck-foot-links { display: flex; gap: 1.6rem; justify-content: center; flex-wrap: wrap; }
+.tpl-design-05-vintage .ck-foot-links a { font-family: var(--font-display); color: var(--color-secondary); text-decoration: none; font-size: 0.95rem; }
+.tpl-design-05-vintage .ck-foot-links a:hover { color: var(--color-primary); }
+
+@media (max-width: 767px) {
+  .tpl-design-05-vintage .ck-stack-card { position: relative; top: auto; margin-bottom: 2.5rem; }
+  .tpl-design-05-vintage .ck-stack-inner { grid-template-columns: 1fr; min-height: 0; }
+  .tpl-design-05-vintage .ck-stack-media { min-height: 0; }
+  .tpl-design-05-vintage .ck-stack-media .a-img { position: relative; aspect-ratio: 4 / 3; height: auto; }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1023px) {
+  .tpl-design-05-vintage .ck-tl-grid { grid-template-columns: 1fr; }
+  .tpl-design-05-vintage .ck-tl-photo { display: none; }
+  .tpl-design-05-vintage .ck-decade-img { display: block; }
+  .tpl-design-05-vintage .ck-tl-left { padding-left: 2rem; }
+}
+@media (max-width: 900px) {
+  .tpl-design-05-vintage .ck-craft-grid { grid-template-columns: 1fr; }
+  .tpl-design-05-vintage .ck-guest-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  .tpl-design-05-vintage .ck-menu-prints { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .tpl-design-05-vintage .ck-ticket { grid-template-columns: 1fr; }
+  .tpl-design-05-vintage .ck-ticket-stub { border-left: 0; border-top: 2px dashed var(--color-accent); flex-direction: row; padding: 1.25rem; }
+  .tpl-design-05-vintage .ck-stub-text { writing-mode: horizontal-tb; }
+  .tpl-design-05-vintage .ck-field-row { grid-template-columns: 1fr; }
+  .tpl-design-05-vintage .ck-hero-media .a-img { aspect-ratio: 4 / 3; }
+}
+
+/* Phones: the sticky crest nav stacked to ~180px (a fifth of the screen) and
+   sat over every pinned/sticky moment. Compact it to one row — crest left,
+   ticket right; the section links live in the footer nav. */
+@media (max-width: 600px) {
+  .tpl-design-05-vintage .ck-nav { flex-direction: row; justify-content: space-between; padding: 0.7rem 1rem; gap: 0.75rem; }
+  .tpl-design-05-vintage .ck-crest { flex-direction: row; gap: 0.6rem; }
+  .tpl-design-05-vintage .ck-crest-mark { width: 2.3rem; height: 2.3rem; font-size: 1.05rem; }
+  .tpl-design-05-vintage .ck-crest-name { font-size: 1.1rem; }
+  .tpl-design-05-vintage .ck-crest-sub { display: none; }
+  .tpl-design-05-vintage .ck-links { display: none; }
+  .tpl-design-05-vintage .ck-ticket-link { padding: 0.6rem 0.9rem; font-size: 0.66rem; letter-spacing: 0.16em; outline-offset: 2px; }
+}

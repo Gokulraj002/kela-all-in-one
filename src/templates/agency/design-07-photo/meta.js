@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-07-photo',
+  num: '07',
+  name: 'Halide Studio',
+  tag: 'Photography',
+  style: 'Photography-led studio; images are the interface',
+  animation: 'Darkroom develop — frames rise out of darkness as they enter',
+  typography: 'Bebas Neue + Manrope',
+  layout: 'Full-bleed hero frame, horizontal filmstrip series with sprocket edges, indexed commissions',
+  mood: 'Observant, patient, analog — the quietest dark design in the set',
+  palette: 'Deep charcoal / black / warm silver',
+  features: [
+    'M7 darkroom develop on every frame (rises from darkness + grey on entry)',
+    'Filmstrip galleries with CSS sprocket-hole edges',
+    'Click-any-frame lightbox with captions',
+    'Booking inquiry form (date, usage, budget) via mailto compose',
+  ],
+  fonts: { display: 'Bebas Neue', body: 'Manrope' },
+  colors: { primary: '#EFE9DD', accent: '#C9B48A' },
+};

@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-09-story',
+  num: '09',
+  name: 'From Cherry to Cup',
+  tag: 'Storytelling',
+  style: 'Parchment documentary narrative with pinned scroll chapters',
+  animation: 'Pinned chapter scroll, media crossfade, progress dots, interactive process diagram',
+  typography: 'Cormorant Garamond + Instrument Sans',
+  layout: 'Pinned media chapters (desktop), stacked chapters (mobile), reading measure 65ch',
+  mood: 'Lyrical, documentary, human',
+  palette: 'Parchment / ink / forest / harvest gold',
+  features: ['Pinned scroll chapters', 'Chapter progress nav', 'Interactive process diagram', 'Farmer protagonists', 'Newsletter epilogue'],
+  fonts: { display: 'Cormorant Garamond', body: 'Instrument Sans' },
+  colors: { primary: '#211C13', accent: '#8A6D3B' },
+};

@@ -1,0 +1,976 @@
+/* Meridian Business Hotel — design-07-business.
+   Utility-dense, instrument-fast. Tokens live on the scope only. */
+
+.tpl-design-07-business {
+  --color-primary: #1B2A3A;
+  --color-accent: #2E7CD6;
+  --color-background: #F2F5F8;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #E7EDF3;
+  --color-text: #16222E;
+  --color-muted: #5D6F82;
+  --color-line: #D8E1EA;
+  --color-ink: #0D1723;
+  --color-board: #101C2B;
+  --color-board-top: #16273C;
+  --color-board-line: #2B3F57;
+  --color-board-text: #E9F1F9;
+  --color-board-dim: #8CA3BC;
+  --font-display: 'Archivo', 'Inter', sans-serif;
+  --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-07-business *,
+.tpl-design-07-business *::before,
+.tpl-design-07-business *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-07-business img {
+  max-width: 100%;
+}
+
+/* ---------- wrap & type ---------- */
+.tpl-design-07-business .md-wrap {
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.tpl-design-07-business section {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+.tpl-design-07-business .md-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1rem;
+}
+
+.tpl-design-07-business .md-eyebrow-light {
+  color: var(--color-board-text);
+  opacity: 0.85;
+}
+
+.tpl-design-07-business .md-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--color-primary);
+  margin: 0 0 1.25rem;
+  max-width: 22ch;
+}
+
+.tpl-design-07-business .md-lead {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--color-muted);
+  max-width: 58ch;
+  margin: 0 0 2rem;
+}
+
+.tpl-design-07-business .md-rule {
+  display: block;
+  height: 2px;
+  background: var(--color-accent);
+  transform-origin: left center;
+  margin: 0 0 2.25rem;
+  max-width: 6rem;
+}
+
+/* word-mask headline */
+.tpl-design-07-business .md-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-07-business .md-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------- buttons ---------- */
+.tpl-design-07-business .md-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.tpl-design-07-business .md-btn-primary {
+  background: var(--color-accent);
+  color: var(--color-surface);
+}
+.tpl-design-07-business .md-btn-primary:hover {
+  background: var(--color-primary);
+}
+.tpl-design-07-business .md-btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-line);
+}
+.tpl-design-07-business .md-btn-ghost:hover {
+  border-color: var(--color-primary);
+}
+.tpl-design-07-business .md-btn-outline {
+  background: transparent;
+  color: var(--color-board-text);
+  border-color: var(--color-board-text);
+}
+.tpl-design-07-business .md-btn-outline:hover {
+  background: var(--color-board-text);
+  color: var(--color-ink);
+}
+
+/* ---------- utility strip + nav ---------- */
+.tpl-design-07-business .md-utility {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: var(--color-ink);
+  color: var(--color-board-dim);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 0.55rem clamp(1.25rem, 4vw, 2.5rem);
+}
+.tpl-design-07-business .md-utility a {
+  color: var(--color-board-text);
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tpl-design-07-business .md-nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem clamp(1.25rem, 4vw, 2.5rem);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-07-business .md-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--color-primary);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.tpl-design-07-business .md-links {
+  display: none;
+  gap: 1.75rem;
+}
+.tpl-design-07-business .md-links a {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.tpl-design-07-business .md-links a:hover {
+  color: var(--color-accent);
+}
+
+.tpl-design-07-business .md-nav-ctas {
+  display: flex;
+  gap: 0.6rem;
+}
+.tpl-design-07-business .md-nav-ctas .md-btn {
+  padding: 0.65rem 1.1rem;
+  font-size: 0.78rem;
+}
+
+/* ---------- hero (scroll-driven frames) ---------- */
+.tpl-design-07-business .md-hero {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  color: var(--color-board-text);
+}
+
+/* ScrollFrames: layout is inline in the component (stageHeight 100svh). */
+.tpl-design-07-business .sf-overlay {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Reduced motion: static first frame, same overlay layout. */
+.tpl-design-07-business .sf-static {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+.tpl-design-07-business .sf-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tpl-design-07-business .md-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--color-ink) 4%,
+    color-mix(in srgb, var(--color-ink) 62%, transparent) 42%,
+    color-mix(in srgb, var(--color-ink) 28%, transparent) 70%,
+    color-mix(in srgb, var(--color-ink) 42%, transparent) 100%
+  );
+}
+
+.tpl-design-07-business .md-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.25rem, 4vw, 2.5rem) clamp(3rem, 6vw, 4.5rem);
+}
+
+.tpl-design-07-business .md-hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 7.5vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+  max-width: 14ch;
+  color: var(--color-board-text);
+}
+
+.tpl-design-07-business .md-hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  line-height: 1.55;
+  color: var(--color-board-text);
+  opacity: 0.88;
+  max-width: 52ch;
+  margin: 0 0 1.75rem;
+}
+
+.tpl-design-07-business .md-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.tpl-design-07-business .md-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 1rem;
+  margin: 0;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-board-line);
+  max-width: 56rem;
+}
+.tpl-design-07-business .md-stat {
+  margin: 0;
+}
+.tpl-design-07-business .md-stat-value {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: -0.01em;
+  color: var(--color-board-text);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-07-business .md-stat-label {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--color-board-dim);
+  margin-top: 0.3rem;
+  max-width: 20ch;
+}
+
+/* ---------- booking ---------- */
+.tpl-design-07-business .md-booking {
+  background: var(--color-surface);
+  border-block: 1px solid var(--color-line);
+}
+
+.tpl-design-07-business .md-book {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+.tpl-design-07-business .md-book-visual .a-img {
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+.tpl-design-07-business .md-book-visual .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tpl-design-07-business .md-book-visual-note {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+  margin: 1rem 0 0;
+  max-width: 42ch;
+}
+
+.tpl-design-07-business .md-book-form {
+  background: var(--color-background);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.tpl-design-07-business .md-book-fields {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin-bottom: 1.25rem;
+}
+.tpl-design-07-business .md-field {
+  display: grid;
+  gap: 0.4rem;
+}
+.tpl-design-07-business .md-field span {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-07-business .md-field input,
+.tpl-design-07-business .md-field select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  padding: 0.75rem 0.9rem;
+  width: 100%;
+}
+.tpl-design-07-business .md-field input:focus,
+.tpl-design-07-business .md-field select:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+  border-color: var(--color-accent);
+}
+
+.tpl-design-07-business .md-book-math {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-line);
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+.tpl-design-07-business .md-book-math strong {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-07-business .md-book-note {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin: 0 0 1.25rem;
+}
+.tpl-design-07-business .md-book-cta {
+  width: 100%;
+  font-size: 0.95rem;
+  padding: 1rem;
+}
+
+.tpl-design-07-business .md-book-done-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+}
+.tpl-design-07-business .md-book-done-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  margin: 0 0 1.5rem;
+}
+
+/* ---------- rooms / split-flap board ---------- */
+.tpl-design-07-business .md-rooms {
+  background: var(--color-background);
+}
+
+.tpl-design-07-business .md-rooms-head {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: 1fr;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+.tpl-design-07-business .md-board-note {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+.tpl-design-07-business .md-rooms-visual .a-img {
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+.tpl-design-07-business .md-rooms-visual .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tpl-design-07-business .md-board {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.tpl-design-07-business .md-row {
+  display: grid;
+  gap: 0;
+  grid-template-columns: 1fr;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* the split-flap board */
+.tpl-design-07-business .md-flap {
+  background: var(--color-board);
+  color: var(--color-board-text);
+  perspective: 520px;
+}
+.tpl-design-07-business .md-flap-top,
+.tpl-design-07-business .md-flap-bot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 1.25rem;
+}
+.tpl-design-07-business .md-flap-top {
+  background: var(--color-board-top);
+  border-bottom: 1px solid var(--color-board-line);
+  transform-origin: 50% 100%;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.tpl-design-07-business .md-code {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: var(--color-board-dim);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tpl-design-07-business .md-fname {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-align: right;
+}
+.tpl-design-07-business .md-frate {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.25rem, 3vw, 1.7rem);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-07-business .md-fstatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-board-dim);
+}
+.tpl-design-07-business .md-fstatus::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--brand-on-dark, var(--color-accent));
+}
+
+.tpl-design-07-business .md-row-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+.tpl-design-07-business .md-row-meta {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.6rem;
+}
+.tpl-design-07-business .md-row-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  margin: 0 0 1rem;
+  max-width: 56ch;
+}
+.tpl-design-07-business .md-row-cta {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.15rem;
+}
+.tpl-design-07-business .md-row-cta:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- work ---------- */
+.tpl-design-07-business .md-work {
+  background: var(--color-ink);
+  color: var(--color-board-text);
+}
+.tpl-design-07-business .md-work .md-h2 {
+  color: var(--color-board-text);
+}
+.tpl-design-07-business .md-work .md-lead {
+  color: var(--color-board-dim);
+}
+.tpl-design-07-business .md-work .md-rule {
+  background: var(--brand-on-dark, var(--color-accent));
+}
+/* Dark band on a light page: the light brand tone keeps the eyebrow legible. */
+.tpl-design-07-business .md-work .md-eyebrow {
+  color: var(--brand-on-dark, var(--color-accent));
+}
+
+.tpl-design-07-business .md-work-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  margin-bottom: 2.5rem;
+}
+.tpl-design-07-business .md-work-visual .a-img {
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--color-board-line);
+}
+.tpl-design-07-business .md-work-visual .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tpl-design-07-business .md-meet-list {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  border-top: 1px solid var(--color-board-line);
+}
+.tpl-design-07-business .md-meet {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-board-line);
+  align-items: baseline;
+}
+.tpl-design-07-business .md-meet strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+.tpl-design-07-business .md-meet span {
+  font-size: 0.85rem;
+  color: var(--color-board-dim);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-07-business .md-meet-floor {
+  grid-column: 1 / -1;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.tpl-design-07-business .md-work .md-btn-ghost {
+  color: var(--color-board-text);
+  border-color: var(--color-board-line);
+}
+.tpl-design-07-business .md-work .md-btn-ghost:hover {
+  border-color: var(--color-board-text);
+}
+
+.tpl-design-07-business .md-proof {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1rem;
+  margin: 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-board-line);
+}
+.tpl-design-07-business .md-proof .md-stat-value {
+  color: var(--color-board-text);
+}
+.tpl-design-07-business .md-proof .md-stat-label {
+  color: var(--color-board-dim);
+}
+
+/* ---------- dining ---------- */
+.tpl-design-07-business .md-dining {
+  background: var(--color-surface);
+  border-block: 1px solid var(--color-line);
+}
+.tpl-design-07-business .md-dining-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+}
+.tpl-design-07-business .md-dine-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.75rem;
+}
+.tpl-design-07-business .md-dine-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+.tpl-design-07-business .md-dine-head h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+.tpl-design-07-business .md-dine-time {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-07-business .md-dine p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 52ch;
+}
+.tpl-design-07-business .md-dining-visual {
+  margin: 0;
+}
+.tpl-design-07-business .md-dining-visual .a-img {
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+.tpl-design-07-business .md-dining-visual .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tpl-design-07-business .md-dining-visual figcaption {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+/* ---------- visit ---------- */
+.tpl-design-07-business .md-visit-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+}
+.tpl-design-07-business .md-times {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--color-line);
+}
+.tpl-design-07-business .md-time {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.25rem 1.25rem;
+  align-items: baseline;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-07-business .md-time strong {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-07-business .md-time-place {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+.tpl-design-07-business .md-time-note {
+  grid-column: 2;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+}
+
+.tpl-design-07-business .md-address {
+  font-style: normal;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+}
+.tpl-design-07-business .md-address-line {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0;
+}
+.tpl-design-07-business .md-address a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.tpl-design-07-business .md-address a:hover {
+  color: var(--color-accent);
+}
+.tpl-design-07-business .md-address .md-btn {
+  justify-self: start;
+  margin-top: 0.5rem;
+}
+/* the address link colour must not bleed into the accent-filled button */
+.tpl-design-07-business .md-address .md-btn-primary,
+.tpl-design-07-business .md-address .md-btn-primary:hover {
+  color: var(--color-surface);
+}
+
+/* ---------- footer ---------- */
+.tpl-design-07-business .md-footer {
+  background: var(--color-ink);
+  color: var(--color-board-dim);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+.tpl-design-07-business .md-footer-in {
+  display: grid;
+  gap: 1.25rem;
+}
+.tpl-design-07-business .md-wordmark-foot {
+  color: var(--color-board-text);
+}
+.tpl-design-07-business .md-foot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+.tpl-design-07-business .md-foot-links a {
+  font-size: 0.85rem;
+  color: var(--color-board-dim);
+  text-decoration: none;
+}
+.tpl-design-07-business .md-foot-links a:hover {
+  color: var(--color-board-text);
+}
+.tpl-design-07-business .md-footer-line {
+  font-size: 0.85rem;
+  margin: 0;
+}
+.tpl-design-07-business .md-colophon {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* ---------- mobile quickbar ---------- */
+.tpl-design-07-business .md-quickbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+  background: var(--color-ink);
+  border-top: 1px solid var(--color-board-line);
+}
+.tpl-design-07-business .md-quickbar a {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  padding: 0.85rem;
+  border-radius: 4px;
+  color: var(--color-board-text);
+  border: 1px solid var(--color-board-line);
+}
+.tpl-design-07-business .md-quickbar-book {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* ---------- responsive ---------- */
+@media (min-width: 768px) {
+  .tpl-design-07-business .md-links {
+    display: flex;
+  }
+  .tpl-design-07-business .md-hero-stats,
+  .tpl-design-07-business .md-proof {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .tpl-design-07-business .md-book {
+    grid-template-columns: 1fr 1.25fr;
+    align-items: start;
+  }
+  .tpl-design-07-business .md-book-fields {
+    grid-template-columns: 1fr 1fr 0.8fr;
+  }
+  .tpl-design-07-business .md-rooms-head {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tpl-design-07-business .md-row {
+    grid-template-columns: 1.15fr 1fr;
+  }
+  .tpl-design-07-business .md-flap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .tpl-design-07-business .md-row-body {
+    padding: 1.75rem 2rem;
+    align-self: center;
+  }
+  .tpl-design-07-business .md-work-grid {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: start;
+  }
+  .tpl-design-07-business .md-meet {
+    grid-template-columns: 1fr auto auto;
+  }
+  .tpl-design-07-business .md-meet-floor {
+    grid-column: auto;
+  }
+  .tpl-design-07-business .md-dining-grid {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+  .tpl-design-07-business .md-visit-grid {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+  .tpl-design-07-business .md-quickbar {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .tpl-design-07-business .md-utility span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .tpl-design-07-business .md-nav-ctas .md-btn-ghost {
+    display: none;
+  }
+  .tpl-design-07-business main {
+    padding-bottom: 4.5rem;
+  }
+  /* keep the hero stats clear of the fixed quick-bar while the hero is pinned */
+  .tpl-design-07-business .md-hero-copy {
+    padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-07-business *,
+  .tpl-design-07-business *::before,
+  .tpl-design-07-business *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

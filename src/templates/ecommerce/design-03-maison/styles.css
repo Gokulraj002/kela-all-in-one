@@ -1,0 +1,614 @@
+/* Maison Éclat — design-03-maison. Tokens scoped to .tpl-design-03-maison ONLY. */
+.tpl-design-03-maison {
+  --color-background: #0E0D0B;
+  --color-surface: #171411;
+  --color-primary: #0E0D0B;
+  --color-secondary: #8A857C;
+  --color-accent: #D9C39A;
+  --color-text: #EDE6D6;
+  --color-muted: #8A857C;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Manrope', sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-03-maison *,
+.tpl-design-03-maison *::before,
+.tpl-design-03-maison *::after { box-sizing: border-box; }
+
+.tpl-design-03-maison a { color: inherit; }
+.tpl-design-03-maison img { display: block; }
+.tpl-design-03-maison button { font-family: inherit; }
+
+.tpl-design-03-maison .a-img { display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-03-maison .a-img img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- shared editorial atoms ---------- */
+.tpl-design-03-maison .me-wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 64px); }
+.tpl-design-03-maison .me-section { padding: clamp(150px, 22vh, 260px) 0; }
+.tpl-design-03-maison .me-center { text-align: center; }
+.tpl-design-03-maison .me-center .me-draw { margin-left: auto; margin-right: auto; }
+
+.tpl-design-03-maison .me-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 26px;
+}
+
+.tpl-design-03-maison .me-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+  margin: 0 0 10px;
+  max-width: 18ch;
+}
+.tpl-design-03-maison .me-center .me-h2 { margin-left: auto; margin-right: auto; }
+.tpl-design-03-maison .me-h2 em { font-style: italic; color: var(--color-accent); }
+
+.tpl-design-03-maison .me-body { max-width: 60ch; margin: 0 0 1.4em; color: var(--color-text); font-weight: 300; }
+.tpl-design-03-maison .me-body:last-child { margin-bottom: 0; }
+.tpl-design-03-maison .me-lede { margin-left: auto; margin-right: auto; font-size: 1.12rem; }
+
+.tpl-design-03-maison .me-draw {
+  display: block;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.7;
+  transform-origin: left center;
+  margin: 30px 0 54px;
+  max-width: 180px;
+}
+.tpl-design-03-maison .me-center .me-draw { transform-origin: center; }
+
+.tpl-design-03-maison .me-cta {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 17px 38px;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+.tpl-design-03-maison .me-cta:hover { background: var(--color-accent); color: var(--color-primary); }
+.tpl-design-03-maison .me-cta:focus-visible,
+.tpl-design-03-maison .me-textlink:focus-visible,
+.tpl-design-03-maison .me-ghost:focus-visible,
+.tpl-design-03-maison .me-list-btn:focus-visible,
+.tpl-design-03-maison a:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.tpl-design-03-maison .me-textlink {
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 6px;
+  transition: color 0.35s ease;
+}
+.tpl-design-03-maison .me-textlink:hover { color: var(--color-accent); }
+
+.tpl-design-03-maison .me-ghost {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-accent);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  padding: 8px 2px;
+  transition: color 0.35s ease, border-color 0.35s ease;
+}
+.tpl-design-03-maison .me-ghost:hover { color: var(--color-accent); border-color: var(--color-text); }
+
+.tpl-design-03-maison .me-wm .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.tpl-design-03-maison .me-wm .wi { display: inline-block; will-change: transform; }
+
+/* ---------- nav ---------- */
+.tpl-design-03-maison .me-nav {
+  position: fixed;
+  top: var(--tpl-top, 0px); left: 0; right: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px clamp(24px, 5vw, 64px);
+  background: linear-gradient(to bottom, rgba(14, 13, 11, 0.72), rgba(14, 13, 11, 0));
+}
+.tpl-design-03-maison .me-wordmark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.tpl-design-03-maison .me-links { display: flex; gap: 34px; }
+.tpl-design-03-maison .me-links a {
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  transition: color 0.35s ease;
+}
+.tpl-design-03-maison .me-links a:hover { color: var(--color-accent); }
+.tpl-design-03-maison .me-list-btn {
+  background: transparent;
+  border: 1px solid rgba(217, 195, 154, 0.45);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.35s ease;
+}
+.tpl-design-03-maison .me-list-btn:hover { border-color: var(--color-accent); }
+.tpl-design-03-maison .me-list-count {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-accent);
+  min-width: 1.4em;
+  text-align: center;
+}
+
+/* ---------- hero (scroll-driven frames) ---------- */
+.tpl-design-03-maison .me-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-primary);
+}
+/* ScrollFrames inlines its own stage height (100svh) and overlay layout;
+   the design only keeps its original minimum hero height. */
+.tpl-design-03-maison .me-hero .sf-stage,
+.tpl-design-03-maison .me-hero .sf-static {
+  min-height: 620px;
+}
+/* Overlay above the scrim; copy stays absolutely positioned at its foot. */
+.tpl-design-03-maison .me-hero .sf-overlay { z-index: 2; }
+/* Readability scrim over the frames (was the hero-video ::after scrim). */
+.tpl-design-03-maison .me-hero .sf-stage::after,
+.tpl-design-03-maison .me-hero .sf-static::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(14, 13, 11, 0.82) 0%, rgba(14, 13, 11, 0.25) 45%, rgba(14, 13, 11, 0.35) 100%);
+}
+.tpl-design-03-maison .me-bar {
+  position: absolute;
+  left: 0; right: 0;
+  height: clamp(40px, 6vh, 72px);
+  background: var(--color-primary);
+  z-index: 3;
+  transform-origin: center;
+}
+.tpl-design-03-maison .me-bar-top { top: 0; transform-origin: top; }
+.tpl-design-03-maison .me-bar-bottom { bottom: 0; transform-origin: bottom; }
+.tpl-design-03-maison .me-hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 0 clamp(24px, 6vw, 96px) clamp(120px, 14vh, 170px);
+  max-width: 1100px;
+}
+.tpl-design-03-maison .me-hero-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(3.4rem, 9vw, 7.6rem);
+  line-height: 1.0;
+  letter-spacing: 0.005em;
+  color: var(--color-text);
+  margin: 0 0 28px;
+}
+.tpl-design-03-maison .me-hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  max-width: 46ch;
+  margin: 0 0 40px;
+  color: var(--color-text);
+}
+.tpl-design-03-maison .me-hero-ctas { display: flex; align-items: center; gap: 34px; flex-wrap: wrap; }
+.tpl-design-03-maison .me-hero-hint {
+  position: absolute;
+  z-index: 2;
+  right: clamp(24px, 6vw, 96px);
+  bottom: clamp(120px, 14vh, 170px);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  writing-mode: vertical-rl;
+  margin: 0;
+}
+
+/* ---------- veil unveiling ---------- */
+.tpl-design-03-maison .me-veil {
+  position: relative;
+  background: var(--color-primary);
+  padding: clamp(150px, 22vh, 260px) 0;
+}
+.tpl-design-03-maison .me-veil-pin {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  min-height: 560px;
+  overflow: hidden;
+}
+.tpl-design-03-maison .me-spread {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.tpl-design-03-maison .me-spread-0 { opacity: 1; }
+.tpl-design-03-maison .me-spread-media {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.tpl-design-03-maison .me-spread-media.is-duo { display: grid; grid-template-columns: 1fr 1fr; }
+.tpl-design-03-maison .me-spread-img { width: 100%; height: 100%; }
+.tpl-design-03-maison .me-spread-media.is-duo .me-spread-img { border-left: 1px solid var(--color-primary); }
+.tpl-design-03-maison .me-spread-media.is-duo .me-spread-img:first-child { border-left: none; }
+.tpl-design-03-maison .me-veil-scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary);
+  transform: scaleY(0);
+  transform-origin: top center;
+  will-change: transform;
+}
+.tpl-design-03-maison .me-spread-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(90px, 12vh, 130px) clamp(24px, 6vw, 96px);
+  background: linear-gradient(to top, rgba(14, 13, 11, 0.78) 0%, rgba(14, 13, 11, 0) 55%);
+}
+.tpl-design-03-maison .me-spread-inner .me-eyebrow { margin-bottom: 18px; }
+.tpl-design-03-maison .me-hairline {
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: var(--color-accent);
+  transform-origin: left center;
+  margin-bottom: 34px;
+}
+.tpl-design-03-maison .me-pieces {
+  display: flex;
+  gap: clamp(40px, 5vw, 90px);
+  flex-wrap: wrap;
+  max-width: 1100px;
+}
+.tpl-design-03-maison .me-piece { flex: 1 1 280px; max-width: 440px; }
+.tpl-design-03-maison .me-piece-note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-accent);
+  margin: 0 0 12px;
+}
+.tpl-design-03-maison .me-piece-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.1;
+  color: var(--color-text);
+  margin: 0 0 14px;
+}
+.tpl-design-03-maison .me-piece-desc { font-weight: 300; max-width: 40ch; margin: 0 0 16px; color: var(--color-text); }
+.tpl-design-03-maison .me-piece-price {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  margin: 0 0 18px;
+}
+.tpl-design-03-maison .me-spread-caption {
+  margin: 40px 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-muted);
+  max-width: 60ch;
+}
+.tpl-design-03-maison .me-veil-bar {
+  position: absolute;
+  left: 0; right: 0;
+  height: clamp(48px, 7vh, 84px);
+  background: var(--color-primary);
+  z-index: 3;
+  will-change: transform;
+}
+.tpl-design-03-maison .me-veil-bar-top { top: 0; transform-origin: top; }
+.tpl-design-03-maison .me-veil-bar-bottom { bottom: 0; transform-origin: bottom; }
+
+/* ---------- story ---------- */
+.tpl-design-03-maison .me-story { background: var(--color-background); }
+.tpl-design-03-maison .me-story-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(48px, 7vw, 120px);
+  align-items: start;
+  margin-top: 20px;
+}
+.tpl-design-03-maison .me-quote {
+  margin: 54px 0 0;
+  padding: 0 0 0 28px;
+  border-left: 1px solid var(--color-accent);
+}
+.tpl-design-03-maison .me-quote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.55rem;
+  line-height: 1.45;
+  color: var(--color-text);
+  margin: 0 0 14px;
+}
+.tpl-design-03-maison .me-quote cite {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-03-maison .me-story-fig { margin: 0; }
+.tpl-design-03-maison .me-frame { display: block; overflow: hidden; aspect-ratio: 3 / 3.8; }
+.tpl-design-03-maison .me-story-fig figcaption {
+  font-size: 0.95rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+  margin-top: 18px;
+}
+
+/* ---------- concierge ---------- */
+.tpl-design-03-maison .me-concierge { background: var(--color-surface); }
+.tpl-design-03-maison .me-promise {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(32px, 4vw, 64px);
+  margin: clamp(80px, 12vh, 130px) 0 clamp(90px, 13vh, 140px);
+}
+.tpl-design-03-maison .me-promise-item { border-top: 1px solid rgba(217, 195, 154, 0.4); padding-top: 26px; }
+.tpl-design-03-maison .me-promise-item h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin: 0 0 12px;
+}
+.tpl-design-03-maison .me-promise-item p { font-weight: 300; font-size: 0.95rem; color: var(--color-muted); margin: 0; }
+.tpl-design-03-maison .me-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: start;
+  border-top: 1px solid rgba(217, 195, 154, 0.25);
+  padding-top: clamp(60px, 9vh, 100px);
+}
+.tpl-design-03-maison .me-address { font-style: normal; font-size: 1.05rem; line-height: 2.1; margin: 0; font-weight: 300; }
+.tpl-design-03-maison .me-address a { color: var(--color-accent); text-decoration: none; }
+.tpl-design-03-maison .me-hours p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0 0 34px;
+}
+
+/* ---------- footer ---------- */
+.tpl-design-03-maison .me-footer {
+  background: var(--color-primary);
+  border-top: 1px solid rgba(217, 195, 154, 0.2);
+  padding: clamp(80px, 12vh, 130px) clamp(24px, 5vw, 64px) 64px;
+  text-align: center;
+}
+.tpl-design-03-maison .me-footer-word {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2rem;
+  color: var(--color-text);
+  margin: 0 0 18px;
+}
+.tpl-design-03-maison .me-footer-line {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  margin: 0 0 14px;
+}
+.tpl-design-03-maison .me-colophon { font-size: 0.8rem; color: var(--color-muted); margin: 0; font-style: italic; opacity: 0.7; }
+
+/* ---------- private list drawer ---------- */
+.tpl-design-03-maison .me-scrim2 {
+  position: fixed;
+  inset: var(--tpl-top, 0px) 0 0 0;
+  z-index: 85;
+  background: rgba(14, 13, 11, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+.tpl-design-03-maison .me-scrim2.is-open { opacity: 1; pointer-events: auto; }
+.tpl-design-03-maison .me-drawer {
+  position: fixed;
+  top: var(--tpl-top, 0px); right: 0; bottom: 0;
+  z-index: 90;
+  width: min(430px, 94vw);
+  background: var(--color-surface);
+  border-left: 1px solid rgba(217, 195, 154, 0.3);
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(102%);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto;
+}
+.tpl-design-03-maison .me-drawer.is-open { transform: translateX(0); }
+.tpl-design-03-maison .me-drawer-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+.tpl-design-03-maison .me-drawer-head .me-eyebrow { margin-bottom: 10px; }
+.tpl-design-03-maison .me-drawer-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 2rem;
+  color: var(--color-text);
+  margin: 0;
+}
+.tpl-design-03-maison .me-drawer-close {
+  background: transparent;
+  border: 1px solid rgba(217, 195, 154, 0.4);
+  color: var(--color-text);
+  cursor: pointer;
+  width: 44px; height: 44px;
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.tpl-design-03-maison .me-drawer-close:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.tpl-design-03-maison .me-drawer-empty { font-style: italic; font-weight: 300; color: var(--color-muted); margin: 0; line-height: 1.8; }
+.tpl-design-03-maison .me-drawer-items { list-style: none; margin: 0 0 30px; padding: 0; flex: 1; }
+.tpl-design-03-maison .me-drawer-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(217, 195, 154, 0.18);
+}
+.tpl-design-03-maison .me-drawer-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin: 0 0 6px;
+}
+.tpl-design-03-maison .me-drawer-meta { font-size: 0.9rem; color: var(--color-muted); margin: 0; font-variant-numeric: tabular-nums; }
+.tpl-design-03-maison .me-drawer-remove {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-muted);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 6px 0;
+}
+.tpl-design-03-maison .me-drawer-remove:hover { color: var(--color-accent); }
+.tpl-design-03-maison .me-drawer-foot { border-top: 1px solid rgba(217, 195, 154, 0.3); padding-top: 26px; }
+.tpl-design-03-maison .me-drawer-total {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  margin: 0 0 26px;
+}
+.tpl-design-03-maison .me-drawer-cta { width: 100%; text-align: center; }
+.tpl-design-03-maison .me-drawer-note { font-size: 0.8rem; font-style: italic; color: var(--color-muted); margin: 18px 0 0; text-align: center; }
+
+/* ---------- reduced motion: calm stacked spreads, no scrims ---------- */
+.tpl-design-03-maison.is-static .me-veil { padding: clamp(120px, 16vh, 200px) 0; }
+.tpl-design-03-maison.is-static .me-veil-pin { height: auto; overflow: visible; }
+.tpl-design-03-maison.is-static .me-spread { position: relative; opacity: 1; height: 92vh; min-height: 560px; }
+.tpl-design-03-maison.is-static .me-veil-scrim,
+.tpl-design-03-maison.is-static .me-veil-bar { display: none; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1023px) {
+  .tpl-design-03-maison .me-veil { padding: clamp(120px, 16vh, 200px) 0; }
+  .tpl-design-03-maison .me-veil-pin { height: auto; overflow: visible; }
+  .tpl-design-03-maison .me-spread { position: relative; opacity: 1; height: 96vh; min-height: 600px; }
+  .tpl-design-03-maison .me-spread + .me-spread { margin-top: clamp(90px, 12vh, 150px); }
+  .tpl-design-03-maison .me-veil-scrim { transform: none; will-change: opacity; }
+  .tpl-design-03-maison .me-veil-bar { display: none; }
+  .tpl-design-03-maison .me-story-grid { grid-template-columns: 1fr; }
+  .tpl-design-03-maison .me-frame { aspect-ratio: 16 / 10; }
+}
+
+@media (max-width: 900px) {
+  .tpl-design-03-maison .me-links { display: none; }
+  .tpl-design-03-maison .me-hero-hint { display: none; }
+  .tpl-design-03-maison .me-promise { grid-template-columns: 1fr; }
+  .tpl-design-03-maison .me-contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .tpl-design-03-maison .me-spread-media.is-duo { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .tpl-design-03-maison .me-spread-media.is-duo .me-spread-img { border-left: none; border-top: 1px solid var(--color-primary); }
+  .tpl-design-03-maison .me-spread-media.is-duo .me-spread-img:first-child { border-top: none; }
+  .tpl-design-03-maison .me-hero-copy { padding-bottom: clamp(110px, 13vh, 150px); }
+  .tpl-design-03-maison .me-hero-ctas { gap: 22px; }
+  .tpl-design-03-maison .me-pieces { gap: 44px; }
+  .tpl-design-03-maison .me-section { padding: clamp(110px, 15vh, 170px) 0; }
+}
+
+@media (min-width: 1600px) {
+  .tpl-design-03-maison .me-hero-title { font-size: 8.4rem; }
+  .tpl-design-03-maison .me-wrap { max-width: 1360px; }
+}
+
+/* Visually hidden (screen-reader copy of split headlines). */
+.tpl-design-03-maison .me-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

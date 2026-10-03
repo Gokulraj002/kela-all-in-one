@@ -1,0 +1,776 @@
+/* CHOWK — design-04-street · Loud poster-style street food.
+   All tokens scoped; every color/font below comes from var(). */
+
+.tpl-design-04-street {
+  --color-background: #F4ECDC;
+  --color-surface: #E9DCC2;
+  --color-primary: #17130E;
+  --color-secondary: #4A4238;
+  --color-accent: #C1272D;
+  --color-text: #17130E;
+  --color-muted: #7E7264;
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-body: 'Work Sans', 'Helvetica Neue', sans-serif;
+  --shadow-hard: 5px 5px 0 var(--color-primary);
+  --shadow-hard-sm: 3px 3px 0 var(--color-primary);
+}
+
+.tpl-design-04-street * { box-sizing: border-box; }
+
+.tpl-design-04-street .chw-root {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tpl-design-04-street .chw-wrap {
+  width: min(1200px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.tpl-design-04-street .chw-section {
+  padding-block: clamp(5rem, 10vw, 9rem);
+  position: relative;
+}
+
+.tpl-design-04-street .chw-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background: var(--color-primary);
+  padding: 0.45rem 0.9rem;
+  transform: rotate(-1.5deg);
+  margin: 0 0 1.25rem;
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.tpl-design-04-street .chw-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+  color: var(--color-primary);
+}
+
+.tpl-design-04-street .chw-h2 .is-chili { color: var(--color-accent); }
+
+.tpl-design-04-street .chw-sub {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--color-secondary);
+  max-width: 44rem;
+  margin: 0 0 2.75rem;
+}
+
+/* ============ NAV ============ */
+.tpl-design-04-street .chw-nav-dock {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 60;
+}
+
+.tpl-design-04-street .chw-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-background);
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.tpl-design-04-street .chw-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding-block: 0.8rem;
+}
+
+.tpl-design-04-street .chw-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background: var(--color-accent);
+  padding: 0.15rem 0.8rem 0.25rem;
+  transform: rotate(-2deg);
+  box-shadow: var(--shadow-hard-sm);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.tpl-design-04-street .chw-nav-links {
+  display: flex;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+.tpl-design-04-street .chw-nav-links a {
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: 0.55rem 0.9rem;
+  border: 2px solid transparent;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.tpl-design-04-street .chw-nav-links a:hover {
+  background: var(--color-primary);
+  color: var(--color-background);
+  border-color: var(--color-primary);
+}
+
+.tpl-design-04-street .chw-order-pill {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background: var(--color-accent);
+  border: 3px solid var(--color-primary);
+  box-shadow: var(--shadow-hard-sm);
+  padding: 0.55rem 1.4rem 0.65rem;
+  text-decoration: none;
+  transform: rotate(1.5deg);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.tpl-design-04-street .chw-order-pill:hover {
+  background: var(--color-primary);
+  color: var(--color-accent);
+  transform: rotate(-1deg) scale(1.04);
+}
+
+/* ============ HERO — scroll-scrub frame sequence ============ */
+.tpl-design-04-street .chw-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-primary);
+}
+
+/* ScrollFrames contract: the stage owns the height, the canvas cover-fits
+   it, and the overlay holds the scrim + copy. The component pins .sf-wrap
+   for pinDistance of scroll so the sequence scrubs frame by frame. */
+.tpl-design-04-street .sf-stage {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.tpl-design-04-street .sf-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tpl-design-04-street .sf-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* Reduced motion: no pin, no scrub — static first frame with copy on top. */
+.tpl-design-04-street .sf-static {
+  position: relative;
+  min-height: min(92vh, 860px);
+  overflow: hidden;
+}
+
+.tpl-design-04-street .sf-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tpl-design-04-street .chw-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(23, 19, 14, 0.25) 0%, rgba(23, 19, 14, 0.78) 100%);
+}
+
+.tpl-design-04-street .chw-hero-content {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 3;
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  width: 100%;
+}
+
+.tpl-design-04-street .chw-hero-eyebrow {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background: var(--color-accent);
+  border: 2px solid var(--color-background);
+  padding: 0.5rem 1rem;
+  transform: rotate(-1.5deg);
+  margin-bottom: 1.5rem;
+}
+
+.tpl-design-04-street .chw-hero-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  /* also bounded by the visible stage height, so the three-line slam never
+     rises under the sticky nav while the hero is pinned */
+  font-size: clamp(4.5rem, min(15vw, calc(var(--tpl-vh, 100svh) * 0.15)), 12rem);
+  line-height: 0.88;
+  letter-spacing: 0.005em;
+  color: var(--color-background);
+  margin: 0 0 1.5rem;
+  text-shadow: 6px 6px 0 var(--color-primary);
+}
+
+.tpl-design-04-street .chw-hero-line { display: block; }
+.tpl-design-04-street .chw-hero-line.is-chili { color: var(--color-accent); }
+
+.tpl-design-04-street .chw-hero-sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--color-background);
+  max-width: 40rem;
+  margin: 0 0 2.25rem;
+  font-weight: 500;
+}
+
+.tpl-design-04-street .chw-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.tpl-design-04-street .chw-btn {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9rem 2.2rem 1rem;
+  border: 3px solid var(--color-primary);
+  box-shadow: var(--shadow-hard);
+  display: inline-block;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.tpl-design-04-street .chw-btn-solid {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+.tpl-design-04-street .chw-btn-solid:hover {
+  background: var(--color-background);
+  color: var(--color-accent);
+  transform: translate(-2px, -2px);
+}
+
+.tpl-design-04-street .chw-btn-ghost {
+  background: transparent;
+  color: var(--color-background);
+  border-color: var(--color-background);
+  box-shadow: 5px 5px 0 rgba(244, 236, 220, 0.35);
+}
+
+.tpl-design-04-street .chw-btn-ghost:hover {
+  background: var(--color-background);
+  color: var(--color-primary);
+}
+
+/* ============ STICKERS / BADGES ============ */
+.tpl-design-04-street .chw-sticker {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.8rem 0.45rem;
+  border: 2px solid var(--color-primary);
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.tpl-design-04-street .chw-sticker.is-chili {
+  background: var(--color-accent);
+  color: var(--color-background);
+  transform: rotate(3deg);
+}
+
+.tpl-design-04-street .chw-sticker.is-ink {
+  background: var(--color-primary);
+  color: var(--color-background);
+  transform: rotate(-2.5deg);
+}
+
+.tpl-design-04-street .chw-sticker.is-paper {
+  background: var(--color-background);
+  color: var(--color-primary);
+  transform: rotate(2deg);
+}
+
+/* ============ CRAVINGS WALL (M4) ============ */
+.tpl-design-04-street .chw-cravings-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tpl-design-04-street .chw-cravings-head .chw-h2 { margin-bottom: 0.5rem; }
+
+.tpl-design-04-street .chw-wall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.tpl-design-04-street .chw-card {
+  background: var(--color-surface);
+  border: 3px solid var(--color-primary);
+  box-shadow: var(--shadow-hard);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* no transform transition: GSAP slams the card in on x */
+  will-change: transform;
+}
+
+.tpl-design-04-street .chw-card:nth-child(3n + 2) { transform: rotate(0.8deg); }
+.tpl-design-04-street .chw-card:nth-child(3n) { transform: rotate(-0.8deg); }
+
+.tpl-design-04-street .chw-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 3px solid var(--color-primary);
+  background: var(--color-primary);
+}
+
+.tpl-design-04-street .chw-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.tpl-design-04-street .chw-card:hover .chw-card-media img { transform: scale(1.06); }
+
+.tpl-design-04-street .chw-card-badges {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.tpl-design-04-street .chw-card-badges.is-standalone {
+  position: static;
+  padding: 1rem 1.25rem 0;
+}
+
+.tpl-design-04-street .chw-card-body {
+  padding: 1.25rem 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
+}
+
+.tpl-design-04-street .chw-card-name {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1;
+}
+
+.tpl-design-04-street .chw-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-secondary);
+  margin: 0;
+  flex: 1;
+}
+
+.tpl-design-04-street .chw-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.tpl-design-04-street .chw-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+
+/* spice meter */
+.tpl-design-04-street .chw-meter { display: flex; flex-direction: column; gap: 0.3rem; }
+.tpl-design-04-street .chw-meter-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-04-street .chw-meter-bar { display: flex; gap: 4px; }
+.tpl-design-04-street .chw-meter-seg {
+  width: 22px;
+  height: 10px;
+  border: 2px solid var(--color-primary);
+  background: transparent;
+  transform: skewX(-12deg);
+}
+.tpl-design-04-street .chw-meter-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.tpl-design-04-street .chw-meter-fill.is-lit { transform: scaleX(1); }
+
+/* quick-add fill sweep */
+.tpl-design-04-street .chw-quickadd {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background: var(--color-primary);
+  border: 3px solid var(--color-primary);
+  padding: 0.65rem 1.1rem 0.75rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 0;
+}
+
+.tpl-design-04-street .chw-quickadd::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s ease-out;
+  z-index: -1;
+}
+
+.tpl-design-04-street .chw-quickadd:hover::before,
+.tpl-design-04-street .chw-quickadd:focus-visible::before { transform: scaleX(1); }
+
+.tpl-design-04-street .chw-quickadd.is-added { background: var(--color-accent); }
+.tpl-design-04-street .chw-quickadd.is-added::before { transform: scaleX(1); }
+
+.tpl-design-04-street .chw-combo-band {
+  grid-column: 1 / -1;
+  background: var(--color-accent);
+  color: var(--color-background);
+  border: 3px solid var(--color-primary);
+  box-shadow: var(--shadow-hard);
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transform: rotate(-0.5deg);
+}
+
+.tpl-design-04-street .chw-combo-band strong {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tpl-design-04-street .chw-combo-band p { margin: 0.25rem 0 0; font-weight: 500; }
+.tpl-design-04-street .chw-combo-band .chw-price { color: var(--color-background); }
+
+/* ============ LEGENDS ============ */
+.tpl-design-04-street .chw-legends { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-04-street .chw-legends .chw-h2 { color: var(--color-background); }
+.tpl-design-04-street .chw-legends .chw-sub { color: var(--color-surface); }
+
+.tpl-design-04-street .chw-legend-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+  border-top: 2px dashed var(--color-secondary);
+}
+
+.tpl-design-04-street .chw-legend-row:first-of-type { border-top: none; }
+
+.tpl-design-04-street .chw-legend-row.is-flip .chw-legend-media { order: 2; }
+
+.tpl-design-04-street .chw-legend-media {
+  border: 3px solid var(--color-background);
+  box-shadow: 6px 6px 0 var(--color-accent);
+  transform: rotate(-1.5deg);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+
+.tpl-design-04-street .chw-legend-row.is-flip .chw-legend-media { transform: rotate(1.5deg); }
+
+.tpl-design-04-street .chw-legend-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.tpl-design-04-street .chw-legend-row:hover .chw-legend-media img { transform: scale(1.05); }
+
+.tpl-design-04-street .chw-legend-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.75rem;
+}
+
+.tpl-design-04-street .chw-legend-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  text-transform: uppercase;
+  line-height: 0.95;
+  margin: 0 0 1rem;
+}
+
+.tpl-design-04-street .chw-legend-body {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-surface);
+  margin: 0;
+  max-width: 32rem;
+}
+
+/* ============ LOCATIONS ============ */
+.tpl-design-04-street .chw-loc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.tpl-design-04-street .chw-loc {
+  background: var(--color-background);
+  border: 3px solid var(--color-primary);
+  box-shadow: var(--shadow-hard);
+  padding: 1.5rem;
+  position: relative;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tpl-design-04-street .chw-loc:hover { background: var(--color-accent); border-color: var(--color-primary); }
+.tpl-design-04-street .chw-loc:hover .chw-loc-name,
+.tpl-design-04-street .chw-loc:hover .chw-loc-area,
+.tpl-design-04-street .chw-loc:hover .chw-loc-note { color: var(--color-background); }
+.tpl-design-04-street .chw-loc:hover .chw-loc-hours { color: var(--color-background); border-color: var(--color-background); }
+
+.tpl-design-04-street .chw-loc-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 0 0 0.15rem;
+  transition: color 0.2s;
+}
+
+.tpl-design-04-street .chw-loc-area {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1rem;
+  transition: color 0.2s;
+}
+
+.tpl-design-04-street .chw-loc-hours {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 2px dashed var(--color-primary);
+  padding: 0.5rem 0.9rem;
+  margin-bottom: 1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tpl-design-04-street .chw-loc-note { font-size: 0.95rem; line-height: 1.6; color: var(--color-secondary); margin: 0; transition: color 0.2s; }
+
+/* ============ ORDER ============ */
+.tpl-design-04-street .chw-order-sec { background: var(--color-surface); border-top: 3px solid var(--color-primary); border-bottom: 3px solid var(--color-primary); }
+
+.tpl-design-04-street .chw-combos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.tpl-design-04-street .chw-combo {
+  background: var(--color-background);
+  border: 3px solid var(--color-primary);
+  box-shadow: var(--shadow-hard);
+  padding: 1.5rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.tpl-design-04-street .chw-combo:hover { background: var(--color-accent); color: var(--color-background); transform: translate(-2px, -2px); }
+.tpl-design-04-street .chw-combo:hover .chw-combo-desc { color: var(--color-background); }
+.tpl-design-04-street .chw-combo:hover .chw-price { color: var(--color-background); }
+
+.tpl-design-04-street .chw-combo-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+.tpl-design-04-street .chw-combo-desc { font-size: 0.95rem; line-height: 1.6; color: var(--color-secondary); margin: 0 0 1rem; transition: color 0.2s; }
+
+.tpl-design-04-street .chw-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.tpl-design-04-street .chw-step { position: relative; padding-top: 0.5rem; }
+
+.tpl-design-04-street .chw-step-n {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.tpl-design-04-street .chw-step h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.5rem;
+}
+
+.tpl-design-04-street .chw-step p { margin: 0; color: var(--color-secondary); font-size: 0.95rem; line-height: 1.6; }
+
+.tpl-design-04-street .chw-order-cta { text-align: center; }
+.tpl-design-04-street .chw-order-cta .chw-btn { font-size: 1.75rem; padding: 1.1rem 3rem 1.2rem; }
+.tpl-design-04-street .chw-order-note { margin-top: 1.25rem; color: var(--color-muted); font-size: 0.95rem; font-weight: 500; }
+
+/* ============ FOOTER ============ */
+.tpl-design-04-street .chw-footer {
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding: clamp(3.5rem, 7vw, 6rem) 0 2rem;
+  overflow: hidden;
+}
+
+.tpl-design-04-street .chw-footer-giant {
+  font-family: var(--font-display);
+  /* sized for the brand wordmark (two words) so it never runs off the edge */
+  font-size: clamp(3.5rem, 12vw, 11rem);
+  line-height: 0.85;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+  color: var(--color-background);
+}
+
+.tpl-design-04-street .chw-footer-giant .is-chili { color: var(--color-accent); }
+
+.tpl-design-04-street .chw-footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px solid var(--color-secondary);
+  padding-top: 1.75rem;
+}
+
+.tpl-design-04-street .chw-footer-row p { margin: 0; font-size: 0.9rem; color: var(--color-surface); }
+
+.tpl-design-04-street .chw-footer-row a {
+  color: var(--color-background);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-accent);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tpl-design-04-street .chw-footer-row a:hover { color: var(--color-accent); }
+
+.tpl-design-04-street .chw-footer-stickers {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .tpl-design-04-street .chw-wall { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-04-street .chw-loc-grid { grid-template-columns: 1fr 1fr; }
+  .tpl-design-04-street .chw-combos { grid-template-columns: 1fr; }
+  .tpl-design-04-street .chw-steps { grid-template-columns: 1fr; gap: 1.75rem; }
+  .tpl-design-04-street .chw-legend-row { grid-template-columns: 1fr; }
+  .tpl-design-04-street .chw-legend-row.is-flip .chw-legend-media { order: 0; }
+  .tpl-design-04-street .chw-nav-links { display: none; }
+  /* links hidden: keep the order pill on the right edge of the bar */
+  .tpl-design-04-street .chw-order-pill { margin-left: auto; }
+}
+
+@media (max-width: 560px) {
+  .tpl-design-04-street .chw-wall { grid-template-columns: 1fr; }
+  .tpl-design-04-street .chw-loc-grid { grid-template-columns: 1fr; }
+  .tpl-design-04-street .chw-nav-inner { gap: 0.75rem; }
+  .tpl-design-04-street .chw-wordmark { font-size: 1.5rem; }
+  .tpl-design-04-street .chw-order-pill { font-size: 0.85rem; padding: 0.5rem 1rem 0.6rem; }
+  .tpl-design-04-street .chw-combo-band { flex-direction: column; align-items: flex-start; }
+}
+
+/* ============ BRAND TONE ON DARK GROUNDS ============
+   The page accent is the brand's dark tone (paper ground). Over the hero
+   frames, the ink Legends band and the ink footer, accent type switches to the
+   light tone so it stays readable. */
+.tpl-design-04-street .chw-hero-line.is-chili,
+.tpl-design-04-street .chw-legends .is-chili,
+.tpl-design-04-street .chw-legend-kicker,
+.tpl-design-04-street .chw-footer-giant .is-chili,
+.tpl-design-04-street .chw-footer-row a:hover {
+  color: var(--brand-on-dark, var(--color-accent));
+}
+.tpl-design-04-street .chw-footer-row a { border-bottom-color: var(--brand-on-dark, var(--color-accent)); }

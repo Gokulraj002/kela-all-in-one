@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-02-minimal',
+  num: '02',
+  name: 'Kora',
+  tag: 'Minimalist',
+  style: 'Modern minimalist label — extreme restraint, undyed kora cotton',
+  animation: 'Pleat-unfold pinned collection, drape-settle reveals, hero sway',
+  typography: 'Archivo + Inter',
+  layout: 'Severe centered grid, vast whitespace, one look per viewport',
+  mood: 'Quiet · Precise · Confident — restraint as luxury',
+  palette: 'Paper white #FAF8F2, soft black #191817, raw clay #9C6B4A',
+  features: ['Pleat-unfold pinned collection wall', 'Still Air hero film', 'Fabric-spec commerce'],
+  fonts: { display: 'Archivo', body: 'Inter' },
+  colors: { primary: '#191817', accent: '#9C6B4A' },
+};

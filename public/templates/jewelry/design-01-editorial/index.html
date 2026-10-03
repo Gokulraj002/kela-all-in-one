@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231A1714'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23D9B65E'%3EK%3C/text%3E%3C/svg%3E">
+<title>Kela Jewels — Haute Joaillerie</title>
+<meta name="description" content="Kela Jewels — Haute joaillerie handmade in Mumbai since 1987." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link id="font-link" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-nav" id="siteNav">
+  <a class="brand" href="#hero">
+    <span class="brand-mark js-brand-initial" aria-hidden="true">K</span>
+    <span class="brand-name" data-content="brand.name">Kela Jewels</span>
+  </a>
+  <nav class="nav-links" id="navLinks" aria-label="Primary"></nav>
+  <div class="nav-right">
+    <a class="btn btn-small" id="navCta" href="#contact">Private Viewing</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav id="mobileNavLinks" aria-label="Mobile"></nav>
+</div>
+
+<main>
+
+  <!-- 1 · HERO -->
+  <section id="hero" class="hero" aria-label="Introduction">
+    <div class="hero-inner">
+      <div class="hero-copy" data-depth="8">
+        <p class="eyebrow rv" data-content="hero.eyebrow">Haute Joaillerie — Est. 1987</p>
+        <h1 class="hero-title" id="heroTitle" data-content="hero.title" aria-label="Light, caught in gold.">Light, caught in gold.</h1>
+        <p class="hero-sub rv" data-content="hero.subtitle" data-delay="200">For nearly four decades, our atelier has shaped exceptional diamonds into heirlooms — each piece designed, set and finished by hand in Mumbai.</p>
+        <div class="hero-ctas rv" data-delay="350">
+          <a class="btn" id="heroCtaPrimary" href="#products"></a>
+          <a class="btn btn-ghost" id="heroCtaSecondary" href="#contact"></a>
+        </div>
+      </div>
+      <div class="hero-media-wrap" data-depth="14">
+        <figure class="hero-media img-shell">
+          <span class="img-ph js-brand-initial" aria-hidden="true">K</span>
+          <img width="1920" height="1080" id="heroImg" src="assets/images/hero.webp"
+               alt="Diamond rivière necklace draped across flowing champagne silk"
+               fetchpriority="high" decoding="async"
+               onerror="window.__tplImgErr&&window.__tplImgErr(this)" />
+          <span class="curtain" aria-hidden="true"></span>
+        </figure>
+        <p class="hero-caption rv" data-content="hero.caption" data-delay="500">N° 01 — The Rivière Cascade · fifty-two brilliant-cut diamonds</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · COLLECTIONS -->
+  <section id="collections" class="section" aria-label="Collections">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head-text">
+          <p class="eyebrow" data-content="sectionTitles.collections.eyebrow">The Collections</p>
+          <h2 class="sec-title" data-content="sectionTitles.collections.title">Three studies in light.</h2>
+        </div>
+      </div>
+      <div class="collections-grid" id="collectionsGrid"></div>
+    </div>
+  </section>
+
+  <!-- 3 · PRODUCTS -->
+  <section id="products" class="section" aria-label="High jewelry">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head-text">
+          <p class="eyebrow" data-content="sectionTitles.products.eyebrow">High Jewelry</p>
+          <h2 class="sec-title" data-content="sectionTitles.products.title">Pieces of the season.</h2>
+        </div>
+      </div>
+      <div class="product-list" id="productList"></div>
+    </div>
+  </section>
+
+  <!-- 4 · CRAFTSMANSHIP -->
+  <section id="craftsmanship" class="section section-dark" aria-label="Craftsmanship">
+    <div class="wrap craft-grid">
+      <figure class="craft-media img-shell wipe drift">
+        <span class="img-ph js-brand-initial" aria-hidden="true">K</span>
+        <img width="1920" height="1080" id="craftImg" src="assets/images/craft.webp"
+             alt="Goldsmith setting a diamond at the workbench"
+             loading="lazy" decoding="async"
+             onerror="window.__tplImgErr&&window.__tplImgErr(this)" />
+      </figure>
+      <div class="craft-copy">
+        <p class="eyebrow rv" data-content="craftsmanship.eyebrow">The Atelier</p>
+        <h2 class="sec-title" data-content="craftsmanship.title" data-delay="120">Two hundred hours in a single clasp.</h2>
+        <div class="craft-body rv" data-delay="220" data-content="craftsmanship.body"></div>
+        <ol class="craft-points" id="craftPoints"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · STORY -->
+  <section id="story" class="section" aria-label="The maison">
+    <div class="wrap story-grid">
+      <div class="story-copy">
+        <p class="eyebrow rv" data-content="story.eyebrow">The Maison</p>
+        <h2 class="sec-title story-title" data-content="story.title" data-delay="120">A house built on light.</h2>
+        <div class="story-body rv" data-delay="220" data-content="story.body"></div>
+      </div>
+      <figure class="story-media img-shell wipe drift" data-delay="300">
+        <span class="img-ph js-brand-initial" aria-hidden="true">K</span>
+        <img width="1400" height="1750" id="storyImg" src="assets/images/product-1.webp"
+             alt="Macro detail of hand-set diamonds in gold"
+             loading="lazy" decoding="async"
+             onerror="window.__tplImgErr&&window.__tplImgErr(this)" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- 6 · CONTACT -->
+  <section id="contact" class="section" aria-label="Contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head-text">
+          <p class="eyebrow" data-content="sectionTitles.contact.eyebrow">Visit</p>
+          <h2 class="sec-title" data-content="sectionTitles.contact.title">Begin with a conversation.</h2>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-details rv">
+          <dl>
+            <div class="contact-row">
+              <dt>Email</dt>
+              <dd><a id="contactEmail" href="mailto:hello@kelajewels.in">hello@kelajewels.in</a></dd>
+            </div>
+            <div class="contact-row">
+              <dt>Telephone</dt>
+              <dd id="contactPhone">+91 22 4890 1234</dd>
+            </div>
+            <div class="contact-row">
+              <dt>Atelier</dt>
+              <dd id="contactAddress">14 Kala Ghoda, Fort, Mumbai 400001</dd>
+            </div>
+            <div class="contact-row">
+              <dt>Social</dt>
+              <dd><a id="contactInstagram" href="https://instagram.com/kelajewels" target="_blank" rel="noopener"><span data-content="contact.instagramLabel">Instagram</span> <span aria-hidden="true">↗</span></a></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="contact-form-wrap rv" data-delay="150">
+          <h3 class="form-title" data-content="contact.form.title">Request an appointment</h3>
+          <form id="contactForm" novalidate>
+            <label class="field">
+              <span data-content="contact.form.name">Your name</span>
+              <input type="text" name="name" id="fieldName" autocomplete="name" required />
+            </label>
+            <label class="field">
+              <span data-content="contact.form.email">Email address</span>
+              <input type="email" name="email" id="fieldEmail" autocomplete="email" required />
+            </label>
+            <label class="field">
+              <span data-content="contact.form.message">How may we help you?</span>
+              <textarea name="message" id="fieldMessage" rows="4" required></textarea>
+            </label>
+            <button class="btn" type="submit" id="formSubmit">Send Enquiry</button>
+          </form>
+          <div class="form-success" id="formSuccess" hidden>
+            <p class="form-success-title" data-content="contact.form.successTitle">Thank you.</p>
+            <p data-content="contact.form.successBody">Your enquiry has been received. A member of the maison will write to you within one working day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <p class="footer-word js-brand-name" data-content="brand.name">Kela Jewels</p>
+      <p class="footer-tagline" data-content="brand.tagline">Haute Joaillerie · Mumbai · Est. 1987</p>
+    </div>
+    <nav class="footer-nav" id="footerNav" aria-label="Footer"></nav>
+    <p class="footer-line" data-content="footer.line">© 2026 Kela Jewels. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Quick view overlay -->
+<div class="qv-overlay" id="qvOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Product quick view">
+  <div class="qv-backdrop" id="qvBackdrop"></div>
+  <div class="qv-panel" id="qvPanel">
+    <button class="qv-close" id="qvClose" aria-label="Close quick view"><span aria-hidden="true">×</span></button>
+    <div class="qv-media img-shell" id="qvMedia">
+      <span class="img-ph js-brand-initial" aria-hidden="true">K</span>
+      <img id="qvImg" alt="" loading="lazy" decoding="async"
+           onerror="window.__tplImgErr&&window.__tplImgErr(this)" />
+    </div>
+    <div class="qv-info" id="qvInfo">
+      <p class="eyebrow" id="qvIndex"></p>
+      <h3 class="qv-name" id="qvName"></h3>
+      <p class="qv-spec" id="qvSpec"></p>
+      <p class="qv-desc" id="qvDesc"></p>
+      <p class="qv-price" id="qvPrice"></p>
+      <button class="btn" id="qvEnquire">Enquire About This Piece</button>
+    </div>
+  </div>
+</div>
+
+<script src="content.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-03-devtools',
+  num: '03',
+  name: 'Shipkit',
+  tag: 'Developer Tools',
+  style: 'Docs-led terminal aesthetic',
+  animation: 'Scroll-typed terminal, caret blinks',
+  typography: 'JetBrains Mono + Inter',
+  layout: 'Docs sidebar, terminal hero',
+  mood: 'Precise, fast, hacker-credible',
+  palette: 'Editor dark / green / amber',
+  features: ['Scroll-driven terminal typing', 'Quickstart code blocks', 'API reference table', 'Changelog'],
+  fonts: { display: 'JetBrains Mono', body: 'Inter' },
+  colors: { primary: '#0D1117', accent: '#3FB950' },
+};

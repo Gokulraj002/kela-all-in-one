@@ -1,0 +1,23 @@
+export const meta = {
+  id: 'design-10-avant',
+  num: '10',
+  name: 'Paradox Atelier',
+  tag: 'Avant-Garde',
+  style: 'Runway-theatrical gallery piece — deconstructed, conceptual, stark',
+  animation: 'threadPath — pinned stitched collection: one crimson thread draws through 5 look frames with a needle dot riding the path head',
+  typography: 'Syne + Space Mono',
+  layout: 'Full-bleed theatrical: immersive hero, manifesto fragments, pinned thread stage, show running order, material lab, private-viewing invitation',
+  mood: 'Daring, theatrical, uncompromising — dark, thesis-driven, commission-first',
+  palette: 'Carbon #131313 / bone #EDEAE2 / acid lime #C6F135, one crimson thread',
+  features: [
+    'Signature video: "Wind Machine" 8s fabric-blast loop (hero background)',
+    'Pinned threadPath: crimson SVG thread draws through 5 stitched look frames, needle dot via getPointAtLength',
+    'Hidden overlay menu nav with always-present viewing-request CTA',
+    'Manifesto fragments with acid-lime strikes and a single light flash',
+    'Material-experiment cards (burnt mesh / bonded organza / acid silk / latex / raw edge)',
+    'Private-viewing commission flow: consult → toile → fittings',
+    'Needle-ring cursor (desktop, fine pointer only), theatrical blackout cuts',
+  ],
+  fonts: { display: 'Syne', body: 'Space Mono' },
+  colors: { primary: '#EDEAE2', accent: '#C6F135' },
+};

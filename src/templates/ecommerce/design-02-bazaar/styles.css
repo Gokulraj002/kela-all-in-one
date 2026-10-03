@@ -1,0 +1,692 @@
+/* The Grand Bazaar — design-02-bazaar. Tokens scoped to .tpl-design-02-bazaar ONLY. */
+.tpl-design-02-bazaar {
+  --color-background: #FBF3E4;
+  --color-surface: #F4E7CC;
+  --color-card: #FFF9EC;
+  --color-primary: #221A12;
+  --color-secondary: #0F5E5B;
+  --color-accent: #E8862E;
+  --color-chili: #C63B22;
+  --color-text: #221A12;
+  --color-muted: #7C6B52;
+  --color-paper: #FBF3E4;
+  --font-display: 'Archivo', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+  /* Kela accent as a FILL behind dark ink, or as text on dark bands:
+     the light brand tone reads there (the page accent is the dark tone). */
+  --gb-accent-lt: var(--brand-on-dark, var(--color-accent));
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-02-bazaar *,
+.tpl-design-02-bazaar *::before,
+.tpl-design-02-bazaar *::after { box-sizing: border-box; }
+
+.tpl-design-02-bazaar a { color: inherit; }
+.tpl-design-02-bazaar img { display: block; }
+.tpl-design-02-bazaar button { font: inherit; }
+
+.tpl-design-02-bazaar :focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.tpl-design-02-bazaar .a-img { display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-02-bazaar .a-img img { width: 100%; height: 100%; object-fit: cover; }
+
+/* LoopVideo primitives, scoped (standalone exports don't get the platform sheet). */
+.tpl-design-02-bazaar .a-loopvideo { position: relative; display: block; overflow: hidden; background: var(--color-secondary); }
+.tpl-design-02-bazaar .a-loopvideo-poster,
+.tpl-design-02-bazaar .a-loopvideo-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tpl-design-02-bazaar .a-loopvideo-video { position: absolute; inset: 0; }
+
+/* Visually hidden (screen-reader copy of split headlines). */
+.tpl-design-02-bazaar .gb-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tpl-design-02-bazaar .gb-wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+
+.tpl-design-02-bazaar .gb-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-chili);
+  margin: 0 0 16px;
+}
+.tpl-design-02-bazaar .gb-eyebrow-inv { color: var(--color-paper); }
+
+.tpl-design-02-bazaar .gb-h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 18px;
+  max-width: 18ch;
+}
+.tpl-design-02-bazaar .gb-h2-inv { color: var(--color-paper); }
+
+.tpl-design-02-bazaar .gb-lede {
+  font-size: 1.06rem;
+  max-width: 58ch;
+  color: var(--color-text);
+  margin: 0 0 28px;
+}
+.tpl-design-02-bazaar .gb-body { max-width: 62ch; margin: 0 0 1.1em; }
+
+.tpl-design-02-bazaar .gb-squiggle {
+  display: block;
+  width: 100%;
+  height: 22px;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+/* ---------- festival ticker ---------- */
+.tpl-design-02-bazaar .gb-ticker {
+  background: var(--color-chili);
+  color: var(--color-paper);
+  overflow: hidden;
+  padding: 10px 0;
+}
+.tpl-design-02-bazaar .gb-ticker-track { display: flex; width: max-content; animation: gb-ticker 26s linear infinite; }
+.tpl-design-02-bazaar .gb-ticker-set { display: flex; flex: 0 0 auto; }
+.tpl-design-02-bazaar .gb-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 18px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.tpl-design-02-bazaar .gb-ticker-item::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  transform: rotate(45deg);
+  flex: 0 0 auto;
+}
+@keyframes gb-ticker { to { transform: translateX(-50%); } }
+
+/* ---------- nav ---------- */
+.tpl-design-02-bazaar .gb-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: var(--color-background);
+  border-bottom: 2px solid var(--color-primary);
+  padding: 14px clamp(20px, 4vw, 56px);
+}
+.tpl-design-02-bazaar .gb-wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+.tpl-design-02-bazaar .gb-wordmark::first-letter { color: var(--color-chili); }
+.tpl-design-02-bazaar .gb-links { display: flex; gap: 26px; }
+.tpl-design-02-bazaar .gb-links a {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+.tpl-design-02-bazaar .gb-links a:hover { border-bottom-color: var(--color-accent); color: var(--color-chili); }
+.tpl-design-02-bazaar .gb-cartbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background: var(--color-secondary);
+  color: var(--color-paper);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.tpl-design-02-bazaar .gb-cartbtn:hover { background: var(--color-primary); transform: translateY(-1px); }
+.tpl-design-02-bazaar .gb-cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--gb-accent-lt);
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+/* ---------- hero (scroll-driven frame sequence; stage height is inline) ---------- */
+.tpl-design-02-bazaar .gb-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-secondary);
+}
+.tpl-design-02-bazaar .gb-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(34, 26, 18, 0.25) 0%, rgba(34, 26, 18, 0.05) 40%, rgba(34, 26, 18, 0.72) 100%);
+}
+.tpl-design-02-bazaar .gb-hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: clamp(48px, 8vh, 110px) clamp(20px, 4vw, 56px);
+  color: var(--color-paper);
+}
+.tpl-design-02-bazaar .gb-hero .gb-eyebrow { color: var(--gb-accent-lt); }
+.tpl-design-02-bazaar .gb-hero-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.7rem, 7.2vw, 5.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  margin: 0 0 22px;
+  max-width: 14ch;
+  text-wrap: balance;
+}
+.tpl-design-02-bazaar .gb-wm .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.09em; margin-bottom: -0.09em; }
+.tpl-design-02-bazaar .gb-wm .wi { display: inline-block; will-change: transform; }
+.tpl-design-02-bazaar .gb-hero-sub { font-size: 1.08rem; max-width: 52ch; margin: 0 0 30px; color: var(--color-paper); }
+.tpl-design-02-bazaar .gb-hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+.tpl-design-02-bazaar .gb-cta {
+  display: inline-block;
+  background: var(--gb-accent-lt);
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 32px;
+  border-radius: 999px;
+  border: 2px solid var(--gb-accent-lt);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+.tpl-design-02-bazaar .gb-cta:hover { transform: translateY(-2px) rotate(-1deg); background: var(--color-paper); border-color: var(--color-paper); }
+.tpl-design-02-bazaar .gb-cta-ghost { background: transparent; color: var(--color-paper); border-color: var(--color-paper); }
+.tpl-design-02-bazaar .gb-cta-ghost:hover { background: var(--color-paper); color: var(--color-primary); }
+.tpl-design-02-bazaar .gb-hero-sticker {
+  position: absolute;
+  z-index: 3;
+  top: clamp(84px, 12vh, 130px);
+  right: clamp(20px, 5vw, 72px);
+  width: 132px;
+  height: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotate(8deg);
+  background: var(--gb-accent-lt);
+  color: var(--color-primary);
+  border-radius: 50%;
+  border: 3px dashed var(--color-paper);
+  box-shadow: 0 10px 28px rgba(34, 26, 18, 0.35);
+}
+.tpl-design-02-bazaar .gb-hero-sticker-in {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 18px;
+}
+
+/* ---------- stalls ---------- */
+.tpl-design-02-bazaar .gb-stalls { padding: clamp(64px, 9vh, 110px) 0 clamp(56px, 8vh, 96px); }
+.tpl-design-02-bazaar .gb-chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 8px; }
+.tpl-design-02-bazaar .gb-chip {
+  cursor: pointer;
+  background: var(--color-card);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: rotate(-1.2deg);
+  box-shadow: 3px 3px 0 var(--color-primary);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.tpl-design-02-bazaar .gb-chips .gb-chip:nth-child(even) { transform: rotate(1.4deg); }
+.tpl-design-02-bazaar .gb-chip:hover { transform: rotate(0deg) translateY(-2px); }
+.tpl-design-02-bazaar .gb-chip.is-active { background: var(--color-chili); border-color: var(--color-chili); color: var(--color-paper); box-shadow: 3px 3px 0 var(--color-primary); }
+
+/* Stall Conveyor: two diagonal rows drifting opposite ways. */
+.tpl-design-02-bazaar .gb-conv { overflow: hidden; padding: 64px 0 40px; }
+.tpl-design-02-bazaar .gb-row { width: 106%; margin-left: -3%; }
+.tpl-design-02-bazaar .gb-row-1 { transform: rotate(-2deg); }
+.tpl-design-02-bazaar .gb-row-2 { transform: rotate(1.7deg); margin-top: 52px; }
+.tpl-design-02-bazaar .gb-track { display: flex; width: max-content; will-change: transform; }
+.tpl-design-02-bazaar .gb-conv-set { display: flex; gap: 28px; padding-right: 28px; flex: 0 0 auto; }
+
+/* Static fallback grid (mobile + reduced motion). */
+.tpl-design-02-bazaar .gb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  padding: 48px 0 8px;
+}
+.tpl-design-02-bazaar .gb-conv-hint {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 26px 0 0;
+}
+
+/* Stall card — tilted with the plane, sticker badges, dense rhythm. */
+.tpl-design-02-bazaar .gb-card {
+  flex: 0 0 clamp(230px, 24vw, 292px);
+  background: var(--color-card);
+  border: 2px solid var(--color-primary);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 6px 6px 0 var(--color-primary);
+  display: flex;
+  flex-direction: column;
+}
+.tpl-design-02-bazaar .gb-grid .gb-card { flex: none; }
+.tpl-design-02-bazaar .gb-conv-set .gb-card:nth-child(3n + 1) { transform: rotate(-1.3deg); }
+.tpl-design-02-bazaar .gb-conv-set .gb-card:nth-child(3n + 2) { transform: rotate(1.1deg); margin-top: 14px; }
+.tpl-design-02-bazaar .gb-conv-set .gb-card:nth-child(3n) { transform: rotate(-0.6deg); }
+.tpl-design-02-bazaar .gb-grid .gb-card:nth-child(odd) { transform: rotate(-0.8deg); }
+.tpl-design-02-bazaar .gb-grid .gb-card:nth-child(even) { transform: rotate(0.9deg); }
+.tpl-design-02-bazaar .gb-card-img { position: relative; aspect-ratio: 4 / 3.4; border-bottom: 2px solid var(--color-primary); }
+.tpl-design-02-bazaar .gb-card-img .a-img { width: 100%; height: 100%; }
+.tpl-design-02-bazaar .gb-sticker { position: absolute; top: 12px; z-index: 2; }
+.tpl-design-02-bazaar .gb-sticker-cat { left: 12px; transform: rotate(-7deg); }
+.tpl-design-02-bazaar .gb-sticker-promo { right: 12px; transform: rotate(6deg); }
+.tpl-design-02-bazaar .gb-sticker-in {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  background: var(--color-secondary);
+  border: 2px solid var(--color-paper);
+  border-radius: 999px;
+  padding: 6px 12px;
+  box-shadow: 0 3px 0 rgba(34, 26, 18, 0.85);
+  will-change: transform;
+}
+.tpl-design-02-bazaar .gb-sticker-promo .gb-sticker-in { background: var(--color-chili); }
+.tpl-design-02-bazaar .gb-card-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.tpl-design-02-bazaar .gb-card-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.18rem;
+  line-height: 1.15;
+  color: var(--color-primary);
+  margin: 0;
+}
+.tpl-design-02-bazaar .gb-card-desc { font-size: 0.9rem; color: var(--color-muted); margin: 0; flex: 1; }
+.tpl-design-02-bazaar .gb-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 6px; }
+.tpl-design-02-bazaar .gb-card-price {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.3rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-primary);
+}
+.tpl-design-02-bazaar .gb-add {
+  cursor: pointer;
+  background: var(--color-secondary);
+  color: var(--color-paper);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.tpl-design-02-bazaar .gb-add:hover { background: var(--color-chili); transform: rotate(-2deg) scale(1.04); }
+.tpl-design-02-bazaar .gb-add:active { transform: scale(0.96); }
+
+/* ---------- seller stories ---------- */
+.tpl-design-02-bazaar .gb-story { padding: clamp(64px, 9vh, 110px) 0; }
+.tpl-design-02-bazaar .gb-sellers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 44px;
+}
+.tpl-design-02-bazaar .gb-seller {
+  margin: 0;
+  background: var(--color-card);
+  border: 2px solid var(--color-primary);
+  border-radius: 16px;
+  border-top: 6px solid var(--color-chili);
+  box-shadow: 6px 6px 0 var(--color-primary);
+  padding: 28px 26px;
+}
+.tpl-design-02-bazaar .gb-seller:nth-child(1) { transform: rotate(-1.2deg); }
+.tpl-design-02-bazaar .gb-seller:nth-child(2) { transform: rotate(0.9deg); border-top-color: var(--color-secondary); }
+.tpl-design-02-bazaar .gb-seller:nth-child(3) { transform: rotate(-0.7deg); border-top-color: var(--color-accent); }
+.tpl-design-02-bazaar .gb-seller-quote {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.12rem;
+  line-height: 1.5;
+  color: var(--color-primary);
+  margin: 0 0 18px;
+}
+.tpl-design-02-bazaar .gb-seller-cite { font-style: normal; }
+.tpl-design-02-bazaar .gb-seller-cite strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-chili);
+}
+.tpl-design-02-bazaar .gb-seller-cite span { font-size: 0.88rem; color: var(--color-muted); }
+.tpl-design-02-bazaar .gb-story-fig { margin-top: 56px; }
+.tpl-design-02-bazaar .gb-story-img {
+  border: 2px solid var(--color-primary);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 8px 8px 0 var(--color-primary);
+  aspect-ratio: 21 / 9;
+  transform: rotate(0.6deg);
+}
+.tpl-design-02-bazaar .gb-story-fig figcaption {
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ---------- festival / delivery strip ---------- */
+.tpl-design-02-bazaar .gb-delivery {
+  background: var(--color-secondary);
+  color: var(--color-paper);
+  padding: clamp(64px, 9vh, 110px) 0;
+  transform: rotate(-1deg);
+  width: 102%;
+  margin-left: -1%;
+}
+.tpl-design-02-bazaar .gb-delivery-list {
+  list-style: none;
+  margin: 44px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.tpl-design-02-bazaar .gb-delivery-item {
+  border-top: 3px solid var(--gb-accent-lt);
+  padding-top: 18px;
+}
+.tpl-design-02-bazaar .gb-delivery-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  margin: 0 0 10px;
+}
+.tpl-design-02-bazaar .gb-delivery-text { font-size: 0.94rem; color: var(--color-paper); opacity: 0.88; margin: 0; }
+
+/* ---------- footer ---------- */
+.tpl-design-02-bazaar .gb-footer {
+  background: var(--color-primary);
+  color: var(--color-paper);
+  padding: clamp(56px, 8vh, 96px) 0 40px;
+}
+.tpl-design-02-bazaar .gb-footer-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(28px, 4vw, 64px);
+  margin-bottom: 48px;
+}
+.tpl-design-02-bazaar .gb-footer-word {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 0 0 8px;
+  color: var(--color-paper);
+}
+.tpl-design-02-bazaar .gb-footer-tag { color: var(--gb-accent-lt); font-weight: 600; margin: 0 0 18px; }
+.tpl-design-02-bazaar .gb-footer-line { color: var(--color-paper); opacity: 0.85; margin: 0; max-width: 44ch; }
+.tpl-design-02-bazaar .gb-footer-contact { font-style: normal; display: flex; flex-direction: column; gap: 10px; }
+.tpl-design-02-bazaar .gb-footer-contact a {
+  color: var(--gb-accent-lt);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  width: fit-content;
+}
+.tpl-design-02-bazaar .gb-footer-contact a:hover { border-bottom-color: var(--gb-accent-lt); }
+.tpl-design-02-bazaar .gb-footer-contact span { color: var(--color-paper); opacity: 0.8; font-size: 0.95rem; }
+.tpl-design-02-bazaar .gb-colophon {
+  border-top: 1px solid rgba(251, 243, 228, 0.22);
+  padding-top: 24px;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-paper);
+  opacity: 0.6;
+  margin: 0;
+  text-align: center;
+}
+
+/* ---------- cart drawer ---------- */
+.tpl-design-02-bazaar .gb-cartwrap { position: fixed; inset: var(--tpl-top, 0px) 0 0 0; z-index: 100; visibility: hidden; pointer-events: none; }
+.tpl-design-02-bazaar .gb-cartwrap.is-open { visibility: visible; pointer-events: auto; }
+.tpl-design-02-bazaar .gb-cart-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(34, 26, 18, 0.6);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.tpl-design-02-bazaar .gb-cartwrap.is-open .gb-cart-overlay { opacity: 1; }
+.tpl-design-02-bazaar .gb-cart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(420px, 92vw);
+  height: 100%;
+  background: var(--color-background);
+  border-left: 3px solid var(--color-primary);
+  box-shadow: -12px 0 40px rgba(34, 26, 18, 0.3);
+  transform: translateX(102%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+}
+.tpl-design-02-bazaar .gb-cartwrap.is-open .gb-cart { transform: translateX(0); }
+.tpl-design-02-bazaar .gb-cart-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.tpl-design-02-bazaar .gb-cart-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--color-primary);
+}
+.tpl-design-02-bazaar .gb-cart-close {
+  cursor: pointer;
+  background: var(--color-chili);
+  color: var(--color-paper);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  line-height: 1;
+}
+.tpl-design-02-bazaar .gb-cart-empty { color: var(--color-muted); font-style: italic; margin: 24px 0; }
+.tpl-design-02-bazaar .gb-cart-items { list-style: none; margin: 0 0 20px; padding: 0; overflow-y: auto; flex: 1; }
+.tpl-design-02-bazaar .gb-cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 12px;
+  padding: 14px 0;
+  border-bottom: 2px dashed var(--color-muted);
+  align-items: center;
+}
+.tpl-design-02-bazaar .gb-cart-item-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.tpl-design-02-bazaar .gb-cart-item-price {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+.tpl-design-02-bazaar .gb-cart-remove {
+  grid-column: 1 / -1;
+  justify-self: start;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 2px 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-chili);
+  text-decoration: underline;
+}
+.tpl-design-02-bazaar .gb-cart-foot { border-top: 3px solid var(--color-primary); padding-top: 18px; }
+.tpl-design-02-bazaar .gb-cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+.tpl-design-02-bazaar .gb-cart-checkout {
+  cursor: pointer;
+  width: 100%;
+  background: var(--gb-accent-lt);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--color-primary);
+  padding: 16px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: transform 0.2s ease;
+}
+.tpl-design-02-bazaar .gb-cart-checkout:hover { transform: translateY(-2px); }
+.tpl-design-02-bazaar .gb-cart-demo { text-align: center; font-size: 0.85rem; font-style: italic; color: var(--color-muted); margin: 12px 0 0; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {
+  .tpl-design-02-bazaar .gb-delivery-list { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-02-bazaar .gb-sellers { grid-template-columns: 1fr; max-width: 640px; }
+  .tpl-design-02-bazaar .gb-seller:nth-child(n) { transform: rotate(0deg); }
+}
+
+@media (max-width: 767px) {
+  .tpl-design-02-bazaar .gb-links { display: none; }
+  .tpl-design-02-bazaar .gb-hero-sticker { width: 104px; height: 104px; top: 76px; }
+  .tpl-design-02-bazaar .gb-hero-sticker-in { font-size: 11px; padding: 14px; }
+  .tpl-design-02-bazaar .gb-row { width: 100%; margin-left: 0; }
+  .tpl-design-02-bazaar .gb-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; padding: 40px 0 4px; }
+  .tpl-design-02-bazaar .gb-card { border-radius: 12px; box-shadow: 4px 4px 0 var(--color-primary); }
+  .tpl-design-02-bazaar .gb-card-body { padding: 14px 14px 16px; }
+  .tpl-design-02-bazaar .gb-card-name { font-size: 1rem; }
+  .tpl-design-02-bazaar .gb-card-desc { font-size: 0.82rem; }
+  .tpl-design-02-bazaar .gb-card-price { font-size: 1.1rem; }
+  .tpl-design-02-bazaar .gb-add { padding: 8px 16px; font-size: 11px; }
+  .tpl-design-02-bazaar .gb-sticker-in { font-size: 9px; padding: 5px 10px; }
+  .tpl-design-02-bazaar .gb-story-img { aspect-ratio: 16 / 10; }
+  .tpl-design-02-bazaar .gb-footer-grid { grid-template-columns: 1fr; }
+  .tpl-design-02-bazaar .gb-delivery { transform: none; width: 100%; margin-left: 0; }
+}
+
+@media (max-width: 480px) {
+  .tpl-design-02-bazaar .gb-ticker-item { font-size: 10px; padding: 0 12px; }
+  .tpl-design-02-bazaar .gb-wordmark { font-size: 1.05rem; }
+  .tpl-design-02-bazaar .gb-cartbtn { padding: 8px 14px; }
+  .tpl-design-02-bazaar .gb-delivery-list { grid-template-columns: 1fr; }
+  .tpl-design-02-bazaar .gb-chip { padding: 7px 14px; font-size: 11px; }
+}
+
+/* Reduced motion: everything static and fully visible. */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-02-bazaar .gb-ticker-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
+  .tpl-design-02-bazaar .gb-track { transform: none !important; }
+  .tpl-design-02-bazaar .gb-row { transform: none; }
+  .tpl-design-02-bazaar .gb-row-2 { margin-top: 28px; }
+}

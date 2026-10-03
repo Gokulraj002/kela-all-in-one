@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-07-robotics',
+  num: '07',
+  name: 'Kestrel',
+  tag: 'Robotics',
+  style: 'Industrial precision',
+  animation: 'Exploded-view assembly, leader lines',
+  typography: 'Barlow Condensed + Barlow',
+  layout: 'Technical grid, blueprint specs',
+  mood: 'Precise, powerful, engineered',
+  palette: 'Graphite / safety orange / steel',
+  features: [
+    'Scrubbed exploded-view specs',
+    'Blueprint engineering section',
+    'Use-case gallery',
+    'Spec sheet',
+  ],
+  fonts: { display: 'Barlow Condensed', body: 'Barlow' },
+  colors: { primary: '#1A1D21', accent: '#FF5C00' },
+};

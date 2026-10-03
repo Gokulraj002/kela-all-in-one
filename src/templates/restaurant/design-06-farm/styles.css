@@ -1,0 +1,680 @@
+/* Soil & Stem — design-06-farm · Honest green farm editorial */
+
+.tpl-design-06-farm {
+  --color-primary: #2F4A2C;
+  --color-secondary: #7A5C3E;
+  --color-accent: #C07A2E;
+  --color-background: #F6F1E2;
+  --color-surface: #ECE5D0;
+  --color-text: #2C3324;
+  --color-muted: #8B8A76;
+  --font-display: 'Lora', Georgia, serif;
+  --font-body: 'Nunito Sans', 'Helvetica Neue', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  /* x only: the viewer's scroll container (.tpl-scope) carries this class too,
+     and `overflow: clip` on both axes would stop it scrolling at all. */
+  overflow-x: clip;
+}
+
+.tpl-design-06-farm img { display: block; max-width: 100%; }
+
+/* ---------- nav ---------- */
+.s6-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-primary);
+  color: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem clamp(1.25rem, 5vw, 4rem);
+}
+.s6-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+  color: var(--color-background);
+  text-decoration: none;
+}
+.s6-leaf {
+  width: 1.6rem;
+  height: 1.6rem;
+  flex: none;
+}
+.s6-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2.5vw, 2rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.s6-links a {
+  color: var(--color-background);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  opacity: 0.88;
+  transition: opacity 0.25s ease;
+}
+.s6-links a:hover { opacity: 1; }
+.s6-cta {
+  background: var(--color-accent);
+  color: var(--color-background);
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1.35rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  display: inline-block;
+}
+.s6-cta:hover { transform: translateY(-1px); filter: brightness(1.06); }
+
+/* ---------- hero: scroll-scrubbed harvest sequence ---------- */
+.tpl-design-06-farm .sf-stage {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+}
+.tpl-design-06-farm .sf-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.tpl-design-06-farm .sf-overlay {
+  position: absolute;
+  inset: 0;
+}
+/* reduced motion: static first frame behind the overlay */
+.tpl-design-06-farm .sf-static {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+}
+.tpl-design-06-farm .sf-static-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.s6-hero {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  color: var(--color-background);
+  overflow: hidden;
+}
+.s6-hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(20, 28, 18, 0.82) 0%,
+    rgba(20, 28, 18, 0.35) 45%,
+    rgba(20, 28, 18, 0.12) 100%
+  );
+}
+.s6-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem) clamp(3.5rem, 7vw, 6rem);
+}
+.s6-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  opacity: 0.85;
+  margin-bottom: 1.25rem;
+}
+.s6-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.25rem;
+  max-width: 14ch;
+}
+.s6-hero-sub {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  max-width: 44ch;
+  opacity: 0.92;
+  margin: 0 0 2rem;
+}
+.s6-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+.s6-ghost {
+  color: var(--color-background);
+  border: 1px solid rgba(246, 241, 226, 0.55);
+  border-radius: 999px;
+  padding: 0.65rem 1.35rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.s6-ghost:hover { background: var(--color-background); color: var(--color-primary); }
+.s6-hero-note {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  font-style: italic;
+  font-family: var(--font-display);
+}
+
+/* ---------- sections ---------- */
+.s6-section {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 4rem);
+}
+.s6-wrap {
+  max-width: 76rem;
+  margin: 0 auto;
+}
+.s6-kicker {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+.s6-h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0 0 1.5rem;
+  max-width: 22ch;
+}
+.s6-lede {
+  font-size: 1.1rem;
+  max-width: 62ch;
+  margin: 0 0 1rem;
+}
+.s6-lede + .s6-lede { margin-top: 0; }
+
+/* ---------- growers / story ---------- */
+.s6-story-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+  margin-top: 2.5rem;
+}
+.s6-growers {
+  display: grid;
+  gap: 1.5rem;
+}
+.s6-grower {
+  border-top: 2px solid var(--color-secondary);
+  padding-top: 1.1rem;
+}
+.s6-grower h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0 0 0.15rem;
+  color: var(--color-text);
+}
+.s6-grower-role {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin: 0 0 0.5rem;
+}
+.s6-grower blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  line-height: 1.5;
+}
+.s6-farm-panel {
+  background: var(--color-surface);
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+.s6-farm-panel .a-img,
+.s6-farm-panel .a-img img {
+  width: 100%;
+  height: clamp(14rem, 26vw, 22rem);
+  object-fit: cover;
+}
+.s6-notebook {
+  padding: 1.75rem 1.75rem 2rem;
+}
+.s6-notebook h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0 0 1rem;
+  color: var(--color-secondary);
+}
+.s6-notebook ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+.s6-notebook li {
+  font-size: 0.98rem;
+  color: var(--color-text);
+  padding-left: 1.4rem;
+  position: relative;
+}
+.s6-notebook li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.7rem;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+/* ---------- season dial mechanic ---------- */
+.s6-seasons {
+  background: var(--color-surface);
+}
+.s6-dial-zone {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+  margin-top: 3rem;
+}
+.s6-dial-col { position: sticky; top: 6rem; }
+.s6-dial-frame {
+  position: relative;
+  width: clamp(17rem, 34vw, 28rem);
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+.s6-needle {
+  position: absolute;
+  top: -0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 0.9rem solid transparent;
+  border-right: 0.9rem solid transparent;
+  border-top: 1.5rem solid var(--color-accent);
+  z-index: 3;
+}
+.s6-dial {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+.s6-dial svg { width: 100%; height: 100%; display: block; }
+.s6-dial-ring { stroke: var(--color-secondary); }
+.s6-dial-core { fill: var(--color-background); stroke: var(--color-secondary); }
+.s6-dial-tick { stroke: var(--color-secondary); }
+.s6-dial-season {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  fill: var(--color-secondary);
+  opacity: 0.45;
+  transition: opacity 0.4s ease, fill 0.4s ease;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.s6-dial-season.is-active { fill: var(--color-primary); opacity: 1; }
+.s6-dial-caption {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-secondary);
+  min-height: 3.2em;
+  font-size: 1.05rem;
+}
+/* season tabs: always a real control — the scrub dial isn't keyboard-operable */
+.s6-tabs {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  margin: 1.75rem 0 0;
+  flex-wrap: wrap;
+}
+.s6-reduced .s6-tabs { display: flex; }
+.s6-tab {
+  border: 1px solid var(--color-secondary);
+  background: transparent;
+  color: var(--color-primary);
+  border-radius: 999px;
+  padding: 0.55rem 1.25rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.s6-tab.is-active {
+  background: var(--color-primary);
+  color: var(--color-background);
+  border-color: var(--color-primary);
+}
+.s6-tab:focus-visible,
+.s6-cta:focus-visible,
+.s6-ghost:focus-visible,
+.s6-links a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* seasonal menus — stacked panels, dial-driven crossfade */
+.s6-menus { position: relative; display: grid; }
+.s6-season {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+  opacity: 0;
+  transform: translateY(28px);
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  visibility: hidden;
+}
+.s6-season.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+  position: relative;
+}
+.s6-season-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.s6-season-head h3 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  margin: 0;
+  color: var(--color-primary);
+}
+.s6-season-head span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+.s6-dish {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem 1.25rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid rgba(122, 92, 62, 0.25);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: calc(var(--i, 0) * 90ms + 120ms);
+}
+.s6-season.is-active .s6-dish { opacity: 1; transform: translateY(0); }
+.s6-dish-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text);
+}
+.s6-dish-price {
+  font-weight: 700;
+  color: var(--color-accent);
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+.s6-dish-desc {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.98rem;
+}
+.s6-dish-note {
+  grid-column: 1 / -1;
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: calc(var(--i, 0) * 90ms + 320ms);
+}
+.s6-season.is-active .s6-dish-note { opacity: 1; }
+
+/* ---------- today's harvest ---------- */
+.s6-plates {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin-top: 3rem;
+}
+.s6-plate {
+  background: var(--color-surface);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  /* hover lift uses the independent `translate` property — GSAP owns
+     `transform` for the scroll reveal, so the two never fight. */
+  transition: translate 0.35s ease, box-shadow 0.35s ease;
+}
+.s6-plate:hover {
+  translate: 0 -4px;
+  box-shadow: 0 1.5rem 3rem -1.5rem rgba(44, 51, 36, 0.35);
+}
+.s6-plate .s6-plate-media {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.s6-plate .a-img,
+.s6-plate .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.s6-plate:hover .a-img img { transform: scale(1.04); }
+.s6-plate-body { padding: 1.5rem 1.5rem 1.75rem; }
+.s6-plate-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin: 0 0 0.4rem;
+  color: var(--color-text);
+}
+.s6-plate-price {
+  font-weight: 700;
+  color: var(--color-accent);
+  margin: 0 0 0.6rem;
+}
+.s6-plate-body p { margin: 0 0 0.6rem; font-size: 0.98rem; }
+.s6-plate-note {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  font-style: italic;
+  margin: 0;
+}
+.s6-board {
+  margin-top: 3rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.s6-board h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+}
+.s6-board ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+.s6-board li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px dotted rgba(122, 92, 62, 0.5);
+  padding-bottom: 0.7rem;
+  font-weight: 600;
+}
+.s6-board li span:last-child { color: var(--color-accent); font-weight: 700; white-space: nowrap; }
+.s6-board-foot { grid-column: 1 / -1; font-size: 0.92rem; color: var(--color-muted); font-style: italic; margin: 0; }
+
+/* ---------- supper club ---------- */
+.s6-club {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+.s6-club .s6-h2 { color: var(--color-background); }
+.s6-club .s6-kicker { color: var(--brand-on-dark, var(--color-accent)); }
+.s6-club .s6-lede { opacity: 0.92; }
+.s6-club-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  margin-top: 2.5rem;
+  align-items: start;
+}
+.s6-dates { display: grid; gap: 1rem; }
+.s6-date {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 1.25rem;
+  background: rgba(246, 241, 226, 0.07);
+  border: 1px solid rgba(246, 241, 226, 0.22);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  align-items: baseline;
+}
+.s6-date-day { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-on-dark, var(--color-accent)); }
+.s6-date-date { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; }
+.s6-date-note { grid-column: 2; font-size: 0.95rem; opacity: 0.8; margin: 0; }
+.s6-club-price {
+  border-top: 2px solid var(--brand-on-dark, var(--color-accent));
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+}
+.s6-club-price strong { font-family: var(--font-display); font-size: 1.9rem; font-weight: 600; }
+.s6-club-price span { opacity: 0.75; font-size: 0.95rem; }
+.s6-club .s6-cta { margin-top: 1.75rem; }
+
+/* ---------- visit ---------- */
+.s6-visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  margin-top: 2.5rem;
+  align-items: start;
+}
+.s6-visit-grid address {
+  font-style: normal;
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem;
+  max-width: 32ch;
+}
+.s6-contact { display: grid; gap: 0.6rem; margin-bottom: 2rem; }
+.s6-contact a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+  width: fit-content;
+}
+.s6-hours { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+.s6-hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(122, 92, 62, 0.25);
+  padding-bottom: 0.7rem;
+}
+.s6-hours li span:first-child { font-weight: 700; color: var(--color-primary); }
+.s6-visit-note {
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-secondary);
+  max-width: 40ch;
+}
+
+/* ---------- footer ---------- */
+.s6-footer {
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding: 2.5rem clamp(1.25rem, 5vw, 4rem);
+}
+.s6-footer-inner {
+  max-width: 76rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  align-items: baseline;
+}
+.s6-footer p { margin: 0; font-size: 0.92rem; opacity: 0.85; }
+.s6-footer .s6-brand { font-size: 1.1rem; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .s6-dial-zone { grid-template-columns: 1fr; }
+  .s6-dial-col { position: static; }
+  .s6-dial-frame { width: clamp(15rem, 72vw, 22rem); }
+  .s6-story-grid,
+  .s6-club-grid,
+  .s6-visit-grid { grid-template-columns: 1fr; }
+  .s6-plates { grid-template-columns: 1fr; max-width: 30rem; }
+  .s6-board { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .s6-links { display: none; }
+  .s6-nav { justify-content: space-between; }
+  .s6-hero-inner { padding-bottom: 3rem; }
+  .s6-dial-season { font-size: 1.35rem; }
+}
+
+/* reduced motion: instant, fully visible */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-06-farm *,
+  .tpl-design-06-farm *::before,
+  .tpl-design-06-farm *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

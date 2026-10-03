@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231A1714'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23D9B65E'%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Kela Jewels — a modern jewellery studio. Geometric platinum, rock crystal and white gold pieces, designed with architectural precision.">
+  <title>Kela Jewels — Modern Jewellery Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="brand" href="#hero" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Kela Jewels</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary"></nav>
+      <a class="nav-cta btn btn-small" href="#contact">Enquire<span class="arr" aria-hidden="true">→</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" hidden></div>
+  </header>
+
+  <main>
+    <!-- 2. HERO -->
+    <section id="hero" aria-label="Introduction">
+      <div class="hero-grid">
+        <div class="hero-rules" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow">N°02 — The Modern Studio</p>
+          <h1 class="hero-title" id="heroTitle">Geometry, worn.</h1>
+          <p class="hero-sub">Platinum, rock crystal and white gold, shaped into precise architectural forms. Kela Jewels designs jewellery stripped of everything but structure.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary hero-cta-primary" href="#products">View the collection<span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost hero-cta-secondary" href="#craftsmanship">Our craft<span class="arr" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <figure class="hero-figure reveal-crop" data-depth="12">
+          <div class="img-frame shimmer" data-frame>
+            <img class="hero-img" src="assets/images/hero.webp" width="1920" height="1080" fetchpriority="high" decoding="async" alt="">
+          </div>
+          <figcaption class="hero-caption">Prism line — rock crystal set in platinum</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 3. COLLECTIONS -->
+    <section id="collections" aria-label="Collections">
+      <div class="section-head reveal">
+        <p class="eyebrow"></p>
+        <h2 class="section-title"></h2>
+      </div>
+      <div class="collections-grid"></div>
+    </section>
+
+    <!-- 4. PRODUCTS -->
+    <section id="products" aria-label="Products">
+      <div class="section-head reveal">
+        <p class="eyebrow"></p>
+        <h2 class="section-title"></h2>
+      </div>
+      <div class="product-list"></div>
+    </section>
+
+    <!-- 5. CRAFTSMANSHIP -->
+    <section id="craftsmanship" aria-label="Craftsmanship">
+      <div class="craft-grid">
+        <figure class="craft-figure reveal-crop" data-depth="8">
+          <div class="img-frame shimmer" data-frame>
+            <img class="craft-img" loading="lazy" decoding="async" alt="">
+          </div>
+        </figure>
+        <div class="craft-copy">
+          <p class="eyebrow reveal"></p>
+          <h2 class="section-title reveal"></h2>
+          <p class="body-copy reveal"></p>
+          <ol class="craft-steps"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. STORY -->
+    <section id="story" aria-label="Maison story">
+      <div class="story-inner">
+        <p class="eyebrow reveal"></p>
+        <h2 class="section-title story-title reveal"></h2>
+        <blockquote class="story-quote reveal"></blockquote>
+        <div class="story-body"></div>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT -->
+    <section id="contact" aria-label="Contact">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="eyebrow reveal"></p>
+          <h2 class="section-title reveal"></h2>
+          <dl class="contact-details reveal"></dl>
+          <a class="instagram-link reveal" target="_blank" rel="noopener"></a>
+        </div>
+        <div class="contact-form-wrap reveal">
+          <form class="contact-form" novalidate>
+            <div class="field">
+              <label></label>
+              <input type="text" name="name" autocomplete="name">
+            </div>
+            <div class="field">
+              <label></label>
+              <input type="email" name="email" autocomplete="email">
+            </div>
+            <div class="field">
+              <label></label>
+              <textarea name="message" rows="4"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit"></button>
+          </form>
+          <div class="form-confirm" hidden>
+            <span class="confirm-mark" aria-hidden="true">◇</span>
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. FOOTER -->
+  <footer id="siteFooter">
+    <div class="footer-inner">
+      <a class="brand footer-brand" href="#hero" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"></span>
+      </a>
+      <p class="tagline"></p>
+      <nav class="footer-nav" aria-label="Footer"></nav>
+      <p class="footer-line"></p>
+    </div>
+  </footer>
+
+  <!-- QUICK VIEW overlay -->
+  <div class="qv" id="quickView" aria-hidden="true" hidden>
+    <div class="qv-backdrop" data-qv-close></div>
+    <div class="qv-ghost" aria-hidden="true"><img alt="" loading="lazy" decoding="async"></div>
+    <aside class="qv-panel" role="dialog" aria-modal="true" aria-labelledby="qvName">
+      <button class="qv-close" type="button" data-qv-close aria-label="Close">✕</button>
+      <div class="qv-media"><div class="img-frame shimmer" data-frame><img class="qv-img" alt="" loading="lazy" decoding="async"></div></div>
+      <div class="qv-info">
+        <p class="eyebrow qv-eyebrow"></p>
+        <h3 class="qv-name" id="qvName"></h3>
+        <p class="qv-desc"></p>
+        <dl class="qv-specs"></dl>
+        <p class="qv-price"></p>
+        <button class="btn btn-primary qv-cta" type="button"></button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,657 @@
+/* ============================================================
+   PRISM — design-10-webgl · "Experimental 3D"
+   Avant-garde CSS-3D lab. Tokens are scoped to the template root;
+   never :root. Mobile-first.
+   ============================================================ */
+
+.tpl-design-10-webgl {
+  --color-primary: #060608;
+  --color-secondary: #0b0b10;
+  --color-accent: #8b5cf6;
+  --color-accent-2: #22d3ee;
+  --color-background: #060608;
+  --color-surface: #0d0d13;
+  --color-text: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.62);
+  --color-hairline: rgba(255, 255, 255, 0.14);
+  --iridescent: linear-gradient(100deg, #8b5cf6 0%, #22d3ee 100%);
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --wrap: min(1200px, 92vw);
+}
+
+.tpl-design-10-webgl,
+.tpl-design-10-webgl * {
+  box-sizing: border-box;
+}
+
+.tpl-design-10-webgl {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: clip;
+  position: relative;
+}
+
+.tpl-design-10-webgl a { color: inherit; }
+.tpl-design-10-webgl img { display: block; max-width: 100%; }
+
+.px-wrap {
+  width: var(--wrap);
+  margin-inline: auto;
+}
+
+/* ---------- type ---------- */
+
+.px-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin: 0 0 1.4rem;
+  background: var(--iridescent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.px-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5.4vw, 3.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.5rem;
+}
+
+.px-body {
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.4vw, 1.13rem);
+  line-height: 1.75;
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* Server-safe word-mask headline */
+.px-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.px-wm .wi { display: inline-block; will-change: transform; }
+
+.px-rule {
+  display: block;
+  height: 1px;
+  background: var(--color-hairline);
+  transform-origin: left center;
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+}
+
+/* ---------- the single invert flash ---------- */
+
+/* Absolute over the first screen (the flash fires on load, at the top):
+   position: fixed would escape the ATELIER viewer and flash its toolbar. */
+.px-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--tpl-vh, 100svh);
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 200;
+}
+
+/* ---------- overlay nav ---------- */
+
+/* Zero-height sticky dock: the nav floats over every section without
+   position: fixed. The difference blend sits on the dock (the stacking
+   context), so the white nav still inverts against whatever is behind it. */
+.px-nav-dock {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 90;
+  mix-blend-mode: difference;
+}
+
+.px-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem clamp(1.2rem, 4vw, 3rem);
+  color: #ffffff;
+}
+
+.px-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.px-menu-btn {
+  appearance: none;
+  background: none;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.px-menu-btn:hover { background: #ffffff; color: #000000; }
+
+.px-overlay {
+  position: fixed;
+  /* below the ATELIER viewer toolbar (JS also fits it to the scroll box) */
+  inset: var(--tpl-top, 0px) 0 0 0;
+  z-index: 100;
+  background: rgba(6, 6, 8, 0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.px-overlay-close {
+  position: absolute;
+  top: 1.1rem;
+  right: clamp(1.2rem, 4vw, 3rem);
+  appearance: none;
+  background: none;
+  border: 1px solid var(--color-hairline);
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  color: var(--color-text);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.px-overlay-close:hover { border-color: var(--color-text); }
+
+.px-overlay-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.px-overlay-link {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 7vw, 4.5rem);
+  line-height: 1.25;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color 0.3s;
+}
+.px-overlay-link:hover {
+  background: var(--iridescent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.px-overlay-num {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-muted);
+}
+
+.px-overlay-foot {
+  margin: 3rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- hero ---------- */
+
+/* Scroll-scrub hero: the shared ScrollFrames component pins .sf-wrap and
+   scrubs the canvas (stage/canvas/overlay layout is inline in the component).
+   The section just frames it; overlay children dock inside .sf-overlay. */
+.px-hero {
+  position: relative;
+  overflow: clip;
+}
+
+.px-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(6, 6, 8, 0.92) 0%, rgba(6, 6, 8, 0.25) 45%, rgba(6, 6, 8, 0.35) 100%);
+}
+
+/* Docks to the bottom edge of the .sf-overlay, as before. */
+.px-hero-copy {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--wrap);
+  margin-inline: auto;
+  padding-bottom: clamp(4.5rem, 10vh, 7rem);
+}
+
+.px-hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.7rem, 9.2vw, 8.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.6rem;
+  max-width: 14ch;
+}
+
+.px-hero-sub {
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.7;
+  max-width: 52ch;
+  margin: 0 0 2.2rem;
+}
+
+.px-cta {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 1rem 2.2rem;
+  position: relative;
+  transition: border-color 0.3s, background 0.3s;
+}
+.px-cta:hover {
+  border-color: transparent;
+  background: var(--iridescent);
+  color: #060608;
+}
+
+.px-hero-hint {
+  position: absolute;
+  z-index: 2;
+  right: clamp(1.2rem, 4vw, 3rem);
+  bottom: clamp(4.5rem, 10vh, 7rem);
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  writing-mode: vertical-rl;
+}
+
+/* ---------- 3D dolly section ---------- */
+
+.px-dolly-sec { position: relative; }
+
+.px-dolly-desktop { display: none; }
+
+.px-dolly-pin {
+  position: relative;
+  /* one visible screen: --tpl-vh in the viewer, 100svh standalone */
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+/* The CSS-3D stage: perspective lives here, the camera wrapper below it. */
+.px-stage {
+  position: absolute;
+  inset: 0;
+  perspective: 1200px;
+  overflow: hidden;
+}
+.px-camera {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.px-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(var(--z, 0px));
+  pointer-events: none;
+}
+/* the layer(s) currently in view (set by the dolly scrub) */
+.px-layer.is-shown { pointer-events: auto; }
+
+.px-stage-fog {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 75% at 50% 50%, transparent 55%, rgba(6, 6, 8, 0.55) 100%),
+    linear-gradient(to top, var(--color-background) 0%, transparent 18%, transparent 82%, var(--color-background) 100%);
+}
+
+.px-dolly-hud {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.2rem, 3vw, 2.4rem) clamp(1.2rem, 4vw, 3rem);
+}
+.px-dolly-hud .px-eyebrow { margin: 0; }
+/* clear the floating nav: the eyebrow used to sit under the wordmark */
+.px-dolly-hud { padding-top: 5.6rem; }
+
+.px-ticks {
+  position: absolute;
+  right: clamp(1.2rem, 4vw, 3rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.px-tick {
+  width: 3px;
+  height: 2.2rem;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.16);
+  transition: background 0.4s;
+}
+.px-tick.is-active { background: var(--iridescent); }
+
+.px-dolly-hint {
+  margin: 0;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Experiment panel: shared by dolly layers + mobile/reduced stack */
+.px-exp {
+  width: min(88vw, 960px);
+  display: grid;
+  gap: 1.4rem;
+}
+
+.px-exp-visual {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--color-hairline);
+  aspect-ratio: 16 / 9;
+  max-height: calc(var(--tpl-vh, 100svh) * 0.46);
+  background: var(--color-surface);
+}
+.px-exp-visual .a-img,
+.px-exp-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.px-exp-index {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.2rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.4rem, 8vw, 6rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+}
+
+.px-exp-copy { max-width: 60ch; }
+.px-exp-copy .px-eyebrow { margin-bottom: 0.9rem; }
+
+.px-exp-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0 0 0.9rem;
+}
+
+/* ---------- mobile / reduced-motion stack ---------- */
+
+.px-dolly-mobile { padding: clamp(5rem, 12vw, 9rem) 0; }
+.px-dolly-mobile .px-wrap { margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+
+.px-stack {
+  width: var(--wrap);
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(4rem, 10vw, 7rem);
+}
+.px-stack .px-exp-visual { max-height: none; }
+
+/* ---------- notes ---------- */
+
+.px-notes {
+  padding: clamp(5rem, 12vw, 10rem) 0;
+  background: var(--color-secondary);
+}
+
+.px-notes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-hairline);
+}
+
+.px-note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem 1.8rem;
+  padding: clamp(1.8rem, 4vw, 2.8rem) 0;
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.px-note-index {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: var(--iridescent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.px-note-date {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--color-muted);
+}
+
+.px-note-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+  margin: 0 0 0.8rem;
+  line-height: 1.2;
+}
+
+/* ---------- manifesto ---------- */
+
+.px-manifesto { padding: clamp(5rem, 12vw, 10rem) 0; }
+
+.px-manifesto-grid {
+  display: grid;
+  gap: 1.6rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.px-quote {
+  margin: 0;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid var(--color-hairline);
+  border-radius: 4px;
+  background: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+.px-quote::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--iridescent);
+}
+.px-quote p {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 3vw, 2.1rem);
+  line-height: 1.35;
+  margin: 0 0 1rem;
+}
+.px-quote cite {
+  font-style: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ---------- CTA ---------- */
+
+.px-cta-sec {
+  padding: clamp(6rem, 14vw, 11rem) 0;
+  background: var(--color-secondary);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.px-cta-sec::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: var(--iridescent);
+  opacity: 0.6;
+}
+
+.px-cta-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 7vw, 5.5rem);
+  line-height: 1.04;
+  margin: 0 0 1.6rem;
+}
+.px-cta-body { margin: 0 auto 2.4rem; text-align: center; }
+.px-cta-note { margin: 1.6rem 0 0; color: var(--color-muted); font-size: 0.9rem; }
+.px-cta-note a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- footer ---------- */
+
+.px-footer {
+  border-top: 1px solid var(--color-hairline);
+  padding: clamp(3rem, 7vw, 5rem) 0 2.5rem;
+}
+
+.px-footer-grid {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.px-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.6rem;
+}
+.px-footer-nav a {
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.px-footer-nav a:hover { color: var(--color-text); }
+
+.px-footer-line { margin: 0; font-size: 0.95rem; color: var(--color-muted); }
+.px-colophon { margin: 0; font-size: 0.78rem; color: rgba(255, 255, 255, 0.38); }
+
+/* phones: the vertical scroll hint would sit on top of the hero copy */
+@media (max-width: 767px) {
+  .px-hero-hint { display: none; }
+}
+
+/* ---------- reduced motion: everything visible, no motion ---------- */
+
+.tpl-design-10-webgl.is-reduced .px-dolly-desktop { display: none !important; }
+.tpl-design-10-webgl.is-reduced .px-dolly-mobile { display: block !important; }
+.tpl-design-10-webgl.is-reduced .px-flash { display: none; }
+.tpl-design-10-webgl.is-reduced .px-wm .wi { transform: none !important; }
+
+/* ---------- ≥768px ---------- */
+
+@media (min-width: 768px) {
+  .px-dolly-desktop { display: block; }
+  .px-dolly-mobile { display: none; }
+
+  .px-exp {
+    grid-template-columns: 1.25fr 1fr;
+    align-items: center;
+    gap: 2.4rem;
+  }
+  .px-exp-visual { max-height: calc(var(--tpl-vh, 100svh) * 0.52); }
+
+  .px-note {
+    grid-template-columns: 4rem 1fr;
+    gap: 2.4rem;
+  }
+
+  .px-manifesto-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .px-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+  .px-footer-line, .px-colophon { grid-column: 1 / -1; }
+}
+
+/* ---------- ≥1200px ---------- */
+
+@media (min-width: 1200px) {
+  .px-exp { width: min(76vw, 1080px); gap: 3.2rem; }
+  .px-hero-copy { padding-bottom: clamp(5rem, 12vh, 8rem); }
+}

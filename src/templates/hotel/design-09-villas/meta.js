@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-09-villas',
+  num: '09',
+  name: 'The Nine Villas',
+  tag: 'Private Villas',
+  style: 'Discreet, map-led luxury for a private villa estate',
+  animation: 'Estate map journey — a marker travels a drawn path as villa cards highlight in sequence',
+  typography: 'Cormorant Garamond + Manrope',
+  layout: 'Ceremonial single column with a pinned estate-map journey',
+  mood: 'Exclusive, twilight, unhurried',
+  palette: 'Twilight ink and antique brass',
+  features: [
+    'Estate map journey (pinned, scrubbed marker)',
+    'Three signature villa deep-dives',
+    'Villa comparison table',
+    'Private staff & occasions sections',
+    'High-touch enquiry form with live estimate',
+    'Signature aerial sunset hero sequence (scroll-driven frames)',
+  ],
+  fonts: { display: 'Cormorant Garamond', body: 'Manrope' },
+  colors: { primary: '#241D16', accent: '#C9A24B' },
+};

@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-01-flagship',
+  num: '01',
+  name: 'Atelier Flagship',
+  tag: 'Flagship',
+  style: 'Minimal gallery retail, museum spacing',
+  animation: 'Spotlight pedestal walk, label-plate reveals',
+  typography: 'Cormorant Garamond + Inter',
+  layout: 'Single column, one product per viewport, centered',
+  mood: 'Quiet, assured, curatorial',
+  palette: 'Bone / ink / bronze',
+  features: [
+    'Gallery walk product flow',
+    'Demo cart drawer',
+    'Numbered pieces',
+    'Craft story',
+    'Shipping & care',
+  ],
+  fonts: { display: 'Cormorant Garamond', body: 'Inter' },
+  colors: { primary: '#1A1815', accent: '#8C6A3F' },
+};

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231A1714'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23D9B65E'%3EK%3C/text%3E%3C/svg%3E">
+<title>Kela Jewels — Jewellery from the near future</title>
+<meta name="description" content="Kela Jewels — platinum, titanium and lab-grown diamonds. Jewellery engineered for the decades ahead.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="fonts-link" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+/* Early image-fallback so no broken-image icon can ever flash, even before main.js loads. */
+window.__kelaImgFallback = function (img) {
+  if (!img || img.dataset.fbk) return;
+  img.dataset.fbk = "1";
+  var initial = (document.documentElement.getAttribute("data-brand-initial") || "K").slice(0, 1).toUpperCase();
+  var alt = img.getAttribute("alt") || "";
+  var d = document.createElement("div");
+  d.className = "img-fallback";
+  d.setAttribute("role", "img");
+  if (alt) d.setAttribute("aria-label", alt);
+  var s = document.createElement("span");
+  s.textContent = initial;
+  d.appendChild(s);
+  if (img.parentNode) img.parentNode.replaceChild(d, img);
+};
+</script>
+</head>
+<body data-brand-initial="K">
+
+<header class="site-nav" id="site-nav">
+  <a class="brand" href="#hero" aria-label="Back to top">
+    <span class="brand-mark" aria-hidden="true" data-content="brand.initial">K</span>
+    <span class="brand-name" data-content="brand.name">Kela Jewels</span>
+  </a>
+  <nav class="nav-links" id="nav-links" aria-label="Primary"></nav>
+  <div class="nav-right">
+    <a class="nav-cta" href="#contact" data-content="navCta">Book an appointment</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <nav id="mobile-links" aria-label="Mobile"></nav>
+</div>
+
+<main>
+  <!-- 1 · HERO -->
+  <section id="hero" aria-label="Introduction">
+    <div class="hero-inner container">
+      <div class="hero-copy">
+        <p class="eyebrow reveal" data-content="hero.eyebrow">N°06 — The future, cast in platinum</p>
+        <h1 class="hero-title" id="hero-title" data-content="hero.title">Shadow, engineered into light.</h1>
+        <p class="hero-sub reveal" data-content="hero.subtitle">Kela Jewels is a maison of the near future — platinum, titanium and lab-grown diamonds, cut by algorithm and finished by hand. Pieces built for the decades ahead.</p>
+        <div class="hero-ctas reveal">
+          <a class="btn btn-primary" href="#products" data-content="hero.ctaPrimary">Explore the pieces</a>
+          <a class="btn btn-ghost" href="#craftsmanship" data-content="hero.ctaSecondary">Visit the atelier</a>
+        </div>
+        <p class="micro hero-meta reveal" data-content="hero.meta">Platinum 950 · Lab-grown diamonds · Made in Mumbai</p>
+      </div>
+
+      <div class="hero-viewer reveal" data-parallax="0.05">
+        <div class="viewer" id="viewer-360">
+          <div class="viewer-glow" id="viewer-glow" aria-hidden="true"></div>
+          <div class="viewer-frame img-wrap" id="viewer-frame">
+            <img width="1920" height="1080" class="viewer-base" id="viewer-base"
+                 src="assets/images/hero.webp"
+                 alt="Monolith Ring — platinum diamond solitaire on black"
+                 fetchpriority="high" decoding="async"
+                 onerror="window.__kelaImgFallback&&window.__kelaImgFallback(this)">
+            <div class="viewer-sheen" id="viewer-sheen" aria-hidden="true"></div>
+            <div class="viewer-ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div class="viewer-hint" id="viewer-hint"><span>Drag to rotate</span></div>
+          </div>
+          <div class="viewer-meta">
+            <span class="micro">360° concept demo — interactive light study</span>
+            <span class="micro viewer-angle" id="viewer-angle" aria-hidden="true">038°</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hero-scroll micro" aria-hidden="true"><span>Scroll</span><i></i></p>
+  </section>
+
+  <!-- 2 · COLLECTIONS -->
+  <section id="collections" aria-label="Collections">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-content="collectionsHeading.eyebrow">The Collections</p>
+        <h2 class="section-title" data-content="collectionsHeading.title">Three studies in darkness</h2>
+      </div>
+      <div class="collections-grid" id="collections-grid"></div>
+    </div>
+  </section>
+
+  <!-- 3 · PRODUCTS -->
+  <section id="products" aria-label="Pieces">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-content="productsHeading.eyebrow">High Jewellery</p>
+        <h2 class="section-title" data-content="productsHeading.title">The pieces</h2>
+      </div>
+      <div class="products-grid" id="products-grid"></div>
+    </div>
+  </section>
+
+  <!-- 4 · CRAFTSMANSHIP -->
+  <section id="craftsmanship" aria-label="Craftsmanship">
+    <div class="container craft-grid">
+      <div class="craft-media reveal">
+        <div class="img-wrap frame">
+          <img width="1920" height="1280" src="assets/images/craft.webp" alt="Inside the Kela Jewels atelier — precision tools and laser welder"
+               loading="lazy" decoding="async" data-craft-img
+               onerror="window.__kelaImgFallback&&window.__kelaImgFallback(this)">
+        </div>
+        <p class="micro craft-caption">The atelier — resolved to 0.1 mm</p>
+      </div>
+      <div class="craft-copy">
+        <p class="eyebrow reveal" data-content="craftsmanship.eyebrow">The Atelier</p>
+        <h2 class="section-title reveal" data-content="craftsmanship.title">Computed. Cast. Finished by hand.</h2>
+        <p class="body-copy reveal" data-content="craftsmanship.body">Every Kela Jewels piece begins as mathematics — parametric models resolved to a tenth of a millimetre. It is cast in platinum or silver, then handed to master finishers who spend up to forty hours bringing each surface from raw to mirror. The future, made slowly.</p>
+        <ol class="craft-steps" id="craft-steps"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · STORY -->
+  <section id="story" aria-label="Maison story">
+    <div class="container story-inner">
+      <p class="eyebrow reveal" data-content="story.eyebrow">The Maison</p>
+      <h2 class="story-title reveal" data-content="story.title">We did not inherit tradition. We engineered it.</h2>
+      <div class="story-body reveal" id="story-body"></div>
+      <figure class="story-figure reveal">
+        <div class="img-wrap frame">
+          <img width="1400" height="1750" src="assets/images/product-2.webp" alt="Singularity Stud — macro detail"
+               loading="lazy" decoding="async" data-story-img
+               onerror="window.__kelaImgFallback&&window.__kelaImgFallback(this)">
+        </div>
+        <figcaption class="micro" data-content="story.caption">The Singularity Stud — 0.5 ct, platinum 950</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 6 · CONTACT -->
+  <section id="contact" aria-label="Contact">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <p class="eyebrow reveal" data-content="contact.eyebrow">Private Viewings</p>
+        <h2 class="section-title reveal" data-content="contact.title">The atelier</h2>
+        <dl class="contact-list reveal">
+          <div><dt class="micro">Atelier</dt><dd data-content="contact.address">14 Kala Ghoda, Fort, Mumbai 400001</dd></div>
+          <div><dt class="micro">Telephone</dt><dd><a data-content="contact.phone" data-href="tel">+91 98200 12345</a></dd></div>
+          <div><dt class="micro">Email</dt><dd><a data-content="contact.email" data-href="mailto">hello@kelajewels.in</a></dd></div>
+          <div><dt class="micro">Instagram</dt><dd><a data-content="contact.instagramLabel" data-href="url:contact.instagram">@kelajewels</a></dd></div>
+        </dl>
+      </div>
+      <div class="contact-form-wrap reveal">
+        <form id="contact-form" novalidate>
+          <label><span class="micro">Name</span><input type="text" name="name" autocomplete="name" required></label>
+          <label><span class="micro">Email</span><input type="email" name="email" autocomplete="email" required></label>
+          <label><span class="micro">Message</span><textarea name="message" rows="4" required></textarea></label>
+          <button class="btn btn-primary" type="submit">Request a viewing</button>
+          <p class="micro form-note">By appointment only. The atelier replies within 48 hours.</p>
+        </form>
+        <div class="form-confirm" id="form-confirm" hidden>
+          <p class="eyebrow">Received</p>
+          <p class="form-confirm-title">Thank you.</p>
+          <p class="body-copy">Your request is with the atelier. Expect a reply within 48 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true" data-content="brand.initial">K</span>
+      <div>
+        <p class="footer-name" data-content="brand.name">Kela Jewels</p>
+        <p class="micro footer-tagline" data-content="brand.tagline">Jewellery from the near future.</p>
+      </div>
+    </div>
+    <nav class="footer-nav" id="footer-nav" aria-label="Footer"></nav>
+    <p class="micro footer-line" data-content="footer.line">© 2026 Kela Jewels. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Quick view panel -->
+<div class="qv-backdrop" id="qv-backdrop" hidden>
+  <div class="qv-panel" role="dialog" aria-modal="true" aria-labelledby="qv-name" id="qv-panel">
+    <button class="qv-close" id="qv-close" aria-label="Close quick view">×</button>
+    <div class="qv-media img-wrap">
+      <img id="qv-img" alt="" onerror="window.__kelaImgFallback&&window.__kelaImgFallback(this)" loading="lazy" decoding="async">
+    </div>
+    <div class="qv-info">
+      <p class="eyebrow" id="qv-eyebrow">Quick view</p>
+      <h3 id="qv-name"></h3>
+      <p class="micro qv-specs" id="qv-specs"></p>
+      <p class="body-copy" id="qv-desc"></p>
+      <p class="qv-price" id="qv-price"></p>
+      <a class="btn btn-primary" href="#contact" id="qv-cta">Enquire about this piece</a>
+    </div>
+  </div>
+</div>
+
+<script src="content.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

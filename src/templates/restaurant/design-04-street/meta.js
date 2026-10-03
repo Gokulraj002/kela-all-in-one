@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-04-street',
+  num: '04',
+  name: 'Chowk',
+  tag: 'Street Food',
+  style: 'Loud poster-style street food',
+  animation: 'Direction-reactive card slams, kinetic headline',
+  typography: 'Anton + Work Sans',
+  layout: 'Dense sticker-covered poster grid',
+  mood: 'Loud, fast, craveable',
+  palette: 'Paper / ink / chili',
+  features: [
+    'Crave-cards with spice meters',
+    'Legend badges',
+    'Direction-slam entries',
+    'Cart locations',
+    'Sticky order pill',
+  ],
+  fonts: { display: 'Anton', body: 'Work Sans' },
+  colors: { primary: '#17130E', accent: '#C1272D' },
+};

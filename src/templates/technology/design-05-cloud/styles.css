@@ -1,0 +1,808 @@
+/* ATELIER · design-05-cloud — "Stratus" · Cloud infrastructure
+   Palette: deep navy #0B1B33 · sky #38BDF8 · teal #2DD4BF · light #F4F8FC
+   Type: Outfit (display) + Inter (body) — loaded in index.jsx */
+
+.tpl-design-05-cloud {
+  --color-primary: #0b1b33;
+  --color-primary-deep: #071426;
+  --color-primary-soft: #14305c;
+  --color-primary-glow: #10294f;
+  --color-abyss: #050f20;
+  --color-navy-mid: #0a1a30;
+  --color-ink-on-accent: #04121f;
+  --color-white: #ffffff;
+  --color-accent: #38bdf8;
+  /* the brand tone for dark bands / gradient fills (light tone of the
+     Kela colour; falls back to the accent standalone) */
+  --st-accent-lite: var(--brand-on-dark, var(--color-accent));
+  --color-teal: #2dd4bf;
+  --color-background: #f4f8fc;
+  --color-surface: #ffffff;
+  --color-text: #0b1b33;
+  --color-text-on-dark: #eef4fb;
+  --color-muted: #5b6b82;
+  --color-muted-on-dark: #93a7c4;
+  --color-line: #dbe6f2;
+  --color-line-on-dark: rgba(120, 170, 220, 0.22);
+  --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 9px;
+  --shadow-card: 0 18px 50px -18px rgba(11, 27, 51, 0.22);
+  --shadow-glow: 0 0 0 1px rgba(56, 189, 248, 0.35), 0 0 42px -6px rgba(56, 189, 248, 0.35);
+  --st-nav-h: 74px;
+}
+
+.tpl-design-05-cloud,
+.tpl-design-05-cloud *,
+.tpl-design-05-cloud *::before,
+.tpl-design-05-cloud *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-05-cloud {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-background);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-05-cloud img,
+.tpl-design-05-cloud video {
+  display: block;
+  max-width: 100%;
+}
+
+.tpl-design-05-cloud a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tpl-design-05-cloud .st-wrap {
+  width: min(1180px, 92%);
+  margin-inline: auto;
+}
+
+.tpl-design-05-cloud section {
+  padding: clamp(4.5rem, 9vw, 8rem) 0;
+  position: relative;
+}
+
+/* ---------- shared type ---------- */
+.tpl-design-05-cloud .st-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.1rem;
+}
+.tpl-design-05-cloud .st-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4.4vw, 3.1rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.2rem;
+  max-width: 18ch;
+}
+.tpl-design-05-cloud .st-lede {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--color-muted);
+  max-width: 58ch;
+  margin: 0;
+}
+.tpl-design-05-cloud .st-sec-dark .st-lede { color: var(--color-muted-on-dark); }
+.tpl-design-05-cloud .st-sec-dark .st-eyebrow { color: var(--st-accent-lite); }
+
+/* ---------- buttons ---------- */
+.tpl-design-05-cloud .st-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  /* hover lift on `translate`; `transform` belongs to GSAP */
+  transition: translate 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  white-space: nowrap;
+}
+.tpl-design-05-cloud .st-btn-primary {
+  background: linear-gradient(135deg, var(--st-accent-lite), var(--color-teal));
+  color: var(--color-ink-on-accent);
+}
+.tpl-design-05-cloud .st-btn-primary:hover {
+  translate: 0 -2px;
+  box-shadow: 0 14px 34px -10px rgba(56, 189, 248, 0.65);
+}
+.tpl-design-05-cloud .st-btn-ghost {
+  border-color: var(--color-line);
+  color: var(--color-text);
+  background: transparent;
+}
+.tpl-design-05-cloud .st-btn-ghost:hover { border-color: var(--color-accent); }
+.tpl-design-05-cloud .st-sec-dark .st-btn-ghost,
+.tpl-design-05-cloud .st-hero .st-btn-ghost {
+  border-color: var(--color-line-on-dark);
+  color: var(--color-text-on-dark);
+}
+.tpl-design-05-cloud .st-hero .st-btn-ghost {
+  border-color: rgba(238, 244, 251, 0.42);
+  background: rgba(7, 20, 38, 0.28);
+}
+.tpl-design-05-cloud .st-hero .st-btn-ghost:hover { border-color: var(--color-accent); }
+
+/* ---------- nav ----------
+   Sticky, not fixed: in the ATELIER viewer the page scrolls inside
+   .tpl-scope and a fixed bar would sit over the viewer's own toolbar.
+   The negative margin lets the hero run underneath, as before. */
+.tpl-design-05-cloud .st-nav {
+  position: sticky;
+  top: 0;
+  height: var(--st-nav-h);
+  margin-bottom: calc(-1 * var(--st-nav-h));
+  z-index: 60;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.tpl-design-05-cloud .st-nav-inner {
+  width: min(1280px, 94%);
+  height: 100%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.tpl-design-05-cloud .st-nav.is-solid {
+  background: rgba(244, 248, 252, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 var(--color-line);
+}
+.tpl-design-05-cloud .st-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  color: var(--color-text-on-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: auto;
+}
+.tpl-design-05-cloud .st-nav.is-solid .st-wordmark { color: var(--color-text); }
+.tpl-design-05-cloud .st-wordmark-mark {
+  width: 26px; height: 26px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--st-accent-lite), var(--color-teal));
+  display: inline-block;
+  box-shadow: 0 4px 14px -2px rgba(56, 189, 248, 0.7);
+}
+.tpl-design-05-cloud .st-nav-links {
+  display: flex; gap: 1.9rem; align-items: center;
+}
+.tpl-design-05-cloud .st-nav-links a {
+  font-size: 0.92rem; font-weight: 500;
+  color: rgba(238, 244, 251, 0.85);
+  transition: color 0.2s ease;
+}
+.tpl-design-05-cloud .st-nav.is-solid .st-nav-links a { color: var(--color-text); }
+.tpl-design-05-cloud .st-nav-links a:hover { color: var(--color-accent); }
+.tpl-design-05-cloud .st-nav-cta { display: flex; gap: 1.1rem; align-items: center; }
+.tpl-design-05-cloud .st-signin {
+  font-size: 0.92rem; font-weight: 600;
+  color: rgba(238, 244, 251, 0.9);
+}
+.tpl-design-05-cloud .st-nav.is-solid .st-signin { color: var(--color-text); }
+.tpl-design-05-cloud .st-signin:hover { color: var(--color-accent); }
+.tpl-design-05-cloud .st-nav .st-btn { padding: 0.62rem 1.25rem; font-size: 0.88rem; }
+
+/* ---------- hero ---------- */
+.tpl-design-05-cloud .st-hero {
+  /* = the pinned stage height (visible scroll area in the viewer) */
+  min-height: var(--tpl-vh, 100svh);
+  position: relative;
+  padding: 0;
+  color: var(--color-text-on-dark);
+  overflow: hidden;
+}
+/* ScrollFrames contract: the design owns the stage height */
+.tpl-design-05-cloud .st-hero .sf-stage { position: relative; height: 100svh; overflow: hidden; }
+.tpl-design-05-cloud .st-hero .sf-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tpl-design-05-cloud .st-hero .sf-overlay { position: absolute; inset: 0; z-index: 1; }
+.tpl-design-05-cloud .st-hero .sf-static { position: relative; height: 100svh; overflow: hidden; }
+.tpl-design-05-cloud .st-hero .sf-static-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-05-cloud .st-hero-inner {
+  position: absolute; left: 0; right: 0;
+  bottom: clamp(4rem, 8vw, 6.5rem);
+  z-index: 2;
+}
+.tpl-design-05-cloud .st-hero-shade {
+  position: absolute; inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(7, 20, 38, 0.62) 0%, rgba(7, 20, 38, 0.18) 34%, rgba(7, 20, 38, 0.55) 78%, rgba(7, 20, 38, 0.9) 100%),
+    radial-gradient(90% 60% at 20% 100%, rgba(45, 212, 191, 0.14), transparent 60%);
+}
+.tpl-design-05-cloud .st-hero .st-eyebrow { color: var(--color-teal); }
+.tpl-design-05-cloud .st-hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.9rem, 7.4vw, 5.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.4rem;
+  max-width: 14ch;
+}
+.tpl-design-05-cloud .st-hero-title .st-grad {
+  background: linear-gradient(100deg, var(--st-accent-lite), var(--color-teal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tpl-design-05-cloud .st-hero-sub {
+  font-size: clamp(1.02rem, 1.8vw, 1.25rem);
+  color: rgba(238, 244, 251, 0.82);
+  max-width: 54ch;
+  margin: 0 0 2.2rem;
+}
+.tpl-design-05-cloud .st-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.tpl-design-05-cloud .st-hero-status {
+  display: flex; gap: clamp(1.4rem, 4vw, 3.2rem); flex-wrap: wrap;
+  border-top: 1px solid rgba(120, 170, 220, 0.28);
+  padding-top: 1.4rem;
+}
+.tpl-design-05-cloud .st-status-item { display: grid; gap: 0.15rem; }
+.tpl-design-05-cloud .st-status-label {
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-muted-on-dark);
+}
+.tpl-design-05-cloud .st-status-value {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.35rem;
+  color: var(--color-text-on-dark); display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.tpl-design-05-cloud .st-status-dot {
+  position: relative;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.22);
+}
+/* breathing halo on transform/opacity (composited — no per-frame repaint) */
+.tpl-design-05-cloud .st-status-dot::after {
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  background: rgba(45, 212, 191, 0.24);
+  animation: st-pulse 2.4s ease-in-out infinite;
+}
+@keyframes st-pulse {
+  0%, 100% { transform: scale(0.85); opacity: 0.9; }
+  50% { transform: scale(1.55); opacity: 0.2; }
+}
+.tpl-design-05-cloud .st-scroll-cue {
+  position: absolute; right: clamp(1rem, 4vw, 3rem); bottom: 2rem; z-index: 2;
+  writing-mode: vertical-rl;
+  font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(238, 244, 251, 0.55);
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.tpl-design-05-cloud .st-scroll-cue::after {
+  content: ''; width: 1px; height: 56px;
+  background: linear-gradient(180deg, var(--st-accent-lite), transparent);
+  animation: st-cue 2.2s ease-in-out infinite;
+}
+@keyframes st-cue {
+  0%, 100% { transform: scaleY(0.6); transform-origin: top; opacity: 0.6; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+}
+
+/* ---------- topology (signature pinned mechanic) ---------- */
+.tpl-design-05-cloud .st-topo {
+  background: radial-gradient(120% 90% at 50% 0%, var(--color-primary-glow) 0%, var(--color-primary-deep) 55%, var(--color-abyss) 100%);
+  color: var(--color-text-on-dark);
+  padding: 0;
+  overflow: hidden;
+}
+.tpl-design-05-cloud .st-topo-head {
+  padding: clamp(4.5rem, 8vw, 7rem) 0 clamp(1rem, 3vw, 2rem);
+  text-align: center;
+}
+.tpl-design-05-cloud .st-topo-head .st-h2 { margin-inline: auto; }
+.tpl-design-05-cloud .st-topo-head .st-lede { margin-inline: auto; }
+
+/* pinned stage: exactly the visible scroll area (--tpl-vh in the viewer) */
+.tpl-design-05-cloud .st-topo-pin {
+  height: var(--tpl-vh, 100svh);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+  gap: clamp(1rem, 3vw, 3rem);
+  align-items: center;
+  padding: 0 clamp(1.2rem, 4vw, 4rem);
+  max-width: 1380px;
+  margin-inline: auto;
+}
+.tpl-design-05-cloud .st-topo-stage {
+  position: relative;
+  height: min(calc(var(--tpl-vh, 100svh) * 0.78), 720px);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: rgba(7, 20, 38, 0.45);
+  border: 1px solid var(--color-line-on-dark);
+}
+.tpl-design-05-cloud .st-topo-stage::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(120, 170, 220, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 170, 220, 0.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(80% 80% at 50% 50%, black, transparent);
+  -webkit-mask-image: radial-gradient(80% 80% at 50% 50%, black, transparent);
+}
+.tpl-design-05-cloud .st-layer {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 16 / 10;
+  max-width: 94%;
+  border-radius: 26px;
+  border: 1px dashed transparent;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+.tpl-design-05-cloud .st-layer-edge   { height: 88%; border-color: rgba(56, 189, 248, 0.35); background: radial-gradient(100% 100% at 50% 0%, rgba(56, 189, 248, 0.10), transparent 70%); }
+.tpl-design-05-cloud .st-layer-region { height: 66%; border-color: rgba(56, 189, 248, 0.5);  background: radial-gradient(100% 100% at 50% 0%, rgba(56, 189, 248, 0.14), transparent 70%); }
+.tpl-design-05-cloud .st-layer-cluster{ height: 46%; border-color: rgba(45, 212, 191, 0.5);  background: radial-gradient(100% 100% at 50% 0%, rgba(45, 212, 191, 0.14), transparent 70%); }
+.tpl-design-05-cloud .st-layer-pod    { height: 28%; border-color: rgba(45, 212, 191, 0.75); background: radial-gradient(100% 100% at 50% 0%, rgba(45, 212, 191, 0.22), transparent 70%); }
+.tpl-design-05-cloud .st-layer-tag {
+  margin-top: -15px;
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--color-text-on-dark);
+  background: var(--color-primary);
+  border: 1px solid var(--color-line-on-dark);
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.tpl-design-05-cloud .st-layer-chips {
+  position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+  width: max-content; max-width: 92%;
+}
+.tpl-design-05-cloud .st-layer-chip {
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--color-text-on-dark);
+  background: rgba(7, 20, 38, 0.72);
+  border: 1px solid var(--color-line-on-dark);
+  padding: 0.3rem 0.7rem; border-radius: 999px;
+  white-space: nowrap;
+}
+.tpl-design-05-cloud .st-layer-chip b { color: var(--color-teal); font-weight: 700; }
+
+/* crosshair focus ring: 4 corner brackets per layer */
+.tpl-design-05-cloud .st-ring { position: absolute; inset: -14px; pointer-events: none; opacity: 0; }
+.tpl-design-05-cloud .st-ring i {
+  position: absolute; width: 26px; height: 26px;
+  border: 2px solid var(--st-accent-lite);
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+}
+.tpl-design-05-cloud .st-ring i:nth-child(1) { top: 0; left: 0; border-right: 0; border-bottom: 0; border-radius: 8px 0 0 0; }
+.tpl-design-05-cloud .st-ring i:nth-child(2) { top: 0; right: 0; border-left: 0; border-bottom: 0; border-radius: 0 8px 0 0; }
+.tpl-design-05-cloud .st-ring i:nth-child(3) { bottom: 0; left: 0; border-right: 0; border-top: 0; border-radius: 0 0 0 8px; }
+.tpl-design-05-cloud .st-ring i:nth-child(4) { bottom: 0; right: 0; border-left: 0; border-top: 0; border-radius: 0 0 8px 0; }
+
+/* info panel */
+.tpl-design-05-cloud .st-topo-side { position: relative; min-height: 420px; display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; }
+.tpl-design-05-cloud .st-topo-progress {
+  display: flex; gap: 0.9rem; align-items: center;
+  margin-bottom: 1.6rem;
+}
+.tpl-design-05-cloud .st-topo-progress .st-dot {
+  font-family: var(--font-display);
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--color-muted-on-dark);
+  border: 1px solid var(--color-line-on-dark);
+  padding: 0.35rem 0.7rem; border-radius: 999px;
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-05-cloud .st-topo-progress .st-dot.is-active {
+  color: var(--color-ink-on-accent);
+  background: linear-gradient(135deg, var(--st-accent-lite), var(--color-teal));
+  border-color: transparent;
+}
+.tpl-design-05-cloud .st-info {
+  position: relative; grid-row: 2; grid-column: 1;
+  opacity: 0; visibility: hidden;
+  transform: translateY(18px);
+}
+.tpl-design-05-cloud .st-info-tag {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--color-teal); margin: 0 0 0.7rem;
+}
+.tpl-design-05-cloud .st-info h3 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.02em;
+  margin: 0 0 1rem; color: var(--color-text-on-dark);
+}
+.tpl-design-05-cloud .st-info p { color: var(--color-muted-on-dark); margin: 0 0 1.4rem; font-size: 0.98rem; }
+.tpl-design-05-cloud .st-info-stats { display: grid; gap: 0.7rem; }
+.tpl-design-05-cloud .st-info-stat {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  border-bottom: 1px solid var(--color-line-on-dark);
+  padding-bottom: 0.7rem;
+}
+.tpl-design-05-cloud .st-info-stat span { font-size: 0.85rem; color: var(--color-muted-on-dark); }
+.tpl-design-05-cloud .st-info-stat b {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--color-text-on-dark);
+}
+
+/* static fallback (mobile + reduced motion): nested stacked diagram */
+.tpl-design-05-cloud .st-topo-static { display: none; padding: 0 clamp(1.2rem, 4vw, 4rem) clamp(4rem, 8vw, 6rem); }
+.tpl-design-05-cloud .st-static-layers {
+  display: grid; gap: 1rem;
+  max-width: 860px; margin-inline: auto;
+}
+.tpl-design-05-cloud .st-static-layer {
+  border: 1px dashed var(--color-line-on-dark);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1.5rem;
+  background: rgba(7, 20, 38, 0.4);
+}
+.tpl-design-05-cloud .st-static-layer:nth-child(1) { margin-inline: 0; border-color: rgba(56,189,248,.35); }
+.tpl-design-05-cloud .st-static-layer:nth-child(2) { margin-inline: clamp(0.6rem, 3vw, 2rem); border-color: rgba(56,189,248,.5); }
+.tpl-design-05-cloud .st-static-layer:nth-child(3) { margin-inline: clamp(1.2rem, 6vw, 4rem); border-color: rgba(45,212,191,.5); }
+.tpl-design-05-cloud .st-static-layer:nth-child(4) { margin-inline: clamp(1.8rem, 9vw, 6rem); border-color: rgba(45,212,191,.75); }
+.tpl-design-05-cloud .st-static-layer h3 {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin: 0 0 0.4rem;
+  color: var(--color-text-on-dark); display: flex; align-items: center; gap: 0.7rem;
+}
+.tpl-design-05-cloud .st-static-layer h3 .st-tag {
+  font-size: 0.68rem; letter-spacing: 0.2em; color: var(--color-teal); font-weight: 700;
+}
+.tpl-design-05-cloud .st-static-layer p { margin: 0 0 0.9rem; color: var(--color-muted-on-dark); font-size: 0.92rem; }
+.tpl-design-05-cloud .st-static-layer .st-layer-chips { position: static; transform: none; justify-content: flex-start; width: auto; max-width: none; }
+
+/* ---------- products ---------- */
+.tpl-design-05-cloud .st-products { background: var(--color-background); }
+.tpl-design-05-cloud .st-products-head {
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap;
+  margin-bottom: clamp(2.2rem, 4vw, 3.4rem);
+}
+.tpl-design-05-cloud .st-products-grid {
+  display: grid; gap: 1.4rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+.tpl-design-05-cloud .st-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  /* `translate` for hover: GSAP owns `transform` for the staggered reveal */
+  transition: translate 0.35s ease, box-shadow 0.35s ease;
+}
+.tpl-design-05-cloud .st-card:hover {
+  translate: 0 -6px;
+  box-shadow: var(--shadow-card);
+}
+.tpl-design-05-cloud .st-card-media { aspect-ratio: 4 / 3; overflow: hidden; position: relative; }
+.tpl-design-05-cloud .st-card-media .a-img { width: 100%; height: 100%; }
+.tpl-design-05-cloud .st-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.tpl-design-05-cloud .st-card:hover .st-card-media img { transform: scale(1.05); }
+.tpl-design-05-cloud .st-card-body { padding: 1.5rem 1.5rem 1.7rem; display: flex; flex-direction: column; gap: 0.7rem; flex: 1; }
+.tpl-design-05-cloud .st-card-tag {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--color-accent);
+}
+.tpl-design-05-cloud .st-card h3 {
+  font-family: var(--font-display); font-size: 1.45rem; font-weight: 700; letter-spacing: -0.01em; margin: 0;
+}
+.tpl-design-05-cloud .st-card-body > p { font-size: 0.92rem; color: var(--color-muted); margin: 0; }
+.tpl-design-05-cloud .st-card-specs { list-style: none; margin: 0.2rem 0 0; padding: 0; display: grid; gap: 0.45rem; }
+.tpl-design-05-cloud .st-card-specs li {
+  font-size: 0.85rem; font-weight: 500; color: var(--color-text);
+  display: flex; align-items: center; gap: 0.55rem;
+}
+.tpl-design-05-cloud .st-card-specs li::before {
+  content: ''; width: 7px; height: 7px; border-radius: 2px; flex: none;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-teal));
+}
+.tpl-design-05-cloud .st-card-link {
+  margin-top: auto; padding-top: 0.8rem;
+  font-family: var(--font-display); font-weight: 600; font-size: 0.92rem;
+  color: var(--color-primary);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.tpl-design-05-cloud .st-card-link:hover { color: var(--color-accent); }
+.tpl-design-05-cloud .st-card-link .st-arrow { transition: transform 0.25s ease; }
+.tpl-design-05-cloud .st-card-link:hover .st-arrow { transform: translateX(4px); }
+
+/* ---------- regions ---------- */
+.tpl-design-05-cloud .st-regions {
+  background: linear-gradient(180deg, var(--color-primary-deep), var(--color-primary) 60%, var(--color-navy-mid));
+  color: var(--color-text-on-dark);
+}
+.tpl-design-05-cloud .st-regions-head { text-align: center; margin-bottom: clamp(2rem, 4vw, 3.2rem); }
+.tpl-design-05-cloud .st-regions-head .st-h2 { margin-inline: auto; }
+.tpl-design-05-cloud .st-regions-head .st-lede { margin-inline: auto; }
+.tpl-design-05-cloud .st-map {
+  position: relative;
+  border: 1px solid var(--color-line-on-dark);
+  border-radius: var(--radius-lg);
+  background: rgba(7, 20, 38, 0.5);
+  overflow: hidden;
+  margin-bottom: 2.2rem;
+}
+.tpl-design-05-cloud .st-map svg { display: block; width: 100%; height: auto; }
+.tpl-design-05-cloud .st-pin {
+  position: absolute;
+  width: 12px; height: 12px;
+  transform: translate(-50%, -50%);
+  animation: st-drift 5s ease-in-out infinite;
+}
+.tpl-design-05-cloud .st-pin::before {
+  content: ''; position: absolute; inset: 2px; border-radius: 50%;
+  background: var(--color-teal);
+  box-shadow: 0 0 10px 1px rgba(45, 212, 191, 0.9);
+}
+.tpl-design-05-cloud .st-pin::after {
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  border: 1px solid rgba(45, 212, 191, 0.6);
+  animation: st-ping 2.8s ease-out infinite;
+}
+/* drift on `translate` (composited) — animating margin-top re-laid out the
+   page on every frame for all 28 pins */
+@keyframes st-drift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
+@keyframes st-ping {
+  0% { transform: scale(0.5); opacity: 1; }
+  80%, 100% { transform: scale(1.9); opacity: 0; }
+}
+.tpl-design-05-cloud .st-region-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem 1.4rem;
+}
+.tpl-design-05-cloud .st-region {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--color-line-on-dark);
+  padding-bottom: 0.55rem;
+}
+.tpl-design-05-cloud .st-region b { font-weight: 600; color: var(--color-text-on-dark); }
+.tpl-design-05-cloud .st-region code {
+  margin-left: auto; font-size: 0.75rem; color: var(--color-muted-on-dark);
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+}
+.tpl-design-05-cloud .st-region-count {
+  text-align: center; margin-top: 1.8rem;
+  font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--color-teal);
+}
+
+/* ---------- metrics ---------- */
+.tpl-design-05-cloud .st-metrics {
+  background: var(--color-primary-deep);
+  color: var(--color-text-on-dark);
+  padding: clamp(3.4rem, 6vw, 5rem) 0;
+  border-top: 1px solid var(--color-line-on-dark);
+  border-bottom: 1px solid var(--color-line-on-dark);
+}
+.tpl-design-05-cloud .st-metrics-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  text-align: center;
+}
+.tpl-design-05-cloud .st-metric-value {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2.2rem, 4.6vw, 3.4rem); letter-spacing: -0.02em;
+  background: linear-gradient(120deg, var(--color-white), var(--st-accent-lite));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  line-height: 1.1;
+}
+.tpl-design-05-cloud .st-metric-label {
+  font-size: 0.85rem; color: var(--color-muted-on-dark); margin-top: 0.5rem;
+  max-width: 22ch; margin-inline: auto;
+}
+
+/* ---------- pricing calculator ---------- */
+.tpl-design-05-cloud .st-pricing { background: var(--color-background); }
+.tpl-design-05-cloud .st-calc {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 1.4rem;
+  margin-top: clamp(2.2rem, 4vw, 3.4rem);
+}
+.tpl-design-05-cloud .st-calc-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+}
+.tpl-design-05-cloud .st-slider-row { margin-bottom: 2rem; }
+.tpl-design-05-cloud .st-slider-row:last-of-type { margin-bottom: 0; }
+.tpl-design-05-cloud .st-slider-head {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+.tpl-design-05-cloud .st-slider-head label {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+}
+.tpl-design-05-cloud .st-slider-head label small {
+  display: block; font-family: var(--font-body); font-weight: 400;
+  font-size: 0.82rem; color: var(--color-muted);
+}
+.tpl-design-05-cloud .st-slider-val {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.2rem;
+  color: var(--color-primary); white-space: nowrap;
+}
+.tpl-design-05-cloud .st-range {
+  width: 100%; appearance: none; -webkit-appearance: none;
+  height: 6px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-accent) var(--fill, 20%), var(--color-line) var(--fill, 20%));
+  outline: none; cursor: pointer;
+}
+.tpl-design-05-cloud .st-range::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--color-primary);
+  border: 3px solid var(--color-accent);
+  box-shadow: 0 4px 12px rgba(11, 27, 51, 0.35);
+}
+.tpl-design-05-cloud .st-range::-moz-range-thumb {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--color-primary); border: 3px solid var(--color-accent);
+}
+.tpl-design-05-cloud .st-calc-total {
+  background: linear-gradient(150deg, var(--color-primary) 0%, var(--color-primary-soft) 100%);
+  color: var(--color-text-on-dark);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+  display: flex; flex-direction: column;
+  box-shadow: var(--shadow-card);
+  position: relative; overflow: hidden;
+}
+.tpl-design-05-cloud .st-calc-total::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(70% 50% at 80% 0%, rgba(56, 189, 248, 0.22), transparent 60%);
+  pointer-events: none;
+}
+.tpl-design-05-cloud .st-total-label {
+  font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--color-muted-on-dark); margin: 0 0 0.6rem; position: relative;
+}
+.tpl-design-05-cloud .st-total-value {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2.6rem, 5vw, 3.8rem); letter-spacing: -0.02em;
+  margin: 0 0 0.3rem; position: relative;
+}
+.tpl-design-05-cloud .st-total-per { color: var(--color-muted-on-dark); font-size: 0.9rem; margin: 0 0 1.6rem; position: relative; }
+.tpl-design-05-cloud .st-total-lines { list-style: none; margin: 0 0 1.8rem; padding: 0; display: grid; gap: 0.7rem; position: relative; }
+.tpl-design-05-cloud .st-total-lines li {
+  display: flex; justify-content: space-between; gap: 1rem;
+  font-size: 0.9rem; color: rgba(238, 244, 251, 0.8);
+  border-bottom: 1px dashed rgba(120, 170, 220, 0.25);
+  padding-bottom: 0.7rem;
+}
+.tpl-design-05-cloud .st-total-lines li b { font-family: var(--font-display); color: var(--color-white); }
+.tpl-design-05-cloud .st-calc-total .st-btn { position: relative; justify-content: center; }
+.tpl-design-05-cloud .st-calc-note {
+  margin: 1.2rem 0 0; font-size: 0.82rem; color: var(--color-muted);
+  display: flex; gap: 0.5rem; align-items: flex-start;
+}
+
+/* ---------- docs strip ---------- */
+.tpl-design-05-cloud .st-docs { background: var(--color-surface); border-top: 1px solid var(--color-line); }
+.tpl-design-05-cloud .st-docs-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+.tpl-design-05-cloud .st-doc {
+  border: 1px solid var(--color-line); border-radius: var(--radius-md);
+  padding: 1.7rem; transition: border-color 0.25s ease, translate 0.25s ease;
+  display: block;
+}
+.tpl-design-05-cloud .st-doc:hover { border-color: var(--color-accent); translate: 0 -4px; }
+.tpl-design-05-cloud .st-doc h3 {
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.tpl-design-05-cloud .st-doc h3 .st-arrow { color: var(--color-accent); }
+.tpl-design-05-cloud .st-doc p { margin: 0; font-size: 0.9rem; color: var(--color-muted); }
+
+/* ---------- CTA ---------- */
+.tpl-design-05-cloud .st-cta {
+  background:
+    radial-gradient(90% 120% at 50% 120%, rgba(45, 212, 191, 0.18), transparent 55%),
+    radial-gradient(70% 90% at 50% -20%, rgba(56, 189, 248, 0.16), transparent 55%),
+    var(--color-primary-deep);
+  color: var(--color-text-on-dark);
+  text-align: center;
+}
+.tpl-design-05-cloud .st-cta .st-h2 { margin-inline: auto; font-size: clamp(2.2rem, 5vw, 3.6rem); }
+.tpl-design-05-cloud .st-cta p {
+  color: var(--color-muted-on-dark); max-width: 52ch; margin: 0 auto 2.4rem; font-size: 1.05rem;
+}
+.tpl-design-05-cloud .st-cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.tpl-design-05-cloud .st-cta .st-btn-ghost { border-color: rgba(120,170,220,0.4); color: var(--color-text-on-dark); }
+
+/* ---------- footer ---------- */
+.tpl-design-05-cloud .st-footer {
+  background: var(--color-abyss);
+  color: var(--color-muted-on-dark);
+  padding: clamp(3.5rem, 6vw, 5rem) 0 2rem;
+}
+.tpl-design-05-cloud .st-footer-grid {
+  display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 2.4rem;
+  margin-bottom: 3rem;
+}
+.tpl-design-05-cloud .st-footer-brand p { font-size: 0.9rem; max-width: 30ch; margin: 1rem 0 1.2rem; }
+.tpl-design-05-cloud .st-footer-brand .st-wordmark { color: var(--color-white); }
+.tpl-design-05-cloud .st-footer-mail { color: var(--st-accent-lite); font-size: 0.9rem; }
+.tpl-design-05-cloud .st-footer-mail:hover { text-decoration: underline; }
+.tpl-design-05-cloud .st-footer h4 {
+  font-family: var(--font-display); font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-white); margin: 0 0 1.1rem;
+}
+.tpl-design-05-cloud .st-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.tpl-design-05-cloud .st-footer ul a { font-size: 0.9rem; }
+.tpl-design-05-cloud .st-footer ul a:hover { color: var(--color-accent); }
+.tpl-design-05-cloud .st-footer-bottom {
+  border-top: 1px solid rgba(120, 170, 220, 0.16);
+  padding-top: 1.6rem;
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  font-size: 0.82rem;
+}
+.tpl-design-05-cloud .st-footer-status { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-teal); }
+
+/* ---------- reveal defaults (JS animates .st-rv) ----------
+   No permanent will-change here: it kept dozens of idle compositor layers
+   alive for the whole page. GSAP promotes elements while they tween. */
+
+/* ---------- responsive ---------- */
+@media (max-width: 1023px) {
+  .tpl-design-05-cloud .st-products-grid { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-05-cloud .st-region-grid { grid-template-columns: repeat(3, 1fr); }
+  .tpl-design-05-cloud .st-docs-grid { grid-template-columns: 1fr; }
+  .tpl-design-05-cloud .st-footer-grid { grid-template-columns: 1fr 1fr; }
+  .tpl-design-05-cloud .st-topo-pin { grid-template-columns: 1fr; }
+  .tpl-design-05-cloud .st-topo-side { min-height: 0; }
+  .tpl-design-05-cloud .st-info { position: relative; inset: auto; }
+  .tpl-design-05-cloud .st-topo-stage { height: min(calc(var(--tpl-vh, 100svh) * 0.64), 560px); }
+}
+@media (max-width: 767px) {
+  .tpl-design-05-cloud .st-nav-links { display: none; }
+  .tpl-design-05-cloud .st-signin { display: none; }
+  .tpl-design-05-cloud .st-hero-title { font-size: clamp(2.5rem, 11vw, 3.4rem); }
+  .tpl-design-05-cloud .st-products-grid { grid-template-columns: 1fr; }
+  .tpl-design-05-cloud .st-region-grid { grid-template-columns: repeat(2, 1fr); }
+  /* name over code: two columns are too narrow for both on one line */
+  .tpl-design-05-cloud .st-region { flex-direction: column; align-items: flex-start; gap: 0.1rem; }
+  .tpl-design-05-cloud .st-region code { margin-left: 0; white-space: nowrap; }
+  .tpl-design-05-cloud { --st-nav-h: 64px; }
+  .tpl-design-05-cloud .st-metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-05-cloud .st-calc { grid-template-columns: 1fr; }
+  .tpl-design-05-cloud .st-footer-grid { grid-template-columns: 1fr; }
+  .tpl-design-05-cloud .st-scroll-cue { display: none; }
+  /* pinned topology mechanic becomes the static diagram under 768px */
+  .tpl-design-05-cloud .st-topo-pin { display: none; }
+  .tpl-design-05-cloud .st-topo-static { display: block; }
+}
+
+/* ---------- reduced motion: everything static & visible ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-05-cloud .st-topo-pin { display: none; }
+  .tpl-design-05-cloud .st-topo-static { display: block; }
+  .tpl-design-05-cloud .st-pin,
+  .tpl-design-05-cloud .st-pin::after,
+  .tpl-design-05-cloud .st-status-dot::after,
+  .tpl-design-05-cloud .st-scroll-cue::after {
+    animation: none;
+  }
+  .tpl-design-05-cloud .st-info { opacity: 1; visibility: visible; transform: none; }
+}

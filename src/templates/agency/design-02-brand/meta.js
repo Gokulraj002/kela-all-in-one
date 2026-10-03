@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-02-brand',
+  num: '02',
+  name: 'Mark & Matter',
+  tag: 'Brand Identity',
+  style: 'Methodical editorial brand book — process as product',
+  animation: 'M2 process spine scrub; word-mask headlines; hard image wipes',
+  typography: 'Instrument Serif + Inter',
+  layout: 'Editorial spreads on bone panels; vertical process spine with phase nodes',
+  mood: 'Rigorous, considered, enduring',
+  palette: 'Bone / espresso / ochre',
+  features: [
+    'Scrubbed process spine — Discover / Define / Design / Deliver',
+    'Case cards with construction-grid hover overlay',
+    'Deliverable collages slide in from alternating sides',
+    'Discovery-call booking form with budget bands',
+    'Studio principals + philosophy section',
+  ],
+  fonts: { display: 'Instrument Serif', body: 'Inter' },
+  colors: { primary: '#2A2118', accent: '#C68A2E' },
+};

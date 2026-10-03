@@ -1,0 +1,913 @@
+/* design-09-trust · "Sahaj Homes" — trust-led affordable housing.
+   Tokens live on the scope class only. Never :root, never hardcoded hex. */
+
+.tpl-design-09-trust {
+  --color-primary: #2A2620;
+  --color-secondary: #5A7A4E;
+  --color-accent: #B4552D;
+  --color-background: #FBFAF7;
+  --color-surface: #FFFFFF;
+  --color-paper: #F4F0E6;
+  --color-line: #E4DDCC;
+  --color-text: #2A2620;
+  --color-muted: #6F6557;
+  --font-display: 'Source Serif 4', Georgia, serif;
+  --font-body: 'Public Sans', system-ui, -apple-system, sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tpl-design-09-trust *,
+.tpl-design-09-trust *::before,
+.tpl-design-09-trust *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-09-trust img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ——— Type ——— */
+.tpl-design-09-trust .sh-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.1rem;
+}
+
+.tpl-design-09-trust .sh-h2 {
+  font-family: var(--font-display);
+  font-weight: 560;
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.4rem;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+
+.tpl-design-09-trust .sh-h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  margin: 0 0 0.6rem;
+}
+
+.tpl-design-09-trust .sh-lede {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.75;
+  color: var(--color-muted);
+  max-width: 62ch;
+  margin: 0 0 3rem;
+}
+
+.tpl-design-09-trust .sh-body {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.tpl-design-09-trust .sh-rule {
+  display: block;
+  height: 2px;
+  background: var(--color-accent);
+  width: 72px;
+  margin: 0 0 2.2rem;
+  transform-origin: left center;
+}
+
+/* word-mask headline */
+.tpl-design-09-trust .sh-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-09-trust .sh-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ——— Layout ——— */
+.tpl-design-09-trust .sh-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+.tpl-design-09-trust section {
+  padding-top: clamp(96px, 12vw, 180px);
+  padding-bottom: clamp(96px, 12vw, 180px);
+}
+
+/* ——— Nav ——— */
+.tpl-design-09-trust .sh-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
+  /* near-opaque, no backdrop blur: re-blurring the scrolling page under the
+     sticky bar every frame was the heaviest paint on screen */
+  background: color-mix(in srgb, var(--color-background) 98%, transparent);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-09-trust .sh-wordmark {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: 1.35rem;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.tpl-design-09-trust .sh-links {
+  display: flex;
+  gap: 1.9rem;
+}
+.tpl-design-09-trust .sh-links a {
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.tpl-design-09-trust .sh-links a:hover {
+  color: var(--color-accent);
+}
+
+.tpl-design-09-trust .sh-cta {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: var(--color-text);
+  border: 1.5px solid var(--color-text);
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  white-space: nowrap;
+}
+.tpl-design-09-trust .sh-cta:hover {
+  background: var(--color-text);
+  color: var(--color-background);
+}
+.tpl-design-09-trust .sh-cta-solid {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-background);
+}
+.tpl-design-09-trust .sh-cta-solid:hover {
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-background);
+}
+.tpl-design-09-trust .sh-cta-ghost {
+  background: transparent;
+}
+
+/* ——— Hero ——— */
+.tpl-design-09-trust .sh-hero {
+  padding-top: clamp(48px, 7vw, 96px);
+}
+.tpl-design-09-trust .sh-hero-frame {
+  margin: 0 clamp(1.25rem, 4vw, 3rem) clamp(2.5rem, 5vw, 4.5rem);
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 16 / 8.2;
+  background: var(--color-paper);
+}
+.tpl-design-09-trust .sh-hero-copy {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+.tpl-design-09-trust .sh-hero-title {
+  font-family: var(--font-display);
+  font-weight: 560;
+  font-size: clamp(2.6rem, 6.4vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.4rem;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+.tpl-design-09-trust .sh-hero-sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  line-height: 1.7;
+  color: var(--color-muted);
+  max-width: 58ch;
+  margin: 0 0 1.8rem;
+}
+.tpl-design-09-trust .sh-hero-badges {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 0 0 2.2rem;
+  padding: 0;
+}
+.tpl-design-09-trust .sh-hero-badges li {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+}
+.tpl-design-09-trust .sh-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ——— Homes ——— */
+.tpl-design-09-trust .sh-homes {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-09-trust .sh-home-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+.tpl-design-09-trust .sh-home-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.tpl-design-09-trust .sh-home-img {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.tpl-design-09-trust .sh-home-body {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+.tpl-design-09-trust .sh-home-status {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 0.7rem;
+}
+.tpl-design-09-trust .sh-home-meta {
+  color: var(--color-muted);
+  font-size: 0.98rem;
+  margin: 0 0 1.1rem;
+}
+.tpl-design-09-trust .sh-home-price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  color: var(--color-accent);
+  margin: 0 0 1.2rem;
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-09-trust .sh-textlink {
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+}
+.tpl-design-09-trust .sh-textlink:hover {
+  color: var(--color-accent);
+}
+
+/* ——— Pricing ledger ——— */
+.tpl-design-09-trust .sh-pricing {
+  padding-bottom: 0;
+}
+.tpl-design-09-trust .sh-ledger-pin {
+  max-width: 1200px;
+  margin: clamp(2rem, 5vw, 4rem) auto 0;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+  padding-bottom: clamp(48px, 6vw, 96px);
+}
+.tpl-design-09-trust .sh-ledger {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+  box-shadow: 0 24px 60px -32px color-mix(in srgb, var(--color-text) 28%, transparent);
+}
+.tpl-design-09-trust .sh-ledger-total {
+  position: sticky;
+  top: calc(var(--sh-nav-h, 62px) + 14px);
+  z-index: 5;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  padding: 1rem 1.4rem;
+  margin-bottom: 1.8rem;
+}
+.tpl-design-09-trust .sh-ledger-total-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-09-trust .sh-ledger-total-value {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-09-trust .sh-ledger-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* window + track around the lines (plain blocks in the static ledger) */
+.tpl-design-09-trust .sh-ledger-track { position: relative; }
+
+/* Pinned ledger (desktop + motion): it fills the visible scroll area below
+   the sticky nav; the running total stays put at the top of the card and
+   the lines + seal ride a track that slides up inside the card, so the
+   arriving line and the closing seal are always in view. */
+.tpl-design-09-trust .sh-ledger-pin.is-pinned {
+  height: var(--tpl-vh, 100svh);
+  margin-top: 0;
+  padding-top: calc(var(--sh-nav-h, 62px) + 18px);
+  padding-bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.tpl-design-09-trust .sh-ledger-pin.is-pinned .sh-ledger {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(1.1rem, 2.2vw, 1.8rem);
+  padding-bottom: 0;
+}
+.tpl-design-09-trust .sh-ledger-pin.is-pinned .sh-ledger-total {
+  position: relative;
+  top: auto;
+  flex: none;
+  margin-bottom: 0.6rem;
+}
+.tpl-design-09-trust .sh-ledger-pin.is-pinned .sh-ledger-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  /* soft fade where lines slide out under the running total */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 10px), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 10px), transparent 100%);
+}
+.tpl-design-09-trust .sh-ledger-pin.is-pinned .sh-ledger-track { will-change: transform; padding-top: 10px; }
+.tpl-design-09-trust .sh-ledger-pin.is-pinned .sh-line { padding: 1.1rem 0; }
+.tpl-design-09-trust .sh-ledger-pin.is-pinned .sh-line-bar { margin-top: 0.7rem; }
+.tpl-design-09-trust .sh-ledger-pin.is-pinned .sh-ledger-hint { flex: none; margin: 0; padding: 12px 0 14px; }
+.tpl-design-09-trust .sh-line {
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-09-trust .sh-line:last-child {
+  border-bottom: none;
+}
+.tpl-design-09-trust .sh-line-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: baseline;
+  gap: 0.6rem 1.2rem;
+}
+.tpl-design-09-trust .sh-line-index {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-09-trust .sh-line-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 0 0 0.35rem;
+}
+.tpl-design-09-trust .sh-line-note {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 56ch;
+}
+.tpl-design-09-trust .sh-line-share {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  white-space: nowrap;
+}
+.tpl-design-09-trust .sh-line-amt {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: 1.45rem;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
+}
+.tpl-design-09-trust .sh-line-bar {
+  margin-top: 1rem;
+  height: 10px;
+  background: var(--color-paper);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.tpl-design-09-trust .sh-line-fill {
+  display: block;
+  height: 100%;
+  width: var(--w, 50%);
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
+  border-radius: 999px;
+  transform-origin: left center;
+}
+.tpl-design-09-trust .sh-ledger-final {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2.2rem;
+  padding-top: 2.2rem;
+  border-top: 2px solid var(--color-text);
+}
+.tpl-design-09-trust .sh-ledger-final-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 0.5rem;
+}
+.tpl-design-09-trust .sh-ledger-final-value {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1;
+  color: var(--color-text);
+  margin: 0 0 1rem;
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-09-trust .sh-ledger-footnote {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 52ch;
+}
+/* the seal */
+.tpl-design-09-trust .sh-seal {
+  width: clamp(120px, 16vw, 168px);
+  aspect-ratio: 1;
+  border: 2.5px solid var(--color-secondary);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transform: rotate(-8deg);
+  flex-shrink: 0;
+}
+.tpl-design-09-trust .sh-seal-inner {
+  display: block;
+  width: 86%;
+  aspect-ratio: 1;
+  border: 1.5px dashed var(--color-secondary);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  padding: 0.8rem;
+  line-height: 1.4;
+}
+.tpl-design-09-trust .sh-ledger-hint {
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 1.6rem 0 0;
+}
+
+/* ——— Progress ——— */
+.tpl-design-09-trust .sh-progress {
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-09-trust .sh-progress-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+.tpl-design-09-trust .sh-progress-img {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+}
+.tpl-design-09-trust .sh-progress-img figcaption {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  padding: 0.9rem 0.2rem 0;
+}
+.tpl-design-09-trust .sh-progress-meter-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0 0 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-09-trust .sh-progress-meter-bar {
+  height: 12px;
+  background: var(--color-line);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.tpl-design-09-trust .sh-progress-meter-bar span {
+  display: block;
+  height: 100%;
+  background: var(--color-secondary);
+  border-radius: 999px;
+}
+.tpl-design-09-trust .sh-milestones {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tpl-design-09-trust .sh-milestone {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--color-line);
+  align-items: baseline;
+}
+.tpl-design-09-trust .sh-milestone-when {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tpl-design-09-trust .sh-milestone-what {
+  font-size: 1rem;
+}
+.tpl-design-09-trust .sh-milestone.is-done .sh-milestone-when {
+  color: var(--color-secondary);
+}
+.tpl-design-09-trust .sh-milestone.is-current {
+  background: var(--color-surface);
+  border: 1px solid var(--color-accent);
+  border-radius: 10px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.tpl-design-09-trust .sh-milestone.is-current .sh-milestone-when {
+  color: var(--color-accent);
+}
+.tpl-design-09-trust .sh-quality {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: center;
+}
+.tpl-design-09-trust .sh-quality-img {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+
+/* ——— Film: the handover, scrubbed by scroll ——— */
+/* The scrub stage pins full-bleed inside the story section with a short
+   pinDistance (+=120%), so the frames feel like the handover story
+   unfolding rather than a hero. Stage height/position/overflow are applied
+   inline by ScrollFrames via the stageHeight prop; this stylesheet only
+   positions our overlay card. Spacing above the pin keeps the section
+   header breathing room; the section's own padding handles the rest. */
+.tpl-design-09-trust .sh-film .sf-wrap {
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+.tpl-design-09-trust .sh-film .sf-overlay {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+/* opaque caption card: a backdrop blur over the scrubbed canvas would be
+   recomputed on every frame of the sequence */
+.tpl-design-09-trust .sh-film-overlay {
+  margin: 0 clamp(1.25rem, 4vw, 3rem) clamp(1.25rem, 4vh, 2.5rem);
+  max-width: 62ch;
+  padding: clamp(1rem, 2.4vw, 1.6rem) clamp(1.25rem, 3vw, 2rem);
+  background: color-mix(in srgb, var(--color-background) 96%, transparent);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+}
+.tpl-design-09-trust .sh-film-caption {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+/* Reduced-motion static fallback: first frame as a plain image, the
+   caption card laid over it — no pin, no scrub, all content visible. */
+.tpl-design-09-trust .sh-film .sf-static {
+  position: relative;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+.tpl-design-09-trust .sh-film .sf-static-img {
+  width: 100%;
+  height: clamp(360px, 62svh, 620px);
+  object-fit: cover;
+  display: block;
+}
+
+/* ——— Voices ——— */
+.tpl-design-09-trust .sh-voices {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-09-trust .sh-voices-img {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 8;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.tpl-design-09-trust .sh-voice-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.tpl-design-09-trust .sh-voice {
+  margin: 0;
+  background: var(--color-background);
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+.tpl-design-09-trust .sh-voice-text {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  line-height: 1.55;
+  margin: 0;
+}
+.tpl-design-09-trust .sh-voice-text::before {
+  content: '“';
+  display: block;
+  font-size: 2.6rem;
+  line-height: 0.6;
+  color: var(--color-accent);
+  margin-bottom: 0.6rem;
+}
+.tpl-design-09-trust .sh-voice footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.tpl-design-09-trust .sh-voice-name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+.tpl-design-09-trust .sh-voice-detail {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+}
+
+/* ——— Footer ——— */
+.tpl-design-09-trust .sh-footer {
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding-top: clamp(96px, 12vw, 180px);
+  padding-bottom: 3rem;
+}
+.tpl-design-09-trust .sh-footer .sh-eyebrow {
+  color: var(--color-accent);
+}
+.tpl-design-09-trust .sh-footer .sh-h2 {
+  color: var(--color-background);
+}
+.tpl-design-09-trust .sh-footer .sh-rule {
+  background: var(--color-accent);
+}
+.tpl-design-09-trust .sh-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.tpl-design-09-trust .sh-address {
+  font-style: normal;
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--color-background);
+}
+.tpl-design-09-trust .sh-address a {
+  color: var(--color-background);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 4px;
+}
+.tpl-design-09-trust .sh-contact-side .sh-body {
+  color: var(--color-background);
+  opacity: 0.85;
+  margin-bottom: 0.8rem;
+}
+.tpl-design-09-trust .sh-rera {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin: 0 0 1.8rem;
+  letter-spacing: 0.04em;
+}
+.tpl-design-09-trust .sh-footer .sh-cta {
+  color: var(--color-background);
+  border-color: var(--color-background);
+}
+.tpl-design-09-trust .sh-footer .sh-cta:hover {
+  background: var(--color-background);
+  color: var(--color-primary);
+}
+.tpl-design-09-trust .sh-footer-base {
+  border-top: 1px solid color-mix(in srgb, var(--color-background) 22%, transparent);
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  justify-content: space-between;
+}
+.tpl-design-09-trust .sh-footer-line {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0;
+}
+.tpl-design-09-trust .sh-colophon {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* ——— Mobile quick bar ——— */
+.tpl-design-09-trust .sh-quickbar {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: none;
+  background: var(--color-primary);
+  border-radius: 999px;
+  padding: 0.35rem;
+  box-shadow: 0 16px 40px -12px color-mix(in srgb, var(--color-text) 45%, transparent);
+}
+.tpl-design-09-trust .sh-quickbar a {
+  flex: 1;
+  text-align: center;
+  color: var(--color-background);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 999px;
+}
+.tpl-design-09-trust .sh-quickbar a:first-child {
+  background: var(--color-accent);
+}
+
+/* ——— Skeleton / fallback hooks from shared primitives ——— */
+.tpl-design-09-trust .a-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-paper);
+}
+
+/* ——— Responsive ——— */
+@media (max-width: 767px) {
+  .tpl-design-09-trust .sh-links {
+    display: none;
+  }
+  .tpl-design-09-trust .sh-nav .sh-cta {
+    font-size: 0.82rem;
+    padding: 0.6rem 1.1rem;
+  }
+  .tpl-design-09-trust .sh-hero-frame {
+    aspect-ratio: 4 / 3.4;
+  }
+  .tpl-design-09-trust .sh-quickbar {
+    display: flex;
+  }
+  .tpl-design-09-trust .sh-line-head {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'index amt'
+      'name name'
+      'share share';
+    row-gap: 0.5rem;
+  }
+  .tpl-design-09-trust .sh-line-index { grid-area: index; }
+  .tpl-design-09-trust .sh-line-namewrap { grid-area: name; }
+  .tpl-design-09-trust .sh-line-share { grid-area: share; justify-self: start; }
+  .tpl-design-09-trust .sh-line-amt { grid-area: amt; }
+  .tpl-design-09-trust .sh-ledger-final {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+  .tpl-design-09-trust .sh-ledger-total {
+    top: calc(var(--sh-nav-h, 56px) + 12px);
+  }
+  /* The ledger renders complete and static below 768px — no hint needed. */
+  .tpl-design-09-trust .sh-ledger-hint {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .tpl-design-09-trust .sh-home-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tpl-design-09-trust .sh-progress-grid {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: start;
+  }
+  .tpl-design-09-trust .sh-quality {
+    grid-template-columns: 1fr 1.2fr;
+  }
+  .tpl-design-09-trust .sh-voice-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .tpl-design-09-trust .sh-contact-grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
+  .tpl-design-09-trust .sh-quickbar {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .tpl-design-09-trust .sh-wrap,
+  .tpl-design-09-trust .sh-ledger-pin,
+  .tpl-design-09-trust .sh-hero-copy {
+    max-width: 1320px;
+  }
+}
+
+/* ——— Reduced motion ——— */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-09-trust *,
+  .tpl-design-09-trust *::before,
+  .tpl-design-09-trust *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .tpl-design-09-trust .sh-quickbar {
+    transform: none !important;
+  }
+}

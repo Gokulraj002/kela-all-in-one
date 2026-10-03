@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-05-cloud',
+  num: '05',
+  name: 'Stratus',
+  tag: 'Cloud Infrastructure',
+  style: 'Data-visualization led',
+  animation: 'Topology zoom, data draw-ons',
+  typography: 'Outfit + Inter',
+  layout: 'Layered topology, airy sections',
+  mood: 'Expansive, reliable, engineered',
+  palette: 'Deep navy / sky / teal',
+  features: [
+    'Scroll-zoomed topology layers',
+    'Region map',
+    'Pricing calculator teaser',
+    'Metrics band',
+  ],
+  fonts: { display: 'Outfit', body: 'Inter' },
+  colors: { primary: '#0B1B33', accent: '#38BDF8' },
+};

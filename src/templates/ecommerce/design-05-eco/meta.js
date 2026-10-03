@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-05-eco',
+  num: '05',
+  name: 'Terra & Thread',
+  tag: 'Eco',
+  style: 'Earthy sustainable store',
+  animation: 'Growth timeline bloom',
+  typography: 'Fraunces + Manrope',
+  layout: 'Editorial with drawn timeline',
+  mood: 'Honest, warm, grounded',
+  palette: 'Cream / moss / clay',
+  features: [
+    'Growth timeline product flow',
+    'Impact counters',
+    'Demo cart',
+    'Material stories',
+    'Carbon-neutral shipping',
+  ],
+  fonts: { display: 'Fraunces', body: 'Manrope' },
+  colors: { primary: '#2A2620', accent: '#4A5D3A' },
+};

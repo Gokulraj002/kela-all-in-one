@@ -1,0 +1,743 @@
+/* ============================================================
+   PARADOX ATELIER · design-10-avant
+   Runway-theatrical avant-garde — carbon / bone / acid lime,
+   one crimson thread. Syne + Space Mono.
+   All tokens scoped to .tpl-design-10-avant (never :root).
+   ============================================================ */
+
+.tpl-design-10-avant {
+  --color-background: #131313;
+  --color-surface: #1f1f1f;
+  --color-primary: #edeae2;
+  --color-accent: #c6f135;
+  --color-text: #edeae2;
+  --color-muted: #7c7a72;
+  --color-crimson: #d61f3c;
+  --color-line: rgba(237, 234, 226, 0.14);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Space Mono', monospace;
+
+  position: relative;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: clip;
+  cursor: default;
+}
+
+.tpl-design-10-avant *,
+.tpl-design-10-avant *::before,
+.tpl-design-10-avant *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-10-avant img { display: block; max-width: 100%; }
+.tpl-design-10-avant a { color: inherit; }
+.tpl-design-10-avant button { font: inherit; color: inherit; background: none; border: 0; padding: 0; }
+
+/* ---------- shared type ---------- */
+.tpl-design-10-avant .pa-mono {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-10-avant .pa-sec-label {
+  color: var(--color-accent);
+  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.tpl-design-10-avant .pa-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 6vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0 0 clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.tpl-design-10-avant .pa-lede {
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  color: var(--color-muted);
+  max-width: 44rem;
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+}
+
+.tpl-design-10-avant .rv-mask { display: block; overflow: hidden; }
+.tpl-design-10-avant .rv-mask > span { display: block; will-change: transform; }
+
+/* ---------- cursor: needle ring ---------- */
+.tpl-design-10-avant .pa-cursor {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  pointer-events: none;
+  will-change: transform;
+}
+.tpl-design-10-avant .pa-cursor__ring {
+  display: block;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--color-crimson);
+  border-radius: 50%;
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+}
+.tpl-design-10-avant .pa-cursor__dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 50%;
+  background: var(--color-crimson);
+}
+.tpl-design-10-avant .pa-cursor.is-hot .pa-cursor__ring {
+  width: 58px;
+  height: 58px;
+  border-color: var(--color-accent);
+}
+
+/* ---------- theatrical overlays ---------- */
+.tpl-design-10-avant .pa-blackout {
+  position: fixed;
+  inset: var(--tpl-top, 0px) 0 0 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 120;
+}
+.tpl-design-10-avant .pa-flash {
+  position: fixed;
+  inset: var(--tpl-top, 0px) 0 0 0;
+  background: var(--color-primary);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 119;
+}
+
+/* ---------- nav ---------- */
+.tpl-design-10-avant .pa-nav {
+  position: fixed;
+  top: var(--tpl-top, 0px);
+  left: 0;
+  right: 0;
+  z-index: 130;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1rem, 2.4vw, 1.75rem) clamp(1.25rem, 4vw, 3.5rem);
+  background: linear-gradient(to bottom, rgba(19, 19, 19, 0.92), rgba(19, 19, 19, 0));
+}
+.tpl-design-10-avant .pa-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.tpl-design-10-avant .pa-nav__links { display: flex; gap: clamp(1rem, 2.5vw, 2.25rem); }
+.tpl-design-10-avant .pa-nav__link { cursor: pointer; transition: color 0.25s ease; }
+.tpl-design-10-avant .pa-nav__link:hover { color: var(--color-primary); }
+.tpl-design-10-avant .pa-nav__right { display: flex; align-items: center; gap: 1rem; }
+
+.tpl-design-10-avant .pa-cta {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #131313;
+  background: var(--color-accent);
+  padding: 0.9rem 1.6rem;
+  cursor: pointer;
+  border: 0;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.tpl-design-10-avant .pa-cta:hover { transform: translateY(-2px); background: var(--color-primary); }
+.tpl-design-10-avant .pa-cta--nav { padding: 0.7rem 1.2rem; }
+
+.tpl-design-10-avant .pa-ghost {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.35rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease;
+}
+.tpl-design-10-avant .pa-ghost:hover { border-color: var(--color-accent); }
+
+.tpl-design-10-avant .pa-burger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.tpl-design-10-avant .pa-burger span {
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: var(--color-primary);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.tpl-design-10-avant .pa-burger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.tpl-design-10-avant .pa-burger.is-open span:nth-child(2) { opacity: 0; }
+.tpl-design-10-avant .pa-burger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* ---------- overlay menu ---------- */
+.tpl-design-10-avant .pa-menu {
+  position: fixed;
+  inset: var(--tpl-top, 0px) 0 0 0;
+  z-index: 125;
+  background: rgba(19, 19, 19, 0.97);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 6vw, 6rem);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.tpl-design-10-avant .pa-menu.is-open { opacity: 1; visibility: visible; }
+.tpl-design-10-avant .pa-menu__links { display: flex; flex-direction: column; gap: 0.25rem; }
+.tpl-design-10-avant .pa-menu__link {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  cursor: pointer;
+  text-align: left;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-10-avant .pa-menu__no { color: var(--color-crimson); }
+.tpl-design-10-avant .pa-menu__label {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 5vw, 3.4rem);
+  line-height: 1.15;
+  color: var(--color-primary);
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+.tpl-design-10-avant .pa-menu__link:hover .pa-menu__label { color: var(--color-accent); transform: translateX(10px); }
+.tpl-design-10-avant .pa-menu__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem 2.5rem; }
+
+/* ---------- hero — pinned scroll-driven wind-machine frames ---------- */
+.tpl-design-10-avant .pa-hero {
+  position: relative;
+  overflow: hidden;
+}
+/* ScrollFrames applies stage/canvas layout inline (stageHeight prop, default
+   100svh) — no .sf-stage/.sf-canvas rules needed. Only the flex alignment for
+   bottom-anchored hero copy is added here. */
+.tpl-design-10-avant .sf-overlay { display: flex; align-items: flex-end; }
+.tpl-design-10-avant .sf-static .sf-overlay { display: flex; align-items: flex-end; }
+.tpl-design-10-avant .pa-hero__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(19, 19, 19, 0.92) 0%, rgba(19, 19, 19, 0.25) 45%, rgba(19, 19, 19, 0.45) 100%);
+}
+.tpl-design-10-avant .pa-hero__wipe {
+  position: absolute;
+  inset: 0;
+  background: var(--color-background);
+  z-index: 3;
+  pointer-events: none;
+}
+.tpl-design-10-avant .pa-hero__lightbar {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: 34%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  opacity: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.tpl-design-10-avant .pa-hero__inner {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  padding: clamp(5rem, 10vw, 8rem) clamp(1.25rem, 5vw, 5rem) clamp(4rem, 8vw, 6.5rem);
+}
+.tpl-design-10-avant .pa-hero__eyebrow { color: var(--color-accent); margin: 0 0 1.5rem; }
+.tpl-design-10-avant .pa-hero__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  /* 12vw keeps "Beautiful" inside a 390px phone (the mask clips overflow) */
+  font-size: clamp(2.5rem, 12vw, 10.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.015em;
+  color: var(--color-primary);
+  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
+  text-transform: none;
+}
+.tpl-design-10-avant .pa-hero__title em { font-style: normal; color: var(--color-accent); }
+.tpl-design-10-avant .pa-hero__sub {
+  max-width: 34rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: var(--color-primary);
+  opacity: 0.85;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+}
+.tpl-design-10-avant .pa-hero__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2rem; }
+.tpl-design-10-avant .pa-cta--hero { font-size: 0.8rem; padding: 1.1rem 2.2rem; }
+.tpl-design-10-avant .pa-hero__scroll {
+  position: absolute;
+  right: clamp(1.25rem, 4vw, 3rem);
+  bottom: clamp(1.5rem, 3vw, 2.5rem);
+  z-index: 5;
+  writing-mode: vertical-rl;
+  color: var(--color-muted);
+}
+
+/* ---------- manifesto ---------- */
+.tpl-design-10-avant .pa-manifesto {
+  padding: clamp(6rem, 12vw, 11rem) clamp(1.25rem, 6vw, 7rem);
+  background: var(--color-background);
+}
+.tpl-design-10-avant .pa-frags {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  max-width: 62rem;
+}
+.tpl-design-10-avant .pa-frag {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4.2vw, 3.1rem);
+  line-height: 1.18;
+  color: var(--color-primary);
+  margin: 0;
+}
+.tpl-design-10-avant .pa-frag__no {
+  display: block;
+  color: var(--color-crimson);
+  margin-bottom: 0.9rem;
+}
+.tpl-design-10-avant .pa-strike {
+  background: transparent;
+  color: var(--color-accent);
+  padding: 0 0.1em;
+}
+.tpl-design-10-avant .pa-manifesto__colophon {
+  margin: clamp(3rem, 6vw, 5rem) 0 0;
+  max-width: 40rem;
+}
+
+/* ---------- threadPath: the stitched collection ---------- */
+.tpl-design-10-avant .pa-thread { position: relative; background: #0e0e0e; }
+.tpl-design-10-avant .pa-thread__pin {
+  position: relative;
+  height: 100vh;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+.tpl-design-10-avant .pa-thread__head {
+  position: absolute;
+  top: clamp(4.5rem, 9vh, 6rem);
+  left: clamp(1.25rem, 4vw, 3.5rem);
+  right: clamp(1.25rem, 4vw, 3.5rem);
+  z-index: 6;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.tpl-design-10-avant .pa-thread__head .pa-sec-label { margin: 0; }
+.tpl-design-10-avant .pa-thread__note { margin: 0; }
+
+.tpl-design-10-avant .pa-thread__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+.tpl-design-10-avant .pa-thread__path {
+  fill: none;
+  stroke: var(--color-crimson);
+  stroke-width: 2.5;
+}
+.tpl-design-10-avant .pa-thread__needle {
+  position: absolute;
+  z-index: 5;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.tpl-design-10-avant .pa-thread__needle span {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border-radius: 50%;
+  background: var(--color-crimson);
+  box-shadow: 0 0 0 5px rgba(214, 31, 60, 0.22), 0 0 18px rgba(214, 31, 60, 0.55);
+}
+
+.tpl-design-10-avant .pa-thread__frames { position: absolute; inset: 0; z-index: 3; }
+.tpl-design-10-avant .thread-stage {
+  position: absolute;
+  width: 19%;
+  margin: 0;
+}
+.tpl-design-10-avant .pa-frame-1 { left: 2%;   top: 24%; }
+.tpl-design-10-avant .pa-frame-2 { left: 21.5%; top: 8%; }
+.tpl-design-10-avant .pa-frame-3 { left: 41%;  top: 30%; }
+.tpl-design-10-avant .pa-frame-4 { left: 60.5%; top: 10%; }
+.tpl-design-10-avant .pa-frame-5 { left: 80%;  top: 26%; }
+
+.tpl-design-10-avant .thread-stage .stitch {
+  position: absolute;
+  inset: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 3;
+  pointer-events: none;
+}
+.tpl-design-10-avant .thread-stage .stitch rect {
+  fill: none;
+  stroke: var(--color-crimson);
+  stroke-width: 1.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.6s ease;
+}
+.tpl-design-10-avant .thread-stage.is-active .stitch rect { stroke-dashoffset: 0; }
+
+.tpl-design-10-avant .thread-stage__img {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-10-avant .thread-stage__img .a-img,
+.tpl-design-10-avant .thread-stage__img .a-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.tpl-design-10-avant .thread-stage__img .a-img img { object-fit: cover; }
+
+.tpl-design-10-avant .thread-stage__cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 2.2rem 0.9rem 0.9rem;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.88), transparent);
+}
+.tpl-design-10-avant .pa-frame__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 1.6vw, 1.35rem);
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+.tpl-design-10-avant .pa-frame__meta { font-size: 0.6rem; }
+.tpl-design-10-avant .pa-frame__price { color: var(--color-accent); }
+
+/* ---------- looks: running order ---------- */
+.tpl-design-10-avant .pa-looks {
+  padding: clamp(6rem, 12vw, 11rem) clamp(1.25rem, 6vw, 7rem);
+  background: var(--color-background);
+}
+.tpl-design-10-avant .pa-looks__head { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+.tpl-design-10-avant .pa-rows { border-top: 1px solid var(--color-line); }
+.tpl-design-10-avant .pa-row {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr auto auto;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem) 0;
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-10-avant .pa-row__no { color: var(--color-crimson); font-size: 0.8rem; }
+.tpl-design-10-avant .pa-row__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.6vw, 2.6rem);
+  color: var(--color-primary);
+  margin: 0 0 0.4rem;
+  line-height: 1.1;
+}
+.tpl-design-10-avant .pa-row__fabric { margin: 0; }
+.tpl-design-10-avant .pa-row__price { color: var(--color-accent); font-size: 0.85rem; white-space: nowrap; }
+.tpl-design-10-avant .pa-row__ask {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  border: 1px solid var(--color-line);
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease;
+  white-space: nowrap;
+}
+.tpl-design-10-avant .pa-row__ask:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.tpl-design-10-avant .pa-looks__note { margin: clamp(2rem, 4vw, 3rem) 0 0; max-width: 38rem; }
+
+/* ---------- process ---------- */
+.tpl-design-10-avant .pa-process {
+  padding: clamp(6rem, 12vw, 11rem) clamp(1.25rem, 6vw, 7rem);
+  background: #0e0e0e;
+}
+.tpl-design-10-avant .pa-process__grid {
+  display: grid;
+  grid-template-columns: minmax(16rem, 22rem) 1fr minmax(16rem, 24rem);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.tpl-design-10-avant .pa-mats { display: flex; flex-direction: column; border-top: 1px solid var(--color-line); }
+.tpl-design-10-avant .pa-mat {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  text-align: left;
+  padding: 1.1rem 0.25rem;
+  border-bottom: 1px solid var(--color-line);
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+.tpl-design-10-avant .pa-mat:hover { background: rgba(237, 234, 226, 0.04); }
+.tpl-design-10-avant .pa-mat.is-on { background: color-mix(in srgb, var(--color-accent) 8%, transparent); }
+.tpl-design-10-avant .pa-mat.is-on .pa-mat__name { color: var(--color-accent); }
+.tpl-design-10-avant .pa-mat__code { color: var(--color-crimson); font-size: 0.62rem; }
+.tpl-design-10-avant .pa-mat__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  transition: color 0.25s ease;
+}
+.tpl-design-10-avant .pa-matstory { animation: paMatIn 0.25s ease; }
+@keyframes paMatIn { from { opacity: 0; } to { opacity: 1; } }
+.tpl-design-10-avant .pa-matstory__code { color: var(--color-crimson); margin: 0 0 0.75rem; }
+.tpl-design-10-avant .pa-matstory__name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+  line-height: 1.1;
+}
+.tpl-design-10-avant .pa-matstory__text { color: var(--color-muted); margin: 0; max-width: 30rem; }
+
+.tpl-design-10-avant .pa-detail { margin: 0; }
+.tpl-design-10-avant .pa-detail__frame {
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--color-surface);
+  will-change: transform;
+}
+.tpl-design-10-avant .pa-detail__frame .a-img,
+.tpl-design-10-avant .pa-detail__frame .a-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.tpl-design-10-avant .pa-detail__frame .a-img img {
+  object-fit: cover;
+  transform: scale(1.08);
+}
+.tpl-design-10-avant .pa-detail figcaption { margin-top: 1rem; }
+
+.tpl-design-10-avant .pa-journal { border-top: 1px solid var(--color-line); max-width: 52rem; }
+.tpl-design-10-avant .pa-journal__row {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--color-line);
+  align-items: baseline;
+}
+.tpl-design-10-avant .pa-journal__week { color: var(--color-accent); }
+.tpl-design-10-avant .pa-journal__note { color: var(--color-primary); font-size: 0.95rem; }
+
+/* ---------- private viewings ---------- */
+.tpl-design-10-avant .pa-viewing {
+  padding: clamp(6rem, 12vw, 11rem) clamp(1.25rem, 6vw, 7rem);
+  background: var(--color-background);
+}
+.tpl-design-10-avant .pa-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  margin: clamp(2.5rem, 5vw, 4rem) 0 clamp(2rem, 3.5vw, 3rem);
+}
+.tpl-design-10-avant .pa-step {
+  border-top: 2px solid var(--color-crimson);
+  padding-top: 1.5rem;
+}
+.tpl-design-10-avant .pa-step__no { color: var(--color-crimson); display: block; margin-bottom: 0.9rem; }
+.tpl-design-10-avant .pa-step__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+}
+.tpl-design-10-avant .pa-step__desc { color: var(--color-muted); margin: 0; font-size: 0.92rem; }
+
+.tpl-design-10-avant .pa-formwrap {
+  max-width: 46rem;
+  border: 1px solid var(--color-line);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background: var(--color-surface);
+}
+.tpl-design-10-avant .pa-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+}
+.tpl-design-10-avant .pa-field { display: flex; flex-direction: column; gap: 0.7rem; }
+.tpl-design-10-avant .pa-field--wide { grid-column: 1 / -1; }
+.tpl-design-10-avant .pa-field .pa-mono { color: var(--color-muted); }
+.tpl-design-10-avant .pa-field input,
+.tpl-design-10-avant .pa-field textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.7rem 0.1rem;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.25s ease;
+}
+.tpl-design-10-avant .pa-field input:focus,
+.tpl-design-10-avant .pa-field textarea:focus { border-color: var(--color-accent); }
+.tpl-design-10-avant .pa-field input::placeholder,
+.tpl-design-10-avant .pa-field textarea::placeholder { color: #4c4a45; }
+.tpl-design-10-avant .pa-cta--form { grid-column: 1 / -1; justify-self: start; margin-top: 0.5rem; }
+.tpl-design-10-avant .pa-form__done {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  line-height: 1.35;
+  color: var(--color-primary);
+  margin: 0;
+  padding: 1rem 0;
+}
+
+/* ---------- footer ---------- */
+.tpl-design-10-avant .pa-footer {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 7rem) clamp(2.5rem, 4vw, 3.5rem);
+  background: #0a0a0a;
+  border-top: 1px solid var(--color-line);
+}
+.tpl-design-10-avant .pa-footer__frag {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 8vw, 7rem);
+  line-height: 1;
+  color: var(--color-primary);
+  margin: 0 0 clamp(3rem, 6vw, 5rem);
+  max-width: 20ch;
+}
+.tpl-design-10-avant .pa-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.tpl-design-10-avant .pa-footer__grid .pa-sec-label { margin-bottom: 1.25rem; }
+.tpl-design-10-avant .pa-footer__brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+.tpl-design-10-avant .pa-footer__grid p { margin: 0 0 0.6rem; }
+.tpl-design-10-avant .pa-footer__grid a { color: var(--color-accent); text-decoration: none; }
+.tpl-design-10-avant .pa-footer__credit { color: var(--color-muted); }
+.tpl-design-10-avant .pa-footer__line { border-top: 1px solid var(--color-line); padding-top: 1.5rem; margin: 0; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .tpl-design-10-avant .pa-process__grid { grid-template-columns: 1fr 1fr; }
+  .tpl-design-10-avant .pa-detail { grid-column: 1 / -1; max-width: 26rem; }
+}
+
+@media (max-width: 767px) {
+  .tpl-design-10-avant .pa-nav__links { display: none; }
+  .tpl-design-10-avant .pa-cta--nav { display: none; }
+
+  /* threadPath → static stacked layout (no pin) */
+  .tpl-design-10-avant .pa-thread__pin { height: auto; overflow: visible; padding: clamp(5rem, 10vw, 7rem) 0 clamp(3rem, 6vw, 4rem); }
+  .tpl-design-10-avant .pa-thread__head { position: static; padding: 0 clamp(1.25rem, 5vw, 2rem); margin-bottom: 2.5rem; }
+  .tpl-design-10-avant .pa-thread__svg,
+  .tpl-design-10-avant .pa-thread__needle { display: none; }
+  .tpl-design-10-avant .pa-thread__frames {
+    position: static;
+    display: grid;
+    gap: clamp(3rem, 8vw, 4.5rem);
+    padding: 0 clamp(1.25rem, 5vw, 2rem);
+  }
+  .tpl-design-10-avant .thread-stage { position: static; width: 100%; max-width: 26rem; }
+  .tpl-design-10-avant .thread-stage:nth-child(even) { justify-self: end; }
+  .tpl-design-10-avant .thread-stage .stitch rect { stroke-dashoffset: 0; }
+  .tpl-design-10-avant .thread-stage__cap { position: static; padding: 1rem 0 0; background: none; }
+
+  .tpl-design-10-avant .pa-row { grid-template-columns: 3rem 1fr; }
+  .tpl-design-10-avant .pa-row__price { grid-column: 2; }
+  .tpl-design-10-avant .pa-row__ask { grid-column: 2; justify-self: start; }
+
+  .tpl-design-10-avant .pa-process__grid { grid-template-columns: 1fr; }
+  .tpl-design-10-avant .pa-steps { grid-template-columns: 1fr; }
+  .tpl-design-10-avant .pa-form { grid-template-columns: 1fr; }
+  .tpl-design-10-avant .pa-footer__grid { grid-template-columns: 1fr; }
+  .tpl-design-10-avant .pa-hero__scroll { display: none; }
+}
+
+@media (min-width: 1440px) {
+  .tpl-design-10-avant .pa-hero__inner,
+  .tpl-design-10-avant .pa-manifesto,
+  .tpl-design-10-avant .pa-looks,
+  .tpl-design-10-avant .pa-process,
+  .tpl-design-10-avant .pa-viewing,
+  .tpl-design-10-avant .pa-footer {
+    padding-left: max(7rem, calc((100% - 92rem) / 2 + 7rem));
+    padding-right: max(7rem, calc((100% - 92rem) / 2 + 7rem));
+  }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-10-avant .pa-cursor { display: none !important; }
+  .tpl-design-10-avant .pa-hero__wipe { display: none; }
+  .tpl-design-10-avant .pa-thread__svg { position: absolute; }
+  .tpl-design-10-avant *,
+  .tpl-design-10-avant *::before,
+  .tpl-design-10-avant *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

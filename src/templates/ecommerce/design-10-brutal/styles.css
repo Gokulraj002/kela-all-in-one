@@ -1,0 +1,585 @@
+/* RAW/STOCK — design-10-brutal. Tokens scoped to .tpl-design-10-brutal ONLY.
+   Flat concrete / black / safety yellow. No decoration: the rawness IS the design. */
+.tpl-design-10-brutal {
+  --color-background: #D8D5CE;
+  --color-surface: #C6C3BA;
+  --color-primary: #0A0A0A;
+  --color-secondary: #5A5750;
+  --color-accent: #F5C518;
+  /* Highlight tone: this design paints its accent as a fill behind black type
+     and as type on black, so it always takes the brand's light (on-dark) tone. */
+  --rs-hi: var(--brand-on-dark, var(--color-accent));
+  --color-text: #0A0A0A;
+  --color-muted: #5A5750;
+  --font-display: 'Archivo', sans-serif;
+  --font-body: 'Space Mono', monospace;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-10-brutal *,
+.tpl-design-10-brutal *::before,
+.tpl-design-10-brutal *::after { box-sizing: border-box; }
+
+.tpl-design-10-brutal a { color: inherit; }
+.tpl-design-10-brutal img { display: block; }
+
+.tpl-design-10-brutal :focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.tpl-design-10-brutal .rs-wrap { max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px); }
+
+.tpl-design-10-brutal .rs-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0 0 16px;
+}
+.tpl-design-10-brutal .rs-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 12px; height: 12px;
+  background: var(--rs-hi);
+  border: 2px solid var(--color-primary);
+  margin-right: 10px;
+  vertical-align: baseline;
+}
+
+.tpl-design-10-brutal .rs-h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0 0 12px;
+}
+
+.tpl-design-10-brutal .rs-body { max-width: 60ch; margin: 0 0 1em; font-size: 0.95rem; }
+.tpl-design-10-brutal .rs-body:last-child { margin-bottom: 0; }
+
+.tpl-design-10-brutal .rs-rule {
+  display: block;
+  height: 6px;
+  background: var(--color-primary);
+  margin: 28px 0 40px;
+}
+
+/* ---------- nav ---------- */
+.tpl-design-10-brutal .rs-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  background: var(--color-primary);
+  color: var(--color-background);
+  border-bottom: 4px solid var(--rs-hi);
+}
+.tpl-design-10-brutal .rs-wordmark {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px clamp(16px, 3vw, 32px);
+}
+.tpl-design-10-brutal .rs-wordmark .rs-slash { color: var(--rs-hi); }
+.tpl-design-10-brutal .rs-links { display: flex; align-items: stretch; }
+.tpl-design-10-brutal .rs-links a {
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-left: 2px solid var(--color-background);
+}
+.tpl-design-10-brutal .rs-links a:hover { background: var(--rs-hi); color: var(--color-primary); }
+.tpl-design-10-brutal .rs-cartbtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: var(--rs-hi);
+  color: var(--color-primary);
+  border: 0;
+  border-left: 2px solid var(--color-primary);
+  padding: 0 22px;
+  cursor: pointer;
+}
+.tpl-design-10-brutal .rs-cartbtn:hover { background: var(--color-background); }
+.tpl-design-10-brutal .rs-cartcount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  background: var(--color-primary);
+  color: var(--rs-hi);
+  font-size: 13px;
+}
+
+/* ---------- stock ticker ---------- */
+.tpl-design-10-brutal .rs-ticker {
+  background: var(--color-primary);
+  color: var(--rs-hi);
+  overflow: hidden;
+  border-bottom: 4px solid var(--color-primary);
+  white-space: nowrap;
+}
+.tpl-design-10-brutal .rs-ticker-track {
+  display: inline-flex;
+  animation: rs-ticker 22s linear infinite;
+}
+.tpl-design-10-brutal .rs-ticker span {
+  display: inline-block;
+  padding: 10px 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.tpl-design-10-brutal .rs-ticker .rs-tk-sep { padding: 10px 26px; color: var(--color-background); }
+@keyframes rs-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.tpl-design-10-brutal.is-reduced .rs-ticker-track { animation: none; }
+
+/* ---------- hero (scroll-driven frame sequence) ---------- */
+.tpl-design-10-brutal .rs-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-primary);
+}
+/* ScrollFrames stage: design owns the height. Never override .sf-canvas. */
+.tpl-design-10-brutal .sf-stage {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+}
+/* Dark scrim over the frames so the copy stays legible. */
+.tpl-design-10-brutal .sf-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(10, 10, 10, 0.62);
+  pointer-events: none;
+}
+.tpl-design-10-brutal .sf-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+.tpl-design-10-brutal .sf-overlay a,
+.tpl-design-10-brutal .sf-overlay button { pointer-events: auto; }
+/* Reduced-motion: static first frame, same scrim + overlay treatment. */
+.tpl-design-10-brutal .sf-static {
+  position: relative;
+  min-height: 92vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.tpl-design-10-brutal .sf-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tpl-design-10-brutal .sf-static::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.62);
+  pointer-events: none;
+}
+.tpl-design-10-brutal .rs-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: clamp(48px, 8vh, 110px) clamp(16px, 3vw, 48px);
+  /* The sticky nav + ticker (~110px) sit above the hero in the flow, so at
+     scroll 0 the stage's bottom edge is below the fold: lift the copy clear. */
+  padding-bottom: calc(clamp(32px, 5vh, 80px) + 110px);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.tpl-design-10-brutal .rs-hero .rs-eyebrow { color: var(--rs-hi); }
+.tpl-design-10-brutal .rs-hero-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(3rem, 10vw, 8.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  color: var(--color-background);
+  margin: 0 0 20px;
+}
+.tpl-design-10-brutal .rs-hero-title .rs-hl { color: var(--rs-hi); }
+.tpl-design-10-brutal .rs-hero-sub {
+  max-width: 52ch;
+  color: var(--color-background);
+  font-size: 1rem;
+  margin: 0 0 28px;
+}
+.tpl-design-10-brutal .rs-hero-cta-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.tpl-design-10-brutal .rs-cta {
+  display: inline-block;
+  background: var(--rs-hi);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 30px;
+  border: 3px solid var(--rs-hi);
+  cursor: pointer;
+}
+.tpl-design-10-brutal .rs-cta:hover { background: var(--color-primary); color: var(--rs-hi); }
+.tpl-design-10-brutal .rs-hero-note {
+  color: var(--color-background);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin: 0;
+}
+
+.tpl-design-10-brutal .rs-wm .w { display: inline-block; overflow: hidden; vertical-align: top; }
+.tpl-design-10-brutal .rs-wm .wi { display: inline-block; will-change: transform; }
+
+/* ---------- sections ---------- */
+.tpl-design-10-brutal .rs-sec { padding: clamp(64px, 9vw, 120px) 0; border-top: 6px solid var(--color-primary); }
+.tpl-design-10-brutal .rs-sec-head { margin-bottom: 40px; }
+
+/* ---------- ledger ---------- */
+.tpl-design-10-brutal .rs-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 8px;
+}
+.tpl-design-10-brutal .rs-sortbtn {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--color-text);
+  border: 3px solid var(--color-primary);
+  padding: 10px 18px;
+  cursor: pointer;
+}
+.tpl-design-10-brutal .rs-sortbtn:hover { background: var(--color-surface); }
+.tpl-design-10-brutal .rs-sortbtn.is-active { background: var(--color-primary); color: var(--rs-hi); }
+.tpl-design-10-brutal .rs-shuffle-tag {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+.tpl-design-10-brutal .rs-shuffle-tag b { color: var(--color-primary); background: var(--rs-hi); padding: 2px 8px; }
+
+.tpl-design-10-brutal .rs-ledger { width: 100%; border-collapse: collapse; }
+.tpl-design-10-brutal .rs-ledger thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  padding: 14px 14px;
+  border-bottom: 6px solid var(--color-primary);
+}
+.tpl-design-10-brutal .rs-ledger tbody td {
+  padding: 22px 14px;
+  border-bottom: 3px solid var(--color-primary);
+  vertical-align: top;
+  font-size: 0.92rem;
+}
+.tpl-design-10-brutal .rs-ledger tbody tr:hover { background: var(--color-surface); }
+.tpl-design-10-brutal .rs-rownum {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--color-primary);
+}
+.tpl-design-10-brutal .rs-sku { font-size: 11px; letter-spacing: 0.14em; color: var(--color-muted); text-transform: uppercase; }
+.tpl-design-10-brutal .rs-itemname {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 0 0 6px;
+}
+.tpl-design-10-brutal .rs-itemdesc { margin: 0; font-size: 0.85rem; color: var(--color-text); max-width: 40ch; }
+.tpl-design-10-brutal .rs-stock { font-weight: 700; white-space: nowrap; }
+.tpl-design-10-brutal .rs-stock .rs-low { background: var(--color-primary); color: var(--rs-hi); padding: 2px 8px; }
+.tpl-design-10-brutal .rs-pricecell { white-space: nowrap; font-weight: 700; font-size: 1.05rem; }
+.tpl-design-10-brutal .rs-price-struck { text-decoration: line-through; color: var(--color-muted); margin-right: 10px; font-weight: 400; }
+.tpl-design-10-brutal .rs-price-sale { background: var(--rs-hi); color: var(--color-primary); padding: 4px 10px; }
+.tpl-design-10-brutal .rs-addbtn {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--color-primary);
+  color: var(--rs-hi);
+  border: 3px solid var(--color-primary);
+  padding: 12px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.tpl-design-10-brutal .rs-addbtn:hover { background: var(--rs-hi); color: var(--color-primary); }
+.tpl-design-10-brutal .rs-ledger-note { margin: 20px 0 0; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text); }
+
+/* ---------- visual stock check ---------- */
+.tpl-design-10-brutal .rs-sec-visual { background: var(--color-surface); }
+.tpl-design-10-brutal .rs-frames { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 3vw, 40px); }
+.tpl-design-10-brutal .rs-frame { border: 4px solid var(--color-primary); background: var(--color-background); }
+.tpl-design-10-brutal .rs-frame .a-img { aspect-ratio: 16 / 10; }
+.tpl-design-10-brutal .rs-frame .a-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85); }
+.tpl-design-10-brutal .rs-plate {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-top: 4px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.tpl-design-10-brutal .rs-plate .rs-plate-sku { color: var(--rs-hi); font-weight: 700; }
+
+/* ---------- shipping manifest ---------- */
+.tpl-design-10-brutal .rs-sec-ship { background: var(--color-primary); color: var(--color-background); border-top: 6px solid var(--rs-hi); }
+.tpl-design-10-brutal .rs-sec-ship .rs-eyebrow { color: var(--rs-hi); }
+.tpl-design-10-brutal .rs-sec-ship .rs-h2 { color: var(--color-background); }
+.tpl-design-10-brutal .rs-manifest { border-top: 4px solid var(--rs-hi); }
+.tpl-design-10-brutal .rs-manifest-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 2px solid var(--color-background);
+  align-items: baseline;
+}
+.tpl-design-10-brutal .rs-manifest-term {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: var(--rs-hi);
+  letter-spacing: 0.02em;
+}
+.tpl-design-10-brutal .rs-manifest-text { margin: 0; font-size: 0.95rem; max-width: 62ch; }
+
+/* ---------- footer ---------- */
+.tpl-design-10-brutal .rs-footer { background: var(--color-primary); color: var(--color-background); border-top: 6px solid var(--rs-hi); padding: clamp(48px, 6vw, 88px) 0 32px; }
+.tpl-design-10-brutal .rs-footer-brand {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  line-height: 0.95;
+  margin: 0 0 28px;
+}
+.tpl-design-10-brutal .rs-footer-brand .rs-slash { color: var(--rs-hi); }
+.tpl-design-10-brutal .rs-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding: 32px 0;
+  border-top: 2px solid var(--color-background);
+  border-bottom: 2px solid var(--color-background);
+  margin-bottom: 24px;
+}
+.tpl-design-10-brutal .rs-footer-grid h3 {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rs-hi);
+  margin: 0 0 12px;
+}
+.tpl-design-10-brutal .rs-footer-grid p { margin: 0 0 6px; font-size: 0.88rem; }
+.tpl-design-10-brutal .rs-footer-grid a { text-decoration: underline; text-underline-offset: 3px; }
+.tpl-design-10-brutal .rs-footer-line { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 6px; }
+.tpl-design-10-brutal .rs-footer-colophon { font-size: 12px; color: var(--color-background); opacity: 0.6; margin: 0; }
+
+/* ---------- cart drawer ---------- */
+.tpl-design-10-brutal .rs-backdrop {
+  position: fixed;
+  inset: var(--tpl-top, 0px) 0 0 0;
+  background: rgba(10, 10, 10, 0.65);
+  z-index: 60;
+}
+.tpl-design-10-brutal .rs-drawer {
+  position: fixed;
+  top: var(--tpl-top, 0px);
+  right: 0;
+  bottom: 0;
+  width: min(430px, 94%);
+  z-index: 61;
+  background: var(--color-primary);
+  color: var(--color-background);
+  border-left: 6px solid var(--rs-hi);
+  display: flex;
+  flex-direction: column;
+}
+.tpl-design-10-brutal .rs-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 4px solid var(--rs-hi);
+}
+.tpl-design-10-brutal .rs-drawer-head h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  margin: 0;
+}
+.tpl-design-10-brutal .rs-drawer-close {
+  background: var(--rs-hi);
+  color: var(--color-primary);
+  border: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.tpl-design-10-brutal .rs-drawer-items { flex: 1; overflow-y: auto; padding: 8px 24px; }
+.tpl-design-10-brutal .rs-drawer-empty { padding: 40px 0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; }
+.tpl-design-10-brutal .rs-cartitem {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 16px;
+  padding: 18px 0;
+  border-bottom: 2px solid var(--color-background);
+}
+.tpl-design-10-brutal .rs-cartitem-name { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; margin: 0; }
+.tpl-design-10-brutal .rs-cartitem-sku { font-size: 11px; letter-spacing: 0.14em; color: var(--rs-hi); text-transform: uppercase; margin: 4px 0 0; }
+.tpl-design-10-brutal .rs-cartitem-price { font-weight: 700; text-align: right; }
+.tpl-design-10-brutal .rs-qty { display: flex; align-items: center; gap: 0; grid-column: 1 / -1; }
+.tpl-design-10-brutal .rs-qty button {
+  background: transparent;
+  color: var(--color-background);
+  border: 2px solid var(--color-background);
+  width: 34px; height: 34px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+}
+.tpl-design-10-brutal .rs-qty button:hover { background: var(--rs-hi); color: var(--color-primary); border-color: var(--rs-hi); }
+.tpl-design-10-brutal .rs-qty .rs-qty-n {
+  min-width: 44px;
+  text-align: center;
+  font-weight: 700;
+  border-top: 2px solid var(--color-background);
+  border-bottom: 2px solid var(--color-background);
+  height: 34px;
+  line-height: 30px;
+}
+.tpl-design-10-brutal .rs-drawer-foot { padding: 20px 24px 24px; border-top: 4px solid var(--rs-hi); }
+.tpl-design-10-brutal .rs-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 16px; }
+.tpl-design-10-brutal .rs-total .rs-total-n { color: var(--rs-hi); }
+.tpl-design-10-brutal .rs-checkout {
+  width: 100%;
+  background: var(--rs-hi);
+  color: var(--color-primary);
+  border: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 16px;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+.tpl-design-10-brutal .rs-demo-note { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.65; margin: 12px 0 0; text-align: center; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {
+  .tpl-design-10-brutal .rs-frames { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .tpl-design-10-brutal .rs-links { display: none; }
+  .tpl-design-10-brutal .rs-manifest-row { grid-template-columns: 1fr; gap: 8px; }
+  .tpl-design-10-brutal .rs-footer-grid { grid-template-columns: 1fr; }
+  .tpl-design-10-brutal .rs-frames { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  /* Ledger becomes stacked cards — still a raw table, just vertical. */
+  .tpl-design-10-brutal .rs-ledger thead { display: none; }
+  .tpl-design-10-brutal .rs-ledger,
+  .tpl-design-10-brutal .rs-ledger tbody,
+  .tpl-design-10-brutal .rs-ledger tr,
+  .tpl-design-10-brutal .rs-ledger td { display: block; width: 100%; }
+  .tpl-design-10-brutal .rs-ledger tbody tr {
+    border: 4px solid var(--color-primary);
+    margin-bottom: 20px;
+    padding: 6px 16px 16px;
+  }
+  .tpl-design-10-brutal .rs-ledger tbody td { border: 0; padding: 8px 0; }
+  .tpl-design-10-brutal .rs-ledger tbody td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 4px;
+  }
+  .tpl-design-10-brutal .rs-ledger tbody td.rs-cell-add::before { content: none; }
+  .tpl-design-10-brutal .rs-addbtn { width: 100%; }
+  .tpl-design-10-brutal .rs-shuffle-tag { margin-left: 0; }
+}

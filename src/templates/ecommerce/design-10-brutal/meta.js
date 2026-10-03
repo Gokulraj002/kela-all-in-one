@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-10-brutal',
+  num: '10',
+  name: 'RAW/STOCK',
+  tag: 'Brutalist',
+  style: 'Experimental brutalist commerce',
+  animation: 'Ledger shuffle, hard cuts',
+  typography: 'Archivo + Space Mono',
+  layout: 'Raw ledger table, visible grid',
+  mood: 'Blunt, fast, unadorned',
+  palette: 'Concrete / black / safety yellow',
+  features: [
+    'Ledger shuffle product flow',
+    'Sort controls',
+    'Demo cart',
+    'Stock ticker',
+    'No-BS shipping',
+  ],
+  fonts: { display: 'Archivo', body: 'Space Mono' },
+  colors: { primary: '#0A0A0A', accent: '#F5C518' },
+};

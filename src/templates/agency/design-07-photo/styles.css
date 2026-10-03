@@ -1,0 +1,861 @@
+/* ============================================================
+   Halide Studio — design-07-photo
+   Tokens live on the scope class; nothing touches :root.
+   Bebas Neue (tracked caps) + Manrope light.
+   ============================================================ */
+.tpl-design-07-photo {
+  --color-background: #131110;
+  --color-surface: #1c1917;
+  --color-primary: #efe9dd;
+  --color-secondary: #8f867a;
+  --color-accent: #c9b48a;
+  --color-text: #efe9dd;
+  --color-muted: #6e665b;
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-body: 'Manrope', 'Helvetica Neue', sans-serif;
+  --hl-black: #0c0b0a;
+  --hl-line: rgba(201, 180, 138, 0.22);
+  --hl-gutter: clamp(1.25rem, 4vw, 4rem);
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  /* anchors the absolute overlay nav to the page, so it scrolls away with
+     the hero (without this the viewer's panel became its containing block
+     and the nav floated over every section) */
+  position: relative;
+}
+
+.tpl-design-07-photo *,
+.tpl-design-07-photo *::before,
+.tpl-design-07-photo *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-07-photo a {
+  color: inherit;
+}
+
+/* ---------- type helpers ---------- */
+.tpl-design-07-photo .hl-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+
+.tpl-design-07-photo .hl-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: 0.06em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 1.5rem;
+  font-weight: 400;
+}
+
+.tpl-design-07-photo .hl-body {
+  color: var(--color-secondary);
+  max-width: 46ch;
+  margin: 0;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+}
+
+.tpl-design-07-photo .hl-rule {
+  display: block;
+  height: 1px;
+  background: var(--hl-line);
+  margin: 1.75rem 0;
+  max-width: 1200px;
+  transform-origin: left center;
+}
+
+/* word-mask headline (server-safe spans; GSAP drives .wi) */
+.tpl-design-07-photo .hl-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-07-photo .hl-wm .wi {
+  display: inline-block;
+}
+
+/* ---------- nav ---------- */
+.tpl-design-07-photo .hl-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem var(--hl-gutter);
+}
+
+.tpl-design-07-photo .hl-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.tpl-design-07-photo .hl-links {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 2.25rem);
+  align-items: center;
+}
+
+.tpl-design-07-photo .hl-links a {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.tpl-design-07-photo .hl-links a:hover {
+  color: var(--color-accent);
+}
+
+.tpl-design-07-photo .hl-cta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--hl-black);
+  background: var(--color-accent);
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid var(--color-accent);
+  transition: background 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+.tpl-design-07-photo .hl-cta:hover {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+/* ---------- hero ---------- */
+/* Block (not flex) on purpose: GSAP turns pinSpacing off when a pinned
+   element's parent is a flex container, which let the next sections scroll
+   underneath the pinned hero. The ScrollFrames stage sets the height. */
+.tpl-design-07-photo .hl-hero {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+/* ScrollFrames hero: the 10s living-still portrait plays frame by frame as
+   the visitor scrolls (pinned scrub, +=170%). Stage/canvas/overlay critical
+   layout is inline in the component now; this design owns only the overlay
+   choreography. The canvas cover-fits the portrait frames (720x1080) so
+   nothing distorts, mobile included. */
+.tpl-design-07-photo .hl-hero .sf-wrap {
+  width: 100%;
+}
+.tpl-design-07-photo .hl-hero .sf-overlay {
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+.tpl-design-07-photo .hl-hero .sf-overlay .hl-hero-copy,
+.tpl-design-07-photo .hl-hero .sf-overlay .hl-hero-meta {
+  pointer-events: auto;
+}
+
+.tpl-design-07-photo .hl-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(12, 11, 10, 0.88) 0%,
+    rgba(12, 11, 10, 0.25) 42%,
+    rgba(12, 11, 10, 0.15) 70%,
+    rgba(12, 11, 10, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.tpl-design-07-photo .hl-hero-copy {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--hl-gutter) clamp(3rem, 8vh, 5.5rem);
+  max-width: 1200px;
+}
+
+.tpl-design-07-photo .hl-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 11vw, 10rem);
+  line-height: 0.92;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 1.5rem;
+  font-weight: 400;
+  max-width: 12ch;
+}
+
+.tpl-design-07-photo .hl-hero-sub {
+  color: var(--color-secondary);
+  max-width: 44ch;
+  margin: 0 0 2rem;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+}
+
+.tpl-design-07-photo .hl-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tpl-design-07-photo .hl-frame-note {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-07-photo .hl-scroll-hint {
+  position: absolute;
+  right: var(--hl-gutter);
+  bottom: clamp(3rem, 8vh, 5.5rem);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--color-muted);
+  font-size: 0.65rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+}
+.tpl-design-07-photo .hl-scroll-hint::after {
+  content: '';
+  width: 1px;
+  height: 56px;
+  background: var(--hl-line);
+}
+
+/* ---------- section rhythm ---------- */
+.tpl-design-07-photo .hl-section {
+  padding: clamp(5rem, 10vw, 11rem) var(--hl-gutter);
+}
+.tpl-design-07-photo .hl-section-head {
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  max-width: 1200px;
+}
+
+/* ---------- filmstrip series ---------- */
+.tpl-design-07-photo .hl-series {
+  margin-bottom: clamp(5rem, 10vw, 10rem);
+}
+.tpl-design-07-photo .hl-series:last-child {
+  margin-bottom: 0;
+}
+
+.tpl-design-07-photo .hl-series-head {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  margin-bottom: 0.75rem;
+}
+.tpl-design-07-photo .hl-series-num {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+}
+.tpl-design-07-photo .hl-series-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0;
+  font-weight: 400;
+  line-height: 1;
+}
+.tpl-design-07-photo .hl-series-note {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  max-width: 52ch;
+  margin: 0 0 2.25rem;
+}
+
+/* the filmstrip: dark band with sprocket-hole edges */
+.tpl-design-07-photo .hl-strip {
+  background: var(--hl-black);
+  border-top: 1px solid var(--hl-line);
+  border-bottom: 1px solid var(--hl-line);
+  margin-inline: calc(var(--hl-gutter) * -1);
+  padding: 0 var(--hl-gutter);
+}
+.tpl-design-07-photo .hl-strip::before,
+.tpl-design-07-photo .hl-strip::after {
+  content: '';
+  display: block;
+  height: clamp(14px, 2vw, 22px);
+  background-image: radial-gradient(circle, var(--color-background) 30%, transparent 34%);
+  background-size: clamp(26px, 3.4vw, 44px) 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.9;
+}
+.tpl-design-07-photo .hl-strip-track {
+  display: flex;
+  gap: clamp(1.5rem, 3.5vw, 3.5rem);
+  overflow-x: auto;
+  padding: clamp(1.5rem, 3vw, 2.75rem) 0;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hl-line) transparent;
+}
+.tpl-design-07-photo .hl-strip-track::-webkit-scrollbar {
+  height: 4px;
+}
+.tpl-design-07-photo .hl-strip-track::-webkit-scrollbar-thumb {
+  background: var(--hl-line);
+}
+
+.tpl-design-07-photo .hl-frame {
+  flex: 0 0 auto;
+  width: clamp(240px, 32vw, 420px);
+  scroll-snap-align: start;
+  margin: 0;
+  cursor: zoom-in;
+  border: 0;
+  background: none;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+.tpl-design-07-photo .hl-frame-media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-height: 52vh;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tpl-design-07-photo .hl-frame:nth-child(even) .hl-frame-media {
+  aspect-ratio: 3 / 3.4;
+}
+.tpl-design-07-photo .hl-frame:hover .hl-frame-media {
+  transform: translateY(-4px);
+}
+.tpl-design-07-photo .hl-frame-media .a-img,
+.tpl-design-07-photo .hl-frame-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tpl-design-07-photo .hl-cap {
+  display: block;
+  padding-top: 1rem;
+}
+.tpl-design-07-photo .hl-cap-text {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--color-text);
+  margin: 0 0 0.3rem;
+}
+.tpl-design-07-photo .hl-cap-tech {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+.tpl-design-07-photo .hl-frame:hover .hl-cap-tech {
+  color: var(--color-accent);
+}
+
+/* ---------- commissions index ---------- */
+.tpl-design-07-photo .hl-commissions {
+  background: var(--color-surface);
+  border-top: 1px solid var(--hl-line);
+  border-bottom: 1px solid var(--hl-line);
+}
+.tpl-design-07-photo .hl-index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 1200px;
+}
+.tpl-design-07-photo .hl-index-row {
+  display: grid;
+  grid-template-columns: auto 92px 1fr auto;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: center;
+  padding: 1.75rem 0;
+  border: 0;
+  border-top: 1px solid var(--hl-line);
+  background: none;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+.tpl-design-07-photo .hl-index-row:first-child {
+  border-top: 0;
+}
+.tpl-design-07-photo .hl-index-num {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+}
+.tpl-design-07-photo .hl-index-thumb {
+  width: 92px;
+  height: 112px;
+  overflow: hidden;
+  background: #000;
+}
+.tpl-design-07-photo .hl-index-thumb .a-img,
+.tpl-design-07-photo .hl-index-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tpl-design-07-photo .hl-index-row:hover .hl-index-thumb img {
+  transform: scale(1.06);
+}
+.tpl-design-07-photo .hl-index-main {
+  display: block;
+}
+.tpl-design-07-photo .hl-index-client {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 0.35rem;
+}
+.tpl-design-07-photo .hl-index-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 0.35rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.tpl-design-07-photo .hl-index-note {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--color-secondary);
+  margin: 0;
+}
+.tpl-design-07-photo .hl-index-meta {
+  text-align: right;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  line-height: 2;
+  white-space: nowrap;
+}
+
+/* ---------- process ---------- */
+.tpl-design-07-photo .hl-process {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+.tpl-design-07-photo .hl-step {
+  border-top: 1px solid var(--hl-line);
+  padding-top: 1.25rem;
+}
+.tpl-design-07-photo .hl-step-num {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.24em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.tpl-design-07-photo .hl-step-title {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+  font-weight: 400;
+}
+.tpl-design-07-photo .hl-step-text {
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+/* ---------- studio ---------- */
+.tpl-design-07-photo .hl-studio {
+  background: var(--color-surface);
+  border-top: 1px solid var(--hl-line);
+}
+.tpl-design-07-photo .hl-studio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  max-width: 1200px;
+  align-items: start;
+}
+.tpl-design-07-photo .hl-crew {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+}
+.tpl-design-07-photo .hl-crew li {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--hl-line);
+}
+.tpl-design-07-photo .hl-crew-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0;
+  font-weight: 400;
+}
+.tpl-design-07-photo .hl-crew-role {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0.25rem 0;
+}
+.tpl-design-07-photo .hl-crew-note {
+  font-size: 0.88rem;
+  color: var(--color-secondary);
+  margin: 0;
+}
+.tpl-design-07-photo .hl-darkroom {
+  margin: 0;
+}
+.tpl-design-07-photo .hl-darkroom-media {
+  aspect-ratio: 4 / 3;
+  max-height: 52vh;
+  overflow: hidden;
+  background: #000;
+}
+.tpl-design-07-photo .hl-darkroom-media .a-img,
+.tpl-design-07-photo .hl-darkroom-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tpl-design-07-photo .hl-darkroom figcaption {
+  padding-top: 1rem;
+}
+.tpl-design-07-photo .hl-darkroom-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 0.4rem;
+  font-weight: 400;
+}
+.tpl-design-07-photo .hl-darkroom-text {
+  font-size: 0.88rem;
+  color: var(--color-secondary);
+  margin: 0;
+  max-width: 40ch;
+}
+
+/* ---------- contact ---------- */
+.tpl-design-07-photo .hl-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  max-width: 1200px;
+  align-items: start;
+}
+.tpl-design-07-photo .hl-contact-lines {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+}
+.tpl-design-07-photo .hl-contact-lines a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.tpl-design-07-photo .hl-contact-lines p {
+  margin: 0.4rem 0;
+}
+
+.tpl-design-07-photo .hl-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.tpl-design-07-photo .hl-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tpl-design-07-photo .hl-field.is-wide {
+  grid-column: 1 / -1;
+}
+.tpl-design-07-photo .hl-field label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-07-photo .hl-field input,
+.tpl-design-07-photo .hl-field select,
+.tpl-design-07-photo .hl-field textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--hl-line);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 0.6rem 0;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.tpl-design-07-photo .hl-field select {
+  cursor: pointer;
+}
+.tpl-design-07-photo .hl-field select option {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.tpl-design-07-photo .hl-field textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+.tpl-design-07-photo .hl-field input:focus,
+.tpl-design-07-photo .hl-field select:focus,
+.tpl-design-07-photo .hl-field textarea:focus {
+  border-bottom-color: var(--color-accent);
+}
+.tpl-design-07-photo .hl-form .hl-cta {
+  grid-column: 1 / -1;
+  justify-self: start;
+  font-family: var(--font-body);
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+.tpl-design-07-photo .hl-form-hint {
+  grid-column: 1 / -1;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- footer ---------- */
+.tpl-design-07-photo .hl-footer {
+  border-top: 1px solid var(--hl-line);
+  padding: 3rem var(--hl-gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.tpl-design-07-photo .hl-footer-line {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0;
+}
+.tpl-design-07-photo .hl-colophon {
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- lightbox ---------- */
+.tpl-design-07-photo .hl-lightbox {
+  position: fixed;
+  /* start below the viewer toolbar (exports fall back to 0) */
+  inset: var(--tpl-top, 0px) 0 0 0;
+  z-index: 100;
+  background: rgba(12, 11, 10, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 4rem);
+}
+.tpl-design-07-photo .hl-lightbox-figure {
+  margin: 0;
+  max-width: min(1100px, 92vw);
+  max-height: calc(var(--tpl-vh, 100vh) * 0.88);
+  display: flex;
+  flex-direction: column;
+}
+.tpl-design-07-photo .hl-lightbox-media {
+  max-height: calc(var(--tpl-vh, 100vh) * 0.72);
+  overflow: hidden;
+  background: #000;
+}
+.tpl-design-07-photo .hl-lightbox-media img {
+  width: 100%;
+  height: 100%;
+  max-height: calc(var(--tpl-vh, 100vh) * 0.72);
+  object-fit: contain;
+  display: block;
+}
+.tpl-design-07-photo .hl-lightbox figcaption {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+.tpl-design-07-photo .hl-lightbox-cap {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  margin: 0;
+}
+.tpl-design-07-photo .hl-lightbox-tech {
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+.tpl-design-07-photo .hl-lightbox-btn {
+  position: absolute;
+  background: none;
+  border: 1px solid var(--hl-line);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.1rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.tpl-design-07-photo .hl-lightbox-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.tpl-design-07-photo .hl-lightbox-close {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+.tpl-design-07-photo .hl-lightbox-prev {
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tpl-design-07-photo .hl-lightbox-next {
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .tpl-design-07-photo .hl-process {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tpl-design-07-photo .hl-studio-grid,
+  .tpl-design-07-photo .hl-contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .tpl-design-07-photo .hl-links {
+    display: none;
+  }
+  .tpl-design-07-photo .hl-hero-title {
+    max-width: 10ch;
+  }
+  .tpl-design-07-photo .hl-scroll-hint {
+    display: none;
+  }
+  .tpl-design-07-photo .hl-index-row {
+    grid-template-columns: 64px 1fr;
+    grid-template-areas:
+      'thumb head'
+      'thumb meta';
+  }
+  .tpl-design-07-photo .hl-index-num {
+    display: none;
+  }
+  .tpl-design-07-photo .hl-index-thumb {
+    grid-area: thumb;
+    width: 64px;
+    height: 80px;
+  }
+  .tpl-design-07-photo .hl-index-main {
+    grid-area: head;
+  }
+  .tpl-design-07-photo .hl-index-meta {
+    grid-area: meta;
+    text-align: left;
+  }
+  .tpl-design-07-photo .hl-frame {
+    width: clamp(220px, 72vw, 320px);
+  }
+  .tpl-design-07-photo .hl-form {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-07-photo .hl-lightbox-prev,
+  .tpl-design-07-photo .hl-lightbox-next {
+    display: none;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-07-photo .hl-frame:hover .hl-frame-media,
+  .tpl-design-07-photo .hl-index-row:hover .hl-index-thumb img {
+    transform: none;
+  }
+  .tpl-design-07-photo .hl-strip-track {
+    scroll-snap-type: none;
+  }
+}

@@ -1,0 +1,481 @@
+/* Kora — design-02-minimal · Modern minimalist label
+   Whitespace IS the design. No gradients, no shadows, no noise. */
+
+.tpl-design-02-minimal {
+  --color-primary: #191817;
+  --color-accent: #9c6b4a;
+  --color-background: #faf8f2;
+  --color-surface: #ece8db;
+  --color-text: #191817;
+  --color-muted: #8b8577;
+  --color-line: #d9d3c2;
+  --font-display: 'Archivo', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+.tpl-design-02-minimal *,
+.tpl-design-02-minimal *::before,
+.tpl-design-02-minimal *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-02-minimal a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tpl-design-02-minimal img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ————— Shared type ————— */
+
+.tpl-design-02-minimal .kora-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 2.5rem;
+}
+
+.tpl-design-02-minimal .kora-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 2rem;
+}
+
+.tpl-design-02-minimal .kora-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0 0 2.5rem;
+}
+
+.tpl-design-02-minimal .kora-body {
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.tpl-design-02-minimal .kora-column {
+  max-width: 44rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Column rhythm lives in padding (not margins) so each line of copy owns
+   its share of the column — same look, steadier blocks while revealing. */
+.tpl-design-02-minimal .kora-column > .kora-eyebrow,
+.tpl-design-02-minimal .kora-section-head > .kora-eyebrow,
+.tpl-design-02-minimal .kora-fabric-copy > .kora-eyebrow { margin-bottom: 0; padding-bottom: 2.5rem; }
+.tpl-design-02-minimal .kora-column > .kora-h2,
+.tpl-design-02-minimal .kora-section-head > .kora-h2,
+.tpl-design-02-minimal .kora-fabric-copy > .kora-h2 { margin-bottom: 0; padding-bottom: 2.5rem; }
+.tpl-design-02-minimal .kora-visit .kora-body { padding-bottom: 3rem; }
+.tpl-design-02-minimal .kora-visit .kora-address { margin-top: 0; }
+
+/* Quiet CTA: text with a breathing underline. */
+.tpl-design-02-minimal .kora-cta {
+  display: inline-block;
+  margin-top: 3rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--color-primary);
+  /* colour-only hover: GSAP fades these CTAs in with opacity, and an opacity
+     transition here would chase every GSAP frame */
+  transition: border-color 0.5s ease, color 0.5s ease;
+}
+
+.tpl-design-02-minimal .kora-cta:hover {
+  color: color-mix(in srgb, var(--color-primary) 55%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--color-primary) 55%, transparent);
+}
+
+/* The one clay note per viewport. */
+.tpl-design-02-minimal .kora-cta-clay {
+  border-bottom-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.tpl-design-02-minimal .kora-cta-clay:hover {
+  color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+}
+
+/* ————— Nav: whisper-minimal ————— */
+
+.tpl-design-02-minimal .kora-nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 2.5rem clamp(1.5rem, 6vw, 6rem);
+}
+
+.tpl-design-02-minimal .kora-wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.375rem;
+  letter-spacing: 0.06em;
+}
+
+.tpl-design-02-minimal .kora-nav-links {
+  display: flex;
+  gap: clamp(1.5rem, 3.5vw, 3.5rem);
+}
+
+.tpl-design-02-minimal .kora-nav-links a,
+.tpl-design-02-minimal .kora-bag {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  transition: opacity 0.5s ease;
+}
+
+.tpl-design-02-minimal .kora-nav-links a:hover {
+  opacity: 0.5;
+}
+
+/* ————— Hero: scroll-scrubbed "Still Air" frames ————— */
+
+.tpl-design-02-minimal .kora-hero {
+  padding: 0;
+}
+
+.tpl-design-02-minimal .kora-hero-scrub {
+  position: relative;
+}
+
+/* Reduced motion: static first frame, same overlay treatment. */
+.tpl-design-02-minimal .sf-static {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.tpl-design-02-minimal .sf-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay: copy sits low over the pale fabric; CTA stays clickable. */
+.tpl-design-02-minimal .sf-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* The whisper nav sits in flow above the hero, so at scroll 0 the stage's
+   last ~7rem are below the fold: lift the copy clear of that band. A soft
+   paper-coloured mist behind it keeps the small type legible over the
+   darker folds of the frames (no hard panel — still air). */
+.tpl-design-02-minimal .kora-hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(7.5rem + clamp(1rem, 3vh, 2.5rem));
+  z-index: 1; /* own stacking context: the mist below sits under the text, over the frames */
+  text-align: center;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2.25rem 2rem;
+}
+
+.tpl-design-02-minimal .kora-hero-copy::before {
+  content: '';
+  position: absolute;
+  inset: -30% -34%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--color-background) 74%, transparent) 0%,
+    color-mix(in srgb, var(--color-background) 52%, transparent) 42%,
+    color-mix(in srgb, var(--color-background) 18%, transparent) 72%,
+    color-mix(in srgb, var(--color-background) 0%, transparent) 100%
+  );
+}
+
+.tpl-design-02-minimal .kora-hero-copy .kora-eyebrow {
+  margin-bottom: 1.75rem;
+}
+
+/* over the moving frames the muted grey fell to ~3:1 — the hero's small
+   type uses a deeper ink so it stays legible on the lighter folds */
+.tpl-design-02-minimal .kora-hero-copy .kora-eyebrow,
+.tpl-design-02-minimal .kora-hero-copy .kora-sub {
+  color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+}
+
+.tpl-design-02-minimal .kora-hero-copy .kora-title {
+  margin-bottom: 1.25rem;
+}
+
+.tpl-design-02-minimal .kora-hero-copy .kora-cta {
+  margin-top: 2rem;
+  pointer-events: auto;
+}
+
+.tpl-design-02-minimal .kora-sub {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ————— Philosophy ————— */
+
+.tpl-design-02-minimal .kora-philosophy {
+  padding: clamp(6rem, 11vw, 9.5rem) clamp(1.5rem, 6vw, 6rem);
+}
+
+.tpl-design-02-minimal .kora-philosophy .kora-body {
+  margin-top: 1rem;
+}
+
+/* ————— Collection / pleat wall ————— */
+
+.tpl-design-02-minimal .kora-collection {
+  padding: clamp(3rem, 6vw, 5rem) 0 0;
+}
+
+.tpl-design-02-minimal .kora-section-head {
+  text-align: center;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0 1.5rem clamp(2rem, 4vw, 3.5rem);
+}
+
+.tpl-design-02-minimal .kora-note {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.tpl-design-02-minimal .pleat-wall {
+  /* pinned: exactly the visible scroll area (viewer) / 100svh (export) */
+  min-height: var(--tpl-vh, 100svh);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  padding: clamp(1.5rem, 3.5vw, 3.5rem) clamp(2rem, 6vw, 7rem);
+}
+
+.tpl-design-02-minimal .pleat-card {
+  position: relative;
+  background: var(--color-surface);
+  transform-origin: 50% 50%;
+  padding: clamp(1.25rem, 2vw, 2rem);
+}
+
+/* The fold line — stays visible as a hairline seam. */
+.tpl-design-02-minimal .pleat-seam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--color-line);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tpl-design-02-minimal .pleat-figure {
+  margin: 0 0 1.75rem;
+  overflow: hidden;
+}
+
+.tpl-design-02-minimal .pleat-figure img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.tpl-design-02-minimal .pleat-meta {
+  text-align: center;
+}
+
+.tpl-design-02-minimal .pleat-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.0625rem;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.5rem;
+}
+
+.tpl-design-02-minimal .pleat-price {
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  margin: 0 0 1rem;
+}
+
+.tpl-design-02-minimal .pleat-fabric,
+.tpl-design-02-minimal .pleat-fit {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+  margin: 0 0 0.3rem;
+}
+
+/* ————— Fabric ————— */
+
+.tpl-design-02-minimal .kora-fabric {
+  padding: clamp(6rem, 11vw, 9.5rem) clamp(1.5rem, 6vw, 6rem);
+}
+
+.tpl-design-02-minimal .kora-fabric-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: center;
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
+.tpl-design-02-minimal .kora-fabric-figure {
+  margin: 0;
+}
+
+.tpl-design-02-minimal .kora-fabric-figure img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.tpl-design-02-minimal .kora-fabric-copy .kora-body {
+  margin-bottom: 3.5rem;
+}
+
+.tpl-design-02-minimal .kora-specs {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-02-minimal .kora-spec {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-02-minimal .kora-spec dt {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-02-minimal .kora-spec dd {
+  margin: 0;
+  font-size: 0.95rem;
+  text-align: right;
+}
+
+/* ————— Visit ————— */
+
+.tpl-design-02-minimal .kora-visit {
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 6rem);
+}
+
+.tpl-design-02-minimal .kora-address {
+  font-style: normal;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ————— Footer ————— */
+
+.tpl-design-02-minimal .kora-footer {
+  padding: 4rem clamp(1.5rem, 6vw, 6rem) 3rem;
+}
+
+.tpl-design-02-minimal .kora-footer-inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--color-line);
+  padding-top: 2.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+}
+
+.tpl-design-02-minimal .kora-wordmark-sm {
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.tpl-design-02-minimal .kora-footer-link {
+  transition: opacity 0.5s ease;
+}
+
+.tpl-design-02-minimal .kora-footer-link:hover {
+  opacity: 0.5;
+}
+
+/* ————— Responsive ————— */
+
+@media (max-width: 767px) {
+  .tpl-design-02-minimal .kora-nav-links {
+    display: none;
+  }
+
+  .tpl-design-02-minimal .kora-hero-copy {
+    bottom: calc(7.25rem + clamp(0.5rem, 2vh, 1.5rem));
+    padding: 1.5rem 1.25rem;
+  }
+
+  .tpl-design-02-minimal .pleat-wall {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    max-width: 26rem;
+    margin: 0 auto;
+  }
+
+  .tpl-design-02-minimal .kora-fabric-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .tpl-design-02-minimal .kora-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

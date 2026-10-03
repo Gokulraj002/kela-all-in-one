@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-09-opensource',
+  num: '09',
+  name: 'Commons',
+  tag: 'Open Source',
+  style: 'Community energy',
+  animation: 'Contribution fill, tile flips',
+  typography: 'Public Sans + IBM Plex Mono',
+  layout: 'Contributor wall, warm paper',
+  mood: 'Welcoming, energetic, collective',
+  palette: 'Warm paper / purple / green',
+  features: [
+    'Scroll-filled contribution mosaic',
+    'Showcase grid',
+    'Count-up stats',
+    'Docs teaser',
+  ],
+  fonts: { display: 'Public Sans', body: 'IBM Plex Mono' },
+  colors: { primary: '#1C1917', accent: '#7C3AED' },
+};

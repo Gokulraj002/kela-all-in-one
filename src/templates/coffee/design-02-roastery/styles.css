@@ -1,0 +1,529 @@
+/* Roastworks — design-02-roastery. Tokens scoped to .tpl-design-02-roastery ONLY. */
+.tpl-design-02-roastery {
+  --color-background: #E9DFCC;
+  --color-surface: #DCCFB6;
+  --color-primary: #26211B;
+  --color-secondary: #7A6A52;
+  --color-accent: #C65A26;
+  --color-text: #231E16;
+  --color-muted: #8C7C66;
+  --font-display: 'DM Serif Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --rw-nav-h: 76px;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-02-roastery *,
+.tpl-design-02-roastery *::before,
+.tpl-design-02-roastery *::after { box-sizing: border-box; }
+.tpl-design-02-roastery a { color: inherit; }
+.tpl-design-02-roastery img { display: block; }
+.tpl-design-02-roastery button { font-family: var(--font-body); }
+
+.tpl-design-02-roastery .a-img { display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-02-roastery .a-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.tpl-design-02-roastery .rw-wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+
+.tpl-design-02-roastery .rw-eyebrow {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 14px;
+}
+.tpl-design-02-roastery .rw-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  color: var(--color-primary);
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+.tpl-design-02-roastery .rw-h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 400;
+  color: var(--color-primary);
+  margin: 0 0 18px;
+}
+.tpl-design-02-roastery .rw-lede { max-width: 64ch; margin: 0 0 1em; }
+.tpl-design-02-roastery .rw-caption { font-size: 12px; color: var(--color-muted); letter-spacing: 0.06em; margin-top: 10px; }
+
+.tpl-design-02-roastery .rw-wm .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.tpl-design-02-roastery .rw-wm .wi { display: inline-block; will-change: transform; }
+
+/* ---------- nav ---------- */
+.tpl-design-02-roastery .rw-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px;
+  height: var(--rw-nav-h);
+  padding: 0 clamp(20px, 4vw, 48px);
+  border-bottom: 2px solid var(--color-primary);
+  position: sticky; top: 0; z-index: 40;
+  background: var(--color-background);
+}
+.tpl-design-02-roastery .rw-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.tpl-design-02-roastery .rw-shopnav { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.tpl-design-02-roastery .rw-navlink {
+  background: none; border: none; cursor: pointer;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--color-text);
+  padding: 10px 14px;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.tpl-design-02-roastery .rw-navlink:hover { background: var(--color-surface); }
+.tpl-design-02-roastery .rw-navlink.is-active { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-02-roastery .rw-wholesale-link { color: var(--color-accent); font-weight: 700; }
+.tpl-design-02-roastery .rw-bag {
+  background: var(--color-primary);
+  color: var(--color-background);
+  border: none; cursor: pointer;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 12px 20px;
+  border-radius: 999px;
+  display: flex; align-items: center; gap: 8px;
+}
+.tpl-design-02-roastery .rw-bag-count {
+  background: var(--color-accent);
+  color: #fff;
+  min-width: 22px; height: 22px;
+  border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 11px; padding: 0 6px;
+}
+
+/* ---------- hero ---------- */
+/* The hero is a pinned ScrollFrames stage (stage/canvas/overlay layout is
+   inline in the component). Desktop (.is-split): the copy sits in the left
+   half of the overlay and the canvas is framed in the right half, so copy
+   and roast stay together for the whole scrub. Mobile: copy in normal flow,
+   then a full-height scrub stage. */
+.tpl-design-02-roastery .rw-hero { position: relative; }
+.tpl-design-02-roastery .rw-hero .sf-stage { background: var(--color-background); }
+.tpl-design-02-roastery .rw-hero.is-split .sf-overlay {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+  padding: calc(var(--rw-nav-h) + clamp(16px, 3vh, 36px)) clamp(20px, 4vw, 48px) clamp(24px, 4vh, 48px);
+}
+/* Reduced motion renders a still instead of the canvas: keep the stage box. */
+.tpl-design-02-roastery .rw-hero.is-split .sf-static { height: var(--tpl-vh, 100svh); }
+/* Short laptop screens: tighten the copy so it always fits the pinned stage. */
+@media (min-width: 768px) and (max-height: 780px) {
+  .tpl-design-02-roastery .rw-hero.is-split .rw-hero-title { font-size: clamp(2.2rem, 4.4vw, 3.4rem); margin-bottom: 14px; }
+  .tpl-design-02-roastery .rw-hero.is-split .rw-hero-ctas { margin: 18px 0 22px; }
+  .tpl-design-02-roastery .rw-hero.is-split .rw-lede { font-size: 0.92rem; }
+}
+/* Canvas (or the reduced-motion still) framed in the right half. Width and
+   height are definite so the canvas backing store never feeds layout. */
+.tpl-design-02-roastery .rw-hero.is-split .sf-canvas,
+.tpl-design-02-roastery .rw-hero.is-split .sf-static-img {
+  position: absolute !important;
+  inset: auto !important;
+  top: calc(var(--rw-nav-h) + clamp(16px, 3vh, 36px)) !important;
+  right: clamp(20px, 4vw, 48px) !important;
+  width: calc(50% - clamp(20px, 4vw, 48px) - clamp(14px, 2vw, 32px)) !important;
+  height: calc(100% - var(--rw-nav-h) - clamp(16px, 3vh, 36px) - clamp(24px, 4vh, 48px)) !important;
+  object-fit: cover;
+}
+.tpl-design-02-roastery .rw-hero.is-split .rw-hero-copy { grid-column: 1; }
+.tpl-design-02-roastery .rw-hero:not(.is-split) .rw-hero-copy {
+  padding: clamp(36px, 6vh, 80px) clamp(20px, 4vw, 48px) clamp(28px, 4vh, 48px);
+}
+.tpl-design-02-roastery .rw-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+  line-height: 1.02;
+  color: var(--color-primary);
+  margin: 0 0 20px;
+  font-weight: 400;
+}
+.tpl-design-02-roastery .rw-fresh { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 0 0 18px; }
+.tpl-design-02-roastery .rw-fresh-badge {
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 4px;
+}
+.tpl-design-02-roastery .rw-fresh-note { font-size: 0.95rem; color: var(--color-secondary); font-weight: 600; }
+.tpl-design-02-roastery .rw-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin: 26px 0 34px; }
+.tpl-design-02-roastery .rw-btn {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  border: none; cursor: pointer;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 32px;
+  border-radius: 4px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.tpl-design-02-roastery .rw-btn:hover { transform: translateY(-2px); background: var(--color-primary); }
+.tpl-design-02-roastery .rw-btn-ghost { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+.tpl-design-02-roastery .rw-btn-ghost:hover { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-02-roastery .rw-schedule { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0; padding: 20px 0 0; border-top: 1px solid var(--color-secondary); }
+.tpl-design-02-roastery .rw-schedule dt { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-primary); }
+.tpl-design-02-roastery .rw-schedule dd { margin: 4px 0 0; font-size: 0.85rem; color: var(--color-muted); }
+/* Caption chip riding the pinned frame (bottom-left of the framed canvas on
+   desktop, bottom-left of the full-bleed stage on mobile). */
+.tpl-design-02-roastery .rw-hero-caption {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  left: 14px;
+  bottom: 14px;
+  pointer-events: none;
+  background: rgba(38, 33, 27, 0.72);
+  color: #EDE4D2;
+  font-size: 11px; letter-spacing: 0.08em;
+  padding: 8px 12px; border-radius: 4px;
+}
+.tpl-design-02-roastery .rw-hero.is-split .rw-hero-caption {
+  left: calc(50% + clamp(14px, 2vw, 32px) + 14px);
+  bottom: calc(clamp(24px, 4vh, 48px) + 14px);
+}
+
+/* ---------- lineup ---------- */
+.tpl-design-02-roastery .rw-lineup { padding: clamp(64px, 9vh, 110px) 0; }
+.tpl-design-02-roastery .rw-sec-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 24px; flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.tpl-design-02-roastery .rw-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.tpl-design-02-roastery .rw-chip {
+  background: transparent;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-text);
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+.tpl-design-02-roastery .rw-chip.is-active { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-background); }
+.tpl-design-02-roastery .rw-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.tpl-design-02-roastery .rw-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-secondary);
+  display: flex; flex-direction: column;
+}
+.tpl-design-02-roastery .rw-card-media { position: relative; aspect-ratio: 4 / 3; }
+.tpl-design-02-roastery .rw-card-media .a-img { width: 100%; height: 100%; }
+.tpl-design-02-roastery .rw-roasted {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+.tpl-design-02-roastery .rw-card-body { padding: 22px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.tpl-design-02-roastery .rw-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.tpl-design-02-roastery .rw-badge {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  padding: 5px 9px;
+  border-radius: 3px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.tpl-design-02-roastery .rw-badge:hover { transform: translateY(-2px); background: var(--color-background); }
+.tpl-design-02-roastery .rw-card-name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; color: var(--color-primary); margin: 0; }
+.tpl-design-02-roastery .rw-card-desc { font-size: 0.92rem; color: var(--color-text); margin: 0; }
+.tpl-design-02-roastery .rw-notes { display: flex; flex-wrap: wrap; gap: 6px; }
+.tpl-design-02-roastery .rw-note {
+  font-size: 11px; font-weight: 600;
+  background: var(--color-background);
+  border: 1px dashed var(--color-secondary);
+  color: var(--color-text);
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+.tpl-design-02-roastery .rw-scale { margin-top: 2px; }
+.tpl-design-02-roastery .rw-scale-track {
+  position: relative;
+  height: 26px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.tpl-design-02-roastery .rw-scale-track::before {
+  content: '';
+  position: absolute; left: 0; right: 0; top: 50%;
+  height: 3px; transform: translateY(-50%);
+  background: var(--color-background);
+  border-radius: 3px;
+}
+.tpl-design-02-roastery .rw-tick { width: 3px; height: 12px; background: var(--color-muted); border-radius: 2px; position: relative; z-index: 1; }
+.tpl-design-02-roastery .rw-tick.is-on { background: var(--color-accent); }
+.tpl-design-02-roastery .rw-dot {
+  position: absolute; top: 50%;
+  width: 16px; height: 16px;
+  background: var(--color-accent);
+  border: 3px solid var(--color-background);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(38, 33, 27, 0.35);
+}
+.tpl-design-02-roastery .rw-scale-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-secondary); }
+.tpl-design-02-roastery .rw-card-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: auto; padding-top: 14px;
+  border-top: 1px solid var(--color-secondary);
+}
+.tpl-design-02-roastery .rw-price { font-size: 1.25rem; font-weight: 700; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+.tpl-design-02-roastery .rw-price small { font-size: 0.75rem; font-weight: 500; color: var(--color-muted); }
+.tpl-design-02-roastery .rw-add {
+  background: var(--color-primary);
+  color: var(--color-background);
+  border: none; cursor: pointer;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 12px 20px;
+  border-radius: 4px;
+  transition: background 0.25s ease;
+}
+.tpl-design-02-roastery .rw-add:hover { background: var(--color-accent); }
+.tpl-design-02-roastery .rw-empty { text-align: center; color: var(--color-muted); padding: 40px 0; }
+
+/* ---------- zoom journey (scrubbed camera flight) ---------- */
+.tpl-design-02-roastery .rw-flight-pin {
+  /* the visible stage, not the window (the viewer toolbar sits above it) */
+  height: var(--tpl-vh, 100svh);
+  min-height: 600px;
+  /* pinned at the scroller top: keep the cards clear of the sticky nav */
+  padding-top: var(--rw-nav-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 12px;
+}
+.tpl-design-02-roastery .rw-flight-viewport { overflow: hidden; }
+.tpl-design-02-roastery .rw-flight-track {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: clamp(24px, 3vw, 48px);
+  width: max-content;
+  padding: 24px clamp(20px, 4vw, 48px);
+  will-change: transform;
+}
+.tpl-design-02-roastery .rw-flight-card {
+  flex: 0 0 auto;
+  width: clamp(290px, 30vw, 400px);
+  will-change: transform, opacity;
+}
+.tpl-design-02-roastery .rw-flight-rail {
+  margin-top: 8px;
+  padding: 0 clamp(20px, 4vw, 48px);
+  display: grid;
+  gap: 16px;
+}
+.tpl-design-02-roastery .rw-flight-now { display: flex; align-items: baseline; gap: 14px; margin: 0; }
+.tpl-design-02-roastery .rw-flight-index {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-02-roastery .rw-flight-name {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+.tpl-design-02-roastery .rw-flight-rail-track {
+  height: 6px;
+  background: var(--color-surface);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.tpl-design-02-roastery .rw-flight-rail-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 6px;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.tpl-design-02-roastery .rw-flight-dots { display: flex; gap: 10px; }
+.tpl-design-02-roastery .rw-flight-dot {
+  width: 36px;
+  height: 4px;
+  border: none;
+  border-radius: 4px;
+  background: var(--color-surface);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, width 0.3s ease;
+}
+.tpl-design-02-roastery .rw-flight-dot:hover { background: var(--color-secondary); }
+.tpl-design-02-roastery .rw-flight-dot.is-active { background: var(--color-accent); width: 56px; }
+
+/* ---------- roast journey ---------- */
+.tpl-design-02-roastery .rw-journey { padding: clamp(64px, 9vh, 110px) 0; background: var(--color-surface); }
+.tpl-design-02-roastery .rw-timeline { margin-top: 48px; }
+.tpl-design-02-roastery .rw-timeline-track {
+  height: 6px;
+  background: var(--color-background);
+  border-radius: 6px;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.tpl-design-02-roastery .rw-timeline-fill {
+  display: block;
+  width: 100%; height: 100%;
+  background: var(--color-accent);
+  transform-origin: left center;
+  transform: scaleX(0);
+  border-radius: 6px;
+}
+.tpl-design-02-roastery .rw-stages {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;
+}
+.tpl-design-02-roastery .rw-stage { opacity: 0.45; transition: opacity 0.4s ease; }
+.tpl-design-02-roastery .rw-stage.is-active { opacity: 1; }
+.tpl-design-02-roastery .rw-stage-num {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.16em;
+  color: var(--color-muted);
+}
+.tpl-design-02-roastery .rw-stage.is-active .rw-stage-num { color: var(--color-accent); }
+.tpl-design-02-roastery .rw-stage h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; color: var(--color-primary); margin: 8px 0 6px; }
+.tpl-design-02-roastery .rw-stage p { font-size: 0.88rem; color: var(--color-text); margin: 0; }
+.tpl-design-02-roastery .rw-detail { margin-top: 48px; display: grid; grid-template-columns: 5fr 7fr; gap: 28px; align-items: center; }
+.tpl-design-02-roastery .rw-detail .a-img { aspect-ratio: 16 / 10; }
+
+/* ---------- origins (charcoal inversion) ---------- */
+.tpl-design-02-roastery .rw-origins { background: var(--color-primary); color: var(--color-background); padding: clamp(64px, 9vh, 110px) 0; }
+.tpl-design-02-roastery .rw-origins .rw-eyebrow { color: var(--brand-on-dark, #E9A27A); }
+.tpl-design-02-roastery .rw-origins .rw-h2 { color: var(--color-background); }
+.tpl-design-02-roastery .rw-map { margin-top: 36px; color: var(--color-background); }
+.tpl-design-02-roastery .rw-map-svg { width: 100%; height: auto; display: block; }
+.tpl-design-02-roastery .rw-draw-path { stroke: var(--brand-on-dark, #E9A27A); stroke-width: 2.5; fill: none; stroke-linecap: round; }
+.tpl-design-02-roastery .rw-pin { transform-box: fill-box; }
+.tpl-design-02-roastery .rw-pin-dot { fill: var(--brand-on-dark, #E9A27A); }
+.tpl-design-02-roastery .rw-pin-home { fill: none; stroke: var(--brand-on-dark, #E9A27A); stroke-width: 3; }
+.tpl-design-02-roastery .rw-pin-label {
+  fill: var(--color-background);
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.tpl-design-02-roastery .rw-region-cards {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; margin-top: 32px;
+}
+.tpl-design-02-roastery .rw-region-card {
+  border: 1px solid rgba(233, 223, 204, 0.25);
+  padding: 20px;
+  border-radius: 4px;
+}
+.tpl-design-02-roastery .rw-region-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; margin: 0 0 12px; color: var(--color-background); }
+.tpl-design-02-roastery .rw-region-card dl { margin: 0 0 12px; display: grid; gap: 6px; }
+.tpl-design-02-roastery .rw-region-card dl div { display: flex; justify-content: space-between; gap: 10px; font-size: 0.82rem; }
+.tpl-design-02-roastery .rw-region-card dt { color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.1em; font-size: 10px; font-weight: 700; }
+.tpl-design-02-roastery .rw-region-card dd { margin: 0; color: var(--color-background); font-weight: 600; text-align: right; }
+.tpl-design-02-roastery .rw-region-card p { font-size: 0.85rem; color: var(--color-background); opacity: 0.75; margin: 0; }
+
+/* ---------- wholesale ---------- */
+.tpl-design-02-roastery .rw-wholesale { padding: clamp(64px, 9vh, 110px) 0; }
+.tpl-design-02-roastery .rw-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 36px 0 48px; }
+.tpl-design-02-roastery .rw-tier { background: var(--color-surface); border: 1px solid var(--color-secondary); padding: 28px; border-radius: 4px; }
+.tpl-design-02-roastery .rw-tier h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--color-primary); margin: 0 0 6px; }
+.tpl-design-02-roastery .rw-tier-vol { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-secondary); margin: 0 0 8px; }
+.tpl-design-02-roastery .rw-tier-price { font-size: 1.1rem; font-weight: 700; color: var(--color-accent); margin: 0 0 14px; font-variant-numeric: tabular-nums; }
+.tpl-design-02-roastery .rw-tier ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 0.9rem; }
+.tpl-design-02-roastery .rw-tier li::before { content: '— '; color: var(--color-accent); font-weight: 700; }
+.tpl-design-02-roastery .rw-form-wrap { background: var(--color-primary); color: var(--color-background); padding: clamp(28px, 4vw, 48px); border-radius: 4px; max-width: 760px; }
+.tpl-design-02-roastery .rw-form-wrap .rw-h3 { color: var(--color-background); }
+.tpl-design-02-roastery .rw-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tpl-design-02-roastery .rw-form label { display: grid; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-background); }
+.tpl-design-02-roastery .rw-form input, .tpl-design-02-roastery .rw-form select {
+  font-family: var(--font-body); font-size: 15px;
+  background: var(--color-background); color: var(--color-text);
+  border: none; border-radius: 3px; padding: 13px 14px;
+}
+.tpl-design-02-roastery .rw-form .rw-btn { grid-column: 1 / -1; justify-self: start; }
+.tpl-design-02-roastery .rw-success { font-size: 1.05rem; color: var(--color-background); border-left: 3px solid var(--brand-on-dark, #E9A27A); padding-left: 16px; }
+/* Accent button on the charcoal form panel: the light brand tone with dark ink. */
+.tpl-design-02-roastery .rw-form-wrap .rw-btn { background: var(--brand-on-dark, #E9A27A); color: var(--color-primary); }
+.tpl-design-02-roastery .rw-form-wrap .rw-btn:hover { background: var(--color-background); color: var(--color-primary); }
+
+/* ---------- brew guides ---------- */
+.tpl-design-02-roastery .rw-guides { padding: clamp(64px, 9vh, 110px) 0; background: var(--color-surface); }
+.tpl-design-02-roastery .rw-guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+.tpl-design-02-roastery .rw-guide { background: var(--color-background); border: 1px solid var(--color-secondary); padding: 26px; border-radius: 4px; }
+.tpl-design-02-roastery .rw-guide-coffee { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent); margin: 0 0 6px; }
+.tpl-design-02-roastery .rw-guide h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; color: var(--color-primary); margin: 0 0 16px; }
+.tpl-design-02-roastery .rw-guide dl { margin: 0 0 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tpl-design-02-roastery .rw-guide dl div { border-top: 1px solid var(--color-secondary); padding-top: 8px; }
+.tpl-design-02-roastery .rw-guide dt { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted); }
+.tpl-design-02-roastery .rw-guide dd { margin: 2px 0 0; font-weight: 700; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+.tpl-design-02-roastery .rw-guide-note { font-size: 0.9rem; font-style: italic; color: var(--color-text); margin: 0; }
+
+/* ---------- footer ---------- */
+.tpl-design-02-roastery .rw-footer { background: var(--color-primary); color: var(--color-background); padding: 68px 0 60px; }
+.tpl-design-02-roastery .rw-foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+.tpl-design-02-roastery .rw-foot-brand { font-family: var(--font-display); font-size: 1.6rem; margin: 0 0 8px; }
+.tpl-design-02-roastery .rw-foot-line { font-size: 0.9rem; opacity: 0.7; margin: 0; }
+.tpl-design-02-roastery .rw-footer h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brand-on-dark, #E9A27A); margin: 0 0 12px; }
+.tpl-design-02-roastery .rw-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 0.9rem; opacity: 0.85; }
+
+@media (max-width: 1024px) {
+  .tpl-design-02-roastery .rw-grid { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-02-roastery .rw-region-cards { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-02-roastery .rw-guide-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .tpl-design-02-roastery .rw-shopnav { display: none; }
+  .tpl-design-02-roastery .rw-grid { grid-template-columns: 1fr; }
+  .tpl-design-02-roastery .rw-stages { grid-template-columns: 1fr; gap: 18px; }
+  .tpl-design-02-roastery .rw-timeline-track { display: none; }
+  .tpl-design-02-roastery .rw-stage { opacity: 1; border-left: 3px solid var(--color-accent); padding-left: 14px; }
+  .tpl-design-02-roastery .rw-detail { grid-template-columns: 1fr; }
+  .tpl-design-02-roastery .rw-map-svg { display: none; }
+  .tpl-design-02-roastery .rw-region-cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    margin-left: calc(-1 * clamp(20px, 4vw, 48px));
+    margin-right: calc(-1 * clamp(20px, 4vw, 48px));
+    padding: 4px clamp(20px, 4vw, 48px) 16px;
+  }
+  .tpl-design-02-roastery .rw-region-card { min-width: 78%; scroll-snap-align: start; }
+  .tpl-design-02-roastery .rw-tiers { grid-template-columns: 1fr; }
+  .tpl-design-02-roastery .rw-guide-grid { grid-template-columns: 1fr; }
+  .tpl-design-02-roastery .rw-form { grid-template-columns: 1fr; }
+  .tpl-design-02-roastery .rw-foot-grid { grid-template-columns: 1fr; }
+  .tpl-design-02-roastery .rw-schedule { grid-template-columns: 1fr; gap: 10px; }
+}

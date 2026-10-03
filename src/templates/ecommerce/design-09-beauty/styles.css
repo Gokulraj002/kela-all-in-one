@@ -1,0 +1,877 @@
+/* PÉTALE — design-09-beauty. Tokens scoped to .tpl-design-09-beauty ONLY. */
+.tpl-design-09-beauty {
+  --color-background: #F7ECE6;
+  --color-surface: #E9DCCB;
+  --color-primary: #2B2320;
+  --color-secondary: #8A4B3C;
+  --color-accent: #8A4B3C;
+  --color-text: #2B2320;
+  --color-muted: #7C6B63;
+  --color-cream: #FDF8F2;
+  --color-rose: #EAC9BC;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Jost', sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  /* Containing block for the absolute top nav: without it the nav anchors to
+     the viewer stage and hangs over every section while scrolling. */
+  position: relative;
+}
+
+.tpl-design-09-beauty *,
+.tpl-design-09-beauty *::before,
+.tpl-design-09-beauty *::after { box-sizing: border-box; }
+
+.tpl-design-09-beauty a { color: inherit; }
+.tpl-design-09-beauty img { display: block; }
+.tpl-design-09-beauty button { font-family: var(--font-body); }
+.tpl-design-09-beauty :focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.tpl-design-09-beauty .a-img { display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-09-beauty .a-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.tpl-design-09-beauty .pt-wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(22px, 4.5vw, 60px); }
+
+.tpl-design-09-beauty .pt-eyebrow {
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 20px;
+}
+
+.tpl-design-09-beauty .pt-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0 0 10px;
+  max-width: 18ch;
+}
+
+.tpl-design-09-beauty .pt-body { max-width: 60ch; margin: 0 0 1.3em; color: var(--color-text); }
+.tpl-design-09-beauty .pt-body:last-child { margin-bottom: 0; }
+
+.tpl-design-09-beauty .pt-lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  line-height: 1.55;
+  color: var(--color-primary);
+  max-width: 52ch;
+  margin: 0;
+}
+
+.tpl-design-09-beauty .pt-rule {
+  display: block;
+  height: 1px;
+  background: var(--color-secondary);
+  opacity: 0.55;
+  transform-origin: left center;
+  margin: 30px 0 48px;
+  max-width: 200px;
+}
+
+.tpl-design-09-beauty .pt-wm .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.tpl-design-09-beauty .pt-wm .wi { display: inline-block; will-change: transform; }
+
+.tpl-design-09-beauty .pt-btn {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 34px;
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
+}
+.tpl-design-09-beauty .pt-btn:hover { background: var(--color-secondary); border-color: var(--color-secondary); transform: translateY(-1px); }
+.tpl-design-09-beauty .pt-btn.is-added { background: var(--color-secondary); border-color: var(--color-secondary); }
+.tpl-design-09-beauty .pt-btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-secondary);
+}
+.tpl-design-09-beauty .pt-btn-ghost:hover { background: var(--color-primary); color: var(--color-background); }
+
+/* ---------- nav ---------- */
+.tpl-design-09-beauty .pt-nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px clamp(22px, 4.5vw, 60px);
+}
+.tpl-design-09-beauty .pt-wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  letter-spacing: 0.28em;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+.tpl-design-09-beauty .pt-links { display: flex; gap: 34px; }
+.tpl-design-09-beauty .pt-links a {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  position: relative;
+  padding-bottom: 5px;
+}
+.tpl-design-09-beauty .pt-links a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--color-secondary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.tpl-design-09-beauty .pt-links a:hover::after { transform: scaleX(1); }
+.tpl-design-09-beauty .pt-bag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(253, 248, 242, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-secondary);
+  border-radius: 999px;
+  padding: 10px 10px 10px 22px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.tpl-design-09-beauty .pt-bag:hover { background: var(--color-cream); }
+.tpl-design-09-beauty .pt-bag-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- hero (scroll-driven frame sequence) ---------- */
+.tpl-design-09-beauty .pt-hero { position: relative; overflow: hidden; }
+
+/* ScrollFrames stage: the design owns the stage height. The component's
+   contract positions .sf-canvas absolutely inset 0 — do not override it.
+   Overlay children stay absolutely positioned, as before. */
+.tpl-design-09-beauty .sf-stage { position: relative; height: 100svh; overflow: hidden; }
+/* Reduced motion: static first frame, full-bleed, all content visible. */
+.tpl-design-09-beauty .sf-static { position: relative; min-height: 100svh; overflow: hidden; }
+.tpl-design-09-beauty .sf-static-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-09-beauty .pt-hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(247, 236, 230, 0.88) 0%, rgba(247, 236, 230, 0.55) 42%, rgba(247, 236, 230, 0.12) 72%, rgba(247, 236, 230, 0) 100%);
+  pointer-events: none;
+}
+.tpl-design-09-beauty .pt-hero-copy {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(110px, 16vh, 160px) clamp(22px, 4.5vw, 60px) clamp(80px, 12vh, 130px);
+  width: 100%;
+}
+.tpl-design-09-beauty .pt-hero-eyebrow { margin-bottom: 26px; }
+.tpl-design-09-beauty .pt-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3.2rem, 8.5vw, 7.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--color-primary);
+  margin: 0 0 28px;
+  max-width: 12ch;
+}
+.tpl-design-09-beauty .pt-hero-sub {
+  font-size: 1.08rem;
+  max-width: 46ch;
+  margin: 0 0 36px;
+  color: var(--color-text);
+}
+.tpl-design-09-beauty .pt-hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 34px; }
+.tpl-design-09-beauty .pt-hero-note {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0;
+}
+.tpl-design-09-beauty .pt-scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 26px;
+  height: 42px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  padding-top: 9px;
+}
+.tpl-design-09-beauty .pt-scroll-cue span {
+  width: 3px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--color-secondary);
+  animation: pt-cue 2.2s ease-in-out infinite;
+}
+@keyframes pt-cue {
+  0%, 100% { transform: translateY(0); opacity: 0.9; }
+  50% { transform: translateY(10px); opacity: 0.35; }
+}
+
+/* ---------- formula dissolve ---------- */
+.tpl-design-09-beauty .pt-products { padding: clamp(110px, 14vh, 170px) 0 clamp(110px, 14vh, 170px); }
+.tpl-design-09-beauty .pt-sec-head { margin-bottom: clamp(48px, 7vh, 90px); }
+
+.tpl-design-09-beauty .pt-dis-wrap { position: relative; }
+.tpl-design-09-beauty .pt-dis-pin {
+  position: relative;
+  height: 100vh;
+  height: var(--tpl-vh, 100svh);
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.tpl-design-09-beauty .pt-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 5vw, 90px);
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(22px, 4.5vw, 60px);
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+.tpl-design-09-beauty .pt-stage-visual {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  aspect-ratio: 4 / 4.7;
+  max-height: calc(var(--tpl-vh, 100vh) * 0.76);
+  width: 100%;
+  background: var(--color-surface);
+  box-shadow: 0 30px 80px rgba(138, 75, 60, 0.16);
+}
+.tpl-design-09-beauty .pt-pack,
+.tpl-design-09-beauty .pt-macro { position: absolute; inset: 0; }
+.tpl-design-09-beauty .pt-pack .a-img,
+.tpl-design-09-beauty .pt-macro .a-img { width: 100%; height: 100%; }
+.tpl-design-09-beauty .pt-macro { will-change: transform, opacity; }
+.tpl-design-09-beauty .pt-macro-a .a-img img { object-position: center 40%; }
+.tpl-design-09-beauty .pt-macro-b .a-img img { object-position: center; }
+.tpl-design-09-beauty .pt-macro-c .a-img img { object-position: center 62%; }
+.tpl-design-09-beauty .pt-stage-num {
+  position: absolute;
+  left: 26px;
+  bottom: 20px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--color-cream);
+  text-shadow: 0 1px 14px rgba(43, 35, 32, 0.45);
+}
+.tpl-design-09-beauty .pt-stage-num span { font-size: 0.95rem; opacity: 0.8; }
+.tpl-design-09-beauty .pt-badge {
+  position: absolute;
+  top: 22px;
+  left: 26px;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: rgba(253, 248, 242, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 9px 18px;
+  border-radius: 999px;
+}
+
+.tpl-design-09-beauty .pt-stage-text { max-width: 52ch; }
+.tpl-design-09-beauty .pt-stage-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  color: var(--color-primary);
+  margin: 0 0 6px;
+}
+.tpl-design-09-beauty .pt-stage-size {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 22px;
+}
+.tpl-design-09-beauty .pt-stage-desc {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--color-primary);
+  margin: 0 0 26px;
+}
+.tpl-design-09-beauty .pt-formula-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 34px;
+  padding: 0;
+}
+.tpl-design-09-beauty .pt-formula-chips li {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: rgba(253, 248, 242, 0.5);
+}
+.tpl-design-09-beauty .pt-stage-buy { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+.tpl-design-09-beauty .pt-price {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.tpl-design-09-beauty .pt-dis-dots {
+  position: absolute;
+  right: clamp(22px, 4.5vw, 60px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 3;
+}
+.tpl-design-09-beauty .pt-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-secondary);
+  opacity: 0.28;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.tpl-design-09-beauty .pt-dot.is-active { opacity: 1; transform: scale(1.5); }
+
+/* Fourth product: lip tint + shade finder */
+.tpl-design-09-beauty .pt-tint {
+  margin-top: clamp(90px, 12vh, 150px);
+  background: var(--color-cream);
+  border-radius: 36px;
+  padding: clamp(36px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  box-shadow: 0 24px 70px rgba(138, 75, 60, 0.1);
+}
+.tpl-design-09-beauty .pt-tint-visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tpl-design-09-beauty .pt-tint-disc {
+  width: 62%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 52%), var(--sw, #8A4B3C);
+  box-shadow: 0 24px 60px rgba(138, 75, 60, 0.28), inset 0 -18px 44px rgba(43, 35, 32, 0.18);
+  transition: background-color 0.5s ease;
+  position: relative;
+  z-index: 2;
+}
+.tpl-design-09-beauty .pt-tint-halo {
+  position: absolute;
+  width: 88%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-rose) 0%, rgba(234, 201, 188, 0) 68%);
+  opacity: 0.7;
+  filter: blur(10px);
+}
+.tpl-design-09-beauty .pt-shades { margin: 0 0 30px; }
+.tpl-design-09-beauty .pt-shade-swatches { display: flex; gap: 14px; margin-bottom: 18px; }
+.tpl-design-09-beauty .pt-swatch {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: var(--sw);
+  cursor: pointer;
+  padding: 0;
+  box-shadow: inset 0 0 0 3px var(--color-cream);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-09-beauty .pt-swatch:hover { transform: scale(1.1); }
+.tpl-design-09-beauty .pt-swatch.is-active { border-color: var(--color-primary); transform: scale(1.12); }
+.tpl-design-09-beauty .pt-shade-name {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 4px;
+}
+.tpl-design-09-beauty .pt-shade-note { font-size: 0.95rem; font-style: italic; color: var(--color-muted); margin: 0; }
+
+/* ---------- ingredient stories ---------- */
+.tpl-design-09-beauty .pt-story { padding: clamp(110px, 14vh, 170px) 0; background: var(--color-cream); }
+.tpl-design-09-beauty .pt-story-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(36px, 5vw, 90px);
+  align-items: center;
+  margin-bottom: clamp(64px, 9vh, 110px);
+}
+.tpl-design-09-beauty .pt-story-img { margin: 0; }
+.tpl-design-09-beauty .pt-story-img .a-img { border-radius: 32px; aspect-ratio: 4 / 4.4; box-shadow: 0 30px 80px rgba(138, 75, 60, 0.14); }
+.tpl-design-09-beauty .pt-story-img figcaption {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: 16px;
+}
+.tpl-design-09-beauty .pt-ingredients {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 44px);
+}
+.tpl-design-09-beauty .pt-ingredient {
+  border-top: 1px solid var(--color-secondary);
+  padding-top: 22px;
+}
+.tpl-design-09-beauty .pt-ingredient-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin: 0 0 10px;
+}
+.tpl-design-09-beauty .pt-ingredient-note { font-size: 0.95rem; color: var(--color-text); margin: 0; }
+
+/* ---------- ritual ---------- */
+.tpl-design-09-beauty .pt-ritual { padding: clamp(110px, 14vh, 170px) 0; }
+.tpl-design-09-beauty .pt-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(24px, 3vw, 44px);
+}
+.tpl-design-09-beauty .pt-step { border-top: 2px solid var(--color-primary); padding-top: 24px; }
+.tpl-design-09-beauty .pt-step-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  display: block;
+  margin-bottom: 12px;
+}
+.tpl-design-09-beauty .pt-step-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.7rem;
+  color: var(--color-primary);
+  margin: 0 0 6px;
+}
+.tpl-design-09-beauty .pt-step-product {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 14px;
+}
+.tpl-design-09-beauty .pt-step-text { font-size: 0.95rem; margin: 0; }
+
+/* ---------- reviews ---------- */
+.tpl-design-09-beauty .pt-reviews { padding: clamp(110px, 14vh, 170px) 0; background: var(--color-surface); }
+.tpl-design-09-beauty .pt-review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 44px);
+  margin-bottom: clamp(56px, 8vh, 90px);
+}
+.tpl-design-09-beauty .pt-review {
+  margin: 0;
+  background: var(--color-cream);
+  border-radius: 28px;
+  padding: clamp(30px, 3vw, 44px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 18px 50px rgba(138, 75, 60, 0.1);
+}
+.tpl-design-09-beauty .pt-stars { color: var(--color-secondary); letter-spacing: 0.3em; margin-bottom: 20px; font-size: 0.9rem; }
+.tpl-design-09-beauty .pt-review blockquote { margin: 0 0 24px; flex: 1; }
+.tpl-design-09-beauty .pt-review blockquote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.55;
+  color: var(--color-primary);
+  margin: 0;
+}
+.tpl-design-09-beauty .pt-review figcaption {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+.tpl-design-09-beauty .pt-review figcaption span { color: var(--color-muted); font-weight: 500; }
+.tpl-design-09-beauty .pt-assurances {
+  list-style: none;
+  margin: 0;
+  padding: 26px 0 0;
+  border-top: 1px solid var(--color-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 40px;
+}
+.tpl-design-09-beauty .pt-assurances li {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+/* ---------- footer ---------- */
+.tpl-design-09-beauty .pt-footer { background: var(--color-primary); color: var(--color-background); padding: clamp(90px, 12vh, 140px) 0 60px; }
+.tpl-design-09-beauty .pt-footer .pt-h2 { color: var(--color-background); }
+.tpl-design-09-beauty .pt-footer .pt-body { color: var(--color-background); opacity: 0.82; }
+.tpl-design-09-beauty .pt-footer .pt-rule { background: var(--color-rose); opacity: 0.5; }
+.tpl-design-09-beauty .pt-news {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  margin-bottom: clamp(56px, 8vh, 90px);
+}
+.tpl-design-09-beauty .pt-news-form { width: 100%; }
+.tpl-design-09-beauty .pt-news-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+  margin-bottom: 14px;
+}
+.tpl-design-09-beauty .pt-news-row { display: flex; gap: 12px; }
+.tpl-design-09-beauty .pt-news-input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(247, 236, 230, 0.4);
+  border-radius: 999px;
+  padding: 15px 24px;
+  color: var(--color-background);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  min-width: 0;
+}
+.tpl-design-09-beauty .pt-news-input::placeholder { color: rgba(247, 236, 230, 0.45); }
+.tpl-design-09-beauty .pt-footer .pt-btn { background: var(--color-background); border-color: var(--color-background); color: var(--color-primary); }
+.tpl-design-09-beauty .pt-footer .pt-btn:hover { background: var(--color-rose); border-color: var(--color-rose); }
+.tpl-design-09-beauty .pt-news-thanks {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--color-rose);
+  margin: 0;
+}
+.tpl-design-09-beauty .pt-foot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  margin-bottom: 56px;
+}
+.tpl-design-09-beauty .pt-foot-word { font-size: 1.3rem; margin-bottom: 10px; }
+.tpl-design-09-beauty .pt-foot-tag { font-size: 0.9rem; font-style: italic; opacity: 0.7; margin: 0; }
+.tpl-design-09-beauty .pt-foot-contact { font-style: normal; font-size: 0.95rem; line-height: 2; opacity: 0.9; }
+.tpl-design-09-beauty .pt-foot-contact a { text-decoration: none; border-bottom: 1px solid rgba(247, 236, 230, 0.35); }
+.tpl-design-09-beauty .pt-foot-nav { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+.tpl-design-09-beauty .pt-foot-nav a {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.tpl-design-09-beauty .pt-foot-nav a:hover { opacity: 1; }
+.tpl-design-09-beauty .pt-foot-line { font-family: var(--font-display); font-size: 1.1rem; margin: 0 0 8px; opacity: 0.9; }
+.tpl-design-09-beauty .pt-foot-colophon { font-size: 0.82rem; font-style: italic; opacity: 0.55; margin: 0; }
+
+/* ---------- cart drawer ---------- */
+.tpl-design-09-beauty .pt-scrim {
+  position: fixed;
+  inset: var(--tpl-top, 0px) 0 0 0;
+  z-index: 60;
+  background: rgba(43, 35, 32, 0.4);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.tpl-design-09-beauty .pt-scrim.is-open { opacity: 1; visibility: visible; }
+.tpl-design-09-beauty .pt-cart {
+  position: fixed;
+  top: var(--tpl-top, 0px); right: 0; bottom: 0;
+  z-index: 61;
+  width: min(430px, 94%);
+  background: var(--color-cream);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  /* Park it past its own shadow (-30px offset + 80px blur) so no dark band
+     shows along the right edge while the bag is closed. */
+  transform: translateX(calc(100% + 120px));
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: -30px 0 80px rgba(43, 35, 32, 0.25);
+}
+.tpl-design-09-beauty .pt-cart.is-open { transform: translateX(0); }
+.tpl-design-09-beauty .pt-cart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 30px;
+  border-bottom: 1px solid var(--color-surface);
+}
+.tpl-design-09-beauty .pt-cart-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.7rem;
+  color: var(--color-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tpl-design-09-beauty .pt-cart-n {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--color-secondary);
+  color: var(--color-cream);
+  border-radius: 999px;
+  min-width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+}
+.tpl-design-09-beauty .pt-cart-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.tpl-design-09-beauty .pt-cart-empty { padding: 48px 30px; text-align: center; }
+.tpl-design-09-beauty .pt-cart-empty p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin: 0 0 28px;
+}
+.tpl-design-09-beauty .pt-cart-items { list-style: none; margin: 0; padding: 10px 30px; overflow-y: auto; flex: 1; }
+.tpl-design-09-beauty .pt-cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-surface);
+  align-items: baseline;
+}
+.tpl-design-09-beauty .pt-cart-item-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin: 0;
+  grid-column: 1;
+}
+.tpl-design-09-beauty .pt-cart-item-shade { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-secondary); margin: 2px 0 0; grid-column: 1; }
+.tpl-design-09-beauty .pt-cart-item-size { font-size: 0.85rem; color: var(--color-muted); margin: 2px 0 0; grid-column: 1; }
+.tpl-design-09-beauty .pt-cart-item-qty { font-size: 0.9rem; color: var(--color-muted); margin: 0; grid-column: 1; }
+.tpl-design-09-beauty .pt-cart-item-price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin: 0;
+  grid-column: 2;
+  grid-row: 1 / span 4;
+  align-self: center;
+}
+.tpl-design-09-beauty .pt-cart-foot { padding: 24px 30px 34px; border-top: 1px solid var(--color-surface); }
+.tpl-design-09-beauty .pt-cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-09-beauty .pt-cart-total strong {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.tpl-design-09-beauty .pt-cart-checkout { width: 100%; text-align: center; }
+.tpl-design-09-beauty .pt-cart-demo { font-size: 0.82rem; font-style: italic; color: var(--color-muted); text-align: center; margin: 14px 0 0; }
+
+/* ---------- reduced motion: everything static, fully visible ---------- */
+.tpl-design-09-beauty.is-reduced .pt-dis-wrap { height: auto; }
+.tpl-design-09-beauty.is-reduced .pt-dis-pin { height: auto; display: block; overflow: visible; }
+.tpl-design-09-beauty.is-reduced .pt-stage {
+  position: relative;
+  inset: auto;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  margin: 0 auto clamp(72px, 9vh, 120px);
+}
+.tpl-design-09-beauty.is-reduced .pt-stage:last-of-type { margin-bottom: 0; }
+.tpl-design-09-beauty.is-reduced .pt-macro { display: none; }
+.tpl-design-09-beauty.is-reduced .pt-pack { opacity: 1; filter: none; transform: none; }
+.tpl-design-09-beauty.is-reduced .pt-dis-dots { display: none; }
+.tpl-design-09-beauty.is-reduced .pt-scroll-cue span { animation: none; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1023px) {
+  /* Mobile/tablet dissolve: stacked cards; the macro layer sits over the
+     packshot and gently crossfades away as each card scrolls by. */
+  .tpl-design-09-beauty .pt-dis-pin { height: auto; display: block; overflow: visible; }
+  .tpl-design-09-beauty .pt-stage {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    visibility: visible;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 640px;
+    margin: 0 auto clamp(72px, 10vh, 110px);
+    padding: 0 clamp(22px, 4.5vw, 60px);
+  }
+  .tpl-design-09-beauty .pt-stage:last-child { margin-bottom: 0; }
+  .tpl-design-09-beauty .pt-stage-visual { aspect-ratio: 4 / 3.4; max-height: none; }
+  .tpl-design-09-beauty .pt-macro { opacity: 0.9; transform: scale(1.06); }
+  .tpl-design-09-beauty .pt-pack { opacity: 0.45; }
+  .tpl-design-09-beauty .pt-dis-dots { display: none; }
+}
+
+@media (max-width: 900px) {
+  .tpl-design-09-beauty .pt-links { display: none; }
+  .tpl-design-09-beauty .pt-story-grid { grid-template-columns: 1fr; }
+  .tpl-design-09-beauty .pt-story-img .a-img { aspect-ratio: 16 / 10; }
+  .tpl-design-09-beauty .pt-ingredients { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-09-beauty .pt-steps { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-09-beauty .pt-review-grid { grid-template-columns: 1fr; max-width: 620px; }
+  .tpl-design-09-beauty .pt-news { grid-template-columns: 1fr; }
+  .tpl-design-09-beauty .pt-foot-grid { grid-template-columns: 1fr 1fr; }
+  .tpl-design-09-beauty .pt-foot-nav { align-items: flex-start; }
+  .tpl-design-09-beauty .pt-tint { grid-template-columns: 1fr; }
+  .tpl-design-09-beauty .pt-tint-visual { max-width: 380px; margin: 0 auto; width: 100%; }
+}
+
+@media (max-width: 560px) {
+  .tpl-design-09-beauty .pt-hero-ctas .pt-btn { width: 100%; text-align: center; }
+  .tpl-design-09-beauty .pt-ingredients { grid-template-columns: 1fr; }
+  .tpl-design-09-beauty .pt-steps { grid-template-columns: 1fr; }
+  .tpl-design-09-beauty .pt-news-row { flex-direction: column; }
+  .tpl-design-09-beauty .pt-news-row .pt-btn { text-align: center; }
+  .tpl-design-09-beauty .pt-foot-grid { grid-template-columns: 1fr; }
+  .tpl-design-09-beauty .pt-stage-buy { gap: 18px; }
+  .tpl-design-09-beauty .pt-stage-buy .pt-btn { width: 100%; text-align: center; }
+  .tpl-design-09-beauty .pt-scroll-cue { display: none; }
+}
+
+@media (min-width: 1600px) {
+  .tpl-design-09-beauty .pt-hero-title { font-size: 8rem; }
+}

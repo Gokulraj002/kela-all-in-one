@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-10-journal',
+  num: '10',
+  name: 'Fieldnotes',
+  tag: 'Experimental',
+  style: 'Cinematic field journal, film-stock',
+  animation: 'Film-strip rewind, frame counter, light-leak flashes',
+  typography: 'Fraunces + Space Mono',
+  layout: 'Vertical film strip, sprocket-hole frames',
+  mood: 'Analog, curious, restless',
+  palette: 'Film black / cream / amber',
+  features: ['Film-strip rewind', 'Frame counter', 'Field annotations', 'Light-leak chapters'],
+  fonts: { display: 'Fraunces', body: 'Space Mono' },
+  colors: { primary: '#0E0D0B', accent: '#E08A3C' },
+};

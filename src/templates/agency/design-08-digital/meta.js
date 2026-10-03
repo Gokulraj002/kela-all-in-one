@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-08-digital',
+  num: '08',
+  name: 'Interface/Dept',
+  tag: 'Digital Product',
+  style: 'Systems-thinking spec-sheet agency',
+  animation: 'Spec-sheet accordion rail, countUp metrics, border-draw capability grid',
+  typography: 'Sora + Inter',
+  layout: 'Full-width case rows with sticky index rail; metric band; bordered capability grid',
+  mood: 'Systematic, sharp, accountable',
+  palette: 'Off-white / graphite / electric blue',
+  features: [
+    'Metric-led hero with countUp outcomes',
+    'M8 spec-sheet accordion rail with sticky index numbers',
+    'Capability grid with scroll-drawn borders',
+    'Four-sprint process timeline',
+    'Audit booking form with budget bands',
+  ],
+  fonts: { display: 'Sora', body: 'Inter' },
+  colors: { primary: '#101418', accent: '#1F5CFF' },
+};

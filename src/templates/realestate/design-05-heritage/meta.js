@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-05-heritage',
+  num: '05',
+  name: 'The Lime & Lintel Co.',
+  tag: 'Heritage Restoration',
+  style: 'Archival letterpress — sepia records meeting restored full color',
+  animation: 'Before/after wipe scrub across three restoration chapters',
+  typography: 'Playfair Display + Manrope',
+  layout: 'Centered editorial ledger; pinned comparison stage; seal-stamped footer',
+  mood: 'Storied, tactile, reverent',
+  palette: 'Aged stone / oxblood / limewash / brass',
+  features: [
+    'Scroll-scrubbed before/after wipe (facade, colonnade, interiors)',
+    'Archival sepia grading vs restored full color',
+    'Material library: lime, teak, brass, stone',
+    'Craftsman profiles',
+    'Ritual film: Hands of restoration (10s loop)',
+    'Journal of restoration notes',
+  ],
+  fonts: { display: 'Playfair Display', body: 'Manrope' },
+  colors: { primary: '#5A2320', accent: '#A9884B' },
+};

@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-01-luxury',
+  num: '01',
+  name: 'Meridian & Grey',
+  tag: 'Luxury',
+  style: 'Cinematic private-travel atelier',
+  animation: 'Route-line draw, waypoint docking, champagne reveals',
+  typography: 'Cormorant Garamond + Jost',
+  layout: 'Full-bleed cinematic chapters, museum spacing',
+  mood: 'Exclusive, hushed, precise',
+  palette: 'Ink navy / champagne / ivory',
+  features: ['Private charters', 'After-hours access', 'Dedicated travel designer', 'Waypoint itinerary'],
+  fonts: { display: 'Cormorant Garamond', body: 'Jost' },
+  colors: { primary: '#101820', accent: '#C9A961' },
+};

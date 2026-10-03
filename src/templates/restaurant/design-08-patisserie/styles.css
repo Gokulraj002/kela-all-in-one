@@ -1,0 +1,807 @@
+/* Butter & Bloom — design-08-patisserie
+   Delicate morning craft · Marcellus + Mulish · blush / cocoa / rose.
+   All tokens live on the template scope: the platform wraps this component
+   in <div class="tpl-scope tpl-design-08-patisserie">. Never touch :root. */
+
+.tpl-design-08-patisserie {
+  --color-background: #F8F1E7;
+  --color-surface: #F1E4D3;
+  --color-primary: #3E2A22;
+  --color-secondary: #8A6A52;
+  --color-accent: #C48A7A;
+  --color-text: #3E2A22;
+  --color-muted: #A08B78;
+  --color-cream: #FFF9F2;
+  --color-cream-soft: #EDE0D0;
+  --font-display: 'Marcellus', serif;
+  --font-body: 'Mulish', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: clip;
+}
+
+.tpl-design-08-patisserie *,
+.tpl-design-08-patisserie *::before,
+.tpl-design-08-patisserie *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-08-patisserie img {
+  display: block;
+  max-width: 100%;
+}
+
+.tpl-design-08-patisserie a {
+  color: inherit;
+}
+
+/* ---------- shared primitives ---------- */
+
+.tpl-design-08-patisserie .a-img {
+  display: block;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-08-patisserie .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tpl-design-08-patisserie .bb-section {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 5rem);
+}
+
+.tpl-design-08-patisserie .bb-section-head {
+  max-width: 720px;
+  margin: 0 auto clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+
+.tpl-design-08-patisserie .bb-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 1.1rem;
+}
+
+.tpl-design-08-patisserie .bb-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.15;
+  color: var(--color-primary);
+  margin: 0 0 1.25rem;
+  text-wrap: balance;
+}
+
+.tpl-design-08-patisserie .bb-body {
+  font-size: 1.02rem;
+  font-weight: 300;
+  color: var(--color-text);
+  max-width: 58ch;
+  margin: 0 0 1.1rem;
+}
+
+.tpl-design-08-patisserie .bb-lede {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+}
+
+.tpl-design-08-patisserie .bb-btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-cream);
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  padding: 1rem 1.9rem;
+  /* hover lift on `translate` — some buttons are GSAP reveal targets
+     (`transform`), so a transform transition would fight the tween */
+  transition: translate 0.35s ease, background 0.35s ease, color 0.35s ease;
+}
+
+.tpl-design-08-patisserie .bb-btn:hover {
+  translate: 0 -2px;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.tpl-design-08-patisserie .bb-btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-secondary);
+}
+
+.tpl-design-08-patisserie .bb-btn-ghost:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-cream);
+}
+
+.tpl-design-08-patisserie .bb-btn-small {
+  padding: 0.7rem 1.4rem;
+  font-size: 0.68rem;
+}
+
+/* word-mask */
+.tpl-design-08-patisserie .bb-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+.tpl-design-08-patisserie .bb-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------- nav ---------- */
+
+.tpl-design-08-patisserie .bb-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.4rem clamp(1.5rem, 5vw, 5rem);
+  position: relative;
+  z-index: 10;
+}
+
+.tpl-design-08-patisserie .bb-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.tpl-design-08-patisserie .bb-nav-links {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 2.2rem);
+}
+
+.tpl-design-08-patisserie .bb-nav-links a {
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-secondary);
+  transition: color 0.3s ease;
+}
+
+.tpl-design-08-patisserie .bb-nav-links a:hover {
+  color: var(--color-primary);
+}
+
+/* ---------- hero (scroll-driven frame sequence) ---------- */
+
+.tpl-design-08-patisserie .bb-hero {
+  position: relative;
+}
+
+/* ScrollFrames renders stage/canvas/overlay layout inline (height 100svh
+   default) — the design only choreographs the overlay: bottom-aligned copy
+   with the same padding the video hero used. */
+.tpl-design-08-patisserie .bb-hero .sf-overlay {
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
+}
+
+.tpl-design-08-patisserie .bb-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-background) 15%, transparent) 0%,
+    color-mix(in srgb, var(--color-background) 42%, transparent) 55%,
+    color-mix(in srgb, var(--color-background) 88%, transparent) 100%
+  );
+}
+
+.tpl-design-08-patisserie .bb-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+}
+
+.tpl-design-08-patisserie .bb-hero-eyebrow {
+  color: var(--color-secondary);
+}
+
+.tpl-design-08-patisserie .bb-hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.7rem, 6.4vw, 5.4rem);
+  line-height: 1.06;
+  color: var(--color-primary);
+  margin: 0 0 1.4rem;
+  text-wrap: balance;
+}
+
+.tpl-design-08-patisserie .bb-hero-sub {
+  font-size: 1.08rem;
+  font-weight: 300;
+  max-width: 52ch;
+  color: var(--color-text);
+  margin: 0 0 2rem;
+}
+
+.tpl-design-08-patisserie .bb-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.tpl-design-08-patisserie .bb-hero-est {
+  position: absolute;
+  right: clamp(1.5rem, 5vw, 5rem);
+  bottom: clamp(4rem, 8vw, 7rem);
+  z-index: 2;
+  writing-mode: vertical-rl;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- craft ---------- */
+
+.tpl-design-08-patisserie .bb-craft {
+  background: var(--color-background);
+}
+
+.tpl-design-08-patisserie .bb-craft-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tpl-design-08-patisserie .bb-craft-visual {
+  margin: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px -40px color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+.tpl-design-08-patisserie .bb-craft-img {
+  aspect-ratio: 4 / 3;
+}
+
+.tpl-design-08-patisserie .bb-craft-visual figcaption {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--color-muted);
+  padding: 0.9rem 0.2rem 0;
+}
+
+.tpl-design-08-patisserie .bb-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.6rem 0 0;
+  padding: 2rem 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 30%, transparent);
+}
+
+.tpl-design-08-patisserie .bb-stat dt {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-accent);
+  margin-bottom: 0.3rem;
+}
+
+.tpl-design-08-patisserie .bb-stat dd {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* ---------- the glass case (M8) ---------- */
+
+.tpl-design-08-patisserie .bb-case {
+  background: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.tpl-design-08-patisserie .bb-case-stage {
+  max-width: 1080px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tpl-design-08-patisserie .bb-tier {
+  transform-style: preserve-3d;
+  will-change: transform;
+  padding: clamp(2rem, 4vw, 3.5rem) 0;
+}
+
+.tpl-design-08-patisserie .bb-tier-glass {
+  position: relative;
+  /* no backdrop-filter: the case sits on a flat surface, and re-blurring
+     behind three scrubbed, scaling tiers every frame made scrolling stutter */
+  background: color-mix(in srgb, var(--color-cream) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent);
+  border-radius: 20px;
+  padding: clamp(1.8rem, 4vw, 3rem);
+  box-shadow:
+    0 34px 70px -34px color-mix(in srgb, var(--color-primary) 32%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-cream) 65%, transparent);
+}
+
+.tpl-design-08-patisserie .bb-flag {
+  position: absolute;
+  top: -15px;
+  right: clamp(1.2rem, 3vw, 2.4rem);
+  background: var(--color-accent);
+  color: var(--color-cream);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--color-accent) 80%, transparent);
+  transform-origin: center bottom;
+  will-change: transform;
+  white-space: nowrap;
+}
+
+.tpl-design-08-patisserie .bb-tier-kicker {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.5rem;
+}
+
+.tpl-design-08-patisserie .bb-tier-head h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--color-primary);
+  margin: 0 0 0.3rem;
+}
+
+.tpl-design-08-patisserie .bb-tier-caption {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--color-muted);
+  margin: 0 0 1.8rem;
+}
+
+.tpl-design-08-patisserie .bb-tier-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.4rem, 3vw, 2.4rem);
+}
+
+.tpl-design-08-patisserie .bb-item {
+  background: color-mix(in srgb, var(--color-cream) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 18%, transparent);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.tpl-design-08-patisserie .bb-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 44px -24px color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+.tpl-design-08-patisserie .bb-item-visual {
+  aspect-ratio: 16 / 10;
+}
+
+.tpl-design-08-patisserie .bb-item-visual img {
+  transition: transform 0.7s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.tpl-design-08-patisserie .bb-item:hover .bb-item-visual img {
+  transform: scale(1.05);
+}
+
+.tpl-design-08-patisserie .bb-item-copy {
+  padding: 1.2rem 1.3rem 1.4rem;
+}
+
+.tpl-design-08-patisserie .bb-item-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.tpl-design-08-patisserie .bb-item-head h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.tpl-design-08-patisserie .bb-item-price {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-secondary);
+  white-space: nowrap;
+}
+
+.tpl-design-08-patisserie .bb-item-copy p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--color-text);
+  margin: 0 0 0.6rem;
+}
+
+.tpl-design-08-patisserie .bb-item-note {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+/* the glass shelf lip */
+.tpl-design-08-patisserie .bb-shelf {
+  height: 10px;
+  margin: 1.6rem -0.4rem -0.8rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-cream) 85%, transparent) 0%,
+    color-mix(in srgb, var(--color-secondary) 18%, transparent) 60%,
+    color-mix(in srgb, var(--color-secondary) 30%, transparent) 100%
+  );
+  box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.tpl-design-08-patisserie .bb-case-foot {
+  text-align: center;
+  font-style: italic;
+  color: var(--color-muted);
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+}
+
+/* ---------- bake schedule ---------- */
+
+.tpl-design-08-patisserie .bb-schedule {
+  background: var(--color-background);
+}
+
+.tpl-design-08-patisserie .bb-sched-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 720px;
+  position: relative;
+}
+
+.tpl-design-08-patisserie .bb-sched-list::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: color-mix(in srgb, var(--color-secondary) 35%, transparent);
+}
+
+.tpl-design-08-patisserie .bb-sched-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 1.2rem;
+  padding: 1.6rem 0;
+}
+
+.tpl-design-08-patisserie .bb-sched-dot {
+  position: absolute;
+  left: 0;
+  top: 2rem;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 2px solid var(--color-accent);
+}
+
+.tpl-design-08-patisserie .bb-sched-time {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--color-accent);
+  padding-left: 2rem;
+}
+
+.tpl-design-08-patisserie .bb-sched-copy h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin: 0 0 0.25rem;
+}
+
+.tpl-design-08-patisserie .bb-sched-copy p {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- custom cakes ---------- */
+
+.tpl-design-08-patisserie .bb-cakes {
+  background: var(--color-surface);
+}
+
+.tpl-design-08-patisserie .bb-cakes-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.tpl-design-08-patisserie .bb-cakes .bb-btn {
+  margin-top: 1.2rem;
+}
+
+.tpl-design-08-patisserie .bb-cakes-card {
+  background: color-mix(in srgb, var(--color-cream) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent);
+  border-radius: 18px;
+  padding: clamp(1.8rem, 3.5vw, 2.8rem);
+  box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+
+.tpl-design-08-patisserie .bb-cakes-card h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+}
+
+.tpl-design-08-patisserie .bb-cakes-card ul {
+  list-style: none;
+  margin: 0 0 1.2rem;
+  padding: 0;
+}
+
+.tpl-design-08-patisserie .bb-cakes-card li {
+  position: relative;
+  padding: 0.55rem 0 0.55rem 1.6rem;
+  font-size: 0.95rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 18%, transparent);
+}
+
+.tpl-design-08-patisserie .bb-cakes-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.tpl-design-08-patisserie .bb-cakes-fine {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- visit ---------- */
+
+.tpl-design-08-patisserie .bb-visit {
+  background: var(--color-background);
+}
+
+.tpl-design-08-patisserie .bb-visit-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.tpl-design-08-patisserie .bb-address {
+  font-style: normal;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.9;
+  margin: 0 0 2rem;
+}
+
+.tpl-design-08-patisserie .bb-address a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+.tpl-design-08-patisserie .bb-hours {
+  background: var(--color-surface);
+  border-radius: 18px;
+  padding: clamp(1.8rem, 3.5vw, 2.8rem);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 22%, transparent);
+}
+
+.tpl-design-08-patisserie .bb-hours h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin: 0 0 1.1rem;
+}
+
+.tpl-design-08-patisserie .bb-hours ul {
+  list-style: none;
+  margin: 0 0 1.4rem;
+  padding: 0;
+}
+
+.tpl-design-08-patisserie .bb-hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 18%, transparent);
+  font-size: 0.94rem;
+}
+
+.tpl-design-08-patisserie .bb-hours li span:first-child {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.tpl-design-08-patisserie .bb-hours li span:last-child {
+  color: var(--color-secondary);
+  text-align: right;
+}
+
+.tpl-design-08-patisserie .bb-visit-note {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- footer ---------- */
+
+.tpl-design-08-patisserie .bb-footer {
+  background: var(--color-primary);
+  color: var(--color-cream-soft);
+  text-align: center;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 5rem) 3rem;
+}
+
+.tpl-design-08-patisserie .bb-footer-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin: 0 0 1rem;
+  color: var(--color-background);
+}
+
+.tpl-design-08-patisserie .bb-footer-line {
+  font-size: 0.95rem;
+  font-weight: 300;
+  margin: 0 0 0.4rem;
+  color: var(--color-cream-soft);
+}
+
+.tpl-design-08-patisserie .bb-footer-credit {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: color-mix(in srgb, var(--color-cream-soft) 65%, transparent);
+  margin: 0 0 2rem;
+}
+
+.tpl-design-08-patisserie .bb-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.8rem;
+}
+
+.tpl-design-08-patisserie .bb-footer-nav a {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: color-mix(in srgb, var(--color-cream-soft) 75%, transparent);
+  transition: color 0.3s ease;
+}
+
+.tpl-design-08-patisserie .bb-footer-nav a:hover {
+  color: var(--brand-on-dark, var(--color-accent));
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  .tpl-design-08-patisserie .bb-nav-links {
+    display: none;
+  }
+  .tpl-design-08-patisserie .bb-craft-grid,
+  .tpl-design-08-patisserie .bb-cakes-grid,
+  .tpl-design-08-patisserie .bb-visit-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .tpl-design-08-patisserie .bb-hero-est {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .tpl-design-08-patisserie .bb-nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .tpl-design-08-patisserie .bb-wordmark {
+    font-size: 1.25rem;
+  }
+  .tpl-design-08-patisserie .bb-tier-items {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-08-patisserie .bb-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .tpl-design-08-patisserie .bb-sched-item {
+    grid-template-columns: 78px 1fr;
+    gap: 0.8rem;
+  }
+  .tpl-design-08-patisserie .bb-flag {
+    top: -12px;
+    font-size: 0.6rem;
+    padding: 0.45rem 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-08-patisserie .bb-item:hover {
+    transform: none;
+  }
+  .tpl-design-08-patisserie .bb-item-visual img {
+    transition: none;
+  }
+  .tpl-design-08-patisserie .bb-btn:hover {
+    translate: none;
+  }
+}

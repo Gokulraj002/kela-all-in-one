@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-04-urban',
+  num: '04',
+  name: 'Rush Hour Coffee',
+  tag: 'Urban Coffee',
+  style: 'Brutalist-urban poster',
+  animation: 'Kinetic headline slam · marquee specials ticker · snap reveals',
+  typography: 'Fraunces + Space Grotesk',
+  layout: 'Dense poster grid · sticky order pill · mobile bottom tab bar',
+  mood: 'Loud · Fast · Unapologetic',
+  palette: 'Bone / ink / burnt orange',
+  features: [
+    'Specials marquee ticker (rAF, pauses offscreen)',
+    'Order-ahead flow teaser with pickup slots',
+    'Location switcher with per-spot hours',
+    'Filterable grab-and-go menu with quick-add',
+  ],
+  fonts: { display: 'Fraunces', body: 'Space Grotesk' },
+  colors: { primary: '#141311', accent: '#DE4E1D' },
+};

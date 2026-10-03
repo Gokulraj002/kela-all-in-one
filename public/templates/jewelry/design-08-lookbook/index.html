@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kela Jewels — N°1 The Gilded Hour</title>
+  <meta name="description" content="Kela Jewels — a fashion jewellery lookbook. N°1, The Gilded Hour: twelve looks in gold, rose and pearl.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23FBF8F5'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23211E1B'%3EK%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="brand" href="#hero" data-brand>Kela Jewels</a>
+      <p class="issue-tag" data-content="brand.tagline">N°1 — The Gilded Hour</p>
+      <nav class="nav-links" data-build="nav" aria-label="Primary"></nav>
+      <a class="nav-cta" href="#contact">Book a viewing</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile"></nav>
+  </header>
+
+  <main>
+
+    <!-- 1 · HERO — full-bleed editorial spread -->
+    <section id="hero" aria-label="Cover story">
+      <div class="hero-media">
+        <div class="img-shell hero-shell">
+          <img width="1920" height="1080" data-img id="heroImg" src="assets/images/hero.webp" alt="Editorial photograph of hands layered with fine gold rings on blush silk" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <p class="hero-issue reveal" aria-hidden="true">N°1</p>
+      <div class="hero-content">
+        <p class="eyebrow eyebrow-light reveal" data-content="hero.eyebrow">N°1 — The Gilded Hour · Autumn 2026</p>
+        <h1 class="hero-title reveal" data-content="hero.title" data-magnetic data-delay="100">Wear the golden hour.</h1>
+        <p class="hero-sub reveal" data-content="hero.subtitle" data-delay="200">Twelve looks in gold, rose and pearl — photographed in a single evening, made to be lived in.</p>
+        <div class="hero-ctas reveal" data-delay="300">
+          <a class="btn-solid" href="#collections"><span data-content="hero.ctaPrimary">View the looks</span></a>
+          <a class="btn-ghostline" href="#contact"><span data-content="hero.ctaSecondary">Book a viewing</span></a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#collections" aria-label="Scroll to looks">
+        <span class="scroll-cue-line" aria-hidden="true"></span>
+        <span class="scroll-cue-text">Scroll</span>
+      </a>
+    </section>
+
+    <!-- 2 · COLLECTIONS — horizontal look strip -->
+    <section id="collections" aria-label="The looks">
+      <div class="wrap-wide">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow reveal" data-build="secLabel" data-sec="0"></p>
+            <h2 class="sec-title reveal" data-delay="80">The looks, <em>unedited</em></h2>
+          </div>
+          <div class="strip-ctrl reveal" data-delay="160">
+            <button id="stripPrev" aria-label="Previous look"><span aria-hidden="true">←</span></button>
+            <button id="stripNext" aria-label="Next look"><span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="look-strip" id="lookStrip" data-build="collections"></div>
+      <p class="strip-hint">Drag or swipe →</p>
+    </section>
+
+    <!-- 3 · PRODUCTS — broken editorial grid -->
+    <section id="products" aria-label="Pieces">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow reveal" data-build="secLabel" data-sec="1"></p>
+            <h2 class="sec-title reveal" data-delay="80">Pieces from <em>the issue</em></h2>
+          </div>
+          <p class="sec-note reveal" data-delay="160">Hover to feel the light.<br>Click for a closer look.</p>
+        </div>
+        <div class="looks-grid" data-build="products"></div>
+      </div>
+    </section>
+
+    <!-- TRY THE LOOK — concept demo -->
+    <section id="try-on" aria-label="Try the look">
+      <div class="wrap try-grid">
+        <div class="try-copy">
+          <p class="eyebrow eyebrow-light reveal">Try the look</p>
+          <h2 class="sec-title sec-title-light reveal" data-delay="80">See it in <em>your</em> light.</h2>
+          <p class="try-lede reveal" data-delay="140">Upload a portrait and preview it inside the Kela Jewels frame — styled the way our editors would shoot it.</p>
+          <div class="dropzone reveal" id="dropzone" data-delay="200" role="button" tabindex="0" aria-label="Upload a portrait photo">
+            <input type="file" id="tryFile" accept="image/png,image/jpeg,image/webp" hidden>
+            <p class="dz-title">Drop your portrait here</p>
+            <p class="dz-sub">or <span class="dz-browse">browse files</span> · JPG / PNG / WEBP</p>
+          </div>
+          <p class="try-note reveal" data-delay="260">Concept demo — illustrative preview, not AI try-on.</p>
+          <div class="try-pair reveal" data-delay="320">
+            <p class="try-pair-label">Pair with</p>
+            <div class="try-pair-row" data-build="pair"></div>
+            <p class="try-pair-caption" id="pairCaption" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="try-frame reveal" data-delay="200">
+          <div class="img-shell ratio-3x4" id="tryFrame">
+            <div class="try-empty" id="tryEmpty" aria-hidden="true">
+              <span class="try-mono" data-brand>Kela Jewels</span>
+              <p>Your portrait appears here</p>
+            </div>
+            <img id="tryImg" data-img alt="Your uploaded portrait presented in the Kela Jewels editorial frame" hidden loading="lazy" decoding="async">
+          </div>
+          <p class="try-frame-cap"><span data-brand>Kela Jewels</span> · <span data-content="brand.tagline">N°1 — The Gilded Hour</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · CRAFTSMANSHIP -->
+    <section id="craftsmanship" aria-label="Craftsmanship">
+      <div class="wrap craft-grid">
+        <div class="craft-media reveal-crop">
+          <div class="img-shell ratio-4x5">
+            <img width="1920" height="1280" data-img src="assets/images/craft.webp" alt="Hands setting a stone under the loupe in the Kela Jewels atelier" loading="lazy" decoding="async">
+          </div>
+          <p class="craft-cap">The atelier, Bengaluru</p>
+        </div>
+        <div class="craft-copy">
+          <p class="eyebrow reveal" data-content="craftsmanship.eyebrow">The atelier</p>
+          <h2 class="sec-title reveal" data-content="craftsmanship.title" data-delay="80">One evening's light, a month of work.</h2>
+          <div class="prose reveal" data-content-paras="craftsmanship.body" data-delay="160"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · STORY -->
+    <section id="story" aria-label="Maison story">
+      <div class="wrap-narrow story-inner">
+        <p class="eyebrow reveal" data-content="story.eyebrow">The maison</p>
+        <blockquote class="story-quote reveal" data-delay="100">
+          <span data-content="story.title">An ode to the hour before dark.</span>
+        </blockquote>
+        <div class="prose reveal" data-content-paras="story.body" data-delay="180"></div>
+      </div>
+    </section>
+
+    <!-- 6 · CONTACT -->
+    <section id="contact" aria-label="Contact">
+      <div class="wrap contact-grid">
+        <div class="contact-side">
+          <p class="eyebrow reveal">Private viewings</p>
+          <h2 class="sec-title reveal" data-delay="80">Book a <em>viewing</em>.</h2>
+          <p class="contact-lede reveal" data-delay="140">Thirty minutes, one stylist, the whole issue on the table.</p>
+          <dl class="contact-rows reveal" data-delay="200">
+            <div class="contact-row">
+              <dt>Email</dt>
+              <dd><a data-contact-email href="mailto:hello@kelajewels.in">hello@kelajewels.in</a></dd>
+            </div>
+            <div class="contact-row">
+              <dt>Telephone</dt>
+              <dd><a data-contact-phone href="tel:+918047192210">+91 80 4719 2210</a></dd>
+            </div>
+            <div class="contact-row">
+              <dt>Atelier</dt>
+              <dd data-content="contact.address">7 Walton Road, Bengaluru 560001</dd>
+            </div>
+            <div class="contact-row">
+              <dt>Instagram</dt>
+              <dd><a data-contact-instagram href="https://instagram.com/kelajewels" target="_blank" rel="noopener">@kelajewels <span class="arrow" aria-hidden="true">→</span></a></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="contact-formwrap reveal" data-delay="220">
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your name">
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+            </div>
+            <div class="field field-full">
+              <label for="cf-msg">Message</label>
+              <textarea id="cf-msg" name="message" rows="4" placeholder="Which look caught your eye?"></textarea>
+            </div>
+            <button class="btn-solid" type="submit">Request viewing <span class="arrow" aria-hidden="true">→</span></button>
+          </form>
+          <div id="form-success" class="form-success" hidden>
+            <p class="form-success-title">Noted.</p>
+            <p>Our stylist will write within two working days to arrange your viewing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-top">
+      <div class="footer-brand">
+        <p class="brand brand-lg" data-brand>Kela Jewels</p>
+        <p class="footer-tag" data-content="brand.tagline">N°1 — The Gilded Hour</p>
+      </div>
+      <nav class="footer-nav" data-build="nav" aria-label="Footer"></nav>
+      <div class="footer-contact">
+        <a data-contact-email href="mailto:hello@kelajewels.in">hello@kelajewels.in</a>
+        <a data-contact-instagram href="https://instagram.com/kelajewels" target="_blank" rel="noopener">Instagram <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <p class="footer-water" aria-hidden="true" data-brand>Kela Jewels</p>
+    <div class="wrap footer-base">
+      <p data-content="footer.line">© 2026 Kela Jewels. All rights reserved.</p>
+      <p>Shot at dusk, Bengaluru</p>
+    </div>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

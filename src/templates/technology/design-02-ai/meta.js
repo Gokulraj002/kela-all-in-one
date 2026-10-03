@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-02-ai',
+  num: '02',
+  name: 'Cortexa',
+  tag: 'AI Platform',
+  style: 'Dark cinematic neural',
+  animation: 'Neural pulse scroll, slow reveals',
+  typography: 'Space Grotesk + Inter',
+  layout: 'Full-bleed dark, constellation field',
+  mood: 'Mysterious, intelligent, cinematic',
+  palette: 'Near-black / violet / cyan',
+  features: [
+    'Scrub-linked neural pulse network',
+    'Model cards',
+    'Research notes',
+    'Cinematic hero hold',
+  ],
+  fonts: { display: 'Space Grotesk', body: 'Inter' },
+  colors: { primary: '#050508', accent: '#8B5CF6' },
+};

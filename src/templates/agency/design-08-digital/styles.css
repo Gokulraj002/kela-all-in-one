@@ -1,0 +1,666 @@
+/* design-08-digital · systems-thinking digital product agency
+   Tokens scoped to .tpl-design-08-digital. No :root writes. */
+
+.tpl-design-08-digital {
+  --color-background: #F6F7F8;
+  --color-surface: #FFFFFF;
+  --color-primary: #101418;
+  --color-secondary: #4A5560;
+  --color-accent: #1F5CFF;
+  --color-text: #1A2027;
+  --color-muted: #8A94A0;
+  --color-border: #DFE4EA;
+  --color-border-strong: #101418;
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --wrap: min(1280px, 100% - clamp(2rem, 6vw, 5rem));
+  --pad-y: clamp(4rem, 9vw, 7.5rem);
+  --radius: 2px;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tpl-design-08-digital * { box-sizing: border-box; }
+.tpl-design-08-digital img { display: block; max-width: 100%; }
+
+/* ---------- word-mask headline ---------- */
+.tpl-design-08-digital .id08-wm { display: inline; }
+.tpl-design-08-digital .id08-wm .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.tpl-design-08-digital .id08-wm .wi { display: inline-block; }
+
+/* ---------- type utilities ---------- */
+.tpl-design-08-digital .id08-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.tpl-design-08-digital .id08-eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 2px;
+  background: var(--color-accent);
+  flex: none;
+}
+.tpl-design-08-digital .id08-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+  max-width: 18ch;
+}
+.tpl-design-08-digital .id08-body { color: var(--color-secondary); max-width: 62ch; margin: 0; }
+.tpl-design-08-digital .id08-wrap { width: var(--wrap); margin-inline: auto; }
+.tpl-design-08-digital .id08-sec { padding-block: var(--pad-y); }
+.tpl-design-08-digital .id08-num { font-variant-numeric: tabular-nums; }
+
+/* ---------- nav ---------- */
+.tpl-design-08-digital .id08-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  height: 68px;
+  background: rgba(246, 247, 248, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+.tpl-design-08-digital .id08-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tpl-design-08-digital .id08-wordmark em { font-style: normal; color: var(--color-accent); }
+.tpl-design-08-digital .id08-links { display: flex; gap: 1.75rem; margin-left: auto; }
+.tpl-design-08-digital .id08-links a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.tpl-design-08-digital .id08-links a:hover { color: var(--color-primary); }
+.tpl-design-08-digital .id08-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  border: 1px solid var(--color-primary);
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.tpl-design-08-digital .id08-cta:hover { background: var(--color-accent); border-color: var(--color-accent); }
+.tpl-design-08-digital .id08-cta .id08-arrow { transition: transform 0.2s; }
+.tpl-design-08-digital .id08-cta:hover .id08-arrow { transform: translateX(3px); }
+.tpl-design-08-digital .id08-cta-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border-strong);
+}
+.tpl-design-08-digital .id08-cta-ghost:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+
+/* ---------- hero ---------- */
+.tpl-design-08-digital .id08-hero {
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.tpl-design-08-digital .id08-hero-grid {
+  width: var(--wrap);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  /* start, not center: the pinned frame's spacer makes this row ~3 screens
+     tall, and centring parked the copy in the middle of nowhere */
+  align-items: start;
+}
+/* Desktop: the copy rides along beside the pinned frame while it scrubs. */
+@media (min-width: 901px) {
+  .tpl-design-08-digital .id08-hero-copy {
+    position: sticky;
+    top: calc(68px + clamp(1.5rem, 4vw, 3.5rem));
+  }
+}
+.tpl-design-08-digital .id08-hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+  margin: 0 0 1.25rem;
+  max-width: 12ch;
+}
+.tpl-design-08-digital .id08-hero-title .accent { color: var(--color-accent); }
+.tpl-design-08-digital .id08-hero-sub {
+  font-size: 1.05rem;
+  color: var(--color-secondary);
+  max-width: 46ch;
+  margin: 0 0 2rem;
+}
+.tpl-design-08-digital .id08-hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.tpl-design-08-digital .id08-hero-frame {
+  position: relative;
+}
+/* Scroll-driven build sequence (replaces the autoplay loop): the framed unit
+   itself pins and scrubs — the pin spacer keeps the outcomes band from
+   sliding under it. The wrap pins at the top of the scroll area, so it
+   carries a transparent top inset that keeps the frame clear of the sticky
+   68px nav; aspect-ratio applies to the content box (box-sizing), so the
+   component's inline stageHeight="100%" is exactly 3:2. The frame chrome
+   (hairline + white mat) lives on the stage. */
+.tpl-design-08-digital .id08-hero-frame.sf-wrap {
+  box-sizing: content-box;
+  aspect-ratio: 3 / 2;
+  padding: 84px 0 0;
+}
+.tpl-design-08-digital .id08-hero-frame .sf-stage {
+  border: 0.5rem solid var(--color-surface);
+  box-shadow: 0 0 0 1px var(--color-border-strong);
+  background: var(--color-surface);
+}
+.tpl-design-08-digital .id08-hero-frame.sf-static {
+  aspect-ratio: 3 / 2;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  padding: 0.5rem;
+}
+.tpl-design-08-digital .id08-frame-tag {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.1rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.tpl-design-08-digital .id08-frame-tag .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--color-accent);
+  animation: id08-blink 1.6s infinite;
+}
+@keyframes id08-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+.tpl-design-08-digital .id08-hero-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0.25rem 0.35rem;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- outcomes band ---------- */
+.tpl-design-08-digital .id08-band {
+  width: var(--wrap);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.tpl-design-08-digital .id08-band-head { grid-column: 1 / -1; background: var(--color-background); padding: 1.5rem; }
+.tpl-design-08-digital .id08-metric {
+  background: var(--color-surface);
+  padding: 1.5rem;
+}
+.tpl-design-08-digital .id08-metric-val {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  margin: 0 0 0.5rem;
+}
+.tpl-design-08-digital .id08-metric-label {
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ---------- section head ---------- */
+.tpl-design-08-digital .id08-sec-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+.tpl-design-08-digital .id08-sec-note {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  max-width: 30ch;
+  text-align: right;
+  margin: 0;
+}
+
+/* ---------- M8 case rail ---------- */
+.tpl-design-08-digital .id08-work-grid {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+}
+.tpl-design-08-digital .id08-rail {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+.tpl-design-08-digital .id08-rail-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 0.5rem;
+}
+.tpl-design-08-digital .id08-rail-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(4rem, 7vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-primary);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-08-digital .id08-rail-num .of {
+  font-size: 0.32em;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+.tpl-design-08-digital .id08-rail-client {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin: 0.75rem 0 0;
+}
+.tpl-design-08-digital .id08-cases { display: flex; flex-direction: column; gap: 0.75rem; }
+.tpl-design-08-digital .id08-case {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+.tpl-design-08-digital .id08-case.is-active { border-color: var(--color-border-strong); }
+.tpl-design-08-digital .id08-case-head {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto 2.5rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.35rem 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+.tpl-design-08-digital .id08-case-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+.tpl-design-08-digital .id08-case.is-active .id08-case-num { color: var(--color-accent); }
+.tpl-design-08-digital .id08-case-client { margin: 0; font-weight: 600; font-size: 0.98rem; color: var(--color-primary); }
+.tpl-design-08-digital .id08-case-client small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  letter-spacing: 0.05em;
+  margin-top: 0.15rem;
+}
+.tpl-design-08-digital .id08-case-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  text-align: right;
+  white-space: nowrap;
+}
+.tpl-design-08-digital .id08-case-chev {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s, color 0.2s;
+  flex: none;
+  justify-self: end;
+}
+.tpl-design-08-digital .id08-case.is-active .id08-case-chev {
+  transform: rotate(45deg);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+.tpl-design-08-digital .id08-case-body { overflow: hidden; height: 0; }
+.tpl-design-08-digital.is-reduced .id08-case-body { height: auto !important; overflow: visible; }
+.tpl-design-08-digital .id08-case-inner {
+  border-top: 1px solid var(--color-border);
+  padding: 1.75rem 1.5rem 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2rem;
+}
+.tpl-design-08-digital .id08-case-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  margin-bottom: 1.5rem;
+}
+.tpl-design-08-digital .id08-cm { background: var(--color-surface); padding: 1.1rem 1.2rem; }
+.tpl-design-08-digital .id08-cm-val {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+  margin: 0 0 0.35rem;
+}
+.tpl-design-08-digital .id08-cm-label { font-size: 0.75rem; color: var(--color-secondary); margin: 0; line-height: 1.4; }
+.tpl-design-08-digital .id08-case-summary { color: var(--color-secondary); margin: 0 0 1.5rem; max-width: 58ch; }
+.tpl-design-08-digital .id08-spec { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.tpl-design-08-digital .id08-spec th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  width: 34%;
+}
+.tpl-design-08-digital .id08-spec td {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+.tpl-design-08-digital .id08-case-img {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  align-self: start;
+}
+.tpl-design-08-digital .id08-case-img .a-img { display: block; aspect-ratio: 4 / 3; overflow: hidden; }
+.tpl-design-08-digital .id08-case-img img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-08-digital .id08-case-img figcaption {
+  padding: 0.65rem 0.85rem;
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ---------- capabilities ---------- */
+.tpl-design-08-digital .id08-caps { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+.tpl-design-08-digital .id08-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.tpl-design-08-digital .id08-cap {
+  padding: 2rem 1.75rem;
+  border: 1px solid transparent;
+  margin: -0.5px;
+  background: transparent;
+}
+.tpl-design-08-digital .id08-cap-num {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--color-muted);
+  margin: 0 0 1rem;
+}
+.tpl-design-08-digital .id08-cap h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0 0 0.6rem;
+}
+.tpl-design-08-digital .id08-cap-proof { font-size: 0.88rem; color: var(--color-secondary); margin: 0 0 1.25rem; }
+.tpl-design-08-digital .id08-cap ul { list-style: none; margin: 0; padding: 1.25rem 0 0; border-top: 1px solid var(--color-border); }
+.tpl-design-08-digital .id08-cap li {
+  font-size: 0.82rem;
+  color: var(--color-text);
+  padding: 0.45rem 0;
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+.tpl-design-08-digital .id08-cap li::before { content: '—'; color: var(--color-accent); font-weight: 700; }
+
+/* ---------- process ---------- */
+.tpl-design-08-digital .id08-sprints { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; counter-reset: spr; }
+.tpl-design-08-digital .id08-sprint {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-primary);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.tpl-design-08-digital .id08-sprint-time {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.75rem;
+}
+.tpl-design-08-digital .id08-sprint h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+.tpl-design-08-digital .id08-sprint p { font-size: 0.88rem; color: var(--color-secondary); margin: 0 0 1.25rem; }
+.tpl-design-08-digital .id08-sprint-deliv { margin-top: auto; }
+.tpl-design-08-digital .id08-sprint-deliv span {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+.tpl-design-08-digital .id08-sprint-deliv ul { list-style: none; margin: 0; padding: 0; }
+.tpl-design-08-digital .id08-sprint-deliv li { font-size: 0.82rem; padding: 0.35rem 0; border-top: 1px solid var(--color-border); }
+
+/* ---------- testimonials ---------- */
+.tpl-design-08-digital .id08-testis { background: var(--color-primary); color: #fff; }
+.tpl-design-08-digital .id08-testis .id08-h2 { color: #fff; }
+.tpl-design-08-digital .id08-testis .id08-eyebrow { color: #aab3bd; }
+.tpl-design-08-digital .id08-testis .id08-eyebrow::before { background: var(--brand-on-dark, var(--color-accent)); }
+.tpl-design-08-digital .id08-testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.tpl-design-08-digital .id08-testi {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.tpl-design-08-digital .id08-testi blockquote { margin: 0 0 1.5rem; font-size: 1rem; line-height: 1.6; }
+.tpl-design-08-digital .id08-testi footer { margin-top: auto; }
+.tpl-design-08-digital .id08-testi cite { font-style: normal; font-weight: 600; font-size: 0.88rem; display: block; }
+.tpl-design-08-digital .id08-testi .role { font-size: 0.78rem; color: #aab3bd; }
+
+/* ---------- contact ---------- */
+.tpl-design-08-digital .id08-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+.tpl-design-08-digital .id08-contact-lines { margin-top: 2rem; }
+.tpl-design-08-digital .id08-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.92rem;
+}
+.tpl-design-08-digital .id08-line:last-child { border-bottom: 1px solid var(--color-border); }
+.tpl-design-08-digital .id08-line dt { color: var(--color-muted); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.tpl-design-08-digital .id08-line dd { margin: 0; color: var(--color-text); font-weight: 500; text-align: right; }
+.tpl-design-08-digital .id08-line dd a { color: var(--color-accent); text-decoration: none; }
+.tpl-design-08-digital .id08-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  padding: 2rem;
+}
+.tpl-design-08-digital .id08-form h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-primary);
+}
+.tpl-design-08-digital .id08-field { margin-bottom: 1.25rem; }
+.tpl-design-08-digital .id08-field label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+.tpl-design-08-digital .id08-field input,
+.tpl-design-08-digital .id08-field select,
+.tpl-design-08-digital .id08-field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.75rem 0.9rem;
+}
+.tpl-design-08-digital .id08-field input:focus,
+.tpl-design-08-digital .id08-field select:focus,
+.tpl-design-08-digital .id08-field textarea:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+  border-color: var(--color-accent);
+}
+.tpl-design-08-digital .id08-field textarea { min-height: 5.5rem; resize: vertical; }
+.tpl-design-08-digital .id08-form-note { font-size: 0.78rem; color: var(--color-muted); margin: 1rem 0 0; }
+
+/* ---------- footer ---------- */
+.tpl-design-08-digital .id08-footer {
+  border-top: 1px solid var(--color-border-strong);
+  padding-block: 2.5rem 2rem;
+}
+.tpl-design-08-digital .id08-footer-grid {
+  width: var(--wrap);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: end;
+}
+.tpl-design-08-digital .id08-footer-line { font-weight: 600; color: var(--color-primary); margin: 0 0 0.5rem; }
+.tpl-design-08-digital .id08-colophon { font-size: 0.78rem; color: var(--color-muted); margin: 0; }
+.tpl-design-08-digital .id08-footer-links { display: flex; gap: 1.5rem; }
+.tpl-design-08-digital .id08-footer-links a { font-size: 0.85rem; font-weight: 500; color: var(--color-secondary); text-decoration: none; }
+.tpl-design-08-digital .id08-footer-links a:hover { color: var(--color-accent); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .tpl-design-08-digital .id08-cap-grid { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-08-digital .id08-sprints { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .tpl-design-08-digital .id08-hero-grid { grid-template-columns: 1fr; }
+  /* Single column: a square frame, centred in the visible scroll area while
+     it is pinned (the top inset is half the leftover height), so the pin
+     reads as a presented moment instead of a frame stuck under the nav with
+     an empty screen below it. */
+  .tpl-design-08-digital .id08-hero-frame.sf-wrap {
+    aspect-ratio: 1 / 1;
+    padding-top: max(84px, calc(var(--tpl-vh, 100svh) / 2 - 50%));
+  }
+  .tpl-design-08-digital .id08-work-grid { grid-template-columns: 1fr; }
+  .tpl-design-08-digital .id08-rail { display: none; }
+  .tpl-design-08-digital .id08-case-inner { grid-template-columns: 1fr; }
+  .tpl-design-08-digital .id08-contact-grid { grid-template-columns: 1fr; }
+  .tpl-design-08-digital .id08-testi-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .tpl-design-08-digital .id08-links { display: none; }
+  .tpl-design-08-digital .id08-band { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-08-digital .id08-case-head { grid-template-columns: 2.5rem 1fr 2.5rem; }
+  .tpl-design-08-digital .id08-case-headline { display: none; }
+  .tpl-design-08-digital .id08-case-metrics { grid-template-columns: 1fr 1fr; }
+  .tpl-design-08-digital .id08-sec-head { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .tpl-design-08-digital .id08-sec-note { text-align: left; }
+}
+@media (max-width: 560px) {
+  .tpl-design-08-digital .id08-cap-grid,
+  .tpl-design-08-digital .id08-sprints { grid-template-columns: 1fr; }
+  .tpl-design-08-digital .id08-band { grid-template-columns: 1fr; }
+  .tpl-design-08-digital .id08-case-metrics { grid-template-columns: 1fr; }
+  .tpl-design-08-digital .id08-form { padding: 1.5rem 1.25rem; }
+  .tpl-design-08-digital .id08-footer-grid { grid-template-columns: 1fr; }
+  .tpl-design-08-digital .id08-nav { gap: 1rem; }
+}
+
+/* ---------- reduced motion: final states, no hiding ---------- */
+.tpl-design-08-digital.is-reduced .id08-frame-tag .dot { animation: none; }
+.tpl-design-08-digital.is-reduced .id08-case-chev { transition: none; }

@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-01-palace',
+  num: '01',
+  name: 'The Rajwada Palace',
+  tag: 'Palace Resort',
+  style: 'Regal cinematic maximalism — the grandest design in the category',
+  animation: 'Ceremonial: double-curtain clip-path reveals, masked word-rise, slow light-led entrances',
+  typography: 'Cormorant Garamond + Jost',
+  layout: 'Grand ceremonial symmetry — centered crest nav, pinned curtain-reveal suite theatre, generous maroon-ink bands',
+  mood: 'Regal, cinematic, candlelit',
+  palette: 'Deep maroon-ink and antique gold — golden-hour light on marble and brass',
+  features: [
+    'Grand curtain-reveal suite theatre (pinned, scrubbed, desktop)',
+    'Sticky booking bar with live night-count and rate math',
+    'Scroll-driven cinematic hero: palace façade at golden hour, frame-by-frame (pinned scrub)',
+    'Legend told in three beats',
+    'Dining, experiences, weddings teaser, guest book, practical section',
+    'Mobile sticky bottom booking bar',
+  ],
+  fonts: { display: 'Cormorant Garamond', body: 'Jost' },
+  colors: { primary: '#2A1A12', accent: '#C9A24B' },
+};

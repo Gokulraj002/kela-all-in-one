@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231A1714'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23D9B65E'%3EK%3C/text%3E%3C/svg%3E">
+<title>Kela Jewels — The Gemstone Maison</title>
+<meta name="description" content="Kela Jewels — a contemporary gemstone maison devoted to coloured stones. Emeralds, rubies and sapphires, cut and set in our Mumbai atelier.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Plus+Jakarta+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+/* Image fallback — defined early so inline onerror handlers always work. */
+window.__gemmaImgErr = function (img) {
+  try {
+    img.onerror = null;
+    img.style.display = 'none';
+    var frame = img.closest ? img.closest('.img-frame') : null;
+    if (frame) frame.classList.add('img-fallback');
+  } catch (e) { /* never break rendering */ }
+};
+</script>
+</head>
+<body>
+
+<!-- ============ 1 · NAVIGATION ============ -->
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="brand" href="#hero" aria-label="Kela Jewels home">
+      <span class="brand-mark" data-brand-initial>K</span>
+      <span class="brand-word" data-content="brand.name" data-brand>Kela Jewels</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary"></nav>
+    <div class="nav-right">
+      <a class="btn btn-gold btn-small" href="#contact" data-content="navCta">Book an Appointment</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 2 · HERO + GEMSTONE SWITCHER ============ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-copy" data-depth="6">
+      <p class="eyebrow" data-content="hero.eyebrow" data-reveal="fade">The Gemstone Maison — Est. 2011</p>
+      <h1 class="display hero-title" id="heroTitle" data-content="hero.title" data-reveal="fade">Light, Kept in Colour</h1>
+      <p class="lede" data-content="hero.subtitle" data-reveal="fade">Kela Jewels is a contemporary maison devoted to coloured gemstones.</p>
+      <div class="hero-ctas" data-reveal="fade">
+        <a class="btn btn-primary" href="#products" data-content="hero.ctaPrimary">Explore High Jewelry</a>
+        <a class="btn btn-ghost" href="#contact" data-content="hero.ctaSecondary">Book a Viewing</a>
+      </div>
+      <p class="hero-tagline" data-content="brand.tagline" data-reveal="fade">The Gemstone Maison</p>
+    </div>
+
+    <div class="hero-panel" id="heroPanel" data-depth="14" data-reveal="clip">
+      <div class="hero-visual img-frame" data-parallax="0.06">
+        <img width="1920" height="1080" class="hero-base" id="heroBase" src="assets/images/hero.webp"
+             alt="Colourless diamond solitaire ring in white gold on dark silk"
+             fetchpriority="high" decoding="async" onload="this.classList.add('loaded')" onerror="__gemmaImgErr(this)">
+        <div class="hero-tint tint-a" id="tintA" aria-hidden="true"></div>
+        <div class="hero-tint tint-b" id="tintB" aria-hidden="true"></div>
+        <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
+        <div class="hero-sweep" aria-hidden="true"></div>
+      </div>
+      <div class="stone-switcher" role="tablist" aria-label="Choose a gemstone" id="stoneSwitcher"></div>
+      <div class="stone-meta" id="stoneMeta">
+        <p class="stone-kicker" id="stoneKicker">Now Viewing</p>
+        <h3 class="stone-name" id="stoneName">Diamond</h3>
+        <p class="stone-desc" id="stoneDesc"></p>
+      </div>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#collections" aria-label="Scroll to collections"><span></span></a>
+</section>
+
+<!-- ============ 3 · COLLECTIONS ============ -->
+<section id="collections">
+  <div class="wrap">
+    <div class="section-head" data-reveal="fade">
+      <p class="eyebrow" data-content="sections.collections.eyebrow">The Collections</p>
+      <h2 class="display" data-content="sections.collections.title">Three stones, one obsession</h2>
+      <p class="section-sub" data-content="sections.collections.sub">Each Kela Jewels collection begins at the source.</p>
+    </div>
+    <div class="collection-grid" id="collectionGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 4 · PRODUCTS ============ -->
+<section id="products">
+  <div class="wrap">
+    <div class="section-head section-head-light" data-reveal="fade">
+      <p class="eyebrow" data-content="sections.products.eyebrow">High Jewelry</p>
+      <h2 class="display" data-content="sections.products.title">Pieces of the season</h2>
+      <p class="section-sub" data-content="sections.products.sub">One-of-one stones, set once, never repeated.</p>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 5 · CRAFTSMANSHIP ============ -->
+<section id="craftsmanship">
+  <div class="wrap craft-grid">
+    <div class="img-frame craft-frame" data-reveal="clip" data-parallax="0.04">
+      <img width="1920" height="1080" src="assets/images/craft.webp" alt="Gemologist setting a green gemstone in the Kela Jewels atelier"
+           loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="__gemmaImgErr(this)">
+    </div>
+    <div class="craft-copy">
+      <p class="eyebrow" data-content="craftsmanship.eyebrow" data-reveal="fade">The Atelier</p>
+      <h2 class="display" data-content="craftsmanship.title" data-reveal="fade">From rough to radiance</h2>
+      <p class="body-copy" data-content="craftsmanship.body" data-reveal="fade">Every Kela Jewels stone travels the same road: chosen at the source, cut under one roof, and set by a single goldsmith from first sketch to final polish. Fourteen pairs of hands, one standard — if a stone does not move us, it does not leave the atelier.</p>
+      <ol class="process-list" id="processList"></ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · STORY ============ -->
+<section id="story">
+  <div class="wrap story-inner">
+    <p class="eyebrow eyebrow-center" data-content="story.eyebrow" data-reveal="fade">The Maison</p>
+    <h2 class="display display-center" data-content="story.title" data-reveal="fade">Born of a single emerald</h2>
+    <div class="story-body" data-reveal="fade">
+      <p class="body-copy" data-content="story.body">Kela Jewels began in 2011 when our founder, gemologist Meera Kothari, refused to sell a Zambian emerald she had bought for a client — and built a maison around it instead. Fifteen years on, we remain deliberately small: three stones, one atelier, and a waiting list for pieces that take months to make. We do not chase trends. We chase the moment a rough stone first catches the light.</p>
+    </div>
+    <blockquote class="pull-quote" data-reveal="fade">
+      <p data-content="story.quote">"A diamond is admired. A coloured stone is remembered."</p>
+      <cite data-content="story.quoteBy">— Meera Kothari, Founder</cite>
+    </blockquote>
+    <div class="story-band img-frame" data-reveal="clip">
+      <img width="1920" height="1080" src="assets/images/hero.webp" alt="Diamond solitaire in dramatic light"
+           loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="__gemmaImgErr(this)">
+    </div>
+    <div class="stats-row" id="statsRow"></div>
+  </div>
+</section>
+
+<!-- ============ 7 · CONTACT ============ -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <p class="eyebrow" data-content="sections.contact.eyebrow" data-reveal="fade">Private Viewings</p>
+      <h2 class="display" data-content="sections.contact.title">Begin with a conversation</h2>
+      <p class="body-copy" data-content="sections.contact.sub" data-reveal="fade">Our concierge arranges private viewings at the Mumbai maison.</p>
+      <ul class="contact-lines" data-reveal="fade">
+        <li><span class="contact-label">Visit</span><span data-content="contact.address">Mumbai</span></li>
+        <li><span class="contact-label">Call</span><a data-content="contact.phone" data-content-href="contact.phoneHref" href="tel:+912248902200">+91 22 4890 2200</a></li>
+        <li><span class="contact-label">Write</span><a data-content="contact.email" data-content-href="contact.emailHref" href="mailto:hello@kelajewels.in">hello@kelajewels.in</a></li>
+        <li><span class="contact-label">Follow</span><a data-content="contact.instagramLabel" data-content-href="contact.instagram" href="https://instagram.com/kelajewels" target="_blank" rel="noopener">@kelajewels</a></li>
+      </ul>
+    </div>
+    <div class="contact-form-wrap" data-reveal="fade">
+      <form id="contactForm" novalidate>
+        <div class="field">
+          <label for="fName">Name</label>
+          <input id="fName" name="name" type="text" autocomplete="name" placeholder="Your full name">
+        </div>
+        <div class="field">
+          <label for="fEmail">Email</label>
+          <input id="fEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="fMsg">Message</label>
+          <textarea id="fMsg" name="message" rows="4" placeholder="I would like to view…"></textarea>
+        </div>
+        <button class="btn btn-primary btn-full" type="submit">Request an Appointment</button>
+        <p class="form-note">Demonstration form — no data is sent.</p>
+      </form>
+      <div class="form-confirm" id="formConfirm" hidden>
+        <p class="eyebrow">Received</p>
+        <h3 class="display">Thank you.</h3>
+        <p class="body-copy">Our concierge will write to you within one business day to arrange your viewing.</p>
+        <p class="confirm-ref" id="confirmRef"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 8 · FOOTER ============ -->
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" data-brand-initial>K</span>
+      <span class="brand-word" data-content="brand.name" data-brand>Kela Jewels</span>
+    </div>
+    <nav class="footer-nav" id="footerNav" aria-label="Footer"></nav>
+    <p class="footer-line" data-content="footer.line">© 2026 Kela Jewels. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Quick view overlay -->
+<div class="qv-overlay" id="qvOverlay" hidden>
+  <div class="qv-backdrop" id="qvBackdrop"></div>
+  <article class="qv-panel" id="qvPanel" role="dialog" aria-modal="true" aria-labelledby="qvName">
+    <button class="qv-close" id="qvClose" aria-label="Close">×</button>
+    <div class="qv-media img-frame" id="qvMedia">
+      <img id="qvImg" alt="" onerror="__gemmaImgErr(this)" loading="lazy" decoding="async">
+    </div>
+    <div class="qv-body">
+      <p class="eyebrow" id="qvStone"></p>
+      <h3 class="display qv-name" id="qvName"></h3>
+      <p class="qv-material" id="qvMaterial"></p>
+      <p class="body-copy" id="qvDesc"></p>
+      <p class="qv-price" id="qvPrice"></p>
+      <button class="btn btn-primary" id="qvEnquire">Enquire About This Piece</button>
+    </div>
+  </article>
+</div>
+
+<script src="content.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

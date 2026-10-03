@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-06-eco',
+  num: '06',
+  name: 'Vana Collective',
+  tag: 'Eco Resort',
+  style: 'Layered eco-luxury — mist, canopy, living green',
+  animation: 'Canopy descent multi-depth parallax · drifting mist · count-up impact numbers',
+  typography: 'Fraunces + Instrument Sans',
+  layout: 'Layered depth — foreground leaves, room cards, background mist',
+  mood: 'Lush, conscious, quiet',
+  palette: 'Forest ink / leaf — data with soul',
+  features: [
+    'Canopy descent parallax (1.4x / 1.0x / 0.6x)',
+    'Impact counters with count-up',
+    'Booking widget with live rate math',
+    'Signature hero mist loop',
+    'Mist-drift hero overlays',
+    'Reduced-motion static path',
+  ],
+  fonts: { display: 'Fraunces', body: 'Instrument Sans' },
+  colors: { primary: '#1E3226', accent: '#7BA05B' },
+};

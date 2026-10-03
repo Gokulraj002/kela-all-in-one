@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-04-secure',
+  num: '04',
+  name: 'Aegis',
+  tag: 'Cybersecurity',
+  style: 'High-contrast precision',
+  animation: 'Threat-scan sweep, hard cuts',
+  typography: 'Archivo + IBM Plex Mono',
+  layout: 'Sharp grid, scan-line motifs',
+  mood: 'Vigilant, exact, uncompromising',
+  palette: 'Black / white / signal red',
+  features: [
+    'Scroll-scrubbed threat scan',
+    'Live threat feed',
+    'Compliance badges',
+    'Detection metrics',
+  ],
+  fonts: { display: 'Archivo', body: 'IBM Plex Mono' },
+  colors: { primary: '#0A0A0A', accent: '#FF3B30' },
+};

@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-08-home',
+  num: '08',
+  name: 'Hearth & Haven',
+  tag: 'Home',
+  style: 'Room-scene living store',
+  animation: 'Room dolly-zoom, hotspot dock',
+  typography: 'Fraunces + Manrope',
+  layout: 'Scene-first with dock panel',
+  mood: 'Warm, settled, tactile',
+  palette: 'Linen / clay / oak',
+  features: [
+    'Room dolly product flow',
+    'Shoppable hotspots',
+    'Demo cart',
+    'Material swatches',
+    'Room guides',
+  ],
+  fonts: { display: 'Fraunces', body: 'Manrope' },
+  colors: { primary: '#241F19', accent: '#A96B47' },
+};

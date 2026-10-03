@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-02-roastery',
+  num: '02',
+  name: 'Roastworks',
+  tag: 'Roastery',
+  style: 'Industrial-warm, data-forward',
+  animation: 'Scrubbed roast timeline, origin map draw',
+  typography: 'DM Serif Display + Inter',
+  layout: 'Rigid 12-column data grid, charcoal origin panel',
+  mood: 'Technical, honest, industrial-warm',
+  palette: 'Kraft / charcoal / ember',
+  features: [
+    'Roast-level selector',
+    'Tasting-note badges',
+    'Origin map with pins',
+    'Scrubbed roast timeline',
+    'Dual retail/wholesale nav',
+  ],
+  fonts: { display: 'DM Serif Display', body: 'Inter' },
+  colors: { primary: '#26211B', accent: '#C65A26' },
+};

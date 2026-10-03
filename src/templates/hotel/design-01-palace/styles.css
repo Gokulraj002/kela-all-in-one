@@ -1,0 +1,1015 @@
+/* The Rajwada Palace — design-01-palace
+   ALL tokens scoped to the template class below. Never write to the global
+   scope. No hardcoded hex: every color/font flows through var(). */
+
+.tpl-design-01-palace {
+  --color-primary: #2A1A12;
+  --color-accent: #C9A24B;
+  --color-background: #170E09;
+  --color-surface: #241510;
+  --color-surface-2: #2E1C13;
+  --color-text: #F3EAD8;
+  --color-muted: #B9A88C;
+  --color-line: rgba(201, 162, 75, 0.32);
+  --color-line-soft: rgba(201, 162, 75, 0.16);
+  --color-scrim: rgba(18, 10, 6, 0.62);
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Jost', sans-serif;
+  --pal-nav-h: 76px;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: clip;
+}
+
+/* ---------- shared primitives ---------- */
+.tpl-design-01-palace .pal-wrap {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+.tpl-design-01-palace section {
+  padding-top: clamp(5rem, 10vw, 9rem);
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+
+.tpl-design-01-palace .pal-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+
+.tpl-design-01-palace .pal-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 5vw, 3.9rem);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  margin: 0 0 1.5rem;
+  max-width: 18ch;
+}
+
+.tpl-design-01-palace .pal-h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+.tpl-design-01-palace .pal-body {
+  color: var(--color-muted);
+  font-size: 1.02rem;
+  max-width: 62ch;
+  margin: 0 0 1.25rem;
+}
+
+.tpl-design-01-palace .pal-rule {
+  display: block;
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: 0.85;
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+  transform-origin: center;
+}
+
+.tpl-design-01-palace .pal-cta {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 1rem 2.25rem;
+  text-decoration: none;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+.tpl-design-01-palace .pal-cta:hover {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.tpl-design-01-palace .pal-cta-ghost {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.tpl-design-01-palace .pal-cta-ghost:hover {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+/* word-mask */
+.tpl-design-01-palace .pal-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.tpl-design-01-palace .pal-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* images fill their frames */
+.tpl-design-01-palace .a-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tpl-design-01-palace .a-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- nav ---------- */
+/* zero-height sticky shell: sticks to the top of the scroll area */
+.tpl-design-01-palace .pal-navshell {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 80;
+}
+
+.tpl-design-01-palace .pal-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--pal-nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  background: linear-gradient(to bottom, var(--color-scrim), transparent);
+}
+
+.tpl-design-01-palace .pal-crest {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex: 0 0 auto;
+}
+
+.tpl-design-01-palace .pal-crest-mono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--color-accent);
+  transform: rotate(45deg);
+}
+
+.tpl-design-01-palace .pal-crest-letters {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  transform: rotate(-45deg);
+}
+
+.tpl-design-01-palace .pal-wordmark {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tpl-design-01-palace .pal-links {
+  display: flex;
+  gap: clamp(1rem, 2.4vw, 2.25rem);
+  margin-left: auto;
+  margin-right: 1.75rem;
+}
+
+.tpl-design-01-palace .pal-links a {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  text-decoration: none;
+  opacity: 0.88;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.tpl-design-01-palace .pal-links a:hover {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.tpl-design-01-palace .pal-nav-cta {
+  padding: 0.7rem 1.6rem;
+  flex: 0 0 auto;
+}
+
+/* ---------- scroll-driven hero (ScrollFrames) ----------
+   The pinned stage owns the hero's full-viewport canvas. Overlay children
+   (scrim, copy) stay absolutely positioned as before. */
+/* ScrollFrames: layout is inline in the component (stageHeight 100svh);
+   only the overlay needs design-specific positioning here. */
+
+/* reduced-motion static path: first frame as a plain cover-fit image */
+.tpl-design-01-palace .sf-static {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+
+.tpl-design-01-palace .sf-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- hero ----------
+   The hero section now lives inside the ScrollFrames overlay; it fills the
+   pinned 100svh stage and keeps its ceremonial bottom-anchored copy. */
+.tpl-design-01-palace .pal-hero {
+  position: relative;
+  /* fill the pinned stage exactly (it is sized to the visible scroll area);
+     100svh would push the bottom-anchored copy below the stage */
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  padding: calc(var(--pal-nav-h) + 3rem) 0 clamp(4rem, 8vw, 7rem);
+}
+
+.tpl-design-01-palace .pal-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--color-scrim) 8%, rgba(18, 10, 6, 0.25) 45%, rgba(18, 10, 6, 0.35) 100%);
+}
+
+.tpl-design-01-palace .pal-hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 76rem;
+  margin: 0 auto;
+  width: 100%;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.tpl-design-01-palace .pal-hero-eyebrow {
+  margin-bottom: 1.5rem;
+}
+
+.tpl-design-01-palace .pal-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  margin: 0 0 1.75rem;
+}
+
+.tpl-design-01-palace .pal-rule-hero {
+  max-width: 22rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.75rem;
+}
+
+.tpl-design-01-palace .pal-hero-sub {
+  color: var(--color-text);
+  opacity: 0.92;
+  font-size: clamp(1.02rem, 2vw, 1.2rem);
+  max-width: 56ch;
+  margin: 0 auto 2.5rem;
+}
+
+/* ---------- booking bar ---------- */
+.tpl-design-01-palace .pal-bookbar {
+  position: sticky;
+  top: var(--pal-nav-h);
+  z-index: 60;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  padding: 0;
+}
+
+.tpl-design-01-palace .pal-bookbar-full {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0.8rem clamp(1.25rem, 4vw, 3rem);
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(0.9rem, 2vw, 1.75rem);
+  /* one row: the sticky bar must stay slim or it covers the page */
+  flex-wrap: nowrap;
+}
+
+.tpl-design-01-palace .pal-bookbar-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 auto 0 0;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.tpl-design-01-palace .pal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-01-palace .pal-field input,
+.tpl-design-01-palace .pal-field select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  background: var(--color-background);
+  border: 1px solid var(--color-line-soft);
+  padding: 0.5rem 0.75rem;
+  color-scheme: dark;
+}
+
+.tpl-design-01-palace .pal-field input:focus,
+.tpl-design-01-palace .pal-field select:focus {
+  outline: 1px solid var(--color-accent);
+}
+
+.tpl-design-01-palace .pal-bookbar-rate {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: baseline;
+  column-gap: 0.6rem;
+  row-gap: 0.1rem;
+  white-space: nowrap;
+}
+
+.tpl-design-01-palace .pal-bookbar-rate .pal-rate-note {
+  grid-column: 1 / -1;
+  font-size: 0.68rem;
+}
+
+.tpl-design-01-palace .pal-rate-line {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.tpl-design-01-palace .pal-rate-line em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.tpl-design-01-palace .pal-rate-total {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.tpl-design-01-palace .pal-rate-note {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-01-palace .pal-bookbar-cta {
+  padding: 0.85rem 2rem;
+}
+
+.tpl-design-01-palace .pal-bookbar-compact {
+  display: none;
+}
+
+/* ---------- legend ---------- */
+.tpl-design-01-palace .pal-legend-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.tpl-design-01-palace .pal-frame {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--color-line-soft);
+}
+
+.tpl-design-01-palace .pal-beats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.25rem);
+}
+
+.tpl-design-01-palace .pal-beat-year {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 4.5vw, 3.6rem);
+  font-weight: 500;
+  color: var(--color-accent);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.tpl-design-01-palace .pal-beat-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+/* ---------- suites / grand curtain reveal ---------- */
+.tpl-design-01-palace .pal-suites {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.tpl-design-01-palace .pal-suites-head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.tpl-design-01-palace .pal-curtain-note {
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.tpl-design-01-palace .pal-curtain-stage {
+  display: grid;
+  gap: clamp(3rem, 6vw, 5rem);
+  max-width: 76rem;
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+.tpl-design-01-palace .pal-slide {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: center;
+  position: relative;
+}
+
+.tpl-design-01-palace .pal-slide:nth-child(even) .pal-slide-img {
+  order: 2;
+}
+
+.tpl-design-01-palace .pal-slide-img {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--color-line-soft);
+}
+
+/* curtain panels: hidden until theatre mode */
+.tpl-design-01-palace .pal-pan,
+.tpl-design-01-palace .pal-slide-scrim {
+  display: none;
+}
+
+.tpl-design-01-palace .pal-curtain.is-theatre .pal-curtain-stage {
+  display: block;
+  position: relative;
+  /* the visible scroll area, so the suite copy is never cut off while pinned */
+  height: var(--tpl-vh, 100svh);
+  max-width: none;
+  padding: 0;
+  overflow: hidden;
+}
+
+.tpl-design-01-palace .pal-curtain.is-theatre .pal-slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.tpl-design-01-palace .pal-curtain.is-theatre .pal-slide-img {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+  border: 0;
+}
+
+.tpl-design-01-palace .pal-curtain.is-theatre .pal-pan {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    radial-gradient(ellipse at center, rgba(201, 162, 75, 0.06), transparent 70%),
+    var(--color-surface-2);
+}
+
+.tpl-design-01-palace .pal-curtain.is-theatre .pal-pan-top {
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.tpl-design-01-palace .pal-curtain.is-theatre .pal-pan-bot {
+  border-top: 2px solid var(--color-accent);
+}
+
+.tpl-design-01-palace .pal-curtain.is-theatre .pal-slide-scrim {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(to top, var(--color-scrim) 10%, transparent 55%);
+}
+
+.tpl-design-01-palace .pal-curtain.is-theatre .pal-slide-copy {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1.5rem, 6vw, 6rem);
+  max-width: 62rem;
+}
+
+.tpl-design-01-palace .pal-slide-num {
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  margin: 0 0 1rem;
+}
+
+.tpl-design-01-palace .pal-slide-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+
+.tpl-design-01-palace .pal-slide-meta {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 1rem;
+}
+
+.tpl-design-01-palace .pal-slide-desc {
+  color: var(--color-text);
+  opacity: 0.9;
+  max-width: 52ch;
+  margin: 0 0 1.25rem;
+}
+
+.tpl-design-01-palace .pal-slide-rate {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.tpl-design-01-palace .pal-rate-from {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-right: 0.5rem;
+}
+
+.tpl-design-01-palace .pal-slide-rate .pal-rate-per {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+/* ---------- dining ---------- */
+.tpl-design-01-palace .pal-dining {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line-soft);
+  border-bottom: 1px solid var(--color-line-soft);
+}
+
+.tpl-design-01-palace .pal-dining-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.tpl-design-01-palace .pal-dine-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.tpl-design-01-palace .pal-dine {
+  border-bottom: 1px solid var(--color-line-soft);
+  padding-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.tpl-design-01-palace .pal-dine:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.tpl-design-01-palace .pal-dine-cuisine {
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.75rem;
+}
+
+/* ---------- experiences ---------- */
+.tpl-design-01-palace .pal-exp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.tpl-design-01-palace .pal-exp {
+  border-top: 1px solid var(--color-line);
+  padding-top: 1.75rem;
+}
+
+.tpl-design-01-palace .pal-exp-num {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.28em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* ---------- weddings ---------- */
+.tpl-design-01-palace .pal-weddings {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  text-align: center;
+}
+
+.tpl-design-01-palace .pal-weddings-inner {
+  max-width: 54rem;
+}
+
+.tpl-design-01-palace .pal-weddings .pal-rule {
+  max-width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tpl-design-01-palace .pal-weddings-text {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.12rem;
+}
+
+.tpl-design-01-palace .pal-weddings-stat {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-accent);
+  margin: 0 0 2.5rem;
+}
+
+/* ---------- testimonials ---------- */
+.tpl-design-01-palace .pal-quotes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.tpl-design-01-palace .pal-quote {
+  margin: 0;
+  border-top: 2px solid var(--color-accent);
+  padding-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tpl-design-01-palace .pal-quote-text {
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.tpl-design-01-palace .pal-quote-who {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.tpl-design-01-palace .pal-quote-name {
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.tpl-design-01-palace .pal-quote-detail {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ---------- visit ---------- */
+.tpl-design-01-palace .pal-visit-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.tpl-design-01-palace .pal-address {
+  font-style: normal;
+  color: var(--color-muted);
+  margin: 0 0 1.5rem;
+  line-height: 2;
+}
+
+.tpl-design-01-palace .pal-address a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-01-palace .pal-practical {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-soft);
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.tpl-design-01-palace .pal-practical-list {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.tpl-design-01-palace .pal-practical-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--color-line-soft);
+  padding-bottom: 0.9rem;
+  font-size: 0.95rem;
+}
+
+.tpl-design-01-palace .pal-practical-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.tpl-design-01-palace .pal-practical-list li span:first-child {
+  color: var(--color-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+/* ---------- footer ---------- */
+.tpl-design-01-palace .pal-footer {
+  border-top: 1px solid var(--color-line);
+  padding-top: clamp(3.5rem, 7vw, 6rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+
+.tpl-design-01-palace .pal-footer-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.tpl-design-01-palace .pal-crest-sm .pal-crest-mono {
+  width: 52px;
+  height: 52px;
+}
+
+.tpl-design-01-palace .pal-crest-sm .pal-crest-letters {
+  font-size: 1.2rem;
+}
+
+.tpl-design-01-palace .pal-footer-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.tpl-design-01-palace .pal-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.tpl-design-01-palace .pal-footer-links a {
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+}
+
+.tpl-design-01-palace .pal-footer-links a:hover {
+  color: var(--color-accent);
+}
+
+.tpl-design-01-palace .pal-footer-line {
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.tpl-design-01-palace .pal-footer-colophon {
+  color: var(--color-muted);
+  opacity: 0.75;
+  font-size: 0.82rem;
+  font-style: italic;
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+/* ---------- responsive ---------- */
+/* The centred wordmark only has room on wide screens; below that it sits
+   beside the crest so it never runs into the links. */
+@media (min-width: 768px) and (max-width: 1499px) {
+  .tpl-design-01-palace .pal-wordmark {
+    position: static;
+    transform: none;
+    margin-left: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+  .tpl-design-01-palace .pal-wordmark {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .tpl-design-01-palace .pal-links {
+    gap: 1.25rem;
+    margin-right: 1rem;
+  }
+
+  .tpl-design-01-palace .pal-bookbar-title {
+    display: none;
+  }
+
+  .tpl-design-01-palace .pal-bookbar-full {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .tpl-design-01-palace .pal-legend-grid,
+  .tpl-design-01-palace .pal-dining-grid,
+  .tpl-design-01-palace .pal-visit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tpl-design-01-palace .pal-exp-list,
+  .tpl-design-01-palace .pal-quotes {
+    grid-template-columns: 1fr;
+    max-width: 38rem;
+  }
+
+  .tpl-design-01-palace .pal-slide {
+    grid-template-columns: 1fr;
+  }
+
+  .tpl-design-01-palace .pal-slide:nth-child(even) .pal-slide-img {
+    order: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .tpl-design-01-palace {
+    --pal-nav-h: 64px;
+  }
+
+  .tpl-design-01-palace .pal-links {
+    display: none;
+  }
+
+  .tpl-design-01-palace .pal-nav {
+    background: var(--color-scrim);
+  }
+
+  /* beside the crest, shrinking with an ellipsis rather than colliding
+     with the Reserve button whatever the brand name's length */
+  .tpl-design-01-palace .pal-wordmark {
+    position: static;
+    transform: none;
+    margin: 0 auto 0 0.75rem;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+  }
+
+  .tpl-design-01-palace .pal-nav-cta {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.72rem;
+  }
+
+  /* mobile: booking bar becomes a fixed bottom bar */
+  .tpl-design-01-palace .pal-bookbar {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .tpl-design-01-palace .pal-bookbar-full {
+    display: none;
+  }
+
+  .tpl-design-01-palace .pal-bookbar-compact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 1.25rem;
+  }
+
+  .tpl-design-01-palace .pal-compact-rate {
+    margin: 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+  }
+
+  .tpl-design-01-palace .pal-compact-cta {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.72rem;
+  }
+
+  .tpl-design-01-palace .pal-footer {
+    padding-bottom: calc(clamp(3.5rem, 7vw, 6rem) + 60px);
+  }
+
+  /* the fixed bottom booking bar (~64px) overlaps the hero stage */
+  .tpl-design-01-palace .pal-hero {
+    padding-bottom: calc(2.5rem + 64px);
+  }
+}
+
+/* ---------- reduced motion: everything renders in its final state ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-01-palace .sf-canvas {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,1039 @@
+/* ATELIER · design-08-fintech — "Ledgerline" — Fintech API
+   Tokens live on the scope ONLY. No :root, no hardcoded hex below. */
+
+.tpl-design-08-fintech {
+  --color-primary: #0e3b2e;
+  --color-primary-deep: #0a2a21;
+  --color-accent: #c9a227;
+  --color-accent-soft: #e8d9a0;
+  --color-background: #fdfcf8;
+  --color-surface: #f5f2e9;
+  --color-text: #14201b;
+  --color-muted: #5a6b62;
+  --color-ink: #14201b;
+  --color-line: #e3ddd0;
+  --font-display: 'Bricolage Grotesque', 'Inter', sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, monospace;
+  /* text on an accent fill (buttons, flags) */
+  --ll-on-accent: var(--color-background);
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tpl-design-08-fintech *,
+.tpl-design-08-fintech *::before,
+.tpl-design-08-fintech *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-08-fintech img,
+.tpl-design-08-fintech video {
+  display: block;
+  max-width: 100%;
+}
+
+.tpl-design-08-fintech a {
+  color: inherit;
+}
+
+/* ---------- layout helpers ---------- */
+.tpl-design-08-fintech .ll-wrap {
+  width: min(1180px, 100% - clamp(2.5rem, 8vw, 5rem));
+  margin-inline: auto;
+}
+
+.tpl-design-08-fintech section {
+  padding-block: clamp(4.5rem, 10vw, 8.5rem);
+  position: relative;
+}
+
+.tpl-design-08-fintech .ll-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+
+.tpl-design-08-fintech .ll-h2 {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.25rem;
+  color: var(--color-text);
+  max-width: 18ch;
+}
+
+.tpl-design-08-fintech .ll-lede {
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--color-muted);
+  max-width: 56ch;
+  margin: 0 0 2rem;
+}
+
+.tpl-design-08-fintech .ll-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+  max-width: 58ch;
+  margin: 0 0 1.5rem;
+}
+
+.tpl-design-08-fintech .ll-rule {
+  display: block;
+  height: 1px;
+  background: var(--color-accent);
+  transform-origin: left center;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  max-width: 12rem;
+}
+
+/* ---------- word-mask headline ---------- */
+.tpl-design-08-fintech .ll-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-08-fintech .ll-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------- nav ---------- */
+.tpl-design-08-fintech .ll-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem clamp(1.25rem, 4vw, 2.5rem);
+  background: color-mix(in srgb, var(--color-background) 92%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-08-fintech .ll-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.tpl-design-08-fintech .ll-wordmark-mark {
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--color-primary) 55%, var(--color-accent) 55%);
+  flex: none;
+}
+
+.tpl-design-08-fintech .ll-links {
+  display: flex;
+  gap: 1.75rem;
+  margin-inline: auto;
+}
+
+.tpl-design-08-fintech .ll-links a {
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  position: relative;
+}
+.tpl-design-08-fintech .ll-links a:hover {
+  color: var(--color-text);
+}
+.tpl-design-08-fintech .ll-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.3rem;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.tpl-design-08-fintech .ll-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.tpl-design-08-fintech .ll-cta-btn {
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-background);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
+  padding: 0.65rem 1.35rem;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.tpl-design-08-fintech .ll-cta-btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-ink);
+}
+
+/* ---------- hero (ScrollFrames scrub) ---------- */
+.tpl-design-08-fintech .ll-hero {
+  /* The pinned ScrollFrames stage owns hero height; the section itself adds
+     no padding so pin spacing stays rhythm-clean. Ledger-cascade pin follows
+     as a separate ScrollTrigger — no shared targets, no overlap. */
+  padding-block: 0;
+}
+
+/* ScrollFrames layout (stage/canvas/overlay/static) is inline in the
+   component — only the overlay children need positioning here. */
+.tpl-design-08-fintech .ll-hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-background) 82%, transparent) 0%,
+    color-mix(in srgb, var(--color-background) 90%, transparent) 45%,
+    var(--color-background) 100%
+  );
+}
+
+.tpl-design-08-fintech .sf-overlay .ll-hero-copy {
+  position: absolute;
+  inset-inline: 0;
+  bottom: clamp(2.75rem, 8vh, 5.5rem);
+  z-index: 2;
+}
+
+.tpl-design-08-fintech .ll-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 9.5vw, 7.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--color-primary);
+  margin: 0 0 1.75rem;
+  max-width: 12ch;
+}
+
+.tpl-design-08-fintech .ll-hero .ll-lede {
+  color: var(--color-text);
+  max-width: 52ch;
+}
+
+.tpl-design-08-fintech .ll-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.tpl-design-08-fintech .ll-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  padding: 0.85rem 1.9rem;
+  border: 1px solid transparent;
+  transition: translate 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.tpl-design-08-fintech .ll-btn:hover {
+  translate: 0 -2px;
+}
+.tpl-design-08-fintech .ll-btn-gold {
+  background: var(--color-accent);
+  color: var(--ll-on-accent);
+}
+.tpl-design-08-fintech .ll-btn-gold:hover {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+.tpl-design-08-fintech .ll-btn-ghost {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+}
+.tpl-design-08-fintech .ll-btn-ghost:hover {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+.tpl-design-08-fintech .ll-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.tpl-design-08-fintech .ll-chip {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  background: color-mix(in srgb, var(--color-background) 80%, transparent);
+  border: 1px solid var(--color-line);
+  border-radius: 0.9rem;
+  padding: 0.8rem 1.2rem;
+  backdrop-filter: blur(6px);
+}
+
+.tpl-design-08-fintech .ll-chip::before {
+  content: '';
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  align-self: center;
+  flex: none;
+}
+
+.tpl-design-08-fintech .ll-chip-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.tpl-design-08-fintech .ll-chip-label {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+}
+
+/* ---------- ledger cascade ---------- */
+.tpl-design-08-fintech .ll-products {
+  background: var(--color-primary-deep);
+  color: var(--color-background);
+}
+
+.tpl-design-08-fintech .ll-ledger-pin {
+  /* pinned viewport on desktop via ScrollTrigger */
+}
+
+/* Pinned (desktop + motion; .is-live set by JS): exactly one visible screen
+   under the sticky nav (--tpl-vh in the viewer, 100svh standalone). The
+   compact head stays put; the table slides through .ll-table-viewport. */
+.tpl-design-08-fintech .ll-ledger-pin.is-live {
+  height: calc(var(--tpl-vh, 100svh) - var(--ll-nav-h, 76px));
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1rem, 3vh, 2rem) 0 clamp(0.75rem, 2vh, 1.25rem);
+  overflow: hidden;
+}
+.tpl-design-08-fintech .ll-ledger-pin.is-live .ll-ledger-head .ll-eyebrow {
+  margin-bottom: 0.75rem;
+}
+.tpl-design-08-fintech .ll-ledger-pin.is-live .ll-ledger-head .ll-h2 {
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  max-width: none;
+  margin-bottom: 0.5rem;
+}
+.tpl-design-08-fintech .ll-ledger-pin.is-live .ll-ledger-head .ll-lede {
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  margin-bottom: 0.9rem;
+}
+.tpl-design-08-fintech .ll-ledger-pin.is-live .ll-ledger-head .ll-rule {
+  margin-bottom: clamp(0.75rem, 2vh, 1.25rem);
+}
+.tpl-design-08-fintech .ll-ledger-pin.is-live .ll-table-viewport {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+/* soft fade where rows enter / leave the window */
+.tpl-design-08-fintech .ll-ledger-pin.is-live .ll-table-viewport::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3.5rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--color-primary-deep));
+}
+.tpl-design-08-fintech .ll-ledger-pin.is-live .ll-row {
+  padding-block: clamp(1.25rem, 2.4vw, 1.9rem);
+}
+
+.tpl-design-08-fintech .ll-products .ll-h2 {
+  color: var(--color-background);
+}
+.tpl-design-08-fintech .ll-products .ll-lede {
+  color: color-mix(in srgb, var(--color-background) 72%, transparent);
+}
+
+.tpl-design-08-fintech .ll-table {
+  border-top: 1px solid color-mix(in srgb, var(--color-background) 18%, transparent);
+}
+
+.tpl-design-08-fintech .ll-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem) clamp(1rem, 2.5vw, 2rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-background) 18%, transparent);
+  border-left: 3px solid transparent;
+  transition: background 0.4s ease, border-left-color 0.4s ease;
+}
+
+.tpl-design-08-fintech .ll-row.is-active {
+  background: color-mix(in srgb, var(--color-background) 6%, transparent);
+  border-left-color: var(--color-accent);
+}
+
+.tpl-design-08-fintech .ll-row-index {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent-soft);
+  margin: 0 0 0.75rem;
+  opacity: 0.7;
+}
+
+.tpl-design-08-fintech .ll-row-name {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6rem;
+  color: var(--color-background);
+}
+
+.tpl-design-08-fintech .ll-row-endpoint {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-accent-soft);
+  background: color-mix(in srgb, var(--color-background) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-background) 14%, transparent);
+  border-radius: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  margin-bottom: 0.9rem;
+}
+
+.tpl-design-08-fintech .ll-row-desc {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--color-background) 70%, transparent);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.tpl-design-08-fintech .ll-row-nums {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-content: start;
+  padding-top: 0.4rem;
+}
+
+.tpl-design-08-fintech .ll-num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  letter-spacing: -0.02em;
+  color: var(--color-background);
+  font-variant-numeric: tabular-nums;
+}
+
+.tpl-design-08-fintech .ll-row.is-active .ll-num {
+  color: var(--color-accent-soft);
+}
+
+.tpl-design-08-fintech .ll-metric-label {
+  display: block;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--color-background) 62%, transparent);
+  margin-top: 0.4rem;
+}
+
+.tpl-design-08-fintech .ll-ledger-note {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--color-background) 52%, transparent);
+  margin: 1.75rem 0 0;
+}
+
+/* ---------- code sample ---------- */
+.tpl-design-08-fintech .ll-code-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.tpl-design-08-fintech .ll-sdk {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-background);
+  background: var(--color-primary);
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.1rem;
+}
+
+.tpl-design-08-fintech .ll-code-frame {
+  background: var(--color-primary-deep);
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 60%, var(--color-ink));
+  box-shadow: 0 2.5rem 5rem -2.5rem color-mix(in srgb, var(--color-primary) 55%, transparent);
+}
+
+.tpl-design-08-fintech .ll-code-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-background) 12%, transparent);
+}
+
+.tpl-design-08-fintech .ll-code-bar span {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-background) 28%, transparent);
+}
+
+.tpl-design-08-fintech .ll-code-bar em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: color-mix(in srgb, var(--color-background) 60%, transparent);
+  margin-left: 0.6rem;
+}
+
+.tpl-design-08-fintech .ll-code {
+  margin: 0;
+  padding: 1.75rem 1.5rem 2rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--color-background) 88%, transparent);
+}
+
+.tpl-design-08-fintech .tok-kw { color: var(--color-accent-soft); }
+.tpl-design-08-fintech .tok-str { color: #9fd6b8; }
+.tpl-design-08-fintech .tok-fn { color: var(--color-background); font-weight: 600; }
+.tpl-design-08-fintech .tok-num { color: var(--color-accent); }
+.tpl-design-08-fintech .tok-com { color: color-mix(in srgb, var(--color-background) 42%, transparent); font-style: italic; }
+.tpl-design-08-fintech .tok-punc { color: color-mix(in srgb, var(--color-background) 62%, transparent); }
+
+/* ---------- gallery ---------- */
+.tpl-design-08-fintech .ll-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.tpl-design-08-fintech .ll-frame {
+  margin: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.tpl-design-08-fintech .ll-frame .a-img,
+.tpl-design-08-fintech .ll-frame img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+}
+
+.tpl-design-08-fintech .ll-frame figcaption {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+  padding: 1.1rem 1.3rem 1.3rem;
+}
+
+/* ---------- metrics band ---------- */
+.tpl-design-08-fintech .ll-metrics {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+.tpl-design-08-fintech .ll-metrics .ll-h2 {
+  color: var(--color-background);
+}
+
+.tpl-design-08-fintech .ll-metrics .ll-eyebrow {
+  color: var(--color-accent-soft);
+}
+
+.tpl-design-08-fintech .ll-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: clamp(2rem, 5vw, 4rem);
+  padding-top: clamp(2rem, 5vw, 3.5rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+}
+
+.tpl-design-08-fintech .ll-count {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 6vw, 4.75rem);
+  letter-spacing: -0.025em;
+  color: var(--color-background);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  margin-bottom: 0.9rem;
+}
+
+.tpl-design-08-fintech .ll-band-metric .ll-metric-label {
+  color: color-mix(in srgb, var(--color-background) 70%, transparent);
+  font-size: 0.9rem;
+}
+
+/* ---------- compliance ---------- */
+.tpl-design-08-fintech .ll-company-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.tpl-design-08-fintech .ll-badges {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+
+.tpl-design-08-fintech .ll-badges li {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
+  padding: 0.55rem 1.15rem;
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+}
+
+.tpl-design-08-fintech .ll-company .ll-frame .a-img,
+.tpl-design-08-fintech .ll-company .ll-frame img {
+  aspect-ratio: 1 / 1;
+}
+
+/* ---------- pricing ---------- */
+.tpl-design-08-fintech .ll-pricing {
+  background: var(--color-surface);
+  border-block: 1px solid var(--color-line);
+}
+
+.tpl-design-08-fintech .ll-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.tpl-design-08-fintech .ll-tier {
+  position: relative;
+  background: var(--color-background);
+  border: 1px solid var(--color-line);
+  border-radius: 1.1rem;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.tpl-design-08-fintech .ll-tier.is-featured {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-background);
+  box-shadow: 0 2.5rem 5rem -2.5rem color-mix(in srgb, var(--color-primary) 60%, transparent);
+}
+
+.tpl-design-08-fintech .ll-tier-flag {
+  position: absolute;
+  top: -0.85rem;
+  left: 1.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ll-on-accent);
+  background: var(--color-accent);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  margin: 0;
+}
+
+.tpl-design-08-fintech .ll-tier-name {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: 1.3rem;
+  margin: 0 0 1rem;
+}
+
+.tpl-design-08-fintech .ll-tier-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0 0 0.4rem;
+}
+
+.tpl-design-08-fintech .ll-tier-amount {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.tpl-design-08-fintech .ll-tier-per {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+.tpl-design-08-fintech .ll-tier.is-featured .ll-tier-per {
+  color: color-mix(in srgb, var(--color-background) 65%, transparent);
+}
+
+.tpl-design-08-fintech .ll-tier-note {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin: 0 0 1.25rem;
+}
+.tpl-design-08-fintech .ll-tier.is-featured .ll-tier-note {
+  color: color-mix(in srgb, var(--color-background) 70%, transparent);
+}
+
+.tpl-design-08-fintech .ll-tier-rate {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.7rem 1rem;
+  margin: 0 0 1.5rem;
+}
+.tpl-design-08-fintech .ll-tier.is-featured .ll-tier-rate {
+  color: var(--color-accent-soft);
+  background: color-mix(in srgb, var(--color-background) 8%, transparent);
+}
+
+.tpl-design-08-fintech .ll-tier-features {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+}
+
+.tpl-design-08-fintech .ll-tier-features li {
+  padding-left: 1.4rem;
+  position: relative;
+  color: var(--color-muted);
+}
+.tpl-design-08-fintech .ll-tier.is-featured .ll-tier-features li {
+  color: color-mix(in srgb, var(--color-background) 78%, transparent);
+}
+.tpl-design-08-fintech .ll-tier-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 0.7rem;
+  height: 0.38rem;
+  border-left: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  transform: rotate(-45deg) translateY(-0.15rem);
+}
+
+.tpl-design-08-fintech .ll-tier .ll-btn {
+  margin-top: auto;
+  align-self: stretch;
+}
+.tpl-design-08-fintech .ll-tier.is-featured .ll-btn-ghost {
+  border-color: var(--color-background);
+  color: var(--color-background);
+}
+.tpl-design-08-fintech .ll-tier.is-featured .ll-btn-ghost:hover {
+  background: var(--color-background);
+  color: var(--color-primary);
+}
+
+/* ---------- CTA ---------- */
+.tpl-design-08-fintech .ll-cta-panel {
+  background: var(--color-primary-deep);
+  color: var(--color-background);
+  border-radius: 1.5rem;
+  padding: clamp(2.5rem, 7vw, 5.5rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tpl-design-08-fintech .ll-cta-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-soft), var(--color-accent));
+}
+
+.tpl-design-08-fintech .ll-cta-panel .ll-h2 {
+  color: var(--color-background);
+  max-width: 22ch;
+  margin-inline: auto;
+}
+
+.tpl-design-08-fintech .ll-cta-panel .ll-body {
+  color: color-mix(in srgb, var(--color-background) 72%, transparent);
+  margin-inline: auto;
+}
+
+.tpl-design-08-fintech .ll-cta-panel .ll-eyebrow {
+  color: var(--color-accent-soft);
+}
+
+.tpl-design-08-fintech .ll-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.tpl-design-08-fintech .ll-cta-mail {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--color-accent-soft);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+}
+.tpl-design-08-fintech .ll-cta-mail:hover {
+  color: var(--color-background);
+}
+
+/* ---------- footer ---------- */
+.tpl-design-08-fintech .ll-footer {
+  background: var(--color-ink);
+  color: color-mix(in srgb, var(--color-background) 78%, transparent);
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0 2.5rem;
+}
+
+.tpl-design-08-fintech .ll-footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding-bottom: 3rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-background) 14%, transparent);
+}
+
+.tpl-design-08-fintech .ll-wordmark-light {
+  color: var(--color-background);
+}
+
+.tpl-design-08-fintech .ll-footer-tag {
+  font-size: 0.92rem;
+  margin: 1rem 0 1.25rem;
+  max-width: 28ch;
+}
+
+.tpl-design-08-fintech .ll-footer-contact {
+  font-size: 0.88rem;
+  margin: 0;
+}
+.tpl-design-08-fintech .ll-footer-contact a {
+  color: var(--color-accent-soft);
+  text-decoration: none;
+}
+.tpl-design-08-fintech .ll-footer-contact a:hover {
+  text-decoration: underline;
+}
+
+.tpl-design-08-fintech .ll-footer-col h3 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+  margin: 0 0 1.1rem;
+}
+
+.tpl-design-08-fintech .ll-footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.tpl-design-08-fintech .ll-footer-col a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--color-background) 66%, transparent);
+}
+.tpl-design-08-fintech .ll-footer-col a:hover {
+  color: var(--color-background);
+}
+
+.tpl-design-08-fintech .ll-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 2rem;
+  font-size: 0.82rem;
+  color: color-mix(in srgb, var(--color-background) 48%, transparent);
+}
+.tpl-design-08-fintech .ll-footer-bottom p {
+  margin: 0;
+}
+.tpl-design-08-fintech .ll-colophon {
+  max-width: 52ch;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {
+  .tpl-design-08-fintech .ll-footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .tpl-design-08-fintech .ll-code-grid,
+  .tpl-design-08-fintech .ll-company-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-08-fintech .ll-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tpl-design-08-fintech .ll-tiers {
+    grid-template-columns: 1fr;
+    max-width: 32rem;
+    margin-inline: auto;
+  }
+  .tpl-design-08-fintech .ll-metrics-row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* Ledger cascade: static, fully revealed — no pin on touch/small screens. */
+  .tpl-design-08-fintech .ll-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    border-left: none;
+    border-top: 3px solid var(--color-accent);
+  }
+  .tpl-design-08-fintech .ll-row-nums {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tpl-design-08-fintech .ll-links {
+    display: none;
+  }
+  .tpl-design-08-fintech .ll-nav {
+    gap: 1rem;
+  }
+  .tpl-design-08-fintech .ll-cta-btn {
+    margin-left: auto;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* Pinned hero stage is one screen tall: tighten the copy stack so the
+     headline clears the sticky nav. */
+  .tpl-design-08-fintech .sf-overlay .ll-hero-copy {
+    bottom: 1.5rem;
+  }
+  .tpl-design-08-fintech .ll-hero-title {
+    margin-bottom: 1rem;
+  }
+  .tpl-design-08-fintech .ll-hero .ll-lede {
+    margin-bottom: 1.25rem;
+  }
+  .tpl-design-08-fintech .ll-hero-ctas {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .tpl-design-08-fintech .ll-chips {
+    gap: 0.6rem;
+  }
+  .tpl-design-08-fintech .ll-chip {
+    padding: 0.55rem 0.9rem;
+  }
+  .tpl-design-08-fintech .ll-chip-value {
+    font-size: 1.05rem;
+  }
+  .tpl-design-08-fintech .ll-chip-label {
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .tpl-design-08-fintech .ll-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-08-fintech .ll-hero-ctas .ll-btn {
+    flex: 1 1 auto;
+    padding-inline: 1.2rem;
+  }
+  .tpl-design-08-fintech .ll-footer-top {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-08-fintech .ll-row-nums {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-08-fintech .ll-btn {
+    transition: none;
+  }
+  .tpl-design-08-fintech .ll-row {
+    transition: none;
+  }
+}
+
+/* ---------- brand colour on the dark-green bands ----------
+   The page is light, so --color-accent is the brand's dark tone; on the deep
+   green / ink sections that would vanish. Swap in the light tone there (and
+   dark text on accent fills). */
+.tpl-design-08-fintech .ll-products,
+.tpl-design-08-fintech .ll-code-frame,
+.tpl-design-08-fintech .ll-metrics,
+.tpl-design-08-fintech .ll-tier.is-featured,
+.tpl-design-08-fintech .ll-cta-panel,
+.tpl-design-08-fintech .ll-footer {
+  --color-accent: var(--brand-on-dark, var(--color-accent-soft));
+  --ll-on-accent: var(--color-ink);
+}

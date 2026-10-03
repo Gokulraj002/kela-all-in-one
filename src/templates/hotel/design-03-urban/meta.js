@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-03-urban',
+  num: '03',
+  name: 'The Grid House',
+  tag: 'Boutique Hotel',
+  style: 'Sharp editorial urban — ink, signal orange, concrete',
+  animation: 'Spotlight room grid, kinetic word-slam hero',
+  typography: 'Archivo + Space Grotesk',
+  layout: 'Strict 3×2 spotlight room grid, full-bleed dark bands',
+  mood: 'Fast, confident, design-led',
+  palette: 'Ink / signal orange on warm paper',
+  features: [
+    'Scroll-spotlight room grid (6 rooms, mono index)',
+    'Live booking bar with nightly rate math',
+    'Rooftop bar menu with sharp price list',
+    'Tabbed neighborhood guide',
+    'Work spaces with day-rate cards',
+    'Sticky Book pill navigation',
+  ],
+  fonts: { display: 'Archivo', body: 'Space Grotesk' },
+  colors: { primary: '#14161A', accent: '#E8622C' },
+};

@@ -1,0 +1,944 @@
+/* design-10-playground · experimental interactive playground
+   Tokens scoped to .tpl-design-10-playground (never :root). */
+
+.tpl-design-10-playground {
+  --color-background: #0a0a0b;
+  --color-surface: #121214;
+  --color-primary: #f4f2ea;
+  --color-secondary: #8b8b90;
+  --color-accent: #c6f52e;
+  --color-violet: #8a5cff;
+  --color-text: #f4f2ea;
+  --color-muted: #626268;
+  --color-line: rgba(244, 242, 234, 0.14);
+  --font-display: 'Unbounded', 'Space Grotesk', sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --wrap: min(1200px, 92vw);
+  --air: clamp(5rem, 12vw, 10rem);
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: clip;
+  position: relative;
+}
+
+.tpl-design-10-playground *,
+.tpl-design-10-playground *::before,
+.tpl-design-10-playground *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-10-playground img {
+  display: block;
+  max-width: 100%;
+}
+
+.tpl-design-10-playground a {
+  color: inherit;
+}
+
+.tpl-design-10-playground ::selection {
+  background: var(--color-accent);
+  color: #0a0a0b;
+}
+
+/* ---------- shared type ---------- */
+.tpl-design-10-playground .pt-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.tpl-design-10-playground .pt-eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--color-accent);
+  flex: none;
+}
+.tpl-design-10-playground .pt-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.25rem;
+  text-transform: uppercase;
+}
+.tpl-design-10-playground .pt-body {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--color-secondary);
+  max-width: 60ch;
+  margin: 0 0 1rem;
+}
+.tpl-design-10-playground .pt-wrap {
+  width: var(--wrap);
+  margin-inline: auto;
+}
+.tpl-design-10-playground section {
+  padding-block: var(--air);
+}
+
+/* ---------- overlay nav ---------- */
+/* Sticky, zero-height layers at the top of the visible scroll area. */
+.tpl-design-10-playground .pt-topbar {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 60;
+}
+/* The brandmark's layer blends with the page (difference), as before. */
+.tpl-design-10-playground .pt-topbar--mark {
+  z-index: 61;
+  mix-blend-mode: difference;
+}
+.tpl-design-10-playground .pt-navbtn {
+  position: absolute;
+  top: clamp(1rem, 3vw, 1.75rem);
+  right: clamp(1rem, 3vw, 1.75rem);
+  z-index: 2;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-line);
+  background: rgba(10, 10, 11, 0.72);
+  backdrop-filter: blur(8px);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.25s, color 0.25s;
+}
+.tpl-design-10-playground .pt-navbtn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.tpl-design-10-playground .pt-brandmark {
+  position: absolute;
+  top: clamp(1rem, 3vw, 1.75rem);
+  left: clamp(1rem, 3vw, 1.75rem);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.tpl-design-10-playground .pt-overlay {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  /* exactly the visible scroll area (viewer sets --tpl-vh) */
+  height: var(--tpl-vh, 100vh);
+  z-index: 1;
+  background: #0c0c0e;
+  clip-path: circle(0 at calc(100% - 3rem) 3rem);
+  visibility: hidden;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tpl-design-10-playground .pt-overlay.is-open {
+  visibility: visible;
+  pointer-events: auto;
+  /* reduced motion has no GSAP reveal: without this the menu stayed
+     clipped to a zero-size circle. With motion, GSAP's inline clip-path
+     still drives the circular expand/collapse. */
+  clip-path: none;
+}
+.tpl-design-10-playground .pt-overlay-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: center;
+}
+.tpl-design-10-playground .pt-overlay-links a {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.8rem, 6vw, 3.5rem);
+  line-height: 1.15;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.25s, letter-spacing 0.3s;
+}
+.tpl-design-10-playground .pt-overlay-links a:hover {
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+.tpl-design-10-playground .pt-overlay-tag {
+  position: absolute;
+  bottom: 2.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ---------- hero / scroll-frames kinetic field ---------- */
+.tpl-design-10-playground .pt-hero {
+  position: relative;
+  padding-block: 0; /* pinned scrub owns the rhythm — no --air dead space */
+  overflow: hidden;
+}
+/* ScrollFrames owns stage/canvas/overlay layout inline (stageHeight prop,
+   default 100svh); this adds the cinematic edge-darkening so the kinetic
+   type stays legible over the frames, both pinned and reduced-motion. */
+.tpl-design-10-playground .sf-stage::after,
+.tpl-design-10-playground .sf-static::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(10, 10, 11, 0.25), rgba(10, 10, 11, 0.88));
+}
+/* Overlay floats above the frames; interactive children opt back in. */
+.tpl-design-10-playground .sf-overlay {
+  z-index: 2;
+  pointer-events: none;
+}
+.tpl-design-10-playground .pt-hero .pt-field {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(4rem, 10vw, 6rem) clamp(1rem, 4vw, 3rem);
+  pointer-events: auto; /* keep slider + pointer play alive over the canvas */
+}
+.tpl-design-10-playground .pt-hero .pt-field .pt-eyebrow {
+  justify-content: center;
+}
+.tpl-design-10-playground .pt-hero .pt-field .pt-eyebrow::before {
+  display: none;
+}
+.tpl-design-10-playground .pt-kinetic {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 12vw, 9.5rem);
+  line-height: 1.02;
+  text-transform: uppercase;
+  margin: 0 0 1.5rem;
+  user-select: none;
+  perspective: 600px;
+}
+.tpl-design-10-playground .pt-kinetic .pt-line {
+  display: block;
+  white-space: nowrap;
+}
+.tpl-design-10-playground .pt-kinetic .pt-ch {
+  display: inline-block;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+.tpl-design-10-playground .pt-kinetic .pt-ch.is-space {
+  width: 0.32em;
+}
+.tpl-design-10-playground .pt-hero-sub {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--color-secondary);
+  max-width: 52ch;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+/* Small copy sits on bright, moving light ribbons — a soft dark halo keeps
+   it readable on every frame without changing the type colours. */
+.tpl-design-10-playground .pt-hero .pt-field .pt-eyebrow,
+.tpl-design-10-playground .pt-hero-sub,
+.tpl-design-10-playground .pt-hero-hint,
+.tpl-design-10-playground .pt-energy label,
+.tpl-design-10-playground .pt-energy .pt-end {
+  text-shadow: 0 1px 2px rgba(10, 10, 11, 0.9), 0 0 18px rgba(10, 10, 11, 0.85);
+}
+.tpl-design-10-playground .pt-hero-hint {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 2rem;
+}
+.tpl-design-10-playground .pt-energy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 26rem;
+}
+.tpl-design-10-playground .pt-energy label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  white-space: nowrap;
+}
+.tpl-design-10-playground .pt-energy .pt-end {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+.tpl-design-10-playground .pt-energy input[type='range'] {
+  flex: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 2px;
+  background: var(--color-line);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+.tpl-design-10-playground .pt-energy input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: none;
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-accent) 15%, transparent);
+}
+.tpl-design-10-playground .pt-energy input[type='range']::-moz-range-thumb {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: none;
+}
+.tpl-design-10-playground .pt-scrollcue {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  animation: pt-bob 2.4s ease-in-out infinite;
+}
+@keyframes pt-bob {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 8px); }
+}
+
+/* ---------- experiments ---------- */
+.tpl-design-10-playground .pt-experiments {
+  background: var(--color-background);
+}
+.tpl-design-10-playground .pt-exp-head {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.tpl-design-10-playground .pt-exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 9vw, 8rem);
+  width: var(--wrap);
+  margin-inline: auto;
+}
+.tpl-design-10-playground .pt-exp {
+  border-top: 1px solid var(--color-line);
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+@media (min-width: 900px) {
+  .tpl-design-10-playground .pt-exp {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+  }
+  .tpl-design-10-playground .pt-exp:nth-child(even) .pt-exp-sketch {
+    order: 2;
+  }
+  .tpl-design-10-playground .pt-exp:nth-child(even) .pt-exp-meta {
+    order: 1;
+  }
+}
+.tpl-design-10-playground .pt-exp-index {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: var(--color-violet);
+  text-transform: uppercase;
+  margin: 0 0 0.75rem;
+}
+.tpl-design-10-playground .pt-exp-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+  line-height: 1.05;
+}
+.tpl-design-10-playground .pt-exp-tech {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1rem;
+}
+.tpl-design-10-playground .pt-exp-desc {
+  color: var(--color-secondary);
+  line-height: 1.65;
+  font-size: clamp(0.98rem, 1.5vw, 1.08rem);
+  margin: 0 0 1.25rem;
+  max-width: 44ch;
+}
+.tpl-design-10-playground .pt-exp-hint {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  border: 1px dashed var(--color-line);
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+}
+.tpl-design-10-playground .pt-exp-hint strong {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.tpl-design-10-playground .pt-exp-sketch {
+  position: relative;
+  /* lab-bench graph paper: a faint grid so a sketch card never reads as an
+     empty box while its toy waits for a pointer */
+  background-color: var(--color-surface);
+  background-image:
+    linear-gradient(rgba(244, 242, 234, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 242, 234, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: center;
+  border: 1px solid var(--color-line);
+  border-radius: 1.25rem;
+  min-height: clamp(16rem, 38vw, 24rem);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: pan-y;
+}
+.tpl-design-10-playground .pt-exp-sketch img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.32;
+  pointer-events: none;
+}
+.tpl-design-10-playground .pt-sketch-layer {
+  position: relative;
+  z-index: 1;
+}
+
+/* E1 letterstorm */
+.tpl-design-10-playground .pt-stormword {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  color: var(--color-primary);
+}
+.tpl-design-10-playground .pt-stormword .pt-sch {
+  display: inline-block;
+}
+
+/* E2 puddle */
+.tpl-design-10-playground .pt-puddle {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(0.5rem, 1.4vw, 0.9rem);
+  width: 100%;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+.tpl-design-10-playground .pt-dot {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.85;
+  transform: scale(0.35);
+}
+
+/* E3 velocity */
+.tpl-design-10-playground .pt-veloline {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 4.4vw, 3.4rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  /* wraps inside its card — on one line it ran past both card edges */
+  text-align: center;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  margin: 0;
+  color: var(--color-primary);
+  will-change: transform;
+}
+.tpl-design-10-playground .pt-veloline em {
+  font-style: normal;
+  color: var(--color-violet);
+}
+
+/* E4 charge */
+.tpl-design-10-playground .pt-chargepad {
+  width: clamp(9rem, 22vw, 13rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid var(--color-violet);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  touch-action: none;
+}
+.tpl-design-10-playground .pt-chargefill {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: var(--color-violet);
+  transform: scale(0);
+  opacity: 0.9;
+}
+.tpl-design-10-playground .pt-chargelabel {
+  position: relative;
+  z-index: 1;
+}
+.tpl-design-10-playground .pt-particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* E5 marquee */
+.tpl-design-10-playground .pt-marquee {
+  width: 100%;
+  overflow: hidden;
+  padding: 1.5rem 0;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+.tpl-design-10-playground .pt-marquee:active {
+  cursor: grabbing;
+}
+.tpl-design-10-playground .pt-marquee-strip {
+  display: inline-flex;
+  gap: 2.5rem;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3.6vw, 2.4rem);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  will-change: transform;
+}
+.tpl-design-10-playground .pt-marquee-strip .pt-sep {
+  color: var(--color-accent);
+}
+
+/* ---------- commercial proof ---------- */
+.tpl-design-10-playground .pt-proof {
+  background: var(--color-surface);
+  border-block: 1px solid var(--color-line);
+}
+.tpl-design-10-playground .pt-proof-head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.tpl-design-10-playground .pt-cases {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tpl-design-10-playground .pt-case {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+  padding: clamp(1.4rem, 3vw, 2.2rem) 0;
+  border-top: 1px solid var(--color-line);
+  transition: background 0.25s, padding-inline 0.3s;
+}
+.tpl-design-10-playground .pt-case:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-10-playground .pt-case:hover {
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+  padding-inline: clamp(0.5rem, 2vw, 1.5rem);
+}
+@media (min-width: 768px) {
+  .tpl-design-10-playground .pt-case {
+    grid-template-columns: 1.6fr 2.4fr 0.8fr 1.2fr;
+    align-items: baseline;
+    gap: 1.5rem;
+  }
+}
+.tpl-design-10-playground .pt-case-client {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+.tpl-design-10-playground .pt-case-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+  margin: 0;
+  line-height: 1.25;
+}
+.tpl-design-10-playground .pt-case-year {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+.tpl-design-10-playground .pt-case-outcome {
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ---------- type tool ---------- */
+.tpl-design-10-playground .pt-type {
+  background: var(--color-background);
+  text-align: center;
+}
+.tpl-design-10-playground .pt-type .pt-eyebrow {
+  justify-content: center;
+}
+.tpl-design-10-playground .pt-type .pt-eyebrow::before {
+  display: none;
+}
+.tpl-design-10-playground .pt-type .pt-body {
+  margin-inline: auto;
+}
+.tpl-design-10-playground .pt-type-canvas {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(2rem, 8vw, 6.5rem);
+  line-height: 1.05;
+  min-height: 2.4em;
+  margin: clamp(2rem, 5vw, 4rem) auto;
+  max-width: 1100px;
+  outline: none;
+  border: 1px dashed transparent;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  caret-color: var(--color-accent);
+  transition: border-color 0.25s;
+  overflow-wrap: break-word;
+}
+.tpl-design-10-playground .pt-type-canvas:hover,
+.tpl-design-10-playground .pt-type-canvas:focus {
+  border-color: var(--color-line);
+}
+.tpl-design-10-playground .pt-type-canvas:empty::before {
+  content: attr(data-placeholder);
+  color: var(--color-muted);
+}
+.tpl-design-10-playground .pt-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 34rem;
+  margin: 0 auto;
+}
+.tpl-design-10-playground .pt-slider-row {
+  display: grid;
+  grid-template-columns: 6rem 1fr 4.5rem;
+  align-items: center;
+  gap: 1rem;
+}
+.tpl-design-10-playground .pt-slider-row > span:first-child {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  text-align: left;
+}
+.tpl-design-10-playground .pt-slider-row > output {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  text-align: right;
+}
+.tpl-design-10-playground .pt-slider-row input[type='range'] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 2px;
+  background: var(--color-line);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+.tpl-design-10-playground .pt-slider-row input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--color-violet);
+  border: none;
+  box-shadow: 0 0 0 6px rgba(138, 92, 255, 0.16);
+}
+.tpl-design-10-playground .pt-slider-row input[type='range']::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--color-violet);
+  border: none;
+}
+.tpl-design-10-playground .pt-type-reset {
+  margin-top: 2rem;
+  background: none;
+  border: 1px solid var(--color-line);
+  color: var(--color-secondary);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s;
+}
+.tpl-design-10-playground .pt-type-reset:hover {
+  border-color: var(--color-violet);
+  color: var(--color-violet);
+}
+
+/* ---------- studio ---------- */
+.tpl-design-10-playground .pt-studio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+@media (min-width: 900px) {
+  .tpl-design-10-playground .pt-studio-grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: start;
+  }
+}
+.tpl-design-10-playground .pt-facts {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2rem;
+}
+.tpl-design-10-playground .pt-facts dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.35rem;
+}
+.tpl-design-10-playground .pt-facts dd {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-primary);
+  line-height: 1.5;
+}
+.tpl-design-10-playground .pt-studio-figure {
+  margin: 0;
+}
+.tpl-design-10-playground .pt-studio-frame {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+}
+.tpl-design-10-playground .pt-studio-frame img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.tpl-design-10-playground .pt-studio-figure figcaption {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-top: 0.9rem;
+  font-style: italic;
+}
+
+/* ---------- contact ---------- */
+.tpl-design-10-playground .pt-contact {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+}
+.tpl-design-10-playground .pt-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+@media (min-width: 900px) {
+  .tpl-design-10-playground .pt-contact-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+}
+.tpl-design-10-playground .pt-contact .pt-h2 {
+  color: var(--color-accent);
+}
+.tpl-design-10-playground .pt-contact-email {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.4vw, 1.35rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.2rem;
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+.tpl-design-10-playground .pt-weird-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.tpl-design-10-playground .pt-weird-form .pt-field label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.55rem;
+}
+.tpl-design-10-playground .pt-weird-form .pt-field input,
+.tpl-design-10-playground .pt-weird-form .pt-field select,
+.tpl-design-10-playground .pt-weird-form .pt-field textarea {
+  width: 100%;
+  background: var(--color-background);
+  border: 1px solid var(--color-line);
+  border-radius: 0.6rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.9rem 1.1rem;
+  outline: none;
+  transition: border-color 0.25s;
+}
+.tpl-design-10-playground .pt-weird-form .pt-field input:focus,
+.tpl-design-10-playground .pt-weird-form .pt-field select:focus,
+.tpl-design-10-playground .pt-weird-form .pt-field textarea:focus {
+  border-color: var(--color-accent);
+}
+.tpl-design-10-playground .pt-weird-form .pt-field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+.tpl-design-10-playground .pt-submit {
+  align-self: flex-start;
+  background: var(--color-accent);
+  color: #0a0a0b;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1.1rem 2.4rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.25s;
+}
+.tpl-design-10-playground .pt-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+.tpl-design-10-playground .pt-contact-note {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ---------- footer ---------- */
+.tpl-design-10-playground .pt-footer {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--color-line);
+}
+.tpl-design-10-playground .pt-footer-row {
+  width: var(--wrap);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+@media (min-width: 768px) {
+  .tpl-design-10-playground .pt-footer-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.tpl-design-10-playground .pt-footer-line {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0;
+}
+.tpl-design-10-playground .pt-footer-line span {
+  color: var(--color-accent);
+}
+.tpl-design-10-playground .pt-footer-colophon {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+.tpl-design-10-playground .pt-footer-socials {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tpl-design-10-playground .pt-footer-socials a {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+.tpl-design-10-playground .pt-footer-socials a:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-10-playground .pt-scrollcue {
+    animation: none;
+  }
+  .tpl-design-10-playground .pt-case:hover {
+    padding-inline: 0;
+    background: none;
+  }
+  .tpl-design-10-playground .pt-overlay-links a:hover {
+    letter-spacing: 0;
+  }
+}

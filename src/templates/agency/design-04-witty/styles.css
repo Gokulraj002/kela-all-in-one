@@ -1,0 +1,841 @@
+/* ============================================================
+   ATELIER · design-04-witty — "Frankly"
+   Copy-driven witty agency. Words carry the design.
+   Tokens are scoped to .tpl-design-04-witty (never :root).
+   ============================================================ */
+
+.tpl-design-04-witty {
+  --color-background: #FAF6EC;
+  --color-surface: #F0EAD8;
+  --color-card: #FFFDF7;
+  --color-primary: #191713;
+  --color-secondary: #57503F;
+  --color-accent: #2B4BD3;
+  --color-text: #211E17;
+  --color-muted: #8F8875;
+  --color-line: #191713;
+  --font-display: 'Bricolage Grotesque', 'Arial Black', sans-serif;
+  --font-body: 'Space Mono', 'Courier New', monospace;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-04-witty *,
+.tpl-design-04-witty *::before,
+.tpl-design-04-witty *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-04-witty ::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.tpl-design-04-witty :focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Shared-primitive styling (standalone exports don't get the platform sheet) */
+.tpl-design-04-witty .a-img {
+  display: block;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-04-witty .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- layout rhythm ---------- */
+.tpl-design-04-witty .fr-wrap {
+  width: min(1120px, 92vw);
+  margin-inline: auto;
+}
+
+.tpl-design-04-witty .fr-lines,
+.tpl-design-04-witty .fr-work,
+.tpl-design-04-witty .fr-wontdo,
+.tpl-design-04-witty .fr-studio,
+.tpl-design-04-witty .fr-contact {
+  padding-block: clamp(4.5rem, 10vw, 8.5rem);
+  position: relative;
+}
+
+/* ---------- type ---------- */
+.tpl-design-04-witty .fr-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-secondary);
+  margin: 0 0 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.tpl-design-04-witty .fr-eyebrow::before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  background: var(--color-accent);
+  flex: none;
+}
+.tpl-design-04-witty .fr-eyebrow-light {
+  color: var(--color-background);
+}
+.tpl-design-04-witty .fr-eyebrow-light::before {
+  background: var(--color-background);
+}
+
+.tpl-design-04-witty .fr-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 5vw, 3.9rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--color-primary);
+  margin: 0 0 1.5rem;
+  text-wrap: balance;
+}
+
+.tpl-design-04-witty .fr-h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+
+.tpl-design-04-witty .fr-h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin: 0 0 0.9rem;
+}
+
+.tpl-design-04-witty .fr-lede {
+  font-size: clamp(0.95rem, 1.6vw, 1.08rem);
+  max-width: 62ch;
+  margin: 0 0 0.5rem;
+  color: var(--color-text);
+}
+
+.tpl-design-04-witty .fr-footnote {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin: 1.5rem 0 0;
+}
+
+.tpl-design-04-witty .fr-rule {
+  display: block;
+  height: 2px;
+  background: var(--color-line);
+  transform-origin: 0 50%;
+  margin: clamp(1.75rem, 4vw, 2.75rem) 0;
+}
+
+/* Punchline treatment: cobalt words + a marker bar that draws on slam-in */
+.tpl-design-04-witty .fr-punch {
+  position: relative;
+  z-index: 0;
+  color: var(--color-accent);
+}
+.tpl-design-04-witty .fr-punch-mark {
+  position: absolute;
+  left: -1%;
+  bottom: 0.05em;
+  width: 102%;
+  height: 0.26em;
+  min-height: 4px;
+  background: var(--color-accent);
+  opacity: 0.3;
+  z-index: -1;
+  transform-origin: 0 50%;
+}
+.tpl-design-04-witty .fr-punch-inline {
+  color: var(--color-accent);
+}
+
+/* Word-mask headline machinery */
+.tpl-design-04-witty .fr-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.tpl-design-04-witty .fr-wm .wi {
+  display: inline-block;
+}
+
+/* ---------- buttons: hard shadow shift, no soft fades ---------- */
+.tpl-design-04-witty .fr-btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-background);
+  background: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding: 0.95rem 1.7rem;
+  text-decoration: none;
+  box-shadow: 5px 5px 0 var(--color-accent);
+  /* hover shift uses the independent `translate` property so it never
+     fights GSAP, which owns `transform` during entrances */
+  transition: translate 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+.tpl-design-04-witty .fr-btn:hover {
+  translate: 3px 3px;
+  box-shadow: 2px 2px 0 var(--color-accent);
+}
+.tpl-design-04-witty .fr-btn:active {
+  translate: 5px 5px;
+  box-shadow: 0 0 0 var(--color-accent);
+}
+.tpl-design-04-witty .fr-btn-small {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.72rem;
+  box-shadow: 4px 4px 0 var(--color-accent);
+}
+.tpl-design-04-witty .fr-btn-big {
+  font-size: 1rem;
+  padding: 1.2rem 2.2rem;
+  box-shadow: 7px 7px 0 var(--color-accent);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.tpl-design-04-witty .fr-btn-big:hover {
+  translate: 3px 3px;
+  box-shadow: 4px 4px 0 var(--color-accent);
+}
+
+/* ---------- nav ---------- */
+.tpl-design-04-witty .fr-nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: 0.85rem clamp(1rem, 4vw, 2.5rem);
+  background: var(--color-background);
+  border-bottom: 2px solid var(--color-line);
+}
+.tpl-design-04-witty .fr-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-right: auto;
+}
+.tpl-design-04-witty .fr-reg {
+  font-size: 0.7em;
+  vertical-align: super;
+  color: var(--color-accent);
+}
+.tpl-design-04-witty .fr-links {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+}
+.tpl-design-04-witty .fr-links a {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text);
+  text-decoration: none;
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-size: 0% 3px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.2s ease, color 0.2s ease;
+  padding-bottom: 2px;
+}
+.tpl-design-04-witty .fr-links a:hover {
+  background-size: 100% 3px;
+  color: var(--color-accent);
+}
+
+/* ---------- hero (scroll-driven frame sequence) ---------- */
+/* Sizes follow the visible scroll area (viewer sets --tpl-vh; exports use
+   100svh) — a 100svh box hangs below the viewer's shorter scroll panel. */
+.tpl-design-04-witty .fr-hero {
+  position: relative;
+  min-height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+  padding: 0;
+}
+/* ScrollFrames contract: the stage height is set inline by the component
+   (resolved to the visible scroll area). Never override .sf-canvas. */
+.tpl-design-04-witty .sf-stage {
+  position: relative;
+  overflow: hidden;
+}
+/* Reduced motion: component renders a static first frame + the same overlay. */
+.tpl-design-04-witty .sf-static {
+  position: relative;
+  min-height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+.tpl-design-04-witty .sf-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tpl-design-04-witty .fr-hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 246, 236, 0.9) 0%,
+    rgba(250, 246, 236, 0.74) 55%,
+    rgba(250, 246, 236, 0.88) 100%
+  );
+}
+/* Overlay children stay absolutely positioned over the pinned canvas. */
+.tpl-design-04-witty .fr-hero-copy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(5rem, 12vh, 7rem) clamp(1rem, 4vw, 2.5rem) clamp(4rem, 10vh, 6rem);
+}
+.tpl-design-04-witty .fr-hero-eyebrow {
+  justify-content: center;
+}
+.tpl-design-04-witty .fr-hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.9rem, 9vw, 7.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  margin: 0 0 clamp(1.75rem, 4vw, 2.75rem);
+  text-wrap: balance;
+}
+.tpl-design-04-witty .fr-hero-cta {
+  margin-bottom: 1.25rem;
+}
+.tpl-design-04-witty .fr-hero-foot {
+  text-align: center;
+}
+.tpl-design-04-witty .fr-scroll-cue {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-secondary);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tpl-design-04-witty .fr-scroll-cue::after {
+  content: "";
+  width: 2px;
+  height: 2.2rem;
+  background: var(--color-accent);
+}
+
+/* ---------- the lines / toss deck ---------- */
+.tpl-design-04-witty .fr-lines {
+  background: var(--color-background);
+}
+
+/* Desktop: one screen-tall stage; ScrollTrigger pins it and scrubs a 200%
+   toss (pin spacing adds the scroll distance — a fixed 300vh box here used
+   to leave two empty screens after the pin released). */
+.tpl-design-04-witty .fr-deck {
+  position: relative;
+  margin-top: clamp(2rem, 5vw, 4rem);
+}
+.tpl-design-04-witty .fr-deck-stage {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+.tpl-design-04-witty .fr-deck-stage .fr-card {
+  /* Centred with inset + auto margins, not a CSS translate: GSAP owns the
+     card transform (peek offset, toss, slam-in) and would overwrite it. */
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: min(620px, 86%);
+  height: fit-content;
+  will-change: transform, opacity;
+}
+.tpl-design-04-witty .fr-deck-count {
+  position: absolute;
+  top: clamp(5.5rem, 12vh, 7rem);
+  right: clamp(1rem, 6vw, 4rem);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-secondary);
+  background: var(--color-card);
+  border: 2px solid var(--color-line);
+  padding: 0.45rem 0.8rem;
+  box-shadow: 4px 4px 0 var(--color-line);
+}
+.tpl-design-04-witty .fr-deck-hint {
+  position: absolute;
+  bottom: clamp(1.5rem, 6vh, 3rem);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-background);
+  background: var(--color-primary);
+  padding: 0.6rem 1.1rem;
+  white-space: nowrap;
+}
+
+/* The card */
+.tpl-design-04-witty .fr-card-inner {
+  position: relative;
+  background: var(--color-card);
+  border: 2px solid var(--color-line);
+  box-shadow: 8px 8px 0 var(--color-line);
+  padding: clamp(1.75rem, 4vw, 3rem);
+}
+.tpl-design-04-witty .fr-card:nth-child(odd) .fr-card-inner {
+  transform: rotate(-1.1deg);
+}
+.tpl-design-04-witty .fr-card:nth-child(even) .fr-card-inner {
+  transform: rotate(1.1deg);
+}
+.tpl-design-04-witty .fr-card-pin {
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-line);
+}
+.tpl-design-04-witty .fr-card-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-muted);
+  margin: 0 0 1rem;
+}
+.tpl-design-04-witty .fr-card-line {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 3.2vw, 2rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Reduced motion: the deck is a plain stacked list */
+.tpl-design-04-witty .fr-deck.is-static {
+  height: auto;
+}
+.tpl-design-04-witty .fr-deck.is-static .fr-deck-stage {
+  height: auto;
+  overflow: visible;
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  padding-block: 0.5rem;
+}
+.tpl-design-04-witty .fr-deck.is-static .fr-card {
+  position: relative;
+  inset: auto;
+  height: auto;
+  transform: none;
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+/* ---------- work ---------- */
+.tpl-design-04-witty .fr-work {
+  background: var(--color-surface);
+  border-block: 2px solid var(--color-line);
+}
+.tpl-design-04-witty .fr-case {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  align-items: center;
+}
+.tpl-design-04-witty .fr-frame {
+  border: 2px solid var(--color-line);
+  box-shadow: 8px 8px 0 var(--color-line);
+  background: var(--color-card);
+}
+.tpl-design-04-witty .fr-frame .a-img {
+  aspect-ratio: 4 / 3;
+}
+.tpl-design-04-witty .fr-case-copy .fr-eyebrow {
+  margin-bottom: 0.9rem;
+}
+.tpl-design-04-witty .fr-case-line {
+  font-size: 0.92rem;
+  margin: 0 0 0.9rem;
+  max-width: 52ch;
+}
+.tpl-design-04-witty .fr-case-line strong {
+  color: var(--color-accent);
+}
+
+/* The imageless case: a cobalt card where the words do the work */
+.tpl-design-04-witty .fr-case-type {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  background: var(--color-accent);
+  border: 2px solid var(--color-line);
+  box-shadow: 8px 8px 0 var(--color-line);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-background);
+}
+.tpl-design-04-witty .fr-case-type .fr-h3 {
+  color: #fff;
+}
+.tpl-design-04-witty .fr-case-type .fr-case-line {
+  color: var(--color-background);
+  max-width: 60ch;
+}
+.tpl-design-04-witty .fr-case-type .fr-case-line strong {
+  color: #fff;
+}
+.tpl-design-04-witty .fr-case-type .fr-punch {
+  color: #fff;
+}
+.tpl-design-04-witty .fr-case-type .fr-punch-mark {
+  background: var(--color-background);
+  opacity: 0.55;
+}
+.tpl-design-04-witty .fr-footnote-light {
+  color: rgba(250, 246, 236, 0.75);
+}
+
+/* ---------- won't-do anti-list ---------- */
+.tpl-design-04-witty .fr-antilist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--color-line);
+}
+.tpl-design-04-witty .fr-anti {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem) 0;
+  border-bottom: 2px solid var(--color-line);
+  cursor: default;
+}
+.tpl-design-04-witty .fr-anti-num {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  padding-top: 0.35rem;
+}
+.tpl-design-04-witty .fr-anti-text {
+  position: relative;
+  display: inline;
+  font-weight: 700;
+  font-size: clamp(1rem, 2.4vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--color-primary);
+}
+.tpl-design-04-witty .fr-anti-text::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  top: 54%;
+  width: 104%;
+  height: 3px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.28s ease;
+}
+.tpl-design-04-witty .fr-anti:hover .fr-anti-text::after,
+.tpl-design-04-witty .fr-anti:focus-within .fr-anti-text::after {
+  transform: scaleX(1);
+}
+.tpl-design-04-witty .fr-anti-why {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  margin: 0.5rem 0 0;
+  max-width: 58ch;
+}
+
+/* ---------- studio ---------- */
+.tpl-design-04-witty .fr-studio {
+  background: var(--color-background);
+}
+.tpl-design-04-witty .fr-facts {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  margin: 0 0 0.5rem;
+}
+.tpl-design-04-witty .fr-team {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+.tpl-design-04-witty .fr-person {
+  background: var(--color-card);
+  border: 2px solid var(--color-line);
+  box-shadow: 6px 6px 0 var(--color-line);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  /* `translate`, not `transform`: GSAP reveals these cards with transform */
+  transition: translate 0.15s ease, box-shadow 0.15s ease;
+}
+.tpl-design-04-witty .fr-person:hover {
+  translate: 3px 3px;
+  box-shadow: 3px 3px 0 var(--color-line);
+}
+.tpl-design-04-witty .fr-person-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.01em;
+}
+.tpl-design-04-witty .fr-person-role {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  margin: 0 0 0.9rem;
+}
+.tpl-design-04-witty .fr-person-flaw {
+  font-size: 0.88rem;
+  margin: 0;
+  color: var(--color-text);
+}
+.tpl-design-04-witty .fr-detail {
+  margin: clamp(3rem, 7vw, 5rem) 0 0;
+  max-width: 760px;
+}
+.tpl-design-04-witty .fr-detail .a-img {
+  aspect-ratio: 16 / 9;
+}
+.tpl-design-04-witty .fr-detail figcaption {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-top: 0.9rem;
+}
+
+/* ---------- contact ---------- */
+.tpl-design-04-witty .fr-contact {
+  background: var(--color-surface);
+  border-top: 2px solid var(--color-line);
+}
+.tpl-design-04-witty .fr-contact .fr-lede {
+  max-width: 56ch;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+.tpl-design-04-witty .fr-contact-grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding-top: clamp(2rem, 5vw, 3rem);
+  border-top: 2px solid var(--color-line);
+}
+.tpl-design-04-witty .fr-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+.tpl-design-04-witty .fr-checklist li {
+  padding: 0.55rem 0 0.55rem 1.75rem;
+  position: relative;
+  border-bottom: 1px dashed var(--color-muted);
+}
+.tpl-design-04-witty .fr-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--color-accent);
+}
+.tpl-design-04-witty .fr-address {
+  font-style: normal;
+  font-size: 0.92rem;
+  line-height: 1.9;
+}
+.tpl-design-04-witty .fr-address a,
+.tpl-design-04-witty .fr-contact a {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+/* the big mail button keeps its light-on-ink label */
+.tpl-design-04-witty .fr-contact .fr-btn {
+  color: var(--color-background);
+}
+
+/* ---------- footer ---------- */
+.tpl-design-04-witty .fr-footer {
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding: clamp(3.5rem, 8vw, 5.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+  border-top: 2px solid var(--color-line);
+}
+.tpl-design-04-witty .fr-footer-word {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+  color: var(--color-background);
+}
+.tpl-design-04-witty .fr-footer-word .fr-reg {
+  color: var(--brand-on-dark, var(--color-accent));
+}
+.tpl-design-04-witty .fr-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.tpl-design-04-witty .fr-footer-nav a {
+  color: var(--color-background);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-bottom: 2px solid var(--brand-on-dark, var(--color-accent));
+  padding-bottom: 2px;
+}
+.tpl-design-04-witty .fr-footer-nav a:hover {
+  color: var(--brand-on-dark, var(--color-accent));
+}
+.tpl-design-04-witty .fr-footer-line {
+  font-size: 0.9rem;
+  max-width: 60ch;
+  margin: 0 0 1.5rem;
+}
+.tpl-design-04-witty .fr-colophon {
+  font-size: 0.75rem;
+  color: #a49c88;
+  margin: 0.4rem 0 0;
+}
+
+/* ---------- responsive ---------- */
+@media (min-width: 640px) {
+  .tpl-design-04-witty .fr-team {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  /* Mobile: the deck becomes a native swipe strip */
+  .tpl-design-04-witty .fr-deck {
+    height: auto;
+  }
+  .tpl-design-04-witty .fr-deck-stage {
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 4% 1.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .tpl-design-04-witty .fr-deck-stage .fr-card {
+    position: relative;
+    inset: auto;
+    margin: 0;
+    height: auto;
+    transform: none;
+    flex: 0 0 84%;
+    max-width: 420px;
+    scroll-snap-align: center;
+    will-change: auto;
+  }
+  .tpl-design-04-witty .fr-deck-count,
+  .tpl-design-04-witty .fr-deck-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .tpl-design-04-witty .fr-links {
+    display: none;
+  }
+  .tpl-design-04-witty .fr-nav .fr-btn-small {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .tpl-design-04-witty .fr-case {
+    grid-template-columns: 1.05fr 1fr;
+  }
+  .tpl-design-04-witty .fr-case.is-flip .fr-frame {
+    order: 2;
+  }
+  .tpl-design-04-witty .fr-case.is-flip .fr-case-copy {
+    order: 1;
+  }
+  .tpl-design-04-witty .fr-contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .tpl-design-04-witty .fr-team {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- reduced motion: hard stop on animation ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-04-witty *,
+  .tpl-design-04-witty *::before,
+  .tpl-design-04-witty *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

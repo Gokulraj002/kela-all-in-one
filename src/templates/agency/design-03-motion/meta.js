@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-03-motion',
+  num: '03',
+  name: 'Framehouse',
+  tag: 'Motion Studio',
+  style: 'Cinematic dark studio — letterboxed, frame-counted, precise',
+  animation: 'M3 showreel scrub: pinned letterboxed frame, 5 stills crossfade + scale settle, running frame counter, letterbox bars widen 8%→14%',
+  typography: 'Anton + Manrope',
+  layout: 'Full-bleed beam hero · pinned showreel · title-card film index · numbered capabilities · director roster · 4-step process · treatment request',
+  mood: 'Cinematic, precise, atmospheric',
+  palette: 'Near-black / charcoal / amber',
+  features: [
+    'Pinned showreel scrub with running frame counter',
+    'Letterbox bars widen 8% to 14% across the pin',
+    'Title-card film index with hover timecode tick',
+    'Treatment request form with budget bands',
+    'Reduced-motion: stacked stills, no holds, no dips',
+  ],
+  fonts: { display: 'Anton', body: 'Manrope' },
+  colors: { primary: '#F2EDE3', accent: '#E8A33D' },
+};

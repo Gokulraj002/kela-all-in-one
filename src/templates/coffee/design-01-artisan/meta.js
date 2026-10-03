@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-01-artisan',
+  num: '01',
+  name: 'Ember & Oak',
+  tag: 'Artisan',
+  style: 'Warm craft editorial zine',
+  animation: 'Pour-wipe hero, steam-rise reveals',
+  typography: 'Fraunces + Manrope',
+  layout: 'Asymmetric 12-column editorial grid, overlapping spreads',
+  mood: 'Warm, grounded, daylight',
+  palette: 'Cream / espresso / copper',
+  features: [
+    'Time-aware hero note',
+    'Tabbed menu board',
+    'Roast timeline',
+    'Mobile bottom quick-bar',
+  ],
+  fonts: { display: 'Fraunces', body: 'Manrope' },
+  colors: { primary: '#2B2118', accent: '#B07B3F' },
+};

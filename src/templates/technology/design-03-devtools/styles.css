@@ -1,0 +1,1188 @@
+/* ============================================================
+   Shipkit — design-03-devtools
+   Docs-led terminal aesthetic · editor dark + green + amber
+   All tokens scoped to .tpl-design-03-devtools — never :root.
+   ============================================================ */
+.tpl-design-03-devtools {
+  --color-primary: #0d1117;
+  --color-editor: #0d1117;
+  --color-editor-2: #161b22;
+  --color-editor-3: #1c2128;
+  --color-border: #30363d;
+  --color-border-soft: #21262d;
+  --color-accent: #3fb950;
+  --color-accent-dim: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  --color-amber: #d29922;
+  --color-amber-dim: rgba(210, 153, 34, 0.14);
+  --color-paper: #ffffff;
+  --color-paper-2: #f6f8fa;
+  --color-text: #e6edf3;
+  --color-muted: #8b949e;
+  --color-ink: #1f2328;
+  --color-ink-muted: #57606a;
+  --color-line: #d0d7de;
+  --color-line-soft: #eaeef2;
+  --font-display: 'JetBrains Mono', ui-monospace, monospace;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --wrap: min(1200px, 100% - clamp(2.5rem, 8vw, 5rem));
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --ease: 0.25s ease;
+  background: var(--color-editor);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-03-devtools *,
+.tpl-design-03-devtools *::before,
+.tpl-design-03-devtools *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-03-devtools a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tpl-design-03-devtools code,
+.tpl-design-03-devtools pre {
+  font-family: var(--font-code);
+}
+
+.tpl-design-03-devtools .sk-wrap {
+  width: var(--wrap);
+  margin-inline: auto;
+}
+
+/* ---------- shared type ---------- */
+.tpl-design-03-devtools .sk-eyebrow {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1rem;
+}
+
+.tpl-design-03-devtools .sk-eyebrow--amber {
+  color: var(--color-amber);
+}
+
+.tpl-design-03-devtools .sk-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.65rem, 3.4vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+}
+
+.tpl-design-03-devtools .sk-lede {
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  max-width: 62ch;
+  margin: 0;
+}
+
+.tpl-design-03-devtools .sk-sec {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+}
+
+/* ---------- blinking caret ---------- */
+.tpl-design-03-devtools .sk-caret {
+  display: inline-block;
+  width: 8px;
+  height: 1.05em;
+  margin-left: 2px;
+  background: var(--color-accent);
+  vertical-align: text-bottom;
+  animation: sk-blink 1.06s steps(2, start) infinite;
+}
+
+@keyframes sk-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* ============================================================
+   NAV — docs-style top bar
+   ============================================================ */
+.tpl-design-03-devtools .sk-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(13, 17, 23, 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.tpl-design-03-devtools .sk-nav-inner {
+  width: var(--wrap);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  height: 64px;
+}
+
+.tpl-design-03-devtools .sk-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+}
+
+.tpl-design-03-devtools .sk-wordmark .sk-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--color-accent);
+  color: var(--color-editor);
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.tpl-design-03-devtools .sk-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 0.5rem;
+}
+
+.tpl-design-03-devtools .sk-nav-links a {
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--r-sm);
+  transition: color var(--ease), background var(--ease);
+}
+
+.tpl-design-03-devtools .sk-nav-links a:hover {
+  color: var(--color-text);
+  background: var(--color-editor-2);
+}
+
+.tpl-design-03-devtools .sk-nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tpl-design-03-devtools .sk-gh {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: 0.5rem;
+  font-family: var(--font-code);
+  font-size: 0.82rem;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-sm);
+  padding: 0.45rem 0.8rem;
+  background: var(--color-editor-2);
+  transition: border-color var(--ease), background var(--ease);
+}
+
+.tpl-design-03-devtools .sk-gh:hover {
+  border-color: var(--color-muted);
+  background: var(--color-editor-3);
+}
+
+.tpl-design-03-devtools .sk-gh .sk-stars {
+  color: var(--color-amber);
+  font-weight: 700;
+}
+
+.tpl-design-03-devtools .sk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-code);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--r-sm);
+  background: var(--color-accent);
+  color: var(--color-editor);
+  border: 1px solid var(--color-accent);
+  white-space: nowrap;
+  transition: translate var(--ease), background var(--ease), box-shadow var(--ease);
+}
+
+.tpl-design-03-devtools .sk-btn:hover {
+  background: #46c55a;
+  box-shadow: 0 0 24px rgba(63, 185, 80, 0.35);
+  translate: 0 -1px;
+}
+
+.tpl-design-03-devtools .sk-btn--ghost {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.tpl-design-03-devtools .sk-btn--ghost:hover {
+  border-color: var(--color-muted);
+  background: var(--color-editor-2);
+  box-shadow: none;
+}
+
+/* ============================================================
+   HERO — scroll-driven frame sequence (ScrollFrames): pinned
+   100svh cinematic stage (copy over frames); the terminal window
+   and stats strip flow below in the same section. Stage/canvas/
+   overlay positioning is inline in ScrollFrames — only the
+   overlay children are positioned here.
+   ============================================================ */
+.tpl-design-03-devtools .sk-hero {
+  position: relative;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.tpl-design-03-devtools .sk-hero-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(13, 17, 23, 0.72) 0%, rgba(13, 17, 23, 0.88) 60%, var(--color-editor) 100%);
+}
+
+/* Overlay child: centered copy column over the frame sequence. */
+.tpl-design-03-devtools .sk-hero-copy {
+  position: absolute;
+  inset: 0;
+  width: var(--wrap);
+  max-width: 680px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-block: 5rem 4rem;
+}
+
+.tpl-design-03-devtools .sk-hero-ctas {
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+/* Below the pinned stage: terminal window, then stats strip. */
+.tpl-design-03-devtools .sk-hero-below {
+  position: relative;
+  width: var(--wrap);
+  margin-inline: auto;
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.tpl-design-03-devtools .sk-hero-below .sk-term {
+  width: 100%;
+  max-width: 880px;
+  margin-inline: auto;
+}
+
+.tpl-design-03-devtools .sk-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.25rem;
+}
+
+.tpl-design-03-devtools .sk-hero-title .sk-hl {
+  color: var(--color-accent);
+}
+
+.tpl-design-03-devtools .sk-hero-sub {
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.7vw, 1.15rem);
+  max-width: 46ch;
+  margin: 0 0 2rem;
+}
+
+.tpl-design-03-devtools .sk-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 2.75rem;
+}
+
+/* terminal window */
+.tpl-design-03-devtools .sk-term {
+  background: rgba(22, 27, 34, 0.94);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(63, 185, 80, 0.06);
+  overflow: hidden;
+  /* no backdrop-filter: the panel is 94% opaque, and a live blur under text
+     that retypes on every scroll frame is pure repaint cost */
+}
+
+.tpl-design-03-devtools .sk-term-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  background: var(--color-editor-3);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.tpl-design-03-devtools .sk-term-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+
+.tpl-design-03-devtools .sk-term-dot:nth-child(1) { background: #f85149; }
+.tpl-design-03-devtools .sk-term-dot:nth-child(2) { background: var(--color-amber); }
+.tpl-design-03-devtools .sk-term-dot:nth-child(3) { background: var(--color-accent); }
+
+.tpl-design-03-devtools .sk-term-title {
+  margin-left: 0.5rem;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.tpl-design-03-devtools .sk-term-body {
+  padding: 1.25rem 1.35rem 1.5rem;
+  font-family: var(--font-code);
+  font-size: clamp(0.82rem, 1.5vw, 0.94rem);
+  line-height: 1.75;
+  min-height: 300px;
+}
+
+.tpl-design-03-devtools .sk-term-line {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.tpl-design-03-devtools .sk-term-prompt {
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-right: 0.6ch;
+}
+
+.tpl-design-03-devtools .sk-term-cmd {
+  color: var(--color-text);
+}
+
+.tpl-design-03-devtools .sk-term-line--dim {
+  color: var(--color-muted);
+}
+
+.tpl-design-03-devtools .sk-term-line--ok {
+  color: var(--color-accent);
+}
+
+/* hero terminal live-typing: hidden until JS types them in */
+.tpl-design-03-devtools .sk-term.is-live .sk-term-step {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+.tpl-design-03-devtools .sk-term.is-live .sk-term-step.is-shown {
+  visibility: visible;
+  height: auto;
+  overflow: visible;
+}
+
+.tpl-design-03-devtools .sk-term.is-live .sk-term-step.is-shown + .sk-term-step.is-shown {
+  margin-top: 0;
+}
+
+/* hero stats */
+.tpl-design-03-devtools .sk-stats {
+  position: relative;
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.tpl-design-03-devtools .sk-stats-inner {
+  width: var(--wrap);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding-block: 2rem;
+}
+
+.tpl-design-03-devtools .sk-stat {
+  border-left: 2px solid var(--color-border);
+  padding-left: 1.1rem;
+}
+
+.tpl-design-03-devtools .sk-stat:first-child {
+  border-left-color: var(--color-accent);
+}
+
+.tpl-design-03-devtools .sk-stat-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--color-text);
+}
+
+.tpl-design-03-devtools .sk-stat-label {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+/* ============================================================
+   DOCS SECTIONS (light) — quickstart / api / changelog
+   ============================================================ */
+.tpl-design-03-devtools .sk-docs {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.tpl-design-03-devtools .sk-docs .sk-eyebrow {
+  color: var(--brand-on-light, #1a7f37);
+}
+
+.tpl-design-03-devtools .sk-docs .sk-lede {
+  color: var(--color-ink-muted);
+}
+
+.tpl-design-03-devtools .sk-docs-grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+@media (min-width: 900px) {
+  .tpl-design-03-devtools .sk-docs-grid {
+    grid-template-columns: 220px 1fr;
+  }
+}
+
+.tpl-design-03-devtools .sk-toc {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .tpl-design-03-devtools .sk-toc {
+    display: block;
+    align-self: start;
+    position: sticky;
+    top: 96px;
+    border-left: 2px solid var(--color-line-soft);
+    padding-left: 1.1rem;
+  }
+}
+
+.tpl-design-03-devtools .sk-toc-title {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  margin: 0 0 0.75rem;
+}
+
+.tpl-design-03-devtools .sk-toc a {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--color-ink-muted);
+  padding: 0.3rem 0;
+  transition: color var(--ease);
+}
+
+.tpl-design-03-devtools .sk-toc a:hover {
+  color: var(--color-ink);
+}
+
+/* quickstart steps */
+.tpl-design-03-devtools .sk-steps {
+  display: grid;
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.tpl-design-03-devtools .sk-step {
+  display: grid;
+  gap: 1.25rem;
+  border: 1px solid var(--color-line-soft);
+  border-radius: var(--r-md);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--color-paper);
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+
+@media (min-width: 900px) {
+  .tpl-design-03-devtools .sk-step {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.tpl-design-03-devtools .sk-step:hover {
+  border-color: var(--color-line);
+  box-shadow: 0 12px 32px rgba(31, 35, 40, 0.08);
+}
+
+.tpl-design-03-devtools .sk-step-num {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--brand-on-light, #1a7f37);
+  letter-spacing: 0.1em;
+}
+
+.tpl-design-03-devtools .sk-step h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.6rem;
+  color: var(--color-ink);
+}
+
+.tpl-design-03-devtools .sk-step p {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-size: 0.98rem;
+}
+
+.tpl-design-03-devtools .sk-code {
+  background: var(--color-editor);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.tpl-design-03-devtools .sk-code-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 1rem;
+  background: var(--color-editor-2);
+  border-bottom: 1px solid var(--color-border-soft);
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tpl-design-03-devtools .sk-code pre {
+  margin: 0;
+  padding: 1.1rem 1.2rem 1.3rem;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  overflow-x: auto;
+}
+
+.tpl-design-03-devtools .sk-code .sk-cl-comment {
+  color: var(--color-muted);
+}
+
+.tpl-design-03-devtools .sk-code .sk-cl-ok {
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   TERMINAL TYPER — pinned scroll mechanic (dark)
+   ============================================================ */
+.tpl-design-03-devtools .sk-typer {
+  background: var(--color-editor);
+  border-top: 1px solid var(--color-border-soft);
+  border-bottom: 1px solid var(--color-border-soft);
+  position: relative;
+}
+
+.tpl-design-03-devtools .sk-typer-head {
+  width: var(--wrap);
+  margin-inline: auto;
+  padding-top: clamp(4.5rem, 9vw, 8rem);
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.tpl-design-03-devtools .sk-typer-head .sk-lede {
+  margin-inline: auto;
+  color: var(--color-muted);
+}
+
+.tpl-design-03-devtools .sk-typer-hint {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  color: var(--color-amber);
+  margin-top: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tpl-design-03-devtools .sk-typer-hint::before,
+.tpl-design-03-devtools .sk-typer-hint::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--color-amber);
+  opacity: 0.5;
+}
+
+.tpl-design-03-devtools .sk-typer-pin {
+  width: var(--wrap);
+  margin-inline: auto;
+  padding-bottom: clamp(4.5rem, 9vw, 8rem);
+}
+
+/* live (pinned) mode: the stage is exactly the visible scroll area
+   (--tpl-vh in the viewer, 100svh standalone) and clears the 64px sticky
+   nav; panels go compact (text-only). JS scales .sk-typer-fit down on
+   screens too short for terminal + panels. */
+.tpl-design-03-devtools .sk-typer.is-live .sk-typer-pin {
+  height: var(--tpl-vh, 100svh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(64px + clamp(0.5rem, 2vh, 1.25rem)) 0 clamp(0.75rem, 2.5vh, 1.5rem);
+  overflow: hidden;
+}
+
+.tpl-design-03-devtools .sk-typer-fit {
+  transform-origin: 50% 50%;
+}
+
+.tpl-design-03-devtools .sk-typer.is-live .sk-feats {
+  margin-top: clamp(1rem, 2.6vh, 1.75rem);
+}
+
+.tpl-design-03-devtools .sk-typer.is-live .sk-feat-img {
+  display: none;
+}
+
+.tpl-design-03-devtools .sk-typer:not(.is-live) .sk-typer-hint {
+  display: none;
+}
+
+.tpl-design-03-devtools .sk-typer-term {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.tpl-design-03-devtools .sk-typer-term .sk-term-body {
+  min-height: 340px;
+}
+
+@media (min-width: 768px) {
+  .tpl-design-03-devtools .sk-typer.is-live .sk-typer-term .sk-term-body {
+    min-height: 400px;
+  }
+}
+
+.tpl-design-03-devtools .sk-tty-out {
+  margin: 0 0 0.9rem;
+}
+
+.tpl-design-03-devtools .sk-tty-out p {
+  margin: 0;
+  color: var(--color-muted);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.tpl-design-03-devtools .sk-tty-out p.sk-ok {
+  color: var(--color-accent);
+}
+
+/* live (desktop + motion): outputs + prompt lines hidden until typed.
+   visibility (not display) keeps the full transcript's height reserved, so
+   the terminal and the panels below never jump while the lines print. */
+.tpl-design-03-devtools .sk-typer.is-live .sk-tty-promptline,
+.tpl-design-03-devtools .sk-typer.is-live .sk-tty-out {
+  visibility: hidden;
+}
+
+.tpl-design-03-devtools .sk-typer.is-live .sk-tty-promptline.is-on,
+.tpl-design-03-devtools .sk-typer.is-live .sk-tty-out.is-on {
+  visibility: visible;
+}
+
+/* feature panels under the terminal */
+.tpl-design-03-devtools .sk-feats {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+@media (min-width: 768px) {
+  .tpl-design-03-devtools .sk-feats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .tpl-design-03-devtools .sk-feats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.tpl-design-03-devtools .sk-feat {
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--r-md);
+  background: var(--color-editor-2);
+  overflow: hidden;
+  transition: opacity var(--ease), border-color var(--ease), transform var(--ease), box-shadow var(--ease);
+}
+
+.tpl-design-03-devtools .sk-feat-img {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.tpl-design-03-devtools .sk-feat-img .a-img,
+.tpl-design-03-devtools .sk-feat-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tpl-design-03-devtools .sk-feat-body {
+  padding: 1.25rem 1.25rem 1.4rem;
+}
+
+.tpl-design-03-devtools .sk-feat-kicker {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+  margin: 0 0 0.5rem;
+}
+
+.tpl-design-03-devtools .sk-feat h3 {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin: 0 0 0.55rem;
+  color: var(--color-text);
+}
+
+.tpl-design-03-devtools .sk-feat p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* live state: panels dim until their command completes */
+.tpl-design-03-devtools .sk-typer.is-live .sk-feat {
+  opacity: 0.32;
+}
+
+.tpl-design-03-devtools .sk-typer.is-live .sk-feat.is-active {
+  opacity: 1;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent), 0 12px 40px rgba(63, 185, 80, 0.12);
+  transform: translateY(-3px);
+}
+
+.tpl-design-03-devtools .sk-typer.is-live .sk-feat.is-active .sk-feat-kicker {
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   API teaser (light docs)
+   ============================================================ */
+.tpl-design-03-devtools .sk-api-table {
+  margin-top: clamp(2.5rem, 5vw, 3.75rem);
+  border: 1px solid var(--color-line-soft);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--color-paper);
+}
+
+.tpl-design-03-devtools .sk-api-row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 1rem;
+  padding: 1.05rem 1.25rem;
+  border-bottom: 1px solid var(--color-line-soft);
+  align-items: baseline;
+  transition: background var(--ease);
+}
+
+.tpl-design-03-devtools .sk-api-row:last-child {
+  border-bottom: 0;
+}
+
+.tpl-design-03-devtools .sk-api-row:hover {
+  background: var(--color-paper-2);
+}
+
+.tpl-design-03-devtools .sk-method {
+  font-family: var(--font-code);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.55rem;
+  border-radius: 5px;
+  text-align: center;
+  white-space: nowrap;
+  justify-self: start;
+}
+
+.tpl-design-03-devtools .sk-method--get {
+  background: rgba(63, 185, 80, 0.14);
+  color: #1a7f37;
+}
+
+.tpl-design-03-devtools .sk-method--post {
+  background: var(--color-amber-dim);
+  color: #9a6700;
+}
+
+.tpl-design-03-devtools .sk-method--delete {
+  background: rgba(248, 81, 73, 0.12);
+  color: #b62324;
+}
+
+.tpl-design-03-devtools .sk-api-path {
+  font-family: var(--font-code);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  display: block;
+}
+
+.tpl-design-03-devtools .sk-api-desc {
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.tpl-design-03-devtools .sk-api-note {
+  margin-top: 1.5rem;
+  font-family: var(--font-code);
+  font-size: 0.88rem;
+  color: var(--brand-on-light, #1a7f37);
+}
+
+.tpl-design-03-devtools .sk-api-note a {
+  border-bottom: 1px solid var(--brand-on-light, #1a7f37);
+  transition: opacity var(--ease);
+}
+
+.tpl-design-03-devtools .sk-api-note a:hover {
+  opacity: 0.7;
+}
+
+/* ============================================================
+   CHANGELOG (light docs)
+   ============================================================ */
+.tpl-design-03-devtools .sk-log {
+  margin-top: clamp(2.5rem, 5vw, 3.75rem);
+  display: grid;
+  gap: 2.5rem;
+  max-width: 860px;
+}
+
+.tpl-design-03-devtools .sk-entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px solid var(--color-ink);
+}
+
+.tpl-design-03-devtools .sk-entry-ver {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.tpl-design-03-devtools .sk-entry-date {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--color-ink-muted);
+}
+
+.tpl-design-03-devtools .sk-entry-tag {
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  color: var(--color-ink-muted);
+}
+
+.tpl-design-03-devtools .sk-entry ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.tpl-design-03-devtools .sk-entry li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--color-ink-muted);
+  font-size: 0.98rem;
+}
+
+.tpl-design-03-devtools .sk-entry li::before {
+  content: '›';
+  position: absolute;
+  left: 0.35rem;
+  color: var(--brand-on-light, #1a7f37);
+  font-weight: 700;
+}
+
+.tpl-design-03-devtools .sk-entry code {
+  font-size: 0.88em;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line-soft);
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+  color: var(--color-ink);
+}
+
+/* ============================================================
+   CTA (dark)
+   ============================================================ */
+.tpl-design-03-devtools .sk-cta {
+  background:
+    radial-gradient(60% 90% at 50% 0%, rgba(63, 185, 80, 0.1) 0%, transparent 70%),
+    var(--color-editor);
+  border-top: 1px solid var(--color-border-soft);
+  text-align: center;
+}
+
+.tpl-design-03-devtools .sk-cta .sk-h2 {
+  max-width: 22ch;
+  margin-inline: auto;
+}
+
+.tpl-design-03-devtools .sk-cta-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-family: var(--font-code);
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  background: var(--color-editor-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  padding: 1rem 1.4rem;
+  margin: 2.25rem 0;
+  color: var(--color-text);
+}
+
+.tpl-design-03-devtools .sk-cta-code .sk-term-prompt {
+  margin-right: 0;
+}
+
+.tpl-design-03-devtools .sk-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.tpl-design-03-devtools .sk-cta-note {
+  margin-top: 1.5rem;
+  font-family: var(--font-code);
+  font-size: 0.82rem;
+  color: var(--color-muted);
+}
+
+/* ============================================================
+   FOOTER (dark)
+   ============================================================ */
+.tpl-design-03-devtools .sk-footer {
+  border-top: 1px solid var(--color-border-soft);
+  background: #090c10;
+}
+
+.tpl-design-03-devtools .sk-footer-inner {
+  width: var(--wrap);
+  margin-inline: auto;
+  padding-block: clamp(3.5rem, 6vw, 5rem) 2rem;
+}
+
+.tpl-design-03-devtools .sk-footer-grid {
+  display: grid;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .tpl-design-03-devtools .sk-footer-grid {
+    grid-template-columns: 1.4fr repeat(4, 1fr);
+  }
+}
+
+.tpl-design-03-devtools .sk-footer-tag {
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  margin: 0.9rem 0 1.25rem;
+  max-width: 26ch;
+}
+
+.tpl-design-03-devtools .sk-footer-contact {
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.tpl-design-03-devtools .sk-footer-contact a {
+  transition: color var(--ease);
+}
+
+.tpl-design-03-devtools .sk-footer-contact a:hover {
+  color: var(--color-accent);
+}
+
+.tpl-design-03-devtools .sk-footer-col h4 {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0 0 1rem;
+}
+
+.tpl-design-03-devtools .sk-footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.tpl-design-03-devtools .sk-footer-col a {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  transition: color var(--ease);
+}
+
+.tpl-design-03-devtools .sk-footer-col a:hover {
+  color: var(--color-text);
+}
+
+.tpl-design-03-devtools .sk-footer-base {
+  border-top: 1px solid var(--color-border-soft);
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.tpl-design-03-devtools .sk-footer-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tpl-design-03-devtools .sk-footer-status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 10px var(--color-accent);
+}
+
+/* ---------- small screens ---------- */
+@media (max-width: 767px) {
+  .tpl-design-03-devtools .sk-nav-links {
+    display: none;
+  }
+
+  .tpl-design-03-devtools .sk-gh .sk-gh-label {
+    display: none;
+  }
+
+  .tpl-design-03-devtools .sk-nav-inner {
+    gap: 0.75rem;
+  }
+
+  .tpl-design-03-devtools .sk-nav-right {
+    gap: 0.5rem;
+  }
+
+  .tpl-design-03-devtools .sk-nav .sk-gh,
+  .tpl-design-03-devtools .sk-nav .sk-btn {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  /* Keep the terminal compact on small screens. */
+  .tpl-design-03-devtools .sk-term-body {
+    min-height: 0;
+    padding: 1rem 1.1rem 1.2rem;
+    font-size: 0.82rem;
+    line-height: 1.65;
+  }
+
+  .tpl-design-03-devtools .sk-hero-copy {
+    padding-block: 4.5rem 3.5rem;
+  }
+
+  .tpl-design-03-devtools .sk-stats-inner {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .tpl-design-03-devtools .sk-api-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+/* ---------- reduced motion: everything visible, no animation ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-03-devtools .sk-caret {
+    animation: none;
+  }
+
+  .tpl-design-03-devtools *,
+  .tpl-design-03-devtools *::before,
+  .tpl-design-03-devtools *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

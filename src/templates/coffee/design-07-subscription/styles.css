@@ -1,0 +1,421 @@
+/* Never Empty — design-07-subscription. All tokens scoped; never :root. */
+.tpl-design-07-subscription {
+  --color-background: #F8F4E9;
+  --color-surface: #EFEBDA;
+  --color-primary: #22392C;
+  --color-secondary: #5A6B4E;
+  --color-accent: #C96F3F;
+  --color-text: #242E22;
+  --color-muted: #8B917F;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif;
+  --radius: 18px;
+  --shadow-soft: 0 18px 50px -18px rgba(34, 57, 44, 0.25);
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-07-subscription *,
+.tpl-design-07-subscription *::before,
+.tpl-design-07-subscription *::after { box-sizing: border-box; }
+
+.tpl-design-07-subscription img { display: block; max-width: 100%; }
+
+/* Img primitive base (shared component has no CSS of its own) */
+.tpl-design-07-subscription .a-img { display: block; position: relative; overflow: hidden; }
+.tpl-design-07-subscription .a-img img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---- layout helpers ---- */
+.tpl-design-07-subscription .wrap {
+  width: min(1180px, 100% - 48px);
+  margin-inline: auto;
+}
+.tpl-design-07-subscription .section { padding: clamp(72px, 9vw, 128px) 0; }
+.tpl-design-07-subscription .eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--color-accent);
+  margin: 0 0 14px;
+}
+.tpl-design-07-subscription .sec-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  line-height: 1.08; letter-spacing: -0.01em;
+  color: var(--color-primary); margin: 0 0 12px;
+  text-wrap: balance;
+}
+.tpl-design-07-subscription .sec-sub {
+  font-size: 1.08rem; color: var(--color-muted);
+  max-width: 56ch; margin: 0 0 8px;
+}
+
+/* word-mask headline */
+.tpl-design-07-subscription .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.tpl-design-07-subscription .wi { display: inline-block; will-change: transform; }
+
+/* ---- nav ---- */
+.tpl-design-07-subscription .nav {
+  position: sticky; top: 0; z-index: 60;
+  background: color-mix(in srgb, var(--color-background) 88%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+.tpl-design-07-subscription .nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; padding: 14px 0;
+}
+.tpl-design-07-subscription .wordmark {
+  display: inline-block; /* reset a leaked platform .wordmark flex/gap rule */
+  font-family: var(--font-display); font-size: 1.5rem; color: var(--color-primary);
+  text-decoration: none; letter-spacing: -0.01em;
+}
+.tpl-design-07-subscription .wordmark em { font-style: italic; color: var(--color-accent); }
+.tpl-design-07-subscription .nav-links { display: flex; gap: 26px; }
+.tpl-design-07-subscription .nav-links a {
+  color: var(--color-text); text-decoration: none; font-weight: 600; font-size: 0.92rem;
+  position: relative;
+}
+.tpl-design-07-subscription .nav-links a::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+  background: var(--color-accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.tpl-design-07-subscription .nav-links a:hover::after { transform: scaleX(1); }
+
+/* ---- buttons ---- */
+.tpl-design-07-subscription .btn {
+  appearance: none; border: 0; cursor: pointer;
+  font-family: var(--font-body); font-weight: 700; font-size: 1rem;
+  padding: 15px 30px; border-radius: 999px;
+  background: var(--color-accent); color: #FFF8F0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  text-decoration: none; display: inline-block; text-align: center;
+}
+.tpl-design-07-subscription .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(201, 111, 63, 0.7); }
+.tpl-design-07-subscription .btn:active { transform: translateY(0); }
+.tpl-design-07-subscription .btn-ghost {
+  background: transparent; color: var(--color-primary);
+  border: 2px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+.tpl-design-07-subscription .btn-ghost:hover { border-color: var(--color-accent); box-shadow: none; color: var(--color-accent); }
+.tpl-design-07-subscription .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* ---- hero ---- */
+.tpl-design-07-subscription .hero { padding: clamp(56px, 7vw, 104px) 0 clamp(64px, 8vw, 120px); }
+.tpl-design-07-subscription .hero-grid {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+.tpl-design-07-subscription .hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.7rem, 5.6vw, 4.6rem);
+  line-height: 1.04; letter-spacing: -0.015em;
+  color: var(--color-primary); margin: 0 0 20px; text-wrap: balance;
+}
+.tpl-design-07-subscription .hero-title em { font-style: italic; color: var(--color-accent); }
+.tpl-design-07-subscription .hero-sub { font-size: 1.1rem; color: var(--color-muted); max-width: 46ch; margin: 0 0 30px; }
+.tpl-design-07-subscription .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 26px; }
+.tpl-design-07-subscription .hero-reassure {
+  font-size: 0.92rem; font-weight: 600; color: var(--color-secondary);
+  border-left: 3px solid var(--color-accent); padding-left: 14px; max-width: 46ch;
+}
+.tpl-design-07-subscription .hero-media { position: relative; }
+.tpl-design-07-subscription .hero-frame {
+  border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-soft);
+  aspect-ratio: 4 / 4.4;
+}
+.tpl-design-07-subscription .hero-frame .a-img { width: 100%; height: 100%; }
+.tpl-design-07-subscription .hero-frame img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-07-subscription .cta-card {
+  position: absolute; left: -28px; bottom: 36px;
+  background: var(--color-primary); color: #F8F4E9;
+  border-radius: var(--radius); padding: 22px 24px; max-width: 300px;
+  box-shadow: var(--shadow-soft);
+}
+.tpl-design-07-subscription .cta-glow {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+  box-shadow: 0 0 0 10px color-mix(in srgb, var(--color-accent) 14%, transparent), 0 18px 50px -18px rgba(34, 57, 44, 0.35);
+}
+.tpl-design-07-subscription .cta-card::before {
+  content: ''; position: absolute; inset: -3px; border-radius: calc(var(--radius) + 3px);
+  border: 2px solid var(--color-accent); opacity: 0.55; pointer-events: none;
+}
+.tpl-design-07-subscription .cta-card h3 { font-family: var(--font-display); font-size: 1.35rem; margin: 0 0 8px; font-weight: 400; }
+.tpl-design-07-subscription .cta-card p { font-size: 0.9rem; opacity: 0.85; margin: 0 0 14px; }
+.tpl-design-07-subscription .cta-card .btn { padding: 12px 22px; font-size: 0.92rem; width: 100%; }
+
+/* ---- how it works ---- */
+.tpl-design-07-subscription .how { background: var(--color-surface); border-radius: 32px; margin: 0 clamp(12px, 3vw, 40px); }
+.tpl-design-07-subscription .how-inner { padding: clamp(56px, 6vw, 84px) 0; }
+.tpl-design-07-subscription .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; margin-top: 56px; }
+.tpl-design-07-subscription .how-connector { position: absolute; top: -30px; left: 1%; width: 98%; height: 24px; overflow: visible; }
+.tpl-design-07-subscription .how-card { padding: 8px 32px 8px 0; position: relative; }
+.tpl-design-07-subscription .how-card + .how-card { padding-left: 32px; border-left: 2px dashed color-mix(in srgb, var(--color-primary) 25%, transparent); }
+.tpl-design-07-subscription .how-num {
+  font-family: var(--font-display); font-style: italic; font-size: 2.6rem;
+  color: var(--color-accent); line-height: 1; margin-bottom: 12px; display: block;
+}
+.tpl-design-07-subscription .how-card h3 { font-size: 1.15rem; margin: 0 0 8px; color: var(--color-primary); }
+.tpl-design-07-subscription .how-card p { font-size: 0.96rem; color: var(--color-muted); margin: 0; }
+
+/* ---- builder ---- */
+.tpl-design-07-subscription .builder-panel {
+  background: var(--color-primary); color: #F4EFE2;
+  border-radius: 28px; padding: clamp(28px, 4vw, 56px);
+  box-shadow: var(--shadow-soft); margin-top: 40px;
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(28px, 4vw, 56px);
+}
+.tpl-design-07-subscription .builder-panel .eyebrow { color: var(--color-accent); }
+.tpl-design-07-subscription .builder-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin: 0 0 8px; font-weight: 400; }
+.tpl-design-07-subscription .builder-sub { opacity: 0.75; margin: 0 0 28px; }
+
+/* step progress (roastProgress, step-driven) */
+.tpl-design-07-subscription .stepbar { display: flex; gap: 8px; margin-bottom: 30px; }
+.tpl-design-07-subscription .stepbar .seg { flex: 1; height: 6px; border-radius: 999px; background: rgba(244, 239, 226, 0.18); overflow: hidden; }
+.tpl-design-07-subscription .stepbar .seg i { display: block; height: 100%; width: 100%; border-radius: 999px; background: var(--color-accent); transform: scaleX(0); transform-origin: left; }
+.tpl-design-07-subscription .stepbar .seg.done i { transform: scaleX(1); }
+.tpl-design-07-subscription .step-label { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; margin-bottom: 6px; }
+.tpl-design-07-subscription .step-q { font-family: var(--font-display); font-size: 1.7rem; margin: 0 0 4px; font-weight: 400; }
+.tpl-design-07-subscription .step-hint { font-size: 0.95rem; opacity: 0.7; margin: 0 0 22px; }
+
+.tpl-design-07-subscription .opt-list { display: grid; gap: 12px; }
+.tpl-design-07-subscription .opt {
+  appearance: none; cursor: pointer; text-align: left; width: 100%;
+  display: flex; align-items: center; gap: 16px;
+  background: rgba(244, 239, 226, 0.06);
+  border: 2px solid rgba(244, 239, 226, 0.16);
+  border-radius: 14px; padding: 16px 18px; color: inherit;
+  font-family: var(--font-body);
+  transition: translate 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+.tpl-design-07-subscription .opt:hover { translate: 0 -4px; border-color: var(--color-accent); background: rgba(244, 239, 226, 0.1); }
+.tpl-design-07-subscription .opt.sel { border-color: var(--color-accent); background: rgba(201, 111, 63, 0.16); }
+.tpl-design-07-subscription .opt-radio {
+  flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid rgba(244, 239, 226, 0.5); position: relative;
+}
+.tpl-design-07-subscription .opt.sel .opt-radio { border-color: var(--color-accent); }
+.tpl-design-07-subscription .opt.sel .opt-radio::after {
+  content: ''; position: absolute; inset: 4px; border-radius: 50%; background: var(--color-accent);
+}
+.tpl-design-07-subscription .opt-body { flex: 1; min-width: 0; }
+.tpl-design-07-subscription .opt-label { font-weight: 700; font-size: 1.02rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.tpl-design-07-subscription .opt-tag {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--color-accent); color: #FFF8F0; border-radius: 999px; padding: 3px 10px;
+}
+.tpl-design-07-subscription .opt-desc { font-size: 0.9rem; opacity: 0.7; margin-top: 2px; }
+.tpl-design-07-subscription .opt-price { font-family: var(--font-display); font-size: 1.25rem; color: var(--color-accent); white-space: nowrap; }
+
+.tpl-design-07-subscription .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 26px; gap: 12px; }
+.tpl-design-07-subscription .step-back {
+  appearance: none; background: none; border: 0; cursor: pointer; color: inherit;
+  font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; opacity: 0.75; padding: 12px 4px;
+}
+.tpl-design-07-subscription .step-back:hover { opacity: 1; color: var(--color-accent); }
+.tpl-design-07-subscription .step-back:disabled { visibility: hidden; }
+.tpl-design-07-subscription .step-reassure {
+  margin-top: 22px; font-size: 0.88rem; font-weight: 600;
+  color: var(--color-secondary); opacity: 0.9;
+  display: flex; align-items: center; gap: 8px;
+}
+.tpl-design-07-subscription .builder-panel .step-reassure { color: #D9E4CE; }
+.tpl-design-07-subscription .step-reassure::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); flex: 0 0 auto; }
+
+/* summary */
+.tpl-design-07-subscription .summary {
+  background: var(--color-background); color: var(--color-text);
+  border-radius: 20px; padding: 28px; align-self: start;
+  position: sticky; top: 96px;
+}
+.tpl-design-07-subscription .summary h3 { font-family: var(--font-display); font-size: 1.4rem; margin: 0 0 16px; color: var(--color-primary); font-weight: 400; }
+.tpl-design-07-subscription .sum-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px dashed color-mix(in srgb, var(--color-primary) 18%, transparent); font-size: 0.93rem; }
+.tpl-design-07-subscription .sum-row dt { color: var(--color-muted); }
+.tpl-design-07-subscription .sum-row dd { margin: 0; font-weight: 600; text-align: right; }
+.tpl-design-07-subscription .sum-total { display: flex; align-items: baseline; justify-content: space-between; margin: 18px 0 4px; }
+.tpl-design-07-subscription .sum-total .per { font-size: 0.85rem; color: var(--color-muted); }
+.tpl-design-07-subscription .sum-price { font-family: var(--font-display); font-size: 2.6rem; color: var(--color-accent); line-height: 1; }
+.tpl-design-07-subscription .sum-save { font-size: 0.85rem; font-weight: 700; color: var(--color-secondary); margin-bottom: 6px; min-height: 1.4em; }
+.tpl-design-07-subscription .sum-date { font-size: 0.92rem; margin: 0 0 18px; color: var(--color-muted); }
+.tpl-design-07-subscription .sum-date strong { color: var(--color-primary); display: inline-block; }
+.tpl-design-07-subscription .summary .btn { width: 100%; }
+.tpl-design-07-subscription .sum-micro { list-style: none; margin: 16px 0 0; padding: 0; font-size: 0.82rem; color: var(--color-muted); }
+.tpl-design-07-subscription .sum-micro li { padding: 4px 0 4px 20px; position: relative; }
+.tpl-design-07-subscription .sum-micro li::before { content: ''; position: absolute; left: 4px; top: 12px; width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); }
+.tpl-design-07-subscription .success-card { text-align: center; padding: 24px 8px; }
+.tpl-design-07-subscription .success-card h3 { font-family: var(--font-display); font-size: 1.8rem; color: var(--color-primary); margin: 0 0 10px; font-weight: 400; }
+.tpl-design-07-subscription .success-card p { color: var(--color-muted); font-size: 0.95rem; }
+
+/* mobile sticky summary */
+.tpl-design-07-subscription .mobile-bar {
+  display: none; position: sticky; bottom: 0; z-index: 50;
+  background: color-mix(in srgb, var(--color-primary) 94%, transparent);
+  color: #F4EFE2; padding: 14px 20px;
+  border-radius: 18px 18px 0 0; margin: 24px -28px -28px;
+  align-items: center; justify-content: space-between; gap: 14px;
+}
+.tpl-design-07-subscription .mobile-bar .mb-price { font-family: var(--font-display); font-size: 1.6rem; color: var(--color-accent); }
+.tpl-design-07-subscription .mobile-bar .mb-per { font-size: 0.75rem; opacity: 0.75; }
+.tpl-design-07-subscription .mobile-bar .btn { padding: 12px 22px; font-size: 0.9rem; }
+
+/* ---- quiz ---- */
+.tpl-design-07-subscription .quiz-card {
+  background: var(--color-surface); border-radius: 24px; padding: clamp(28px, 4vw, 52px);
+  margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: center;
+}
+.tpl-design-07-subscription .quiz-frame { border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 3.4; box-shadow: var(--shadow-soft); }
+.tpl-design-07-subscription .quiz-frame .a-img, .tpl-design-07-subscription .quiz-frame img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-07-subscription .quiz-q { font-family: var(--font-display); font-size: 1.6rem; color: var(--color-primary); margin: 0 0 18px; font-weight: 400; }
+.tpl-design-07-subscription .quiz-opts { display: grid; gap: 10px; }
+.tpl-design-07-subscription .quiz-opt {
+  appearance: none; cursor: pointer; text-align: left;
+  background: var(--color-background); border: 2px solid transparent; border-radius: 12px;
+  padding: 14px 18px; font-family: var(--font-body); font-weight: 600; font-size: 0.98rem; color: var(--color-text);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.tpl-design-07-subscription .quiz-opt:hover { border-color: var(--color-accent); transform: translateX(4px); }
+.tpl-design-07-subscription .quiz-progress { height: 6px; border-radius: 999px; background: color-mix(in srgb, var(--color-primary) 12%, transparent); overflow: hidden; margin-bottom: 24px; }
+.tpl-design-07-subscription .quiz-progress i { display: block; height: 100%; background: var(--color-accent); transform-origin: left; }
+.tpl-design-07-subscription .quiz-result h3 { font-family: var(--font-display); font-size: 1.9rem; color: var(--color-primary); margin: 0 0 10px; font-weight: 400; }
+.tpl-design-07-subscription .quiz-result p { color: var(--color-muted); margin: 0 0 22px; }
+.tpl-design-07-subscription .quiz-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ---- lineup ---- */
+.tpl-design-07-subscription .lineup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; margin-top: 40px; }
+.tpl-design-07-subscription .lineup-frame { border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 4.6; box-shadow: var(--shadow-soft); position: sticky; top: 96px; }
+.tpl-design-07-subscription .lineup-frame .a-img, .tpl-design-07-subscription .lineup-frame img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-07-subscription .lineup-cards { display: grid; gap: 16px; }
+.tpl-design-07-subscription .lineup-card {
+  background: var(--color-surface); border-radius: var(--radius); padding: 24px 26px;
+  display: flex; justify-content: space-between; gap: 18px; align-items: flex-start;
+  border: 2px solid transparent; transition: border-color 0.3s ease, translate 0.3s ease;
+}
+.tpl-design-07-subscription .lineup-card:hover { border-color: var(--color-accent); translate: 0 -3px; }
+.tpl-design-07-subscription .lineup-card h3 { font-family: var(--font-display); font-size: 1.4rem; margin: 0 0 6px; color: var(--color-primary); font-weight: 400; }
+.tpl-design-07-subscription .lineup-card .notes { font-size: 0.92rem; color: var(--color-muted); margin: 0 0 8px; }
+.tpl-design-07-subscription .roast-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-secondary); }
+.tpl-design-07-subscription .lineup-price { font-family: var(--font-display); font-size: 1.5rem; color: var(--color-accent); white-space: nowrap; }
+.tpl-design-07-subscription .lineup-price small { display: block; font-family: var(--font-body); font-size: 0.72rem; color: var(--color-muted); text-align: right; }
+
+/* ---- proof ---- */
+.tpl-design-07-subscription .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.tpl-design-07-subscription .proof-card {
+  background: var(--color-surface); border-radius: var(--radius); padding: 30px 28px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.tpl-design-07-subscription .proof-card blockquote { font-family: var(--font-display); font-style: italic; font-size: 1.18rem; line-height: 1.5; color: var(--color-primary); margin: 0; flex: 1; }
+.tpl-design-07-subscription .proof-card cite { font-style: normal; font-size: 0.88rem; font-weight: 700; color: var(--color-secondary); }
+.tpl-design-07-subscription .proof-card cite span { display: block; font-weight: 400; color: var(--color-muted); }
+
+/* ---- faq ---- */
+.tpl-design-07-subscription .faq-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(28px, 4vw, 64px); margin-top: 40px; align-items: start; }
+.tpl-design-07-subscription .faq-side .box-card { background: var(--color-surface); border-radius: var(--radius); padding: 26px; }
+.tpl-design-07-subscription .faq-side h3 { font-family: var(--font-display); font-size: 1.35rem; color: var(--color-primary); margin: 0 0 8px; font-weight: 400; }
+.tpl-design-07-subscription .faq-side p { font-size: 0.93rem; color: var(--color-muted); margin: 0 0 16px; }
+.tpl-design-07-subscription .box-frame { border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 10; }
+.tpl-design-07-subscription .box-frame .a-img, .tpl-design-07-subscription .box-frame img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-07-subscription .faq-list { display: grid; gap: 10px; }
+.tpl-design-07-subscription .faq-item { background: var(--color-surface); border-radius: 14px; overflow: hidden; }
+.tpl-design-07-subscription .faq-q {
+  appearance: none; width: 100%; cursor: pointer; text-align: left;
+  background: none; border: 0; padding: 20px 22px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  font-family: var(--font-body); font-weight: 700; font-size: 1rem; color: var(--color-primary);
+}
+.tpl-design-07-subscription .faq-q .plus { font-size: 1.4rem; font-weight: 400; color: var(--color-accent); transition: transform 0.3s ease; flex: 0 0 auto; }
+.tpl-design-07-subscription .faq-item.open .faq-q .plus { transform: rotate(45deg); }
+.tpl-design-07-subscription .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.tpl-design-07-subscription .faq-a p { margin: 0; padding: 0 22px 22px; color: var(--color-muted); font-size: 0.96rem; }
+
+/* ---- footer ---- */
+.tpl-design-07-subscription .footer { background: var(--color-primary); color: #EFE9D8; padding: 64px 0 36px; margin-top: 40px; }
+.tpl-design-07-subscription .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.tpl-design-07-subscription .footer .wordmark { color: #F8F4E9; }
+.tpl-design-07-subscription .footer p { font-size: 0.93rem; opacity: 0.75; max-width: 38ch; }
+.tpl-design-07-subscription .footer h4 { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 14px; color: var(--color-accent); }
+.tpl-design-07-subscription .footer a { color: #EFE9D8; text-decoration: none; opacity: 0.85; }
+.tpl-design-07-subscription .footer a:hover { opacity: 1; color: var(--color-accent); }
+.tpl-design-07-subscription .footer ul { list-style: none; margin: 0; padding: 0; font-size: 0.93rem; display: grid; gap: 8px; }
+.tpl-design-07-subscription .footer-bottom { border-top: 1px solid rgba(239, 233, 216, 0.18); padding-top: 24px; font-size: 0.85rem; opacity: 0.65; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* signature moment: scroll-driven ritual sequence (ScrollFrames).
+   Layout is owned by the component (inline .sf-stage/.sf-canvas/.sf-overlay —
+   stage height comes from the stageHeight prop); the design only rounds the
+   card's corners and styles the caption child. */
+.tpl-design-07-subscription .ritual-film-slot { --film-top: 84px; margin-top: calc(-1 * var(--film-top)); pointer-events: none; }
+.tpl-design-07-subscription .ritual-film-slot .sf-overlay { pointer-events: auto; }
+/* ScrollFrames pins its wrap at the top of the stage, under the sticky nav:
+   a transparent top padding (pulled back with the slot's negative margin)
+   keeps the pinned film just below the nav. Radius/shadow live on the stage
+   (cosmetic only; its layout stays inline). */
+.tpl-design-07-subscription .ritual-film { box-sizing: border-box; padding-top: var(--film-top); }
+.tpl-design-07-subscription .ritual-film .sf-stage { pointer-events: auto; border-radius: 18px; box-shadow: var(--shadow-soft); }
+.tpl-design-07-subscription .ritual-film.sf-static { pointer-events: auto; padding-top: 0; margin-top: var(--film-top); border-radius: 18px; overflow: hidden; }
+.tpl-design-07-subscription .ritual-caption {
+  position: absolute; left: 18px; bottom: 16px; margin: 0;
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em;
+  color: #F8F4E9; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+  background: rgba(34, 57, 44, 0.45); border-radius: 999px; padding: 8px 16px;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+@media (max-width: 768px) {
+  .tpl-design-07-subscription .ritual-caption {
+    left: 12px; bottom: 12px; font-size: 0.75rem; padding: 7px 13px;
+  }
+}
+
+/* 3D tilt live: GSAP owns card `transform`; the hover lift uses `translate`,
+   which composes with it instead of fighting. */
+
+/* ---- reduced-motion safety: content is visible by default; GSAP only hides via fromTo ---- */
+
+/* ---- responsive ---- */
+@media (max-width: 1024px) {
+  .tpl-design-07-subscription .hero-grid { grid-template-columns: 1fr; }
+  .tpl-design-07-subscription .hero-media { max-width: 560px; }
+  .tpl-design-07-subscription .cta-card { left: 16px; }
+  .tpl-design-07-subscription .builder-panel { grid-template-columns: 1fr; }
+  .tpl-design-07-subscription .summary { position: static; }
+  .tpl-design-07-subscription .quiz-card, .tpl-design-07-subscription .lineup-grid, .tpl-design-07-subscription .faq-layout { grid-template-columns: 1fr; }
+  .tpl-design-07-subscription .lineup-frame { position: static; aspect-ratio: 16 / 10; }
+}
+@media (max-width: 768px) {
+  .tpl-design-07-subscription .nav-links { display: none; }
+  .tpl-design-07-subscription .how-connector { display: none; }
+  .tpl-design-07-subscription .how-grid { grid-template-columns: 1fr; gap: 28px; }
+  .tpl-design-07-subscription .how-card + .how-card { padding-left: 0; border-left: 0; border-top: 2px dashed color-mix(in srgb, var(--color-primary) 25%, transparent); padding-top: 28px; }
+  .tpl-design-07-subscription .proof-grid { grid-template-columns: 1fr; }
+  .tpl-design-07-subscription .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .tpl-design-07-subscription .mobile-bar { display: flex; }
+  .tpl-design-07-subscription .summary .btn { display: none; }
+}
+@media (min-width: 1440px) {
+  .tpl-design-07-subscription .wrap { width: min(1320px, 100% - 64px); }
+}
+
+/* ---- Kela accent on the dark (forest) surfaces ----
+   --color-accent carries the light-page tone; on the primary-green builder,
+   CTA card, mobile bar and footer, text/lines switch to the dark-surface tone
+   so they stay readable. Accent-filled buttons keep their own contrast. */
+.tpl-design-07-subscription .builder-panel,
+.tpl-design-07-subscription .cta-card,
+.tpl-design-07-subscription .mobile-bar,
+.tpl-design-07-subscription .footer { --accent-ink: var(--brand-on-dark, #D9A06C); }
+.tpl-design-07-subscription .builder-panel .opt-price,
+.tpl-design-07-subscription .builder-panel .step-back:hover,
+.tpl-design-07-subscription .mobile-bar .mb-price,
+.tpl-design-07-subscription .footer h4,
+.tpl-design-07-subscription .footer a:hover,
+.tpl-design-07-subscription .footer .wordmark em { color: var(--accent-ink); }
+.tpl-design-07-subscription .builder-panel .opt:hover,
+.tpl-design-07-subscription .builder-panel .opt.sel,
+.tpl-design-07-subscription .builder-panel .opt.sel .opt-radio { border-color: var(--accent-ink); }
+.tpl-design-07-subscription .builder-panel .opt.sel { background: color-mix(in srgb, var(--accent-ink) 14%, transparent); }
+.tpl-design-07-subscription .builder-panel .opt.sel .opt-radio::after,
+.tpl-design-07-subscription .builder-panel .stepbar .seg i,
+.tpl-design-07-subscription .builder-panel .step-reassure::before { background: var(--accent-ink); }
+.tpl-design-07-subscription .cta-card::before { border-color: var(--accent-ink); }

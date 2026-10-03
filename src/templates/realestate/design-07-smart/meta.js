@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-07-smart',
+  num: '07',
+  name: 'Halcyon Living',
+  tag: 'Smart Homes',
+  style: 'Calm dark tech editorial, living-light nocturne',
+  animation: 'Scrubbed day-night home simulation, glow-fade reveals',
+  typography: 'Space Grotesk + Inter',
+  layout: 'Full-bleed film hero, pinned day-cycle simulation, hairline grid features',
+  mood: 'Calm, intelligent, nocturnal',
+  palette: 'Near-black / amber / dawn blue / oak',
+  features: [
+    'Day-night home simulation (scroll-scrubbed 06:00–22:00)',
+    'Signature hero loop: "The house wakes"',
+    'Time-keyed feature chapters',
+    'One-dial smart system story',
+  ],
+  fonts: { display: 'Space Grotesk', body: 'Inter' },
+  colors: { primary: '#101114', accent: '#E8A33D' },
+};

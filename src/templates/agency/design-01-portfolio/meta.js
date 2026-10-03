@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-01-portfolio',
+  num: '01',
+  name: 'Studio Meridian',
+  tag: 'Portfolio',
+  style: 'Proof-dense portfolio editorial',
+  animation: 'Scroll-driven work index, word-mask headlines, count-up outcomes',
+  typography: 'Archivo + Inter',
+  layout: 'Full-bleed case hero, pinned two-column work index, proof rows',
+  mood: 'Confident, direct, commercial',
+  palette: 'Paper / ink / signal red',
+  features: [
+    'Scroll-driven work index (M1)',
+    'Discipline filter',
+    'Count-up outcome numerals',
+    'Budget-band inquiry form',
+  ],
+  fonts: { display: 'Archivo', body: 'Inter' },
+  colors: { primary: '#16130E', accent: '#E03E2D' },
+};

@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-04-lodge',
+  num: '04',
+  name: 'Devdar Retreat',
+  tag: 'Mountain Lodge',
+  style: 'Warm timber craft, fireside storytelling, generous airy rhythm',
+  animation: 'Hearth fan: room cards stacked like firewood fan into an arc on scroll; warm windows glow-in; slow unhurried reveals',
+  typography: 'Fraunces + Manrope',
+  layout: 'Warm stacked sections — hero, fireside note, fanning room cards, mountain days, kitchen, getting there',
+  mood: 'Cozy, fireside, quietly confident — a hug of a hotel site',
+  palette: 'bark / ember — deep bark ink with ember amber accents on warm cream',
+  features: [
+    'Hearth fan room cards (scrubbed fan-out)',
+    'Winter / summer season switcher with season-aware rates',
+    'Booking bar with live night count + rate math',
+    'Fireside hero video loop (stone fireplace)',
+    'Mountain days experience cards',
+    'Mountain kitchen dining section',
+  ],
+  fonts: { display: 'Fraunces', body: 'Manrope' },
+  colors: { primary: '#2E2118', accent: '#C97B3F' },
+};

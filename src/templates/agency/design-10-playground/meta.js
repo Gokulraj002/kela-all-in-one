@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-10-playground',
+  num: '10',
+  name: 'PROTO',
+  tag: 'Experimental',
+  style: 'Kinetic playground',
+  animation: 'Cursor-reactive kinetic type field',
+  typography: 'Unbounded + Space Grotesk',
+  layout: 'Interactive field first, full-bleed sketches, overlay nav',
+  mood: 'Playful, strange, alive',
+  palette: 'Black / off-black / lime',
+  features: [
+    'M10 kinetic type field',
+    'Calm/chaos energy slider',
+    'Type playground with variable font sliders',
+    '5 interactive experiments',
+    'Circular clip-path overlay nav',
+    'Playful brief form',
+  ],
+  fonts: { display: 'Unbounded', body: 'Space Grotesk' },
+  colors: { primary: '#F4F2EA', accent: '#C6F52E' },
+};

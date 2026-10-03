@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-05-vintage',
+  num: '05',
+  name: 'The Copper Kettle',
+  tag: 'Vintage Café',
+  style: 'Heritage letterpress',
+  animation: 'Slow fades · scrubbable decade timeline · pinned photo panel',
+  typography: 'Playfair Display + Manrope',
+  layout: 'Centered print-like · timeline spine · printed-ticket reservation',
+  mood: 'Heritage · Ritual · Patina',
+  palette: 'Cream / oxblood / brass',
+  features: [
+    'Scrubbable vertical decade timeline',
+    'Pinned photo panel on desktop (stacked on mobile)',
+    'Printed-ticket reservation form',
+    'Sepia vignette image grade (eases out on arrival)',
+  ],
+  fonts: { display: 'Playfair Display', body: 'Manrope' },
+  colors: { primary: '#571C20', accent: '#B08A3C' },
+};

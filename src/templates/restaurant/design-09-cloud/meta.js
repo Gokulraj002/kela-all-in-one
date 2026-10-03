@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-09-cloud',
+  num: '09',
+  name: 'Hotbox',
+  tag: 'Cloud Kitchen',
+  style: 'App-density delivery-first',
+  animation: 'Scroll-accelerated dispatch lanes, tracker lights',
+  typography: 'Bricolage Grotesque + Inter',
+  layout: 'Lane bands, tracker timeline, deal flags',
+  mood: 'Fast, bold, thumb-first',
+  palette: 'Paper / ink / signal orange',
+  features: [
+    'Dispatch lanes with progress',
+    'Live-feel timers',
+    '3-step order tracker',
+    'Combos & deals',
+    'Delivery zones',
+  ],
+  fonts: { display: 'Bricolage Grotesque', body: 'Inter' },
+  colors: { primary: '#141414', accent: '#FF5C1A' },
+};

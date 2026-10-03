@@ -1,0 +1,600 @@
+/* Halcyon Living — design-07-smart
+   Tokens scoped to .tpl-design-07-smart ONLY. No :root. No hardcoded hex
+   below except inside var() fallbacks — every color/font flows from tokens. */
+
+.tpl-design-07-smart {
+  --color-primary: #101114;
+  --color-secondary: #7a93b5;
+  --color-accent: #e8a33d;
+  --color-oak: #b08a5a;
+  --color-background: #101114;
+  --color-surface: #17181c;
+  --color-surface-2: #1d1f24;
+  --color-text: #eceae4;
+  --color-muted: #9aa0ab;
+  --color-hairline: rgba(236, 234, 228, 0.14);
+  --color-glow: rgba(232, 163, 61, 0.55);
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --pad: clamp(96px, 12vw, 180px);
+  --wrap: min(1240px, 92vw);
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  /* x only: this class is also on the viewer's scroll container, and
+     overflow: clip on both axes stopped the page from scrolling at all.
+     position: relative is the containing block for the absolute nav, so it
+     rides over the hero and scrolls away instead of floating over sections. */
+  overflow-x: clip;
+  position: relative;
+}
+
+.tpl-design-07-smart *,
+.tpl-design-07-smart *::before,
+.tpl-design-07-smart *::after { box-sizing: border-box; }
+
+.tpl-design-07-smart img { display: block; max-width: 100%; }
+.tpl-design-07-smart a { color: inherit; }
+
+.tpl-design-07-smart .hl-wrap { width: var(--wrap); margin-inline: auto; }
+
+.tpl-design-07-smart .hl-eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 28px;
+}
+.tpl-design-07-smart .hl-h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(34px, 4.6vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin: 0 0 22px;
+  max-width: 14ch;
+}
+.tpl-design-07-smart .hl-lede {
+  color: var(--color-muted);
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.7;
+  max-width: 56ch;
+  margin: 0;
+}
+.tpl-design-07-smart .hl-rule {
+  display: block;
+  height: 1px;
+  background: var(--color-hairline);
+  margin: 40px 0 0;
+  transform-origin: left center;
+}
+
+/* ---------- nav ---------- */
+.tpl-design-07-smart .hl-nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px clamp(20px, 4vw, 56px);
+}
+.tpl-design-07-smart .hl-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--color-text);
+}
+.tpl-design-07-smart .hl-wordmark em { font-style: normal; color: var(--color-accent); }
+.tpl-design-07-smart .hl-links { display: flex; gap: clamp(16px, 3vw, 40px); }
+.tpl-design-07-smart .hl-links a {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-muted);
+  transition: color 0.3s ease;
+}
+.tpl-design-07-smart .hl-links a:hover { color: var(--color-text); }
+.tpl-design-07-smart .hl-cta {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-primary);
+  background: var(--color-accent);
+  padding: 14px 30px;
+  border-radius: 999px;
+  box-shadow: 0 0 24px var(--color-glow), 0 0 64px rgba(232, 163, 61, 0.22);
+  /* hover lift on the individual `translate` property: GSAP reveals own
+     `transform` on these buttons and a transform transition would lag them */
+  transition: box-shadow 0.35s ease, translate 0.35s ease;
+}
+.tpl-design-07-smart .hl-cta:hover {
+  translate: 0 -2px;
+  box-shadow: 0 0 34px var(--color-glow), 0 0 90px rgba(232, 163, 61, 0.32);
+}
+
+/* ---------- hero (scroll-driven frame sequence) ---------- */
+.tpl-design-07-smart .hl-hero {
+  position: relative;
+  overflow: clip;
+}
+/* ScrollFrames: the component pins .sf-stage for +=170% of scroll; the
+   design owns stage height and overlay layout. Canvas contract (absolute,
+   inset 0) is preserved, not overridden. */
+.tpl-design-07-smart .sf-wrap { position: relative; }
+.tpl-design-07-smart .sf-stage { position: relative; height: var(--tpl-vh, 100svh); overflow: hidden; background: var(--color-background); }
+.tpl-design-07-smart .sf-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.tpl-design-07-smart .sf-overlay { position: absolute; inset: 0; z-index: 2; display: flex; align-items: flex-end; }
+.tpl-design-07-smart .sf-static { position: relative; height: var(--tpl-vh, 100svh); overflow: hidden; background: var(--color-background); }
+.tpl-design-07-smart .sf-static-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-07-smart .hl-hero-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 17, 20, 0.42) 0%, rgba(16, 17, 20, 0.12) 40%, rgba(16, 17, 20, 0.78) 100%);
+}
+.tpl-design-07-smart .hl-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: var(--wrap);
+  margin-inline: auto;
+  padding: 0 0 clamp(96px, 12vw, 150px);
+}
+.tpl-design-07-smart .hl-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(46px, 8.4vw, 118px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0 0 26px;
+  max-width: 12ch;
+  text-wrap: balance;
+}
+.tpl-design-07-smart .hl-hero-sub {
+  color: var(--color-muted);
+  font-size: clamp(16px, 1.8vw, 20px);
+  max-width: 52ch;
+  margin: 0 0 40px;
+}
+.tpl-design-07-smart .hl-hero-foot {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.tpl-design-07-smart .hl-hero-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+.tpl-design-07-smart .hl-hero-note .hl-pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 12px var(--color-glow);
+  animation: hl-pulse 2.4s ease-in-out infinite;
+}
+@keyframes hl-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.8); }
+}
+
+/* word-mask headline (server-safe) */
+.tpl-design-07-smart .hl-wm .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.tpl-design-07-smart .hl-wm .wi { display: inline-block; will-change: transform; }
+
+/* ---------- day simulation ---------- */
+.tpl-design-07-smart .hl-day { position: relative; padding: var(--pad) 0; background: var(--color-background); }
+.tpl-design-07-smart .hl-day-head { margin-bottom: clamp(48px, 6vw, 90px); }
+.tpl-design-07-smart .hl-day-hint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-07-smart .hl-day-hint::before {
+  content: '';
+  width: 34px; height: 1px;
+  background: var(--color-accent);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+/* pinned stage (desktop + motion) */
+/* pinned stage = the visible scroll area (--tpl-vh in the viewer) */
+.tpl-design-07-smart .hl-day-pin { position: relative; height: var(--tpl-vh, 100svh); display: flex; align-items: center; justify-content: center; }
+.tpl-design-07-smart .hl-day-stage {
+  position: relative;
+  width: min(1440px, 96%);
+  height: min(calc(var(--tpl-vh, 100svh) * 0.78), 760px);
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: clamp(24px, 3vw, 56px);
+  align-items: stretch;
+}
+.tpl-design-07-smart .hl-day-frame {
+  position: relative;
+  border-radius: 6px;
+  overflow: clip;
+  border: 1px solid var(--color-hairline);
+  background: var(--color-surface);
+}
+.tpl-design-07-smart .hl-day-frame .a-img,
+.tpl-design-07-smart .hl-day-frame img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-07-smart .hl-day-frame > .a-img { position: absolute; inset: 0; }
+/* the grade (brightness/saturate) is rewritten every scrubbed frame: keep
+   it on its own compositor layer so the filter is applied, not repainted */
+.tpl-design-07-smart .hl-day-grade { will-change: filter; }
+.tpl-design-07-smart .hl-day-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.tpl-design-07-smart .hl-day-tint.is-blue { background: linear-gradient(180deg, rgba(122, 147, 181, 0.55), rgba(122, 147, 181, 0.18)); }
+.tpl-design-07-smart .hl-day-tint.is-amber { background: linear-gradient(180deg, rgba(232, 163, 61, 0.34), rgba(232, 163, 61, 0.12)); }
+.tpl-design-07-smart .hl-day-tint.is-night { background: linear-gradient(180deg, rgba(8, 10, 16, 0.66), rgba(8, 10, 16, 0.82)); }
+.tpl-design-07-smart .hl-day-clock {
+  position: absolute;
+  left: clamp(20px, 3vw, 44px);
+  bottom: clamp(20px, 3vw, 44px);
+  font-family: var(--font-display);
+  z-index: 3;
+}
+.tpl-design-07-smart .hl-day-time {
+  display: block;
+  font-size: clamp(56px, 7vw, 104px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--color-text);
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.6);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-07-smart .hl-day-phase {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.tpl-design-07-smart .hl-day-side { position: relative; display: flex; flex-direction: column; justify-content: center; }
+.tpl-design-07-smart .hl-phase-card {
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  translate: 0 -50%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+  border-top: 1px solid var(--color-hairline);
+  padding-top: 28px;
+}
+.tpl-design-07-smart .hl-phase-card.is-active { opacity: 1; visibility: visible; transform: none; }
+.tpl-design-07-smart .hl-phase-sys {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+.tpl-design-07-smart .hl-phase-sys svg { width: 18px; height: 18px; stroke: var(--color-accent); fill: none; stroke-width: 1.6; }
+.tpl-design-07-smart .hl-phase-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  line-height: 1.15;
+}
+.tpl-design-07-smart .hl-phase-card p { color: var(--color-muted); margin: 0; font-size: 15.5px; }
+.tpl-design-07-smart .hl-day-progress {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: clamp(24px, 4vw, 56px);
+  width: min(1440px, 96%);
+  margin-inline: auto;
+  height: 2px;
+  background: var(--color-hairline);
+}
+.tpl-design-07-smart .hl-day-progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  box-shadow: 0 0 12px var(--color-glow);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.tpl-design-07-smart .hl-day-ticks {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: calc(clamp(24px, 4vw, 56px) + 14px);
+  width: min(1440px, 96%);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--color-muted);
+}
+
+/* static fallback cards (mobile + reduced motion) */
+.tpl-design-07-smart .hl-day-static { display: grid; gap: 56px; }
+.tpl-design-07-smart .hl-static-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 4vw, 48px);
+  align-items: center;
+  border-top: 1px solid var(--color-hairline);
+  padding-top: 40px;
+}
+.tpl-design-07-smart .hl-static-visual {
+  border-radius: 6px;
+  overflow: clip;
+  border: 1px solid var(--color-hairline);
+  aspect-ratio: 16 / 10;
+}
+.tpl-design-07-smart .hl-static-visual .a-img, .tpl-design-07-smart .hl-static-visual img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-07-smart .hl-static-visual.is-dawn img { filter: brightness(0.95) saturate(1.02); }
+.tpl-design-07-smart .hl-static-visual.is-day img { filter: brightness(1.07); }
+.tpl-design-07-smart .hl-static-visual.is-dusk img { filter: brightness(1) saturate(1.15) sepia(0.22); }
+.tpl-design-07-smart .hl-static-visual.is-night img { filter: brightness(0.55) saturate(0.85); }
+.tpl-design-07-smart .hl-static-time {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  display: block;
+  margin-bottom: 6px;
+}
+.tpl-design-07-smart .hl-static-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+
+/* ---------- features ---------- */
+.tpl-design-07-smart .hl-features { padding: var(--pad) 0; background: var(--color-surface); border-top: 1px solid var(--color-hairline); border-bottom: 1px solid var(--color-hairline); }
+.tpl-design-07-smart .hl-features-head { margin-bottom: clamp(48px, 6vw, 84px); }
+.tpl-design-07-smart .hl-feat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--color-hairline);
+  border-left: 1px solid var(--color-hairline);
+}
+.tpl-design-07-smart .hl-feat {
+  padding: clamp(28px, 3vw, 44px);
+  border-right: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: background 0.4s ease;
+}
+.tpl-design-07-smart .hl-feat:hover { background: var(--color-surface-2); }
+.tpl-design-07-smart .hl-feat-num {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--color-muted);
+}
+.tpl-design-07-smart .hl-feat h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.tpl-design-07-smart .hl-feat p { color: var(--color-muted); font-size: 15px; margin: 0; flex: 1; }
+.tpl-design-07-smart .hl-feat-spec {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.tpl-design-07-smart .hl-feat-visual {
+  margin-top: clamp(48px, 6vw, 84px);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+}
+.tpl-design-07-smart .hl-feat-frame {
+  border-radius: 6px;
+  overflow: clip;
+  border: 1px solid var(--color-hairline);
+  aspect-ratio: 16 / 10;
+}
+.tpl-design-07-smart .hl-feat-frame .a-img, .tpl-design-07-smart .hl-feat-frame img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-07-smart .hl-feat-visual h3 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0 0 18px;
+  line-height: 1.12;
+}
+.tpl-design-07-smart .hl-feat-visual p { color: var(--color-muted); margin: 0 0 14px; max-width: 44ch; }
+
+/* ---------- floor plans ---------- */
+.tpl-design-07-smart .hl-plans { padding: var(--pad) 0; }
+.tpl-design-07-smart .hl-plans-head { margin-bottom: clamp(48px, 6vw, 84px); }
+.tpl-design-07-smart .hl-plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); }
+.tpl-design-07-smart .hl-plan {
+  border: 1px solid var(--color-hairline);
+  border-radius: 6px;
+  overflow: clip;
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  /* lift via `translate`: the plan cards are GSAP stagger targets (transform) */
+  transition: translate 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+}
+.tpl-design-07-smart .hl-plan:hover {
+  translate: 0 -8px;
+  border-color: rgba(232, 163, 61, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(232, 163, 61, 0.08);
+}
+.tpl-design-07-smart .hl-plan-visual { aspect-ratio: 4 / 3; overflow: clip; }
+.tpl-design-07-smart .hl-plan-visual .a-img, .tpl-design-07-smart .hl-plan-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+.tpl-design-07-smart .hl-plan:hover .hl-plan-visual img { transform: scale(1.05); }
+.tpl-design-07-smart .hl-plan-body { padding: clamp(24px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.tpl-design-07-smart .hl-plan-type {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-family: var(--font-display);
+}
+.tpl-design-07-smart .hl-plan h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.tpl-design-07-smart .hl-plan-specs {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--color-hairline);
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+.tpl-design-07-smart .hl-plan-specs li { display: flex; justify-content: space-between; gap: 12px; }
+.tpl-design-07-smart .hl-plan-specs li strong { color: var(--color-text); font-weight: 500; }
+.tpl-design-07-smart .hl-plan-note { color: var(--color-muted); font-size: 14px; font-style: italic; margin: 6px 0 0; }
+.tpl-design-07-smart .hl-plan-price {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-07-smart .hl-plan-price small { font-size: 12px; font-weight: 400; color: var(--color-muted); letter-spacing: 0.08em; display: block; margin-top: 4px; }
+.tpl-design-07-smart .hl-plan-cta {
+  margin-top: 22px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-accent);
+  border: 1px solid rgba(232, 163, 61, 0.5);
+  border-radius: 999px;
+  padding: 14px 20px;
+  transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+}
+.tpl-design-07-smart .hl-plan-cta:hover {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  box-shadow: 0 0 24px var(--color-glow);
+}
+
+/* ---------- visit + footer ---------- */
+.tpl-design-07-smart .hl-visit {
+  padding: var(--pad) 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-hairline);
+  text-align: center;
+}
+.tpl-design-07-smart .hl-visit .hl-h2 { margin-inline: auto; }
+.tpl-design-07-smart .hl-visit .hl-lede { margin-inline: auto; }
+.tpl-design-07-smart .hl-visit-meta {
+  display: flex;
+  justify-content: center;
+  gap: clamp(24px, 5vw, 72px);
+  flex-wrap: wrap;
+  margin: 48px 0;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+.tpl-design-07-smart .hl-visit-meta a { color: var(--color-text); text-decoration: none; border-bottom: 1px solid var(--color-hairline); }
+.tpl-design-07-smart .hl-visit-meta a:hover { border-color: var(--color-accent); }
+.tpl-design-07-smart .hl-visit-meta strong { display: block; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; font-weight: 500; }
+.tpl-design-07-smart .hl-footer {
+  padding: 48px 0 64px;
+  border-top: 1px solid var(--color-hairline);
+}
+.tpl-design-07-smart .hl-footer-inner {
+  width: var(--wrap);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.tpl-design-07-smart .hl-footer p { margin: 0; font-size: 13px; color: var(--color-muted); max-width: 60ch; }
+.tpl-design-07-smart .hl-footer .hl-wordmark { font-size: 16px; }
+
+/* reveals */
+.tpl-design-07-smart .hl-rv { will-change: transform, opacity; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .tpl-design-07-smart .hl-feat-grid { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-07-smart .hl-plan-grid { grid-template-columns: 1fr 1fr; }
+  .tpl-design-07-smart .hl-plan:last-child { grid-column: 1 / -1; }
+  .tpl-design-07-smart .hl-day-stage { grid-template-columns: 1fr 300px; }
+}
+@media (max-width: 860px) {
+  .tpl-design-07-smart .hl-links { display: none; }
+  .tpl-design-07-smart .hl-feat-visual { grid-template-columns: 1fr; }
+  .tpl-design-07-smart .hl-static-card { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .tpl-design-07-smart { font-size: 16px; }
+  .tpl-design-07-smart .hl-feat-grid { grid-template-columns: 1fr; }
+  .tpl-design-07-smart .hl-plan-grid { grid-template-columns: 1fr; }
+  .tpl-design-07-smart .hl-nav { padding: 20px; }
+  .tpl-design-07-smart .hl-cta { padding: 12px 22px; font-size: 12px; }
+  .tpl-design-07-smart .hl-hero-foot { gap: 20px; }
+  .tpl-design-07-smart .hl-visit-meta { flex-direction: column; gap: 28px; }
+}
+
+/* reduced motion: everything fully visible, no pins, no pulse */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-07-smart .hl-rv { opacity: 1 !important; transform: none !important; }
+  .tpl-design-07-smart .hl-phase-card { position: static; opacity: 1; visibility: visible; transform: none; margin-bottom: 32px; }
+  .tpl-design-07-smart .hl-hero-note .hl-pulse { animation: none; }
+  .tpl-design-07-smart .hl-cta:hover,
+  .tpl-design-07-smart .hl-plan:hover { transform: none; }
+}

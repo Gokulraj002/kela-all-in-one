@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-09-festive',
+  num: '09',
+  name: 'Utsav',
+  tag: 'Festive Wear',
+  style: 'Celebratory ethnic — Diwali/Eid/wedding-season edits in saturated festive color',
+  animation: 'weaveReveal pinned collection (warp threads draw, weft bands fill, weave lifts)',
+  typography: 'Yatra One + Hind',
+  layout: 'Celebration calendar: occasion-first nav, pinned weave reveal, horizontal lookbook strip, occasion calendar, gifting, visit',
+  mood: 'Joyful but premium — abundant color with control, never gaudy',
+  palette: 'Peacock green #14342C / marigold ivory #F5E7C6 / marigold #E07B1A',
+  features: ['weaveReveal pinned collection', 'Occasion filter chips', 'Festival countdown strip', 'Horizontal lookbook', 'Occasion calendar with cut-offs', 'Gifting concierge'],
+  fonts: { display: 'Yatra One', body: 'Hind' },
+  colors: { primary: '#F5E7C6', accent: '#E07B1A' },
+};

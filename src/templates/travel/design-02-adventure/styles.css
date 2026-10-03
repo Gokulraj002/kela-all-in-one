@@ -1,0 +1,952 @@
+/* RIDGELINE — design-02-adventure. Raw expedition broadsheet.
+   Tokens live ONLY on the template scope (never :root). */
+
+.tpl-design-02-adventure {
+  --color-primary: #1a1a18;
+  --color-secondary: #8a8578;
+  --color-accent: #e4572e;
+  --color-background: #1a1a18;
+  --color-surface: #232320;
+  --color-text: #f2efe9;
+  --color-muted: #8a8578;
+  --color-ink-deep: #0d0d0c;
+  --font-display: 'Anton', 'Arial Black', sans-serif;
+  --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+  --wrap: min(1180px, 100% - clamp(2.5rem, 8vw, 6rem));
+  --pad-sec: clamp(5rem, 12vw, 10rem);
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-02-adventure *,
+.tpl-design-02-adventure *::before,
+.tpl-design-02-adventure *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-02-adventure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The shared <Img> wrapper is an inline span — make it fill its frame so the
+   photo covers the whole visual instead of stopping at its natural height. */
+.tpl-design-02-adventure .a-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tpl-design-02-adventure a {
+  color: inherit;
+}
+
+.rl-wrap {
+  width: var(--wrap);
+  margin-inline: auto;
+}
+
+/* ---------- type ---------- */
+.rl-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+
+.rl-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0 0 1.5rem;
+}
+
+.rl-body {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--color-muted);
+  max-width: 62ch;
+  margin: 0 0 1.5rem;
+}
+
+.rl-rule {
+  display: block;
+  height: 3px;
+  background: var(--color-accent);
+  transform-origin: left center;
+  margin: 0 0 clamp(2.5rem, 6vw, 4rem);
+  max-width: 220px;
+}
+
+.rl-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.rl-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------- buttons ---------- */
+.rl-btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-ink-deep);
+  background: var(--color-accent);
+  padding: 1rem 2.25rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.rl-btn:hover {
+  transform: translateY(-2px);
+  background: var(--color-text);
+}
+
+.rl-btn-small {
+  padding: 0.7rem 1.6rem;
+  font-size: 0.85rem;
+}
+
+.rl-btn-big {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  padding: 1.25rem 3rem;
+}
+
+.rl-link {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 6px;
+}
+
+.rl-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+/* ---------- nav ---------- */
+/* Zero-height sticky dock: the bar overlays the page like a fixed nav but
+   sticks to whatever actually scrolls (the viewer's .tpl-scope or the
+   window), so it never sits on top of the viewer toolbar. */
+.rl-navdock {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 60;
+}
+
+.rl-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1.25rem, 4vw, 3rem);
+  background: rgba(13, 13, 12, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(138, 133, 120, 0.25);
+}
+
+.rl-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.rl-wordmark::after {
+  content: '';
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  background: var(--color-accent);
+  margin-left: 0.25em;
+}
+
+.rl-links {
+  display: none;
+  gap: 2rem;
+}
+
+.rl-links a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-muted);
+}
+
+.rl-links a:hover {
+  color: var(--color-accent);
+}
+
+.rl-btn-nav {
+  padding: 0.7rem 1.4rem;
+  font-size: 0.82rem;
+}
+
+/* ---------- hero ---------- */
+/* A plain block: the ScrollFrames stage (sized to the visible scroll area)
+   pins with its own spacing, and the copy rides in its overlay. A flex or
+   absolutely positioned parent would cancel the pin spacing and let the
+   next section slide over the hero while it is still scrubbing. */
+.rl-hero {
+  position: relative;
+  background: var(--color-ink-deep);
+}
+
+.tpl-design-02-adventure .rl-hero .sf-overlay {
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(6rem, 14vh, 9rem) 0 clamp(4rem, 10vh, 7rem);
+}
+
+.rl-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 13, 12, 0.92) 0%,
+    rgba(13, 13, 12, 0.35) 45%,
+    rgba(13, 13, 12, 0.25) 100%
+  );
+}
+
+.rl-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: var(--wrap);
+  margin-inline: auto;
+}
+
+.rl-hero-eyebrow {
+  color: var(--color-text);
+}
+
+.rl-hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--color-accent);
+  vertical-align: middle;
+  margin-right: 0.9rem;
+}
+
+.rl-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, min(15vw, 18svh), 12rem);
+  line-height: 0.88;
+  text-transform: uppercase;
+  margin: 0 0 1.75rem;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+.rl-hero-sub {
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  color: var(--color-text);
+  max-width: 44ch;
+  margin: 0 0 2.25rem;
+  opacity: 0.9;
+}
+
+.rl-hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.rl-hero-meter {
+  position: absolute;
+  z-index: 2;
+  right: clamp(1.25rem, 4vw, 3rem);
+  bottom: clamp(4rem, 10vh, 7rem);
+  text-align: right;
+  border-right: 3px solid var(--color-accent);
+  padding-right: 1rem;
+}
+
+.rl-hero-meter-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.rl-hero-meter-value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  color: var(--color-text);
+}
+
+/* ---------- ascent (signature) ---------- */
+.rl-ascent {
+  position: relative;
+  background: var(--color-surface);
+  overflow: clip;
+  padding: var(--pad-sec) 0 0;
+}
+
+.rl-ascent-head {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.rl-ascent-pin {
+  position: relative;
+  padding: clamp(2.5rem, 6vh, 4rem) 0;
+}
+
+.rl-ascent-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #2b2b26 0%, #141413 45%, var(--color-ink-deep) 100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rl-ascent-body {
+  position: relative;
+  z-index: 2;
+}
+
+.rl-ascent-body {
+  display: grid;
+  gap: clamp(2rem, 6vw, 4rem);
+}
+
+/* altimeter */
+.rl-meter {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.25rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'cap cap'
+    'value value'
+    'track check';
+  gap: 0.5rem 1.5rem;
+  align-items: start;
+}
+
+.rl-meter-caption {
+  grid-area: cap;
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.rl-meter-value {
+  grid-area: value;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  line-height: 1;
+  color: var(--color-accent);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.rl-meter-track {
+  grid-area: track;
+  position: relative;
+  width: 2px;
+  height: 120px;
+  background: rgba(138, 133, 120, 0.4);
+  margin-top: 0.5rem;
+}
+
+/* The needle box spans the whole track and is moved with a transform
+   (yPercent 100 = bottom, 0 = summit); the visible bar is its top edge. */
+.rl-meter-needle {
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 16px;
+  height: 100%;
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+.rl-meter-needle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1.5px;
+  width: 16px;
+  height: 3px;
+  background: var(--color-accent);
+}
+
+.rl-meter-tick {
+  position: absolute;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.rl-meter-check {
+  grid-area: check;
+  align-self: end;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* checkpoint gate / viewport window */
+.rl-stage {
+  position: relative;
+}
+
+.rl-gate {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 3px solid var(--color-accent);
+  z-index: 30;
+  pointer-events: none;
+}
+
+.rl-gate-tl { top: -8px; left: -8px; border-right: none; border-bottom: none; }
+.rl-gate-tr { top: -8px; right: -8px; border-left: none; border-bottom: none; }
+.rl-gate-bl { bottom: -8px; left: -8px; border-right: none; border-top: none; }
+.rl-gate-br { bottom: -8px; right: -8px; border-left: none; border-top: none; }
+
+.rl-trek-list {
+  display: grid;
+  gap: clamp(2.5rem, 7vw, 4rem);
+}
+
+.rl-trek-card {
+  display: grid;
+  gap: 1.5rem;
+  background: var(--color-ink-deep);
+  border: 1px solid rgba(138, 133, 120, 0.28);
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.rl-trek-visual {
+  aspect-ratio: 16 / 10;
+  min-height: 220px;
+}
+
+.rl-trek-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-ink-deep);
+  background: var(--color-accent);
+  padding: 0.45rem 0.9rem;
+}
+
+.rl-trek-num {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--color-muted);
+  margin: 0 0 0.75rem;
+}
+
+.rl-trek-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.rl-trek-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+
+.rl-trek-blurb {
+  color: var(--color-muted);
+  font-size: 1rem;
+  margin: 0 0 1.75rem;
+  max-width: 52ch;
+}
+
+.rl-trek-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid rgba(138, 133, 120, 0.28);
+  padding-top: 1.5rem;
+}
+
+.rl-trek-price {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: var(--color-text);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- story ---------- */
+.rl-story {
+  padding: var(--pad-sec) 0;
+}
+
+.rl-story-grid {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  margin-bottom: clamp(3rem, 8vw, 5rem);
+}
+
+.rl-caption {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding-top: 1rem;
+}
+
+.rl-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(138, 133, 120, 0.3);
+  border: 1px solid rgba(138, 133, 120, 0.3);
+  margin: 0;
+}
+
+.rl-stat {
+  background: var(--color-background);
+  padding: clamp(1.75rem, 5vw, 3rem);
+}
+
+.rl-stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.rl-stat-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0.75rem 0 0;
+}
+
+/* ---------- departures ---------- */
+.rl-visit {
+  padding: var(--pad-sec) 0;
+  background: var(--color-ink-deep);
+}
+
+.rl-dep-table {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid rgba(138, 133, 120, 0.3);
+}
+
+.rl-dep-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+  padding: 1.5rem 0.25rem;
+  border-bottom: 1px solid rgba(138, 133, 120, 0.3);
+}
+
+.rl-dep-date {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.rl-dep-trek {
+  font-weight: 600;
+  color: var(--color-muted);
+  grid-column: 1 / -1;
+  order: 3;
+}
+
+.rl-dep-days {
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.rl-dep-status {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  justify-self: start;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--color-muted);
+  color: var(--color-muted);
+}
+
+.rl-dep-status.is-filling {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.rl-dep-status.is-waitlist {
+  border-style: dashed;
+  opacity: 0.7;
+}
+
+.rl-dep-book {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-accent);
+  justify-self: end;
+}
+
+.rl-dep-book:hover {
+  color: var(--color-text);
+}
+
+/* ---------- gear ---------- */
+.rl-gear {
+  padding: var(--pad-sec) 0;
+}
+
+.rl-gear-list {
+  list-style: none;
+  margin: clamp(2.5rem, 6vw, 4rem) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: rgba(138, 133, 120, 0.3);
+  border: 1px solid rgba(138, 133, 120, 0.3);
+}
+
+.rl-gear-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  background: var(--color-background);
+  border: none;
+  cursor: pointer;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.rl-gear-item:hover {
+  background: var(--color-surface);
+}
+
+.rl-gear-box {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-muted);
+  position: relative;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.rl-gear-item.is-on .rl-gear-box {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+.rl-gear-item.is-on .rl-gear-box::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 11px;
+  border: solid var(--color-ink-deep);
+  border-width: 0 3px 3px 0;
+  transform: rotate(42deg);
+}
+
+.rl-gear-item.is-on span:last-child {
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
+/* ---------- contact ---------- */
+.rl-contact {
+  padding: var(--pad-sec) 0;
+  background: var(--color-surface);
+  border-top: 3px solid var(--color-accent);
+}
+
+.rl-contact-grid {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.rl-address {
+  font-style: normal;
+  font-size: 1.1rem;
+  line-height: 2;
+  color: var(--color-muted);
+}
+
+.rl-address a {
+  color: var(--color-text);
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 5px;
+}
+
+.rl-contact-hours {
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 1.5rem;
+}
+
+/* ---------- footer ---------- */
+.rl-footer {
+  padding: clamp(3.5rem, 8vw, 6rem) 0 3rem;
+  background: var(--color-ink-deep);
+}
+
+.rl-footer-word {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  margin: 0 0 1rem;
+}
+
+.rl-footer-line {
+  color: var(--color-muted);
+  margin: 0 0 2rem;
+  max-width: 52ch;
+}
+
+.rl-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.rl-footer-links a {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-muted);
+}
+
+.rl-footer-links a:hover {
+  color: var(--color-accent);
+}
+
+.rl-colophon {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  opacity: 0.7;
+  margin: 0;
+  border-top: 1px solid rgba(138, 133, 120, 0.25);
+  padding-top: 1.75rem;
+}
+
+/* ---------- reduced motion: static layouts, no pins ---------- */
+.rl-reduced .rl-ascent {
+  padding-bottom: var(--pad-sec);
+}
+
+.rl-reduced .rl-ascent-pin {
+  padding: 0;
+}
+
+.rl-reduced .rl-trek-card {
+  position: static !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+/* reduced motion shows the summit reading — park the needle at the top */
+.rl-reduced .rl-meter-needle {
+  transform: none;
+}
+
+/* ================= 768px ================= */
+@media (min-width: 768px) {
+  .rl-links {
+    display: flex;
+  }
+
+  .rl-ascent-body {
+    grid-template-columns: 240px 1fr;
+    align-items: center;
+  }
+
+  .rl-meter-track {
+    height: 200px;
+  }
+
+  /* fixed viewport window: cards stacked, driven by scrub */
+  .rl-stage {
+    height: min(74vh, 660px);
+  }
+
+  .rl-trek-list {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+
+  .rl-trek-card {
+    position: absolute;
+    inset: 0;
+    grid-template-columns: 1.15fr 1fr;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    will-change: transform, opacity, filter;
+  }
+
+  .rl-trek-visual {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .rl-story-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .rl-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .rl-dep-row {
+    grid-template-columns: 120px 1fr 110px 150px 90px;
+    gap: 1.5rem;
+  }
+
+  .rl-dep-trek {
+    grid-column: auto;
+    order: 0;
+  }
+
+  .rl-dep-status {
+    justify-self: auto;
+  }
+
+  .rl-dep-book {
+    justify-self: end;
+  }
+
+  .rl-gear-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rl-contact-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+  }
+}
+
+/* reduced-motion on desktop: stacked cards, never absolute */
+@media (min-width: 768px) {
+  .rl-reduced .rl-trek-list {
+    position: static;
+    display: grid;
+    gap: clamp(2.5rem, 7vw, 4rem);
+  }
+
+  .rl-reduced .rl-stage {
+    height: auto;
+  }
+
+  .rl-reduced .rl-meter {
+    position: static;
+  }
+}
+
+/* ================= 1200px ================= */
+@media (min-width: 1200px) {
+  .rl-ascent-body {
+    grid-template-columns: 300px 1fr;
+    gap: 5rem;
+  }
+
+  .rl-hero-title {
+    font-size: clamp(6rem, min(12vw, 18svh), 12rem);
+  }
+}
+
+/* ================= small screens ================= */
+@media (max-width: 480px) {
+  .rl-hero-meter {
+    display: none;
+  }
+
+  .rl-btn-nav {
+    padding: 0.65rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .rl-wordmark {
+    font-size: 1.3rem;
+  }
+}

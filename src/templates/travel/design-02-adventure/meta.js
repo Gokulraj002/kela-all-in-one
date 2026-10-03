@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-02-adventure',
+  num: '02',
+  name: 'Ridgeline',
+  tag: 'Adventure',
+  style: 'Raw expedition broadsheet',
+  animation: 'Altitude count-up, checkpoint blur-shift, kinetic slams',
+  typography: 'Anton + Inter',
+  layout: 'Dense poster grid, fixed viewport window',
+  mood: 'Raw, kinetic, unfiltered',
+  palette: 'Basalt / safety orange / stone',
+  features: ['Altitude meter', 'Checkpoint cards', 'Expedition calendar', 'Gear checklist'],
+  fonts: { display: 'Anton', body: 'Inter' },
+  colors: { primary: '#1A1A18', accent: '#E4572E' },
+};

@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-01-heritage',
+  num: '01',
+  name: 'Vastra Heritage',
+  tag: 'Heritage',
+  style: 'Craft documentary — loom-first, maker-first editorial',
+  animation: 'pageturnLookbook — pinned craft chapters with fabric page-turn wipes',
+  typography: 'Rozha One + Mukta',
+  layout: 'Documentary editorial: full-bleed loom imagery, khadi reading columns, weaver index',
+  mood: 'Reverent, warm, honest — tungsten light and film grain',
+  palette: 'Khadi ivory #F4ECDA / indigo #26355E / turmeric #D9A441',
+  features: [
+    'Signature video: "The Shuttle" 9s loom loop (hero background)',
+    'Pinned pageturnLookbook: Loom → Dye → Weave → Drape chapters',
+    'GI-tag cluster explorer (Kanchipuram / Banaras / Chanderi)',
+    'Weave-badge product cards with Silk Mark & zari data',
+    'Weaver index with craft quotes',
+    'WhatsApp enquiry per product + sticky mobile enquiry',
+  ],
+  fonts: { display: 'Rozha One', body: 'Mukta' },
+  colors: { primary: '#26355E', accent: '#D9A441' },
+};

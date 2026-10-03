@@ -1,0 +1,576 @@
+/* Umi — Omakase. Japanese restraint: washi ground, ink, vermillion.
+   Tokens live ONLY on the template scope. Enormous whitespace is the design. */
+
+.tpl-design-05-omakase {
+  --color-primary: #1c1c1a;
+  --color-secondary: #6e6a5e;
+  --color-accent: #b03a2e;
+  --color-background: #f5f2ea;
+  --color-surface: #ece7d8;
+  --color-text: #232320;
+  --color-muted: #9a958a;
+  --font-display: 'Shippori Mincho', 'Hiragino Mincho ProN', serif;
+  --font-body: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif;
+
+  --space-section: clamp(6rem, 12vw, 11rem);
+  --measure: 42rem;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 2;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tpl-design-05-omakase ::selection {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+.tpl-design-05-omakase img { display: block; max-width: 100%; }
+
+/* ---------- whisper nav ---------- */
+/* Zero-height sticky dock: the bar overlays the page like a fixed bar but
+   stays inside the page's own scroll area. */
+.tpl-design-05-omakase .umi-nav-dock {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 40;
+}
+.umi-nav {
+  position: absolute;
+  inset: 0 0 auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem clamp(1.25rem, 4vw, 3rem);
+  background: color-mix(in srgb, var(--color-background) 82%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 22%, transparent);
+}
+
+.umi-brand { display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--color-primary); }
+.umi-seal {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-accent);
+  color: var(--color-background);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1;
+  border-radius: 2px;
+  flex: none;
+}
+.umi-brand-name { font-family: var(--font-display); font-size: 1.35rem; letter-spacing: 0.28em; margin-left: 0.28em; }
+
+.umi-nav-links { display: none; gap: 2.25rem; }
+@media (min-width: 900px) { .umi-nav-links { display: flex; } }
+
+.umi-nav-seats { display: none; font-size: 0.8rem; letter-spacing: 0.18em; color: var(--color-muted); }
+@media (min-width: 900px) { .umi-nav-seats { display: block; } }
+
+/* underline-draw links — the only hover in the design */
+.umi-link {
+  position: relative;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
+  padding-bottom: 0.25rem;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left calc(100% - 1px);
+  transition: background-size 0.5s ease;
+}
+.umi-link:hover, .umi-link:focus-visible { background-size: 100% 1px; }
+.umi-link:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 4px; }
+
+.umi-cta {
+  display: inline-block;
+  margin-top: 2.75rem;
+  padding: 1rem 2.75rem;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
+  text-decoration: none;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+.umi-cta:hover, .umi-cta:focus-visible {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+.umi-cta:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+
+/* ---------- hero (scroll-driven frame sequence) ---------- */
+.umi-hero {
+  position: relative;
+  overflow: clip;
+}
+/* ScrollFrames contract: the design owns stage sizing. Canvas is left
+   absolutely positioned inset 0 per the component's contract. */
+.tpl-design-05-omakase .sf-stage {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+}
+.tpl-design-05-omakase .sf-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.tpl-design-05-omakase .sf-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  pointer-events: none;
+}
+.tpl-design-05-omakase .sf-overlay a { pointer-events: auto; }
+/* reduced-motion static frame */
+.tpl-design-05-omakase .sf-static {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+.tpl-design-05-omakase .sf-static-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.umi-hero-veil {
+  position: absolute;
+  inset: 0;
+  /* a washi glow behind the copy keeps the quiet grey type readable over the
+     brightest frames of the cut */
+  background:
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-background) 88%, transparent) 0%, transparent 30%),
+    linear-gradient(to top, var(--color-background) 4%, transparent 42%),
+    radial-gradient(58% 52% at 50% 50%, color-mix(in srgb, var(--color-background) 86%, transparent) 0%, color-mix(in srgb, var(--color-background) 66%, transparent) 52%, transparent 100%);
+}
+.umi-hero-inner { position: relative; z-index: 2; padding: 6rem 1.5rem 4rem; max-width: 56rem; }
+.umi-eyebrow {
+  font-size: 0.82rem;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  color: var(--color-secondary);
+  margin: 0 0 2rem;
+}
+.umi-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  line-height: 1.15;
+  color: var(--color-primary);
+  margin: 0 0 2rem;
+  letter-spacing: 0.04em;
+}
+.umi-hero-sub {
+  max-width: 34rem;
+  margin: 0 auto;
+  color: var(--color-secondary);
+  font-size: 1.05rem;
+}
+.umi-hero-seats {
+  margin-top: 3.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--color-muted);
+}
+.umi-scroll-cue {
+  position: absolute;
+  bottom: 2.25rem;
+  left: 50%;
+  width: 1px;
+  height: 3.5rem;
+  background: color-mix(in srgb, var(--color-secondary) 45%, transparent);
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+.umi-scroll-cue::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform: translateY(-100%);
+  animation: umi-cue 2.6s ease-in-out infinite;
+}
+@keyframes umi-cue {
+  0% { transform: translateY(-100%); }
+  55% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+/* ---------- sections ---------- */
+.umi-section {
+  padding: var(--space-section) clamp(1.5rem, 6vw, 4rem);
+}
+.umi-wrap { max-width: 68rem; margin: 0 auto; }
+.umi-measure { max-width: var(--measure); margin: 0 auto; text-align: center; }
+
+.umi-section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  line-height: 1.35;
+  color: var(--color-primary);
+  margin: 0 0 1.75rem;
+  letter-spacing: 0.03em;
+}
+.umi-copy { color: var(--color-text); margin: 0 0 1.75rem; }
+.umi-copy:last-child { margin-bottom: 0; }
+
+/* ---------- the counter (chef) ---------- */
+.umi-counter-grid {
+  display: grid;
+  gap: 4rem;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .umi-counter-grid { grid-template-columns: 1fr 1.1fr; gap: clamp(4rem, 8vw, 8rem); }
+}
+.umi-counter-visual {
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.umi-counter-visual .a-img img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.umi-chef-note {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 30%, transparent);
+}
+.umi-chef-note blockquote {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.8;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+}
+.umi-chef-name { font-size: 0.85rem; letter-spacing: 0.24em; color: var(--color-secondary); margin: 0; }
+.umi-chef-role { font-size: 0.8rem; letter-spacing: 0.2em; color: var(--color-muted); margin: 0.25rem 0 0; }
+
+/* ---------- the progression (signature mechanic) ---------- */
+.umi-progression { padding-left: 0; padding-right: 0; }
+.umi-progression .umi-measure { padding: 0 clamp(1.5rem, 6vw, 4rem); }
+
+/* desktop pinned serve */
+.umi-serve-pin {
+  display: none;
+  position: relative;
+  /* exactly the visible scroll area while pinned (--tpl-vh in the viewer) */
+  height: var(--tpl-vh, 100svh);
+  flex-direction: column;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .umi-serve-pin { display: flex; }
+}
+.umi-serve-notes {
+  position: relative;
+  height: calc(var(--tpl-vh, 100svh) * 0.32);
+  min-height: 11rem;
+  max-width: 44rem;
+  margin: 0 auto;
+  width: 100%;
+  padding: calc(var(--tpl-vh, 100svh) * 0.1) 1.5rem 0;
+  text-align: center;
+}
+.umi-serve-note {
+  position: absolute;
+  inset: calc(var(--tpl-vh, 100svh) * 0.1) 1.5rem 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+.umi-serve-note.is-active { opacity: 1; }
+.umi-serve-jp {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  margin: 0 0 0.5rem;
+}
+.umi-serve-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.04em;
+}
+.umi-serve-desc { color: var(--color-secondary); font-size: 0.98rem; max-width: 34rem; margin: 0 auto; }
+.umi-serve-noteline {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  color: var(--color-muted);
+}
+
+.umi-serve-stage { position: relative; flex: 1; }
+.umi-dish {
+  position: absolute;
+  left: 50%;
+  /* sized and placed by the visible stage height so the plate never covers
+     the course note above it on shorter screens */
+  top: 52%;
+  translate: -50% -50%;
+  width: min(250px, 52vw, calc(var(--tpl-vh, 100svh) * 0.26));
+  transition: opacity 0.55s ease;
+}
+.umi-dish.is-dim { opacity: 0.45; }
+.umi-dish-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-surface);
+  transition: transform 0.7s ease, box-shadow 0.7s ease;
+  box-shadow: 0 24px 60px -28px color-mix(in srgb, var(--color-primary) 55%, transparent);
+}
+.umi-dish.is-spot .umi-dish-visual {
+  transform: scale(1.06);
+  box-shadow:
+    0 30px 80px -24px color-mix(in srgb, var(--color-primary) 60%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 55%, transparent),
+    0 0 90px 10px color-mix(in srgb, var(--color-background) 0%, transparent);
+}
+.umi-dish-visual .a-img,
+.umi-dish-visual .a-img img { width: 100%; height: 100%; object-fit: cover; }
+.umi-dish-shadow {
+  width: 62%;
+  height: 0.9rem;
+  margin: 1.1rem auto 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--color-primary) 26%, transparent), transparent);
+  filter: blur(3px);
+  transition: opacity 0.55s ease, transform 0.7s ease;
+}
+.umi-dish.is-dim .umi-dish-shadow { opacity: 0.5; }
+.umi-dish.is-spot .umi-dish-shadow { transform: scaleX(1.12); }
+
+.umi-seal-plate {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  line-height: 1;
+}
+.umi-seal-plate small {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  translate: -50% 0;
+  max-width: 64%;
+  text-align: center;
+  line-height: 1.5;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  /* the plate is ink-dark: the light brand tone keeps the name readable */
+  color: var(--brand-on-dark, var(--color-accent));
+}
+
+/* the counter bar — a fixed hinoki line at the bottom of the stage */
+.umi-counter-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16%;
+  height: 0.55rem;
+  background: var(--color-primary);
+  box-shadow: 0 18px 34px -18px color-mix(in srgb, var(--color-primary) 65%, transparent);
+}
+.umi-serve-count {
+  text-align: center;
+  padding-bottom: calc(var(--tpl-vh, 100svh) * 0.04);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  color: var(--color-muted);
+  min-height: 3.5rem;
+}
+.umi-serve-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  color: var(--color-muted);
+  padding: 0 1.5rem 2rem;
+}
+
+/* mobile swipe strip */
+.umi-serve-rail {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 1rem clamp(1.5rem, 6vw, 4rem) 2.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.umi-serve-rail::-webkit-scrollbar { display: none; }
+/* desktop shows the pinned serve instead (kept after the rail's own display
+   rule — earlier in the file it lost the cascade and both rendered) */
+@media (min-width: 768px) {
+  .tpl-design-05-omakase .umi-serve-rail { display: none; }
+}
+.umi-rail-card {
+  flex: 0 0 78vw;
+  max-width: 22rem;
+  scroll-snap-align: center;
+  text-align: center;
+  background: var(--color-surface);
+  border-radius: 2px;
+  padding: 2.25rem 1.75rem 2.5rem;
+}
+.umi-rail-card .umi-dish-visual { width: 11rem; height: 11rem; margin: 0 auto 1.5rem; }
+.umi-rail-num { font-size: 0.75rem; letter-spacing: 0.4em; color: var(--color-accent); margin: 0 0 0.75rem; }
+
+/* reduced-motion / no-motion static */
+.umi-serve-static { display: none; }
+.is-reduced .umi-serve-pin,
+.is-reduced .umi-serve-rail { display: none !important; }
+.is-reduced .umi-serve-static {
+  display: grid;
+  gap: 4.5rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1.5rem, 6vw, 4rem) 0;
+}
+@media (min-width: 900px) {
+  .is-reduced .umi-serve-static { grid-template-columns: repeat(3, 1fr); gap: 3.5rem 3rem; }
+}
+.umi-static-card { text-align: center; }
+.umi-static-card .umi-dish-visual { width: 12rem; height: 12rem; margin: 0 auto 1.5rem; }
+.umi-static-num { font-size: 0.75rem; letter-spacing: 0.4em; color: var(--color-accent); margin: 0 0 0.6rem; }
+
+/* ---------- etiquette ---------- */
+.umi-etiquette { background: var(--color-surface); }
+.umi-rules { list-style: none; margin: 4.5rem auto 0; padding: 0; max-width: 46rem; }
+.umi-rule {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 1.75rem;
+  align-items: baseline;
+  padding: 2.25rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent);
+}
+.umi-rule:last-child { border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent); }
+.umi-rule-num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-accent);
+}
+.umi-rule-text { margin: 0; font-size: 1.05rem; color: var(--color-text); }
+@media (max-width: 560px) {
+  .umi-rule { grid-template-columns: 3rem 1fr; gap: 1rem; }
+}
+
+/* ---------- reserve ---------- */
+.umi-reserve-grid {
+  display: grid;
+  gap: 4rem;
+  margin-top: 4rem;
+}
+@media (min-width: 900px) {
+  .umi-reserve-grid { grid-template-columns: 1fr 1.2fr; gap: clamp(4rem, 8vw, 8rem); align-items: start; }
+}
+.umi-seatings { list-style: none; margin: 2.5rem 0 0; padding: 0; }
+.umi-seating {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.25rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent);
+  font-size: 0.95rem;
+}
+.umi-seating:last-child { border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent); }
+.umi-seating-time { font-family: var(--font-display); font-size: 1.4rem; color: var(--color-primary); }
+.umi-seating-note { color: var(--color-muted); font-size: 0.85rem; letter-spacing: 0.12em; }
+.umi-visit { margin-top: 3rem; font-size: 0.95rem; color: var(--color-secondary); }
+.umi-visit p { margin: 0 0 0.4rem; }
+
+.umi-form { display: grid; gap: 1.75rem; }
+.umi-field label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  color: var(--color-secondary);
+  margin-bottom: 0.6rem;
+}
+.umi-field input,
+.umi-field select,
+.umi-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  border-radius: 0;
+  padding: 0.7rem 0.1rem;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+.umi-field input:focus,
+.umi-field select:focus,
+.umi-field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+}
+.umi-field textarea { resize: vertical; min-height: 4.5rem; }
+.umi-form-row { display: grid; gap: 1.75rem; }
+@media (min-width: 640px) { .umi-form-row { grid-template-columns: 1fr 1fr; } }
+.umi-form .umi-cta { justify-self: start; background: transparent; cursor: pointer; font-family: var(--font-body); }
+.umi-confirm {
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  padding: 2.5rem;
+  font-size: 1.02rem;
+  color: var(--color-text);
+  text-align: center;
+}
+.umi-confirm .umi-seal { margin: 0 auto 1.25rem; }
+
+/* ---------- footer ---------- */
+.umi-footer {
+  padding: 5rem clamp(1.5rem, 6vw, 4rem) 3rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 25%, transparent);
+  text-align: center;
+}
+.umi-footer .umi-seal { margin: 0 auto 1.5rem; }
+.umi-footer-brand { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.3em; text-indent: 0.3em; color: var(--color-primary); margin: 0 0 1rem; }
+.umi-footer-meta { font-size: 0.85rem; color: var(--color-muted); letter-spacing: 0.08em; margin: 0 0 0.35rem; }
+.umi-footer-meta a { color: var(--color-secondary); }
+.umi-footer-line { margin-top: 2.5rem; font-size: 0.78rem; letter-spacing: 0.2em; color: var(--color-muted); }
+
+/* reduced-motion: nothing to hide — all content renders in final state */
+@media (prefers-reduced-motion: reduce) {
+  .umi-scroll-cue::after { animation: none; }
+}
+
+/* Phones: the copy column is as wide as the frame, so the washi glow widens
+   with it — the quiet grey type stays readable over the brightest frames. */
+@media (max-width: 767px) {
+  .umi-hero-veil {
+    background:
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-background) 88%, transparent) 0%, transparent 30%),
+      linear-gradient(to top, var(--color-background) 4%, transparent 42%),
+      radial-gradient(95% 62% at 50% 50%, color-mix(in srgb, var(--color-background) 90%, transparent) 0%, color-mix(in srgb, var(--color-background) 74%, transparent) 60%, transparent 100%);
+  }
+}

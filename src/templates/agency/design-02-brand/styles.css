@@ -1,0 +1,989 @@
+/* ============================================================
+   Mark & Matter — design-02-brand
+   Tokens scoped to .tpl-design-02-brand. No :root writes.
+   Palette: bone / espresso / ochre. Type: Instrument Serif + Inter.
+   ============================================================ */
+
+.tpl-design-02-brand {
+  --color-background: #F3EEE3;
+  --color-surface: #E7DFCC;
+  --color-primary: #2A2118;
+  --color-secondary: #6E5B3E;
+  --color-accent: #C68A2E;
+  --color-text: #2A2118;
+  --color-muted: #93876F;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --rule: rgba(42, 33, 24, 0.16);
+  --section-pad: clamp(5rem, 11vw, 9.5rem);
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-02-brand *,
+.tpl-design-02-brand *::before,
+.tpl-design-02-brand *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-02-brand img,
+.tpl-design-02-brand video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------- shared type & layout ---------- */
+
+.tpl-design-02-brand .mm-wrap {
+  width: min(76rem, 100% - clamp(2.5rem, 7vw, 5rem));
+  margin-inline: auto;
+}
+
+.tpl-design-02-brand section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+.tpl-design-02-brand section {
+  padding-block: var(--section-pad);
+  position: relative;
+}
+
+.tpl-design-02-brand .mm-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.tpl-design-02-brand .mm-eyebrow::before {
+  content: '';
+  width: 2.25rem;
+  height: 1px;
+  background: var(--color-accent);
+  display: inline-block;
+}
+
+.tpl-design-02-brand .mm-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: 0.005em;
+  color: var(--color-primary);
+  margin: 0 0 1.25rem;
+  max-width: 18ch;
+}
+
+.tpl-design-02-brand .mm-h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.tpl-design-02-brand .mm-lede {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--color-secondary);
+  max-width: 62ch;
+  margin: 0 0 3rem;
+}
+
+.tpl-design-02-brand .mm-rule {
+  height: 1px;
+  background: var(--rule);
+  border: 0;
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+  transform-origin: left center;
+}
+
+.tpl-design-02-brand .mm-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 1rem 1.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid var(--color-accent);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.tpl-design-02-brand .mm-cta:hover {
+  background: transparent;
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.tpl-design-02-brand .mm-cta--ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.tpl-design-02-brand .mm-cta--ghost:hover {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+/* server-safe word mask */
+.tpl-design-02-brand .mm-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.tpl-design-02-brand .mm-wm .wi {
+  display: inline-block;
+}
+
+/* ---------- nav ---------- */
+
+.tpl-design-02-brand .mm-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.1rem clamp(1.25rem, 4vw, 3rem);
+  /* solid bar, no backdrop-filter: a blurred sticky bar re-samples the
+     scrubbed hero canvas underneath on every scroll frame */
+  background: rgba(243, 238, 227, 0.97);
+  border-bottom: 1px solid var(--rule);
+}
+
+.tpl-design-02-brand .mm-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tpl-design-02-brand .mm-wordmark .mm-amp {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.tpl-design-02-brand .mm-links {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.25rem);
+}
+
+.tpl-design-02-brand .mm-links a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
+  padding-block: 0.25rem;
+}
+
+.tpl-design-02-brand .mm-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.3s ease;
+}
+
+.tpl-design-02-brand .mm-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.tpl-design-02-brand .mm-nav .mm-cta {
+  padding: 0.7rem 1.4rem;
+  font-size: 0.85rem;
+}
+
+/* ---------- hero ---------- */
+
+/* Block (not flex) on purpose: GSAP turns pinSpacing off when a pinned
+   element's parent is a flex container, which let the next sections scroll
+   underneath the pinned hero. The ScrollFrames stage sets the height. */
+.tpl-design-02-brand .mm-hero {
+  position: relative;
+  display: block;
+  padding: 0;
+  overflow: clip;
+}
+
+.tpl-design-02-brand .mm-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(243, 238, 227, 0.25) 0%,
+    rgba(243, 238, 227, 0.55) 55%,
+    rgba(243, 238, 227, 0.97) 100%
+  );
+}
+
+.tpl-design-02-brand .mm-hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: min(76rem, 100% - clamp(2.5rem, 7vw, 5rem));
+  margin-inline: auto;
+  padding-bottom: clamp(4rem, 9vw, 7rem);
+}
+
+.tpl-design-02-brand .mm-hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3.2rem, 8.5vw, 7rem);
+  line-height: 1.02;
+  color: var(--color-primary);
+  margin: 0 0 1.5rem;
+  max-width: 14ch;
+}
+
+.tpl-design-02-brand .mm-hero-title em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.tpl-design-02-brand .mm-hero-sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  line-height: 1.7;
+  color: var(--color-text);
+  max-width: 60ch;
+  margin: 0 0 2.25rem;
+}
+
+.tpl-design-02-brand .mm-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ---------- selected identities ---------- */
+
+.tpl-design-02-brand .mm-cases {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  margin-top: clamp(1rem, 2vw, 2rem);
+}
+
+.tpl-design-02-brand .mm-case {
+  background: var(--color-surface);
+  border: 1px solid var(--rule);
+  border-radius: 0.75rem;
+  overflow: clip;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .tpl-design-02-brand .mm-case {
+    grid-template-columns: 1.05fr 1fr;
+  }
+  .tpl-design-02-brand .mm-case:nth-child(even) .mm-case-media {
+    order: 2;
+  }
+}
+
+.tpl-design-02-brand .mm-case-media {
+  position: relative;
+  overflow: clip;
+  min-height: 18rem;
+}
+
+.tpl-design-02-brand .mm-case-media .a-img,
+.tpl-design-02-brand .mm-case-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tpl-design-02-brand .mm-case:hover .mm-case-media img {
+  transform: scale(1.04);
+}
+
+/* construction-grid overlay, revealed on hover */
+.tpl-design-02-brand .mm-case-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 34%, rgba(198, 138, 46, 0.5) 34.5%, rgba(198, 138, 46, 0.5) 35.5%, transparent 36%),
+    radial-gradient(circle at 50% 50%, transparent 48%, rgba(198, 138, 46, 0.35) 48.5%, rgba(198, 138, 46, 0.35) 49.5%, transparent 50%),
+    repeating-linear-gradient(0deg, rgba(198, 138, 46, 0.28) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(198, 138, 46, 0.28) 0 1px, transparent 1px 28px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+}
+
+.tpl-design-02-brand .mm-case:hover .mm-case-grid,
+.tpl-design-02-brand .mm-case:focus-within .mm-case-grid {
+  opacity: 1;
+}
+
+/* ochre seal — rotates on hover */
+.tpl-design-02-brand .mm-seal {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: transform 0.45s ease;
+  box-shadow: 0 6px 18px rgba(42, 33, 24, 0.25);
+}
+
+.tpl-design-02-brand .mm-case:hover .mm-seal {
+  transform: rotate(8deg);
+}
+
+.tpl-design-02-brand .mm-case-body {
+  padding: clamp(1.75rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tpl-design-02-brand .mm-case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-02-brand .mm-case-client {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1.1;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.tpl-design-02-brand .mm-case-blurb {
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.tpl-design-02-brand .mm-case-facts {
+  margin: 0.5rem 0 0;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  gap: 0.85rem;
+  list-style: none;
+}
+
+.tpl-design-02-brand .mm-case-facts .mm-case-facts-li {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1rem;
+  font-size: 0.92rem;
+}
+
+.tpl-design-02-brand .mm-case-facts dt {
+  display: contents;
+}
+
+.tpl-design-02-brand .mm-case-facts .mm-fact-k {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  padding-top: 0.2em;
+}
+
+.tpl-design-02-brand .mm-case-facts .mm-fact-v {
+  color: var(--color-text);
+}
+
+/* ---------- process spine (M2) ---------- */
+
+.tpl-design-02-brand .mm-process {
+  background: var(--color-surface);
+  border-block: 1px solid var(--rule);
+}
+
+.tpl-design-02-brand .mm-spine-wrap {
+  position: relative;
+  margin-top: clamp(1rem, 3vw, 2rem);
+  padding-left: clamp(2.5rem, 6vw, 4rem);
+}
+
+.tpl-design-02-brand .mm-spine {
+  position: absolute;
+  left: clamp(0.7rem, 2vw, 1.1rem);
+  top: 0.75rem;
+  bottom: 0.75rem;
+  width: 2px;
+  background: var(--rule);
+  border-radius: 2px;
+}
+
+.tpl-design-02-brand .mm-spine-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  border-radius: 2px;
+  transform: scaleY(1);
+  transform-origin: top center;
+}
+
+.tpl-design-02-brand .mm-phase {
+  position: relative;
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.tpl-design-02-brand .mm-phase:last-child {
+  padding-bottom: 0.5rem;
+}
+
+.tpl-design-02-brand .mm-node {
+  position: absolute;
+  left: calc(clamp(0.7rem, 2vw, 1.1rem) * -1);
+  top: 0.35rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.tpl-design-02-brand .mm-phase.is-active .mm-node {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.tpl-design-02-brand .mm-phase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .tpl-design-02-brand .mm-phase-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+}
+
+.tpl-design-02-brand .mm-phase-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  margin: 0 0 0.4rem;
+}
+
+.tpl-design-02-brand .mm-phase-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+}
+
+.tpl-design-02-brand .mm-phase-dur {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 1rem;
+}
+
+.tpl-design-02-brand .mm-phase-text {
+  color: var(--color-secondary);
+  margin: 0 0 1.5rem;
+  max-width: 56ch;
+}
+
+.tpl-design-02-brand .mm-outputs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.tpl-design-02-brand .mm-outputs li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.tpl-design-02-brand .mm-outputs li::before {
+  content: '';
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  transform: translateY(-1px);
+}
+
+/* deliverable collage panel — slides in from alternating sides */
+.tpl-design-02-brand .mm-collage {
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: 0.75rem;
+  overflow: clip;
+  background: var(--color-background);
+  box-shadow: 0 18px 44px rgba(42, 33, 24, 0.1);
+}
+
+.tpl-design-02-brand .mm-collage .a-img,
+.tpl-design-02-brand .mm-collage img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.tpl-design-02-brand .mm-collage figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+}
+
+.tpl-design-02-brand .mm-collage figcaption strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-primary);
+}
+
+.tpl-design-02-brand .mm-collage figcaption span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ---------- capabilities ---------- */
+
+.tpl-design-02-brand .mm-caps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  margin-top: 1rem;
+}
+
+@media (min-width: 900px) {
+  .tpl-design-02-brand .mm-caps {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tpl-design-02-brand .mm-cap:nth-child(odd) {
+    border-right: 1px solid var(--rule);
+  }
+}
+
+.tpl-design-02-brand .mm-cap {
+  padding: clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.3s ease;
+}
+
+.tpl-design-02-brand .mm-cap:hover {
+  background: var(--color-surface);
+}
+
+.tpl-design-02-brand .mm-cap-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.tpl-design-02-brand .mm-cap-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+}
+
+.tpl-design-02-brand .mm-cap-text {
+  color: var(--color-secondary);
+  margin: 0 0 1rem;
+  max-width: 46ch;
+}
+
+.tpl-design-02-brand .mm-cap-proof {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--rule);
+}
+
+/* ---------- studio ---------- */
+
+.tpl-design-02-brand .mm-studio {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+.tpl-design-02-brand .mm-studio .mm-h2 {
+  color: var(--color-background);
+}
+
+.tpl-design-02-brand .mm-studio .mm-lede {
+  color: rgba(243, 238, 227, 0.78);
+}
+
+.tpl-design-02-brand .mm-studio .mm-rule {
+  background: rgba(243, 238, 227, 0.22);
+}
+
+.tpl-design-02-brand .mm-studio .mm-eyebrow {
+  color: rgba(243, 238, 227, 0.72);
+}
+
+.tpl-design-02-brand .mm-studio .mm-eyebrow::before {
+  background: var(--brand-on-dark, var(--color-accent));
+}
+
+.tpl-design-02-brand .mm-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(243, 238, 227, 0.22);
+  border: 1px solid rgba(243, 238, 227, 0.22);
+  margin: 2.5rem 0 clamp(3rem, 6vw, 5rem);
+}
+
+@media (min-width: 700px) {
+  .tpl-design-02-brand .mm-facts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.tpl-design-02-brand .mm-fact {
+  background: var(--color-primary);
+  padding: 1.75rem 1.5rem;
+}
+
+.tpl-design-02-brand .mm-fact-v {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  /* dark band: the light tone of the brand colour */
+  color: var(--brand-on-dark, var(--color-accent));
+  display: block;
+  line-height: 1.1;
+}
+
+.tpl-design-02-brand .mm-fact-k {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(243, 238, 227, 0.6);
+}
+
+.tpl-design-02-brand .mm-principals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .tpl-design-02-brand .mm-principals {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tpl-design-02-brand .mm-principal {
+  border-top: 2px solid var(--brand-on-dark, var(--color-accent));
+  padding-top: 1.25rem;
+}
+
+.tpl-design-02-brand .mm-principal-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--color-background);
+  margin: 0 0 0.25rem;
+}
+
+.tpl-design-02-brand .mm-principal-role {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand-on-dark, var(--color-accent));
+  margin: 0 0 0.75rem;
+}
+
+.tpl-design-02-brand .mm-principal-note {
+  color: rgba(243, 238, 227, 0.72);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ---------- contact ---------- */
+
+.tpl-design-02-brand .mm-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+@media (min-width: 960px) {
+  .tpl-design-02-brand .mm-contact-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.tpl-design-02-brand .mm-contact-lines {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.tpl-design-02-brand .mm-contact-lines .mm-line-k {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.tpl-design-02-brand .mm-contact-lines a {
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+  font-size: 1.05rem;
+}
+
+.tpl-design-02-brand .mm-contact-lines a:hover {
+  color: var(--color-accent);
+}
+
+.tpl-design-02-brand .mm-contact-lines address {
+  font-style: normal;
+  color: var(--color-secondary);
+}
+
+.tpl-design-02-brand .mm-form {
+  background: var(--color-surface);
+  border: 1px solid var(--rule);
+  border-radius: 0.75rem;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.tpl-design-02-brand .mm-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.tpl-design-02-brand .mm-field label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.tpl-design-02-brand .mm-field input,
+.tpl-design-02-brand .mm-field select,
+.tpl-design-02-brand .mm-field textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-background);
+  border: 1px solid var(--rule);
+  border-radius: 0.5rem;
+  padding: 0.85rem 1rem;
+  width: 100%;
+}
+
+.tpl-design-02-brand .mm-field input:focus,
+.tpl-design-02-brand .mm-field select:focus,
+.tpl-design-02-brand .mm-field textarea:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+  border-color: var(--color-accent);
+}
+
+.tpl-design-02-brand .mm-field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.tpl-design-02-brand .mm-form-note {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- footer ---------- */
+
+.tpl-design-02-brand .mm-footer {
+  background: var(--color-primary);
+  color: rgba(243, 238, 227, 0.72);
+  padding: clamp(3rem, 6vw, 5rem) 0 2rem;
+}
+
+.tpl-design-02-brand .mm-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(243, 238, 227, 0.18);
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 800px) {
+  .tpl-design-02-brand .mm-footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
+
+.tpl-design-02-brand .mm-footer .mm-wordmark {
+  color: var(--color-background);
+  font-size: 2rem;
+}
+
+.tpl-design-02-brand .mm-footer .mm-wordmark .mm-amp {
+  color: var(--brand-on-dark, var(--color-accent));
+}
+
+.tpl-design-02-brand .mm-footer p {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  max-width: 40ch;
+}
+
+.tpl-design-02-brand .mm-footer h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+  color: var(--brand-on-dark, var(--color-accent));
+  margin: 0 0 1rem;
+}
+
+.tpl-design-02-brand .mm-footer nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.tpl-design-02-brand .mm-footer nav a {
+  color: rgba(243, 238, 227, 0.78);
+  text-decoration: none;
+}
+
+.tpl-design-02-brand .mm-footer nav a:hover {
+  color: var(--color-background);
+  text-decoration: underline;
+}
+
+.tpl-design-02-brand .mm-colophon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: rgba(243, 238, 227, 0.5);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 720px) {
+  .tpl-design-02-brand .mm-links {
+    display: none;
+  }
+  /* the hero stage starts below the sticky nav: keep the CTAs above the fold */
+  .tpl-design-02-brand .mm-hero-copy {
+    padding-bottom: 5.5rem;
+  }
+  .tpl-design-02-brand .mm-case-facts .mm-case-facts-li {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-02-brand *,
+  .tpl-design-02-brand *::before,
+  .tpl-design-02-brand *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

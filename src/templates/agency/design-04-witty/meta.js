@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-04-witty',
+  num: '04',
+  name: 'Frankly',
+  tag: 'Witty Agency',
+  style: 'Copy-first playful editorial, hard-shadow cards',
+  animation: 'Headline toss deck, word-mask hero, hard shadow-shift hovers',
+  typography: 'Bricolage Grotesque + Space Mono',
+  layout: 'Stacked copy cards, alternating case rows, mono anti-list',
+  mood: 'Funny, sharp, honest',
+  palette: 'Cream / ink / cobalt',
+  features: [
+    'Headline toss deck (scroll-scrubbed, 200vh)',
+    'Eight witty one-liner cards with cobalt punchlines',
+    "Won't-do anti-list with strikethrough hover",
+    'Honest case captions (what worked / what flopped)',
+    'Hard shadow-shift button hovers, no soft fades',
+  ],
+  fonts: { display: 'Bricolage Grotesque', body: 'Space Mono' },
+  colors: { primary: '#191713', accent: '#2B4BD3' },
+};

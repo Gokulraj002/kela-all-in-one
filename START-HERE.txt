@@ -1,0 +1,74 @@
+ATELIER — THE COMPLETE PROJECT (100 experiences)
+=================================================
+All 10 industry categories × 10 designs each. This is the full,
+final project — extract and run. No merging, no assembly.
+
+NEW: every design's signature video is now a SCROLL-DRIVEN FRAME
+SEQUENCE — as you scroll, the film plays frame by frame (Apple-style),
+instead of autoplaying. Lighter and fully interactive.
+
+WHAT'S INSIDE
+  01 Jewelry           — 10 luxury jewelry experiences
+  02 Coffee & Café     — 10 designs, scroll-driven film sequences
+  03 E-Commerce        — 10 designs, scroll-driven film sequences
+  04 Saree & Fashion   — 10 designs, scroll-driven film sequences
+  05 IT & Technology   — 10 designs, scroll-driven film sequences
+  06 Creative Agency   — 10 designs, scroll-driven film sequences
+  07 Hotel & Resort    — 10 designs, scroll-driven film sequences
+  08 Restaurant        — 10 designs, scroll-driven film sequences
+  09 Real Estate       — 10 designs, scroll-driven film sequences
+  10 Travel & Tourism  — 10 designs, scroll-driven film sequences
+
+Every design has its own standalone project zip in public/downloads/
+(downloadable from inside the app too: "Download source").
+
+HOW TO RUN (3 steps)
+  1. Extract this zip anywhere on your computer.
+  2. Open a terminal in the extracted "atelier" folder and run:
+       npm install
+     (needs Node.js 18 or newer — one-time setup)
+  3. Then run:
+       npm run dev
+     Open the link it shows (usually http://localhost:5173).
+
+HOW TO USE THE APP
+  - Home: browse the 10 industry collections.
+  - Category page: see all 10 designs of that industry.
+  - Click any design: live interactive preview with Experience mode,
+    Presentation mode (guided tour), Customize (change text/colors),
+    Upload (your own images), Compare, Favorites, and View source.
+  - "Download source" on any design page gives you that design as its
+    own independent website project (npm install + npm run dev inside).
+
+PROJECT STRUCTURE
+  src/templates/<category>/design-*/  — each design's full source
+  src/templates/_shared/              — shared helpers (ScrollFrames, etc.)
+  public/templates/<category>/       — design thumbnails
+  public/downloads/                   — 90 standalone design zips
+  src/data/library.js                 — the design registry
+  tools/export-template.mjs           — builds the standalone zips
+  tools/qa/                           — automated QA (see below)
+
+THE KELA BRAND
+  Every website carries the Kela brand: Kela Jewels, Kela Cafe, Kela Store,
+  Kela Fashion, Kela Tech, Kela Studio, Kela Hotels, Kela Kitchen,
+  Kela Estates and Kela Travels. Names, contact details and brand colours
+  all come from ONE file:
+      src/templates/_shared/brand.js
+  Change a name or colour there and every page, preview and download follows.
+  Each brand colour has a tone for light pages and one for dark pages
+  (both pass WCAG AA contrast).
+
+SPEED & SMOOTHNESS
+  - Images are WebP, sized for how they are shown; pages load in small chunks
+    and prefetch the next page on hover.
+  - Scrolling uses Lenis smooth scrolling in sync with the GSAP animations;
+    pinned sections never shake.
+
+QUALITY CHECKS (dev server must be running: npm run dev)
+  npm run qa:audit                       — checks every page (errors, blank
+                                           screens, stuck animations, pins…)
+  npm run qa:audit -- --cat coffee --shots --mobile
+                                         — one category, phone size, screenshots
+  npm run build && npx vite preview --port 4173, then
+  npm run qa:perf                        — page-speed numbers (phone profile)

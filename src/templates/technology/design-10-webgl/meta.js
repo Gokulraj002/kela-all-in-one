@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-10-webgl',
+  num: '10',
+  name: 'Prism',
+  tag: 'Experimental 3D',
+  style: 'Avant-garde CSS-3D lab',
+  animation: 'Scroll dolly through depth field',
+  typography: 'Unbounded + Inter',
+  layout: 'Full-bleed immersive, layered depth',
+  mood: 'Daring, sensory, futuristic',
+  palette: 'Black / iridescent / white',
+  features: ['Scroll-driven 3D camera dolly', 'Overlay nav', 'Lab notes', 'Kinetic headlines'],
+  fonts: { display: 'Unbounded', body: 'Inter' },
+  colors: { primary: '#060608', accent: '#8B5CF6' },
+};

@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-06-farm',
+  num: '06',
+  name: 'Soil & Stem',
+  tag: 'Farm-to-Table',
+  style: 'Honest green farm editorial',
+  animation: 'Scroll-rotated season dial, sprout-rise reveals',
+  typography: 'Lora + Nunito Sans',
+  layout: 'Honest grid, season dial centerpiece',
+  mood: 'Honest, green, grounded',
+  palette: 'Cream / leaf / soil',
+  features: ['Season dial menu', 'Farm-source notes', 'Grower stories', 'Today\u2019s harvest', 'Supper club'],
+  fonts: { display: 'Lora', body: 'Nunito Sans' },
+  colors: { primary: '#2F4A2C', accent: '#C07A2E' },
+};

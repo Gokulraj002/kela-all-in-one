@@ -1,0 +1,1058 @@
+/* STUDIO MONOLITH — design-10-archviz
+   Experimental archviz. Dark, graphic, kinetic type; the architecture is the art.
+   Tokens live ONLY on .tpl-design-10-archviz. */
+
+.tpl-design-10-archviz {
+  --color-primary: #0c0c0c;
+  --color-secondary: #8e8c86;
+  --color-accent: #f4562a;
+  --color-background: #0c0c0c;
+  --color-surface: #141412;
+  --color-text: #edeae2;
+  --color-muted: #8e8c86;
+  --color-line: rgba(237, 234, 226, 0.14);
+  --color-veil: rgba(12, 12, 12, 0.72);
+  --font-display: 'Archivo', 'Arial Narrow', sans-serif;
+  --font-body: 'Space Grotesk', 'Segoe UI', sans-serif;
+
+  position: relative;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tpl-design-10-archviz *,
+.tpl-design-10-archviz *::before,
+.tpl-design-10-archviz *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-10-archviz a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tpl-design-10-archviz img {
+  display: block;
+}
+
+/* ---------- shared type ---------- */
+
+.tpl-design-10-archviz .sm-wrap {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 72px);
+}
+
+.tpl-design-10-archviz .sm-eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 28px;
+}
+
+.tpl-design-10-archviz .sm-h2 {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 850;
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 32px;
+}
+
+.tpl-design-10-archviz .sm-body {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.75;
+  color: var(--color-text);
+  max-width: 62ch;
+  margin: 0 0 20px;
+}
+
+.tpl-design-10-archviz .sm-rule {
+  display: block;
+  height: 1px;
+  background: var(--color-line);
+  transform-origin: left center;
+  margin: 40px 0;
+}
+
+.tpl-design-10-archviz .sm-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.tpl-design-10-archviz .sm-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+.tpl-design-10-archviz .sm-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  border: 1px solid var(--color-line);
+  padding: 20px 34px;
+  position: relative;
+  transition: border-color 0.35s ease, color 0.35s ease;
+}
+
+.tpl-design-10-archviz .sm-cta::after {
+  content: '';
+  width: 34px;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width 0.35s ease;
+}
+
+.tpl-design-10-archviz .sm-cta:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.tpl-design-10-archviz .sm-cta:hover::after {
+  width: 52px;
+}
+
+/* ---------- nav + overlay ---------- */
+
+/* Fixed header anchored to the top of the template's scroll area
+   (--tpl-top = the viewer toolbar's height, 0 in an export) so it is no
+   longer hidden under the toolbar. */
+.tpl-design-10-archviz .sm-nav {
+  position: fixed;
+  top: var(--tpl-top, 0px);
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px clamp(20px, 5vw, 72px);
+  mix-blend-mode: difference;
+}
+
+.tpl-design-10-archviz .sm-wordmark {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 850;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.tpl-design-10-archviz .sm-burger {
+  appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  margin: -10px;
+}
+
+.tpl-design-10-archviz .sm-burger span {
+  display: block;
+  width: 34px;
+  height: 2px;
+  background: var(--color-text);
+  transition: transform 0.35s ease;
+}
+
+.tpl-design-10-archviz .sm-burger:hover span:first-child {
+  transform: translateX(6px);
+}
+
+.tpl-design-10-archviz .sm-burger.is-open span:first-child {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.tpl-design-10-archviz .sm-burger.is-open span:last-child {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.tpl-design-10-archviz .sm-overlay {
+  position: fixed;
+  inset: var(--tpl-top, 0px) 0 0 0;
+  z-index: 70;
+  background: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px clamp(20px, 5vw, 72px) clamp(28px, 5vh, 56px);
+}
+
+.tpl-design-10-archviz .sm-ov-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tpl-design-10-archviz .sm-ov-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tpl-design-10-archviz .sm-ov-link {
+  display: flex;
+  align-items: baseline;
+  gap: 26px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-10-archviz .sm-ov-num {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+}
+
+.tpl-design-10-archviz .sm-ov-label {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 850;
+  font-size: clamp(2.4rem, 9vw, 5rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.tpl-design-10-archviz .sm-ov-link:hover .sm-ov-label {
+  color: var(--color-accent);
+  transform: translateX(14px);
+}
+
+.tpl-design-10-archviz .sm-ov-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-10-archviz .sm-ov-foot a {
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+
+/* ---------- hero ---------- */
+
+.tpl-design-10-archviz .sm-hero {
+  position: relative;
+  /* Height is owned by the pinned ScrollFrames stage below. */
+}
+
+/* ScrollFrames contract: the design owns the stage height. Canvas styles
+   are the component's — never override .sf-canvas here. */
+.tpl-design-10-archviz .sf-stage {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+
+/* Reduced-motion: the component renders a static frame instead of a pin. */
+.tpl-design-10-archviz .sf-static {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+
+.tpl-design-10-archviz .sf-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tpl-design-10-archviz .sf-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.tpl-design-10-archviz .sf-overlay a,
+.tpl-design-10-archviz .sf-overlay button {
+  pointer-events: auto;
+}
+
+.tpl-design-10-archviz .sm-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, var(--color-veil) 0%, transparent 55%),
+    linear-gradient(to right, rgba(12, 12, 12, 0.45) 0%, transparent 60%);
+}
+
+.tpl-design-10-archviz .sm-hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 0 clamp(20px, 5vw, 72px) clamp(72px, 12vh, 140px);
+  max-width: 1440px;
+}
+
+.tpl-design-10-archviz .sm-hero-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 24px;
+}
+
+.tpl-design-10-archviz .sm-hero-title {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 900;
+  font-size: clamp(3.2rem, 12vw, 10rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 30px;
+  max-width: 12ch;
+}
+
+.tpl-design-10-archviz .sm-hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.7;
+  max-width: 52ch;
+  color: var(--color-text);
+  margin: 0 0 40px;
+}
+
+.tpl-design-10-archviz .sm-hero-side {
+  position: absolute;
+  z-index: 2;
+  right: clamp(20px, 5vw, 72px);
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: center;
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-10-archviz .sm-scroll-cue {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-10-archviz .sm-scroll-cue::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 44px;
+  margin: 12px auto 0;
+  background: var(--color-accent);
+}
+
+/* ---------- kinetic marquee ---------- */
+
+.tpl-design-10-archviz .sm-marquee {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  overflow: hidden;
+  padding: 18px 0;
+}
+
+.tpl-design-10-archviz .sm-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: sm-marquee 22s linear infinite;
+}
+
+.tpl-design-10-archviz .sm-marquee-half {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.tpl-design-10-archviz .sm-marquee-word {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 850;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0 28px;
+  white-space: nowrap;
+}
+
+.tpl-design-10-archviz .sm-marquee-word::after {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  margin-left: 56px;
+  vertical-align: middle;
+}
+
+@keyframes sm-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- projects / orbit ---------- */
+
+.tpl-design-10-archviz .sm-projects {
+  padding: clamp(96px, 12vw, 180px) 0 0;
+}
+
+.tpl-design-10-archviz .sm-projects-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.tpl-design-10-archviz .sm-hint {
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.tpl-design-10-archviz .sm-note {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.tpl-design-10-archviz .sm-orbit-pin {
+  position: relative;
+}
+
+.tpl-design-10-archviz .sm-orbit-stage {
+  position: relative;
+  /* pinned stage = the visible scroll area */
+  height: var(--tpl-vh, 100svh);
+  min-height: min(620px, var(--tpl-vh, 100svh));
+  overflow: hidden;
+  perspective: 1600px;
+  background:
+    radial-gradient(ellipse 62% 52% at 50% 56%, rgba(237, 234, 226, 0.09) 0%, transparent 70%),
+    var(--color-primary);
+}
+
+.tpl-design-10-archviz .sm-ring {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tpl-design-10-archviz .sm-ring .sm-card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: clamp(280px, 30vw, 400px);
+  transform: translate(-50%, -52%) rotateY(var(--a, 0deg)) translateZ(min(36vw, 430px));
+  backface-visibility: hidden;
+  opacity: 0.32;
+  transition: opacity 0.45s ease;
+}
+
+.tpl-design-10-archviz .sm-ring .sm-card.is-front {
+  opacity: 1;
+}
+
+.tpl-design-10-archviz .sm-card-visual {
+  position: relative;
+  aspect-ratio: 4 / 4.6;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.tpl-design-10-archviz .sm-card-visual .a-img,
+.tpl-design-10-archviz .sm-card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tpl-design-10-archviz .sm-ring .sm-card.is-front .sm-card-visual {
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.65), 0 0 0 1px var(--color-line);
+}
+
+.tpl-design-10-archviz .sm-card-num {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  font-family: var(--font-display);
+  font-weight: 850;
+  font-size: 15px;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+.tpl-design-10-archviz .sm-card-body {
+  padding: 22px 4px 0;
+}
+
+.tpl-design-10-archviz .sm-card-status {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 10px;
+}
+
+.tpl-design-10-archviz .sm-card-name {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+
+.tpl-design-10-archviz .sm-card-loc {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin: 0 0 12px;
+}
+
+.tpl-design-10-archviz .sm-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  margin: 0 0 14px;
+}
+
+.tpl-design-10-archviz .sm-card-price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* readout */
+.tpl-design-10-archviz .sm-readout {
+  position: absolute;
+  z-index: 3;
+  left: clamp(20px, 5vw, 72px);
+  bottom: clamp(48px, 9vh, 96px);
+  max-width: 420px;
+}
+
+.tpl-design-10-archviz .sm-readout-count {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-weight: 850;
+}
+
+.tpl-design-10-archviz .sm-readout-num {
+  font-stretch: 125%;
+  font-size: clamp(3rem, 6vw, 4.6rem);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.tpl-design-10-archviz .sm-readout-total {
+  font-size: 1rem;
+  color: var(--color-muted);
+  margin-left: 8px;
+}
+
+.tpl-design-10-archviz .sm-readout-name {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+
+.tpl-design-10-archviz .sm-readout-meta {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin: 0 0 10px;
+}
+
+.tpl-design-10-archviz .sm-readout-price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.tpl-design-10-archviz .sm-orbit-progress {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-line);
+}
+
+.tpl-design-10-archviz .sm-orbit-progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* static fallback: horizontal snap row */
+.tpl-design-10-archviz .sm-orbit-static {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 24px clamp(20px, 5vw, 72px) clamp(96px, 12vw, 180px);
+  -webkit-overflow-scrolling: touch;
+}
+
+.tpl-design-10-archviz .sm-orbit-static .sm-card {
+  flex: 0 0 78vw;
+  max-width: 380px;
+  scroll-snap-align: center;
+  opacity: 1;
+}
+
+/* ---------- process ---------- */
+
+.tpl-design-10-archviz .sm-process {
+  padding: clamp(96px, 12vw, 180px) 0;
+}
+
+.tpl-design-10-archviz .sm-process-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(48px, 7vw, 110px);
+  align-items: start;
+}
+
+.tpl-design-10-archviz .sm-process-main {
+  position: relative;
+}
+
+.tpl-design-10-archviz .sm-steps {
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+}
+
+.tpl-design-10-archviz .sm-step {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 24px;
+  padding: 34px 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-10-archviz .sm-step:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-10-archviz .sm-step-num {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 850;
+  font-size: 1.6rem;
+  color: var(--color-accent);
+}
+
+.tpl-design-10-archviz .sm-step-title {
+  font-family: var(--font-display);
+  font-stretch: 110%;
+  font-weight: 750;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0;
+  margin: 0 0 10px;
+}
+
+.tpl-design-10-archviz .sm-step-text {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 46ch;
+}
+
+.tpl-design-10-archviz .sm-process-line {
+  position: absolute;
+  left: -34px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-line);
+}
+
+.tpl-design-10-archviz .sm-process-line-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.tpl-design-10-archviz .sm-process-fig {
+  margin: 0;
+  position: sticky;
+  top: 110px;
+}
+
+.tpl-design-10-archviz .sm-frame {
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.tpl-design-10-archviz .sm-frame .a-img,
+.tpl-design-10-archviz .sm-frame img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 3.6;
+  object-fit: cover;
+}
+
+.tpl-design-10-archviz .sm-process-fig figcaption {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  padding-top: 16px;
+  border-top: 1px solid var(--color-line);
+  margin-top: 18px;
+}
+
+/* ---------- studio ---------- */
+
+.tpl-design-10-archviz .sm-studio {
+  position: relative;
+  padding: clamp(96px, 12vw, 180px) 0;
+  overflow: hidden;
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-10-archviz .sm-studio-giant {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 900;
+  font-size: clamp(6rem, 22vw, 22rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-line);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.tpl-design-10-archviz .sm-studio .sm-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.tpl-design-10-archviz .sm-studio-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  margin-bottom: 64px;
+}
+
+.tpl-design-10-archviz .sm-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 0 0 64px;
+  padding: 0;
+}
+
+.tpl-design-10-archviz .sm-stat {
+  border-top: 2px solid var(--color-accent);
+  padding-top: 20px;
+}
+
+.tpl-design-10-archviz .sm-stat-value {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+.tpl-design-10-archviz .sm-stat-label {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-10-archviz .sm-principals {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tpl-design-10-archviz .sm-principals li {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--color-line);
+  padding-top: 18px;
+}
+
+.tpl-design-10-archviz .sm-principals strong {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.tpl-design-10-archviz .sm-principals span {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+/* ---------- contact ---------- */
+
+.tpl-design-10-archviz .sm-contact {
+  padding: clamp(120px, 14vw, 200px) 0 clamp(96px, 12vw, 160px);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-10-archviz .sm-contact-title {
+  font-size: clamp(2.8rem, 9vw, 7rem);
+  max-width: 14ch;
+}
+
+.tpl-design-10-archviz .sm-contact .sm-body {
+  margin-bottom: 44px;
+}
+
+.tpl-design-10-archviz .sm-contact-cta {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  margin-bottom: 80px;
+}
+
+.tpl-design-10-archviz .sm-contact-cta:hover {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.tpl-design-10-archviz .sm-contact-cta:hover::after {
+  background: var(--color-primary);
+}
+
+.tpl-design-10-archviz .sm-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.tpl-design-10-archviz .sm-contact-label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 14px;
+}
+
+.tpl-design-10-archviz .sm-contact-grid a {
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 3px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.tpl-design-10-archviz .sm-contact-grid a:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.tpl-design-10-archviz .sm-contact-grid p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin: 0 0 6px;
+}
+
+/* ---------- footer ---------- */
+
+.tpl-design-10-archviz .sm-footer {
+  padding: 56px 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-10-archviz .sm-footer-line {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  margin: 0 0 12px;
+}
+
+.tpl-design-10-archviz .sm-colophon {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- custom cursor ---------- */
+
+.tpl-design-10-archviz .sm-cursor,
+.tpl-design-10-archviz .sm-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tpl-design-10-archviz .sm-cursor {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  margin: -4px 0 0 -4px;
+}
+
+.tpl-design-10-archviz .sm-cursor-ring {
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 1px solid var(--color-line);
+  transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease, border-color 0.3s ease;
+}
+
+.tpl-design-10-archviz .sm-cursor-ring.is-hot {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  border-color: var(--color-accent);
+}
+
+@media (pointer: coarse) {
+  .tpl-design-10-archviz .sm-cursor,
+  .tpl-design-10-archviz .sm-cursor-ring {
+    display: none;
+  }
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1024px) {
+  .tpl-design-10-archviz .sm-contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tpl-design-10-archviz .sm-process-line {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .tpl-design-10-archviz .sm-process-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-10-archviz .sm-process-fig {
+    position: static;
+  }
+  .tpl-design-10-archviz .sm-studio-cols {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-10-archviz .sm-stats {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .tpl-design-10-archviz .sm-principals {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-10-archviz .sm-step {
+    grid-template-columns: 64px 1fr;
+    gap: 16px;
+  }
+  .tpl-design-10-archviz .sm-hero-side {
+    display: none;
+  }
+  .tpl-design-10-archviz .sm-contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+
+.tpl-design-10-archviz.is-reduced .sm-marquee-track {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-10-archviz .sm-marquee-track {
+    animation: none;
+  }
+  .tpl-design-10-archviz .sm-cta,
+  .tpl-design-10-archviz .sm-cta::after,
+  .tpl-design-10-archviz .sm-ov-label,
+  .tpl-design-10-archviz .sm-cursor-ring {
+    transition: none;
+  }
+}

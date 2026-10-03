@@ -1,0 +1,322 @@
+/* ============================================================
+   Norm Studio — design-05-swiss
+   Minimal Swiss studio. Discipline as luxury.
+   Tokens scoped to .tpl-design-05-swiss. No :root writes.
+   Motion is M5 only (grid-line draws + hard rectangular wipes,
+   power2.out ≤ 0.7s); initial states are set by GSAP, never CSS.
+   ============================================================ */
+
+.tpl-design-05-swiss {
+  --color-background: #ffffff;
+  --color-surface: #f4f4f2;
+  --color-primary: #111111;
+  --color-secondary: #555555;
+  --color-accent: #ff4d00;
+  --color-text: #111111;
+  --color-muted: #8a8a8a;
+  --color-rule: #e2e2e2;
+  --font-display: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+  --ns-pad: clamp(16px, 4vw, 64px);
+  --ns-sec: clamp(64px, 9vw, 128px);
+  --ns-gap: clamp(12px, 2vw, 24px);
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+.tpl-design-05-swiss *,
+.tpl-design-05-swiss *::before,
+.tpl-design-05-swiss *::after { box-sizing: border-box; }
+
+.tpl-design-05-swiss ::selection { background: var(--color-primary); color: #fff; }
+
+.tpl-design-05-swiss img { display: block; max-width: 100%; }
+
+/* ---- shared image primitives ---- */
+.tpl-design-05-swiss .a-img { display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-05-swiss .a-img img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-05-swiss .a-img-ph {
+  display: flex; align-items: center; justify-content: center;
+  aspect-ratio: 4 / 3; background: var(--color-surface);
+  color: var(--color-muted); font-family: var(--font-display); font-size: 2rem;
+}
+/* ---- page frame + visible 12-col grid ---- */
+.tpl-design-05-swiss .ns-page {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.tpl-design-05-swiss .ns-grid {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--ns-pad); right: var(--ns-pad);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  pointer-events: none;
+  z-index: 0;
+}
+.tpl-design-05-swiss .ns-gline {
+  border-left: 1px solid var(--color-rule);
+  transform-origin: top center;
+}
+.tpl-design-05-swiss .ns-gline:last-child { border-right: 1px solid var(--color-rule); }
+
+.tpl-design-05-swiss .ns-main { position: relative; z-index: 1; }
+
+/* ---- nav: hairline bar, index numbers, email as CTA ---- */
+.tpl-design-05-swiss .ns-nav {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-primary);
+}
+.tpl-design-05-swiss .ns-nav-inner {
+  max-width: 1440px; margin: 0 auto;
+  padding: 0 var(--ns-pad);
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.tpl-design-05-swiss .ns-wordmark {
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+  letter-spacing: -0.02em; color: var(--color-text); text-decoration: none;
+}
+.tpl-design-05-swiss .ns-links { display: flex; gap: clamp(12px, 2.5vw, 32px); }
+.tpl-design-05-swiss .ns-links a {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--color-text); text-decoration: none;
+  display: inline-flex; align-items: baseline; gap: 6px;
+}
+.tpl-design-05-swiss .ns-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.tpl-design-05-swiss .ns-idx { color: var(--color-accent); font-size: 10px; }
+.tpl-design-05-swiss .ns-email {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--color-text); text-decoration: underline; text-underline-offset: 4px;
+}
+
+/* ---- type utilities ---- */
+.tpl-design-05-swiss .ns-eyebrow {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--color-secondary); margin: 0 0 16px;
+}
+.tpl-design-05-swiss .ns-h2 {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.03em; line-height: 1.05;
+  margin: 0 0 12px;
+}
+.tpl-design-05-swiss .ns-sub { color: var(--color-secondary); margin: 0 0 32px; max-width: 52ch; }
+.tpl-design-05-swiss .ns-rule {
+  display: block; height: 1px; background: var(--color-primary);
+  transform-origin: left center; margin: 0 0 40px;
+}
+
+/* ---- sections ---- */
+.tpl-design-05-swiss .ns-sec { padding: var(--ns-sec) var(--ns-pad); position: relative; }
+.tpl-design-05-swiss .ns-sec-head { margin-bottom: clamp(32px, 4vw, 56px); }
+
+/* ---- hero: grid, one line, one image ---- */
+.tpl-design-05-swiss .ns-hero { padding: clamp(40px, 6vw, 88px) var(--ns-pad) var(--ns-sec); position: relative; }
+.tpl-design-05-swiss .ns-hero-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 32px;
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: 16px; margin-bottom: clamp(32px, 5vw, 72px);
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--color-secondary);
+}
+.tpl-design-05-swiss .ns-hero-title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  letter-spacing: -0.03em; line-height: 1.04;
+  margin: 0 0 clamp(24px, 3vw, 40px);
+  max-width: 14ch;
+}
+.tpl-design-05-swiss .ns-hero-facts {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--color-primary);
+  margin-bottom: clamp(32px, 5vw, 72px);
+}
+.tpl-design-05-swiss .ns-hero-facts > div {
+  padding: 16px 16px 0 0; border-left: 1px solid var(--color-rule);
+}
+.tpl-design-05-swiss .ns-hero-facts > div:first-child { border-left: 0; padding-left: 0; }
+.tpl-design-05-swiss .ns-hero-facts dt {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--color-muted); margin-bottom: 4px;
+}
+.tpl-design-05-swiss .ns-hero-facts dd { margin: 0; font-size: 12px; }
+.tpl-design-05-swiss .ns-hero-media { position: relative; }
+
+/* Scroll hint chip over the pinned cut sequence: black chip, white mono. */
+.tpl-design-05-swiss .ns-scrub-hint {
+  position: absolute; z-index: 2;
+  left: var(--ns-gap); bottom: clamp(20px, 4vh, 40px);
+  margin: 0; padding: 8px 12px;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #fff; background: var(--color-primary);
+}
+.tpl-design-05-swiss .ns-caption {
+  font-size: 11px; color: var(--color-muted); letter-spacing: 0.04em;
+  margin-top: 12px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+
+/* ---- work index: strict numbered rows ---- */
+.tpl-design-05-swiss .ns-index { border-bottom: 1px solid var(--color-primary); }
+.tpl-design-05-swiss .ns-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 72px 120px 1fr 220px 80px;
+  align-items: center;
+  gap: 0 var(--ns-gap);
+  padding: 20px 12px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.tpl-design-05-swiss .ns-row-rule {
+  position: absolute; top: -1px; left: 0; right: 0; height: 1px;
+  background: var(--color-primary); transform-origin: left center;
+}
+.tpl-design-05-swiss .ns-num {
+  font-size: 14px; color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-05-swiss .ns-thumb { width: 120px; }
+.tpl-design-05-swiss .ns-thumb .a-img { aspect-ratio: 4 / 3; }
+.tpl-design-05-swiss .ns-row-title {
+  font-family: var(--font-display); font-weight: 600; font-size: 1.25rem;
+  letter-spacing: -0.02em; margin: 0; line-height: 1.2;
+}
+.tpl-design-05-swiss .ns-row-disc { font-size: 12px; color: var(--color-secondary); }
+.tpl-design-05-swiss .ns-row-year {
+  font-size: 12px; color: var(--color-secondary); text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-05-swiss .ns-row:hover { background: var(--color-primary); color: #fff; }
+.tpl-design-05-swiss .ns-row:hover .ns-row-disc,
+.tpl-design-05-swiss .ns-row:hover .ns-row-year { color: #fff; }
+.tpl-design-05-swiss .ns-row:hover .ns-num { color: var(--brand-on-dark, var(--color-accent)); }
+
+/* ---- capabilities: two columns, no adjectives ---- */
+.tpl-design-05-swiss .ns-cap-grid { display: grid; grid-template-columns: repeat(12, 1fr); }
+.tpl-design-05-swiss .ns-cap-col:first-child { grid-column: 1 / 7; }
+.tpl-design-05-swiss .ns-cap-col:last-child { grid-column: 7 / 13; }
+.tpl-design-05-swiss .ns-cap-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--color-secondary); margin: 0 0 8px;
+}
+.tpl-design-05-swiss .ns-cap-list { list-style: none; margin: 0 0 40px; padding: 0; border-top: 1px solid var(--color-primary); }
+.tpl-design-05-swiss .ns-cap-list li {
+  font-family: var(--font-display); font-weight: 500; font-size: 1.125rem;
+  letter-spacing: -0.01em; padding: 14px 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+.tpl-design-05-swiss .ns-note { color: var(--color-secondary); font-size: 12px; margin: 0; max-width: 52ch; }
+
+/* ---- studio facts ---- */
+.tpl-design-05-swiss .ns-facts { border-top: 1px solid var(--color-primary); margin: 0; }
+.tpl-design-05-swiss .ns-fact {
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  padding: 16px 0; border-bottom: 1px solid var(--color-rule);
+}
+.tpl-design-05-swiss .ns-fact dt {
+  grid-column: 1 / 5; margin: 0;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--color-muted);
+}
+.tpl-design-05-swiss .ns-fact dd {
+  grid-column: 5 / 13; margin: 0;
+  font-family: var(--font-display); font-weight: 500; font-size: 1.125rem;
+  letter-spacing: -0.01em;
+}
+
+/* ---- journal ---- */
+.tpl-design-05-swiss .ns-journal-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0; }
+.tpl-design-05-swiss .ns-jnote { grid-column: span 4; padding-right: clamp(16px, 3vw, 48px); }
+.tpl-design-05-swiss .ns-jnote + .ns-jnote { border-left: 1px solid var(--color-rule); padding-left: clamp(16px, 3vw, 48px); }
+.tpl-design-05-swiss .ns-jnote .ns-num { display: block; margin-bottom: 16px; }
+.tpl-design-05-swiss .ns-jdate { font-size: 11px; color: var(--color-muted); letter-spacing: 0.08em; margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+.tpl-design-05-swiss .ns-jtitle {
+  font-family: var(--font-display); font-weight: 600; font-size: 1.25rem;
+  letter-spacing: -0.02em; margin: 0 0 8px;
+}
+.tpl-design-05-swiss .ns-jtext { font-size: 12.5px; color: var(--color-secondary); margin: 0; }
+
+/* ---- contact ---- */
+.tpl-design-05-swiss .ns-contact-mail {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.5rem, 4.5vw, 2.75rem);
+  letter-spacing: -0.03em; color: var(--color-text);
+  text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px;
+  display: inline-block; margin: 8px 0 40px;
+  word-break: break-all;
+}
+.tpl-design-05-swiss .ns-contact-mail:hover { color: var(--color-secondary); }
+.tpl-design-05-swiss .ns-contact-grid { display: grid; grid-template-columns: repeat(12, 1fr); }
+.tpl-design-05-swiss .ns-contact-block { grid-column: span 4; padding-right: clamp(16px, 3vw, 48px); }
+.tpl-design-05-swiss .ns-contact-block + .ns-contact-block { border-left: 1px solid var(--color-rule); padding-left: clamp(16px, 3vw, 48px); }
+.tpl-design-05-swiss .ns-contact-block h3 {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--color-muted); margin: 0 0 12px; font-weight: 400;
+  font-family: var(--font-body);
+}
+.tpl-design-05-swiss .ns-contact-block p, .tpl-design-05-swiss .ns-contact-block address { margin: 0; font-style: normal; font-size: 12.5px; }
+.tpl-design-05-swiss .ns-contact-block a { color: var(--color-text); }
+.tpl-design-05-swiss .ns-hours { list-style: none; margin: 0; padding: 0; font-size: 12.5px; }
+.tpl-design-05-swiss .ns-hours li { display: flex; justify-content: space-between; gap: 16px; padding: 4px 0; }
+.tpl-design-05-swiss .ns-contact-note { margin-top: 40px; }
+
+/* ---- footer ---- */
+.tpl-design-05-swiss .ns-footer {
+  border-top: 1px solid var(--color-primary);
+  padding: 24px var(--ns-pad) 40px;
+  display: flex; flex-wrap: wrap; gap: 8px 32px; justify-content: space-between;
+  font-size: 11px; color: var(--color-muted); letter-spacing: 0.04em;
+  position: relative; z-index: 1;
+}
+.tpl-design-05-swiss .ns-footer p { margin: 0; }
+
+/* ============================================================
+   Responsive: 1440 / 768 / 360
+   ============================================================ */
+@media (max-width: 900px) {
+  .tpl-design-05-swiss .ns-cap-col:first-child { grid-column: 1 / 13; }
+  .tpl-design-05-swiss .ns-cap-col:last-child { grid-column: 1 / 13; }
+  .tpl-design-05-swiss .ns-jnote { grid-column: 1 / 13; padding: 0 0 32px; }
+  .tpl-design-05-swiss .ns-jnote + .ns-jnote { border-left: 0; border-top: 1px solid var(--color-rule); padding: 32px 0 32px; }
+  .tpl-design-05-swiss .ns-contact-block { grid-column: 1 / 13; padding: 0 0 32px; }
+  .tpl-design-05-swiss .ns-contact-block + .ns-contact-block { border-left: 0; border-top: 1px solid var(--color-rule); padding: 32px 0 32px; }
+  .tpl-design-05-swiss .ns-row { grid-template-columns: 56px 88px 1fr 72px; }
+  .tpl-design-05-swiss .ns-row-disc { display: none; }
+  .tpl-design-05-swiss .ns-thumb { width: 88px; }
+  .tpl-design-05-swiss .ns-hero-facts { grid-template-columns: 1fr; }
+  .tpl-design-05-swiss .ns-hero-facts > div { border-left: 0; border-top: 1px solid var(--color-rule); padding: 12px 0; }
+  .tpl-design-05-swiss .ns-hero-facts > div:first-child { border-top: 0; }
+}
+
+@media (max-width: 560px) {
+  .tpl-design-05-swiss .ns-email { display: none; }
+  .tpl-design-05-swiss .ns-links { gap: 12px; }
+  .tpl-design-05-swiss .ns-links .ns-idx { display: none; }
+  .tpl-design-05-swiss .ns-wordmark { font-size: 0.9rem; }
+  .tpl-design-05-swiss .ns-row {
+    grid-template-columns: 44px 1fr 64px;
+    grid-template-areas: 'num title year' 'num thumb year';
+    row-gap: 12px;
+    padding: 16px 8px;
+  }
+  .tpl-design-05-swiss .ns-num { grid-area: num; }
+  .tpl-design-05-swiss .ns-row-title { grid-area: title; font-size: 1.05rem; }
+  .tpl-design-05-swiss .ns-thumb { grid-area: thumb; width: 120px; }
+  .tpl-design-05-swiss .ns-row-year { grid-area: year; }
+  .tpl-design-05-swiss .ns-fact dt { grid-column: 1 / 13; margin-bottom: 4px; }
+  .tpl-design-05-swiss .ns-fact dd { grid-column: 1 / 13; }
+}
+
+/* Reduced motion: nothing to hide — GSAP sets all initial states,
+   so with motion off everything simply renders final and static. */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-05-swiss .ns-row { transition: none; }
+}

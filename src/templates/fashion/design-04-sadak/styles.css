@@ -1,0 +1,547 @@
+/* ============ SADAK · design-04-sadak — Indo-western streetwear ============ */
+.tpl-design-04-sadak {
+  --color-primary: #F2EFE6;
+  --color-secondary: #8F8B80;
+  --color-accent: #E8442E;
+  --color-background: #111110;
+  --color-surface: #1D1D1B;
+  --color-text: #F2EFE6;
+  --color-muted: #8F8B80;
+  --font-display: 'Anton', 'Arial Black', sans-serif;
+  --font-body: 'Space Grotesk', 'Helvetica Neue', sans-serif;
+  /* ink on accent-filled pills, strips and tags: the Kela tone on this dark
+     page is a light pink, so filled accents carry ink, never white */
+  --sd4-on-accent: var(--color-background);
+  --sd4-accent-hi: color-mix(in srgb, var(--color-accent) 84%, #fff);
+  --sd4-accent-glow: color-mix(in srgb, var(--color-accent) 38%, transparent);
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 0;
+}
+
+.tpl-design-04-sadak img { display: block; width: 100%; height: auto; }
+.tpl-design-04-sadak a { color: inherit; text-decoration: none; }
+.tpl-design-04-sadak button { font-family: inherit; cursor: pointer; }
+
+/* ---------- shared bits ---------- */
+.tpl-design-04-sadak .sd4-kicker {
+  font-size: 0.75rem; letter-spacing: 0.28em; font-weight: 700;
+  color: var(--color-accent); margin: 0 0 1rem;
+}
+.tpl-design-04-sadak .sd4-h2 {
+  font-family: var(--font-display); text-transform: uppercase;
+  font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 0.95;
+  letter-spacing: 0.01em; margin: 0 0 1.25rem; color: var(--color-text);
+}
+.tpl-design-04-sadak .sd4-h2-outline {
+  color: transparent; -webkit-text-stroke: 2px var(--color-text);
+}
+.tpl-design-04-sadak .sd4-lede {
+  font-size: clamp(1rem, 1.6vw, 1.2rem); line-height: 1.6;
+  color: var(--color-muted); max-width: 44rem; margin: 0 0 2.5rem;
+}
+.tpl-design-04-sadak .sd4-section {
+  padding: clamp(4rem, 7vw, 6rem) clamp(1.25rem, 5vw, 5rem);
+  position: relative;
+}
+.tpl-design-04-sadak .sd4-eyebrow {
+  font-size: 0.8rem; letter-spacing: 0.3em; font-weight: 700;
+  color: var(--color-accent); margin: 0 0 1.25rem;
+}
+
+/* ---------- countdown strip + nav (one sticky stack) ---------- */
+.tpl-design-04-sadak .sd4-topbar {
+  position: sticky; top: 0; z-index: 60;
+  /* overlay the hero instead of pushing it down: the full-height frame stage
+     then starts (and pins) at the very top, so its bottom-anchored copy and
+     countdown are never below the fold at load. --sd4-top is measured in JS. */
+  margin-bottom: calc(-1 * var(--sd4-top, 108px));
+}
+.tpl-design-04-sadak .sd4-strip {
+  background: var(--color-accent); color: var(--color-background);
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em;
+  text-align: center; padding: 0.6rem 1rem;
+  display: flex; align-items: center; justify-content: center; gap: 0.35rem;
+  flex-wrap: wrap;
+}
+.tpl-design-04-sadak .sd4-strip strong { font-variant-numeric: tabular-nums; }
+.tpl-design-04-sadak .sd4-strip-blink {
+  width: 0.55rem; height: 0.55rem; border-radius: 50%;
+  background: var(--color-background);
+  animation: sd4-blink 1s steps(2) infinite;
+}
+@keyframes sd4-blink { 50% { opacity: 0.15; } }
+
+/* ---------- nav ---------- */
+.tpl-design-04-sadak .sd4-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: 1rem clamp(1.25rem, 5vw, 5rem);
+  border-bottom: 1px solid rgba(242, 239, 230, 0.14);
+  /* opaque enough to read without backdrop-filter, which would re-blur the
+     scrolling page under the sticky bar on every frame */
+  background: rgba(17, 17, 16, 0.97);
+}
+.tpl-design-04-sadak .sd4-wordmark {
+  font-family: var(--font-display); font-size: 1.7rem; letter-spacing: 0.06em;
+}
+.tpl-design-04-sadak .sd4-nav-links { display: flex; gap: 1.75rem; }
+.tpl-design-04-sadak .sd4-nav-links a {
+  font-size: 0.8rem; letter-spacing: 0.22em; font-weight: 500;
+  color: var(--color-muted); transition: color 0.2s;
+}
+.tpl-design-04-sadak .sd4-nav-links a:hover { color: var(--color-text); }
+.tpl-design-04-sadak .sd4-nav-pill {
+  background: var(--color-accent); color: var(--sd4-on-accent) !important;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em;
+  padding: 0.7rem 1.4rem; border-radius: 999px; white-space: nowrap;
+  transition: transform 0.2s, background 0.2s;
+}
+.tpl-design-04-sadak .sd4-nav-pill:hover { transform: scale(1.05); background: var(--sd4-accent-hi); }
+
+/* ---------- hero ---------- */
+.tpl-design-04-sadak .sd4-hero {
+  position: relative; min-height: 92svh;
+  display: block; overflow: hidden;
+}
+/* ScrollFrames hero (fabric-snap scrub): critical layout is inline in the
+   component (stage height defaults to 100svh); stylesheet only aligns overlay. */
+.tpl-design-04-sadak .sf-overlay {
+  z-index: 2;
+  display: flex; align-items: flex-end;
+}
+.tpl-design-04-sadak .sd4-hero-shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(17,17,16,0.55) 0%, rgba(17,17,16,0.25) 45%, rgba(17,17,16,0.88) 100%);
+}
+.tpl-design-04-sadak .sd4-hero-inner {
+  position: relative; z-index: 2; width: 100%;
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 5vw, 5rem);
+}
+.tpl-design-04-sadak .sd4-hero-title {
+  font-family: var(--font-display); text-transform: uppercase;
+  font-size: clamp(4rem, 15vw, 13rem); line-height: 0.86;
+  margin: 0 0 1.5rem; letter-spacing: 0.005em;
+}
+.tpl-design-04-sadak .sd4-mask { display: block; overflow: hidden; }
+.tpl-design-04-sadak .sd4-mask > span { display: block; will-change: transform; }
+.tpl-design-04-sadak .sd4-hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.25rem); line-height: 1.55;
+  max-width: 34rem; color: var(--color-text); margin: 0 0 2rem;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.6);
+}
+.tpl-design-04-sadak .sd4-hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.tpl-design-04-sadak .sd4-cta-pill {
+  display: inline-block; background: var(--color-accent); color: var(--sd4-on-accent);
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.14em;
+  padding: 1rem 2.2rem; border-radius: 999px; text-transform: uppercase;
+  /* the hero pill pops in with a GSAP transform tween; the hover uses the
+     independent `scale` property so the two never fight */
+  transition: scale 0.2s, background 0.2s;
+}
+.tpl-design-04-sadak .sd4-cta-pill:hover { scale: 1.05; background: var(--sd4-accent-hi); }
+.tpl-design-04-sadak .sd4-cta-ghost {
+  display: inline-block; border: 1px solid var(--color-text); color: var(--color-text);
+  font-weight: 500; font-size: 0.85rem; letter-spacing: 0.14em;
+  padding: 1rem 2.2rem; border-radius: 999px; text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+}
+.tpl-design-04-sadak .sd4-cta-ghost:hover { background: var(--color-text); color: var(--color-background); }
+.tpl-design-04-sadak .sd4-hero-count {
+  display: flex; align-items: baseline; gap: 0.75rem;
+  font-size: 0.78rem; letter-spacing: 0.24em; color: var(--color-muted);
+}
+.tpl-design-04-sadak .sd4-hero-count strong {
+  font-family: var(--font-display); font-size: 2rem; letter-spacing: 0.04em;
+  color: var(--color-accent); font-variant-numeric: tabular-nums;
+}
+.tpl-design-04-sadak .sd4-hero-sticker {
+  position: absolute; top: clamp(4.5rem, 10vw, 7rem); right: clamp(1rem, 5vw, 4rem);
+  z-index: 2; font-family: var(--font-display); font-size: 1.4rem;
+  background: var(--color-accent); color: var(--sd4-on-accent); padding: 1.1rem 1.25rem;
+  transform: rotate(6deg); border-radius: 4px;
+  box-shadow: 0 8px 30px var(--sd4-accent-glow);
+}
+
+/* ---------- ticker ---------- */
+.tpl-design-04-sadak .sd4-ticker {
+  background: var(--color-accent); color: var(--sd4-on-accent); overflow: hidden;
+  border-top: 2px solid var(--color-background); border-bottom: 2px solid var(--color-background);
+  padding: 0.7rem 0;
+}
+.tpl-design-04-sadak .sd4-ticker-track { display: flex; width: max-content; animation: sd4-marquee 18s linear infinite; }
+.tpl-design-04-sadak .sd4-ticker-run {
+  font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+@keyframes sd4-marquee { to { transform: translateX(-50%); } }
+
+/* ---------- drop cards ---------- */
+.tpl-design-04-sadak .sd4-drop { background: var(--color-background); }
+.tpl-design-04-sadak .sd4-dropgrid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+.tpl-design-04-sadak .sd4-dropcard {
+  background: var(--color-surface); border: 1px solid rgba(242,239,230,0.1);
+  overflow: hidden; transition: background 0.2s, color 0.2s, translate 0.2s;
+}
+.tpl-design-04-sadak .sd4-dropcard:hover {
+  background: var(--color-text); color: var(--color-background); translate: 0 -4px;
+}
+.tpl-design-04-sadak .sd4-dropcard:hover .sd4-fabric,
+.tpl-design-04-sadak .sd4-dropcard:hover .sd4-fit { color: #4a463d; }
+.tpl-design-04-sadak .sd4-dropcard-img { position: relative; aspect-ratio: 3 / 4; overflow: hidden; }
+.tpl-design-04-sadak .sd4-dropcard-img .a-img { display: block; width: 100%; height: 100%; }
+.tpl-design-04-sadak .sd4-dropcard-img img { width: 100%; height: 100%; object-fit: cover; }
+.tpl-design-04-sadak .sd4-card-tag {
+  position: absolute; top: 0.85rem; left: 0.85rem; z-index: 2;
+  background: var(--color-accent); color: var(--sd4-on-accent); font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.2em; padding: 0.45rem 0.8rem; transform: rotate(-2deg);
+}
+.tpl-design-04-sadak .sd4-dropcard-body { padding: 1.25rem 1.25rem 1.5rem; }
+.tpl-design-04-sadak .sd4-dropcard-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.tpl-design-04-sadak .sd4-dropcard-row h3 {
+  font-family: var(--font-display); font-size: 1.35rem; letter-spacing: 0.02em;
+  margin: 0; text-transform: uppercase; line-height: 1;
+}
+.tpl-design-04-sadak .sd4-stock {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+  color: var(--color-accent); white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-04-sadak .sd4-fabric, .tpl-design-04-sadak .sd4-fit {
+  font-size: 0.85rem; color: var(--color-muted); margin: 0 0 0.35rem; line-height: 1.5;
+}
+.tpl-design-04-sadak .sd4-sizes { display: flex; gap: 0.5rem; margin: 1rem 0; }
+.tpl-design-04-sadak .sd4-sizes button {
+  min-width: 2.75rem; padding: 0.55rem 0.4rem; font-size: 0.78rem; font-weight: 700;
+  background: transparent; color: var(--color-text);
+  border: 1px solid rgba(242,239,230,0.3); transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.tpl-design-04-sadak .sd4-dropcard:hover .sd4-sizes button { color: var(--color-background); border-color: rgba(17,17,16,0.4); }
+.tpl-design-04-sadak .sd4-sizes button.on, .tpl-design-04-sadak .sd4-sizes button:hover {
+  background: var(--color-accent); border-color: var(--color-accent); color: var(--sd4-on-accent) !important;
+}
+.tpl-design-04-sadak .sd4-dropcard-foot {
+  display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+}
+.tpl-design-04-sadak .sd4-price {
+  font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.02em;
+}
+.tpl-design-04-sadak .sd4-quickadd {
+  background: var(--color-text); color: var(--color-background);
+  border: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em;
+  padding: 0.75rem 1.2rem; position: relative; overflow: hidden;
+  transition: color 0.25s;
+}
+.tpl-design-04-sadak .sd4-quickadd::before {
+  content: ''; position: absolute; inset: 0; background: var(--color-accent);
+  transform: scaleX(0); transform-origin: left center; transition: transform 0.25s ease;
+}
+.tpl-design-04-sadak .sd4-quickadd:hover::before { transform: scaleX(1); }
+.tpl-design-04-sadak .sd4-quickadd:hover { color: var(--sd4-on-accent); }
+.tpl-design-04-sadak .sd4-quickadd.added { background: var(--color-accent); color: var(--sd4-on-accent); }
+.tpl-design-04-sadak .sd4-quickadd.added::before { display: none; }
+
+/* ---------- weft wipe bands ---------- */
+.tpl-design-04-sadak .sd4-wipe { position: relative; }
+.tpl-design-04-sadak .sd4-wipe-band {
+  position: absolute; top: 0; bottom: 0; width: 17.5%; z-index: 2;
+  background: var(--color-background); pointer-events: none;
+}
+.tpl-design-04-sadak .sd4-wipe-band:nth-of-type(1) { left: 0; }
+.tpl-design-04-sadak .sd4-wipe-band:nth-of-type(2) { left: 16.6%; }
+.tpl-design-04-sadak .sd4-wipe-band:nth-of-type(3) { left: 33.3%; }
+.tpl-design-04-sadak .sd4-wipe-band:nth-of-type(4) { left: 50%; }
+.tpl-design-04-sadak .sd4-wipe-band:nth-of-type(5) { left: 66.6%; }
+.tpl-design-04-sadak .sd4-wipe-band:nth-of-type(6) { left: 83.3%; }
+
+/* ---------- RUNWAY WALK ---------- */
+.tpl-design-04-sadak .sd4-runway { padding-bottom: 0; }
+.tpl-design-04-sadak .sd4-runway-head {
+  padding: clamp(4.5rem, 9vw, 8rem) clamp(1.25rem, 5vw, 5rem) 2.5rem;
+}
+.tpl-design-04-sadak .sd4-runway-pin {
+  /* pinned just below the sticky countdown + nav (--sd4-top, set from JS):
+     exactly the rest of the visible scroll area, nothing hangs off-screen */
+  position: relative; height: calc(var(--tpl-vh, 100svh) - var(--sd4-top, 0px)); min-height: 480px;
+  background: #0c0c0b; overflow: hidden;
+  border-top: 1px solid rgba(242,239,230,0.12);
+  border-bottom: 1px solid rgba(242,239,230,0.12);
+}
+.tpl-design-04-sadak .rw-lane { position: absolute; left: 0; right: 0; }
+.tpl-design-04-sadak .rw-lane-far { top: 8%; }
+.tpl-design-04-sadak .rw-lane-mid { top: 18%; }
+.tpl-design-04-sadak .rw-lane-near { top: 36%; }
+.tpl-design-04-sadak .rw-runner { position: absolute; top: 0; left: 0; margin: 0; will-change: transform; }
+.tpl-design-04-sadak .rw-runner img { height: auto; }
+.tpl-design-04-sadak .rw-lane-far .rw-runner { width: clamp(140px, 18vw, 240px); opacity: 0.85; }
+.tpl-design-04-sadak .rw-lane-far img { aspect-ratio: 3/4; object-fit: cover; }
+.tpl-design-04-sadak .rw-lane-mid .rw-runner { width: clamp(200px, 28vw, 380px); }
+.tpl-design-04-sadak .rw-lane-mid img { aspect-ratio: 3/4; object-fit: cover; }
+.tpl-design-04-sadak .rw-lane-near .rw-runner { width: clamp(260px, 38vw, 520px); }
+.tpl-design-04-sadak .rw-lane-near img { aspect-ratio: 3/4; object-fit: cover; }
+.tpl-design-04-sadak .rw-ghost {
+  position: absolute; top: 0; left: -14px; width: 100%; opacity: 0.3;
+  pointer-events: none;
+}
+.tpl-design-04-sadak .rw-frame { position: absolute; inset: 6% 5%; pointer-events: none; z-index: 5; }
+.tpl-design-04-sadak .rw-corner { position: absolute; width: 34px; height: 34px; border: 3px solid var(--color-text); }
+.tpl-design-04-sadak .rw-corner.tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.tpl-design-04-sadak .rw-corner.tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.tpl-design-04-sadak .rw-corner.bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.tpl-design-04-sadak .rw-corner.br { bottom: 0; right: 0; border-left: none; border-top: none; }
+.tpl-design-04-sadak .rw-frame-tag {
+  /* centred with auto margins, not a transform: GSAP scales this tag */
+  position: absolute; top: 9%; left: 0; right: 0; margin: 0 auto; width: max-content; z-index: 6;
+  font-family: var(--font-display); font-size: clamp(1.1rem, 2.4vw, 1.8rem);
+  letter-spacing: 0.1em; color: var(--color-text); white-space: nowrap;
+  background: rgba(17,17,16,0.55); padding: 0.5rem 1.25rem;
+  border: 1px solid rgba(242,239,230,0.25);
+}
+.tpl-design-04-sadak .rw-namecard {
+  /* centred with inset + auto margins: GSAP owns this card's transform (y) */
+  position: absolute; inset: 0; margin: auto; width: max-content; height: max-content; z-index: 7;
+  background: var(--color-accent); color: var(--sd4-on-accent); padding: 1rem 1.6rem;
+  text-align: center; opacity: 0; pointer-events: none;
+  box-shadow: 0 12px 44px var(--sd4-accent-glow);
+}
+.tpl-design-04-sadak .rw-namecard strong {
+  display: block; font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.04em;
+}
+.tpl-design-04-sadak .rw-namecard span { font-size: 0.8rem; letter-spacing: 0.12em; }
+.tpl-design-04-sadak .rw-backdrop {
+  /* giant poster type behind the lanes: the stage never reads as an empty
+     black box before the first look walks in or after the last walks out */
+  position: absolute; left: 0; right: 0; top: 50%; margin: 0; z-index: 0;
+  translate: 0 -50%; text-align: center; pointer-events: none; white-space: nowrap;
+  font-family: var(--font-display); font-size: clamp(9rem, 30vw, 30rem); line-height: 0.82;
+  letter-spacing: 0.02em; color: rgba(242, 239, 230, 0.12);
+  -webkit-text-stroke: 1px rgba(242, 239, 230, 0.2);
+}
+.tpl-design-04-sadak .rw-lane { z-index: 1; }
+.tpl-design-04-sadak .rw-hint {
+  position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%); z-index: 6;
+  font-size: 0.7rem; letter-spacing: 0.3em; color: var(--color-muted); white-space: nowrap;
+}
+/* static fallback (mobile + reduced motion) */
+.tpl-design-04-sadak .sd4-runway-static { display: none; }
+@media (max-width: 767px) {
+  .tpl-design-04-sadak .sd4-runway-pin { display: none; }
+  .tpl-design-04-sadak .sd4-runway-static {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    padding: 0 clamp(1.25rem, 5vw, 5rem) clamp(4rem, 8vw, 6rem);
+  }
+  .tpl-design-04-sadak .sd4-runway-static .sd4-lookcard:nth-child(3) { grid-column: 1 / -1; }
+}
+/* ---------- lookbook ---------- */
+.tpl-design-04-sadak .sd4-lookgrid {
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+.tpl-design-04-sadak .sd4-lookgrid .sd4-lookcard:nth-child(1) { grid-column: 1 / 8; }
+.tpl-design-04-sadak .sd4-lookgrid .sd4-lookcard:nth-child(2) { grid-column: 8 / 13; }
+.tpl-design-04-sadak .sd4-lookgrid .sd4-lookcard:nth-child(3) { grid-column: 1 / 6; }
+.tpl-design-04-sadak .sd4-lookgrid .sd4-lookcard:nth-child(4) { grid-column: 6 / 13; }
+.tpl-design-04-sadak .sd4-lookcard { margin: 0; overflow: hidden; background: var(--color-surface); }
+/* paired cards in a row share the row height: the narrower card's photo
+   grows (cover-cropped) to fill it instead of leaving an empty grey box */
+.tpl-design-04-sadak .sd4-lookgrid .sd4-lookcard { display: flex; flex-direction: column; }
+.tpl-design-04-sadak .sd4-lookgrid .sd4-lookcard .a-img { display: block; flex: 1 1 auto; min-height: 0; }
+.tpl-design-04-sadak .sd4-lookgrid .sd4-lookcard img { height: 100%; }
+.tpl-design-04-sadak .sd4-lookcard img {
+  aspect-ratio: 4 / 5; object-fit: cover;
+  transition: filter 0.2s;
+}
+.tpl-design-04-sadak .sd4-lookcard:hover img { filter: invert(0.92) hue-rotate(180deg); }
+.tpl-design-04-sadak .sd4-lookcard figcaption {
+  padding: 0.9rem 1rem; font-size: 0.78rem; letter-spacing: 0.14em;
+  color: var(--color-muted); border-top: 1px solid rgba(242,239,230,0.1);
+}
+.tpl-design-04-sadak .sd4-lookcard figcaption strong {
+  display: block; color: var(--color-text); font-size: 0.85rem; margin-bottom: 0.2rem;
+  letter-spacing: 0.1em;
+}
+.tpl-design-04-sadak .sd4-lookcard figcaption span { display: block; }
+
+/* ---------- counters + ink-block wipe ---------- */
+.tpl-design-04-sadak .sd4-blockwipe { position: relative; overflow: hidden; }
+.tpl-design-04-sadak .sd4-blockwipe-panel {
+  position: absolute; inset: 0; background: var(--color-accent);
+  transform: scaleX(0); transform-origin: left center; z-index: 3; pointer-events: none;
+}
+.tpl-design-04-sadak .sd4-counters { background: #0c0c0b; }
+.tpl-design-04-sadak .sd4-countgrid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 2.5rem 2rem; position: relative; z-index: 1;
+}
+.tpl-design-04-sadak .sd4-count strong {
+  display: block; font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 5.5rem); line-height: 1; color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+.tpl-design-04-sadak .sd4-count > span {
+  display: block; margin-top: 0.6rem; font-size: 0.82rem;
+  letter-spacing: 0.2em; color: var(--color-muted); text-transform: uppercase;
+}
+
+/* ---------- fusion codes ---------- */
+.tpl-design-04-sadak .sd4-codes {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem); margin-bottom: 2.5rem;
+}
+.tpl-design-04-sadak .sd4-code {
+  background: var(--color-surface); padding: 2rem 1.75rem;
+  border-top: 4px solid var(--color-accent); transform: rotate(-1deg);
+}
+.tpl-design-04-sadak .sd4-code-flip { transform: rotate(1deg); }
+.tpl-design-04-sadak .sd4-code-num {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.26em; color: var(--color-accent);
+}
+.tpl-design-04-sadak .sd4-code h3 {
+  font-family: var(--font-display); font-size: 1.7rem; letter-spacing: 0.02em;
+  margin: 0.75rem 0 0.75rem; text-transform: uppercase;
+}
+.tpl-design-04-sadak .sd4-code p { font-size: 0.95rem; line-height: 1.65; color: var(--color-muted); margin: 0; }
+.tpl-design-04-sadak .sd4-codes-cta { text-align: center; }
+
+/* ---------- archive ---------- */
+.tpl-design-04-sadak .sd4-archive { background: #0c0c0b; }
+.tpl-design-04-sadak .sd4-archlist { list-style: none; margin: 0; padding: 0; }
+.tpl-design-04-sadak .sd4-archlist li {
+  display: grid; grid-template-columns: 1fr auto auto; gap: 1rem; align-items: center;
+  padding: 1.4rem 0.5rem; border-bottom: 1px solid rgba(242,239,230,0.12);
+  transition: background 0.2s, color 0.2s;
+}
+.tpl-design-04-sadak .sd4-archlist li:hover { background: var(--color-text); color: var(--color-background); }
+.tpl-design-04-sadak .sd4-archlist li:hover .sd4-arch-stat { color: #4a463d; }
+.tpl-design-04-sadak .sd4-arch-name {
+  font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 2rem);
+  letter-spacing: 0.03em;
+}
+.tpl-design-04-sadak .sd4-arch-stat { font-size: 0.85rem; letter-spacing: 0.12em; color: var(--color-muted); }
+.tpl-design-04-sadak .sd4-arch-sold {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
+  border: 1px solid var(--color-accent); color: var(--color-accent);
+  padding: 0.45rem 0.9rem; transform: rotate(2deg);
+}
+
+/* ---------- stores ---------- */
+.tpl-design-04-sadak .sd4-stores { background: #0c0c0b; }
+.tpl-design-04-sadak .sd4-storegrid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem); position: relative; z-index: 1;
+}
+.tpl-design-04-sadak .sd4-store {
+  border: 1px solid rgba(242,239,230,0.16); padding: 2rem 1.75rem;
+  background: rgba(17,17,16,0.6);
+}
+.tpl-design-04-sadak .sd4-store h3 {
+  font-family: var(--font-display); font-size: 1.9rem; letter-spacing: 0.03em; margin: 0 0 0.5rem;
+}
+.tpl-design-04-sadak .sd4-store-area { font-size: 1rem; margin: 0 0 0.35rem; }
+.tpl-design-04-sadak .sd4-store-hours {
+  font-size: 0.85rem; color: var(--color-muted); margin: 0 0 1.5rem; letter-spacing: 0.08em;
+}
+
+/* ---------- drop list ---------- */
+.tpl-design-04-sadak .sd4-droplist { text-align: left; }
+.tpl-design-04-sadak .sd4-form {
+  display: grid; grid-template-columns: 1fr 1fr auto; gap: 1rem;
+  max-width: 52rem; align-items: end;
+}
+.tpl-design-04-sadak .sd4-field { display: flex; flex-direction: column; gap: 0.5rem; }
+.tpl-design-04-sadak .sd4-field span {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.24em; color: var(--color-muted);
+}
+.tpl-design-04-sadak .sd4-field input, .tpl-design-04-sadak .sd4-field select {
+  background: var(--color-surface); border: 1px solid rgba(242,239,230,0.25);
+  color: var(--color-text); font-family: inherit; font-size: 1rem;
+  padding: 0.95rem 1.1rem; border-radius: 0; outline: none;
+}
+.tpl-design-04-sadak .sd4-field input:focus, .tpl-design-04-sadak .sd4-field select:focus {
+  border-color: var(--color-accent);
+}
+
+/* ---------- footer ---------- */
+.tpl-design-04-sadak .sd4-footer {
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem) 2rem;
+  border-top: 1px solid rgba(242,239,230,0.14); background: #0c0c0b;
+}
+.tpl-design-04-sadak .sd4-footer-big {
+  font-family: var(--font-display); font-size: clamp(4rem, 16vw, 14rem);
+  line-height: 0.85; margin: 0 0 1.5rem; letter-spacing: 0.01em;
+  color: rgba(242,239,230,0.12); -webkit-text-stroke: 2px rgba(242,239,230,0.5);
+}
+.tpl-design-04-sadak .sd4-footer-line { font-size: 1rem; color: var(--color-muted); margin: 0 0 3rem; }
+.tpl-design-04-sadak .sd4-footer-cols {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 2rem; margin-bottom: 3rem;
+}
+.tpl-design-04-sadak .sd4-footer-cols > div { display: flex; flex-direction: column; gap: 0.55rem; }
+.tpl-design-04-sadak .sd4-footer-cols strong {
+  font-size: 0.72rem; letter-spacing: 0.26em; color: var(--color-accent); margin-bottom: 0.35rem;
+}
+.tpl-design-04-sadak .sd4-footer-cols span, .tpl-design-04-sadak .sd4-footer-cols a { font-size: 0.92rem; color: var(--color-muted); }
+.tpl-design-04-sadak .sd4-footer-cols a:hover { color: var(--color-text); }
+.tpl-design-04-sadak .sd4-footer-cols .sd4-cta-pill { align-self: flex-start; margin-top: 0.5rem; }
+.tpl-design-04-sadak .sd4-footer-copy {
+  font-size: 0.78rem; color: var(--color-muted); letter-spacing: 0.06em;
+  border-top: 1px solid rgba(242,239,230,0.1); padding-top: 1.5rem; margin: 0;
+}
+
+/* ---------- mobile tab bar ---------- */
+.tpl-design-04-sadak .sd4-tabbar { display: none; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {
+  .tpl-design-04-sadak .sd4-lookgrid .sd4-lookcard:nth-child(n) { grid-column: 1 / -1; }
+  .tpl-design-04-sadak .sd4-lookcard img { aspect-ratio: 16 / 10; }
+}
+@media (max-width: 767px) {
+  .tpl-design-04-sadak .sd4-nav-links { display: none; }
+  .tpl-design-04-sadak .sd4-nav-pill { padding: 0.6rem 1.1rem; font-size: 0.7rem; }
+  .tpl-design-04-sadak .sd4-hero { min-height: 88svh; }
+  .tpl-design-04-sadak .sd4-hero-sticker { top: 5.5rem; font-size: 1.1rem; }
+  .tpl-design-04-sadak .sd4-form { grid-template-columns: 1fr; }
+  .tpl-design-04-sadak .sd4-form .sd4-cta-pill { text-align: center; }
+  .tpl-design-04-sadak .sd4-archlist li { grid-template-columns: 1fr auto; }
+  .tpl-design-04-sadak .sd4-arch-sold { display: none; }
+  .tpl-design-04-sadak .sd4-tabbar {
+    display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 60;
+    background: rgba(17,17,16,0.97); border-top: 1px solid rgba(242,239,230,0.14);
+  }
+  .tpl-design-04-sadak .sd4-tabbar a {
+    flex: 1; text-align: center; padding: 0.9rem 0.25rem calc(0.9rem + env(safe-area-inset-bottom));
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; color: var(--color-muted);
+  }
+  .tpl-design-04-sadak .sd4-tabbar a:first-child { color: var(--color-accent); }
+  .tpl-design-04-sadak .sd4-footer { padding-bottom: calc(2rem + 3.5rem); }
+  .tpl-design-04-sadak:not(.tpl-scope) { padding-bottom: 3.2rem; }
+}
+@media (min-width: 1440px) {
+  .tpl-design-04-sadak .sd4-section { padding-left: 7rem; padding-right: 7rem; }
+  .tpl-design-04-sadak .sd4-nav { padding-left: 7rem; padding-right: 7rem; }
+  .tpl-design-04-sadak .sd4-hero-inner { padding-left: 7rem; padding-right: 7rem; }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-04-sadak .sd4-ticker-track { animation: none; }
+  .tpl-design-04-sadak .sd4-strip-blink { animation: none; }
+  .tpl-design-04-sadak .sd4-runway-pin { display: none; }
+  .tpl-design-04-sadak .sd4-runway-static {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    padding: 0 clamp(1.25rem, 5vw, 5rem) clamp(4rem, 8vw, 6rem);
+  }
+  .tpl-design-04-sadak .sd4-wipe-band { display: none; }
+  .tpl-design-04-sadak .sd4-blockwipe-panel { display: none; }
+  .tpl-design-04-sadak .sd4-mask > span { transform: none !important; }
+}

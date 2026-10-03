@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-01-villas',
+  num: '01',
+  name: 'Meridian Estates',
+  tag: 'Luxury Villas',
+  style: 'Cinematic dusk minimalism, museum spacing',
+  animation: 'Pinned drone-descent journey, altitude-tracked crossfades',
+  typography: 'Cormorant Garamond + Manrope',
+  layout: 'Full-bleed film hero, one residence per viewport, dark enquiry close',
+  mood: 'Exclusive, quiet, cinematic',
+  palette: 'Deep teal / champagne / warm ivory',
+  features: [
+    'Dusk arrival film hero',
+    'Pinned drone-descent residence journey',
+    'Altitude indicator (300m / 120m / 12m)',
+    'Private viewings enquiry',
+  ],
+  fonts: { display: 'Cormorant Garamond', body: 'Manrope' },
+  colors: { primary: '#0E2A30', accent: '#C9A961' },
+};

@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-05-swiss',
+  num: '05',
+  name: 'Norm Studio',
+  tag: 'Swiss Minimal',
+  style: 'Minimal Swiss studio — discipline as luxury',
+  animation: 'Grid-line reveal system (M5): rules draw staggered by column, content hard-wipes in',
+  typography: 'IBM Plex Sans + IBM Plex Mono',
+  layout: 'Visible 12-column hairline grid; numbered index rows; strict alignment',
+  mood: 'Disciplined, quiet, exact',
+  palette: 'White / black / international orange',
+  features: [
+    'Visible 12-column hairline grid',
+    'Numbered work index with hard rectangular image wipes',
+    'Count-up index numerals, drawn rules, 12px title slides',
+    'Row invert hover (0.15s)',
+    'International orange on index numbers only',
+  ],
+  fonts: { display: 'IBM Plex Sans', body: 'IBM Plex Mono' },
+  colors: { primary: '#111111', accent: '#FF4D00' },
+};

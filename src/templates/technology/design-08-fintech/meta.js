@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-08-fintech',
+  num: '08',
+  name: 'Ledgerline',
+  tag: 'Fintech API',
+  style: 'Trust through numbers',
+  animation: 'Ledger cascade, count-ups',
+  typography: 'Bricolage Grotesque + Inter',
+  layout: 'Editorial, numbers-led',
+  mood: 'Solid, trustworthy, exact',
+  palette: 'Paper / deep green / gold',
+  features: ['Scrubbed ledger cascade', 'Code sample', 'Count-up metrics', 'Compliance strip'],
+  fonts: { display: 'Bricolage Grotesque', body: 'Inter' },
+  colors: { primary: '#0E3B2E', accent: '#C9A227' },
+};

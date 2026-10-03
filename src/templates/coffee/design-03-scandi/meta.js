@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-03-scandi',
+  num: '03',
+  name: 'Fika & Ljus',
+  tag: 'Scandinavian',
+  style: 'Extreme restraint, luminous calm',
+  animation: 'Breathing dividers, daylight tint, fades only',
+  typography: 'Libre Baskerville + Instrument Sans',
+  layout: 'Vast whitespace, single serene column',
+  mood: 'Calm, luminous, restrained',
+  palette: 'White / pale oak / fjord blue',
+  features: [
+    'Daylight-aware hero tint',
+    'Breathing pause dividers',
+    'Menu grouped by moment',
+    'Slow crossfading gallery',
+  ],
+  fonts: { display: 'Libre Baskerville', body: 'Instrument Sans' },
+  colors: { primary: '#33383B', accent: '#5E7A8C' },
+};

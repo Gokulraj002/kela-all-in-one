@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-04-drop',
+  num: '04',
+  name: 'DROP/04',
+  tag: 'Drop',
+  style: 'Street drop-culture flash sale',
+  animation: 'Drop cascade, countdown pulse',
+  typography: 'Space Grotesk + Inter',
+  layout: 'Poster grid, ticker, stamp badges',
+  mood: 'Urgent, loud, kinetic',
+  palette: 'Bone / ink / volt orange',
+  features: [
+    'Drop cascade product flow',
+    'Live countdown timer',
+    'Demo cart',
+    'Size selector',
+    'Restock alerts',
+  ],
+  fonts: { display: 'Space Grotesk', body: 'Inter' },
+  colors: { primary: '#111110', accent: '#FF4D00' },
+};

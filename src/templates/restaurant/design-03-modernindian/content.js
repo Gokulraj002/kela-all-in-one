@@ -1,0 +1,158 @@
+import { brandFor } from '../../_shared/brand.js';
+
+const kela = brandFor('restaurant');
+
+export const content = {
+  brand: { name: kela.name, tagline: 'Modern Indian · fire-first kitchen' },
+  nav: [
+    { label: 'Philosophy', href: '#story' },
+    { label: 'Menu', href: '#menu' },
+    { label: 'Journeys', href: '#dishes' },
+    { label: 'Bar', href: '#craft' },
+    { label: 'Reserve', href: '#reserve' },
+  ],
+  hero: {
+    eyebrow: 'Modern Indian · New Delhi & Mumbai',
+    titleLines: ['Cooked by fire.', 'Served with intent.'],
+    sub: 'A modern Indian kitchen where the tandoor, the coals and the slow ember shape every plate — classical roots, contemporary fire.',
+    cta: 'Reserve a table',
+    ctaHref: '#reserve',
+    ctaSecondary: 'Explore the menu',
+    ctaSecondaryHref: '#menu',
+  },
+  philosophy: {
+    eyebrow: 'The philosophy',
+    title: 'Fire, the first ingredient.',
+    body: [
+      `Before the knife, before the spice, there is fire. At ${kela.name} we treat heat as an ingredient in its own right — measured, chosen, and composed like any other.`,
+      'Smoking, charring, slow-embering, ice-tempering: four elements, one flame at the centre of it all. The menu that follows is organised the way our kitchen thinks — not by course, but by element.',
+    ],
+    imageNote: 'Tadka — mustard seeds, curry leaves, hot oil on dal',
+  },
+  elements: [
+    {
+      id: 'smoke',
+      numeral: 'I',
+      name: 'Smoke',
+      glyph: 'smoke',
+      theme: 'dark',
+      note: 'Dishes that pass through smoke — the tandoor, the dhungar, the coal.',
+      dishes: [
+        { k: 'product-0', nameIdx: 0, name: 'Tandoori Lamb Chops', price: 1450, feature: true,
+          desc: 'Char-marked, mint dust, smoked ghee baste.' },
+        { k: 'hero', nameIdx: 3, name: 'Smoked Scallop Moilee', price: 1650, feature: true,
+          desc: 'Coconut moilee, curry-leaf oil, dhungar smoke.' },
+        { nameIdx: 5, name: 'Charred Murgh Malai Tikka', price: 980,
+          desc: 'Cream-marinated, flame-kissed, kasundi mustard.' },
+      ],
+    },
+    {
+      id: 'earth',
+      numeral: 'II',
+      name: 'Earth',
+      glyph: 'earth',
+      theme: 'light',
+      note: 'Rooted, slow, grounded — the patient half of the kitchen.',
+      dishes: [
+        { k: 'detail', nameIdx: 4, name: 'Slow-Cooked Dal Bukhara', price: 650, feature: true,
+          desc: '18 hours on embers, mustard-seed tadka, white butter.' },
+        { nameIdx: 6, name: 'Wild Mushroom Galouti', price: 890,
+          desc: 'Porcini and morel, sheermal, truffle dust.' },
+        { nameIdx: 7, name: 'Black Garlic Khichdi', price: 1050,
+          desc: 'Aged rice, slow moong, burnt-garlic oil.' },
+      ],
+    },
+    {
+      id: 'fire',
+      numeral: 'III',
+      name: 'Fire',
+      glyph: 'fire',
+      theme: 'dark',
+      note: 'The bold register — chilli, roast, caramelised heat.',
+      dishes: [
+        { k: 'product-1', nameIdx: 1, name: 'Butter Chicken, Reimagined', price: 1250, feature: true,
+          desc: 'Tomato-fenugreek gloss, charred tikka, cream ribbon.' },
+        { nameIdx: 8, name: 'Ghost Chilli Prawns', price: 1550,
+          desc: 'Bhut jolokia glaze, burnt lime, curry-leaf crisp.' },
+        { nameIdx: 9, name: 'Lal Maas, Kashmiri Chilli', price: 1650,
+          desc: 'Slow goat curry, smoked chilli oil, bajra roti.' },
+      ],
+    },
+    {
+      id: 'ice',
+      numeral: 'IV',
+      name: 'Ice',
+      glyph: 'ice',
+      theme: 'light',
+      note: 'Fire needs its counterweight — cold, bright, resetting.',
+      dishes: [
+        { k: 'product-2', nameIdx: 2, name: 'Saffron Shrikhand', price: 750, feature: true,
+          desc: 'Hung curd, Kashmiri saffron, pistachio, rose.' },
+        { nameIdx: 10, name: 'Tender Coconut Payasam', price: 650,
+          desc: 'Served chilled in the shell, jaggery, cardamom.' },
+        { nameIdx: 11, name: 'Alphonso Sorbet', price: 550,
+          desc: 'Ratnagiri alphonso, chaat masala salt.' },
+      ],
+    },
+  ],
+  journeys: {
+    eyebrow: 'Tasting journeys',
+    title: 'Two ways through the fire.',
+    items: [
+      {
+        name: 'The Ignition',
+        courses: '7 courses',
+        price: 6500,
+        pairing: 9500,
+        desc: 'The full arc — smoke to earth to fire to ice. Charred snacks, tandoor mains, ember breads, cold desserts.',
+        note: 'Approx. 2.5 hours · wine & Indian-spirit pairing available',
+      },
+      {
+        name: 'Ember Hour',
+        courses: '5 courses',
+        price: 4200,
+        pairing: 6200,
+        desc: 'The essential evening — a tighter journey through the four elements for nights that start late.',
+        note: 'Approx. 1.5 hours · served until 11 pm',
+      },
+    ],
+  },
+  bar: {
+    eyebrow: 'The bar',
+    title: 'Indian spirits, lit well.',
+    sub: 'A short, deliberate list — indigenous spirits and Indian botanicals, composed with the same fire-first logic as the kitchen.',
+    cocktails: [
+      { name: 'Smoked Old Monk Fashioned', price: 950, desc: 'Old Monk, jaggery, oak smoke, orange oils.' },
+      { name: 'Nimbu Pani Martini', price: 850, desc: 'Gin, nimbu, black salt rim, soda mist.' },
+      { name: 'Kokum Spritz', price: 750, desc: 'Kokum, prosecco, curry-leaf tincture.' },
+      { name: 'Filter Kaapi Espresso', price: 800, desc: 'Vodka, cold-brewed filter kaapi, jaggery.' },
+      { name: 'Masala Chai Negroni', price: 900, desc: 'Chai-spiced gin, campari, sweet vermouth.' },
+    ],
+  },
+  reserve: {
+    eyebrow: 'Reserve',
+    title: 'Take your seat by the fire.',
+    locations: [
+      {
+        city: 'New Delhi',
+        address: '14 Lodhi Estate, New Delhi 110003',
+        phone: '+91 11 4155 0140',
+        hours: 'Tue–Sun · 12:30–3:30 pm · 7–11:30 pm',
+      },
+      {
+        city: 'Mumbai',
+        address: 'Kala Ghoda, Fort, Mumbai 400001',
+        phone: '+91 22 4890 2240',
+        hours: 'Tue–Sun · 12:30–3:30 pm · 7–11:30 pm',
+      },
+    ],
+    email: `reserve@${kela.domain}`,
+    cta: 'Reserve a table',
+    note: 'For parties above eight, write to us — the chef’s counter seats six.',
+  },
+  footer: {
+    line: `© 2026 ${kela.name}. All fire reserved.`,
+    colophon: 'Set in Rozha One & Manrope · Cooked over real coals',
+    instagram: `https://instagram.com/${kela.instagram}`,
+  },
+};

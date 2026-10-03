@@ -1,0 +1,684 @@
+/* AURELIA · design-07-rooftop — golden-hour glamour.
+   Tokens are scoped to .tpl-design-07-rooftop ONLY (never :root).
+   Every color/font below comes from these vars. */
+
+.tpl-design-07-rooftop {
+  --color-background: #14161E;
+  --color-surface: #1E212C;
+  --color-primary: #EFE4CE;
+  --color-secondary: #7A7F94;
+  --color-accent: #D9A05E;
+  --color-text: #E8DFCB;
+  --color-muted: #8B8FA3;
+  --color-on-accent: #14161E;
+  --color-shadow: #000000;
+  --font-display: 'Italiana', serif;
+  --font-body: 'Jost', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-07-rooftop *,
+.tpl-design-07-rooftop *::before,
+.tpl-design-07-rooftop *::after { box-sizing: border-box; }
+
+/* ---------- shared media primitives ---------- */
+.tpl-design-07-rooftop .a-img { display: block; width: 100%; height: 100%; }
+.tpl-design-07-rooftop .a-img img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+}
+
+/* ---------- layout ---------- */
+.tpl-design-07-rooftop .wrap {
+  width: min(1200px, 100% - clamp(2.5rem, 6vw, 5rem));
+  margin-inline: auto;
+}
+.tpl-design-07-rooftop .section {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  position: relative;
+}
+.tpl-design-07-rooftop .eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+.tpl-design-07-rooftop .sec-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  color: var(--color-primary);
+  margin: 0 0 1.25rem;
+  max-width: 16ch;
+}
+.tpl-design-07-rooftop .sec-sub {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--color-muted);
+  max-width: 62ch;
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+}
+.tpl-design-07-rooftop .gold-rule {
+  display: block;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(1);
+  transform-origin: left center;
+  opacity: 0.8;
+}
+/* GSAP draws the rule from 0→1 on scroll (non-reduced); final state is the default. */
+.tpl-design-07-rooftop.is-reduced .hero-edge { display: none; }
+
+/* ---------- buttons ---------- */
+.tpl-design-07-rooftop .btn {
+  appearance: none;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 14px 30px;
+  cursor: pointer;
+  transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+.tpl-design-07-rooftop .btn:hover {
+  background: transparent;
+  color: var(--color-accent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+.tpl-design-07-rooftop .btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+.tpl-design-07-rooftop .btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+}
+.tpl-design-07-rooftop .btn-ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.tpl-design-07-rooftop .btn-block { width: 100%; }
+
+/* ---------- nav ---------- */
+.tpl-design-07-rooftop .nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: color-mix(in srgb, var(--color-background) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 22%, transparent);
+}
+.tpl-design-07-rooftop .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.tpl-design-07-rooftop .wordmark {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  letter-spacing: 0.14em;
+  color: var(--color-primary);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.tpl-design-07-rooftop .nav-links {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+.tpl-design-07-rooftop .nav-links a {
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+.tpl-design-07-rooftop .nav-links a:hover { color: var(--color-accent); }
+.tpl-design-07-rooftop .nav .btn { padding: 11px 22px; font-size: 0.78rem; }
+
+/* ---------- hero: scroll-scrubbed frame sequence ---------- */
+.tpl-design-07-rooftop .hero {
+  position: relative;
+  overflow: hidden;
+}
+/* ScrollFrames paints the frame stage inline; the overlay stacks the
+   signature chrome (edge-light sweep, scrim) and anchors the copy low. */
+.tpl-design-07-rooftop .sf-overlay {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.tpl-design-07-rooftop .hero-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: var(--color-accent);
+  box-shadow: 0 0 32px 6px color-mix(in srgb, var(--color-accent) 65%, transparent);
+  z-index: 3;
+  pointer-events: none;
+}
+.tpl-design-07-rooftop .hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to top,
+      color-mix(in srgb, var(--color-background) 92%, transparent) 0%,
+      color-mix(in srgb, var(--color-background) 45%, transparent) 42%,
+      color-mix(in srgb, var(--color-background) 30%, transparent) 70%,
+      color-mix(in srgb, var(--color-background) 55%, transparent) 100%);
+}
+.tpl-design-07-rooftop .hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 7rem;
+  padding-bottom: clamp(4rem, 9vh, 7rem);
+  width: 100%;
+}
+.tpl-design-07-rooftop .hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 8.5vw, 6.75rem);
+  line-height: 1.02;
+  color: var(--color-primary);
+  margin: 0 0 1.5rem;
+  max-width: 12ch;
+}
+.tpl-design-07-rooftop .hero-title .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+.tpl-design-07-rooftop .hero-title .wi { display: inline-block; will-change: transform; }
+.tpl-design-07-rooftop .hero-sub {
+  font-size: clamp(1.02rem, 1.8vw, 1.25rem);
+  font-weight: 300;
+  color: var(--color-text);
+  max-width: 52ch;
+  margin: 0 0 2.25rem;
+}
+.tpl-design-07-rooftop .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+.tpl-design-07-rooftop .hero-note {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+.tpl-design-07-rooftop .hero-time {
+  position: absolute;
+  right: clamp(1.25rem, 3vw, 2.5rem);
+  top: 6.5rem;
+  z-index: 2;
+  writing-mode: vertical-rl;
+  font-size: 0.8rem;
+  letter-spacing: 0.5em;
+  color: var(--color-accent);
+  opacity: 0.85;
+}
+
+/* ---------- golden hour ---------- */
+.tpl-design-07-rooftop .hour { background: var(--color-background); }
+.tpl-design-07-rooftop .hour-head { max-width: 880px; }
+.tpl-design-07-rooftop .hour-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.tpl-design-07-rooftop .hour-title-row .sec-title { margin-bottom: 1.5rem; }
+.tpl-design-07-rooftop .hour-time {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--color-accent);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.tpl-design-07-rooftop .hour .gold-rule { margin: 0 0 2.5rem; }
+.tpl-design-07-rooftop .hour-body {
+  font-size: clamp(1.02rem, 1.7vw, 1.2rem);
+  color: var(--color-text);
+  max-width: 68ch;
+  margin: 0 0 1.25rem;
+}
+.tpl-design-07-rooftop .ritual-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+.tpl-design-07-rooftop .ritual-card {
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 30%, transparent);
+  padding-top: 1.5rem;
+}
+.tpl-design-07-rooftop .ritual-num {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.2em;
+}
+.tpl-design-07-rooftop .ritual-card h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  margin: 0.75rem 0 0.6rem;
+}
+.tpl-design-07-rooftop .ritual-card p { color: var(--color-muted); margin: 0; font-size: 0.98rem; }
+
+/* ---------- sips & plates ---------- */
+.tpl-design-07-rooftop .sip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  gap: clamp(1.1rem, 2.5vw, 1.75rem);
+}
+.tpl-design-07-rooftop .fp-card { will-change: transform, filter; }
+.tpl-design-07-rooftop .fp-inner {
+  height: 100%;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.tpl-design-07-rooftop .fp-card:hover .fp-inner {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px -20px color-mix(in srgb, var(--color-accent) 40%, transparent),
+              0 12px 32px -12px color-mix(in srgb, var(--color-shadow) 55%, transparent);
+}
+.tpl-design-07-rooftop .sip-card .fp-inner {
+  background: var(--color-surface);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 24%, transparent);
+  padding: 1.9rem 1.75rem 1.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.tpl-design-07-rooftop .sip-num {
+  font-family: var(--font-display);
+  color: var(--color-secondary);
+  letter-spacing: 0.25em;
+  font-size: 0.95rem;
+}
+.tpl-design-07-rooftop .sip-tag {
+  position: absolute;
+  top: 1.35rem;
+  right: 1.35rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-accent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  padding: 0.3rem 0.7rem;
+}
+.tpl-design-07-rooftop .sip-card h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.55rem;
+  line-height: 1.15;
+  color: var(--color-primary);
+  margin: 1rem 0 0.5rem;
+}
+.tpl-design-07-rooftop .sip-specs {
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  margin: 0 0 1.25rem;
+  flex: 1;
+}
+.tpl-design-07-rooftop .sip-price {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+/* plates */
+.tpl-design-07-rooftop .plates-head { margin: clamp(3.5rem, 7vw, 5.5rem) 0 clamp(1.75rem, 4vw, 2.75rem); }
+.tpl-design-07-rooftop .plates-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+}
+.tpl-design-07-rooftop .plates-note { color: var(--color-muted); margin: 0; }
+.tpl-design-07-rooftop .plate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.1rem, 2.5vw, 1.75rem);
+}
+.tpl-design-07-rooftop .plate-card .fp-inner {
+  background: var(--color-surface);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 24%, transparent);
+  overflow: hidden;
+}
+.tpl-design-07-rooftop .plate-frame { aspect-ratio: 4 / 3; overflow: hidden; }
+.tpl-design-07-rooftop .plate-body { padding: 1.6rem 1.75rem 1.75rem; }
+.tpl-design-07-rooftop .plate-body h3,
+.tpl-design-07-rooftop .board-body h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.7rem;
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+}
+.tpl-design-07-rooftop .plate-body p { color: var(--color-muted); margin: 0 0 1rem; font-size: 0.98rem; }
+.tpl-design-07-rooftop .plate-board .fp-inner {
+  background: color-mix(in srgb, var(--color-accent) 9%, var(--color-surface));
+  border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+.tpl-design-07-rooftop .board-body { padding: 2.25rem 2rem; position: relative; }
+.tpl-design-07-rooftop .board-body .sip-tag { position: static; display: inline-block; margin-bottom: 1rem; }
+.tpl-design-07-rooftop .board-note {
+  margin-top: 1.25rem !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary) !important;
+}
+
+/* ---------- the view ---------- */
+.tpl-design-07-rooftop .view {
+  position: relative;
+  overflow: hidden;
+  min-height: 92svh;
+  display: flex;
+  align-items: flex-end;
+}
+.tpl-design-07-rooftop .view-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.tpl-design-07-rooftop .view-img {
+  position: absolute;
+  inset: -12% 0;
+}
+.tpl-design-07-rooftop .view-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-bottom: clamp(4rem, 8vh, 6.5rem);
+}
+.tpl-design-07-rooftop .view-body {
+  color: var(--color-text);
+  max-width: 60ch;
+  margin: 0 0 1.1rem;
+  font-size: clamp(1rem, 1.7vw, 1.18rem);
+}
+.tpl-design-07-rooftop .view-stats {
+  display: flex;
+  gap: clamp(2rem, 6vw, 4.5rem);
+  flex-wrap: wrap;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+.tpl-design-07-rooftop .view-stat {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+  padding-left: 1.25rem;
+}
+.tpl-design-07-rooftop .view-value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-primary);
+  line-height: 1;
+}
+.tpl-design-07-rooftop .view-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: 0.5rem;
+}
+
+/* ---------- private skies ---------- */
+.tpl-design-07-rooftop .event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.1rem, 2.5vw, 1.75rem);
+}
+.tpl-design-07-rooftop .event-card {
+  background: var(--color-surface);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 24%, transparent);
+  padding: 2.25rem 2rem;
+  /* hover lift on `translate` — GSAP owns `transform` for the reveal */
+  transition: translate 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.tpl-design-07-rooftop .event-card:hover {
+  translate: 0 -6px;
+  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  box-shadow: 0 24px 60px -20px color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+.tpl-design-07-rooftop .event-card h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+}
+.tpl-design-07-rooftop .event-card p { color: var(--color-muted); margin: 0 0 1.5rem; font-size: 0.98rem; }
+.tpl-design-07-rooftop .event-price {
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: var(--color-accent);
+}
+.tpl-design-07-rooftop .events-note {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  color: var(--color-muted);
+  font-style: italic;
+  max-width: 60ch;
+  border-left: 1px solid var(--color-accent);
+  padding-left: 1.25rem;
+}
+
+/* ---------- reserve ---------- */
+.tpl-design-07-rooftop .reserve {
+  background: color-mix(in srgb, var(--color-surface) 55%, var(--color-background));
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 20%, transparent);
+}
+.tpl-design-07-rooftop .reserve-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+.tpl-design-07-rooftop .reserve-hours {
+  list-style: none;
+  margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+  padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 25%, transparent);
+}
+.tpl-design-07-rooftop .reserve-hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 25%, transparent);
+  font-size: 0.95rem;
+}
+.tpl-design-07-rooftop .reserve-hours li span:first-child { color: var(--color-muted); }
+.tpl-design-07-rooftop .reserve-hours li span:last-child { color: var(--color-primary); letter-spacing: 0.06em; }
+.tpl-design-07-rooftop .reserve-panel {
+  background: var(--color-surface);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+}
+.tpl-design-07-rooftop .field { display: block; margin-bottom: 1.5rem; }
+.tpl-design-07-rooftop .field > span {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin-bottom: 0.6rem;
+}
+.tpl-design-07-rooftop .field input,
+.tpl-design-07-rooftop .field select {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 45%, transparent);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.05rem;
+  padding: 0.6rem 0;
+  transition: border-color 0.3s ease;
+  color-scheme: dark;
+}
+.tpl-design-07-rooftop .field select option { background: var(--color-surface); }
+.tpl-design-07-rooftop .field input:focus,
+.tpl-design-07-rooftop .field select:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+}
+.tpl-design-07-rooftop .field input::placeholder { color: var(--color-muted); }
+.tpl-design-07-rooftop .field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.tpl-design-07-rooftop .slot-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.tpl-design-07-rooftop .slot {
+  appearance: none;
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.tpl-design-07-rooftop .slot:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.tpl-design-07-rooftop .slot.sel {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 500;
+}
+.tpl-design-07-rooftop .slot:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.tpl-design-07-rooftop .reserve-micro {
+  margin: 1rem 0 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-align: center;
+}
+.tpl-design-07-rooftop .reserve-done h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2.2rem;
+  color: var(--color-primary);
+  margin: 1.5rem 0 0.75rem;
+}
+.tpl-design-07-rooftop .reserve-done p { color: var(--color-muted); margin: 0 0 1rem; }
+.tpl-design-07-rooftop .reserve-echo {
+  color: var(--color-accent) !important;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.75rem !important;
+}
+.tpl-design-07-rooftop .reserve-done .gold-rule { transform: scaleX(1); }
+
+/* ---------- footer ---------- */
+.tpl-design-07-rooftop .footer {
+  border-top: 1px solid color-mix(in srgb, var(--color-secondary) 22%, transparent);
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0 2rem;
+  background: var(--color-background);
+}
+.tpl-design-07-rooftop .footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 2.5rem;
+}
+.tpl-design-07-rooftop .footer-tag { color: var(--color-muted); margin: 0.75rem 0 0; font-style: italic; }
+.tpl-design-07-rooftop .footer h4 {
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-accent);
+  margin: 0 0 1.1rem;
+}
+.tpl-design-07-rooftop .footer address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--color-muted);
+}
+.tpl-design-07-rooftop .footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.tpl-design-07-rooftop .footer li { color: var(--color-muted); }
+.tpl-design-07-rooftop .footer a { color: var(--color-text); text-decoration: none; transition: color 0.3s ease; }
+.tpl-design-07-rooftop .footer a:hover { color: var(--color-accent); }
+.tpl-design-07-rooftop .footer .gold-rule { transform: scaleX(1); margin-bottom: 1.5rem; }
+.tpl-design-07-rooftop .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .tpl-design-07-rooftop .nav-links { display: none; }
+  .tpl-design-07-rooftop .reserve-grid { grid-template-columns: 1fr; }
+  .tpl-design-07-rooftop .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .tpl-design-07-rooftop .plate-grid { grid-template-columns: 1fr; }
+  .tpl-design-07-rooftop .hero-time { display: none; }
+  .tpl-design-07-rooftop .field-row { grid-template-columns: 1fr; }
+  .tpl-design-07-rooftop .footer-grid { grid-template-columns: 1fr; }
+  .tpl-design-07-rooftop .nav .btn { padding: 9px 16px; font-size: 0.72rem; }
+  .tpl-design-07-rooftop .hero-ctas .btn { width: 100%; text-align: center; }
+  /* spacing pass: wordmark + CTA must fit 360px without crowding */
+  .tpl-design-07-rooftop .wordmark { font-size: 1.45rem; }
+  .tpl-design-07-rooftop .nav-inner { gap: 1rem; padding-top: 0.85rem; padding-bottom: 0.85rem; }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-07-rooftop .fp-inner,
+  .tpl-design-07-rooftop .event-card,
+  .tpl-design-07-rooftop .btn,
+  .tpl-design-07-rooftop .slot {
+    transition: none;
+  }
+}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231A1714'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23D9B65E'%3EK%3C/text%3E%3C/svg%3E">
+  <title>Kela Jewels — Jaipur · Since 1932</title>
+  <meta name="description" content="Kela Jewels — fourth-generation goldsmiths of Jaipur. Temple necklaces, jhumkas and heirloom bangles, made entirely by hand since 1932.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ 1 · SITE NAV ============ -->
+  <header class="site-nav" id="siteNav">
+    <a class="brand" href="#hero" aria-label="Kela Jewels — home">
+      <span class="brand-monogram" data-content="brand.monogram">K</span>
+      <span class="brand-text">
+        <span class="brand-name" data-content="brand.name">KELA JEWELS</span>
+        <span class="brand-tagline" data-content="brand.tagline">Jaipur · Since 1932</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <ul data-build="nav"></ul>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#contact" data-content="brand.cta">Book an Appointment</a>
+  </header>
+
+  <main>
+
+    <!-- ============ 2 · HERO ============ -->
+    <section id="hero" aria-label="Introduction">
+      <div class="wrap hero-inner">
+        <p class="eyebrow fade-up" data-content="hero.eyebrow">Est. 1932 — Jaipur, Rajasthan</p>
+        <h1 class="hero-title" data-content="hero.title" data-magnetic>Four generations. One unbroken thread of gold.</h1>
+        <p class="hero-sub fade-up" data-content="hero.subtitle">From the atelier of a Jaipur court jeweler — temple necklaces, jhumkas and heirloom bangles, designed on paper and made entirely by hand, as they have been for ninety-four years.</p>
+        <div class="hero-ctas fade-up">
+          <a class="btn btn-primary" href="#products" data-content="hero.ctaPrimary">Explore the Collection</a>
+          <a class="btn btn-ghost" href="#story" data-content="hero.ctaSecondary">The House Story</a>
+        </div>
+      </div>
+      <figure class="hero-figure" data-depth-wrap>
+        <div class="hero-frame" data-depth="12">
+          <div class="curtain-mask">
+            <div class="imgwrap imgwrap-landscape">
+              <img width="1920" height="1280" id="heroImage" src="assets/images/hero.webp" alt="Antique 22K gold bridal jewelry set on ivory silk"
+                   fetchpriority="high" decoding="async" data-img="hero.image" data-imgalt="hero.imageAlt">
+            </div>
+            <span class="curtain" aria-hidden="true"></span>
+          </div>
+        </div>
+        <figcaption class="caption" data-depth="6" data-content="hero.caption">The Maharani Bridal Set — 22K temple gold, ruby and emerald</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ 3 · COLLECTIONS ============ -->
+    <section id="collections" aria-label="Collections">
+      <div class="wrap">
+        <header class="chapter-head fade-up">
+          <p class="eyebrow">Chapter I — The Collections</p>
+          <h2 class="chapter-title">Three rooms of the archive.</h2>
+          <p class="chapter-sub">Every piece in the house belongs to one of three rooms. Choose the room that sounds like your family.</p>
+        </header>
+        <div class="collections-grid" data-build="collections"></div>
+      </div>
+    </section>
+
+    <!-- ============ 4 · PRODUCTS ============ -->
+    <section id="products" aria-label="High jewelry">
+      <div class="wrap">
+        <header class="chapter-head fade-up">
+          <p class="eyebrow">Chapter II — High Jewelry</p>
+          <h2 class="chapter-title">Pieces that outlive their makers.</h2>
+          <p class="chapter-sub">A small selection from the current archive. Each is made to order, by hand, in Jaipur — select any piece for its full record.</p>
+        </header>
+        <div class="products-grid" data-build="products"></div>
+      </div>
+    </section>
+
+    <!-- ============ 5 · CRAFTSMANSHIP ============ -->
+    <section id="craftsmanship" aria-label="Craftsmanship">
+      <div class="wrap">
+        <header class="chapter-head fade-up">
+          <p class="eyebrow" data-content="craftsmanship.eyebrow">Chapter III — The Making</p>
+          <h2 class="chapter-title" data-content="craftsmanship.title">Ninety-four years, six disciplines.</h2>
+          <p class="chapter-sub" data-content="craftsmanship.body">Nothing in the house is cast from a catalogue. Every piece travels the same bench the founder set up in 1932, through six disciplines that have not changed — only the hands have, four times over.</p>
+        </header>
+      </div>
+      <figure class="craft-figure wrap">
+        <div class="craft-frame curtain-mask">
+          <div class="imgwrap imgwrap-landscape">
+            <img width="1920" height="1280" src="assets/images/craft.webp" alt="Craftsman's hands working molten gold at a vintage workbench"
+                 loading="lazy" decoding="async" data-img="craftsmanship.image" data-imgalt="craftsmanship.imageAlt">
+          </div>
+          <span class="curtain" aria-hidden="true"></span>
+        </div>
+        <figcaption class="caption" data-content="craftsmanship.caption">The workbench, Johari Bazaar — the same lamp since 1932</figcaption>
+      </figure>
+      <div class="wrap">
+        <div class="timeline" data-build="timeline" role="list" aria-label="The six disciplines"></div>
+        <p class="timeline-hint" aria-hidden="true">Scroll →</p>
+      </div>
+    </section>
+
+    <!-- ============ 6 · STORY ============ -->
+    <section id="story" aria-label="The maison story">
+      <div class="wrap story-inner">
+        <header class="chapter-head fade-up">
+          <p class="eyebrow" data-content="story.eyebrow">Chapter IV — The House</p>
+          <h2 class="chapter-title" data-content="story.title">A bench, a lamp, and an unbroken line.</h2>
+        </header>
+        <div class="story-columns fade-up" data-build="storyBody"></div>
+        <blockquote class="pull-quote page-reveal">
+          <p data-content="story.pull">Gold remembers the hand that shaped it.</p>
+          <cite data-content="story.pullAttr">Seth Hukumchand · Founder, 1932</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ 7 · CONTACT ============ -->
+    <section id="contact" aria-label="Contact">
+      <div class="wrap contact-inner">
+        <header class="chapter-head fade-up">
+          <p class="eyebrow" data-content="contact.eyebrow">Chapter V — The Appointment</p>
+          <h2 class="chapter-title" data-content="contact.title">Visit the atelier.</h2>
+          <p class="chapter-sub" data-content="contact.body">Commissions and private viewings are by appointment, in Jaipur or by video call. Write to the house — a member of the family replies within two working days.</p>
+        </header>
+        <div class="contact-grid">
+          <address class="contact-details fade-up">
+            <div class="contact-row">
+              <span class="contact-label">Atelier</span>
+              <span data-content="contact.address">14 Johari Bazaar, Pink City, Jaipur 302003</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-label">Telephone</span>
+              <a data-content="contact.phone" data-href="tel" href="tel:+919829019320">+91 98290 19320</a>
+            </div>
+            <div class="contact-row">
+              <span class="contact-label">Correspondence</span>
+              <a data-content="contact.email" data-href="mailto" href="mailto:hello@kelajewels.in">hello@kelajewels.in</a>
+            </div>
+            <div class="contact-row">
+              <span class="contact-label">Instagram</span>
+              <a data-content="contact.instagramLabel" data-href="url" data-urlkey="contact.instagram" href="https://instagram.com/kelajewels" target="_blank" rel="noopener">@kelajewels</a>
+            </div>
+          </address>
+          <form class="contact-form fade-up" id="contactForm" novalidate>
+            <div class="field">
+              <label for="fName" data-content="form.nameLabel">Your name</label>
+              <input id="fName" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="fContact" data-content="form.contactLabel">Email or phone</label>
+              <input id="fContact" name="contact" type="text" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="fOccasion" data-content="form.occasionLabel">Occasion</label>
+              <input id="fOccasion" name="occasion" type="text" placeholder="A wedding, an anniversary, a revival…">
+            </div>
+            <div class="field">
+              <label for="fMsg" data-content="form.messageLabel">Tell us about the piece</label>
+              <textarea id="fMsg" name="message" rows="4" data-content-ph="form.messagePlaceholder" placeholder="A bridal set for a December wedding…"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit" data-content="form.submit">Request an Appointment</button>
+            <p class="form-note">A demonstration form — no details leave your browser.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ 8 · FOOTER ============ -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <span class="brand-monogram" data-content="brand.monogram">K</span>
+        <span>
+          <span class="brand-name" data-content="brand.name">KELA JEWELS</span><br>
+          <span class="footer-note" data-content="footer.note">BIS Hallmarked · Fourth-generation goldsmiths</span>
+        </span>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <ul data-build="nav"></ul>
+      </nav>
+      <p class="footer-line" data-content="footer.line">© 2026 Kela Jewels · Jaipur · All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============ QUICK VIEW PANEL ============ -->
+  <div class="qv-backdrop" id="qvBackdrop" hidden></div>
+  <aside class="qv-panel" id="qvPanel" role="dialog" aria-modal="true" aria-label="Piece details" hidden>
+    <button class="qv-close" id="qvClose" aria-label="Close piece details">×</button>
+    <div class="qv-media">
+      <div class="imgwrap imgwrap-landscape">
+        <img id="qvImage" alt="" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div class="qv-body">
+      <p class="eyebrow">From the archive</p>
+      <h3 class="qv-name" id="qvName"></h3>
+      <p class="qv-price" id="qvPrice"></p>
+      <dl class="qv-specs">
+        <div><dt>Material</dt><dd id="qvMaterial"></dd></div>
+        <div><dt>Detail</dt><dd id="qvStone"></dd></div>
+      </dl>
+      <p class="qv-desc" id="qvDesc"></p>
+      <a class="btn btn-primary qv-cta" href="#contact" id="qvCta">Enquire About This Piece</a>
+    </div>
+  </aside>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,971 @@
+/* ─────────────────────────────────────────────────────────────
+   ATELIER · design-08-retreat — "Stillwater Reserve"
+   Escape-led resort second homes. Slow, breathable, horizon-heavy.
+   Tokens live on .tpl-design-08-retreat ONLY — never :root.
+   ───────────────────────────────────────────────────────────── */
+
+.tpl-design-08-retreat {
+  --color-primary: #173038;
+  --color-secondary: #5E8B8C;
+  --color-accent: #A08B6D;
+  --color-background: #F7F4EC;
+  --color-surface: #FDFBF4;
+  --color-text: #173038;
+  --color-muted: rgba(23, 48, 56, 0.64);
+  --color-line: rgba(23, 48, 56, 0.16);
+  --color-on-dark: #F7F4EC;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Instrument Sans', -apple-system, 'Segoe UI', sans-serif;
+
+  --space-section: clamp(120px, 14vw, 210px);
+  --wrap: min(1200px, 92vw);
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-08-retreat *,
+.tpl-design-08-retreat *::before,
+.tpl-design-08-retreat *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-08-retreat img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Word-mask headline */
+.tpl-design-08-retreat .sr-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-08-retreat .sr-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Eyebrow — whispered, letter-spaced */
+.tpl-design-08-retreat .sr-eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 28px;
+}
+
+.tpl-design-08-retreat .sr-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 5.4vw, 72px);
+  line-height: 1.08;
+  letter-spacing: 0.005em;
+  margin: 0 0 40px;
+  max-width: 16ch;
+}
+
+.tpl-design-08-retreat .sr-h2-light {
+  color: var(--color-on-dark);
+}
+
+.tpl-design-08-retreat .sr-h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  margin: 0 0 16px;
+}
+
+.tpl-design-08-retreat .sr-body {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--color-muted);
+  max-width: 62ch;
+  margin: 0 0 24px;
+}
+
+.tpl-design-08-retreat .sr-wrap {
+  width: var(--wrap);
+  margin: 0 auto;
+}
+
+.tpl-design-08-retreat .sr-rule {
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+  transform-origin: left center;
+  margin: 0 0 64px;
+  max-width: 240px;
+}
+
+/* ── NAV — barely there, horizon-line motif ── */
+/* Fixed header anchored to the top of the template's scroll area:
+   --tpl-top is the viewer toolbar's height (0 in an export), so the nav is
+   no longer tucked under the toolbar. */
+.tpl-design-08-retreat .sr-nav {
+  position: fixed;
+  top: var(--tpl-top, 0px);
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 26px clamp(20px, 4vw, 56px);
+  transition: background 0.6s ease, padding 0.6s ease, box-shadow 0.6s ease;
+}
+
+.tpl-design-08-retreat .sr-wordmark {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-on-dark);
+  text-decoration: none;
+  margin-right: auto;
+  transition: color 0.6s ease;
+}
+
+.tpl-design-08-retreat .sr-links {
+  display: flex;
+  gap: 34px;
+}
+
+.tpl-design-08-retreat .sr-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(247, 244, 236, 0.82);
+  text-decoration: none;
+  transition: color 0.6s ease;
+}
+
+.tpl-design-08-retreat .sr-links a:hover {
+  color: var(--color-on-dark);
+}
+
+.tpl-design-08-retreat .sr-nav .sr-cta {
+  color: var(--color-on-dark);
+  border-color: rgba(247, 244, 236, 0.5);
+}
+
+/* Near-opaque instead of a backdrop blur: blurring the page that scrolls
+   (and the scrubbed film / depth layers) under the header every frame is
+   expensive and made scrolling stutter. */
+.tpl-design-08-retreat .sr-nav.is-solid {
+  background: rgba(247, 244, 236, 0.97);
+  padding-top: 16px;
+  padding-bottom: 16px;
+  box-shadow: 0 1px 0 var(--color-line);
+}
+
+.tpl-design-08-retreat .sr-nav.is-solid .sr-wordmark,
+.tpl-design-08-retreat .sr-nav.is-solid .sr-links a {
+  color: var(--color-text);
+}
+
+.tpl-design-08-retreat .sr-nav.is-solid .sr-links a:hover {
+  color: var(--color-secondary);
+}
+
+.tpl-design-08-retreat .sr-nav.is-solid .sr-cta {
+  color: var(--color-text);
+  border-color: var(--color-line);
+}
+
+.tpl-design-08-retreat .sr-horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 4%, var(--color-accent) 50%, transparent 96%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* CTA — hairline pill, unhurried hover */
+.tpl-design-08-retreat .sr-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 14px 30px;
+  transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+.tpl-design-08-retreat .sr-cta:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-dark);
+}
+
+.tpl-design-08-retreat .sr-cta-solid {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-dark);
+}
+
+.tpl-design-08-retreat .sr-cta-solid:hover {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+/* ── HERO — the signature film, scroll-driven frames (ScrollFrames) ── */
+.tpl-design-08-retreat .sr-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-primary);
+}
+
+/* ScrollFrames stage contract: the design owns position + height;
+   the canvas and overlay are placed over it, nothing overrides .sf-canvas. */
+.tpl-design-08-retreat .sf-stage {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+
+.tpl-design-08-retreat .sf-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tpl-design-08-retreat .sf-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* Reduced motion: static first frame, same stage height, same overlay. */
+.tpl-design-08-retreat .sf-static {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+
+.tpl-design-08-retreat .sf-static .sf-static-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tpl-design-08-retreat .sr-hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(23, 48, 56, 0.28) 0%,
+    rgba(23, 48, 56, 0.05) 34%,
+    rgba(23, 48, 56, 0.42) 100%
+  );
+  pointer-events: none;
+}
+
+.tpl-design-08-retreat .sr-hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 0 clamp(110px, 14vh, 170px);
+  color: var(--color-on-dark);
+}
+
+.tpl-design-08-retreat .sr-hero-copy .sr-eyebrow {
+  color: rgba(247, 244, 236, 0.75);
+}
+
+.tpl-design-08-retreat .sr-hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(52px, 8.6vw, 128px);
+  line-height: 1.02;
+  letter-spacing: 0.004em;
+  margin: 0 0 36px;
+  max-width: 12ch;
+  text-wrap: balance;
+}
+
+.tpl-design-08-retreat .sr-hero-sub {
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.75;
+  max-width: 46ch;
+  color: rgba(247, 244, 236, 0.88);
+  margin: 0 0 44px;
+}
+
+.tpl-design-08-retreat .sr-hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.tpl-design-08-retreat .sr-hero-note {
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(247, 244, 236, 0.66);
+}
+
+.tpl-design-08-retreat .sr-scroll-cue {
+  position: absolute;
+  right: clamp(20px, 4vw, 56px);
+  bottom: 44px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.tpl-design-08-retreat .sr-tide-line {
+  display: block;
+  width: 1px;
+  height: 72px;
+  background: linear-gradient(180deg, transparent, var(--color-on-dark));
+  transform-origin: top center;
+}
+
+.tpl-design-08-retreat .sr-scroll-label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(247, 244, 236, 0.6);
+  writing-mode: vertical-rl;
+}
+
+/* ── THE PLACE ── */
+.tpl-design-08-retreat .sr-place {
+  padding: var(--space-section) 0;
+}
+
+.tpl-design-08-retreat .sr-place-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 96px);
+  margin-bottom: clamp(72px, 8vw, 128px);
+}
+
+.tpl-design-08-retreat .sr-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin: 0;
+  padding: clamp(48px, 5vw, 72px) 0 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-08-retreat .sr-fact {
+  margin: 0;
+}
+
+.tpl-design-08-retreat .sr-fact-value {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 5.5vw, 88px);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-secondary);
+  margin-bottom: 14px;
+}
+
+.tpl-design-08-retreat .sr-fact-unit {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* ── RESIDENCES — parallax depth layers ── */
+.tpl-design-08-retreat .sr-depth-sec {
+  position: relative;
+  background: var(--color-primary);
+}
+
+.tpl-design-08-retreat .sr-depth-pin {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+
+.tpl-design-08-retreat .sr-layers {
+  position: absolute;
+  inset: 0;
+}
+
+.tpl-design-08-retreat .sr-layer {
+  position: absolute;
+  will-change: transform;
+}
+
+.tpl-design-08-retreat .sr-layer img,
+.tpl-design-08-retreat .sr-layer .a-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Background: sea + sky, full bleed with extra headroom for the drift */
+.tpl-design-08-retreat .sr-layer-bg {
+  inset: -8% 0;
+}
+
+/* Mid: the villa floats as a framed panel — the middle distance */
+.tpl-design-08-retreat .sr-layer-mid {
+  left: 50%;
+  top: 16%;
+  width: min(680px, 72vw);
+  height: 62%;
+  /* centered via gsap xPercent:-50 in the pin path (desktop only) */
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(10, 24, 29, 0.45);
+}
+
+.tpl-design-08-retreat .sr-layer-mid img,
+.tpl-design-08-retreat .sr-layer-mid .a-img {
+  border-radius: 6px;
+}
+
+/* Foreground: the waterline — a soft, blurred band along the bottom */
+.tpl-design-08-retreat .sr-layer-fg {
+  left: -4%;
+  right: -4%;
+  bottom: -10%;
+  height: 38%;
+  filter: blur(7px) brightness(0.92);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 42%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 42%);
+}
+
+.tpl-design-08-retreat .sr-layer-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(23, 48, 56, 0.35) 0%, rgba(23, 48, 56, 0.08) 40%, rgba(23, 48, 56, 0.5) 100%);
+}
+
+.tpl-design-08-retreat .sr-depth-head {
+  position: absolute;
+  z-index: 4;
+  top: clamp(90px, 12vh, 130px);
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0 24px;
+  pointer-events: none;
+}
+
+.tpl-design-08-retreat .sr-depth-head .sr-eyebrow {
+  color: rgba(247, 244, 236, 0.7);
+}
+
+.tpl-design-08-retreat .sr-depth-hint {
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(247, 244, 236, 0.6);
+  margin: 18px 0 0;
+}
+
+/* Cards float up BETWEEN the layers (z above mid, below foreground) */
+.tpl-design-08-retreat .sr-cards {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.tpl-design-08-retreat .sr-depth-pin .sr-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(440px, 88vw);
+  pointer-events: auto;
+  /* centered via gsap xPercent/yPercent:-50 (set in the pin path before paint) */
+}
+
+/* Cards float through the scrubbed depth layers: an opaque panel instead of
+   a backdrop blur that would re-blur the moving layers every frame. */
+.tpl-design-08-retreat .sr-card {
+  background: rgba(253, 251, 244, 0.98);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 32px 90px rgba(10, 24, 29, 0.4);
+}
+
+.tpl-design-08-retreat .sr-card-visual {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.tpl-design-08-retreat .sr-card-visual img,
+.tpl-design-08-retreat .sr-card-visual .a-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tpl-design-08-retreat .sr-card-body {
+  padding: 36px 36px 40px;
+}
+
+.tpl-design-08-retreat .sr-card .sr-eyebrow {
+  margin-bottom: 14px;
+}
+
+.tpl-design-08-retreat .sr-card-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 0 14px;
+}
+
+.tpl-design-08-retreat .sr-card-desc {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-muted);
+  margin: 0 0 22px;
+}
+
+.tpl-design-08-retreat .sr-card-specs {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin: 0 0 26px;
+  padding: 0 0 22px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-08-retreat .sr-card-specs li {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.tpl-design-08-retreat .sr-card-price {
+  font-family: var(--font-display);
+  font-size: 30px;
+  margin: 0;
+}
+
+.tpl-design-08-retreat .sr-price-note {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-right: 10px;
+}
+
+.tpl-design-08-retreat .sr-depth-chapter {
+  position: absolute;
+  z-index: 4;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(247, 244, 236, 0.72);
+  pointer-events: none;
+}
+
+/* Static composition: mobile + reduced motion. Hidden on desktop-with-motion. */
+.tpl-design-08-retreat .sr-depth-static {
+  display: none;
+  padding: var(--space-section) 0;
+  background: var(--color-background);
+}
+
+.tpl-design-08-retreat .sr-depth-static .sr-card {
+  margin: 0 auto clamp(48px, 6vw, 80px);
+  max-width: 560px;
+}
+
+.tpl-design-08-retreat .sr-depth-static .sr-card:last-child {
+  margin-bottom: 0;
+}
+
+.tpl-design-08-retreat.is-reduced .sr-depth-pin {
+  display: none;
+}
+
+.tpl-design-08-retreat.is-reduced .sr-depth-static {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .tpl-design-08-retreat .sr-depth-pin {
+    display: none;
+  }
+  .tpl-design-08-retreat .sr-depth-static {
+    display: block;
+  }
+}
+
+/* ── THE SLOW LIFE ── */
+.tpl-design-08-retreat .sr-slow {
+  padding: var(--space-section) 0;
+}
+
+.tpl-design-08-retreat .sr-slow-lede {
+  font-size: 22px;
+  max-width: 56ch;
+  margin-bottom: clamp(72px, 8vw, 120px);
+}
+
+.tpl-design-08-retreat .sr-slow-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(48px, 7vw, 120px);
+  align-items: start;
+  margin-bottom: clamp(72px, 8vw, 120px);
+}
+
+.tpl-design-08-retreat .sr-rituals {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tpl-design-08-retreat .sr-ritual {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 28px;
+  padding: 38px 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-08-retreat .sr-ritual:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-08-retreat .sr-ritual-time {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--color-secondary);
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.tpl-design-08-retreat .sr-ritual-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 26px;
+  margin: 0 0 10px;
+}
+
+.tpl-design-08-retreat .sr-ritual-text {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 44ch;
+}
+
+.tpl-design-08-retreat .sr-slow-visual {
+  margin: 0;
+  position: sticky;
+  top: 110px;
+}
+
+.tpl-design-08-retreat .sr-slow-visual img,
+.tpl-design-08-retreat .sr-slow-visual .a-img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.tpl-design-08-retreat .sr-slow-visual figcaption {
+  margin-top: 18px;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tpl-design-08-retreat .sr-services {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.tpl-design-08-retreat .sr-services li {
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  padding: 30px 26px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-muted);
+  background: var(--color-surface);
+}
+
+/* ── OWNERSHIP ── */
+.tpl-design-08-retreat .sr-own {
+  padding: var(--space-section) 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+}
+
+.tpl-design-08-retreat .sr-own-lede {
+  max-width: 60ch;
+  margin-bottom: clamp(64px, 7vw, 110px);
+}
+
+.tpl-design-08-retreat .sr-plans {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: clamp(28px, 3.5vw, 48px);
+  align-items: stretch;
+}
+
+.tpl-design-08-retreat .sr-plan {
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  padding: clamp(36px, 3.5vw, 52px);
+  background: var(--color-background);
+  display: flex;
+  flex-direction: column;
+}
+
+.tpl-design-08-retreat .sr-plan-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 20px;
+}
+
+.tpl-design-08-retreat .sr-plan-price {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 3.4vw, 50px);
+  margin: 0 0 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tpl-design-08-retreat .sr-plan-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.tpl-design-08-retreat .sr-plan-lines li {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-muted);
+  padding-left: 26px;
+  position: relative;
+}
+
+.tpl-design-08-retreat .sr-plan-lines li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.85em;
+  width: 14px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+.tpl-design-08-retreat .sr-contact {
+  border-radius: 8px;
+  padding: clamp(36px, 3.5vw, 52px);
+  background: var(--color-primary);
+  color: var(--color-on-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+.tpl-design-08-retreat .sr-contact .sr-h3 {
+  color: var(--color-on-dark);
+}
+
+.tpl-design-08-retreat .sr-contact .sr-body {
+  color: rgba(247, 244, 236, 0.72);
+  font-size: 16px;
+}
+
+.tpl-design-08-retreat .sr-address {
+  font-style: normal;
+  display: grid;
+  gap: 12px;
+  margin: 8px 0 32px;
+  font-size: 16px;
+}
+
+.tpl-design-08-retreat .sr-address a {
+  color: var(--color-on-dark);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(247, 244, 236, 0.3);
+  width: fit-content;
+}
+
+.tpl-design-08-retreat .sr-address a:hover {
+  border-color: var(--color-on-dark);
+}
+
+.tpl-design-08-retreat .sr-address span {
+  color: rgba(247, 244, 236, 0.6);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.tpl-design-08-retreat .sr-own-ctas {
+  margin-top: auto;
+}
+
+.tpl-design-08-retreat .sr-contact .sr-cta-solid {
+  background: var(--color-on-dark);
+  border-color: var(--color-on-dark);
+  color: var(--color-primary);
+}
+
+.tpl-design-08-retreat .sr-contact .sr-cta-solid:hover {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-on-dark);
+}
+
+/* ── FOOTER ── */
+.tpl-design-08-retreat .sr-footer {
+  position: relative;
+  background: var(--color-primary);
+  color: rgba(247, 244, 236, 0.78);
+  text-align: center;
+  padding: clamp(90px, 10vw, 150px) 24px clamp(60px, 7vw, 90px);
+}
+
+.tpl-design-08-retreat .sr-footer .sr-horizon {
+  top: 0;
+  bottom: auto;
+}
+
+.tpl-design-08-retreat .sr-footer-line {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.4vw, 42px);
+  color: var(--color-on-dark);
+  max-width: 24ch;
+  margin: 0 auto 26px;
+  line-height: 1.3;
+}
+
+.tpl-design-08-retreat .sr-colophon,
+.tpl-design-08-retreat .sr-footer-contact {
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+
+.tpl-design-08-retreat .sr-footer-contact a {
+  color: var(--color-on-dark);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(247, 244, 236, 0.3);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .tpl-design-08-retreat .sr-plans {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tpl-design-08-retreat .sr-contact {
+    grid-column: 1 / -1;
+  }
+  .tpl-design-08-retreat .sr-services {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .tpl-design-08-retreat .sr-links {
+    display: none;
+  }
+  .tpl-design-08-retreat .sr-place-cols {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-08-retreat .sr-facts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 24px;
+  }
+  .tpl-design-08-retreat .sr-slow-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-08-retreat .sr-slow-visual {
+    position: static;
+    max-width: 560px;
+  }
+  .tpl-design-08-retreat .sr-plans {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .tpl-design-08-retreat {
+    font-size: 16px;
+  }
+  .tpl-design-08-retreat .sr-hero-ctas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tpl-design-08-retreat .sr-scroll-cue {
+    display: none;
+  }
+  .tpl-design-08-retreat .sr-ritual {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .tpl-design-08-retreat .sr-services {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-08-retreat .sr-card-body {
+    padding: 28px 24px 32px;
+  }
+}
+
+/* Reduced motion: everything visible, no pins — the static layouts carry it.
+   (JS also early-returns; these guards keep first paint honest.) */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-08-retreat .sr-depth-pin {
+    display: none;
+  }
+  .tpl-design-08-retreat .sr-depth-static {
+    display: block;
+  }
+}

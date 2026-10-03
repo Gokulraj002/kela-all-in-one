@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-07-apparel',
+  num: '07',
+  name: 'Atelier Vestiaire',
+  tag: 'Apparel',
+  style: 'Editorial lookbook commerce',
+  animation: 'Lookbook page turns, tag pops',
+  typography: 'Bodoni Moda + Inter',
+  layout: 'Full-bleed folio pages',
+  mood: 'Tailored, assured, editorial',
+  palette: 'Warm gray / ink / oxblood',
+  features: [
+    'Lookbook turn product flow',
+    'Shoppable tags',
+    'Demo cart',
+    'Size guide',
+    'Atelier story',
+  ],
+  fonts: { display: 'Bodoni Moda', body: 'Inter' },
+  colors: { primary: '#1C1A17', accent: '#6E2A2A' },
+};

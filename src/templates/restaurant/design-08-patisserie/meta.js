@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-08-patisserie',
+  num: '08',
+  name: 'Butter & Bloom',
+  tag: 'Patisserie',
+  style: 'Delicate morning craft',
+  animation: 'Tiered glass-case Z-bloom, soft bake pops',
+  typography: 'Marcellus + Mulish',
+  layout: 'Glass-case tiers, bake-schedule timeline',
+  mood: 'Delicate, crafted, morning-fresh',
+  palette: 'Blush / cocoa / rose',
+  features: [
+    '3D glass-case shelves',
+    'Bake-time flags',
+    'Morning bake schedule',
+    'Lamination story',
+    'Custom cake orders',
+  ],
+  fonts: { display: 'Marcellus', body: 'Mulish' },
+  colors: { primary: '#3E2A22', accent: '#C48A7A' },
+};

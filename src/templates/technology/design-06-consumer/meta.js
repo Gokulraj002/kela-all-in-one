@@ -1,0 +1,20 @@
+export const meta = {
+  id: 'design-06-consumer',
+  num: '06',
+  name: 'Pip',
+  tag: 'Consumer App',
+  style: 'Playful and warm',
+  animation: 'Spring-assembled phone screens',
+  typography: 'Nunito + Inter',
+  layout: 'Centered playful, phone-led',
+  mood: 'Joyful, warm, approachable',
+  palette: 'Cream / coral / sunshine',
+  features: [
+    'Spring-assembled app screens',
+    'Reviews wall',
+    'How-it-works steps',
+    'Download CTA',
+  ],
+  fonts: { display: 'Nunito', body: 'Inter' },
+  colors: { primary: '#FF6B6B', accent: '#FFC53D' },
+};

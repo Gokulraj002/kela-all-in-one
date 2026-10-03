@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231A1714'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23D9B65E'%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Kela Jewels — high jewelry as light, sculpted.">
+  <title>Kela Jewels — High Jewelry</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="content.js"></script>
+</head>
+<body>
+
+  <!-- 1 · Navigation -->
+  <header class="site-nav" id="siteNav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#hero" aria-label="Home"><span data-brand id="brandMark"></span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary"></nav>
+      <a class="btn btn-small btn-line" href="#contact" id="navCta"></a>
+    </div>
+  </header>
+
+  <!-- Chapter indicator (right edge) -->
+  <aside class="chapters" id="chapters" aria-label="Section navigation"></aside>
+
+  <main>
+    <!-- 2 · Hero : pinned scene -->
+    <section id="hero" aria-label="Introduction">
+      <div class="hero-pin" id="heroPin">
+        <div class="hero-stage" id="heroStage">
+          <div class="hero-media" data-speed="0.08" id="heroMedia">
+            <div class="imgwrap hero-imgwrap">
+              <img width="1920" height="1080" id="heroImg" src="assets/images/hero.webp" alt="Sculptural gold and diamond necklace on wet black stone in dramatic light"
+                   fetchpriority="high" decoding="async"
+                   onerror="this.onerror=null;this.src=window.__IMG_FALLBACK__">
+            </div>
+          </div>
+          <div class="hero-veil" aria-hidden="true"></div>
+          <div class="hero-copy" id="heroCopy" data-depth="0.5">
+            <p class="eyebrow" data-content="hero.eyebrow">High Jewelry · Chapter VII</p>
+            <h1 class="hero-title" id="heroTitle" data-content="hero.title">Wear the light you bend.</h1>
+            <p class="hero-sub" data-content="hero.subtitle">Sculptural pieces in gold, black diamond and emerald — cut to fracture light, cast to hold shadow.</p>
+            <div class="hero-ctas">
+              <a class="btn btn-solid" href="#products" data-content="hero.ctaPrimary">Enter the Prism</a>
+              <a class="btn btn-line" href="#craftsmanship" data-content="hero.ctaSecondary">The Atelier</a>
+            </div>
+          </div>
+          <div class="scroll-cue" id="scrollCue" aria-hidden="true">
+            <span class="scroll-cue-label">Scroll</span>
+            <span class="scroll-cue-line"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Collections -->
+    <section id="collections" aria-label="Collections">
+      <div class="wrap section-pad">
+        <p class="eyebrow reveal" data-content="collectionsEyebrow"></p>
+        <h2 class="section-title reveal-lines" data-content="collectionsTitle"></h2>
+        <div class="collections-grid" id="collectionsGrid"></div>
+      </div>
+    </section>
+
+    <!-- 4 · Products -->
+    <section id="products" aria-label="Pieces">
+      <div class="wrap section-pad">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow reveal" data-content="productsEyebrow"></p>
+            <h2 class="section-title reveal-lines" data-content="productsTitle"></h2>
+          </div>
+          <p class="section-note reveal" data-content="productsNote"></p>
+        </div>
+        <div class="products-grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <!-- 5 · Craftsmanship -->
+    <section id="craftsmanship" aria-label="Craftsmanship">
+      <div class="wrap section-pad craft-grid">
+        <div class="craft-media reveal-clip" data-speed="0.05" data-skew>
+          <div class="imgwrap">
+            <img width="1920" height="1080" src="assets/images/craft.webp" alt="Goldsmith torch flame heating a ring on a dark workbench at night"
+                 loading="lazy" decoding="async" data-content-img="craftsmanship.image"
+                 onerror="this.onerror=null;this.src=window.__IMG_FALLBACK__">
+          </div>
+        </div>
+        <div class="craft-copy">
+          <p class="eyebrow reveal" data-content="craftsmanship.eyebrow">The Atelier</p>
+          <h2 class="section-title reveal-lines" data-content="craftsmanship.title">Darkness is a material too.</h2>
+          <p class="body-text reveal" data-content="craftsmanship.body">We work the way cinematographers light a scene — every Kela Jewels piece is modeled against shadow before it is cast. Blackened gold, smoked settings, stones chosen for how they behave in low light.</p>
+          <ol class="process-list" id="processList"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prism study : pinned interstitial (between craftsmanship and story) -->
+    <div class="prism-pin" id="prismPin" aria-label="Prism study">
+      <div class="prism-panels" id="prismPanels"></div>
+    </div>
+
+    <!-- 6 · Story -->
+    <section id="story" aria-label="Maison story">
+      <div class="wrap section-pad story-layout">
+        <div class="story-copy">
+          <p class="eyebrow reveal" data-content="story.eyebrow">The Maison</p>
+          <h2 class="section-title reveal-lines" data-content="story.title">Founded in a darkroom, not a boardroom.</h2>
+          <p class="body-text reveal" data-content="story.body">Kela Jewels began when a photographer and a goldsmith started arguing about light. Seven years later, the maison still prototypes every piece under a single spotlight in a blacked-out studio in Mumbai — because a jewel is only finished when it survives the dark.</p>
+          <p class="tagline reveal" data-brand-tagline></p>
+        </div>
+        <div class="story-media reveal-clip" data-speed="0.05" data-skew>
+          <div class="imgwrap">
+            <img width="1920" height="1080" src="assets/images/hero.webp" alt="Sculptural gold necklace resting on dark wet stone"
+                 loading="lazy" decoding="async" data-content-img="story.image"
+                 onerror="this.onerror=null;this.src=window.__IMG_FALLBACK__">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · Contact -->
+    <section id="contact" aria-label="Contact">
+      <div class="wrap section-pad contact-grid">
+        <div class="contact-info">
+          <p class="eyebrow reveal" data-content="contactEyebrow"></p>
+          <h2 class="section-title reveal-lines" data-content="contactTitle"></h2>
+          <dl class="contact-details reveal" id="contactDetails"></dl>
+        </div>
+        <div class="contact-formwrap reveal">
+          <form id="contactForm" novalidate>
+            <div class="field">
+              <label for="fName" data-content="formName"></label>
+              <input type="text" id="fName" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="fEmail" data-content="formEmail"></label>
+              <input type="email" id="fEmail" name="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="fMsg" data-content="formMessage"></label>
+              <textarea id="fMsg" name="message" rows="4" required></textarea>
+            </div>
+            <button class="btn btn-solid" type="submit" data-content="formSubmit"></button>
+          </form>
+          <div class="form-confirm" id="formConfirm" hidden></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8 · Footer -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span class="brand brand-small" data-brand></span>
+      <nav class="footer-nav" id="footerNav" aria-label="Footer"></nav>
+      <p class="footer-line" data-content="footer.line">© 2026 Kela Jewels. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Quick view -->
+  <div class="qv" id="quickView" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Product quick view">
+    <div class="qv-backdrop" id="qvBackdrop"></div>
+    <div class="qv-panel" id="qvPanel" role="document">
+      <button class="qv-close" id="qvClose" aria-label="Close">&times;</button>
+      <div class="qv-media">
+        <div class="imgwrap qv-imgwrap">
+          <img id="qvImg" alt="" onerror="this.onerror=null;this.src=window.__IMG_FALLBACK__" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="qv-copy">
+        <p class="eyebrow" id="qvEyebrow"></p>
+        <h3 class="qv-name" id="qvName"></h3>
+        <p class="qv-desc" id="qvDesc"></p>
+        <dl class="qv-specs">
+          <div><dt id="qvMatLabel"></dt><dd id="qvMaterial"></dd></div>
+          <div><dt id="qvStoneLabel"></dt><dd id="qvStone"></dd></div>
+          <div><dt id="qvPriceLabel"></dt><dd id="qvPrice"></dd></div>
+        </dl>
+        <a class="btn btn-solid" href="#contact" id="qvEnquire"></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

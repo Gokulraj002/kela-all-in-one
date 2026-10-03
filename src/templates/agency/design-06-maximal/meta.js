@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-06-maximal',
+  num: '06',
+  name: 'Studio Louder',
+  tag: 'Maximalist',
+  style: 'Controlled-chaos collage — every layer placed',
+  animation: 'Collage avalanche tumble, sticker pops, scroll-velocity kick, 40px/s crew marquee',
+  typography: 'Syne + Work Sans',
+  layout: 'Avalanche collage field with rotated overlapping posters, sticker nav, shouted sections',
+  mood: 'Loud, joyful, deliberate',
+  palette: 'Hot paper / black / acid yellow (+ magenta on 3 elements)',
+  features: [
+    'M6 collage avalanche — scroll-scrubbed poster tumble',
+    'Scroll-velocity rotation kick (rAF, capped)',
+    'Hero collage explosion with sticker pops',
+    'Constant-speed crew marquee (40px/s, decorative)',
+    'Sticker wiggle on hover',
+    'Reduced-motion static path',
+  ],
+  fonts: { display: 'Syne', body: 'Work Sans' },
+  colors: { primary: '#141210', accent: '#D8E03C' },
+};

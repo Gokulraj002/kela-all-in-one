@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-07-rooftop',
+  num: '07',
+  name: 'Aurelia',
+  tag: 'Rooftop Lounge',
+  style: 'Golden-hour glamour',
+  animation: 'Focus-pull dish ascent, warm edge-light wipes',
+  typography: 'Italiana + Jost',
+  layout: 'Full-bleed skyline, cocktail-star grid',
+  mood: 'Glamorous, golden, elevated',
+  palette: 'Midnight / sand / champagne',
+  features: [
+    'Focus-pull card reveals',
+    'Cocktail-led menu',
+    'Golden-hour ritual band',
+    'Skyline feature',
+    'Private skies events',
+  ],
+  fonts: { display: 'Italiana', body: 'Jost' },
+  colors: { primary: '#EFE4CE', accent: '#D9A05E' },
+};

@@ -1,0 +1,15 @@
+export const meta = {
+  id: 'design-08-spiritual',
+  num: '08',
+  name: 'Stillpoint',
+  tag: 'Spiritual',
+  style: 'Temple-town serenity, reverent minimal',
+  animation: 'Mandala orbit, flame-flicker reveals, slow fades',
+  typography: 'Cormorant Garamond + Newsreader',
+  layout: 'Centered contemplative, orbital ring stage',
+  mood: 'Serene, reverent, still',
+  palette: 'Marigold / ivory / maroon-black',
+  features: ['Mandala orbit', 'Silent mornings', 'Temple stays', 'Guided contemplation'],
+  fonts: { display: 'Cormorant Garamond', body: 'Newsreader' },
+  colors: { primary: '#2A1E1E', accent: '#D99A2B' },
+};

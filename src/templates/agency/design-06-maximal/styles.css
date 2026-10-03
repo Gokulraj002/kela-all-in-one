@@ -1,0 +1,592 @@
+/* ============================================================
+   Studio Louder — design-06-maximal
+   Maximalist collective: controlled chaos, every layer placed.
+   Tokens live ONLY on .tpl-design-06-maximal — never :root.
+   ============================================================ */
+
+.tpl-design-06-maximal {
+  --color-background: #f2ede0;
+  --color-surface: #e4dcc6;
+  --color-primary: #141210;
+  --color-secondary: #4a4438;
+  --color-accent: #d8e03c;
+  --color-text: #141210;
+  --color-muted: #7a7263;
+  --color-magenta: #e02e8a;
+  --color-paper: #fbf7ec;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  /* x only: in the viewer this class also lands on the scroll container
+     (.tpl-scope), where overflow: clip on both axes stopped all scrolling. */
+  overflow-x: clip;
+}
+
+.tpl-design-06-maximal img {
+  max-width: 100%;
+}
+
+/* ---------- shared tone badges ---------- */
+.tpl-design-06-maximal .tone-acid { background: var(--color-accent); color: var(--color-paper); }
+.tpl-design-06-maximal .tone-ink { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-06-maximal .tone-paper { background: var(--color-paper); color: var(--color-primary); }
+.tpl-design-06-maximal .tone-magenta { background: var(--color-magenta); color: #fff; }
+
+/* ---------- type helpers ---------- */
+.tpl-design-06-maximal .l6-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-secondary);
+}
+.tpl-design-06-maximal .l6-eyebrow::before {
+  content: '';
+  width: 0.9em;
+  height: 0.9em;
+  background: var(--color-accent);
+  border: 2px solid var(--color-primary);
+  flex: none;
+}
+.tpl-design-06-maximal .l6-eyebrow-inv { color: var(--brand-on-dark, var(--color-accent)); }
+
+.tpl-design-06-maximal .l6-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 0.4em;
+}
+.tpl-design-06-maximal .l6-h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.8rem;
+}
+.tpl-design-06-maximal .l6-hl {
+  background: var(--color-accent);
+  /* the Kela accent is a deep vermilion on this light page — light ink on it */
+  color: var(--color-paper);
+  padding: 0 0.12em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.tpl-design-06-maximal .l6-lede {
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  color: var(--color-secondary);
+  max-width: 46rem;
+  margin: 0;
+}
+.tpl-design-06-maximal .l6-sec {
+  padding: clamp(4.5rem, 9vw, 8rem) clamp(1.25rem, 5vw, 4.5rem);
+  scroll-margin-top: 84px;
+  position: relative;
+}
+.tpl-design-06-maximal .l6-sec-head {
+  max-width: 1100px;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+/* word-mask headline spans */
+.tpl-design-06-maximal .l6-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.09em;
+  margin-bottom: -0.09em;
+}
+.tpl-design-06-maximal .l6-wm .wi {
+  display: inline-block;
+}
+
+/* ---------- sticker nav ---------- */
+.tpl-design-06-maximal .l6-nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
+}
+.tpl-design-06-maximal .l6-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  background: var(--color-accent);
+  color: var(--color-paper);
+  padding: 0.55em 0.95em;
+  border: 2px solid var(--color-primary);
+  box-shadow: 3px 3px 0 var(--color-primary);
+  transform: rotate(-2deg);
+}
+.tpl-design-06-maximal .l6-links {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+.tpl-design-06-maximal .l6-navlink {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  padding: 0.6em 1em;
+  border: 2px solid var(--color-primary);
+  box-shadow: 2px 2px 0 var(--color-primary);
+  transition: transform 0.2s ease;
+}
+.tpl-design-06-maximal .l6-navlink:nth-child(odd) { transform: rotate(1.5deg); }
+.tpl-design-06-maximal .l6-navlink:nth-child(even) { transform: rotate(-1.5deg); }
+.tpl-design-06-maximal .l6-navlink:hover { transform: rotate(0deg) scale(1.06); }
+
+/* ---------- hero collage ---------- */
+.tpl-design-06-maximal .l6-hero {
+  position: relative;
+  overflow: clip;
+  scroll-margin-top: 70px;
+}
+.tpl-design-06-maximal .l6-hero-field {
+  position: relative;
+  /* fill the pinned stage (= the visible scroll area), not the window */
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(5.5rem, 11vh, 7.5rem) clamp(1.25rem, 5vw, 4.5rem) clamp(3.5rem, 7vh, 5.5rem);
+}
+.tpl-design-06-maximal .l6-hero-copy {
+  position: relative;
+  z-index: 3;
+  margin-right: -7rem;
+  background: var(--color-paper);
+  border: 3px solid var(--color-primary);
+  box-shadow: 9px 9px 0 var(--color-primary);
+  padding: clamp(1.25rem, 2.6vw, 2.25rem);
+  transform: rotate(-1.2deg);
+}
+.tpl-design-06-maximal .l6-hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  /* capped by the visible stage height so the pinned hero copy (title, sub
+     and CTA) always fits inside the stage */
+  font-size: clamp(2.4rem, min(10vw, calc(var(--tpl-vh, 100svh) * 0.1)), 8.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 0.35em;
+  text-wrap: balance;
+}
+.tpl-design-06-maximal .l6-hero-sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  color: var(--color-secondary);
+  max-width: 34rem;
+  margin: 0 0 1.6rem;
+}
+.tpl-design-06-maximal .l6-hero-frame {
+  position: relative;
+  z-index: 2;
+  background: var(--color-paper);
+  border: 3px solid var(--color-primary);
+  box-shadow: 9px 9px 0 var(--color-primary);
+  padding: clamp(0.6rem, 1.2vw, 1rem);
+  transform: rotate(-2deg);
+}
+.tpl-design-06-maximal .l6-hero-media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.tpl-design-06-maximal .l6-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tpl-design-06-maximal .l6-tape {
+  position: absolute;
+  width: 92px;
+  height: 26px;
+  top: -13px;
+}
+.tpl-design-06-maximal .l6-tape-a { left: 8%; transform: rotate(-8deg); background: color-mix(in srgb, var(--color-accent) 88%, transparent); }
+.tpl-design-06-maximal .l6-tape-b { right: 8%; transform: rotate(6deg); background: rgba(251, 247, 236, 0.92); }
+
+.tpl-design-06-maximal .l6-sticker { position: absolute; z-index: 5; }
+.tpl-design-06-maximal .l6-kick { display: block; transform-origin: 50% 50%; }
+.tpl-design-06-maximal .l6-sticker-body {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  padding: 0.7em 1.15em;
+  border: 2px solid var(--color-primary);
+  box-shadow: 3px 3px 0 var(--color-primary);
+}
+.tpl-design-06-maximal .l6-sticker:hover .l6-sticker-body { animation: l6-wiggle 0.3s ease; }
+@keyframes l6-wiggle {
+  0% { transform: rotate(0deg); }
+  30% { transform: rotate(2deg); }
+  60% { transform: rotate(-2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.tpl-design-06-maximal .l6-cta {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding: 1em 1.9em;
+  box-shadow: 5px 5px 0 var(--color-accent);
+  transform: rotate(-1deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tpl-design-06-maximal .l6-cta:hover { transform: rotate(0deg) translate(-2px, -2px); box-shadow: 7px 7px 0 var(--color-accent); }
+.tpl-design-06-maximal .l6-cta-magenta { background: var(--color-magenta); color: #fff; box-shadow: 5px 5px 0 var(--color-primary); margin-top: 1.2rem; }
+.tpl-design-06-maximal .l6-cta-magenta:hover { box-shadow: 7px 7px 0 var(--color-primary); }
+
+.tpl-design-06-maximal .l6-scroll-hint {
+  position: absolute;
+  z-index: 4;
+  bottom: 1.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--color-secondary);
+  white-space: nowrap;
+  background: var(--color-paper);
+  border: 2px solid var(--color-primary);
+  box-shadow: 3px 3px 0 var(--color-primary);
+  padding: 0.55em 1.1em;
+}
+
+/* ---------- work wall / M6 avalanche ---------- */
+.tpl-design-06-maximal .l6-work { overflow: clip; }
+.tpl-design-06-maximal .l6-avalanche {
+  position: relative;
+  height: 340vh;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+.tpl-design-06-maximal .l6-piece { position: absolute; }
+.tpl-design-06-maximal .l6-card {
+  margin: 0;
+  background: var(--color-paper);
+  border: 3px solid var(--color-primary);
+  box-shadow: 7px 7px 0 var(--color-primary);
+  transition: transform 0.3s ease;
+}
+.tpl-design-06-maximal .l6-piece:hover .l6-card { transform: scale(1.025); }
+.tpl-design-06-maximal .l6-card-media { background: var(--color-surface); overflow: hidden; }
+.tpl-design-06-maximal .l6-card-media img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.tpl-design-06-maximal .l6-card.is-magenta .l6-card-media { background: var(--color-magenta); padding: 12px; }
+.tpl-design-06-maximal .l6-typecard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  background: var(--color-primary);
+  color: var(--brand-on-dark, var(--color-accent));
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 3.6vw, 3.2rem);
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: pre-line;
+  padding: 1rem;
+}
+.tpl-design-06-maximal .l6-card-cap { padding: 1rem 1.1rem 1.25rem; }
+.tpl-design-06-maximal .l6-card.tone-acid .l6-card-cap { background: var(--color-accent); color: var(--color-paper); }
+.tpl-design-06-maximal .l6-card.tone-acid .l6-card-kind,
+.tpl-design-06-maximal .l6-card.tone-acid .l6-card-blurb { color: var(--color-paper); }
+.tpl-design-06-maximal .l6-card.tone-ink .l6-card-cap { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-06-maximal .l6-card.tone-ink .l6-card-kind,
+.tpl-design-06-maximal .l6-card.tone-ink .l6-card-blurb { color: var(--color-surface); }
+.tpl-design-06-maximal .l6-card-kind {
+  margin: 0 0 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-secondary);
+}
+.tpl-design-06-maximal .l6-card-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0 0 0.25em;
+}
+.tpl-design-06-maximal .l6-card-client { font-weight: 700; margin: 0 0 0.4rem; }
+.tpl-design-06-maximal .l6-card-blurb { margin: 0; font-size: 0.95rem; color: var(--color-secondary); }
+
+/* ---------- crew ---------- */
+.tpl-design-06-maximal .l6-marquee {
+  overflow: hidden;
+  background: var(--color-primary);
+  color: var(--color-background);
+  border-top: 3px solid var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
+  margin: 0 calc(clamp(1.25rem, 5vw, 4.5rem) * -1);
+}
+.tpl-design-06-maximal .l6-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: l6-mq var(--mq-dur, 30s) linear infinite;
+}
+.tpl-design-06-maximal .l6-marquee-run { display: flex; align-items: center; flex: none; }
+.tpl-design-06-maximal .l6-marquee-name {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3.4vw, 2.8rem);
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.55em 0;
+}
+.tpl-design-06-maximal .l6-marquee-dot {
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  background: var(--brand-on-dark, var(--color-accent));
+  margin: 0 0.9em;
+  flex: none;
+}
+@keyframes l6-mq { to { transform: translateX(-50%); } }
+
+.tpl-design-06-maximal .l6-crew-grid {
+  list-style: none;
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+.tpl-design-06-maximal .l6-crew-card {
+  border: 3px solid var(--color-primary);
+  box-shadow: 6px 6px 0 var(--color-primary);
+  padding: 1.5rem 1.4rem 1.6rem;
+  position: relative;
+}
+.tpl-design-06-maximal .l6-crew-card.tone-ink { color: var(--color-background); }
+.tpl-design-06-maximal .l6-crew-card.tone-ink .l6-crew-note { color: var(--color-surface); }
+.tpl-design-06-maximal .l6-crew-num {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9rem;
+  background: var(--color-primary);
+  color: var(--brand-on-dark, var(--color-accent));
+  padding: 0.35em 0.6em;
+  transform: rotate(-3deg);
+  margin-bottom: 1rem;
+}
+.tpl-design-06-maximal .l6-crew-card.tone-ink .l6-crew-num { background: var(--brand-on-dark, var(--color-accent)); color: var(--color-primary); }
+.tpl-design-06-maximal .l6-crew-card.tone-acid .l6-crew-note { color: var(--color-paper); }
+.tpl-design-06-maximal .l6-crew-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0 0 0.2em;
+}
+.tpl-design-06-maximal .l6-crew-role { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.82rem; margin: 0 0 0.7rem; }
+.tpl-design-06-maximal .l6-crew-note { margin: 0; font-size: 0.98rem; color: var(--color-secondary); }
+
+/* ---------- services ---------- */
+.tpl-design-06-maximal .l6-svc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 3px solid var(--color-primary);
+}
+.tpl-design-06-maximal .l6-svc-row {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1.1rem, 2.5vw, 1.8rem) clamp(0.5rem, 1.5vw, 1rem);
+  border-top: 3px solid var(--color-primary);
+  /* hover nudge on `translate` — GSAP reveals these rows with `transform` */
+  transition: background 0.25s ease, translate 0.25s ease;
+}
+.tpl-design-06-maximal .l6-svc-row:hover { background: var(--color-accent); color: var(--color-paper); translate: 10px 0; }
+.tpl-design-06-maximal .l6-svc-num {
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding: 0.4em 0.65em;
+  transform: rotate(-3deg);
+}
+.tpl-design-06-maximal .l6-svc-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 5vw, 3.6rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.3em;
+}
+.tpl-design-06-maximal .l6-svc-desc { margin: 0; color: var(--color-secondary); font-size: 1.02rem; max-width: 44rem; }
+.tpl-design-06-maximal .l6-svc-row:hover .l6-svc-desc { color: var(--color-paper); }
+
+/* ---------- manifesto ---------- */
+.tpl-design-06-maximal .l6-manifesto { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-06-maximal .l6-mani-list { list-style: none; margin: 2.5rem 0 0; padding: 0; }
+.tpl-design-06-maximal .l6-mani-line {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 6.5vw, 4.8rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  padding: 0.45em 0;
+  border-top: 2px solid rgba(242, 237, 224, 0.28);
+}
+.tpl-design-06-maximal .l6-mani-line:last-child { border-bottom: 2px solid rgba(242, 237, 224, 0.28); }
+.tpl-design-06-maximal .l6-mani-line:nth-child(even) { color: var(--brand-on-dark, var(--color-accent)); }
+
+/* ---------- contact ---------- */
+.tpl-design-06-maximal .l6-bigmail {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.65rem, 7.2vw, 6.2rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.12em;
+  text-decoration-color: var(--color-accent);
+  margin: 0.3em 0 0.8em;
+  overflow-wrap: anywhere;
+  transition: background 0.2s ease;
+}
+.tpl-design-06-maximal .l6-bigmail:hover { background: var(--color-accent); color: var(--color-paper); }
+.tpl-design-06-maximal .l6-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  margin-top: 1.5rem;
+}
+.tpl-design-06-maximal .l6-contact-grid p { margin: 0; color: var(--color-secondary); }
+.tpl-design-06-maximal .l6-contact-grid a { color: var(--color-primary); font-weight: 600; }
+.tpl-design-06-maximal .l6-socials {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+}
+.tpl-design-06-maximal .l6-socials a {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  background: var(--color-paper);
+  border: 2px solid var(--color-primary);
+  box-shadow: 2px 2px 0 var(--color-primary);
+  padding: 0.6em 1em;
+  transition: transform 0.2s ease;
+}
+.tpl-design-06-maximal .l6-socials a:hover { transform: rotate(-2deg) scale(1.05); background: var(--color-accent); color: var(--color-paper); }
+
+/* ---------- footer ---------- */
+.tpl-design-06-maximal .l6-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding: 2rem clamp(1.25rem, 5vw, 4.5rem);
+  border-top: 3px solid var(--color-primary);
+  font-size: 0.88rem;
+  color: var(--color-secondary);
+}
+.tpl-design-06-maximal .l6-footer p { margin: 0; }
+.tpl-design-06-maximal .l6-footer-line { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {
+  .tpl-design-06-maximal .l6-crew-grid { grid-template-columns: repeat(2, 1fr); }
+  .tpl-design-06-maximal .l6-contact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .tpl-design-06-maximal .l6-hero-field { grid-template-columns: 1fr; }
+  .tpl-design-06-maximal .l6-hero-copy { margin-right: 0; }
+  .tpl-design-06-maximal .l6-hero-frame { max-width: 560px; }
+}
+@media (max-width: 767px) {
+  .tpl-design-06-maximal .l6-avalanche { height: auto; display: grid; gap: clamp(1.5rem, 5vw, 2.5rem); }
+  .tpl-design-06-maximal .l6-piece { position: static !important; width: 100% !important; }
+  .tpl-design-06-maximal .l6-crew-grid { grid-template-columns: 1fr; }
+  .tpl-design-06-maximal .l6-contact-grid { grid-template-columns: 1fr; }
+  .tpl-design-06-maximal .l6-svc-row:hover { translate: none; }
+  .tpl-design-06-maximal .l6-sticker-body { font-size: 0.72rem; }
+  /* Pinned hero overlay: compress so copy + stickers fit 100svh.
+     The taped frame hides here — the full-bleed wall behind IS the
+     sequence, so the framed duplicate is dropped on small screens. */
+  .tpl-design-06-maximal .l6-hero-field {
+    padding: 4.75rem 1.25rem 2.5rem;
+    gap: 1.25rem;
+    align-content: center;
+  }
+  .tpl-design-06-maximal .l6-hero-copy {
+    padding: 1.1rem 1.15rem 1.35rem;
+    transform: rotate(-1deg);
+  }
+  .tpl-design-06-maximal .l6-hero-title { font-size: clamp(2.3rem, 13.5vw, 3rem); }
+  .tpl-design-06-maximal .l6-hero-sub { font-size: 1rem; margin-bottom: 1.2rem; }
+  .tpl-design-06-maximal .l6-hero-frame { display: none; }
+}
+@media (max-width: 480px) {
+  .tpl-design-06-maximal .l6-nav { padding: 0.7rem 1rem; }
+  .tpl-design-06-maximal .l6-wordmark { font-size: 0.95rem; }
+  .tpl-design-06-maximal .l6-scroll-hint { display: none; }
+}
+
+/* ---------- reduced motion: static final states ---------- */
+.tpl-design-06-maximal.is-reduced .l6-marquee-track { animation: none; }
+.tpl-design-06-maximal.is-reduced .l6-avalanche { height: auto; display: grid; gap: clamp(1.5rem, 4vw, 2.5rem); }
+.tpl-design-06-maximal.is-reduced .l6-piece { position: static !important; width: 100% !important; transform: rotate(var(--rot, 0deg)); }
+.tpl-design-06-maximal.is-reduced .l6-sticker:hover .l6-sticker-body { animation: none; }

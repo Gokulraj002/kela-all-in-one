@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-05-haveli',
+  num: '05',
+  name: 'Shekhawati House',
+  tag: 'Heritage Haveli',
+  style: 'Ornate heritage maximalism — arches, frescoes, pattern',
+  animation: 'Jharokha window-pan panorama',
+  typography: 'Rozha One + Mada',
+  layout: 'Centered ceremonial, arch-framed media',
+  mood: 'Storied, warm, opulent',
+  palette: 'Terracotta ink / marigold',
+  features: [
+    'Jharokha window-pan panorama (pinned scrub)',
+    'Scrubbable 200-year history timeline',
+    'Fresco art gallery on deep terracotta',
+    'Live booking bar with per-night rate math',
+    'Signature 10s courtyard light loop',
+    'Heritage walks & folk music experiences',
+  ],
+  fonts: { display: 'Rozha One', body: 'Mada' },
+  colors: { primary: '#5A2E1E', accent: '#D9A441' },
+};

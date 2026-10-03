@@ -1,0 +1,1003 @@
+/* design-09-villas — "The Nine Villas". Twilight ink + antique brass. */
+.tpl-design-09-villas {
+  --color-primary: #241d16;
+  --color-accent: #c9a24b;
+  --color-background: #161210;
+  --color-surface: #201913;
+  --color-surface-2: #241c15;
+  --color-text: #f3ead9;
+  --color-muted: #a89b85;
+  --color-line: rgba(201, 162, 75, 0.28);
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Manrope', sans-serif;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.tpl-design-09-villas *,
+.tpl-design-09-villas *::before,
+.tpl-design-09-villas *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-09-villas img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------- word-mask headline ---------- */
+.tpl-design-09-villas .nv-wm {
+  display: inline;
+}
+.tpl-design-09-villas .nv-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.tpl-design-09-villas .nv-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------- type ---------- */
+.tpl-design-09-villas .nv-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.5rem;
+}
+.tpl-design-09-villas .nv-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  margin: 0 0 1.25rem;
+}
+.tpl-design-09-villas .nv-h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+.tpl-design-09-villas .nv-body {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: var(--color-muted);
+  max-width: 38rem;
+  margin: 0 0 1.25rem;
+}
+.tpl-design-09-villas .nv-rule {
+  display: block;
+  height: 1px;
+  width: min(100%, 72rem);
+  background: var(--color-line);
+  transform-origin: left center;
+  margin: 2.5rem 0;
+}
+.tpl-design-09-villas .nv-wrap {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+.tpl-design-09-villas section {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  position: relative;
+}
+
+/* ---------- nav ---------- */
+/* zero-height sticky shell: sticks to the top of the scroll area */
+.tpl-design-09-villas .nv-navshell {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 40;
+}
+.tpl-design-09-villas .nv-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem clamp(1.25rem, 4vw, 3rem);
+  transition: background 0.5s ease, border-color 0.5s ease, padding 0.5s ease;
+  border-bottom: 1px solid transparent;
+}
+.tpl-design-09-villas .nv-nav.is-scrolled {
+  background: rgba(22, 18, 16, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--color-line);
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+.tpl-design-09-villas .nv-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tpl-design-09-villas .nv-wordmark span {
+  color: var(--color-accent);
+}
+.tpl-design-09-villas .nv-links {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 2.25rem);
+}
+.tpl-design-09-villas .nv-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.tpl-design-09-villas .nv-links a:hover {
+  color: var(--color-text);
+}
+.tpl-design-09-villas .nv-cta {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  text-decoration: none;
+  padding: 0.85rem 1.7rem;
+  border-radius: 999px;
+  transition: background 0.35s ease, color 0.35s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.tpl-design-09-villas .nv-cta:hover {
+  background: transparent;
+  color: var(--color-accent);
+}
+.tpl-design-09-villas .nv-cta-ghost {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-line);
+}
+.tpl-design-09-villas .nv-cta-ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: transparent;
+}
+
+/* ---------- hero ---------- */
+.tpl-design-09-villas .nv-hero {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+/* ScrollFrames contract: the design owns the stage height; the component
+   absolutely positions canvas + overlay inside it. */
+/* ScrollFrames: layout is inline in the component (stageHeight 100svh). */
+.tpl-design-09-villas .sf-overlay {
+  display: flex;
+  align-items: flex-end;
+  z-index: 1;
+}
+/* reduced-motion: static first frame carries the same overlay */
+.tpl-design-09-villas .sf-static {
+  position: relative;
+  height: var(--tpl-vh, 100svh);
+  overflow: hidden;
+}
+.tpl-design-09-villas .sf-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tpl-design-09-villas .a-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* visually hidden */
+.tpl-design-09-villas .nv-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.tpl-design-09-villas .nv-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(18, 14, 11, 0.88) 0%, rgba(18, 14, 11, 0.25) 45%, rgba(18, 14, 11, 0.35) 100%),
+    radial-gradient(120% 60% at 50% 100%, transparent 40%, rgba(18, 14, 11, 0.5) 100%);
+}
+.tpl-design-09-villas .nv-hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem) clamp(4rem, 9vh, 7rem);
+  width: 100%;
+}
+.tpl-design-09-villas .nv-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3.2rem, 9vw, 7.5rem);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  margin: 0 0 1.5rem;
+  max-width: 14ch;
+}
+.tpl-design-09-villas .nv-hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.8;
+  color: var(--color-text);
+  opacity: 0.85;
+  max-width: 34rem;
+  margin: 0 0 2.5rem;
+}
+.tpl-design-09-villas .nv-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.tpl-design-09-villas .nv-scroll-cue {
+  position: absolute;
+  right: clamp(1.25rem, 4vw, 3rem);
+  bottom: clamp(4rem, 9vh, 7rem);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  writing-mode: vertical-rl;
+}
+.tpl-design-09-villas .nv-scroll-cue::after {
+  content: '';
+  width: 1px;
+  height: 3.5rem;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+  animation: nv-cue 2.4s ease-in-out infinite;
+}
+@keyframes nv-cue {
+  0%, 100% { opacity: 0.35; transform: scaleY(0.7); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+}
+
+/* ---------- estate map journey ---------- */
+.tpl-design-09-villas .nv-map-sec {
+  background: var(--color-background);
+}
+.tpl-design-09-villas .nv-map-head {
+  max-width: 76rem;
+  margin: 0 auto clamp(2rem, 4vw, 3.5rem);
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+.tpl-design-09-villas .nv-map-pin {
+  position: relative;
+}
+/* Desktop pin (class set by the script): the stage is exactly the visible
+   scroll area, centred below the nav, and the villa list scrolls inside its
+   own window so all nine villas can be reached while pinned. */
+.tpl-design-09-villas .nv-map-pin.is-pinned {
+  height: var(--tpl-vh, 100svh);
+  display: flex;
+  align-items: center;
+  padding: 4.75rem 0 1.5rem;
+}
+.tpl-design-09-villas .nv-map-pin.is-pinned .nv-map-stage {
+  width: 100%;
+  min-height: 0;
+  max-height: 100%;
+}
+.tpl-design-09-villas .nv-map-pin.is-pinned .nv-map-cardsview {
+  max-height: calc(var(--tpl-vh, 100svh) - 7.5rem);
+  overflow: hidden;
+  /* room for the number badges that sit on the cards' left rule */
+  padding-left: 1rem;
+  margin-left: -1rem;
+  /* soft fade at the window's edges */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 1.25rem, black calc(100% - 1.25rem), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, black 1.25rem, black calc(100% - 1.25rem), transparent 100%);
+}
+.tpl-design-09-villas .nv-map-pin.is-pinned .nv-map-cards {
+  padding: 1.25rem 0;
+}
+.tpl-design-09-villas .nv-map-stage {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  align-items: center;
+  min-height: 70vh;
+}
+.tpl-design-09-villas .nv-map-frame {
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+  background: #14100d;
+  padding: clamp(0.75rem, 1.5vw, 1.25rem);
+  position: relative;
+}
+.tpl-design-09-villas .nv-map-frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.tpl-design-09-villas .nv-map-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.9rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-09-villas .nv-map-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.tpl-design-09-villas .nv-map-card {
+  border: 1px solid transparent;
+  border-left: 1px solid var(--color-line);
+  padding: 0.8rem 0 0.8rem 1.4rem;
+  opacity: 0.42;
+  transition: opacity 0.5s ease, border-color 0.5s ease, background 0.5s ease;
+  position: relative;
+}
+.tpl-design-09-villas .nv-map-card .nv-card-num {
+  position: absolute;
+  left: -0.5rem;
+  top: 0.95rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 1px solid var(--color-line);
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-muted);
+  transition: all 0.5s ease;
+}
+.tpl-design-09-villas .nv-map-card.is-active {
+  opacity: 1;
+  border-left-color: var(--color-accent);
+  background: linear-gradient(to right, rgba(201, 162, 75, 0.07), transparent 70%);
+}
+.tpl-design-09-villas .nv-map-card.is-active .nv-card-num {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-background);
+}
+.tpl-design-09-villas .nv-map-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0 0 0.2rem;
+  letter-spacing: 0.02em;
+}
+.tpl-design-09-villas .nv-map-card p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+  margin: 0 0 0.3rem;
+}
+.tpl-design-09-villas .nv-map-card .nv-card-meta {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+/* static mode (mobile / reduced): everything calm and visible */
+.tpl-design-09-villas .nv-map-static .nv-map-card {
+  opacity: 1;
+  border-left-color: var(--color-line);
+}
+.tpl-design-09-villas .nv-map-static .nv-map-card.is-active {
+  border-left-color: var(--color-accent);
+}
+/* map svg element styling */
+.tpl-design-09-villas .nv-map-svg .map-sea {
+  fill: #1b1611;
+}
+.tpl-design-09-villas .nv-map-svg .map-land {
+  fill: none;
+  stroke: var(--color-line);
+  stroke-width: 1;
+}
+.tpl-design-09-villas .nv-map-svg .map-contour {
+  fill: none;
+  stroke: rgba(201, 162, 75, 0.14);
+  stroke-width: 1;
+}
+.tpl-design-09-villas .nv-map-svg .map-secondary {
+  fill: none;
+  stroke: rgba(201, 162, 75, 0.35);
+  stroke-width: 1;
+  stroke-dasharray: 3 6;
+}
+.tpl-design-09-villas .nv-map-svg .map-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  fill: var(--color-muted);
+}
+.tpl-design-09-villas .nv-map-svg .map-compass {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  fill: var(--color-accent);
+}
+.tpl-design-09-villas .nv-map-svg .map-journey {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.tpl-design-09-villas .nv-map-svg .map-node {
+  fill: #14100d;
+  stroke: rgba(201, 162, 75, 0.5);
+  stroke-width: 1.5;
+  transition: fill 0.4s ease, stroke 0.4s ease;
+}
+.tpl-design-09-villas .nv-map-svg .map-node.is-active {
+  fill: var(--color-accent);
+  stroke: var(--color-accent);
+}
+.tpl-design-09-villas .nv-map-svg .map-node-num {
+  font-family: var(--font-body);
+  font-size: 11px;
+  fill: var(--color-muted);
+  text-anchor: middle;
+}
+.tpl-design-09-villas .nv-map-svg .map-node.is-active + .map-node-num {
+  fill: var(--color-background);
+  font-weight: 600;
+}
+.tpl-design-09-villas .nv-map-svg .map-marker-ring {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+}
+.tpl-design-09-villas .nv-map-svg .map-marker-dot {
+  fill: var(--color-accent);
+}
+.tpl-design-09-villas .nv-map-svg .map-marker-pulse {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1;
+  opacity: 0.6;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: nv-pulse 2.6s ease-out infinite;
+}
+@keyframes nv-pulse {
+  0% { transform: scale(0.5); opacity: 0.7; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-09-villas .nv-map-svg .map-marker-pulse,
+  .tpl-design-09-villas .nv-scroll-cue::after {
+    animation: none;
+  }
+}
+
+/* ---------- signature villas ---------- */
+.tpl-design-09-villas .nv-sig-sec {
+  background: var(--color-surface);
+}
+.tpl-design-09-villas .nv-sig {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+}
+.tpl-design-09-villas .nv-sig:nth-child(even) .nv-sig-visual {
+  order: 2;
+}
+.tpl-design-09-villas .nv-sig-visual {
+  overflow: hidden;
+  border-radius: 2px;
+}
+.tpl-design-09-villas .nv-sig-visual .a-img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tpl-design-09-villas .nv-sig-visual:hover .a-img {
+  transform: scale(1);
+}
+.tpl-design-09-villas .nv-sig-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  margin: 0 0 1rem;
+}
+.tpl-design-09-villas .nv-sig h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.01em;
+}
+.tpl-design-09-villas .nv-sig-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.6rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.tpl-design-09-villas .nv-sig-amenities {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem 1.5rem;
+}
+.tpl-design-09-villas .nv-sig-amenities li {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  padding-left: 1.4rem;
+  position: relative;
+  line-height: 1.55;
+}
+.tpl-design-09-villas .nv-sig-amenities li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.7rem;
+  height: 1px;
+  background: var(--color-accent);
+}
+.tpl-design-09-villas .nv-sig-price {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-09-villas .nv-sig-price strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  text-transform: none;
+  margin-right: 0.6rem;
+}
+
+/* ---------- comparison ---------- */
+.tpl-design-09-villas .nv-compare {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+}
+.tpl-design-09-villas .nv-compare th,
+.tpl-design-09-villas .nv-compare td {
+  text-align: left;
+  padding: 1.15rem 1rem;
+  border-bottom: 1px solid var(--color-line);
+  vertical-align: top;
+}
+.tpl-design-09-villas .nv-compare thead th {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-accent);
+}
+.tpl-design-09-villas .nv-compare thead th:first-child,
+.tpl-design-09-villas .nv-compare tbody th {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-weight: 500;
+}
+.tpl-design-09-villas .nv-compare td {
+  color: var(--color-text);
+  line-height: 1.6;
+}
+.tpl-design-09-villas .nv-compare .nv-compare-rate {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- staff ---------- */
+.tpl-design-09-villas .nv-staff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  margin-top: 3.5rem;
+}
+.tpl-design-09-villas .nv-staff-card {
+  border-top: 1px solid var(--color-line);
+  padding-top: 1.75rem;
+}
+.tpl-design-09-villas .nv-staff-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.6rem;
+  color: var(--color-accent);
+  opacity: 0.85;
+  display: block;
+  margin-bottom: 1rem;
+}
+.tpl-design-09-villas .nv-staff-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+  letter-spacing: 0.02em;
+}
+.tpl-design-09-villas .nv-staff-card p {
+  font-size: 0.94rem;
+  line-height: 1.8;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------- occasions ---------- */
+.tpl-design-09-villas .nv-occ-sec {
+  background: var(--color-surface);
+}
+.tpl-design-09-villas .nv-occ-banner {
+  margin: 3rem 0 4rem;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.tpl-design-09-villas .nv-occ-banner .a-img {
+  width: 100%;
+  aspect-ratio: 21 / 8;
+  object-fit: cover;
+}
+.tpl-design-09-villas .nv-occ-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+.tpl-design-09-villas .nv-occ-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 500;
+  margin: 0 0 1.1rem;
+}
+.tpl-design-09-villas .nv-occ-card p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--color-muted);
+  margin: 0 0 1.5rem;
+}
+.tpl-design-09-villas .nv-occ-card .nv-text-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.4rem;
+  transition: border-color 0.3s ease;
+}
+.tpl-design-09-villas .nv-occ-card .nv-text-link:hover {
+  border-color: var(--color-accent);
+}
+.tpl-design-09-villas .nv-occ-note {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-line);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  max-width: 44rem;
+}
+
+/* ---------- enquire ---------- */
+.tpl-design-09-villas .nv-enq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+.tpl-design-09-villas .nv-enq-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+}
+.tpl-design-09-villas .nv-field {
+  margin-bottom: 1.5rem;
+}
+.tpl-design-09-villas .nv-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.tpl-design-09-villas .nv-field label {
+  display: block;
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.6rem;
+}
+.tpl-design-09-villas .nv-field input,
+.tpl-design-09-villas .nv-field select,
+.tpl-design-09-villas .nv-field textarea {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.7rem 0.1rem;
+  border-radius: 0;
+  transition: border-color 0.3s ease;
+}
+.tpl-design-09-villas .nv-field select {
+  cursor: pointer;
+}
+.tpl-design-09-villas .nv-field select option {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+.tpl-design-09-villas .nv-field textarea {
+  resize: vertical;
+  min-height: 5.5rem;
+  line-height: 1.7;
+}
+.tpl-design-09-villas .nv-field input:focus,
+.tpl-design-09-villas .nv-field select:focus,
+.tpl-design-09-villas .nv-field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+}
+.tpl-design-09-villas .nv-estimate {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0.5rem 0 1.75rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-09-villas .nv-estimate .nv-est-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-09-villas .nv-estimate .nv-est-label small {
+  display: block;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+.tpl-design-09-villas .nv-estimate .nv-est-value {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+.tpl-design-09-villas .nv-estimate .nv-est-value small {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-left: 0.5rem;
+}
+.tpl-design-09-villas .nv-sent {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.tpl-design-09-villas .nv-sent .nv-sent-mark {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.tpl-design-09-villas .nv-sent h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+.tpl-design-09-villas .nv-sent p {
+  color: var(--color-muted);
+  line-height: 1.8;
+  max-width: 26rem;
+  margin: 0 auto;
+}
+.tpl-design-09-villas .nv-enq-side .nv-contact-line {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-line);
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--color-muted);
+}
+.tpl-design-09-villas .nv-enq-side .nv-contact-line a {
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-line);
+}
+.tpl-design-09-villas .nv-enq-side .nv-contact-line a:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ---------- footer ---------- */
+.tpl-design-09-villas .nv-footer {
+  border-top: 1px solid var(--color-line);
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0 2.5rem;
+}
+.tpl-design-09-villas .nv-footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+.tpl-design-09-villas .nv-footer-word {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+.tpl-design-09-villas .nv-footer-word span {
+  color: var(--color-accent);
+  font-style: italic;
+}
+.tpl-design-09-villas .nv-footer-links {
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+.tpl-design-09-villas .nv-footer-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: none;
+}
+.tpl-design-09-villas .nv-footer-links a:hover {
+  color: var(--color-text);
+}
+.tpl-design-09-villas .nv-footer-base {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  letter-spacing: 0.06em;
+}
+.tpl-design-09-villas .nv-footer-base p {
+  margin: 0;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .tpl-design-09-villas .nv-map-stage {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .tpl-design-09-villas .nv-enq-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-09-villas .nv-staff-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .tpl-design-09-villas .nv-sig {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .tpl-design-09-villas .nv-sig:nth-child(even) .nv-sig-visual {
+    order: 0;
+  }
+}
+@media (max-width: 767px) {
+  .tpl-design-09-villas .nv-links {
+    display: none;
+  }
+  .tpl-design-09-villas .nv-occ-grid {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-09-villas .nv-occ-banner .a-img {
+    aspect-ratio: 16 / 9;
+  }
+  .tpl-design-09-villas .nv-field-row {
+    grid-template-columns: 1fr;
+  }
+  .tpl-design-09-villas .nv-scroll-cue {
+    display: none;
+  }
+  .tpl-design-09-villas .nv-compare thead {
+    display: none;
+  }
+  .tpl-design-09-villas .nv-compare,
+  .tpl-design-09-villas .nv-compare tbody,
+  .tpl-design-09-villas .nv-compare tr,
+  .tpl-design-09-villas .nv-compare td,
+  .tpl-design-09-villas .nv-compare th {
+    display: block;
+    width: 100%;
+  }
+  .tpl-design-09-villas .nv-compare tr {
+    border: 1px solid var(--color-line);
+    border-radius: 2px;
+    margin-bottom: 1.25rem;
+    padding: 0.5rem 0.75rem;
+  }
+  .tpl-design-09-villas .nv-compare td,
+  .tpl-design-09-villas .nv-compare th {
+    border-bottom: 0;
+    padding: 0.55rem 0.5rem;
+  }
+  .tpl-design-09-villas .nv-compare tbody th {
+    color: var(--color-accent);
+    border-bottom: 1px solid var(--color-line);
+    margin-bottom: 0.25rem;
+  }
+}
+@media (max-width: 480px) {
+  .tpl-design-09-villas .nv-hero-actions .nv-cta {
+    width: 100%;
+    text-align: center;
+  }
+  .tpl-design-09-villas .nv-sig-amenities {
+    grid-template-columns: 1fr;
+  }
+}

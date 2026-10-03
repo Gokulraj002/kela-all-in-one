@@ -1,0 +1,22 @@
+export const meta = {
+  id: 'design-07-business',
+  num: '07',
+  name: 'Meridian Business Hotel',
+  tag: 'Business Hotel',
+  style: 'Utility-dense, instrument-fast business hotel',
+  animation: 'Split-flap departure-board room index, counting stat ticks',
+  typography: 'Archivo + Inter',
+  layout: 'Confident utility bar, express booking widget, board-style room index',
+  mood: 'Efficient, confident, precise',
+  palette: 'Steel ink and confident blue',
+  features: [
+    'Split-flap departure-board room index',
+    'Express 30-second booking widget',
+    'Counting stat ticks (Wi-Fi, rooms, airport time)',
+    'Meeting-room index with capacity table',
+    'All-day dining with time promises',
+    'Airport and city transfer times',
+  ],
+  fonts: { display: 'Archivo', body: 'Inter' },
+  colors: { primary: '#1B2A3A', accent: '#2E7CD6' },
+};

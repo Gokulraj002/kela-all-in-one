@@ -1,0 +1,729 @@
+/* Atelier Flagship — design-01-flagship. Tokens scoped to .tpl-design-01-flagship ONLY. */
+.tpl-design-01-flagship {
+  --color-background: #F4F1EA;
+  --color-surface: #EDE8DB;
+  --color-primary: #1A1815;
+  --color-secondary: #5A5248;
+  --color-accent: #8C6A3F;
+  --color-text: #1A1815;
+  --color-muted: #8B8375;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  position: relative;
+  --fl-nav-h: 76px;
+}
+
+/* Visually hidden (screen-reader copy of split headlines). */
+.tpl-design-01-flagship .fl-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tpl-design-01-flagship *,
+.tpl-design-01-flagship *::before,
+.tpl-design-01-flagship *::after { box-sizing: border-box; }
+
+.tpl-design-01-flagship a { color: inherit; }
+.tpl-design-01-flagship img { display: block; }
+.tpl-design-01-flagship button { font-family: inherit; }
+
+.tpl-design-01-flagship :focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.tpl-design-01-flagship .a-img { display: block; overflow: hidden; background: var(--color-surface); }
+.tpl-design-01-flagship .a-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.tpl-design-01-flagship .fl-wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+
+.tpl-design-01-flagship .fl-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 22px;
+}
+
+.tpl-design-01-flagship .fl-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin: 0 0 10px;
+  max-width: 14ch;
+}
+
+.tpl-design-01-flagship .fl-body { max-width: 60ch; margin: 0 0 1.2em; color: var(--color-secondary); }
+.tpl-design-01-flagship .fl-body:last-child { margin-bottom: 0; }
+
+.tpl-design-01-flagship .fl-rule {
+  display: block;
+  height: 1px;
+  background: var(--color-accent);
+  transform-origin: left center;
+  margin: 30px 0 54px;
+  max-width: 160px;
+}
+
+/* Quiet outlined button. */
+.tpl-design-01-flagship .fl-btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 40px;
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+.tpl-design-01-flagship .fl-btn:hover:not(:disabled) { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-01-flagship .fl-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ---------- nav ----------
+   Sticky (not fixed): it sticks to the top of whatever actually scrolls —
+   the platform's scroll area or the window in a standalone export — and the
+   negative margin lets the hero slide underneath it, as before. */
+.tpl-design-01-flagship .fl-nav {
+  position: sticky;
+  top: 0;
+  height: var(--fl-nav-h);
+  margin-bottom: calc(-1 * var(--fl-nav-h));
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px clamp(20px, 4vw, 56px);
+  background: color-mix(in srgb, var(--color-background) 88%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+.tpl-design-01-flagship .fl-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.tpl-design-01-flagship .fl-links { display: flex; gap: 34px; }
+.tpl-design-01-flagship .fl-links a {
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-01-flagship .fl-links a:hover { color: var(--color-primary); border-color: var(--color-accent); }
+
+.tpl-design-01-flagship .fl-bag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.tpl-design-01-flagship .fl-bag:hover { background: var(--color-primary); color: var(--color-background); }
+.tpl-design-01-flagship .fl-bag-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* ---------- hero ---------- */
+.tpl-design-01-flagship .fl-hero {
+  position: relative;
+  min-height: var(--tpl-vh, 100svh);
+  text-align: center;
+  overflow: hidden;
+}
+/* ScrollFrames hero: the pinned frame sequence owns the stage/canvas/overlay
+   layout inline (see src/templates/_shared/ScrollFrames.jsx) — the design
+   only positions its own overlay children below. */
+.tpl-design-01-flagship .fl-hero-scrim {
+  position: absolute;
+  inset: 0;
+  /* A soft pool of gallery light behind the copy keeps the type legible over
+     the busy textile frames; the vertical wash frames top and bottom. */
+  background:
+    radial-gradient(ellipse 46% 40% at 50% 47%,
+      color-mix(in srgb, var(--color-background) 74%, transparent) 0%,
+      color-mix(in srgb, var(--color-background) 48%, transparent) 55%,
+      transparent 100%),
+    linear-gradient(to bottom,
+      color-mix(in srgb, var(--color-background) 62%, transparent) 0%,
+      color-mix(in srgb, var(--color-background) 30%, transparent) 34%,
+      color-mix(in srgb, var(--color-background) 12%, transparent) 60%,
+      color-mix(in srgb, var(--color-background) 72%, transparent) 100%);
+}
+.tpl-design-01-flagship .fl-hero-copy {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(96px, 14vh, 160px) clamp(20px, 4vw, 56px) clamp(80px, 10vh, 120px);
+}
+.tpl-design-01-flagship .fl-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3.2rem, 8.5vw, 7.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.015em;
+  color: var(--color-primary);
+  margin: 0 0 28px;
+}
+.tpl-design-01-flagship .fl-wm .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.tpl-design-01-flagship .fl-wm .wi { display: inline-block; will-change: transform; }
+.tpl-design-01-flagship .fl-hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  max-width: 52ch;
+  margin: 0 auto 40px;
+  color: var(--color-secondary);
+}
+.tpl-design-01-flagship .fl-hero-scroll {
+  position: absolute;
+  bottom: 30px;
+  /* Centred without a transform: GSAP animates this element's y on entry. */
+  left: 0;
+  right: 0;
+  width: max-content;
+  margin: 0 auto;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tpl-design-01-flagship .fl-hero-scroll::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 44px;
+  background: var(--color-accent);
+}
+
+/* ---------- gallery walk ---------- */
+.tpl-design-01-flagship .fl-products { padding: clamp(120px, 16vh, 200px) 0 0; }
+.tpl-design-01-flagship .fl-walk-head { padding-bottom: clamp(72px, 10vh, 120px); }
+
+.tpl-design-01-flagship .fl-walk { position: relative; }
+.tpl-design-01-flagship .fl-wall {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* One pedestal per viewport — centered, museum spacing. */
+.tpl-design-01-flagship .fl-station {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: clamp(28px, 4vh, 48px);
+  padding: clamp(72px, 10vh, 120px) clamp(20px, 4vw, 56px);
+  min-height: 92vh;
+  min-height: 92svh;
+  width: 100%;
+}
+.tpl-design-01-flagship .fl-pedestal {
+  width: min(420px, 78vw);
+  aspect-ratio: 4 / 4.6;
+  box-shadow: 0 40px 80px -40px color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+.tpl-design-01-flagship .fl-pedestal .a-img { width: 100%; height: 100%; }
+
+/* Museum label plate. */
+.tpl-design-01-flagship .fl-plate {
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+  background: color-mix(in srgb, var(--color-background) 82%, #fff);
+  padding: clamp(26px, 3vw, 40px) clamp(28px, 3.5vw, 48px);
+  max-width: 460px;
+  width: min(460px, 88vw);
+}
+.tpl-design-01-flagship .fl-no {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 14px;
+}
+.tpl-design-01-flagship .fl-pname {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.1;
+  color: var(--color-primary);
+  margin: 0 0 10px;
+}
+.tpl-design-01-flagship .fl-pdetail {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 16px;
+}
+.tpl-design-01-flagship .fl-pdesc {
+  font-size: 0.98rem;
+  color: var(--color-secondary);
+  margin: 0 0 24px;
+}
+.tpl-design-01-flagship .fl-plate-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+  padding-top: 20px;
+}
+.tpl-design-01-flagship .fl-pprice {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.tpl-design-01-flagship .fl-add {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-accent);
+  padding: 4px 2px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.tpl-design-01-flagship .fl-add:hover { color: var(--color-accent); border-color: var(--color-primary); }
+
+/* Reduced-motion: the same walk as a calm vertical stack. */
+.tpl-design-01-flagship .fl-walk.is-static .fl-station { min-height: 0; }
+.tpl-design-01-flagship .fl-walk.is-static .fl-station + .fl-station {
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
+
+/* Desktop: the pinned scrub — wall moves, spotlight holds the center.
+   The stage is exactly the visible scroll area (--tpl-vh in the platform,
+   the viewport in an export), and each station fits below the sticky nav. */
+@media (min-width: 1024px) {
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-walk-pin {
+    position: relative;
+    height: var(--tpl-vh, 100svh);
+    overflow: hidden;
+  }
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-wall {
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    will-change: transform;
+  }
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-station {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-height: 0;
+    height: 100%;
+    padding: calc(var(--fl-nav-h) + 16px) clamp(20px, 4vw, 56px) 64px;
+    gap: clamp(18px, 3vh, 32px);
+  }
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-pedestal {
+    width: auto;
+    height: calc(var(--tpl-vh, 100svh) * 0.37);
+    max-height: 420px;
+    flex: none;
+  }
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-plate {
+    padding: 22px clamp(26px, 3vw, 40px);
+    flex: none;
+  }
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-pname { font-size: clamp(1.7rem, 2.6vw, 2.2rem); }
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-pdesc { margin-bottom: 18px; }
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-plate-row { padding-top: 16px; }
+  .tpl-design-01-flagship .fl-spot {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    will-change: opacity;
+    background:
+      radial-gradient(ellipse 42% 34% at 50% 32%, rgba(255, 253, 246, 0.95) 0%, rgba(255, 253, 246, 0) 70%),
+      radial-gradient(ellipse 60% 90% at 50% 50%, rgba(26, 24, 21, 0) 55%, rgba(26, 24, 21, 0.14) 100%);
+  }
+  .tpl-design-01-flagship .fl-counter {
+    position: absolute;
+    top: calc(var(--fl-nav-h) + 20px);
+    right: clamp(20px, 4vw, 56px);
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    z-index: 3;
+  }
+  .tpl-design-01-flagship .fl-count-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .tpl-design-01-flagship .fl-count-num {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+  .tpl-design-01-flagship .fl-count-total {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--color-muted);
+  }
+  .tpl-design-01-flagship .fl-walk-hint {
+    position: absolute;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    white-space: nowrap;
+    z-index: 3;
+  }
+}
+
+/* Short desktop windows: a smaller pedestal keeps the label plate in view. */
+@media (min-width: 1024px) and (max-height: 800px) {
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-pedestal { height: calc(var(--tpl-vh, 100svh) * 0.3); }
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-plate { padding: 18px 28px; }
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-pdetail { margin-bottom: 10px; }
+  .tpl-design-01-flagship .fl-walk:not(.is-static) .fl-pdesc { font-size: 0.92rem; margin-bottom: 14px; }
+}
+
+/* Mobile / tablet: the spotlight and counter rest; the walk stacks. */
+@media (max-width: 1023px) {
+  .tpl-design-01-flagship .fl-spot,
+  .tpl-design-01-flagship .fl-counter,
+  .tpl-design-01-flagship .fl-walk-hint { display: none; }
+  .tpl-design-01-flagship .fl-station + .fl-station {
+    border-top: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+}
+
+/* ---------- craft ---------- */
+.tpl-design-01-flagship .fl-craft { padding: clamp(140px, 18vh, 230px) 0; }
+.tpl-design-01-flagship .fl-craft-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  margin-bottom: clamp(56px, 8vh, 96px);
+}
+.tpl-design-01-flagship .fl-craft-fig { margin: 0 0 clamp(56px, 8vh, 96px); }
+.tpl-design-01-flagship .fl-craft-fig .a-img { aspect-ratio: 16 / 8.5; }
+.tpl-design-01-flagship .fl-craft-fig figcaption {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: 16px;
+  text-align: center;
+}
+.tpl-design-01-flagship .fl-craft-points { list-style: none; margin: 0; padding: 0; }
+.tpl-design-01-flagship .fl-craft-points li {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 24px;
+  padding: 34px 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+}
+.tpl-design-01-flagship .fl-craft-points li:last-child {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+}
+.tpl-design-01-flagship .fl-point-no {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--color-accent);
+  line-height: 1.2;
+}
+.tpl-design-01-flagship .fl-craft-points h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin: 0 0 8px;
+}
+.tpl-design-01-flagship .fl-craft-points p { margin: 0; color: var(--color-secondary); }
+
+/* ---------- care ---------- */
+.tpl-design-01-flagship .fl-care {
+  padding: clamp(140px, 18vh, 230px) 0;
+  background: var(--color-surface);
+}
+.tpl-design-01-flagship .fl-care-grid {
+  list-style: none;
+  margin: 0 0 clamp(64px, 9vh, 110px);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+}
+.tpl-design-01-flagship .fl-care-grid li {
+  border-top: 2px solid var(--color-accent);
+  padding-top: 26px;
+}
+.tpl-design-01-flagship .fl-care-grid h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.45rem;
+  color: var(--color-primary);
+  margin: 14px 0 10px;
+}
+.tpl-design-01-flagship .fl-care-grid p { margin: 0; color: var(--color-secondary); font-size: 0.96rem; }
+.tpl-design-01-flagship .fl-visit { text-align: center; }
+.tpl-design-01-flagship .fl-visit address {
+  font-style: normal;
+  line-height: 2.1;
+  color: var(--color-secondary);
+}
+.tpl-design-01-flagship .fl-visit address a { color: var(--color-primary); font-weight: 500; }
+
+/* ---------- footer ---------- */
+.tpl-design-01-flagship .fl-footer {
+  background: var(--color-primary);
+  color: var(--color-background);
+  text-align: center;
+  padding: clamp(72px, 10vh, 120px) clamp(20px, 4vw, 56px);
+}
+.tpl-design-01-flagship .fl-footer-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  margin: 0 0 20px;
+}
+.tpl-design-01-flagship .fl-footer-line {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  margin: 0 0 14px;
+  color: color-mix(in srgb, var(--color-background) 88%, transparent);
+}
+.tpl-design-01-flagship .fl-colophon {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--color-background) 55%, transparent);
+  margin: 0;
+  font-style: italic;
+}
+
+/* ---------- cart drawer ---------- */
+.tpl-design-01-flagship .fl-veil {
+  position: fixed;
+  inset: var(--tpl-top, 0px) 0 0 0;
+  z-index: 80;
+  background: color-mix(in srgb, var(--color-primary) 45%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.tpl-design-01-flagship .fl-veil.is-open { opacity: 1; pointer-events: auto; }
+.tpl-design-01-flagship .fl-cart {
+  position: fixed;
+  top: var(--tpl-top, 0px); right: 0; bottom: 0;
+  z-index: 90;
+  width: min(420px, 92vw);
+  background: var(--color-background);
+  border-left: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+  display: flex;
+  flex-direction: column;
+  padding: 28px clamp(22px, 3vw, 36px) 32px;
+  transform: translateX(102%);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto;
+}
+.tpl-design-01-flagship .fl-cart.is-open { transform: translateX(0); }
+.tpl-design-01-flagship .fl-cart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.tpl-design-01-flagship .fl-cart-head .fl-eyebrow { margin: 0; }
+.tpl-design-01-flagship .fl-cart-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  border-bottom: 1px solid var(--color-accent);
+  padding: 4px 2px;
+}
+.tpl-design-01-flagship .fl-cart-empty {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-muted);
+  margin: auto 0;
+  text-align: center;
+}
+.tpl-design-01-flagship .fl-cart-lines { list-style: none; margin: 0; padding: 0; flex: 1; }
+.tpl-design-01-flagship .fl-cart-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+.tpl-design-01-flagship .fl-cart-no {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 6px;
+}
+.tpl-design-01-flagship .fl-cart-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+.tpl-design-01-flagship .fl-cart-qty { font-size: 0.85rem; color: var(--color-muted); margin: 0; }
+.tpl-design-01-flagship .fl-cart-right { text-align: right; }
+.tpl-design-01-flagship .fl-cart-price {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 8px;
+  white-space: nowrap;
+}
+.tpl-design-01-flagship .fl-cart-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 2px;
+  border-bottom: 1px solid transparent;
+}
+.tpl-design-01-flagship .fl-cart-remove:hover { color: var(--color-primary); border-color: var(--color-accent); }
+.tpl-design-01-flagship .fl-cart-foot { margin-top: 28px; }
+.tpl-design-01-flagship .fl-cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  border-top: 1px solid var(--color-primary);
+  padding-top: 18px;
+  margin-bottom: 14px;
+}
+.tpl-design-01-flagship .fl-cart-note {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--color-muted);
+  margin: 0 0 18px;
+}
+.tpl-design-01-flagship .fl-cart-cta { width: 100%; text-align: center; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .tpl-design-01-flagship .fl-links { display: none; }
+  .tpl-design-01-flagship .fl-craft-cols { grid-template-columns: 1fr; }
+  .tpl-design-01-flagship .fl-care-grid { grid-template-columns: 1fr; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .tpl-design-01-flagship .fl-craft-points li { grid-template-columns: 56px 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-01-flagship .fl-btn,
+  .tpl-design-01-flagship .fl-bag,
+  .tpl-design-01-flagship .fl-add,
+  .tpl-design-01-flagship .fl-cart,
+  .tpl-design-01-flagship .fl-veil,
+  .tpl-design-01-flagship .fl-links a { transition: none; }
+}
+
+@media (min-width: 1600px) {
+  .tpl-design-01-flagship .fl-hero-title { font-size: 8rem; }
+}

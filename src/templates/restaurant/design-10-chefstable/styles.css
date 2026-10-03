@@ -1,0 +1,944 @@
+/* Encore — Chef's Table (design-10-chefstable). Theatrical playbill dining.
+   All tokens scoped to .tpl-design-10-chefstable; every color/font via var(). */
+
+.tpl-design-10-chefstable {
+  --color-background: #0d0c0a;
+  --color-surface: #171410;
+  --color-primary: #efe6d4;
+  --color-secondary: #7a6f5c;
+  --color-accent: #b3352b;
+  --color-text: #e9dfc9;
+  --color-muted: #8a7f6a;
+  --color-curtain: #260e0c;
+  --on-accent: var(--color-primary);
+  --font-display: 'Abril Fatface', serif;
+  --font-body: 'Space Mono', monospace;
+
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+/* Text on accent fills: near-black on a light accent, cream on a dark one.
+   The platform's brand accent (and the customizer) can swap a deep accent for
+   a light one, so the text colour follows the accent's lightness. */
+@supports (color: oklch(from red l c h)) {
+  .tpl-design-10-chefstable {
+    --on-accent: oklch(from var(--color-accent) clamp(0.18, (0.66 - l) * 100, 0.95) 0.02 75);
+  }
+}
+
+.tpl-design-10-chefstable *,
+.tpl-design-10-chefstable *::before,
+.tpl-design-10-chefstable *::after {
+  box-sizing: border-box;
+}
+
+.tpl-design-10-chefstable img {
+  display: block;
+  max-width: 100%;
+}
+
+.tpl-design-10-chefstable a {
+  color: inherit;
+}
+
+.tpl-design-10-chefstable :focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ————— word-mask + shared bits ————— */
+
+.enc-wm .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.enc-wm .wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+.enc-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1.5rem;
+}
+
+.enc-stage-dir {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  line-height: 2;
+}
+
+.enc-section-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 1.02;
+  color: var(--color-primary);
+  margin: 0 0 1.25rem;
+}
+
+.enc-section-head {
+  text-align: center;
+  max-width: 60rem;
+  margin: 0 auto clamp(3rem, 6vw, 5rem);
+}
+
+.enc-section-head .enc-eyebrow {
+  margin-bottom: 1.25rem;
+}
+
+.enc-btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--on-accent);
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 1.05rem 2.4rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* outranks the scope-wide `a { color: inherit }` so link buttons get it too */
+.tpl-design-10-chefstable .enc-btn {
+  color: var(--on-accent);
+}
+
+.tpl-design-10-chefstable .enc-btn:hover,
+.enc-btn:hover {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+/* ————— nav ————— */
+
+.enc-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.1rem clamp(1.25rem, 4vw, 3rem);
+  background: rgba(13, 12, 10, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(239, 230, 212, 0.12);
+}
+
+.enc-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--color-primary);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.enc-wordmark span {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  color: var(--color-secondary);
+}
+
+.enc-nav-links {
+  display: flex;
+  gap: clamp(0.9rem, 2.4vw, 2rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.enc-nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.enc-nav-links a {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-muted);
+  white-space: nowrap;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.enc-nav-links a:hover {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-accent);
+}
+
+.enc-nav-cta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-primary);
+  border: 1px solid var(--color-accent);
+  padding: 0.7rem 1.4rem;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.enc-nav-cta:hover {
+  background: var(--color-accent);
+  color: var(--on-accent);
+}
+
+/* ————— hero ————— */
+
+.enc-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+/* ————— scroll-frames hero (replaces the hero loop video) ————— */
+/* Stage/canvas/overlay layout is inline in the ScrollFrames component
+   (stageHeight defaults to 100svh); no stylesheet needed here. */
+
+.enc-smoke {
+  position: absolute;
+  inset: -12%;
+  background: radial-gradient(
+    ellipse 55% 32% at 50% 62%,
+    rgba(239, 230, 212, 0.12),
+    transparent 70%
+  );
+  /* no filter: blur() — the gradient is already soft, and a 46px blur on a
+     layer that drifts for the whole pinned hero cost frames every tick */
+  pointer-events: none;
+}
+
+.enc-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 12, 10, 0.94) 0%,
+    rgba(13, 12, 10, 0.45) 42%,
+    rgba(13, 12, 10, 0.15) 70%,
+    rgba(13, 12, 10, 0.35) 100%
+  );
+}
+
+.enc-hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 6vw, 4rem);
+}
+
+.enc-hero-eyebrow {
+  color: var(--color-primary);
+}
+
+.enc-hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 7.5rem);
+  line-height: 1;
+  color: var(--color-primary);
+  margin: 0 0 1.75rem;
+  max-width: 14ch;
+}
+
+.enc-hero-sub {
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  color: var(--color-text);
+  max-width: 46ch;
+  margin: 0 0 2.5rem;
+}
+
+.enc-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+}
+
+.enc-hero-note {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.enc-hero-scroll {
+  position: absolute;
+  z-index: 2;
+  right: clamp(1.25rem, 4vw, 3rem);
+  bottom: 2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--color-secondary);
+  writing-mode: vertical-rl;
+  margin: 0;
+}
+
+/* ————— premise ————— */
+
+.enc-premise {
+  position: relative;
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 6rem);
+  max-width: 62rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.enc-flash {
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary);
+  mix-blend-mode: difference;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.enc-premise-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.6vw, 4.2rem);
+  line-height: 1.05;
+  color: var(--color-primary);
+  margin: 0 0 2.5rem;
+}
+
+.enc-premise-body {
+  text-align: left;
+  max-width: 44rem;
+  margin: 0 auto 3rem;
+}
+
+.enc-premise-body p {
+  margin: 0 0 1.5rem;
+  color: var(--color-text);
+}
+
+.enc-directions {
+  list-style: none;
+  margin: 0;
+  padding: 2.5rem 0 0;
+  border-top: 1px solid rgba(239, 230, 212, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 3rem;
+}
+
+.enc-directions li {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--color-accent);
+}
+
+/* ————— the three acts ————— */
+
+.enc-acts {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 6rem);
+  background: var(--color-surface);
+  border-top: 1px solid rgba(239, 230, 212, 0.1);
+  border-bottom: 1px solid rgba(239, 230, 212, 0.1);
+}
+
+.enc-act {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 6rem) 0;
+}
+
+.enc-act + .enc-act {
+  border-top: 1px solid rgba(239, 230, 212, 0.1);
+}
+
+.enc-act:nth-child(odd of .enc-act) .enc-act-stage {
+  order: 2;
+}
+
+.enc-act-stage {
+  position: relative;
+  aspect-ratio: 4 / 4.6;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+.enc-spot {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.enc-spot-img {
+  position: absolute;
+  inset: 0;
+}
+
+.enc-spot-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Soft-edged spotlight: --spot is scrubbed 0% → 165% by GSAP.
+   Default (no-JS / reduced-motion) is fully open. */
+.enc-spot-veil {
+  --spot: 165%;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 45%,
+    transparent var(--spot),
+    rgba(13, 12, 10, 0.98) calc(var(--spot) + 22%)
+  );
+}
+
+.enc-curtain {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  pointer-events: none;
+}
+
+.enc-curtain-l,
+.enc-curtain-r {
+  width: 50%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.4) 0 12px,
+      rgba(239, 230, 212, 0.04) 12px 26px
+    ),
+    var(--color-curtain);
+}
+
+/* Open defaults; GSAP scrubs closed → open. */
+.enc-curtain-l {
+  clip-path: inset(0 100% 0 0);
+}
+
+.enc-curtain-r {
+  clip-path: inset(0 0 0 100%);
+}
+
+.enc-act-numeral {
+  position: absolute;
+  z-index: 2;
+  left: 1.25rem;
+  bottom: 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  color: var(--color-accent);
+  margin: 0;
+  text-shadow: 0 2px 18px rgba(13, 12, 10, 0.9);
+}
+
+.enc-act-kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  color: var(--color-accent);
+  margin: 0 0 0.75rem;
+}
+
+.enc-act-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.02;
+  color: var(--color-primary);
+  margin: 0 0 1.25rem;
+}
+
+.enc-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.enc-mask-i {
+  display: inline-block;
+  will-change: transform;
+}
+
+.enc-act-body .enc-stage-dir {
+  margin: 0 0 1.75rem;
+  max-width: 44ch;
+}
+
+.enc-spot-name {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-muted);
+  margin: 0 0 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(239, 230, 212, 0.14);
+}
+
+.enc-spot-name span {
+  color: var(--color-primary);
+}
+
+.enc-playbill {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.enc-scene {
+  position: relative;
+  padding: 1.5rem 0 1.5rem 1.25rem;
+  border-bottom: 1px solid rgba(239, 230, 212, 0.1);
+}
+
+.enc-scene:first-child {
+  border-top: 1px solid rgba(239, 230, 212, 0.1);
+}
+
+.enc-scene-edge {
+  position: absolute;
+  left: 0;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  width: 3px;
+  background: var(--color-accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.35s ease;
+}
+
+.enc-scene:hover .enc-scene-edge,
+.enc-scene:focus-within .enc-scene-edge {
+  transform: scaleY(1);
+}
+
+.enc-scene-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.45rem;
+  color: var(--color-primary);
+  margin: 0 0 0.6rem;
+}
+
+.enc-scene-desc {
+  font-size: 0.92rem;
+  color: var(--color-text);
+  margin: 0 0 0.6rem;
+  max-width: 52ch;
+}
+
+.enc-scene-note {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+/* ————— chef / director's note ————— */
+
+.enc-chef {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 6rem);
+}
+
+.enc-chef-visual {
+  position: relative;
+}
+
+.enc-chef-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 4.8;
+}
+
+.enc-chef-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.enc-caption {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--color-secondary);
+  margin: 1rem 0 0;
+}
+
+.enc-chef-quote {
+  font-size: clamp(1.02rem, 1.7vw, 1.2rem);
+  line-height: 1.85;
+  color: var(--color-text);
+  margin: 0 0 1.5rem;
+  max-width: 52ch;
+}
+
+.enc-chef-signoff {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--color-accent);
+  margin: 2rem 0 0;
+}
+
+/* ————— cast list ————— */
+
+.enc-cast {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 6rem);
+  background: var(--color-surface);
+  border-top: 1px solid rgba(239, 230, 212, 0.1);
+  border-bottom: 1px solid rgba(239, 230, 212, 0.1);
+  text-align: center;
+}
+
+.enc-cast .enc-section-title {
+  margin-bottom: 1rem;
+}
+
+.enc-cast-note {
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  max-width: 52ch;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+}
+
+.enc-cast-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 62rem;
+  text-align: left;
+}
+
+.enc-cast-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1rem 3rem;
+  align-items: baseline;
+  padding: 1.6rem 0 1.6rem 1.25rem;
+  border-top: 1px solid rgba(239, 230, 212, 0.1);
+}
+
+.enc-cast-row:last-child {
+  border-bottom: 1px solid rgba(239, 230, 212, 0.1);
+}
+
+.enc-cast-row:hover .enc-scene-edge {
+  transform: scaleY(1);
+}
+
+.enc-cast-role {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.4rem;
+}
+
+.enc-cast-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.7rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.enc-cast-line {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ————— box office ————— */
+
+.enc-tickets {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 6rem);
+  max-width: 84rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.enc-tickets .enc-stage-dir {
+  max-width: 62ch;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+}
+
+.enc-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.enc-tier {
+  font-family: var(--font-body);
+  background: var(--color-surface);
+  border: 1px solid rgba(239, 230, 212, 0.14);
+  color: var(--color-text);
+  padding: 2.25rem 2rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  /* hover lift on `translate` — GSAP owns `transform` for the reveal */
+  transition: border-color 0.3s ease, translate 0.3s ease;
+  text-align: left;
+}
+
+.enc-tier:hover {
+  border-color: var(--color-accent);
+  translate: 0 -4px;
+}
+
+.enc-tier.is-active {
+  border-color: var(--color-accent);
+  box-shadow: inset 0 0 0 1px var(--color-accent);
+}
+
+.enc-tier-name {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.enc-tier-price {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.enc-tier-desc {
+  font-size: 0.88rem;
+  color: var(--color-text);
+  margin: 0;
+  flex: 1;
+}
+
+.enc-tier-perks {
+  list-style: none;
+  margin: 0;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid rgba(239, 230, 212, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.enc-tier-perks > span {
+  display: block;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+}
+
+.enc-tier-perks > span::before {
+  content: '— ';
+  color: var(--color-accent);
+}
+
+.enc-tier-pick {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  color: var(--color-secondary);
+  margin-top: 0.5rem;
+}
+
+.enc-tier.is-active .enc-tier-pick {
+  color: var(--color-accent);
+}
+
+.enc-book {
+  margin-bottom: 3.5rem;
+}
+
+.enc-book-line {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-muted);
+  margin: 0 0 1.75rem;
+}
+
+.enc-book-confirmed {
+  font-size: 0.92rem;
+  line-height: 2;
+  color: var(--color-primary);
+  border: 1px solid var(--color-accent);
+  padding: 1.75rem 2rem;
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.enc-visit {
+  border-top: 1px solid rgba(239, 230, 212, 0.14);
+  padding-top: 2.5rem;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  line-height: 2.1;
+}
+
+.enc-visit p {
+  margin: 0;
+}
+
+.enc-visit a {
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+}
+
+/* ————— playbill footer ————— */
+
+.enc-footer {
+  border-top: 1px solid rgba(239, 230, 212, 0.14);
+  padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.25rem, 6vw, 6rem);
+  text-align: center;
+}
+
+.enc-footer-brand {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  color: var(--color-primary);
+  margin: 0 0 1.5rem;
+  line-height: 1;
+}
+
+.enc-footer-line {
+  font-size: 0.82rem;
+  color: var(--color-text);
+  margin: 0 0 0.75rem;
+}
+
+.enc-footer-colophon {
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 2rem;
+}
+
+.enc-footer-end {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+/* ————— responsive ————— */
+
+@media (max-width: 960px) {
+  .enc-act {
+    grid-template-columns: 1fr;
+  }
+
+  .enc-act:nth-child(odd of .enc-act) .enc-act-stage {
+    order: 0;
+  }
+
+  .enc-act-stage {
+    aspect-ratio: 16 / 10;
+    max-height: 70vh;
+  }
+
+  .enc-chef {
+    grid-template-columns: 1fr;
+  }
+
+  .enc-chef-img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .enc-tiers {
+    grid-template-columns: 1fr;
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .enc-cast-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .enc-nav-links {
+    display: none;
+  }
+
+  .enc-hero-scroll {
+    display: none;
+  }
+
+  .enc-hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tpl-design-10-chefstable *,
+  .tpl-design-10-chefstable *::before,
+  .tpl-design-10-chefstable *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

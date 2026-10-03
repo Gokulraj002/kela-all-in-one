@@ -1,0 +1,21 @@
+export const meta = {
+  id: 'design-09-beauty',
+  num: '09',
+  name: 'PÉTALE',
+  tag: 'Beauty',
+  style: 'Soft ingredient-led beauty',
+  animation: 'Formula dissolve, dewy reveals',
+  typography: 'Cormorant Garamond + Jost',
+  layout: 'Airy grid, layered dissolves',
+  mood: 'Tender, luminous, calm',
+  palette: 'Blush / sand / rosewood',
+  features: [
+    'Formula dissolve product flow',
+    'Ingredient callouts',
+    'Demo cart',
+    'Ritual guide',
+    'Shade finder',
+  ],
+  fonts: { display: 'Cormorant Garamond', body: 'Jost' },
+  colors: { primary: '#2B2320', accent: '#8A4B3C' },
+};
